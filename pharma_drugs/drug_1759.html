@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        31-390-08
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2008
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        VISCOR 20MG F.C. TABLETS
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SIMVASTATIN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        48.2
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="NATIONAL PHARMACEUTICAL INDUSTRIES CO" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            NATIONAL PHARMACEUTICAL INDUSTRIES CO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 587]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            EBRAHIM M. ALMANA & BROS. CO.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            National Pharmaceutical Industries Co. (SAOG)
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        C10AA01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Viscor 20
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each film coated tablet contains Simvastatin 20 mg
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Brownish pink colored oval shaped tablets with ‘409’ embossed on one side and other side plain.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Hypercholesterolaemia</u><br />Treatment of primary hypercholesterolaemia or mixed dyslipidaemia, as an adjunct to diet, when response to diet and other non-pharmacological treatments (e.g. exercise, weight reduction) is inadequate.<br />Treatment of homozygous familial hypercholesterolaemia as an adjunct to diet and other lipidlowering treatments (e.g. LDL apheresis) or if such treatments are not appropriate.<br /><u>Cardiovascular prevention</u><br />Reduction of cardiovascular mortality and morbidity in patients with manifest atheroscleroticcardiovascular disease ordiabetes mellitus, with either normal or increased cholesterol levels, as an adjunct to correction of other risk factors and other cardioprotective therapy (see section 5.1).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The dosage range is 5-80 mg/day given orally as a single dose in the evening. Adjustments of dosage, if required, should be made at intervals of not less than 4 weeks, to a maximum of 80 mg/day given as a single dose in the evening. The 80-mg dose is only recommended in patients with severe hypercholesterolaemia and at high risk for cardiovascular complications who have not achieved their treatment goals on lower doses and when the benefits are expected to outweigh the potential risks (see sections 4.4 and 5.1).</p><p><u>Hypercholesterolaemia</u><br />The patient should be placed on a standard cholesterol-lowering diet, and should continue on this diet during treatment with Viscor.</p><p>The usual starting dose is 10-20 mg/day given as a single dose in the evening. Patients who require a large reduction in LDL-C (more than 45 %) may be started at 20-40 mg/day given as a single dose in the evening. Adjustments of dosage, if required, should be made as specified above.</p><p><u>Homozygous familial hypercholesterolaemia </u></p><p>Based on the results of a controlled clinical study, the recommended starting dosage is Viscor 40 mg/day in the evening. Viscor should be used as an adjunct to other lipid-lowering treatments (e.g., LDL apheresis) in these patients or if such treatments are unavailable.</p><p><u>Cardiovascular prevention </u></p><p>The usual dose of Viscor is 20 to 40 mg/day given as a single dose in the evening in patients at high risk of coronary heart disease (CHD, with or without hyperlipidaemia). Drug therapy can be initiated simultaneously with diet and exercise. Adjustments of dosage, if required, should be made as specified above.</p><p><u>Concomitant therapy </u></p><p>Viscor is effective alone or in combination with bile acid sequestrants. Dosing should occur either &gt; 2 hours before or &gt; 4 hours after administration of a bile acid sequestrant.</p><p>In patients taking Viscor concomitantly with fibrates, other than gemfibrozil (see section 4.3) or fenofibrate, the dose of Viscor should not exceed 10 mg/day. In patients taking amiodarone, amlodipine, verapamil, or diltiazem concomitantly with Viscor, the dose of Viscor should not exceed 20 mg/day. (See sections 4.4 and 4.5.)</p><p><u>Dosage in renal insufficiency </u></p><p>No modification of dosage should be necessary in patients with moderate renal insufficiency. In patients with severe renal insufficiency (creatinine clearance &lt; 30 ml/min), dosages above 10 mg/day should be carefully considered and, if deemed necessary, implemented cautiously</p><p><u>Use in the elderly </u></p><p>No dosage adjustment is necessary.</p><p><u>Use in children and adolescents </u>(10-17 years of age)</p><p>For children and adolescents (boys Tanner Stage II and above and girls who are at least one year post-menarche, 10-17 years of age) with heterozygous familial hypercholesterolaemia, the recommended usual starting dose is 10 mg once a day in the evening. Children and adolescents should be placed on a standard cholesterol-lowering diet before simvastatin treatment initiation; this diet should be continued during simvastatin treatment.</p><p>The recommended dosing range is 10-40 mg/day; the maximum recommended dose is 40 mg/day. Doses should be individualized according to the recommended goal of therapy as recommended by the paediatric treatment recommendations (see sections 4.4 and 5.1). Adjustments should be made at intervals of 4 weeks or more.</p><p>The experience of Viscor in pre-pubertal children is limited</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                • Hypersensitivity to simvastatin or to any of the excipients
+• Active liver disease or unexplained persistent elevations of serum transaminases
+• Pregnancy and lactation (see section 4.6)
+• Concomitant administration of potent CYP3A4 inhibitors (agents that increase AUC approximately
+5 fold or greater) (e.g. itraconazole, ketoconazole, posaconazole, voriconazole, HIV protease
+inhibitors (e.g. nelfinavir), boceprevir, telaprevir, erythromycin, clarithromycin, telithromycin and
+nefazodone) (see sections 4.4 and 4.5)
+• Concomitant administration of gemfibrozil, ciclosporin, or danazol (see sections 4.4 and 4.5).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Myopathy/Rhabdomyolysis </strong></p><p>Simvastatin, like other inhibitors of HMG-CoA reductase, occasionally causes myopathy manifested as muscle pain, tenderness or weakness with creatine kinase (CK) above ten times the upper limit of normal (ULN). Myopathy sometimes takes the form of rhabdomyolysis with or without acute renal failure secondary to myoglobinuria, and very rare fatalities have occurred. The risk of myopathy is increased by high levels of HMG-CoA reductase inhibitory activity in plasma.</p><p>As with other HMG-CoA reductase inhibitors, the risk of myopathy/rhabdomyolysis is dose related. In a clinical trial database in which 41,413 patients were treated with Viscor, 24,747 (approximately 60 %) of whom were enrolled in studies with a median follow-up of at least 4 years, the incidence of myopathy was approximately 0.03 %, 0.08 % and 0.61 % at 20, 40 and 80 mg/day, respectively. In these trials, patients were carefully monitored and some interacting medicinal products were excluded.</p><p>In a clinical trial in which patients with a history of myocardial infarction were treated with Viscor 80 mg/day (mean follow-up 6.7 years), the incidence of myopathy was approximately 1.0 % compared with 0.02 % for patients on 20 mg/day. Approximately half of these myopathy cases occurred during the first year of treatment. The incidence of myopathy during each subsequent year of treatment was approximately 0.1 %. (See sections 4.8 and 5.1.)</p><p>The risk of myopathy is greater in patients on simvastatin 80 mg compared with other statin-based therapies with similar LDL-C-lowering efficacy. Therefore, the 80-mg dose of Viscor should only be used in patients with severe hypercholesterolemia and at high risk for cardiovascular complications who have not achieved their treatment goals on lower doses and when the benefits are expected to<br />outweigh the potential risks. In patients taking simvastatin 80 mg for whom an interacting agent is needed, a lower dose of simvastatin or an alternative statin-based regimen with less potential for drug-drug interactions should be used (see below Measures to reduce the risk of myopathy caused by medicinal product interactions and sections 4.2, 4.3, and 4.5).<br /><u>Creatine Kinase measurement</u><br />Creatine Kinase (CK) should not be measured following strenuous exercise or in the presence of any plausible alternative cause of CK increase as this makes value interpretation difficult. If CK levels are significantly elevated at baseline (&gt; 5 x ULN), levels should be re-measured within 5 to 7 days later to confirm the results.<br /><u>Before the treatment</u><br />All patients starting therapy with simvastatin, or whose dose of simvastatin is being increased, should be advised of the risk of myopathy and told to report promptly any unexplained muscle pain, tenderness or weakness.<br />Caution should be exercised in patients with pre-disposing factors for rhabdomyolysis. In order to establish a reference baseline value, a CK level should be measured before starting a treatment in the following situations:<br />&bull; Elderly (age &ge; 65 years)<br />&bull; Female gender<br />&bull; Renal impairment<br />&bull; Uncontrolled hypothyroidism<br />&bull; Personal or familial history of hereditary muscular disorders<br />&bull; Previous history of muscular toxicity with a statin or fibrate<br />&bull; Alcohol abuse.<br />In such situations, the risk of treatment should be considered in relation to possible benefit, and clinical monitoring is recommended. If a patient has previously experienced a muscle disorder on a fibrate or a statin, treatment with a different member of the class should only be initiated with caution. If CK levels are significantly elevated at baseline (&gt; 5 x ULN), treatment should not be started.</p><p><u>Whilst on treatment</u><br />If muscle pain, weakness or cramps occur whilst a patient is receiving treatment with a statin, their CK levels should be measured. If these levels are found, in the absence of strenuous exercise, to be significantly elevated (&gt; 5 x ULN), treatment should be stopped. If muscular symptoms are severe and cause daily discomfort, even if CK levels are &lt; 5 x ULN, treatment discontinuation may be considered. If myopathy is suspected for any other reason, treatment should be discontinued.<br />If symptoms resolve and CK levels return to normal, then re-introduction of the statin or introduction of an alternative statin may be considered at the lowest dose and with close monitoring.<br />A higher rate of myopathy has been observed in patients titrated to the 80 mg dose (see section 5.1).<br />Periodic CK measurements are recommended as they may be useful to identify subclinical cases of myopathy. However, there is no assurance that such monitoring will prevent myopathy.<br />Therapy with simvastatin should be temporarily stopped a few days prior to elective major surgery and when any major medical or surgical condition supervenes.</p><p><u><em>Measures to reduce the risk of myopathy caused by medicinal product interactions (see also section 4.5)</em></u></p><p>The risk of myopathy and rhabdomyolysis is significantly increased by concomitant use of simvastatin with potent inhibitors of CYP3A4 (such as itraconazole, ketoconazole, posaconazole, voriconazole erythromycin, clarithromycin, telithromycin, HIV protease inhibitors (e.g. nelfinavir), boceprevir, telaprevir, nefazodone), as well as gemfibrozil, ciclosporin, and danazol. Use of these medicinal products is contraindicated (see section 4.3).<br />The risk of myopathy and rhabdomyolysis is also increased by concomitant use of amiodarone, amlodipine, verapamil, or diltiazem with certain doses of simvastatin (see sections 4.2 and 4.5). The risk of myopathy, including rhabdomyolysis, may be increased by concomitant administration of fusidic acid with statins (see section 4.5).<br />Consequently, regarding CYP3A4 inhibitors, the use of simvastatin concomitantly with itraconazole, ketoconazole, posaconazole, voriconazole, HIV protease inhibitors (e.g. nelfinavir), boceprevir, telaprevir, erythromycin, clarithromycin, telithromycin and nefazodone is contraindicated (see sections 4.3 and 4.5). If treatment with potent CYP3A4 inhibitors (agents that increase AUC approximately 5 fold or greater) is unavoidable, therapy with simvastatin must be suspended (and use of an alternative statin considered) during the course of treatment.</p><p>Moreover, caution should be exercised when combining simvastatin with certain other less potent CYP3A4 inhibitors: fluconazole, verapamil, diltiazem (see sections 4.2 and 4.5). Concomitant intake of grapefruit juice and simvastatin should be avoided.<br />The use of simvastatin with gemfibrozil is contraindicated (see section 4.3). Due to the increased risk of myopathy and rhabdomyolysis, the dose of simvastatin should not exceed 10 mg daily in patients taking simvastatin with other fibrates, except fenofibrate. (See sections 4.2 and 4.5.) Caution should be used when prescribing fenofibrate with simvastatin, as either agent can cause myopathy when given alone.<br />Simvastatin must not be co-administered with fusidic acid. There have been reports of rhabdomyolysis (including some fatalities) in patients receiving this combination (see section 4.5).<br />In patients where the use of systemic fusidic acid is considered essential, statin treatment should be discontinued throughout the duration of fusidic acid treatment. The patient should be advised to seek medical advice immediately if they experience any symptoms of muscle weakness, pain or tenderness. Statin therapy may be re-introduced seven days after the last dose of fusidic acid. In exceptional circumstances, where prolonged systemic fusidic acid is needed, e.g., for the treatment of severe infections, the need for co-administration of simvastatin and fusidic acid should only be considered on a case by case basis and under close medical supervision.<br />The combined use of simvastatin at doses higher than 20 mg daily with amiodarone, amlodipine, verapamil, or diltiazem should be avoided (see sections 4.2 and 4.5).<br />Patients taking other medicines labelled as having a moderate inhibitory effect on CYP3A4 concomitantly with simvastatin, particularly higher simvastatin doses, may have an increased risk of myopathy. When coadministering simvastatin with a moderate inhibitor of CYP3A4 (agents that increase AUC approximately 2-5 fold), a dose adjustment of simvastatin may be necessary. For<br />certain moderate CYP3A4 inhibitors e.g. diltiazem, a maximum dose of 20mg simvastatin is recommended (see section 4.2)</p><p>Rare cases of myopathy/rhabdomyolysis have been associated with concomitant administration of HMG-CoA reductase inhibitors and lipid-modifying doses (&ge; 1 g/day) of niacin (nicotinic acid), either of which can cause myopathy when given alone.<br />Physicians contemplating combined therapy with simvastatin and lipid-modifying doses (&ge; 1 g/day) of niacin (nicotinic acid) or products containing niacin should carefully weigh the potential benefits and risks and should carefully monitor patients for any signs and symptoms of muscle pain, tenderness, or weakness, particularly during the initial months of therapy and when the dose of either medicinal product is increased.</p><p>In an interim analysis of an ongoing clinical outcomes study, an independent safety monitoring committee identified a higher than expected incidence of myopathy in Chinese patients taking simvastatin 40 mg and nicotinic acid/laropiprant 2000 mg/40 mg. Therefore, caution should be used when treating Chinese patients with simvastatin (particularly doses of 40 mg or higher) coadministered with lipid-modifying doses (&ge; 1 g/day) of niacin (nicotinic acid) or products containing niacin. Because the risk of myopathy with statins is dose-related, the use of simvastatin 80 mg with lipid-modifying doses (&ge; 1 g/day) of niacin (nicotinic acid) or products containing niacin is not recommended in Chinese patients. It is unknown whether there is an increased risk of myopathy in other Asian patients treated with simvastatin co-administered with lipid-modifying doses (&ge; 1 g/day) of niacin (nicotinic acid) or products containing niacin</p><p><u>Hepatic effects</u><br />In clinical studies, persistent increases (to &gt; 3 x ULN) in serum transaminases have occurred in a few adult patients who received simvastatin. When simvastatin was interrupted or discontinued in these patients, the transaminase levels usually fell slowly to pre-treatment levels.</p><p>It is recommended that liver function tests be performed before treatment begins and thereafter when clinically indicated. Patients titrated to the 80-mg dose should receive an additional test prior to titration, 3 months after titration to the 80-mg dose, and periodically thereafter (e.g., semi-annually) for the first year of treatment. Special attention should be paid to patients who develop elevated serum transaminase levels, and in these patients, measurements should be repeated promptly and then performed more frequently. If the transaminase levels show evidence of progression, particularly if they rise to 3 x ULN and are persistent, simvastatin should be discontinued. Note that ALT may emanate from muscle, therefore ALT rising with CK may indicate myopathy (see above <em>Myopathy/Rhabdomyolysis</em>).<br />There have been rare postmarketing reports of fatal and non-fatal hepatic failure in patients taking statins, including simvastatin. If serious liver injury with clinical symptoms and/or hyperbilirubinaemia or jaundice occurs during treatment with Viscor, promptly interrupt therapy. If an alternate etiology is not found, do not restart Viscor.<br />The product should be used with caution in patients who consume substantial quantities of alcohol. As with other lipid-lowering agents, moderate (&lt; 3 x ULN) elevations of serum transaminases have been reported following therapy with simvastatin. These changes appeared soon after initiation of therapy with simvastatin, were often transient, were not accompanied by any symptoms and interruption of treatment was not required.</p><p><u>Diabetes mellitus </u></p><p>Some evidence suggests that statins as a class raise blood glucose and in some patients, at high risk of future diabetes, may produce a level of hyperglycaemia where formal diabetes care is appropriate. This risk, however, is outweighed by the reduction in vascular risk with statins and therefore should not be a reason for stopping statin treatment. Patients at risk (fasting glucose 5.6 to 6.9 mmol/L, BMI &gt; 30 kg/m2, raised triglycerides, hypertension) should be monitored both clinically and biochemically according to national guidelines</p><p><u>Interstitial lung disease </u></p><p>Cases of interstitial lung disease have been reported with some statins, including simvastatin, especially with long term therapy (see section 4.8). Presenting features can include dyspnoea, nonproductive cough and deterioration in general health (fatigue, weight loss and fever). If it is suspected a patient has developed interstitial lung disease, statin therapy should be discontinued.</p><p><u>Use in children and adolescents (10-17 years of age) </u></p><p>Safety and effectiveness of simvastatin in patients 10-17 years of age with heterozygous familial hypercholesterolaemia have been evaluated in a controlled clinical trial in adolescent boys Tanner Stage II and above and in girls who were at least one year post-menarche. Patients treated with simvastatin had an adverse experience profile generally similar to that of patients treated with placebo. <strong>Doses greater than 40 mg have not been studied in this population</strong>. In this limited controlled study, there was no detectable effect on growth or sexual maturation in the adolescent boys or girls, or any effect on menstrual cycle length in girls. (See sections 4.2, 4.8, and 5.1.). Adolescent females should be counselled on appropriate contraceptive methods while on simvastatin therapy (see sections 4.3 and 4.6). In patients aged &lt; 18 years, efficacy and safety have not been studied for treatment periods &gt; 48 weeks&#39; duration and long-term effects on physical, intellectual, and sexual maturation are unknown. Simvastatin has not been studied in patients younger than 10 years of age, nor in pre-pubertal children and pre-menarchal girls.</p><p><u>Excipient </u></p><p>This product contains lactose. Patients with rare hereditary problems of galactose intolerance, the Lapp lactase deficiency or glucose-galactose malabsorption should not take this medicine</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Interaction studies have only been performed in adults.</p><p><em><u>Pharmacodynamic interactions </u></em></p><p>Interactions with lipid-lowering medicinal products that can cause myopathy when given alone The risk of myopathy, including rhabdomyolysis, is increased during concomitant administration with fibrates. Additionally, there is a pharmacokinetic interaction with gemfibrozil resulting in increased simvastatin plasma levels (see belowPharmacokinetic interactions and sections 4.3 and 4.4). When simvastatin and fenofibrate are given concomitantly, there is no evidence that the risk of myopathy exceeds the sum of the individual risks of each agent. Adequate pharmacovigilance and pharmacokinetic data are not available for other fibrates. Rare cases of myopathy/rhabdomyolysis have been associated with simvastatin co-administered with lipid-modifying doses (&ge; 1 g/day) of niacin (see section 4.4).</p><p><u><em>Pharmacokinetic interactions</em></u><br />Prescribing recommendations for interacting agents are summarized in the table below (further details are provided in the text; see also sections 4.2, 4.3, and 4.4).</p><table border="1" cellspacing="1" cellpadding="1" style="width:560px"><tbody><tr><td style="width:285px">Interacting agents</td><td style="width:272px">Prescribing recommendations</td></tr><tr><td style="width:285px">Potent CYP3A4 inhibitors, e.g.:<br />Itraconazole<br />Ketoconazole<br />Posaconazole<br />Voriconazole<br />Erythromycin<br />Clarithromycin<br />Telithromycin<br />HIV protease inhibitors (e.g. nelfinavir)<br />Boceprivir<br />Telparevir<br />Nefazodone<br />Ciclosporin<br />Danazol<br />Gemfibrozil</td><td style="width:272px">Contraindicated with simvastatin</td></tr><tr><td style="width:285px">Other fibrates (except fenofibrate)</td><td style="width:272px">Do not exceed 10 mg simvastatin daily</td></tr><tr><td style="width:285px">Fusidic acid</td><td style="width:272px">Is not recommended with simvastatin</td></tr><tr><td style="width:285px">Amiodarone<br />Amlodipine<br />Verapamil<br />Diltiazem</td><td style="width:272px">Do not exceed 20 mg simvastatin daily</td></tr><tr><td style="width:285px">Grapefruit juice</td><td style="width:272px">Avoid grapefruit juice when taking simvastatin</td></tr></tbody></table><p>&nbsp;</p><p><em>Effects of other medicinal products on simvastatin </em></p><p><em>Interactions involving inhibitors of CYP3A4 </em></p><p>Simvastatin is a substrate of cytochrome P450 3A4. Potent inhibitors of cytochrome P450 3A4 increase the risk of myopathy and rhabdomyolysis by increasing the concentration of HMG-CoA reductase inhibitory activity in plasma during simvastatin therapy. Such inhibitors include itraconazole, ketoconazole, posaconazole, voriconazole, erythromycin, clarithromycin, telithromycin, HIV protease inhibitors (e.g. nelfinavir), boceprevir, telaprevir and nefazodone. Concomitant administration of itraconazole resulted in a more than 10-fold increase in exposure to simvastatin acid (the active beta-hydroxyacid metabolite). Telithromycin caused an 11-fold increase in exposure to simvastatin acid.</p><p>Combination with itraconazole, ketoconazole, posaconazole, voriconazole, HIV protease inhibitors (e.g. nelfinavir), boceprevir, telaprevir erythromycin, clarithromycin, telithromycin and nefazodone is contraindicated, as well as gemfibrozil, ciclosporin, and danazol (see section 4.3). If treatment with potent CYP3A4 inhibitors (agents that increase AUC approximately 5 fold or greater) is unavoidable, therapy with simvastatin must be suspended (and use of an alternative stain considered) during the course of treatment. Caution should be exercised when combining simvastatin with certain other less potent CYP3A4 inhibitors: fluconazole, verapamil, or diltiazem (see sections 4.2 and 4.4).</p><p><em>Fluconazole </em></p><p>Rare cases of rhabdomyolysis associated with concomitant administration of simvastatin and fluconazole have been reported (see section 4.4).</p><p><em>Ciclosporin </em></p><p>The risk of myopathy/rhabdomyolysis is increased by concomitant administration of ciclosporin with simvastatin; therefore, use with ciclosporin is contraindicated (see sections 4.3 and 4.4). Although the mechanism is not fully understood, ciclosporin has been shown to increase the AUC of HMG-CoA reductase inhibitors. The increase in AUC for simvastatin acid is presumably due, in part, to inhibition of CYP3A4.</p><p><em>Danazol</em><br />The risk of myopathy and rhabdomyolysis is increased by concomitant administration of danazol with simvastatin; therefore, use with danazol is contraindicated. (see sections 4.3 and 4.4).<br /><em>Gemfibrozil</em><br />Gemfibrozil increases the AUC of simvastatin acid by 1.9-fold, possibly due to inhibition of the glucuronidation pathway (see sections 4.3 and 4.4). Concomitant administration with gemfibrozil is contraindicated.</p><p><em>Fusidic acid </em></p><p>The risk of myopathy including rhabdomyolysis may be increased by the concomitant administration of systemic fusidic acid with statins. Co-administration of this combination may cause increased plasma concentrations of both agents. The mechanism of this interaction (whether it is pharmacodynamics or pharmacokinetic, or both) is yet unknown. There have been reports of rhabdomyolysis (including some fatalities) in patients receiving this combination. If treatment with fusidic acid is necessary, simvastatin treatment should be discontinued throughout the duration of the fusidic acid treatment. (See section 4.4.)</p><p><em>Amiodarone</em></p><p>The risk of myopathy and rhabdomyolysis is increased by concomitant administration of amiodarone with simvastatin (see section 4.4). In a clinical trial, myopathy was reported in 6 % of patients receiving simvastatin 80 mg and amiodarone. Therefore, the dose of simvastatin should not exceed 20 mg daily in patients receiving concomitant medication with amiodarone.</p><p><em>Calcium Channel Blockers<br />&bull; Verapamil</em><br />The risk of myopathy and rhabdomyolysis is increased by concomitant administration of verapamil with simvastatin 40 mg or 80 mg (see section 4.4). In a pharmacokinetic study, concomitant administration with verapamil resulted in a 2.3-fold increase in exposure of simvastatin acid, presumably due, in part, to inhibition of CYP3A4. Therefore, the dose of simvastatin should not exceed 20 mg daily in patients receiving concomitant medication with verapamil.</p><p><em>&bull; Diltiazem </em></p><p>The risk of myopathy and rhabdomyolysis is increased by concomitant administration of diltiazem with simvastatin 80 mg (see section 4.4). In a pharmacokinetic study, concomitant administration of diltiazem caused a 2.7-fold increase in exposure of simvastatin acid, presumably due to inhibition of CYP3A4. Therefore, the dose of simvastatin should not exceed 20 mg daily in patients receiving concomitant medication with diltiazem.</p><p>&bull; <em>Amlodipine </em></p><p>Patients on amlodipine treated concomitantly with simvastatin have an increased risk of myopathy. In a pharmacokinetic study, concomitant administration of amlodipine caused a 1.6-fold increase in exposure of simvastatin acid. Therefore, the dose of simvastatin should not exceed 20 mg daily in patients receiving concomitant medication with amlodipine</p><p><em>Moderate Inhibitors of CYP3A4</em></p><p>Patients taking other medicines labelled as having a moderate inhibitory effect on CYP3A4 concomitantly with simvastatin, particularly higher simvastatin doses, may have an increased risk of myopathy (see section 4.4).</p><p><em>Niacin (nicotinic acid) </em></p><p>Rare cases of myopathy/rhabdomyolysis have been associated with simvastatin co-administered with lipid-modifying doses (&ge; 1 g/day) of niacin (nicotinic acid). In a pharmacokinetic study, the coadministration of a single dose of nicotinic acid prolonged-release 2 g with simvastatin 20 mg resulted in a modest increase in the AUC of simvastatin and simvastatin acid and in the Cmax of simvastatin acid plasma concentrations.</p><p><em>Grapefruit juice</em></p><p>Grapefruit juice inhibits cytochrome P450 3A4. Concomitant intake of large quantities (over 1 litre daily) of grapefruit juice and simvastatin resulted in a 7-fold increase in exposure to simvastatin acid. Intake of 240 ml of grapefruit juice in the morning and simvastatin in the evening also resulted in a 1.9-fold increase. Intake of grapefruit juice during treatment with simvastatin should therefore be avoided</p><p><em>Colchicine </em></p><p>There have been reports of myopathy and rhabdomyolysis with the concomitant administration of colchicine and simvastatin in patients with renal insufficiency. Close clinical monitoring of such patients taking this combination is advised.</p><p><em>Rifampicin </em></p><p>Because rifampicin is a potent CYP3A4 inducer, patients undertaking long-term rifampicin therapy (e.g. treatment of tuberculosis) may experience loss of efficacy of simvastatin. In a pharmacokinetic study in normal volunteers, the area under the plasma concentration curve (AUC) for simvastatin acid was decreased by 93% with concomitant administration of rifampicin.</p><p><em>Effects of simvastatin on the pharmacokinetics of other medicinal products</em></p><p>Simvastatin does not have an inhibitory effect on cytochrome P450 3A4. Therefore, simvastatin is not expected to affect plasma concentrations of substances metabolised via cytochrome P450 3A4. Oral anticoagulants</p><p>In two clinical studies, one in normal volunteers and the other in hypercholesterolaemic patients, simvastatin 20-40 mg/day modestly potentiated the effect of coumarin anticoagulants: the prothrombin time, reported as International Normalized Ratio (INR), increased from a baseline of 1.7 to 1.8 and from 2.6 to 3.4 in the volunteer and patient studies, respectively. Very rare cases of elevated INR have been reported. In patients taking coumarin anticoagulants, prothrombin time should be determined before starting simvastatin and frequently enough during early therapy to ensure that no significant alteration of prothrombin time occurs. Once a stable prothrombin time has been documented, prothrombin times can be monitored at the intervals usually recommended for patients on coumarin anticoagulants. If the dose of simvastatin is changed or discontinued, the same procedure should be repeated. Simvastatin therapy has not been associated with bleeding or with changes in prothrombin time in patients not taking anticoagulants</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em>Pregnancy</em></p><p>Viscor is contraindicated during pregnancy (see section 4.3).</p><p>Safety in pregnant women has not been established. No controlled clinical trials with simvastatin have been conducted in pregnant women. Rare reports of congenital anomalies following intrauterine exposure to HMG-CoA reductase inhibitors have been received. However, in an analysis of approximately 200 prospectively followed pregnancies exposed during the first trimester to Viscor or another closely related HMG-CoA reductase inhibitor, the incidence of congenital anomalies was comparable to that seen in the general population. This number of pregnancies was statistically sufficient to exclude a 2.5-fold or greater increase in congenital anomalies over the background incidence.</p><p>Although there is no evidence that the incidence of congenital anomalies in offspring of patients taking Viscor or another closely related HMG-CoA reductase inhibitor differs from that observed in the general population, maternal treatment with Viscor may reduce the foetal levels of mevalonate which is a precursor of cholesterol biosynthesis. Atherosclerosis is a chronic process, and ordinarily discontinuation of lipid-lowering medicinal products during pregnancy should have little impact on the long-term risk associated with primary hypercholesterolaemia. For these reasons, Viscor must not be used in women who are pregnant, trying to become pregnant or suspect they are pregnant. Treatment with Viscor must be suspended for the duration of pregnancy or until it has been determined that the woman is not pregnant. (See sections 4.3 and 5.3.)</p><p><em>Lactation</em><br />It is not known whether simvastatin or its metabolites are excreted in human milk. Because many medicinal products are excreted in human milk and because of the potential for serious adverse reactions, women taking Viscor must not breast-feed their infants (see section 4.3).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Viscor has no or negligible influence on the ability to drive and use machines. However, when driving vehicles or operating machines, it should be taken into account that dizziness has been reported rarely in post-marketing experiences.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The frequencies of the following adverse events, which have been reported during clinical studies and/or post-marketing use, are categorized based on an assessment of their incidence rates in large, long-term, placebo-controlled, clinical trials including HPS and 4S with 20,536 and 4,444 patients, respectively (see section 5.1). For HPS, only serious adverse events were recorded as well as myalgia, increases in serum transaminases and CK. For 4S, all the adverse events listed below were recorded. If the incidence rates on simvastatin were less than or similar to that of placebo in these trials, and there were similar reasonably causally related spontaneous report events, these adverse events are categorized as &ldquo;rare&rdquo;.</p><p>In HPS (see section 5.1) involving 20,536 patients treated with 40 mg/day of Viscor (n = 10,269) or placebo (n = 10,267), the safety profiles were comparable between patients treated with Viscor 40 mg and patients treated with placebo over the mean 5 years of the study. Discontinuation rates due to side effects were comparable (4.8 % in patients treated with Viscor 40 mg compared with 5.1 % in patients treated with placebo). The incidence of myopathy was &lt; 0.1 % in patients treated with Viscor 40 mg. Elevated transaminases (&gt; 3 x ULN confirmed by repeat test) occurred in 0.21 % (n = 21) of patients treated with Viscor 40 mg compared with 0.09 % (n = 9) of patients treated with placebo.</p><p>The frequencies of adverse events are ranked according to the following: Very common (&gt; 1/10), Common (&ge; 1/100, &lt; 1/10),</p><p>Uncommon (&ge; 1/1000, &lt; 1/100), Rare (&ge; 1/10,000, &lt; 1/1000), Very Rare (&lt; 1/10,000), not known (cannot be estimated from the available data).</p><p><u>Blood and lymphatic system disorders:</u><br /><em>Rare</em>: anaemia<br /><u>Psychiatric disorders:</u><br /><em>Very rare:</em> insomnia<br /><em>Not known</em>: depression<br /><u>Nervous system disorders:</u><br /><em>Rare</em>: headache, paresthesia, dizziness, peripheral neuropathy<br /><em>Very rare:</em> memory impairment<br /><u>Respiratory, thoracic and mediastinal disorders:</u><br /><em>Not known</em>: interstitial lung disease (see section 4.4)<br /><u>Gastrointestinal disorders:</u><br /><em>Rare</em>: constipation, abdominal pain, flatulence, dyspepsia, diarrhoea, nausea, vomiting, pancreatitis<br /><u>Hepatobiliary disorders:</u><br /><em>Rare</em>: hepatitis/jaundice<br /><em>Very rare</em>: fatal and non-fatal hepatic failure</p><p><u>Skin and subcutaneous tissue disorders:</u><br /><em>Rare</em>: rash, pruritus, alopecia</p><p><u>Musculoskeletal and connective tissue disorders:</u><br /><em>Rare</em>: myopathy* (including myositis), rhabdomyolysis with or without acute renal failure (see section 4.4), myalgia, muscle cramps</p><p>* In a clinical trial, myopathy occurred commonly in patients treated with Viscor 80 mg/day compared to patients treated with 20 mg/day (1.0 % vs 0.02 %, respectively) <em>Not known</em>: tendinopathy, sometimes complicated by rupture</p><p><u>Reproductive system and breast disorders:</u><br /><em>Not known</em>: erectile dysfunction<br /><u>General disorders and administration site conditions:</u><br /><em>Rare</em>: asthenia<br />An apparent hypersensitivity syndrome has been reported rarely which has included some of the following features: angioedema, lupus-like syndrome, polymyalgia rheumatica, dermatomyositis, vasculitis, thrombocytopenia, eosinophilia, ESR increased, arthritis and arthralgia, urticaria, photosensitivity, fever, flushing, dyspnoea and malaise.</p><p><em>Investigations</em>:<br />Rare: increases in serum transaminases (alanine aminotransferase, aspartate aminotransferase, &gamma;- glutamyl transpeptidase) (see section 4.4 Hepatic effects), elevated alkaline phosphatase; increase in serum CK levels (see section 4.4).<br />Increases in HbA1c and fasting serum glucose levels have been reported with statins, including Viscor.<br />There have been rare postmarketing reports of cognitive impairment (e.g., memory loss, forgetfulness, amnesia, memory impairment, confusion) associated with statin use, including simvastatin. The reports are generally nonserious, and reversible upon statin discontinuation, with variable times to symptom onset (1 day to years) and symptom resolution (median of 3 weeks).<br />The following additional adverse events have been reported with some statins:<br />&bull; sleep disturbances, including nightmares<br />&bull; sexual dysfunction<br />&bull; Diabetes mellitus: Frequency will depend on the presence or absence of risk factors (fasting blood<br />glucose &ge; 5.6 mmol/L, BMI &gt; 30 kg/m2, raised triglycerides, history of hypertension).<br /><u>Children and adolescents (10-17 years of age)</u><br />In a 48-week study involving children and adolescents (boys Tanner Stage II and above and girls who were at least one year post-menarche) 10-17 years of age with heterozygous familial hypercholesterolaemia (n = 175), the safety and tolerability profile of the group treated with Viscor was generally similar to that of the group treated with placebo. The long-term effects on physical, intellectual, and sexual maturation are unknown. No sufficient data are currently available after one year of treatment. (See sections 4.2, 4.4, and 5.1).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>To date, a few cases of overdosage have been reported; the maximum dose taken was 3.6 g. All patients recovered without sequelae. There is no specific treatment in the event of overdose. In this case, symptomatic and supportive measures should be adopted.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: HMG-CoA reductase inhibitor</p><p>ATC-Code: C10A A01</p><p>After oral ingestion, simvastatin, which is an inactive lactone, is hydrolyzed in the liver to the corresponding active beta-hydroxyacid form which has a potent activity in inhibiting HMG-CoA reductase (3 hydroxy &ndash; 3 methylglutaryl CoA reductase). This enzyme catalyses the conversion of HMG-CoA to mevalonate, an early and rate-limiting step in the biosynthesis of cholesterol.</p><p>Viscor has been shown to reduce both normal and elevated LDL-C concentrations. LDL is formed from very-low-density protein (VLDL) and is catabolised predominantly by the high affinity LDL receptor. The mechanism of the LDL-lowering effect of Viscor may involve both reduction of VLDL-cholesterol (VLDL-C) concentration and induction of the LDL receptor, leading to reduced production and increased catabolism of LDL-C. Apolipoprotein B also falls substantially during treatment with Viscor. In addition, Viscor moderately increases HDL-C and reduces plasma TG. As a result of these changes the ratios of total- to HDL-C and LDL- to HDL-C are reduced.</p><p><u>High Risk of Coronary Heart Disease (CHD) or Existing Coronary Heart Disease </u></p><p>In the Heart Protection Study (HPS), the effects of therapy with Viscor were assessed in 20,536 patients (age 40-80 years), with or without hyperlipidaemia, and with coronary heart disease, other occlusive arterial disease or diabetes mellitus. In this study, 10,269 patients were treated with Viscor 40 mg/day and 10,267 patients were treated with placebo for a mean duration of 5 years. At baseline, 6,793 patients (33 %) had LDL-C levels below 116 mg/dL; 5,063 patients (25 %) had levels between 116 mg/dL and 135 mg/dL; and 8,680 patients (42 %) had levels greater than 135 mg/dL.</p><p>Treatment with Viscor 40 mg/day compared with placebo significantly reduced the risk of all cause mortality (1328 [12.9 %] for simvastatin-treated patients versus 1507 [14.7 %] for patients given placebo; p = 0.0003), due to an 18 % reduction in coronary death rate (587 [5.7 %] versus 707 [6.9 %]; p = 0.0005; absolute risk reduction of 1.2 %). The reduction in non-vascular deaths did not reach statistical significance. Viscor also decreased the risk of major coronary events (a composite endpoint comprised of non-fatal MI or CHD death) by 27 % (p &lt; 0.0001).</p><p>reduced the need for undergoing coronary revascularization procedures (including coronary artery bypass grafting or percutaneous transluminal coronary angioplasty) and peripheral and other noncoronary revascularization procedures by 30 % (p &lt; 0.0001) and 16 % (p = 0.006), respectively. Viscor reduced the risk of stroke by 25 % (p &lt; 0.0001), attributable to a 30 % reduction in ischemic stroke (p &lt; 0.0001). In addition, within the subgroup of patients with diabetes, Viscor reduced the risk of developing macrovascular complications, including peripheral revascularization procedures (surgery or angioplasty), lower limb amputations, or leg ulcers by 21 % (p = 0.0293). The proportional reduction in event rate was similar in each subgroup of patients studied, including those without coronary disease but who had cerebrovascular or peripheral artery disease, men and women, those aged either under or over 70 years at entry into the study, presence or absence of hypertension, and notably those with LDL cholesterol below 3.0 mmol/l at inclusion.</p><p>In the Scandinavian Simvastatin Survival Study (4S), the effect of therapy with Viscor on total mortality was assessed in 4,444 patients with CHD and baseline total cholesterol 212-309 mg/dL (5.5-8.0 mmol/L). In this multicenter, randomised, double-blind, placebo-controlled study, patients with angina or a previous myocardial infarction (MI) were treated with diet, standard care, and either Viscor 20-40 mg/day (n = 2,221) or placebo (n = 2,223) for a median duration of 5.4 years. Viscor reduced the risk of death by 30 % (absolute risk reduction of 3.3 %). The risk of CHD death was reduced by 42 % (absolute risk reduction of 3.5 %). Viscor also decreased the risk of having major coronary events (CHD death plus hospital-verified and silent nonfatal MI) by 34 %. Furthermore, Viscor significantly reduced the risk of fatal plus nonfatal cerebrovascular events (stroke and transient ischemic attacks) by 28 %. There was no statistically significant difference between groups in non-cardiovascular mortality.</p><p>The Study of the Effectiveness of Additional Reductions in Cholesterol and Homocysteine (SEARCH) evaluated the effect of treatment with Viscor 80 mg versus 20 mg (median follow-up 6.7 yrs) on major vascular events (MVEs; defined as fatal CHD, non-fatal MI, coronary revascularization procedure, non-fatal or fatal stroke, or peripheral revascularization procedure) in 12,064 patients with a history of myocardial infarction. There was no significant difference in the incidence of MVEs between the 2 groups; Viscor 20 mg (n = 1553; 25.7 %) vs. Viscor 80 mg (n = 1477; 24.5 %); RR 0.94, 95 % CI: 0.88 to 1.01. The absolute difference in LDL-C between the two groups over the course of the study was 0.35 &plusmn; 0.01 mmol/L. The safety profiles were similar between the two treatment groups except that the incidence of myopathy was approximately 1.0 % for patients on Viscor 80 mg compared with 0.02 % for patients on 20 mg. Approximately half of these myopathy cases occurred during the first year of treatment. The incidence of myopathy during each subsequent year of treatment was approximately 0.1 %.</p><p><u>Primary Hypercholesterolaemia and Combined Hyperlipidaemia</u></p><p>In studies comparing the efficacy and safety of simvastatin 10, 20, 40 and 80 mg daily in patients with hypercholesterolemia, the mean reductions of LDL-C were 30, 38, 41 and 47 %, respectively. In studies of patients with combined (mixed) hyperlipidaemia on simvastatin 40 mg and 80 mg, the median reductions in triglycerides were 28 and 33 % (placebo: 2 %), respectively, and mean increases in HDL-C were 13 and 16 % (placebo: 3 %), respectively.</p><p><u>Clinical Studies in Children and Adolescents (10-17 years of age) </u></p><p>In a double-blind, placebo-controlled study, 175 patients (99 boys Tanner Stage II and above and 76 girls who were at least one year post-menarche) 10-17 years of age (mean age 14.1 years) with heterozygous familial hypercholesterolaemia (heFH) were randomized to simvastatin or placebo for 24 weeks (base study). Inclusion in the study required a baseline LDL-C level between 160 and 400 mg/dL and at least one parent with an LDL-C level &gt; 189 mg/dL. The dosage of simvastatin (once daily in the evening) was 10 mg for the first 8 weeks, 20 mg for the second 8 weeks, and 40 mg thereafter. In a 24-week extension, 144 patients elected to continue therapy and received simvastatin 40 mg or placebo.</p><p>Viscor significantly decreased plasma levels of LDL-C, TG, and Apo B. Results from the extension at 48 weeks were comparable to those observed in the base study. After 24 weeks of treatment, the mean achieved LDL-C value was 124.9 mg/dL (range: 64.0-289.0 mg/dL) in the Viscor 40 mg group compared to 207.8 mg/dL (range: 128.0-334.0 mg/dL) in the placebo group.</p><p>After 24 weeks of simvastatin treatment (with dosages increasing from 10, 20 and up to 40 mg daily at 8- week intervals), Viscor decreased the mean LDL-C by 36.8 % (placebo: 1.1 % increase from baseline), Apo B by 32.4 % (placebo: 0.5 %), and median TG levels by 7.9 % (placebo: 3.2 %) and increased mean HDL-C levels by 8.3 % (placebo: 3.6 %). The long-term benefits of Viscor on cardiovascular events in children with heFH are unknown</p><p>The safety and efficacy of doses above 40 mg daily have not been studied in children with heterozygous familial hypercholesterolaemia. The long-term efficacy of simvastatin therapy in childhood to reduce morbidity and mortality in adulthood has not been established.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Simvastatin is an inactive lactone which is readily hydrolyzed in vivo to the corresponding betahydroxyacid, a potent inhibitor of HMG-CoA reductase. Hydrolysis takes place mainly in the liver; the rate of hydrolysis in human plasma is very slow. The pharmacokinetic properties have been evaluated in adults. Pharmacokinetic data in children and adolescents are not available.</p><p><u>Absorption </u></p><p>In man simvastatin is well absorbed and undergoes extensive hepatic first-pass extraction. The extraction in the liver is dependent on the hepatic blood flow. The liver is the primary site of action of the active form. The availability of the beta-hydroxyacid to the systemic circulation following an oral dose of simvastatin was found to be less than 5 % of the dose. Maximum plasma concentration of active inhibitors is reached approximately 1-2 hours after administration of simvastatin. Concomitant food intake does not affect the absorption.</p><p>The pharmacokinetics of single and multiple doses of simvastatin showed that no accumulation of medicinal product occurred after multiple dosing.</p><p><em>Distribution </em></p><p>The protein binding of simvastatin and its active metabolite is &gt; 95 %.</p><p><em>Elimination </em></p><p>Simvastatin is a substrate of CYP3A4 (see sections 4.3 and 4.5). The major metabolites of simvastatin present in human plasma are the beta-hydroxyacid and four additional active metabolites. Following an oral dose of radioactive simvastatin to man, 13 % of the radioactivity was excreted in the urine and 60 % in the faeces within 96 hours. The amount recovered in the faeces represents absorbed medicinal product equivalents excreted in bile as well as unabsorbed medicinal product. Following an intravenous injection of the beta-hydroxyacid metabolite, its half-life averaged 1.9 hours. An average of only 0.3 % of the IV dose was excreted in urine as inhibitors</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Based on conventional animal studies regarding pharmacodynamics, repeated dose toxicity, genotoxicity and carcinogenicity, there are no other risks for the patient than may be expected on account of the pharmacological mechanism. At maximally tolerated doses in both the rat and the rabbit, simvastatin produced no foetal malformations, and had no effects on fertility, reproductive function or neonatal development.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Ludipress<br />Tablettose 80<br />Microcrystalline Cellulose<br />Pregelatinised Starch<br />Butylated hydroxy Anisole<br />Citric acid<br />Magnesium Stearate<br />Hydroxy Propyl Cellulose (EF)<br />Polyethylene Glycol 400<br />Purified water<br />Opadry White<br />Iron Oxide Red<br />Iron oxide yellow</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                2 years 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 25&deg;C. Protected from light and moisture.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Primary packing material are PVDC/PE coated with blister foil and backing laminated printed aluminum foil</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                National Pharmaceutical Industries Co. (SAOG)
+P.O Box 120, Road No.15
+Postal Code 124
+Rusayl, Sultanate of Oman
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                .
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

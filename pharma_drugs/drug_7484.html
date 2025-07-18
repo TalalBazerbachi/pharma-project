@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        96-116-15
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2015
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        LEVOFLOXACIN Sandoz 500 mg film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        LEVOFLOXACIN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        500
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        31.55
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Novartis Pharmaceutical Manufacturing LLC" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Novartis Pharmaceutical Manufacturing LLC
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 360]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Farouk, Maamoun Tamer & CO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            SANDOZ
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J01MA12
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Levofloxacin Sandoz 500 mg film-coated tablets
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each film coated tablet contains 500 mg of levofloxacin (as hemihydrate).
+Excipients with known effect
+
+Each tablet contains 25.2 mg of lactose (as monohydrate).
+For the full list of excipients, see section 6.1.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film-coated tablet.
+Light orange-pink, octagonal, biconvex film-coated tablet scored on one side.
+The tablet can be divided into equal doses.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Levofloxacin Sandoz, 500 mg, film-coated tablets is indicated in adults for the treatment of the following infections (see sections 4.4 and 5.1):</p><p><br />&bull; Acute pyelonephritis and complicated urinary tract infections (see section 4.4)<br />&bull; Chronic bacterial prostatitis<br />&bull; Inhalation Anthrax (postexposure prophylaxis and curative treatment (see section 4.4))</p><p><br />For the below-mentioned infections Levofloxacin Sandoz, 500 mg, film-coated tablets should be used only when it is considered inappropriate to use antibacterial agents that are commonly recommended for the treatment of these infections:</p><p><br />&bull; Acute bacterial sinusitis<br />&bull; Acute exacerbations of chronic obstructive pulmonary disease including bronchitis<br />&bull; Community-acquired pneumonia<br />&bull; Complicated skin and soft tissue infections<br />&bull; Uncomplicated cystitis (see section 4.4)</p><p><br />Levofloxacin Sandoz, film-coated tablets may also be used to complete a course of therapy in patients who have shown improvement during initial treatment with intravenous levofloxacin.</p><p><br />Consideration should be given to official guidance on the appropriate use of antibacterial agents</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Levofloxacin Sandoz, film-coated tablets are administered once or twice daily. The dosage depends on the type and severity of the infection and the susceptibility of the presumed causative pathogen.</p><p><br />Levofloxacin Sandoz, film-coated tablets may also be used to complete a course of therapy in patients who have shown improvement during initial treatment with intravenous levofloxacin; given the bioequivalence of the parenteral and oral forms, the same dosage can be used.</p><p>&nbsp;</p><p><strong>Posology</strong></p><p>The following dose recommendations can be given for Levofloxacin Sandoz, film-coated tablets:</p><p>&nbsp;</p><p><strong>Dosage in patients with normal renal function</strong></p><p>(creatinine clearance &gt; 50 mL/min)</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>Indications</strong></p></td><td style="vertical-align:top"><p><strong>Daily dose regimen</strong></p><p>(according to severity)</p></td><td style="vertical-align:top"><p><strong>Duration of treatment</strong></p><p>(according to severity)</p></td></tr><tr><td style="vertical-align:top"><p>Acute bacterial sinusitis</p></td><td style="vertical-align:top"><p>500 mg once daily</p></td><td style="vertical-align:top"><p>10-14 days</p></td></tr><tr><td style="vertical-align:top"><p>Acute bacterial exacerbations of chronic obstructive pulmonary disease including bronchitis</p></td><td style="vertical-align:top"><p>500 mg once daily</p></td><td style="vertical-align:top"><p>7-10 days</p></td></tr><tr><td style="vertical-align:top"><p>Community-acquired pneumonia</p></td><td style="vertical-align:top"><p>500 mg once or twice daily</p></td><td style="vertical-align:top"><p>7-14 days</p></td></tr><tr><td style="vertical-align:top"><p>Acute pyelonephritis</p></td><td style="vertical-align:top"><p>500 mg once daily</p></td><td style="vertical-align:top"><p>7-10 days</p></td></tr><tr><td style="vertical-align:top"><p>Complicated urinary tract infections</p></td><td style="vertical-align:top"><p>500 mg once daily</p></td><td style="vertical-align:top"><p>7-14 days</p></td></tr><tr><td style="vertical-align:top"><p>Uncomplicated cystitis</p></td><td style="vertical-align:top"><p>250 mg once daily</p></td><td style="vertical-align:top"><p>3 days</p></td></tr><tr><td style="vertical-align:top"><p>Chronic bacterial prostatitis</p></td><td style="vertical-align:top"><p>500 mg once daily</p></td><td style="vertical-align:top"><p>28 days</p></td></tr><tr><td style="vertical-align:top"><p>Complicated skin and soft tissue infections</p></td><td style="vertical-align:top"><p>500 mg once or twice daily</p></td><td style="vertical-align:top"><p>7-14 days</p></td></tr><tr><td style="vertical-align:top"><p>Inhalation Anthrax</p></td><td style="vertical-align:top"><p>500 mg once daily</p></td><td style="vertical-align:top"><p>8 weeks</p></td></tr></tbody></table><p>&nbsp;</p><p><strong><u>Special populations</u></strong></p><p><strong>&nbsp;</strong></p><p><strong>Patients with renal impairment</strong></p><p>(creatinine clearance &le; 50mL/min)</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="4" style="vertical-align:top"><p><strong>Dose regimen</strong></p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p><strong>250 mg/24 h</strong></p></td><td style="vertical-align:top"><p><strong>500 mg/24 h</strong></p></td><td style="vertical-align:top"><p><strong>500 mg/12 h</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Creatinine clearance</strong></p></td><td style="vertical-align:top"><p><em>first dose: </em>250 mg</p></td><td style="vertical-align:top"><p><em>first dose: </em>500 mg</p></td><td style="vertical-align:top"><p><em>first dose: </em>500 mg</p></td></tr><tr><td style="vertical-align:top"><p>50-20 mL/min</p></td><td style="vertical-align:top"><p><em>then: </em>125 mg/24 h</p></td><td style="vertical-align:top"><p><em>then </em>: 250 mg/24 h</p></td><td style="vertical-align:top"><p><em>then </em>: 250 mg/12 h</p></td></tr><tr><td style="vertical-align:top"><p>19-10 mL/min</p></td><td style="vertical-align:top"><p><em>then: </em>125 mg/48 h</p></td><td style="vertical-align:top"><p><em>then </em>: 125 mg/24 h</p></td><td style="vertical-align:top"><p><em>then </em>: 125 mg/12 h</p></td></tr><tr><td style="vertical-align:top"><p>&lt; 10 mL/min</p><p>(including haemodialysis and CAPD)*</p></td><td style="vertical-align:top"><p>then: 125 mg/48 h</p></td><td style="vertical-align:top"><p>then: 125 mg/24 h</p></td><td style="vertical-align:top"><p>then: 125 mg/24 h</p></td></tr></tbody></table><p>&nbsp;</p><p>* No additional doses are required after haemodialysis or continuous ambulatory peritoneal dialysis (CAPD).</p><p>&nbsp;</p><p><strong>Patients with hepatic impairment</strong></p><p>No adjustment of dose is required since levofloxacin is not metabolised to any relevant extent by the liver and is mainly excreted by the kidneys.</p><p>&nbsp;</p><p><strong>Elderly</strong></p><p>No adjustment of dose is required in elderly, other than that imposed by consideration of renal function (See section 4.4 &ldquo;Tendinitis and tendon rupture&rdquo; and &ldquo;QT interval prolongation&rdquo;).</p><p>&nbsp;</p><p><strong>Paediatric population</strong></p><p>Levofloxacin is contraindicated in children and growing adolescents (see section 4.3).</p><p>&nbsp;</p><p><strong>Method of administration</strong></p><p>Levofloxacin Sandoz, film-coated tablets should be swallowed without crushing and with sufficient amount of liquid. They may be divided at the score line to adapt the dose. The tablets may be taken during meals or between meals. Levofloxacin Sandoz, film-coated tablets should be taken at least two hours before or after iron salts, zinc salts, magnesium- or aluminium-containing antacids, or didanosine (only didanosine formulations with aluminium or magnesium containing buffering agents), and sucralfate administration, since reduction of absorption can occur (see section 4.5).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Levofloxacin tablets must not be used:
+
+• in patients hypersensitive to levofloxacin or other quinolones or any of the excipients listed in section 6.1,
+• in patients with epilepsy,
+• in patients with history of tendon disorders related to fluoroquinolone administration,
+• in children or growing adolescents,
+• during pregnancy,
+• in breast-feeding women.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The use of levofloxacin should be avoided in patients who have experienced serious adverse reactions in the past when using quinolone or fluoroquinolone containing products (see section 4.8). Treatment of these patients with levofloxacin should only be initiated in the absence of alternative treatment options and after careful benefit/risk assessment (see also section 4.3).</p><p><br /><strong>Prolonged, disabling and potentially irreversible serious adverse drug reactions</strong><br />Very rare cases of prolonged (continuing months or years), disabling and potentially irreversible serious adverse drug reactions affecting different, sometimes multiple, body systems (musculoskeletal, nervous, psychiatric and senses) have been reported in patients receiving quinolones and fluoroquinolones irrespective of their age and pre-existing risk factors. Levofloxacin should be discontinued immediately at the first signs or symptoms of any serious adverse reaction and patients should be advised to contact their prescriber for advice.</p><p>Methicillin-resistant S. aureus are very likely to possess co-resistance to fluoroquinolones, including levofloxacin. Therefore levofloxacin is not recommended for the treatment of known or suspected MRSA infections unless laboratory results have confirmed susceptibility of the organism to levofloxacin (and commonly recommended antibacterial agents for the treatment of MRSA-infections are considered inappropriate).</p><p><br />Levofloxacin may be used in the treatment of Acute Bacterial Sinusitis and Acute Exacerbation of Chronic Bronchitis when these infections have been adequately diagnosed.</p><p>Resistance to fluoroquinolones of E. coli &ndash; the most common pathogen involved in urinary tract infections &ndash; varies across the European Union. Prescribers are advised to take into account the local prevalence of resistance in E. coli to fluoroquinolones.</p><p><br />Inhalation Anthrax: Use in humans is based on in vitro Bacillus anthracis susceptibility data and on animal experimental data together with limited human data. Treating physicians should refer to national and/or international consensus documents regarding the treatment of anthrax.</p><p>&nbsp;</p><p><em><strong>Tendinitis and tendon rupture</strong></em></p><p>Tendinitis and tendon rupture (especially but not limited to Achilles tendon), sometimes bilateral, may occur as early as within 48 hours of starting treatment with quinolones and fluoroquinolones and have been reported to occur even up to several months after discontinuation of treatment.</p><p>The risk of tendinitis and tendon rupture is increased in patients receiving daily doses of 1,000 mg levofloxacin, in older patients, patients with renal impairment, patients with solid organ transplants, and those treated concurrently with corticosteroids. Therefore, concomitant use of corticosteroids should be avoided.</p><p><br />At the first sign of tendinitis (e.g. painful swelling, inflammation) the treatment with levofloxacin should be discontinued and alternative treatment should be considered. The affected limb(s) should be appropriately treated (e.g. immobilisation). Corticosteroids should not be used if signs of tendinopathy occur.</p><p>&nbsp;</p><p><em><strong>Clostridium difficile-associated disease</strong></em></p><p>Diarrhoea, particularly if severe, persistent and/or bloody, during or after treatment with levofloxacin (including several weeks after treatment), may be symptomatic of Clostridium difficile-associated disease (CDAD).</p><p>CDAD may range in severity from mild to life threatening, the most severe form of which is pseudomembranous colitis (see section 4.8). It is therefore important to consider this diagnosis in patients who develop serious diarrhoea during or after treatment with levofloxacin. If CDAD is suspected or confirmed, [Levofloxacin Sandoz, film-coated tablets] should be stopped immediately and appropriate treatment initiated without delay. Anti-peristaltic medicinal products are contraindicated in this clinical situation.</p><p>&nbsp;</p><p><em><strong>Patients predisposed to seizures</strong></em></p><p>Quinolones may lower the seizure threshold and may trigger seizures. Levofloxacin is contraindicated in patients with a history of epilepsy (see section 4.3) and, as with other quinolones, should be used with extreme caution in patients predisposed to seizures or concomitant treatment with active substances that lower the cerebral seizure threshold, such as theophylline (see section 4.5). In case of convulsive seizures (see section 4.8), treatment with Levofloxacin should be discontinued.</p><p>&nbsp;</p><p><em><strong>Patients with G-6- phosphate dehydrogenase deficiency</strong></em></p><p>Patients with latent or actual defects in glucose-6-phosphate dehydrogenase activity may be prone to haemolytic reactions when treated with quinolone antibacterial agents. Therefore, if levofloxacin has to be used in these patients, potential occurrence of haemolysis should be monitored.</p><p>&nbsp;</p><p><em><strong>Patients with renal impairment</strong></em></p><p>Since levofloxacin is excreted mainly by the kidneys, the dose of levofloxacin should be adjusted in patients with renal impairment (see section 4.2).</p><p>&nbsp;</p><p><em><strong>Hypersensitivity reactions</strong></em></p><p>Levofloxacin can cause serious, potentially fatal hypersensitivity reactions (e.g. angioedema up to anaphylactic shock), occasionally following the initial dose (see section 4.8). Patients should discontinue treatment immediately and contact their physician or an emergency physician, who will initiate appropriate emergency measures.</p><p>&nbsp;</p><p><em><strong>Severe cutaneous adverse reactions</strong></em></p><p>Severe cutaneous adverse reactions (SCARs) including toxic epidermal necrolysis (TEN: also known as Lyell&#39;s syndrome), Stevens Johnson syndrome (SJS) and drug reaction with eosinophilia and systemic symptoms (DRESS), which could be life-threatening or fatal, have been reported with levofloxacin (see section 4.8). At the time of prescription, patients should be advised of the signs and symptoms of severe skin reactions, and be closely monitored. If signs and symptoms suggestive of these reactions appear, levofloxacin should be discontinued immediately and an alternative treatment should be considered. If the patient has developed a serious reaction such as SJS, TEN or DRESS with the use of levofloxacin, treatment with levofloxacin must not be restarted in this patient at any time.</p><p>&nbsp;</p><p><em><strong>Dysglycaemia</strong></em></p><p>As with all quinolones, disturbances in blood glucose, including both hypoglycaemia and hyperglycaemia have been reported (see section 4.8), usually in diabetic patients receiving concomitant treatment with an oral hypoglycaemic agent (e.g., glibenclamide) or with insulin. Cases of hypoglycaemic coma have been reported. In diabetic patients, careful monitoring of blood glucose is recommended.<em>(see section 4.8).</em></p><p>&nbsp;</p><p><em><strong>Prevention of photosensitisation</strong></em></p><p>Photosensitisation has been reported with levofloxacin (see section 4.8). It is recommended that patients should not expose themselves unnecessarily to strong sunlight or to artificial UV rays (e.g. sunray lamp, solarium), during treatment and for 48 hours following treatment discontinuation in order to prevent photosensitisation.</p><p>&nbsp;</p><p><em><strong>Patients treated with Vitamin K antagonists</strong></em></p><p>Due to possible increase in coagulation tests (PT/INR) and/or bleeding in patients treated with levofloxacin in combination with a vitamin K antagonist (e.g. warfarin), coagulation tests should be monitored when these drugs are given concomitantly (see section 4.5).</p><p>&nbsp;</p><p><em><strong>Psychotic reactions</strong></em></p><p>Psychotic reactions have been reported in patients receiving quinolones, including levofloxacin. In very rare cases these have progressed to suicidal thoughts and self-endangering behaviour- sometimes after only a single dose of levofloxacin (see section 4.8). In the event that the patient develops these reactions, levofloxacin should be discontinued and appropriate measures instituted. Caution is recommended if levofloxacin is to be used in psychotic patients or in patients with history of psychiatric disease.</p><p>&nbsp;</p><p><em><strong>QT interval prolongation</strong></em></p><p>Caution should be taken when using fluoroquinolones, including levofloxacin, in patients with known risk factors for prolongation of the QT interval such as, for example:</p><p>- congenital long QT syndrome</p><p>- concomitant use of drugs that are known to prolong the QT interval (e.g. Class IA and III antiarrhythmics, tricyclic antidepressants, macrolides, antipsychotics)<br />- uncorrected electrolyte imbalance (e.g. hypokalemia, hypomagnesemia)<br />- cardiac disease (e.g. heart failure, myocardial infarction, bradycardia)<br />Elderly and women may be more sensitive to QTc-prolonging medications. Therefore, caution should be taken when using fluoroquinolones, including levofloxacin, in these populations.<br />(see sections 4.2 Elderly, 4.5, 4.8 and 4.9).</p><p>&nbsp;</p><p><em><strong>Aortic aneurysm and dissection</strong></em></p><p>Epidemiologic studies report an increased risk of aortic aneurysm and dissection, particularly in elderly patients, and of aortic and mitral valve regurgitation after intake of fluoroquinolones. Cases of aortic aneurysm and dissection, sometimes complicated by rupture (including fatal ones), and of regurgitation/incompetence of any of the heart valves have been reported in patients receiving fluoroquinolones (see section 4.8).<br />Therefore, fluoroquinolones should only be used after careful benefit-risk assessment and after consideration of other therapeutic options in patients with positive family history of aneurysm disease or congenital heart valve disease, or in patients diagnosed with pre-existing aortic aneurysm and/or aortic dissection or heart valve disease, or in presence of other risk factors or conditions predisposing<br />&minus; for both aortic aneurysm and dissection and heart valve regurgitation/incompetence (e.g. connective tissue disorders such as Marfan syndrome or Ehlers-Danlos syndrome, Turner syndrome, Behcet&rsquo;s disease, hypertension, rheumatoid arthritis) or additionally<br />&minus; for aortic aneurysm and dissection (e.g. vascular disorders such as Takayasu arteritis or giant cell arteritis, or known atherosclerosis, or Sj&ouml;gren&rsquo;s syndrome) or additionally<br />&minus; for heart valve regurgitation/incompetence (e.g. infective endocarditis).<br />The risk of aortic aneurysm and dissection, and their rupture may also be increased in patients treated concurrently with systemic corticosteroids.<br />In case of sudden abdominal, chest or back pain, patients should be advised to immediately consult a physician in an emergency department.<br />Patients should be advised to seek immediate medical attention in case of acute dyspnoea, new onset of heart palpitations, or development of oedema of the abdomen or lower extremities.</p><p>&nbsp;</p><p><em><strong>Peripheral neuropathy</strong></em></p><p>Cases of sensory or sensorimotor polyneuropathy resulting in paraesthesia, hypaesthesia, dysaesthesia, or weakness have been reported in patients receiving quinolones and fluoroquinolones. Patients under treatment with levofloxacin should be advised to inform their doctor prior to continuing treatment if symptoms of neuropathy such as pain, burning, tingling, numbness, or weakness develop in order to prevent the development of potentially irreversible condition (see section 4.8).</p><p>&nbsp;</p><p><em><strong>Hepatobiliary disorders</strong></em></p><p>Cases of hepatic necrosis up to fatal hepatic failure have been reported with levofloxacin, primarily in patients with severe underlying diseases, e.g. sepsis (see section 4.8). Patients should be advised to stop treatment and contact their doctor if signs and symptoms of hepatic disease develop such as anorexia, jaundice, dark urine, pruritus or tender abdomen.</p><p>&nbsp;</p><p><em><strong>Exacerbation of myasthenia gravis</strong></em></p><p>Fluoroquinolones, including levofloxacin, have neuromuscular blocking activity and may exacerbate muscle weakness in patients with myasthenia gravis. Postmarketing serious adverse reactions, including deaths and the requirement for respiratory support, have been associated with fluoroquinolone use in patients with myasthenia gravis. Levofloxacin is not recommended in patients with a known history of myasthenia gravis.</p><p>&nbsp;</p><p><em><strong>Vision disorders</strong></em></p><p>If vision becomes impaired or any effects on the eyes are experienced, an eye specialist should be consulted immediately (see sections 4.7 and 4.8).</p><p>&nbsp;</p><p><em><strong>Superinfection</strong></em></p><p>The use of levofloxacin, especially if prolonged, may result in overgrowth of non-susceptible organisms. If superinfection occurs during therapy, appropriate measures should be taken.</p><p>&nbsp;</p><p><em><strong>Interference with laboratory tests</strong><br />In patients treated with levofloxacin, determination of opiates in urine may give false-positive results. It may be necessary to confirm positive opiate screens by more specific method.<br />Levofloxacin may inhibit the growth of Mycobacterium tuberculosis and, therefore, may give false-negative results in the bacteriological diagnosis of tuberculosis.</em></p><p><br /><em><strong>Lactose</strong><br />This product contains lactose. Patients with rare hereditary problems of galactose intolerance, total lactase deficiency or glucose-galactose malabsorption should not take this medicine.</em></p><p><br /><em><strong>Sodium</strong><br />This medicine contains less than 1 mmol sodium (23 mg) per tablet, that is to say essentially &lsquo;sodium-free&rsquo;.</em></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em><strong>Effect of other medicinal products on [Levofloxacin Sandoz, film-coated tablets]</strong></em><br />Iron salts, zinc salts, magnesium- or aluminium-containing antacids, didanosine<br />Levofloxacin absorption is significantly reduced when iron salts, or magnesium- or aluminium-containing antacids, or didanosine (only didanosine formulations with aluminium or magnesium containing buffering agents) are administered concomitantly with levofloxacin tablets. Concurrent administration of fluoroquinolones with multi-vitamins containing zinc appears to reduce their oral absorption. It is recommended that preparations containing divalent or trivalent cations such as iron salts, zinc salts or magnesium- or aluminium-containing antacids, or didanosine (only didanosine formulations with aluminium or magnesium containing buffering agents) should not be taken 2 hours before or after Levofloxacin tablet administration (see section 4.2). Calcium salts have a minimal effect on the oral absorption of levofloxacin</p><p><br /><em>Sucralfate</em><br />The bioavailability of levofloxacin tablets is significantly reduced when administered together with sucralfate. If the patient is to receive both sucralfate and levofloxacin, it is best to administer sucralfate 2 hours after the levofloxacin tablet administration (see section 4.2).</p><p><em>Theophylline, fenbufen or similar non-steroidal anti-inflammatory drugs</em><br />No pharmacokinetic interactions of levofloxacin were found with theophylline in a clinical study. However a pronounced lowering of the cerebral seizure threshold may occur when quinolones are given concurrently with theophylline, non-steroidal anti-inflammatory drugs, or other agents which lower the seizure threshold.<br />Levofloxacin concentrations were about 13% higher in the presence of fenbufen than when administered alone.</p><p><br /><em>Probenecid and cimetidine</em><br />Probenecid and cimetidine had a statistically significant effect on the elimination of levofloxacin. The renal clearance of levofloxacin was reduced by cimetidine (24%) and probenecid (34%). This is because both drugs are capable of blocking the renal tubular secretion of levofloxacin. However, at the tested doses in the study, the statistically significant kinetic differences are unlikely to be of clinical relevance.<br />Caution should be exercised when levofloxacin is coadministered with drugs that affect the tubular renal secretion such as probenecid and cimetidine, especially in renally impaired patients.</p><p><strong>Other relevant information</strong></p><p>Clinical pharmacology studies have shown that the pharmacokinetics of levofloxacin were not affected to any clinically relevant extent when levofloxacin was administered together with the following drugs: calcium carbonate, digoxin, glibenclamide, ranitidine.</p><p><br /><strong>Effect of [Levofloxacin Sandoz, film-coated tablets] on other medicinal products</strong></p><p><br /><em>Ciclosporin</em><br />The half-life of ciclosporin was increased by 33% when coadministered with levofloxacin.</p><p><br /><em>Vitamin K antagonists</em><br />Increased coagulation tests (PT/INR) and/or bleeding, which may be severe, have been reported in patients treated with levofloxacin in combination with a vitamin K antagonist (e.g. warfarin). Coagulation tests, therefore, should be monitored in patients treated with vitamin K antagonists (see section 4.4).</p><p><br /><em>Drugs known to prolong QT interval</em><br />Levofloxacin, like other fluoroquinolones, should be used with caution in patients receiving drugs known to prolong the QT interval (e.g. Class IA and III antiarrhythmics, tricyclic antidepressants, macrolides, antipsychotics) (See section 4.4 QT interval prolongation).</p><p><br /><em>Other relevant information</em><br />In a pharmacokinetic interaction study, levofloxacin did not affect the pharmacokinetics of theophylline (which is a probe substrate for CYP1A2), indicating that levofloxacin is not a CYP1A2 inhibitor.<br />Other forms of interactions</p><p><br /><em>Food</em><br />There is no clinically relevant interaction with food. Levofloxacin tablets may therefore be administered regardless of food intake.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em><strong>Pregnancy</strong></em></p><p>There are limited amount of data from the use of levofloxacin in pregnant women. Animal studies do not indicate direct or indirect harmful effects with respect to reproductive toxicity (see section 5.3). However in the absence of human data and due to that experimental data suggest a risk of damage by fluoroquinolones to the weight-bearing cartilage of the growing organism, levofloxacin must not be used in pregnant women (see sections 4.3 and 5.3).</p><p>&nbsp;</p><p><em><strong>Breast-feeding</strong></em></p><p>Levofloxacin is contraindicated in breast-feeding women. There is insufficient information on the excretion of levofloxacin in human milk; however other fluoroquinolones are excreted in breast milk. In the absence of human data and due to that experimental data suggest a risk of damage by fluoroquinolones to the weight-bearing cartilage of the growing organism, levofloxacin must not be used in breast-feeding women (see sections 4.3 and 5.3).</p><p>&nbsp;</p><p><em><strong>Fertility</strong></em></p><p>Levofloxacin caused no impairment of fertility or reproductive performance in rats.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Some undesirable effects (e.g. dizziness/vertigo, drowsiness, visual disturbances) may impair the patient&rsquo;s ability to concentrate and react, and therefore may constitute a risk in situations where these abilities are of special importance (e.g. driving a car or operating machinery).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The information given below is based on data from clinical studies in more than 8300 patients and on extensive post marketing experience.</p><p>&nbsp;</p><p>Frequencies are defined using the following convention: very common (&ge;1/10), common (&ge;1/100,</p><p>&lt;1/10), uncommon (&ge;1/1000, &lt;1/100), rare (&ge;1/10000, &lt;1/1000), very rare (&lt;1/10000), not known (cannot be estimated from the available data).</p><p>&nbsp;</p><p>Within each frequency grouping, undesirable effects are presented in order of decreasing seriousness.</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>System organ class</strong></p></td><td style="vertical-align:top"><p><strong>Common (</strong>&sup3;<strong>1/100 to &lt;1/10 )</strong></p></td><td style="vertical-align:top"><p><strong>Uncommon (</strong>&sup3;<strong>1/1,000 to</strong></p><p><strong>&lt;1/100)</strong></p></td><td style="vertical-align:top"><p><strong>Rare (</strong>&sup3;<strong>1/10,000 to &lt;1/1,000)</strong></p></td><td style="vertical-align:top"><p><strong>Not known (cannot be estimated from available data)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Infections and</strong></p></td><td rowspan="7" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Fungal</p></td><td rowspan="7" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="7" style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><strong>infestations</strong></p></td><td style="vertical-align:top"><p>infection</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>including</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Candida</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>infection</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Pathogen</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>resistance</p></td></tr><tr><td style="vertical-align:top"><p><strong>Blood and</strong></p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Leukopenia</p></td><td style="vertical-align:top"><p>Thrombocytopeni</p></td><td style="vertical-align:top"><p>Pancytopenia</p></td></tr><tr><td style="vertical-align:top"><p><strong>Lymphatic</strong></p></td><td style="vertical-align:top"><p>Eosinophilia</p></td><td style="vertical-align:top"><p>a</p></td><td style="vertical-align:top"><p>Agranulocytosis</p></td></tr><tr><td style="vertical-align:top"><p><strong>system disorders</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Neutropenia</p></td><td style="vertical-align:top"><p>Haemolytic</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>anaemia</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p><strong>Immune system disorders</strong></p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Angioedema Hypersensitivity</p></td><td style="vertical-align:top"><p>Anaphylactic shocka</p></td></tr><tr><td style="vertical-align:top"><p>(see section 4.4)</p></td><td style="vertical-align:top"><p>Anaphylactoid shocka&nbsp; (see section</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>4.4)</p></td></tr><tr><td style="vertical-align:top"><p><strong>Endocrine</strong></p></td><td rowspan="5" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="5" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Syndrome of</p></td><td rowspan="5" style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders</strong></p></td><td style="vertical-align:top"><p>inappropriate</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>secretion of</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>antidiuretic</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>hormone (SIADH)</p></td></tr><tr><td style="vertical-align:top"><p><strong>Metabolism and</strong></p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>Anorexia</p></td><td style="vertical-align:top"><p>Hypoglycaemia</p></td><td style="vertical-align:top"><p>Hyperglycaemia</p></td></tr><tr><td style="vertical-align:top"><p><strong>nutrition</strong></p></td><td style="vertical-align:top"><p>particularly in</p></td><td style="vertical-align:top"><p>Hypoglycaemic</p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders</strong></p></td><td style="vertical-align:top"><p>diabetic patients</p></td><td style="vertical-align:top"><p>coma (see section</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(see section 4.4)</p></td><td style="vertical-align:top"><p>4.4)</p></td></tr><tr><td style="vertical-align:top"><p><strong>Psychiatric</strong></p></td><td rowspan="8" style="vertical-align:top"><p>Insomnia</p></td><td style="vertical-align:top"><p>Anxiety</p></td><td style="vertical-align:top"><p>Psychotic</p></td><td style="vertical-align:top"><p>Psychotic disorders</p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders*</strong></p></td><td style="vertical-align:top"><p>Confusional</p></td><td style="vertical-align:top"><p>reactions (with</p></td><td style="vertical-align:top"><p>with self-</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>state</p></td><td style="vertical-align:top"><p>e.g. hallucination,</p></td><td style="vertical-align:top"><p>endangering</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Nervousness</p></td><td style="vertical-align:top"><p>paranoia)</p></td><td style="vertical-align:top"><p>behaviour</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Depression</p></td><td style="vertical-align:top"><p>including suicidal</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Agitation</p></td><td style="vertical-align:top"><p>ideation or suicide</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Abnormal dreams</p></td><td style="vertical-align:top"><p>attempt (see section</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Nightmares</p></td><td style="vertical-align:top"><p>4.4)</p></td></tr></tbody></table><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>System organ class</strong></p></td><td style="vertical-align:top"><p><strong>Common (</strong>&sup3;<strong>1/100 to &lt;1/10 )</strong></p></td><td style="vertical-align:top"><p><strong>Uncommon (</strong>&sup3;<strong>1/1,000 to</strong></p><p><strong>&lt;1/100)</strong></p></td><td style="vertical-align:top"><p><strong>Rare (</strong>&sup3;<strong>1/10,000 to &lt;1/1,000)</strong></p></td><td style="vertical-align:top"><p><strong>Not known (cannot be estimated from available data)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Nervous system disorders*</strong></p></td><td style="vertical-align:top"><p>Headache</p><p>Dizziness</p></td><td style="vertical-align:top"><p>Somnolence</p><p>Tremor Dysgeusia</p></td><td style="vertical-align:top"><p>Convulsion (see</p><p>sections 4.3 and</p><p>4.4)</p><p>Paraesthesia</p></td><td style="vertical-align:top"><p>Peripheral sensory</p><p>neuropathy (see section 4.4) Peripheral sensory motor neuropathy (see section 4.4) Parosmia including anosmia Dyskinesia Extrapyramidal disorder</p><p>Ageusia Syncope</p><p>Benign intracranial hypertension</p></td></tr><tr><td style="vertical-align:top"><p><strong>Eye disorders*</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Visual</p><p>disturbances such as blurred vision (see section 4.4)</p></td><td style="vertical-align:top"><p>Transient vision</p><p>loss (see section 4.4)</p></td></tr><tr><td style="vertical-align:top"><p><strong>Ear and Labyrinth disorders*</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Vertigo</p></td><td style="vertical-align:top"><p>Tinnitus</p></td><td style="vertical-align:top"><p>Hearing loss Hearing impaired</p></td></tr><tr><td style="vertical-align:top"><p><strong>Cardiac disorders</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Tachycardia</p><p>Palpitation</p></td><td style="vertical-align:top"><p>Ventricular</p><p>tachycardia, which may result in cardiac arrest Ventricular arrhythmia and <em>torsade de pointes </em>(reported predominantly in patients with risk factors of QT prolongation), electrocardiogram QT prolonged (see sections 4.4 and</p><p>4.9)</p></td></tr><tr><td style="vertical-align:top"><p><strong>Vascular disorders</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Hypotension</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><strong>Respiratory, thoracic and mediastinal</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Dyspnoea</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Bronchospasm</p><p>Pneumonitis allergic</p></td></tr></tbody></table><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>System organ class</strong></p></td><td style="vertical-align:top"><p><strong>Common (</strong>&sup3;<strong>1/100 to &lt;1/10 )</strong></p></td><td style="vertical-align:top"><p><strong>Uncommon (</strong>&sup3;<strong>1/1,000 to</strong></p><p><strong>&lt;1/100)</strong></p></td><td style="vertical-align:top"><p><strong>Rare (</strong>&sup3;<strong>1/10,000 to &lt;1/1,000)</strong></p></td><td style="vertical-align:top"><p><strong>Not known (cannot be estimated from available data)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><strong>Gastro-intestinal</strong></p></td><td style="vertical-align:top"><p>Diarrhoea</p></td><td style="vertical-align:top"><p>Abdominal pain</p></td><td rowspan="11" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Diarrhoea &ndash;</p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders</strong></p></td><td style="vertical-align:top"><p>Vomiting</p></td><td style="vertical-align:top"><p>Dyspepsia</p></td><td style="vertical-align:top"><p>haemorrhagic</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Nausea</p></td><td style="vertical-align:top"><p>Flatulence</p></td><td style="vertical-align:top"><p>which in very rare</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Constipation</p></td><td style="vertical-align:top"><p>cases may be</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>indicative of</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>enterocolitis,</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>including</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>pseudomembranou</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>s colitis (see</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>section 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Pancreatitis</p></td></tr><tr><td style="vertical-align:top"><p><strong>Hepatobiliary</strong></p></td><td style="vertical-align:top"><p>Hepatic enzyme</p></td><td style="vertical-align:top"><p>Blood bilirubin</p></td><td rowspan="10" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Jaundice and</p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders</strong></p></td><td style="vertical-align:top"><p>increased</p></td><td style="vertical-align:top"><p>increased</p></td><td style="vertical-align:top"><p>severe liver injury,</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(ALT/AST,</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>including cases</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>alkaline</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>with fatal acute</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>phosphatase,</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>liver failure,</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>GGT)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>primarily in</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>patients with severe</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>underlying diseases</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(see section 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Hepatitis</p></td></tr><tr><td style="vertical-align:top"><p><strong>Skin and</strong></p></td><td rowspan="12" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Rash</p></td><td style="vertical-align:top"><p>Drug Reaction</p></td><td style="vertical-align:top"><p>Toxic epidermal</p></td></tr><tr><td style="vertical-align:top"><p><strong>subcutaneous</strong></p></td><td style="vertical-align:top"><p>Pruritus</p></td><td style="vertical-align:top"><p>with Eosinophilia</p></td><td style="vertical-align:top"><p>necrolysis</p></td></tr><tr><td style="vertical-align:top"><p><strong>tissue disorders </strong><strong>b</strong></p></td><td style="vertical-align:top"><p>Urticaria</p></td><td style="vertical-align:top"><p>and Systemic</p></td><td style="vertical-align:top"><p>Stevens-Johnson</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Hyperhidrosis</p></td><td style="vertical-align:top"><p>Symptoms</p></td><td style="vertical-align:top"><p>syndrome</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(DRESS) (see</p></td><td style="vertical-align:top"><p>Erythema</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>section 4.4), Fixed</p></td><td style="vertical-align:top"><p>multiforme</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>drug eruption</p></td><td style="vertical-align:top"><p>Photosensitivity</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>reaction (see</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>section 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Leukocytoclastic</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>vasculitis</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Stomatitis</p></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p><!--[if gte vml 1]><v:shapetype id="_x0000_t202" coordsize="21600,21600"
+ o:spt="202" path="m,l,21600r21600,l21600,xe">
+ <v:stroke joinstyle="miter"/>
+ <v:path gradientshapeok="t" o:connecttype="rect"/>
+</v:shapetype><v:shape id="_x0000_s1026" type="#_x0000_t202" style='position:absolute;
+ left:0;text-align:left;margin-left:79.35pt;margin-top:-311.55pt;width:464.8pt;
+ height:313.65pt;z-index:1072;mso-position-horizontal-relative:page' filled="f"
+ stroked="f">
+ <v:textbox inset="0,0,0,0"/>
+ <w:wrap anchorx="page"/>
+</v:shape><![endif]--></p><table cellpadding="0" cellspacing="0"><tbody><tr><td><table cellpadding="0" cellspacing="0" style="width:100%"><tbody><tr><td><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>System organ class</strong></p></td><td style="vertical-align:top"><p><strong>Common (</strong>&sup3;<strong>1/100 to &lt;1/10 )</strong></p></td><td style="vertical-align:top"><p><strong>Uncommon (</strong>&sup3;<strong>1/1,000 to</strong></p><p><strong>&lt;1/100)</strong></p></td><td style="vertical-align:top"><p><strong>Rare (</strong>&sup3;<strong>1/10,000 to &lt;1/1,000)</strong></p></td><td style="vertical-align:top"><p><strong>Not known (cannot be estimated from available data)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Musculoskeletal</strong></p></td><td rowspan="12" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Arthralgia</p></td><td style="vertical-align:top"><p>Tendon disorders</p></td><td style="vertical-align:top"><p>Rhabdomyolysis</p></td></tr><tr><td style="vertical-align:top"><p><strong>and connective</strong></p></td><td style="vertical-align:top"><p>Myalgia</p></td><td style="vertical-align:top"><p>(see sections 4.3</p></td><td style="vertical-align:top"><p>Tendon rupture</p></td></tr><tr><td style="vertical-align:top"><p><strong>tissue disorders*</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>and 4.4) including</p></td><td style="vertical-align:top"><p>(e.g. Achilles</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>tendinitis (e.g.</p></td><td style="vertical-align:top"><p>tendon) (see</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Achilles tendon)</p></td><td style="vertical-align:top"><p>section 4.3 and 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Muscular</p></td><td style="vertical-align:top"><p>Ligament rupture</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>weakness which</p></td><td style="vertical-align:top"><p>Muscle rupture</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>may be of special</p></td><td style="vertical-align:top"><p>Arthritis</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>importance in</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>patients with</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>myasthenia gravis</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(see section 4.4)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><strong>Renal and</strong></p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Blood</p></td><td style="vertical-align:top"><p>Renal failure acute</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><strong>Urinary</strong></p></td><td style="vertical-align:top"><p>creatinine</p></td><td style="vertical-align:top"><p>(e.g. due to</p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders</strong></p></td><td style="vertical-align:top"><p>increased</p></td><td style="vertical-align:top"><p>interstitial</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>nephritis)</p></td></tr><tr><td style="vertical-align:top"><p><strong>General</strong></p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>Asthenia</p></td><td rowspan="4" style="vertical-align:top"><p>Pyrexia</p></td><td style="vertical-align:top"><p>Pain (including</p></td></tr><tr><td style="vertical-align:top"><p><strong>disorders and</strong></p></td><td style="vertical-align:top"><p>pain in back, chest,</p></td></tr><tr><td style="vertical-align:top"><p><strong>administration</strong></p></td><td style="vertical-align:top"><p>and extremities)</p></td></tr><tr><td style="vertical-align:top"><p><strong>site conditions*</strong></p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p></td></tr></tbody></table></td></tr></tbody></table><p>a Anaphylactic and anaphylactoid reactions may sometimes occur even after the first dose</p><p>&nbsp;</p><p>b Mucocutaneous reactions may sometimes occur even after the first dose</p><p>*Very rare cases of prolonged (up to months or years), disabling and potentially irreversible serious drug reactions affecting several, sometimes multiple, system organ classes and senses (including reactions such as tendonitis, tendon rupture, arthralgia, pain in extremities, gait disturbance, neuropathies associated with paraesthesia, depression, fatigue, memory impairment, sleep disorders, and impairment of hearing, vision, taste and smell) have been reported in association with the use of quinolones and fluoroquinolones in some cases irrespective of pre-existing risk factors (see section 4.4).</p><p>&nbsp;</p><p>Other undesirable effects which have been associated with fluoroquinolone administration include: attacks of porphyria in patients with porphyria.</p><ul><li>To report any side effect(s):</li></ul><p>&nbsp;</p><ul><li>Saudi Arabia:</li></ul><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NPC contact information Saudi Arabia:<ul><li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The National Pharmacovigilance Centre (NPC):</li><li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SFDA Call Center: 19999</li><li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;E-mail: npc.drug@sfda.gov.sa</li><li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Website ade.sfda.gov.sa</li></ul></td></tr></tbody></table><p>&nbsp;</p><ul><li>Other GCC states:</li></ul><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>-&nbsp; &nbsp;Please contact the relevant competent authority.</td></tr></tbody></table><p><br />&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>According to toxicity studies in animals or clinical pharmacology studies performed with supra- therapeutic doses, the most important signs to be expected following acute overdose of Levofloxacin Sandoz are central nervous system symptoms such as confusion, dizziness, impairment of consciousness,</p><p>&nbsp;</p><p>and convulsive seizures, increases in QT interval as well as gastro-intestinal reactions such as nausea and mucosal erosions.</p><p>&nbsp;</p><p>CNS effects including confusional state, convulsion, hallucination, and tremor have been observed in post marketing experience.</p><p>&nbsp;</p><p>In the event of overdose, symptomatic treatment should be implemented. ECG monitoring should be undertaken, because of the possibility of QT interval prolongation. Antacids may be used for protection of gastric mucosa. Haemodialysis, including peritoneal dialysis and CAPD, are not effective in removing levofloxacin from the body. No specific antidote exists.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: quinolone antibacterials, fluoroquinolones ATC code: J01MA12</p><p>Levofloxacin is a synthetic antibacterial agent of the fluoroquinolone class and is the S (-) enantiomer of the racemic active substance ofloxacin.</p><p>&nbsp;</p><p>Mechanism of action</p><p>As a fluoroquinolone antibacterial agent, levofloxacin acts on the DNA-DNA-gyrase complex and topoisomerase IV.</p><p>&nbsp;</p><p>Pharmacokinetic/pharmacodynamic relationship</p><p>The degree of the bactericidal activity of levofloxacin depends on the ratio of the maximum concentration in serum (Cmax) or the area under the curve (AUC) and the minimal inhibitory concentration (MIC).</p><p>&nbsp;</p><p>Mechanism of resistance</p><p>Resistance to levofloxacin is acquired through a stepwise process by target site mutations in both type II topoisomerases, DNA gyrase and topoisomerase IV. Other resistance mechanisms such as permeation barriers (common in <em>Pseudomonas aeruginosa</em>) and efflux mechanisms may also affect susceptibility to levofloxacin.</p><p>&nbsp;</p><p><u>Cross-resistance between levofloxacin and other fluoroquinolones is observed. Due to the mechanism of action, there is generally no cross-resistance between levofloxacin and other classes of antibacterial agents.</u></p><p>&nbsp;</p><p>Breakpoints</p><p>The EUCAST recommended MIC breakpoints for levofloxacin, separating susceptible from intermediately susceptible organisms and intermediately susceptible from resistant organisms are presented in the below table for MIC testing (mg/L).</p><p>&nbsp;</p><p>EUCAST clinical MIC breakpoints for levofloxacin (version 2.0, 2012-01-01):</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p><strong>Susceptible</strong></p></td><td style="vertical-align:top"><p><strong>Resistant</strong></p></td></tr><tr><td colspan="3" style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Enterobacteriacae</p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&le;1 mg/L</p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&gt;2 mg/L</p></td></tr><tr><td style="vertical-align:top"><p><em>Pseudomonas </em>spp.</p><p><em>Acinetobacter </em>spp.</p></td></tr><tr><td style="vertical-align:top"><p><em>Staphylococcus </em>spp<em>.</em></p></td></tr><tr><td style="vertical-align:top"><p><em>S.pneumoniae </em><em>1</em></p></td><td style="vertical-align:top"><p>&le;2 mg/L</p></td><td style="vertical-align:top"><p>&gt;2 mg/L</p></td></tr><tr><td style="vertical-align:top"><p><em>Streptococcus A, B, C, G</em></p></td><td style="vertical-align:top"><p>&le;1 mg/L</p></td><td style="vertical-align:top"><p>&gt;2 mg/L</p></td></tr><tr><td style="vertical-align:top"><p><em>H.influenzae </em><em>2, 3</em></p></td><td style="vertical-align:top"><p>&le;1 mg/L</p></td><td style="vertical-align:top"><p>&gt;1 mg/L</p></td></tr><tr><td style="vertical-align:top"><p><em>M.catarrhalis </em><em>3</em></p></td><td style="vertical-align:top"><p>&le;1 mg/L</p></td><td style="vertical-align:top"><p>&gt;1 mg/L</p></td></tr><tr><td style="vertical-align:top"><p>Non-species related breakpoints 4</p></td><td style="vertical-align:top"><p>&le;1 mg/L</p></td><td style="vertical-align:top"><p>&gt;2 mg/L</p></td></tr></tbody></table><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>1.&nbsp; The breakpoints for levofloxacin relate to high dose therapy.</p><p>2.&nbsp; Low-level fluoroquinolone resistance (ciprofloxacin MICs of 0.12-0.5 mg/L) may occur but there is no evidence that this resistance is of clinical importance in respiratory tract infections with <em>H. influenzae</em>.</p><p>3.&nbsp; Strains with MIC values above the susceptible breakpoint are very rare or not yet reported. The identification and antimicrobial susceptibility tests on any such isolate must be repeated and if the result is confirmed the isolate must be sent to a reference laboratory. Until there is evidence regarding clinical response for confirmed isolates with MIC above the current resistant breakpoint they should be reported resistant.</p><p>4.&nbsp; Breakpoints apply to an oral dose of 500 mg x 1 to 500 mg x 2 and an intravenous dose of 500 mg x 1 to 500 mg x 2.</p><p>&nbsp;</p></td></tr></tbody></table><p><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><![endif]--><!--[if mso & !supportInlineShapes & supportFields]><span
+style='font-size:10.0pt;mso-bidi-font-size:11.0pt'><v:shape id="_x0000_i1025"
+ type="#_x0000_t75" style='width:461pt;height:145pt'>
+ <v:imagedata croptop="-65520f" cropbottom="65520f"/>
+</v:shape><span style='mso-element:field-end'></span></span><![endif]--></p><p>&nbsp;</p><p>&nbsp;</p><p>The prevalence of resistance may vary geographically and with time for selected species and local information on resistance is desirable, particularly when treating severe infections. As necessary, expert advice should be sought when the local prevalence of resistance is such that the utility of the agent in at least some types of infections is questionable.</p><p><!--[if gte vml 1]><o:wrapblock pagebreak="t">
+ <v:group id="_x0000_s1032" style='position:absolute;margin-left:79.3pt;
+  margin-top:12.9pt;width:464.4pt;height:248.4pt;z-index:1168;
+  mso-wrap-distance-left:0;mso-wrap-distance-right:0;
+  mso-position-horizontal-relative:page' coordorigin="1586,258" coordsize="9288,4968">
+  <v:shape id="_x0000_s1033" type="#_x0000_t75" style='position:absolute;
+   left:1586;top:258;width:9288;height:4968'>
+   <v:imagedata src="file:///C:/Users/aldakmo1/AppData/Local/Temp/2/msohtmlclip1/01/clip_image002.png"
+    o:title=""/>
+  </v:shape><v:shape id="_x0000_s1034" type="#_x0000_t202" style='position:absolute;
+   left:1586;top:258;width:9288;height:4968' filled="f" stroked="f">
+   <v:textbox inset="0,0,0,0">
+    <![if !mso]>
+    <table cellpadding=0 cellspacing=0 width="100%">
+     <tr>
+      <td><![endif]>
+      <div>
+      <p class=MsoNormal style='margin-top:1.4pt;margin-right:308.75pt;
+      margin-bottom:0in;margin-left:5.55pt;margin-bottom:.0001pt;line-height:
+      100%'><b style='mso-bidi-font-weight:normal'><u style='text-underline:
+      thick'>Commonly susceptible species </u>Aerobic Gram-positive bacteria </b><i
+      style='mso-bidi-font-style:normal'>Bacillus anthracis<o:p></o:p></i></p>
+      <p class=MsoNormal style='margin-top:.15pt;margin-right:0in;margin-bottom:
+      0in;margin-left:5.55pt;margin-bottom:.0001pt'><i style='mso-bidi-font-style:
+      normal'>Staphylococcus aureus </i>methicillin-susceptible<o:p></o:p></p>
+      <p class=MsoNormal style='margin-top:.3pt;margin-right:324.95pt;
+      margin-bottom:0in;margin-left:5.55pt;margin-bottom:.0001pt;line-height:
+      101%'><i style='mso-bidi-font-style:normal'>Staphylococcus saprophyticus </i>Streptococci,
+      group C and G <i style='mso-bidi-font-style:normal'>Streptococcus
+      agalactiae Streptococcus pneumoniae Streptococcus pyogenes<o:p></o:p></i></p>
+      <p class=MsoNormal style='margin-top:.55pt;margin-right:0in;margin-bottom:
+      0in;margin-left:5.55pt;margin-bottom:.0001pt;line-height:12.55pt;
+      mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'>Aerobic
+      Gram-negative bacteria<o:p></o:p></b></p>
+      <p class=MsoNormal style='margin-top:0in;margin-right:326.75pt;
+      margin-bottom:0in;margin-left:5.55pt;margin-bottom:.0001pt;line-height:
+      101%'><i style='mso-bidi-font-style:normal'>Eikenella corrodens
+      Haemophilus influenzae Haemophilus para-influenzae Klebsiella oxytoca<o:p></o:p></i></p>
+      <p class=MsoNormal style='margin-top:.15pt;margin-right:360.35pt;
+      margin-bottom:0in;margin-left:5.55pt;margin-bottom:.0001pt;line-height:
+      103%'><i style='mso-bidi-font-style:normal'>Moraxella catarrhalis
+      Pasteurella multocida Proteus vulgaris Providencia rettgeri </i><b
+      style='mso-bidi-font-weight:normal'>Anaerobic bacteria<o:p></o:p></b></p>
+      </div>
+      <![if !mso]></td>
+     </tr>
+    </table>
+    <![endif]></v:textbox>
+  </v:shape><w:wrap type="topAndBottom" anchorx="page"/>
+ </v:group><![endif]--></p><table cellpadding="0" cellspacing="0" align="left"><tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p><!--[if gte vml 1]></o:wrapblock><![endif]--></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong><u>Commonly susceptible species</u></strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Aerobic Gram-positive bacteria </strong><em>Bacillus anthracis</em></p><p><em>Staphylococcus aureus </em>methicillin-susceptible</p><p><em>Staphylococcus saprophyticus </em>Streptococci, group C and G <em>Streptococcus agalactiae Streptococcus pneumoniae Streptococcus pyogenes</em></p><p><strong>Aerobic Gram-negative bacteria</strong></p><p><em>Eikenella corrodens Haemophilus influenzae Haemophilus para-influenzae Klebsiella oxytoca</em></p><p><em>Moraxella catarrhalis Pasteurella multocida Proteus vulgaris Providencia rettgeri </em><strong>Anaerobic bacteria</strong></p><p>&nbsp;</p></td></tr></tbody></table><p><!--[if gte vml 1]><v:shape id="_x0000_s1035" type="#_x0000_t202" style='position:absolute;
+ margin-left:79.35pt;margin-top:-413.9pt;width:464.8pt;height:420.2pt;
+ z-index:1192;mso-position-horizontal-relative:page' filled="f" stroked="f">
+ <v:textbox inset="0,0,0,0"/>
+ <w:wrap anchorx="page"/>
+</v:shape><![endif]--></p><table cellpadding="0" cellspacing="0"><tbody><tr><td><table cellpadding="0" cellspacing="0" style="width:100%"><tbody><tr><td><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><em>Peptostreptococcus</em></p><p><strong>Other</strong></p><p><em>Chlamydophila pneumoniae Chlamydophila psittaci Chlamydia trachomatis Legionella pneumophila Mycoplasma pneumoniae Mycoplasma hominis Ureaplasma urealyticum</em></p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><strong>Species for which acquired resistance may be a problem</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Aerobic Gram-positive bacteria</strong></p><p><em>Enterococcus faecalis</em></p><p><em>Staphylococcus aureus </em>methicillin-resistant# Coagulase negative <em>Staphylococcus </em>spp.</p><p><strong>Aerobic Gram-negative bacteria </strong><em>Acinetobacter baumannii Citrobacter freundii</em></p><p><em>Enterobacter aerogenes Enterobacter cloacae Escherichia coli Klebsiella pneumoniae Morganella morganii Proteus mirabilis Providencia stuartii Pseudomonas aeruginosa Serratia marcescens </em><strong><u>Anaerobic bacteria </u></strong><em>Bacteroides fragilis</em></p></td></tr><tr><td style="vertical-align:top"><p><strong>Inherently resistant strains</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Aerobic Gram-positive bacteria</strong></p><p><em>Enterococcus faecium</em></p></td></tr></tbody></table><p>&nbsp;</p></td></tr></tbody></table></td></tr></tbody></table><p># Methicillin-resistant <em>S. aureus </em>are very likely to possess co-resistance to fluoroquinolones, including levofloxacin.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Absorption</p><p>Orally administered levofloxacin is rapidly and almost completely absorbed with peak plasma concentrations being obtained within 1 &ndash; 2 h. The absolute bioavailability is 99 - 100 %.</p><p>Food has little effect on the absorption of levofloxacin.</p><p>Steady state conditions are reached within 48 hours following a 500 mg once or twice daily dosage regimen.</p><p>&nbsp;</p><p>Distribution</p><p>Approximately 30 - 40 % of levofloxacin is bound to serum protein.</p><p>The mean volume of distribution of levofloxacin is approximately 100 l after single and repeated 500 mg doses, indicating widespread distribution into body tissues.</p><p>&nbsp;</p><p>Penetration into tissues and body fluids</p><p>Levofloxacin has been shown to penetrate into bronchial mucosa, epithelial lining fluid, alveolar macrophages, lung tissue, skin (blister fluid), prostatic tissue and urine. However, levofloxacin has poor penetration intro cerebro-spinal fluid.</p><p>&nbsp;</p><p>Biotransformation</p><p>Levofloxacin is metabolised to a very small extent, the metabolites being desmethyl-levofloxacin and levofloxacin N-oxide. These metabolites account for &lt; 5 % of the dose and are excreted in urine.</p><p>Levofloxacin is stereochemically stable and does not undergo chiral inversion.</p><p>&nbsp;</p><p>Elimination</p><p>Following oral and intravenous administration of levofloxacin, it is eliminated relatively slowly from the plasma (t&frac12;: 6 - 8 h). Excretion is primarily by the renal route (&gt; 85 % of the administered dose). The mean apparent total body clearance of levofloxacin following a 500 mg single dose was 175 &plusmn;</p><p>29.2 mL/min.</p><p>There are no major differences in the pharmacokinetics of levofloxacin following intravenous and oral administration, suggesting that the oral and intravenous routes are interchangeable.</p><p>&nbsp;</p><p>Linearity</p><p>Levofloxacin obeys linear pharmacokinetics over a range of 50 to 1000 mg.</p><p>&nbsp;</p><p>Special populations</p><p>Subjects with renal insufficiency</p><p>The pharmacokinetics of levofloxacin are affected by renal impairment. With decreasing renal function renal elimination and clearance are decreased, and elimination half-lives increased as shown in the table below:</p><p>&nbsp;</p><p>Pharmacokinetics in renal insufficiency following single oral 500 mg dose</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>ClcrmL/min</p></td><td style="vertical-align:top"><p>&lt; 20</p></td><td style="vertical-align:top"><p>20 - 49</p></td><td style="vertical-align:top"><p>50 - 80</p></td></tr><tr><td style="vertical-align:top"><p>ClRmL/min</p></td><td style="vertical-align:top"><p>13</p></td><td style="vertical-align:top"><p>26</p></td><td style="vertical-align:top"><p>57</p></td></tr><tr><td style="vertical-align:top"><p>t1/2h</p></td><td style="vertical-align:top"><p>35</p></td><td style="vertical-align:top"><p>27</p></td><td style="vertical-align:top"><p>9</p></td></tr></tbody></table><p>&nbsp;</p><p>Elderly</p><p>There are no significant differences in levofloxacin pharmacokinetics between young and elderly subjects, except those associated with differences in creatinine clearance.</p><p>&nbsp;</p><p>Gender differences</p><p>Separate analysis for male and female subjects showed small to marginal gender differences in levofloxacin pharmacokinetics. There is no evidence that these gender differences are of clinical relevance.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-clinical data reveal no special hazard for humans based on conventional studies of single dose toxicity, repeated dose toxicity, carcinogenic potential and toxicity to reproduction and development.</p><p>&nbsp;</p><p>Levofloxacin caused no impairment of fertility or reproductive performance in rats and its only effect on fetuses was delayed maturation as a result of maternal toxicity.</p><p>&nbsp;</p><p>Levofloxacin did not induce gene mutations in bacterial or mammalian cells but did induce chromosome aberrations in Chinese hamster lung cells in vitro. These effects can be attributed to inhibition of topoisomerase II. <em>In vivo </em>tests (micronucleus, sister chromatid exchange, unscheduled DNA synthesis, dominant lethal tests) did not show any genotoxic potential.</p><p>Studies in the mouse showed levofloxacin to have phototoxic activity only at very high doses. Levofloxacin did not show any genotoxic potential in a photomutagenicity assay, and it reduced tumour development in a photocarcinogenity study.</p><p>&nbsp;</p><p>In common with other fluoroquinolones, levofloxacin showed effects on cartilage (blistering and cavities) in rats and dogs. These findings were more marked in young animals.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em><strong>Tablet core:</strong></em></p><ul><li>Lactose monohydrate</li><li>Povidone K30</li><li>Sodium starch glycolate (type A)</li><li>Talc</li><li>Silica, colloidal anhydrous</li><li>Croscarmellose sodium</li><li>Glycerol dibehenate</li></ul><p><br /><em><strong>Tablet coating:</strong></em></p><ul><li>Hypromellose</li><li>Hydroxypropylcellulose</li><li>Macrogol 6000</li><li>Titanium dioxide (E 171)</li><li>Iron oxide, yellow (E 172)</li><li>Iron oxide, red (E 172)</li><li>Talc</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>This medicinal product does not require any special storage conditions</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The film-coated tablets are packed in aluminium/PVC/TE/PVDC blister and inserted in a carton box.<br />Blister: 1, 3, 4, 5, 7, 8, 10, 14, 20, 28, 30, 50, 60, 90, 100, 200 and 500 film-coated tablets.<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                SANDOZ GMBH, KUNDL, AT
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                03/2021
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1112246398
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1987
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        UROMITEXAN 400MG-4ML AMP
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        MESNA
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        100
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        4
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        15
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Ampoule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        48
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        97.2
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="BAXTER ONCOLOGY" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            BAXTER ONCOLOGY
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 540]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ZIMMO TRADING ESTABLISHMENT
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Baxter Deutschland GmbH
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        V03AF01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Uromitexan Injection
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Clear, glass ampoules containing a clear, colourless, aqueous solution of MESNA
+(sodium 2-mercapto-ethanesulphonate) 400 mg in 4 ml and 1000 mg in 10 ml.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Ampoules of aqueous solution for intravenous and oral administration.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">For the prevention of urothelial toxicity including haemorrhagic cystitis, microhaematuria and macrohaematuria in patients treated with ifosfamide and cyclophosphamide, in doses considered to be urotoxic.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Sufficient Uromitexan must be given to adequately protect the patient from the urotoxic effects of the oxazaphosphorine.</p><p style="text-align:justify">The duration of Uromitexan treatment should equal that of the oxazaphosphorine treatment plus the time taken for the urinary concentration of oxazaphosphorine metabolites to fall to non-toxic levels.&nbsp; This usually occurs within 8-12 hours after the end of oxazaphosphorine treatment but may vary depending on the scheduling of oxazaphosphorine.&nbsp; Urinary output should be maintained at 100 ml/hr (as required for oxazaphosphorine treatment) and the urine monitored for haematuria and proteinuria throughout the treatment period.</p><p style="text-align:justify">Parenteral drug products should be inspected visually for particulate matter and discoloration prior to administration.</p><p style="text-align:justify">Any solutions which are discolored, hazy, or contain visible particulate matter should not be used.</p><p style="text-align:justify"><em>W</em><em>here ifosfamide or cyclophosphamide is used as an iv bolus: </em>Uromitexan is given by intravenous injection over 15-30 minutes at 20% of the simultaneously administered oxazaphosphorine on a weight for weight basis (w/w).&nbsp; The same dose of Uromitexan is repeated after 4 and 8 hours.&nbsp; The total dose of Uromitexan is 60% (w/w) of the oxazaphosphorine dose.&nbsp; This is repeated on each occasion that the cytotoxic agents are used.</p><p style="text-align:justify">Example dosage schedule:</p><table border="1" align="left" cellspacing="1" cellpadding="1" style="width:434px"><tbody><tr><td style="text-align:center; width:183px">&nbsp;</td><td style="text-align:center; width:77px">0 hrs</td><td style="text-align:center; width:88px">4 hrs</td><td style="text-align:center; width:83px">8 hrs</td></tr><tr><td style="text-align:center; width:183px">Cyclophosphamide/Ifosfamide</td><td style="text-align:center; width:77px">2 g</td><td style="text-align:center; width:88px">-</td><td style="text-align:center; width:83px">-</td></tr><tr><td style="text-align:center; width:183px">Uromitexan</td><td style="text-align:center; width:77px">400 mg</td><td style="text-align:center; width:88px">400 mg</td><td style="text-align:center; width:83px">400 mg</td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify">If necessary the dose of Uromitexan can be increased to 40% of the oxazaphosphorine dose given four times at three hourly intervals (0, 3, 6 and 9 hours).&nbsp; (Total dose = 160% (w/w) of the oxazaphosphorine dose).&nbsp; This larger dose is recommended in children, in patients whose urothelium may be damaged from previous treatment with oxazaphosphorine or pelvic irradiation, or in patients who are not adequately protected by the standard dose of Uromitexan.</p><p style="text-align:justify">Example dosage schedule:</p><table border="1" align="left" cellspacing="1" cellpadding="1" style="width:593px"><tbody><tr><td style="text-align:center; width:190px">&nbsp;</td><td style="text-align:center; width:103px">0 hrs</td><td style="text-align:center; width:108px">3 hrs</td><td style="text-align:center; width:94px">6 hrs</td><td style="text-align:center; width:95px">9 hrs</td></tr><tr><td style="text-align:center; width:190px">Cyclophosphamide/Ifosfamide</td><td style="text-align:center; width:103px">2 g</td><td style="text-align:center; width:108px">-</td><td style="text-align:center; width:94px">-</td><td style="text-align:center; width:95px">-</td></tr><tr><td style="text-align:center; width:190px">Uromitexan</td><td style="text-align:center; width:103px">800 mg</td><td style="text-align:center; width:108px">800 mg</td><td style="text-align:center; width:94px">800 mg</td><td style="text-align:center; width:95px">800 mg</td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify"><em>W</em><em>here cyclophosphamide is used orally: </em>The same dose regimen of Uromitexan applies as though cyclophosphamide were used as an i.v. bolus.</p><p style="text-align:justify"><em>W</em><em>here ifosfamide is used as a 24-hour infusion: </em>Uromitexan can be used as a concurrent infusion.&nbsp; An initial 20% (w/w) of the total ifosfamide dose is given as an i.v. bolus, then an infusion of 100% (w/w) of the ifosfamide over 24 hours, followed by a further 12-hour infusion of 60% (w/w) of the ifosfamide dose.&nbsp; Total Uromitexan dose = 180% of the ifosfamide dose.</p><p style="text-align:justify">Example dosage schedule:</p><table border="1" align="left" cellspacing="1" cellpadding="1" style="width:607px"><tbody><tr><td style="text-align:center">&nbsp;</td><td style="text-align:center">0 hrs</td><td style="text-align:center; width:101px">0-24 hrs</td><td style="text-align:center; width:77px">24 hrs</td><td style="text-align:center; width:88px">28 hrs</td><td style="text-align:center; width:72px">32 hrs</td><td style="text-align:center; width:76px">36 hrs</td></tr><tr><td style="text-align:center">Ifosfamide</td><td style="text-align:center">-</td><td style="text-align:center; width:101px">5 g/m&sup2; infusion</td><td style="text-align:center; width:77px">-</td><td style="text-align:center; width:88px">-</td><td style="text-align:center; width:72px">-</td><td style="text-align:center; width:76px">-</td></tr><tr><td style="text-align:center">Uromitexan</td><td style="text-align:center">1 g/m &sup2; iv</td><td style="text-align:center; width:101px">5 g/m&sup2; infusion</td><td rowspan="1" colspan="4" style="text-align:center; width:313px">3g/m&sup2; infusion</td></tr><tr><td style="text-align:center">&nbsp;</td><td style="text-align:center">&nbsp;</td><td style="text-align:center; width:101px">&nbsp;</td><td style="text-align:center; width:77px">&nbsp;</td><td style="text-align:center; width:88px">1 g/m&sup2; iv</td><td style="text-align:center; width:72px">1 g/m&sup2; iv</td><td style="text-align:center; width:76px">1 g/m&sup2; iv</td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify"><em>W</em><em>here ifosfamide is used as a long-term infusion:</em></p><p style="text-align:justify">An initial 20% (w/w) of the first 24 hours ifosfamide dose is given as an i.v. bolus as the ifosfamide infusion starts.&nbsp; Then each 24 hour infusion of ifosfamide is given with a concurrent 24 hour infusion (100% w/w) of Uromitexan.&nbsp; A 12 hour infusion of Uromitexan (60% (w/w) of the final 24 hour dose of ifosfamide) should be commenced as the ifosfamide-Uromitexan infusion finishes.</p><p>Example dosage schedule:</p><table border="1" align="left" cellspacing="1" cellpadding="1" style="width:608px"><tbody><tr><td style="text-align:center; width:81px">&nbsp;</td><td rowspan="1" colspan="2" style="text-align:center; width:129px">Day 1</td><td style="text-align:center; width:69px">Day 2</td><td rowspan="1" colspan="2" style="text-align:center; width:136px">Day 3</td><td rowspan="1" colspan="3" style="text-align:center; width:192px">Day 4</td></tr><tr><td style="text-align:center; width:81px">&nbsp;</td><td style="text-align:center; width:55px">0 hrs</td><td style="text-align:center; width:75px">0-24 hrs</td><td style="text-align:center; width:69px">0-24 hrs</td><td style="text-align:center; width:75px">0-24 hrs</td><td style="text-align:center; width:60px">24 hrs</td><td style="text-align:center; width:62px">4 hrs</td><td style="text-align:center; width:66px">8 hrs</td><td style="text-align:center; width:65px">12 hrs</td></tr><tr><td style="text-align:center; width:81px">Ifosfamide</td><td style="text-align:center; width:55px">-</td><td style="text-align:center; width:75px">2 g/m&sup2; infusion</td><td style="text-align:center; width:69px">2 g/m&sup2; infusion</td><td style="text-align:center; width:75px">2 g/m&sup2; infusion</td><td style="text-align:center; width:60px">-</td><td style="text-align:center; width:62px">-</td><td style="text-align:center; width:66px">-</td><td style="text-align:center; width:65px">-</td></tr><tr><td style="text-align:center; width:81px">Uromitexan</td><td style="text-align:center; width:55px">0.4g/m&sup2; iv</td><td style="text-align:center; width:75px">2 g/m&sup2; infusion</td><td style="text-align:center; width:69px">2 g/m&sup2; infusion</td><td style="text-align:center; width:75px">2 g/m&sup2; infusion</td><td rowspan="1" colspan="4" style="text-align:center; width:253px">1.2 g/m&sup2; infusion</td></tr><tr><td style="text-align:center; width:81px">&nbsp;</td><td style="text-align:center; width:55px">&nbsp;</td><td style="text-align:center; width:75px">&nbsp;</td><td style="text-align:center; width:69px">&nbsp;</td><td style="text-align:center; width:75px">&nbsp;</td><td style="text-align:center; width:60px">&nbsp;</td><td style="text-align:center; width:62px">0.4 g/m&sup2; iv</td><td style="text-align:center; width:66px">0.4 g/m&sup2; iv</td><td style="text-align:center; width:65px">0.4 g/m&sup2; iv</td></tr></tbody></table><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td colspan="2" style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td colspan="2" style="vertical-align:top">&nbsp;</td><td colspan="3" style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td colspan="4" style="vertical-align:top">&nbsp;</td></tr><tr><td colspan="6" style="vertical-align:top">&nbsp;</td><td colspan="3" style="vertical-align:top">&nbsp;</td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify">The final 12-hour infusion of Uromitexan, after long-term or 24 hour infusion of ifosfamide, may be replaced by boluses at 28, 32 and 36 hours, each of 20% (w/w) of the ifosfamide dose, or by oral Uromitexan.</p><p style="text-align:justify">Uromitexan can be mixed in the same infusion bag as the ifosfamide.</p><p style="text-align:justify"><em>O</em><em>ral use of Uromitexan ampoules: &nbsp;</em>Uromitexan has been shown to be effective when taken orally. Compared with intravenous administration, overall availability of Uromitexan in urine after oral administration is approximately 50%; the onset of urinary excretion is delayed by up to 2 hours and is more prolonged than following intravenous dosing.</p><p style="text-align:justify">With the exception of continuous long-term infusions of oxazaphosphorines with Uromitexan, intravenously administered Uromitexan may be replaced by oral administration of Uromitexan.&nbsp; The dosage should be 40% w/w of the dosage of the oxazaphosphorines. The contents of the ampoule should be added to a flavoured soft drink (e.g. orange juice, cola).&nbsp; This mixture is stable when refrigerated in a sealed container for 24 hours.</p><p style="text-align:justify">For intermittent oxazaphosphorine therapy following an initial intravenous injection of Uromitexan at a dose of 20% (w/w) of the oxazaphosphorine dose, oral Uromitexan (40% w/w) should be administered at 2 hours and again at 6 hours after the initial intravenous dose.&nbsp; Alternatively, three oral doses of Uromitexan may be administered, replacing the i.v. dose with an oral dose (40% w/w) 2 hours prior to administration of oxazaphosphorines.</p><p style="text-align:justify">Example dosage schedule:</p><table border="1" align="left" cellspacing="1" cellpadding="1" style="width:650px"><tbody><tr><td style="width:178px">&nbsp;</td><td style="width:115px">- 2 hrs</td><td style="width:125px">0 hrs</td><td style="width:121px">2 hrs</td><td style="width:110px">6 hrs</td></tr><tr><td style="width:178px">Cyclophosphamide/Ifosfamide</td><td style="width:115px">-</td><td style="width:125px">1 g iv</td><td style="width:121px">-</td><td style="width:110px">-</td></tr><tr><td style="width:178px">Uromitexan</td><td style="width:115px">400 mg po</td><td style="width:125px">-</td><td style="width:121px">400 mg po</td><td style="width:110px">400 mg po</td></tr><tr><td style="width:178px">&nbsp;</td><td style="width:115px">&nbsp;</td><td style="width:125px">200 mg iv</td><td style="width:121px">400 mg po</td><td style="width:110px">400 mg po</td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">Where ifosfamide is used as a long-term continuous infusion with concomitant Uromitexan, oral Uromitexan may be taken as the infusion of ifosfamide and Uromitexan finishes, then at 2 hours and 6 hours after the time at the finish of the infusion.&nbsp; All oral Uromitexan doses should be 40% (w/w) of the <u>fi</u><u>nal 24 hour</u> ifosfamide dose.</p><p style="text-align:justify">Example dosage schedule:</p><table border="1" align="left" cellspacing="1" cellpadding="1" style="width:643px"><tbody><tr><td style="text-align:center; width:129px">&nbsp;</td><td style="text-align:center; width:108px">0 hrs</td><td style="text-align:center; width:99px">0-24 hrs</td><td style="text-align:center; width:105px">24 hrs</td><td style="text-align:center; width:110px">26 hrs</td><td style="text-align:center; width:91px">30 hrs</td></tr><tr><td style="text-align:center; width:129px">Ifosfamide</td><td style="text-align:center; width:108px">-</td><td style="text-align:center; width:99px">5 g/m&sup2; infusion</td><td style="text-align:center; width:105px">-</td><td style="text-align:center; width:110px">-</td><td style="text-align:center; width:91px">-</td></tr><tr><td style="text-align:center; width:129px">Uromitexan</td><td style="text-align:center; width:108px">1 g/m&sup2; iv</td><td style="text-align:center; width:99px">5 g/m&sup2; infusion</td><td style="text-align:center; width:105px">2 g/m&sup2; po</td><td style="text-align:center; width:110px">2 g/m&sup2; po</td><td style="text-align:center; width:91px">2 g/m&sup2; po</td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify">Uromitexan is also available for oral administration as Uromitexan Tablets. For further information see the Summary of Product Characteristics for Uromitexan Tablets or contact Baxter Healthcare Limited.</p><p style="text-align:justify">&nbsp;</p><p style="text-align:justify"><u>C</u><u>hildren</u></p><p style="text-align:justify">Children generally micturate more frequently than adults and therefore it may be necessary to shorten the interval between doses and/or to increase the number of individual doses.</p><p style="text-align:justify">&nbsp;</p><p style="text-align:justify"><u>Elderly</u></p><p style="text-align:justify">No specific information is available.&nbsp; Clinical trials have included patients over 65 and no adverse reactions specific to this age group have been reported.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Known hypersensitivity to Uromitexan or any of the excipients.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>WARNINGS </strong></p><p><u>H</u><u>ypersensitivity</u></p><p>Hypersensitivity reactions to Uromitexan have been reported following administration of Uromitexan as an uroprotectant. These include various skin and subcutaneous tissue symptoms (see Section 4.8).</p><p>In addition, cases of severe bullous and ulcerative skin and mucosal reactions were reported.</p><p>In some cases, skin reactions were accompanied by one or more other symptoms, such as fever, cardiovascular symptoms,&nbsp; pulmonary symptoms, haematological abnormalities, nausea, vomiting, pain in the extremities, arthralgia, myalgia, malaise, and conjunctivitis (see Section 4.8).</p><p>Some reactions have presented as anaphylaxis.</p><p>Fever accompanied by, e.g., hypotension but no skin manifestations has also been reported.</p><p>Some patients with a history of a reaction have shown positive delayed-type skin test results. However, a negative delayed reaction does not exclude hypersensitivity to Uromitexan. Positive immediate-type skin test reactions have occurred in patients regardless of previous Uromitexan exposure or history of hypersensitivity reactions, and may be related to the concentration of the Uromitexan solution used for testing.</p><p>Prescribers should be aware that:</p><p>- severe as well as minor reactions were reported with the use of Uromitexan in regimens to treat both severe systemic autoimmune disease and malignancy and that Uromitexan should be suspected in any hypersensitivity reaction,</p><p>- these reactions may occur with first exposure or after several months of exposure and in some cases can be life threatening,</p><p>- the occurrence and severity of reactions appeared to vary with the dose administered with a tendency to shorter intervals following subsequent exposures,</p><p>- hypersensitivity reactions to Uromitexan were interpreted to resemble the clinical picture of sepsis and, in patients with autoimmune disorders, resemble an exacerbation of the underlying disease.</p><p>&nbsp;</p><p><u>T</u><u>hiol Compounds</u>:</p><p>Uromitexan is a thiol compound, i.e., a sulfhydryl (SH) group-containing organic compound. Thiol compounds show some similarities in their adverse reaction profile, including a potential to elicit severe skin reactions. Examples of drugs that are thiol compounds include amifostine, penicillamine, and captopril.</p><p>It is not clear whether patients who experienced an adverse reaction to such a drug are at increased risk for any reactions, or similar reactions, to another thiol</p><p>compound. However, when considering subsequent use of another thiol compound in such patients, the possibility of an increased risk should be taken into account.</p><p>&nbsp;</p><p><strong>PRECAUTIONS</strong></p><p>Uromitexan does not prevent hemorrhagic cystitis in all patients. Patients should be monitored accordingly.</p><p>Sufficient urinary output should be maintained, as required for oxazaphosphorine treatment.</p><p>&nbsp;</p><p><u>Sodium content</u></p><p>Uromitexan solution for injection contains approximately 59 mg of sodium per 400 mg Uromitexan.</p><p>&nbsp;</p><p><u>Lab test interferences</u></p><p>Uromitexan treatment may cause false positive reactions in nitroprusside sodium-based urine tests (including dipstick tests) for ketone bodies. The addition of glacial acetic acid can be used to differentiate between a false positive result (cherry-red color that fades) and a true positive result (red-violet color that intensifies).</p><p>Uromitexan treatment may cause false positive reactions in Tillman&rsquo;s reagent-based urine screening tests for ascorbic acid.</p><p>In pharmacokinetics studies in healthy volunteers, serum creatine phosphokinase (CPK) values were lower in samples taken 24 hours after Uromitexan dosing than in pre- dosing samples. While available data are insufficient to determine the cause of this phenomenon, it might be considered to represent a significant interference with thiol (e.g., N-acetylcysteine) dependent enzymatic CPK tests.</p><p>See also Section 4.8 for information on laboratory test abnormalities observed in pharmacokinetic studies.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">The systemic effects of oxazaphosphorines are not affected by Uromitexan. In clinical trials it was shown that overdoses of Uromitexan did not diminish the acute toxicity, subacute toxicity, leucocytic activity, and immunosuppressive &nbsp;efficacy of oxazaphosphorines. Animal studies with ifosfamide and cyclophosphamide on a variety of tumours have also demonstrated that Uromitexan does not interfere with their antineoplastic activity.</p><p style="text-align:justify">Uromitexan also does not affect the antineoplastic efficacy of other cytostatics (e.g. adriamycin, BCNU, methotrexate, vincristine), nor the therapeutic effect of other drugs such as digitalis glucosides.</p><p style="text-align:justify">Food does not influence the absorption and urinary elimination of Uromitexan.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">There are no adequate data from the use of Uromitexan in pregnant or lactating women. Physicians should carefully consider the potential risks and benefits for each specific patient before prescribing Uromitexan.</p><p style="text-align:justify">Pregnancy and lactation are contraindications for cytostatic treatment, and consequently Uromitexan is not likely to be used under these circumstances.</p><p style="text-align:justify">Should an individual patient be undergoing oxazaphosphorine therapy during pregnancy then Uromitexan should be administered to this patient.</p><p style="text-align:justify">Mothers should not breast-feed whilst being treated with these drugs.</p><p style="text-align:justify">Animal studies have shown no evidence of embryotoxic or teratogenic effects of Uromitexan<em>.</em></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Patients undergoing treatment with Uromitexan may experience undesirable effects (including, e.g., syncope, light-headedness, lethargy/drowsiness, dizziness, and blurred vision) which could affect the ability to drive or use machines. The decision to drive or operate machinery should be made on an individual basis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">The most frequently occurring adverse reactions (&gt; 10%) associated with use of Uromitexan are: headache, infusion site reactions, abdominal pain/colic, lightheadedness, lethargy/drowsiness, pyrexia, rash, diarrhoea, nausea, flushing, and influenza-like illness.</p><p style="text-align:justify">The most severe adverse reactions associated with use of Uromitexan are: bullous skin reactions, anaphylaxis, and drug rash with eosinophilia and systemic symptoms (DRESS).</p><p style="text-align:justify">Because Uromitexan is used in combination with oxazaphosphorines or oxazaphosphorine- containing combination chemotherapy, it is often difficult to distinguish adverse reactions that may be due to Uromitexan from those caused by concomitantly administered cytotoxic agents.</p><p style="text-align:justify">ADR frequency is based upon the following scale: Very common (&ge;1/10); Common (&ge;1/100 - &lt;1/10), Uncommon (&ge;1/1,000 - &lt;1/100), Rare (&ge;1/10,000 - &lt;1/1,000), Very rare (&lt;1/10,000), Unknown (adverse reactions reported in the post-marketing experience)</p><table border="1" align="left" cellspacing="1" cellpadding="1" style="width:645px"><thead><tr><th scope="col" style="text-align:left; width:199px"><p>System Organ Class (SOC)</p></th><th scope="col" style="text-align:left; width:313px"><p>Adverse Reaction</p></th><th scope="col" style="text-align:left; width:132px"><p>Frequency</p></th></tr></thead><tbody><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>BLOOD AND LYMPHATIC SYSTEM DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Lymphadenopathy</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>IMMUNE SYSTEM DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Anaphylaxis</p><p>Hypersensitivity</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Unknown</p><p>Unknown</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>METABOLISM AND NUTRITION DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Decreased appetite</p><p>Feeling of dehydration</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>PSYCHIATRIC DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Insomnia</p><p>Nightmare</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>NERVOUS SYSTEM DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Headache</p><p>Light-headedness</p><p>Lethargy/Drowsiness</p><p>Dizziness</p><p>Paresthesia</p><p>Hyperesthesia</p><p>Syncope</p><p>Hypoesthesia</p><p>Disturbance in attention</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Very common</p><p>Very common</p><p>Very common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>EYE DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Conjunctivitis</p><p>Photophobia</p><p>Vision blurred</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p><p>Common</p><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>CARDIAC DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Palpitations</p><p>Tachycardia</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p><p>Unknown</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>RESPIRATORY, THORACIC, AND MEDIASTINAL DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Nasal congestion</p><p>Cough</p><p>Pleuritic pain</p><p>Dry mouth</p><p>Bronchospasm</p><p>Dyspnea</p><p>Laryngeal discomfort</p><p>Epistaxis</p><p>Respiratory distress</p><p>Hypoxia</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Unknown</p><p>Unknown</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>GASTROINTESTINAL DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Abdominal pain/colic</p><p>Nausea</p><p>Diarrhoea</p><p>Mucosal irritation<sup>1</sup></p><p>Flatulence</p><p>Vomiting</p><p>Burning pain (substernal / epigastric)</p><p>Constipation</p><p>Gingival bleeding</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Very common</p><p>Very common</p><p>Very common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><p>HEPATOBILIARY&nbsp;DISORDERS</p></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Transaminases increased</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>SKIN AND SUBCUTANEOUS TISSUE DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Rash<sup>2</sup></p><p>Pruritus</p><p>Hyperhidrosis</p><p>Erythema multiforme</p><p>Drug rash<sup>3</sup></p><p>Ulcerations and/or bullae/blistering<sup>4</sup></p><p>Angioedema</p><p>Urticaria</p><p>Burning sensation</p><p>Erythema</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Very common</p><p>Common</p><p>Common</p><p>Unknown</p><p>Unknown</p><p>Unknown</p><p>Unknown</p><p>Unknown</p><p>Unknown</p><p>Unknown</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>MUSCULOSKELETAL AND CONNECTIVE TISSUE DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Arthralgia</p><p>Back pain</p><p>Myalgia</p><p>Pain in extremity</p><p>Pain in jaw</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>RENAL AND URINARY DISORDERS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Dysuria</p><p>Acute renal failure</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Common</p><p>Unknown</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>GENERAL DISORDERS AND ADMINISTRATIVE SITE CONDITIONS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Infusion site reactions</p><p>- &nbsp;Infusion site pruritus</p><p>- &nbsp;Infusion site rash</p><p>- &nbsp;Infusion site pain</p><p>- &nbsp;Infusion site erythema</p><p>- &nbsp;Infusion site urticaria</p><p>- &nbsp;Infusion site swelling</p><p>Pyrexia</p><p>Influenza-like illness</p><p>Rigors</p><p>Fatigue</p><p>Chest pain</p><p>Malaise</p><p>Face oedema</p><p>Oedema peripheral</p><p>Asthenia</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Very common</p><p>Very common</p><p>Very common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Very common</p><p>Very common</p><p>Common</p><p>Common</p><p>Common</p><p>Common</p><p>Unknown</p><p>Unknown</p><p>Unknown</p></td></tr></tbody></table></td></tr><tr><td style="width:199px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>INVESTIGATIONS</p></td></tr></tbody></table></td><td style="width:313px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Activated partial thromboplastin time prolonged</p></td></tr></tbody></table></td><td style="width:132px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>Unknown</p></td></tr></tbody></table></td></tr></tbody></table><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify"><sup>1&nbsp;</sup>Oral, rectal</p><p style="text-align:justify"><sup>2</sup> Including nonpruritic, pruritic, erythema/erythematous, eczematous, papular, and/or macular rashes.</p><p style="text-align:justify"><sup>3</sup> with eosinophilia and systemic symptoms</p><p style="text-align:justify"><sup>4</sup> mucocutaneous, mucosal, oral, vulvovaginal, anorectal</p><p style="text-align:justify">&nbsp;</p><ul><li style="text-align:justify">Time to onset and experience with re-exposure</li></ul><p style="text-align:justify">In these studies, some subjects experienced their events on first exposure to Uromitexan and others after the second or third exposure. In general, the complete spectrum of symptoms experienced by a subject developed over a period of several hours.</p><p style="text-align:justify">Some subjects experienced no further reactions after their initial event while others experienced an exacerbation of events upon repeated dosing.</p><p style="text-align:justify">&nbsp;</p><ul><li style="text-align:justify">Infusion site reactions</li></ul><p style="text-align:justify">In some subjects experiencing local cutaneous infusion site reactions, subsequent exposure to Uromitexan resulted in a cutaneous event in other areas.</p><p style="text-align:justify">&nbsp;</p><ul><li style="text-align:justify">Cutaneous/mucosal reactions</li></ul><p style="text-align:justify">Cutaneous and mucosal reactions were reported to occur after both intravenous and oral Uromitexan. These reactions included rashes, pruritus, flushing, mucosal irritation, pleuritic pain, and conjunctivitis. Approximately one-quarter of subjects with any event experienced cutaneous/mucosal reactions in conjunction with other adverse symptoms, which included, dyspnea, fever, headache, gastrointestinal symptoms, drowsiness, malaise, myalgia, and influenza-like symptoms.</p><p style="text-align:justify">&nbsp;</p><ul><li style="text-align:justify">Gastrointestinal reactions</li></ul><p style="text-align:justify">Gastrointestinal reactions reported in healthy subjects included nausea, vomiting, diarrhea, abdominal pain/colic, epigastric pain/burning, constipation, and flatulence and were reported to occur after intravenous and oral Uromitexan administration.</p><p style="text-align:justify">&nbsp;</p><ul><li style="text-align:justify">In-vivo effect on lymphocyte counts</li></ul><p style="text-align:justify">In pharmacokinetics studies in healthy volunteers, administration of single doses of Uromitexan was commonly associated with a rapid (within 24 hours) and in some cases marked decrease in lymphocyte count, which was generally reversible within 1 week of administration. Data from studies with repeated dosing over several days are insufficient to characterize the time course of lymphocyte count changes under such conditions.</p><p style="text-align:justify">&nbsp;</p><ul><li style="text-align:justify">In-vivo effect on serum phosphorus levels</li></ul><p style="text-align:justify">In pharmacokinetics studies in healthy volunteers, administration of Uromitexan on single or multiple days was in some cases associated with moderate transient increases in serum phosphorus concentration.</p><p style="text-align:justify">These phenomena should be considered when interpreting laboratory results.</p><p style="text-align:justify">&nbsp;</p><p style="text-align:justify"><u>Reporting of suspected adverse reactions</u></p><p style="text-align:justify">Reporting suspected adverse reactions after authorisation of Holoxan is important. It allows continued monitoring of the benefit/risk balance of Holoxan. Healthcare professionals are asked to report any suspected adverse reactions via the national reporting system as per following contact details:</p><ul><li style="text-align:justify">Saudi Arabia:</li></ul><table border="1" cellspacing="0" cellpadding="0" style="width:520px"><tbody><tr><td style="vertical-align:top"><p style="text-align:justify">-&nbsp;&nbsp;&nbsp;&nbsp; The National Pharmacovigilance and Drug Safety Centre (NPC)</p><p style="text-align:justify">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fax: +966-11-205-7662</p><p style="text-align:justify">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.</p><p style="text-align:justify">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Toll free phone: 8002490000</p><p style="text-align:justify">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail: npc.drug@sfda.gov.sa</p><p style="text-align:justify">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Website: www.sfda.gov.sa/npc</p></td></tr></tbody></table><p style="text-align:justify">&nbsp;</p><ul><li style="text-align:justify">Other GCC States:</li></ul><table border="1" cellspacing="0" cellpadding="0" style="width:520px"><tbody><tr><td><p style="text-align:justify">Please contact the relevant competent authority.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Reports of inadvertent overdose and observations from a high-dose tolerability study in healthy volunteers showed that, in adults, single doses in the range of approximately 4g to 7g of Uromitexan can cause symptoms such as nausea, vomiting, abdominal pain/colic, diarrhoea, headache, fatigue, limb and joint pains, rash, flushing, hypotension, bradycardia, tachycardia, paresthesia, fever, and bronchospasm.</p><p style="text-align:justify">A markedly increased rate of nausea, vomiting and diarrhoea has also been found in oxazaphosphorine-treated patients receiving &ge; 80 mg Uromitexan per kg per day intravenously compared with patients receiving lower doses or hydration treatment only.</p><p style="text-align:justify">A specific antidote to Uromitexan is not known.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Uromitexan is an antidote, and offers the possibility of reliably preventing urotoxic side- effects associated with aggressive cancer chemotherapy using oxazaphosphorine cytostatics.&nbsp; Extensive and wide-ranging pharmacological and toxicological investigations have shown that Uromitexan has no intrinsic pharmacodynamics and low toxicity.&nbsp; The pharmacological and toxicological inertness of Uromitexan administered systemically and its excellent detoxifying effect in the efferent urinary tract and bladder, are due to the nature of its pharmacokinetics.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Uromitexan, a free thiol, is easily and rapidly transformed by auto-oxidation into its only metabolite Uromitexan-disulphide (diUromitexan).&nbsp; DiUromitexan remains in the intravascular compartment and is quickly transported to the kidneys.</p><p style="text-align:justify">In the epithelium of renal tubuli, diUromitexan is again reduced to the free thiol compound, which is then able to react chemically in the urine with toxic oxazaphosphorine metabolites.</p><p style="text-align:justify">Elimination (being almost exclusively renal) starts immediately after administration. Excretion is as the free thiol (Uromitexan) in the first 4 hours after a single dose, and almost exclusively as the disulphide (diUromitexan) thereafter.&nbsp; Renal elimination is almost complete after approximately 8 hours.</p><p style="text-align:justify">Approximately 30% of an intravenous dose is bioavailable as free thiol (Uromitexan) in the urine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Nothing relevant.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Disodium edetate, Sodium Hydroxide, Water for Injections.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Uromitexan is incompatible with platinum derivatives (e.g. Cisplatin, carboplatin and nitrogen mustard) and must not be mixed in the same infusion solution.</p><p style="text-align:justify">Mixing Uromitexan and epirubicin leads to inactivation of epirubicin and should be avoided.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                4 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store protected from light, below 30&ordm;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">15 clear glass ampoules containing a clear colorless sterile aqueous solution of Uromitexan in a folded cardboard box.&nbsp; Ampoules contain 4 ml or 10 ml of solution.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special instructions necessary.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Baxter Oncology GmbH
+Kantstraße 2
+33790 Halle/Westphalia
+Germany
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                October 2014
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        3108234071
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2016
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Sterile VANCOMYCIN HCL, USP
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        VANCOMYCIN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        g
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Lyophilisate for solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        do not store above 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        340.3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="HOSPIRA MCPHERSON" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            HOSPIRA MCPHERSON
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2657]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Pfizer Saudi Trading
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            HOSPIRA INC
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J01XA01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        A07AA09
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Vancomycin is an antibiotic that belongs to a group of antibiotics called &ldquo;glycopeptides&rdquo;. Vancomycin works by eliminating certain bacteria that cause infections.</p><p>&nbsp;</p><p>Vancomycin powder is made into a solution for infusion or oral solution.</p><p>&nbsp;</p><p>Vancomycin is used in all age groups by infusion for the treatment of the following serious infections:</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Infections of the skin and tissues below the skin.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Infections of bone and joints.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An infection of the lungs called &quot;pneumonia&quot;.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Infection of the inside lining of the heart (endocarditis) and to prevent endocarditis in patients at risk when undergoing major surgical procedures.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Infection in the blood linked to the infections listed above.</p><p>&nbsp;</p><p>Vancomycin can be given orally in adults and children for the treatment of infection of the mucosa of the small and the large intestines with damage to the mucosae (pseudomembranous colitis), caused by the <em>Clostridium difficile</em> bacterium preventing severe diarrhea with blood in the stools.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Do not use Vancomycin </strong></p><ul><li>If you are allergic to vancomycin or any of the other ingredients of this medicine (listed in section 6).</li></ul><p><strong>&nbsp;</strong></p><p><strong>Warnings and precautions</strong></p><p>Serious side effects that may lead to loss of vision have been reported following the injection of vancomycin in the eyes. Vancomycin is not authorised for use in the eyes.</p><p>&nbsp;</p><p>Talk to your doctor or hospital pharmacist or nurse before using Vancomycin if:</p><p>&nbsp;</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You have a hearing disorder, especially if you are elderly (you may need hearing tests during treatment).</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You have kidney disorder (you will need to have your blood and kidneys tested during treatment).</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You are receiving vancomycin by infusion for the treatment of the diarrhoea associated to Clostridium difficile infection instead of orally.</p><p>&nbsp;</p><p>Serious skin reactions including toxic epidermal necrolysis (TEN), Stevens-Johnson syndrome (SJS), drug reaction with eosinophilia and systemic symptoms (DRESS), acute generalized exanthematous pustulosis (AGEP) and linear IgA bullous dermatosis (LABD) have been reported in association with vancomycin treatment. Stop using vancomycin and seek medical attention immediately if you notice any of the symptoms described in section 4.</p><p>&nbsp;</p><p>Talk to your doctor or hospital pharmacist or nurse during treatment with Vancomycin if:</p><p>&nbsp;</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You are receiving vancomycin for a long time (you may need to have your blood, hepatic and kidneys tested during treatment).</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You develop any skin reaction during the treatment.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You develop severe or prolonged diarrhoea during or after using vancomycin, consult your doctor immediately. This may be a sign of bowel inflammation (pseudomembranous colitis) which can occur following treatment with antibiotics.</p><p>&nbsp;</p><p><strong>Children</strong></p><p>Vancomycin will be used with particular care in premature infants and young infants, because their kidneys are not fully developed and they may accumulare vancomycin in the blood. This age group may need blood tests for controlling vancomycin levels in blood.</p><p>&nbsp;</p><p>Concomitant administration of vancomycin and anaesthetic agents has been associated with skin redness (erythema) and allergic reactions in children. Similarly, concomitant use with other medicines such as aminoglycoside antibiotics, nonsteroidal anti-inflammatory agents (NSAIDs, e.g. ibuprofen) or amphotericin B (medicine for fungal infection) can increase the risk of kidney damage and therefore more frequent blood and renal test may be necessary.</p><p>&nbsp;</p><p><strong>Other medicines and Vancomycin</strong></p><p>Tell your doctor or hospital pharmacist if you are taking or have recently taken or might take any other medicines.</p><p>&nbsp;</p><p>Special care is needed if you are taking/using other medicines as some could interact with vancomycin.</p><p>&nbsp;</p><p>The following medicine may interact with Vancomycin:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Anaesthetic agents</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medicine for muscle relaxation</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Other antibiotics that can affect your kidneys (e.g. streptomycin, neomycin, gentamicin, kanamycin, amikacin, tobramycin, polymixin B, piperacillin/tazobactam, colistin and bacitracin)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medicine for fungal infection (amphotericin B)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medicine for tuberculosis (viomycin)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medicine for cancer (cisplatin)</p><p>&nbsp;</p><p><strong>Pregnancy and breast-feeding</strong></p><p>If you are pregnant or breast-feeding, think you may be pregnant or are planning to have a baby, ask your doctor or hospital pharmacist for advice before taking this medicine. Vancomycin should be given during pregnancy and breast-feeding only if clearly needed. The doctor may decide that you should stop breast-feeding.</p><p>&nbsp;</p><p>Ask your doctor or pharmacist for advice before taking any medicine.</p><p><strong>&nbsp;</strong></p><p><strong>Driving and using machines</strong></p><p>Not applicable</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>You will be given Vancomycin by medical staff while you are in hospital. Your doctor will decide how much of this medicine you should receive each day and how long the treatment will last.</p><p>&nbsp;</p><p><strong><u>Dosage</u></strong></p><p><strong><u>&nbsp;</u></strong></p><p>The dose given to you will depend on:</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; your age,</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; your weight,</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the infection you have,</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; how well your kidneys are working,</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; your hearing ability,</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; any other medicines you may be taking.</p><p>&nbsp;</p><p><strong><u>Intravenous administration</u></strong></p><p><strong><u>&nbsp;</u></strong></p><p><strong>Adults and adolescents </strong></p><p>The usual daily intravenous dose is 2 g divided either as 500 mg every 6 hours or 1 g every 12 hours. Each dose should be administered at no more than 10 mg/min, or over a period of at least 60 minutes, whichever is longer.</p><p><strong>&nbsp;</strong></p><p><strong>Use in children</strong></p><p><u>Children aged from one month to less than 12 years of age</u></p><p>The usual intravenous dosage of vancomycin is 10 mg/kg per dose given every 6 hours. Each dose should be administered over a period of at least 60 minutes. Close monitoring of serum concentrations of vancomycin may be warranted in these patients.</p><p>&nbsp;</p><p><u>Preterm and term newborn infants (from 0 up to 1 month)</u></p><p>In pediatric patients up to the age of 1 month, the total daily intravenous dosage may be lower. In neonates, an initial dose of 15 mg/kg is suggested, followed by 10 mg/kg every 12 hours for neonates in the 1st week of life and every 8 hours thereafter up to the age of 1 month. Each dose should be administered over 60 minutes. In premature infants, vancomycin clearance decreases as postconceptional age decreases. Therefore, longer dosing intervals may be necessary in premature infants. Close monitoring of serum concentrations of vancomycin is recommended in these patients.</p><p>&nbsp;</p><p><strong><u>Oral administration</u></strong></p><p>&nbsp;</p><p>Oral vancomycin is used in treating antibiotic-associated pseudomembranous colitis caused by <em>C. difficile </em>and for staphylococcal enterocolitis. Vancomycin is not effective by the oral route for other types of infections. The usual adult total daily dosage is 500 mg to 2 g given in 3 or 4 divided doses for 7 to 10 days. The total daily dose in children is 40 mg/kg of body weight in 3 or 4 divided doses for 7&nbsp;to 10 days. The total daily dosage should not exceed 2 g. The appropriate dose may be diluted in 1 oz of water and given to the patients to drink. Common flavoring syrups may be added to the solution to improve the taste for oral administration. The diluted solution may be administered via a nasogastric tube.</p><p>&nbsp;</p><p><strong><u>Method of administration</u></strong></p><p>Intravenous infusion means that the medicinal product flows from an infusion bottle or bag through a tube to one of your blood vessels and into your body. Your doctor, or nurse, will always give vancomycin into your blood and not in the muscle.</p><p>&nbsp;</p><p>Vancomycin will be given into your vein for at least 60 minutes.</p><p>&nbsp;</p><p>If given for treatment of gastric disorders (so called Pseudomembranous colitis), the medicinal product must be administrated as a solution for oral use (you will take the medicine by mouth).</p><p>&nbsp;</p><p>Duration of treatment</p><p>&nbsp;</p><p>The length of treatment depends on the infection you have and may last a number of weeks.</p><p>&nbsp;</p><p>The duration of the therapy may be different depending on the individual response to treatment for every patient.</p><p>&nbsp;</p><p>During the treatment, you might have blood tests, be asked to provide urine samples and possibly have hearing tests to look for signs of possible side effects.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p>&nbsp;</p><p><strong>Infusion-Related Events</strong></p><p>During or soon after rapid infusion of vancomycin hydrochloride for injection, patients may develop anaphylactoid reactions, including hypotension, wheezing, dyspnea, urticaria, or pruritus. Rapid infusion may also cause flushing of the upper body (&ldquo;red neck&rdquo;) or pain and muscle spasm of the chest and back. These reactions usually resolve within 20 minutes but may persist for several hours. Such events are infrequent if vancomycin hydrochloride for injection is given by a slow infusion over 60 minutes. In studies of normal volunteers, infusion-related events did not occur when vancomycin hydrochloride for injection was administered at a rate of 10 mg/min or less.</p><p><strong>&nbsp;</strong></p><p><strong>Nephrotoxicity</strong></p><p>Systemic vancomycin exposure may result in acute kidney injury (AKI). The risk of AKI increases as systemic exposure/serum levels increase. Additional risk factors for AKI in patients receiving vancomycin include receipt of concomitant drugs known to be nephrotoxic, in patients with pre-existing renal impairment, or with co-morbidities that predispose to renal impairment. Interstitial nephritis has also been reported in patients receiving vancomycin.</p><p><strong>&nbsp;</strong></p><p><strong>Gastrointestinal</strong></p><p>Onset of pseudomembranous colitis symptoms may occur during or after antibiotic treatment.</p><p><strong>&nbsp;</strong></p><p><strong>Ototoxicity</strong></p><p>A few dozen cases of hearing loss associated with vancomycin have been reported. Most of these patients had kidney dysfunction or a preexisting hearing loss or were receiving concomitant treatment with an ototoxic drug. Vertigo, dizziness, and tinnitus have been reported rarely.</p><p><strong>&nbsp;</strong></p><p><strong>Hematopoietic</strong></p><p>Reversible neutropenia, usually starting 1 week or more after onset of therapy with vancomycin or after a total dosage of more than 25 g, has been reported for several dozen patients.</p><p>&nbsp;</p><p>Neutropenia appears to be promptly reversible when vancomycin is discontinued. Thrombocytopenia has rarely been reported. Although a causal relationship has not been established, reversible agranulocytosis (granulocytes &lt;500/mm<sup>3</sup>) has been reported rarely.</p><p><strong>&nbsp;</strong></p><p><strong>Phlebitis</strong></p><p>Inflammation at the injection site has been reported.</p><p><strong>&nbsp;</strong></p><p><strong>Miscellaneous</strong></p><p>Patients have been reported to have had anaphylaxis, drug fever, nausea, chills, eosinophilia, rashes including exfoliative dermatitis, Stevens-Johnson syndrome, (see section 4.4), and vasculitis in association with the administration of vancomycin.</p><p>&nbsp;</p><p>Chemical peritonitis has been reported following intraperitoneal administration.</p><p><strong>&nbsp;</strong></p><p><strong>Post Marketing Reports</strong></p><p>The following adverse reactions have been identified during post-approval use of vancomycin. Because these reactions are reported voluntarily from a population of uncertain size, it is not possible to reliably estimate their frequency or establish a causal relationship to drug exposure.</p><p>&nbsp;</p><p><em>Skin and Subcutaneous Tissue Disorders</em></p><p>Severe dermatologic reactions such as toxic epidermal necrolysis (TEN), drug reaction with eosinophilia and systemic symptoms (DRESS), acute generalized exanthematous pustulosis (AGEP), and linear IgA bullous dermatosis (LABD).</p><p>&nbsp;</p><p><strong>Reporting of side effects</strong></p><p>If you get any side effects, talk to your doctor, pharmacist or nurse. This includes any possible side effects not listed in this leaflet. You can also report side effects directly via national reporting system.</p><p>By reporting side effects you can help provide more information on the safety of this medicine.</p><p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Saudi Arabia</strong></p><p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>National Pharmacovigilance Centre (NPC)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Call center: 19999</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail: npc.drug@sfda.gov.sa</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Website: https://ade.sfda.gov.sa/</p></td></tr></tbody></table><p><strong>&nbsp;</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Other</strong><strong> GCC states</strong></p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please Contact the relevant competent authority.</p></td></tr></tbody></table><p><strong>&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Keep this medicine out of the sight and reach of children.</p><p><strong>&nbsp;</strong></p><p>Do not use this medicine after the expiry date which is stated on the outer carton and vial as EXP. The expiry date refers to the last day of that month.</p><p><strong>&nbsp;</strong></p><p><em>Powder as packaged for sale:</em></p><p>Store below 25&nbsp;&deg;C.</p><p>Keep the vial in the outer carton in order to protect from light.</p><p>&nbsp;</p><p><em>Reconstituted concentrate:</em></p><p>The reconstituted concentrate may be stored in a refrigerator for 14 days without significant loss of potency.</p><p>&nbsp;</p><p><em>Diluted product:</em></p><p>Solutions that are diluted with 5% Dextrose Injection or 0.9% Sodium Chloride Injection may be stored in a refrigerator for 14 days without significant loss of potency.</p><p>&nbsp;</p><p>Solutions that are diluted with the following infusion fluids may be stored in a refrigerator for 96 hours:</p><p>5% Dextrose Injection and 0.9% Sodium Chloride Injection USP</p><p>Lactated Ringer&rsquo;s Injection USP</p><p>Lactated Ringer&rsquo;s and 5% Dextrose Injection USP</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>The active substance is vancomycin.</p><p>Each vial contains 1 g vancomycin hydrochloride equivalent to 0.67 mmol.</p><p>&nbsp;</p><p>After reconstitution each millilitre (ml) of solution contains 50 milligrams (mg) of vancomycin.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Vancomycin Hydrochloride is a lyophilized powder which comes in glass containers called vials.
+
+It may be supplied in packs containing:
+• 10 x 1 g vial
+
+The medicine is a powder that has to be dissolved before you receive it.
+
+Advice/medical education
+
+Antibiotics are used to cure bacterial infections. They are ineffective against viral infections.
+
+If your doctor has prescribed antibiotics, you need them precisely for your current illness.
+
+Despite antibiotics, some bacteria may survive or grow. This phenomenon is called resistance: some antibiotic treatments become ineffective.
+
+Misuse of antibiotics increases resistance. You may even help bacteria become resistant and therefore delay your cure or decrease antibiotic efficacy if you do not respect appropriate:
+-	dosage
+-	schedules
+-	duration of treatment
+
+Consequently, to preserve the efficacy of this drug:
+1 - Use antibiotics only when prescribed.
+2 - Strictly follow the prescription.
+3 - Do not re-use an antibiotic without medical prescription, even if you want to treat a similar illness.
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Marketing authorization holder:</strong></p><p>Hospira Inc, Lake Forest, United states</p><p>&nbsp;</p><p><strong>Manufacturer:</strong></p><p>Hospira Inc, McPherson, United states</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                October 2021.
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">فانكومايسين هو مضاد حيوي ينتمي إلى مجموعة من المضادات الحيوية تسمى &quot;الببتيدات السكرية&quot;. يعمل فانكومايسين عن طريق القضاء على بعض البكتيريا المسببة لحالات العدوى.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يتم تحويل مسحوق فانكومايسين إلى محلول للتسريب أو محلول يتم استخدامه عن طريق الفم.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يُستخدم فانكومايسين عن طريق التسريب مع جميع الفئات العمرية لعلاج حالات العدوى الخطيرة التالية:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حالات العدوى بالجلد والأنسجة تحت الجلد.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حالات العدوى بالعظم والمفاصل.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عدوى بالرئتين تسمى &quot;الالتهاب الرئوي&quot;.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عدوى بالبطانة الداخلية للقلب (التهاب الشغاف) ولمنع الإصابة بالتهاب الشغاف في المرضى المعرضين لخطر الإصابة به عند الخضوع لإجراءات جراحية كبرى.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عدوى بالدم مرتبطة بحالات العدوى المدرجة أعلاه.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يمكن إعطاء فانكومايسين عن طريق الفم للبالغين والأطفال لعلاج عدوى الغشاء المخاطي للأمعاء الدقيقة والغليظة المصحوبة بأضرار بالغشاء المخاطي (التهاب القولون الغشائي الكاذب)، الناجمة عن البكتيريا المطثية العسيرة (كلوستريديوم ديفيسيل) مما يمنع الإصابة بالإسهال الشديد المصحوب بدم في البراز.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>موانع استعمال فانكومايسين </strong></p><ul><li dir="RTL">إذا كنت مصابًا بالحساسية تجاه فانكومايسين أو أي من المكونات الأخرى لهذا الدواء (المدرجة في القسم ٦).</li></ul><p dir="RTL"><strong>الاحتياطات عند استعمال فانكومايسين</strong></p><p dir="RTL">تم الإبلاغ عن أعراض جانبية خطيرة يمكن أن تؤدي إلى فقدان البصر بعد تلقي حقن فانكومايسين في العينين. واستخدام فانكومايسين في العينين غير مصرح به.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">تحدث مع طبيبك أو الصيدلي أو الممرضة بالمستشفى قبل استعمال فانكومايسين إذا:</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>كنت تعاني من اضطراب بالسمع، خاصة إذا كنت مسنًا (قد تحتاج إلى إجراء اختبارات للسمع أثناء العلاج).</p><p dir="RTL"><strong>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>كنت تعاني من اضطراب بالكلى (سوف تحتاج إلى إجراء اختبارات للدم والكليتين أثناء العلاج).</p><p dir="RTL"><strong>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>كنت تتلقى فانكومايسين عن طريق التسريب بدلًا من الفم كعلاج للإسهال المرتبط بعدوى المطثية العسيرة (كلوستريديوم ديفيسيل).</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">تم الإبلاغ عن الإصابة بتفاعلات جلدية خطيرة، بما في ذلك تقشر الأنسجة المتموتة البشروية التسممي (TEN)، ومتلازمة ستيفنز-جونسون (SJS)، والتفاعل الدوائي مع فرط اليوزينات والأعراض الجهازية (DRESS)، والبثار الطفحي المعمم الحاد (AGEP)، والجلاد الفقاعي الخطي للجلوبيولين المناعي أ (LABD)، مرتبطة بالعلاج بفانكومايسين. فأوقف استخدام فانكومايسين واطلب العناية الطبية على الفور إذا لاحظت أيًا من الأعراض المحددة في القسم ٤.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تحدث مع طبيبك أو الصيدلي أو الممرضة بالمستشفى أثناء العلاج بفانكومايسين إذا:</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>كنت تتلقى فانكومايسين لفترة طويلة من الزمن (قد تحتاج إلى إجراء اختبارات للدم والكليتين والكبد أثناء العلاج).</p><p dir="RTL"><strong>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>أصبت بأي تفاعل بالجلد أثناء العلاج.</p><p dir="RTL"><strong>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>أصبت بإسهال شديد أو مطول أثناء أو بعد استخدام فانكومايسين، فاستشر طبيبك على الفور. قد تكون هذه علامة على التهاب الأمعاء (التهاب القولون الغشائي الكاذب) الذي قد يحدث بعد العلاج بالمضادات الحيوية.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الأطفال</strong></p><p dir="RTL">يُستخدم فانكومايسين بعناية خاصة مع الرضع المبتسرين وحديثي الولادة، نظرًا لعدم اكتمال نمو الكلى لديهم ولإمكانية تراكم فانكومايسين في الدم. قد تحتاج هذه الفئة العمرية إلى إجراء فحوصات دم للتحكم في مستويات فانكومايسين بالدم.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">اقترن تناول فانكومايسين بالتزامن مع عوامل التخدير بحدوث احمرار بالجلد (الحمامي) وتفاعلات حساسية لدى الأطفال. وبالمثل، يمكن أن يزيد الاستخدام المتزامن مع أدوية أخرى مثل المضادات الحيوية الأمينوجليكوزيدية، أو العوامل المضادة للالتهاب غير الستيرويدية (NSAID، على سبيل المثال، إيبوبروفين)، أو أمفوتيريسين ب (علاج للعدوى الفطرية) خطر الإصابة بتلف الكلى ولذلك قد يكون من الضروري إجراء فحوصات دم وكلى بشكل أكثر تكرارًا.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>التداخلات الدوائية مع أخذ هذا المستحضر مع أي أدوية أخرى أو أعشاب أو مكملات غذائية</strong></p><p dir="RTL">أخبر طبيبك أو صيدلي المستشفى إذا كنت تتناول أي أدوية أخرى أو كنت قد تناولتها مؤخرًا أو من المحتمل أن تتناولها.</p><p dir="RTL">&nbsp;</p><p dir="RTL">ينبغي توخي حذر خاص إذا كنت تتناول/تستخدم أدوية أخرى، إذ قد يتفاعل بعضها مع فانكومايسين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يمكن أن تتفاعل الأدوية التالية مع فانكومايسين:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عوامل التخدير</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية إرخاء العضلات</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المضادات الحيوية الأخرى التي يمكن أن تؤثر في الكليتين (مثل ستربتوميسين، ونيوميسين، وجنتاميسين، وكاناميسين، وأميكاسين، وتوبراميسين، وبوليميكسين ب، وبيبيراسيلين/تازوباكتام، وكوليستين، وباسيتراسين)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية علاج العدوى الفطرية (أمفوتيريسين ب)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية علاج السل (فيوميسين)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية علاج السرطان (سيسبلاتين)</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الحمل والرضاعة</strong></p><p dir="RTL">إذا كنتِ حاملًا أو ترضعين رضاعة طبيعية، أو تعتقدين أنكِ حامل أو تخططين لإنجاب طفل، فاطلبي المشورة من طبيبكِ أو صيدلي المستشفى قبل أخذ هذا الدواء. لا ينبغي إعطاء فانكومايسين خلال الحمل والرضاعة الطبيعية إلا إذا كانت هناك حاجة واضحة إليه. ويمكن أن يقرر الطبيب أنه ينبغي لكِ إيقاف الرضاعة الطبيعية.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب عليكِ استشارة طبيبكِ أو الصيدلي قبل تناول أي دواء.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>تأثير فانكومايسين هيدروكلوريد على القيادة واستخدام الآلات</strong></p><p dir="RTL">لا ينطبق</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">سيعطيك الطاقم الطبي فانكومايسين أثناء وجودك في المستشفى. سيقرر طبيبك المقدار الذي ينبغي أن تتلقاه من هذا الدواء كل يوم والمدة الزمنية لاستمرار العلاج.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong><u>الجرعة</u></strong></p><p dir="RTL"><strong><u>&nbsp;</u></strong></p><p dir="RTL">ستعتمد الجرعة المُعطاة لك على:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عمرك،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; وزنك،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; العدوى التي تعاني منها،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مدى الكفاءة التي تعمل بها كليتاك،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قدرتك على السمع،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أي أدوية أخرى قد تكون تتناولها.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong><u>الاستعمال عن طريق الوريد</u></strong></p><p dir="RTL"><strong><u>&nbsp;</u></strong></p><p dir="RTL"><strong>البالغون والمراهقون</strong></p><p dir="RTL">الجرعة اليومية المعتادة التي تؤخذ عن طريق الوريد هي ٢ جم مقسمة إما إلى ٥٠٠ ملجم كل ٦ ساعات أو ١ جم كل ١٢ ساعة. ينبغي أن يتم تناول ما لا يزيد عن ١٠ ملجم/دقيقة في كل جرعة، أو أن يتم تناول كل جرعة على مدى زمني يبلغ ٦٠ دقيقة على الأقل، أيهما أطول.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الاستخدام مع الأطفال</strong></p><p dir="RTL"><u>الأطفال بعمر شهر واحد إلى أقل من ١٢ عامًا</u></p><p dir="RTL">الجرعة المعتادة التي تؤخذ من فانكومايسين عن طريق الوريد هي ١٠ ملجم/كلجم لكل جرعة تعطى كل ٦ ساعات. يوصى بتناول كل جرعة على مدى زمني يبلغ ٦٠ دقيقة على الأقل. قد يلزم إجراء مراقبة دقيقة لتركيزات فانكومايسين في مصل الدم لهؤلاء المرضى.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>الرضع المبتسرون وحديثو الولادة غير مكتملي النمو (من الولادة حتى شهر واحد)</u></p><p dir="RTL">في المرضى من الأطفال حتى عمر شهر واحد، قد يكون إجمالي مقدار الجرعة اليومية التي تؤخذ عن طريق الوريد أقل. في الأطفال حديثي الولادة، يقترح أن يتم تناول جرعة مبدئية تبلغ ١٥ ملجم/كلجم، تليها جرعة تبلغ ١٠ ملجم/كلجم كل ١٢ ساعة للأطفال حديثي الولادة في أول أسبوع من العمر وكل ٨ ساعات بعد ذلك وحتى عمر شهر واحد. يوصى بتناول كل جرعة على مدى زمني يبلغ ٦٠ دقيقة. في الرضع المبتسرين، تقل تصفية فانكومايسين مع انخفاض عمر ما بعد الإخصاب. ولذلك، قد تكون الفترات الفاصلة بين الجرعات الأطول ضرورية في الرضع المبتسرين. يوصى بالمراقبة الدقيقة لتركيزات فانكومايسين في مصل الدم لهؤلاء المرضى.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong><u>الاستعمال عن طريق الفم</u></strong></p><p dir="RTL"><strong><u>&nbsp;</u></strong></p><p dir="RTL">يُستخدم فانكومايسين عن طريق الفم لعلاج التهاب القولون الغشائي الكاذب المرتبط بالمضادات الحيوية الناجم عن البكتيريا المطثية العسيرة (كلوستريديوم ديفيسيل) والتهاب الأمعاء الدقيقة والغليظة العنقودي. فانكومايسين غير فعال إذا تم تناوله عن طريق الفم لعلاج أنواع أخرى من العدوى. إجمالي الجرعة اليومية المعتادة للبالغين هي ٥٠٠ ملجم إلى ٢ جم تعطى في ٣ أو ٤ جرعات مقسمة على ٧ إلى ١٠ أيام. إجمالي الجرعة اليومية للأطفال هي ٤٠ ملجم/كلجم من وزن الجسم في ٣ أو ٤ جرعات مقسمة على ٧ إلى ١٠ أيام. ينبغي ألا تتجاوز إجمالي الجرعة اليومية ٢ جم. من الممكن أن تخفف الجرعة المناسبة في أونصة واحدة من الماء وتعطى إلى المريض للشرب. من الممكن أن تضاف بعض المشروبات المنكهة الشائعة إلى المحلول لتحسين الطعم للاستعمال عبر الفم. يمكن أن يتم تناول المحلول المخفف من خلال أنبوب أنفي معدي.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong><u>طريقة الاستعمال</u></strong></p><p dir="RTL">يعني التسريب عن طريق الوريد أن المنتج الطبي يتدفق من زجاجة أو كيس تسريب عبر أنبوب إلى أحد أوعيتك الدموية وإلى جسمك. سيعطيك طبيبك، أو الممرضة، فانكومايسين دائمًا في مجرى الدم وليس العضل.</p><p dir="RTL">&nbsp;</p><p dir="RTL">سيعطى فانكومايسين في وريدك لمدة ٦٠ دقيقة على الأقل.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا أُعطى فانكومايسين لعلاج الاضطرابات المعدية (التي يُطلق عليها التهاب القولون الغشائي الكاذب)، يجب أن يتم تناول المنتج الدوائي كمحلول يستخدم عن طريق الفم (ستتناول الدواء عبر الفم).</p><p dir="RTL">&nbsp;</p><p dir="RTL">مدة العلاج</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">تعتمد مدة العلاج على العدوى التي تعاني منها وقد تستمر لعدة أسابيع.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد تختلف مدة العلاج حسب الاستجابة الفردية للعلاج لكل مريض.</p><p dir="RTL">&nbsp;</p><p dir="RTL">خلال فترة العلاج، قد تُجرى فحوصات دم وقد يُطلب منك تقديم عينات بول وربما تخضع لاختبارات سمع للبحث عن علامات الأعراض الجانبية المحتملة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">كما هو الحال بالنسبة لجميع الأدوية، يمكن أن يسبب هذا الدواء أعراضًا جانبية، غير أنها لا تصيب الجميع.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الأحداث ذات الصلة بالتسريب</strong></p><p dir="RTL">أثناء التسريب السريع لفانكومايسين هيدروكلوريد للحقن أو بعده بفترة وجيزة، قد يُصاب المرضى بتفاعلات تأقانية، بما في ذلك انخفاض ضغط الدم، أو الأزيز، أو ضيق التنفس، أو الارتيكاريا، أو الحكة. وقد يتسبب التسريب السريع أيضًا في احمرار الجزء العلوي من الجسم (&quot;الرقبة الحمراء&quot;) أو حدوث ألم وتشنج عضلي في الصدر والظهر. عادة ما يتم الشفاء من هذه التفاعلات في غضون ٢٠ دقيقة، ولكنها قد تستمر لعدة ساعات. تعتبر مثل هذه الأحداث غير شائعة الحدوث إذا تم إعطاء فانكومايسين هيدروكلوريد للحقن عن طريق التسريب البطيء على مدار ٦٠ دقيقة. في الدراسات التي أٌجريت على متطوعين عاديين، لم تظهر الأحداث المتعلقة بالتسريب عندما تم إعطاء فانكومايسين هيدروكلوريد للحقن بمعدل ١٠ ملجم/دقيقة أو أقل.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>السمية الكلوية</strong></p><p dir="RTL">قد يؤدي التعرض الجهازي لفانكومايسين إلى حدوث إصابة كلوية حادة (AKI). يزداد خطر الإصابة الكلوية الحادة مع زيادة مقدار التعرض الجهازي/مستويات الدواء في مصل الدم. تتضمن عوامل الخطر الإضافية للإصابة الكلوية الحادة في المرضى الذين يتلقون فانكومايسين، تلقي العقاقير المعروفة بأنها تسبب سمية للكلى بالتزامن، وذلك في المرضى الذين يعانون من الخلل الكلوي الموجود مسبقًا أو من الأمراض المصاحبة التي تجعلهم عرضة للإصابة بالخلل الكلوي. كما قد تم الإبلاغ عن التهاب الكلية الخلالي في المرضى الذين يتلقون فانكومايسين.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>التفاعلات المعدية المعوية</strong></p><p dir="RTL">قد يبدأ ظهور أعراض التهاب القولون الغشائي الكاذب أثناء العلاج بالمضادات الحيوية أو بعده.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تسمم الأذن</strong></p><p dir="RTL">تم الإبلاغ عن بضع عشرات من حالات فقدان السمع المرتبطة بفانكومايسين. كان معظم هؤلاء المرضى يعانون من خلل وظيفي بالكلى أو من فقدان سمع موجود مسبقًا أو كانوا يتلقون علاجًا متزامنًا بعقار سام للأذن. نادرًا ما تم الإبلاغ عن حدوث دوخة ودوار وطنين الأذن.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>تفاعلات مكونات الدم</strong></p><p dir="RTL">تم الإبلاغ عن قلة العدلات القابلة للعكس من عشرات المرضى، وهي تبدأ عادةً بعد أسبوع واحد أو أكثر من بدء العلاج بفانكومايسين أو بعد جرعة كلية تزيد عن ٢٥ جم.</p><p dir="RTL">&nbsp;</p><p dir="RTL">ويبدو أن قلة العدلات قابلة للعكس على الفور عندما يتم التوقف عن استخدام فانكومايسين. نادرًا ما تم الإبلاغ عن قلة الصفيحات. وبالرغم من عدم إثبات وجود علاقة سببية، إلا أنه نادرًا ما تم الإبلاغ عن ندرة المحببات القابلة للعكس (الخلايا المحببة أقل من ٥٠٠ مم مكعب).</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الالتهاب الوريدي</strong></p><p dir="RTL">تم الإبلاغ عن التهاب في موضع الحقن.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>متنوعات</strong></p><p dir="RTL">تم الإبلاغ عن إصابة المرضى بالتأق، والحمى المرتبطة بالعقار، والغثيان، والقشعريرة، وكثرة اليوزينيات، والطفح الجلدي، بما في ذلك التهاب الجلد التقشري، ومتلازمة ستيفنز-جونسون، (انظر القسم ٤.٤) والتهاب الأوعية المرتبط باستخدام فانكومايسين.</p><p dir="RTL">تم الإبلاغ عن التهاب الصفاق الكيميائي بعد الحقن داخل الصفاق.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>تقارير ما بعد التسويق</strong></p><p dir="RTL">تم التعرف على التفاعلات الضارة التالية أثناء استخدام فانكومايسين بعد الموافقة عليه. ونظرًا لأن هذه التفاعلات يتم الإبلاغ عنها طوعيًا من فئة مرضى غير محددة الحجم، فمن غير الممكن تقدير معدل تكرارها أو إثبات وجود علاقة سببية بالتعرض للعقار على نحو موثوق.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>اضطرابات الجلد والنسيج تحت الجلد</em></p><p dir="RTL">تفاعلات جلدية خطيرة مثل تقشر الأنسجة المتموتة البشروية التسممي (TEN)، والتفاعل الدوائي مع فرط اليوزينات والأعراض الجهازية (DRESS)، والبثار الطفحي المعمم الحاد (AGEP)، والجلاد الفقاعي الخطي للجلوبيولين المناعي أ (LABD).</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الإبلاغ عن الأعراض الجانبية</strong></p><p dir="RTL">إذا أصبت بأي أعراض جانبية، فتحدث إلى طبيبك أو الصيدلي أو الممرضة. يتضمن هذا أي أعراض جانبية محتملة غير مدرجة في هذه النشرة. يمكنك أيضًا الإبلاغ عن الأعراض الجانبية مباشرةً عبر نظام الإبلاغ القومي.</p><p dir="RTL">بالإبلاغ عن الأعراض الجانبية، يمكنك المساعدة في توفير المزيد من المعلومات حول سلامة هذا الدواء.</p><p dir="RTL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p dir="RTL"><strong>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>المملكة العربية السعودية</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL">المركز الوطني للتيقظ الدوائي</p><ul><li dir="RTL">مركز الاتصال الموحد: ١٩٩٩٩</li><li dir="RTL">البريد الإلكتروني: npc.drug@sfda.gov.sa</li><li dir="RTL">الموقع الإلكتروني: https://ade.sfda.gov.sa&nbsp;</li></ul></td></tr></tbody></table><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>دول الخليج الأخرى</strong></p><p dir="RTL">&nbsp;</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><em>-&nbsp;&nbsp; </em><em>الرجاء الاتصال بالمؤسسات والهيئات الوطنية في كل دولة.</em></p></td></tr></tbody></table>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">احفظ هذا الدواء بعيدًا عن مرأى ومتناول الأطفال</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">لا تستخدم هذا الدواء بعد تاريخ انتهاء الصلاحية المُدوّن على العبوة الكرتونية الخارجية والقارورة بعد الرمز &quot;EXP&quot;. وتاريخ انتهاء الصلاحية يشير إلى آخر يوم من الشهر المذكور.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>المسحوق كما هو معبأ للبيع:</em></p><p dir="RTL">خزنه في درجة حرارة أقل من ٢٥ درجة مئوية.</p><p dir="RTL">احتفظ بالقارورة في العبوة الكرتونية الخارجية لحمايتها من الضوء، وخزنها في درجة حرارة ٢٥ درجة مئوية أو أقل.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>الركازة المحضرة:</em></p><p dir="RTL">يمكن تخزين الركازة المحضرة في الثلاجة لمدة ١٤ يومًا دون فقدان كبير للفعالية.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>المستحضر المخفف:</em></p><p dir="RTL">يمكن تخزين المحاليل المخففة بمحلولي ٥ ٪ دكستروز و٠,٩ ٪ كلوريد الصوديوم المخصصين للحقن في الثلاجة لمدة ١٤ يومًا دون فقدان كبير للفعالية.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يمكن تخزين المحاليل المخففة بسوائل التسريب التالية في الثلاجة لمدة ٩٦ ساعة:</p><p dir="RTL">محلول ٥ ٪ دكستروز ومحلول ٠,٩ ٪ كلوريد الصوديوم المخصص للحقن وفقًا لدستور الأدوية الأمريكي (USP)</p><p dir="RTL">محلول رينجر لاكتات المخصص للحقن وفقًا لدستور الأدوية الأمريكي</p><p dir="RTL">محلول رينجر لاكتات و٥ ٪ دكستروز المخصصان للحقن وفقًا لدستور الأدوية الأمريكي</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">المادة الفعالة هي فانكومايسين.</p><p dir="RTL">تحتوي كل قارورة على جرام واحد من فانكومايسين هيدروكلوريد مما يعادل ٠,٦٧ ملليمول.</p><p dir="RTL">&nbsp;</p><p dir="RTL">بعد التحضير، يحتوي كل ملليلتر (مل) من المحلول على ٥٠ مليجرام (ملجم) من فانكومايسين.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">فانكومايسين هيدروكلوريد هو عبارة عن بودرة مجففة بالتجميد تأتي في حاويات زجاجية (قوارير).</p><p dir="RTL">&nbsp;</p><p dir="RTL">يمكن توفير الدواء في عبوات تحتوي على:</p><p dir="RTL">&bull; ١٠ قارورات &times; ١ جم</p><p dir="RTL">&nbsp;</p><p dir="RTL">الدواء عبارة عن مسحوق يجب إذابته قبل أن تتلقاه.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>نصيحة/توعية طبية</strong></p><p dir="RTL">&nbsp;</p><p dir="RTL">يتم استخدام المضادات الحيوية لعلاج العداوى البكتيرية. وهي غير فعالة في مواجهة العداوى الفيروسية.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا وصف لك طبيبك مضادات حيوية، فأنت بحاجة إليها تحديدًا لمرضك الحالي.</p><p dir="RTL">&nbsp;</p><p dir="RTL">وعلى الرغم من استخدام المضادات الحيوية، قد تبقى بعض البكتيريا على قيد الحياة أو تنمو. وتُسمَّى هذه الظاهرة بالمقاومة: حيث تصبح بعض العلاجات بالمضادات الحيوية غير فعالة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يزيد سوء استخدام المضادات الحيوية من مقاومة البكتيريا. قد تساهم أنت حتى تصبح البكتيريا مُقاوِمة وبالتالي يتأخر علاجك أو تقل فعالية المضادات الحيوية إذا كنت لا تراعي ملاءمة كل من:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الجرعة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المواعيد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مدة العلاج</p><p dir="RTL">&nbsp;</p><p dir="RTL">وبالتالي، للحفاظ على فعالية هذا العقار:</p><p dir="RTL">١ - استخدم المضادات الحيوية فقط عندما يتم وصفها.</p><p dir="RTL">٢ - اتبع الوصفة الطبية بدقة.</p><p dir="RTL">٣ - لا تقم بإعادة استخدام مضاد حيوي بدون وصفة طبية، حتى لو كنت ترغب في علاج مرض مماثل.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>مالك رخصة التسويق:</strong></p><p dir="RTL">Hospira Inc, Lake Forest, United states</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الشركة الصانعة:</strong></p><p dir="RTL">Hospira Inc, McPherson, United states</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            أكتوبر/تشرين الأول ٢٠٢١
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

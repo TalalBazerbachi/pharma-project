@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        0106233762
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2023
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Somavert
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PEGVISOMANT
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Subcutaneous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder and solvent for solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        Store in a refrigerator (2°C – 8°C), do not freeze
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        14783.30
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Pfizer Manufacturing Belgium N.V." />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Pfizer Manufacturing Belgium N.V.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2657]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Pfizer Saudi Trading
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Pfizer Europe MA EEIG
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                SOMAVERT 10 mg powder and solvent for solution for injection
+SOMAVERT 15 mg powder and solvent for solution for injection
+SOMAVERT 20 mg powder and solvent for solution for injection
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                SOMAVERT 10 mg powder and solvent for solution for injection
+One vial contains 10 mg of pegvisomant.
+After reconstitution, 1 ml of solution contains 10 mg of pegvisomant.*
+
+Excipient with known effect
+
+The 10 mg strength of the medicinal product contains 0.4 mg of sodium per vial of powder.
+
+SOMAVERT 15 mg powder and solvent for solution for injection
+One vial contains 15 mg of pegvisomant.
+After reconstitution, 1 ml of solution contains 15 mg of pegvisomant.*
+
+Excipient with known effect
+
+The 15 mg strength of the medicinal product contains 0.4 mg of sodium per vial of powder.
+
+SOMAVERT 20 mg powder and solvent for solution for injection
+One vial contains 20 mg of pegvisomant.
+After reconstitution, 1 ml of solution contains 20 mg of pegvisomant.*
+
+Excipient with known effect:
+The 20 mg strength of the medicinal product contains 0.4 mg of sodium per vial of powder.
+
+*produced in Escherichia coli cells by recombinant DNA technology.
+
+For the full list of excipients, see section 6.1.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder and solvent for solution for injection (powder for injection).
+
+The powder is white to slightly off white.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment of adult patients with acromegaly who have had an inadequate response to surgery and/or radiation therapy and in whom an appropriate medical treatment with somatostatin analogues did not normalise IGF‑I concentrations or was not tolerated.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment should be initiated under the supervision of a physician experienced in the treatment of acromegaly.</p><p>&nbsp;</p><p><u>Posology</u></p><p><u>&nbsp;</u></p><p>A loading dose of 80&nbsp;mg pegvisomant should be administered subcutaneously under medical supervision. Following this, SOMAVERT 10&nbsp;mg reconstituted in 1&nbsp;ml of solvent should be administered once daily as a subcutaneous injection.</p><p>&nbsp;</p><p>Dose adjustments should be based on serum IGF‑I levels.<strong> </strong>Serum IGF‑I concentrations should be measured every four to six weeks and appropriate dose adjustments made in increments of 5&nbsp;mg/day in order to maintain the serum IGF‑I concentration within the age‑adjusted normal range and to maintain an optimal therapeutic response.</p><p>&nbsp;</p><p><em>Assessment of baseline levels of liver enzymes prior to initiation of SOMAVERT</em></p><p>Prior to the start of SOMAVERT, patients should have an assessment of baseline levels of liver tests (LTs) [serum alanine aminotransferase (ALT), aspartate aminotransferase (AST), serum total bilirubin (TBIL), and alkaline phosphatase (ALP)]. For recommendations regarding initiation of SOMAVERT based on baseline LTs and recommendations for monitoring of LTs while on SOMAVERT, refer to Table A in <em>Special</em> w<em>arnings and precautions for use (4.4)</em>.</p><p>&nbsp;</p><p>The maximum dose should not exceed 30&nbsp;mg/day.</p><p>&nbsp;</p><p>For the different dose regimens, the following strengths are available: SOMAVERT 10&nbsp;mg, SOMAVERT 15&nbsp;mg, SOMAVERT 20&nbsp;mg.</p><p>&nbsp;</p><p><em>Paediatric population</em></p><p>The safety and efficacy of SOMAVERT in children aged 0 to 17&nbsp;years have not been established. No data are available.</p><p><u>&nbsp;</u></p><p><em>Elderly</em></p><p>No dose adjustment is required.</p><p>&nbsp;</p><p><em>Hepatic or renal impairment</em></p><p>The safety and efficacy of SOMAVERT in patients with renal or hepatic insufficiency has not been established.</p><p><u>&nbsp;</u></p><p><u>Method of administration</u></p><p>&nbsp;</p><p>Pegvisomant should be administered by subcutaneous injection.</p><p>&nbsp;</p><p>The site of injection should be rotated daily to help prevent lipohypertrophy.</p><p>&nbsp;</p><p>For instructions on reconstitution of the medicinal product before administration, see section&nbsp;6.6.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Traceability</u></p><p>&nbsp;</p><p>In order to improve the traceability of biological medicinal products, the name and the batch number of the administered product should be clearly recorded.</p><p>&nbsp;</p><p><u>Growth hormone‑secreting tumours</u></p><p>&nbsp;</p><p>As growth hormone‑secreting pituitary tumours may sometimes expand, causing serious complications (e.g. visual field defects), it is essential that all patients be carefully monitored. If evidence of tumour expansion appears, alternative procedures may be advisable.</p><p>&nbsp;</p><p><u>Serum IGF‑1 monitoring</u></p><p>&nbsp;</p><p>Pegvisomant is a potent antagonist of growth hormone action. A growth hormone deficient state may result from administration of this medicinal product, despite the presence of elevated serum growth hormone levels. Serum IGF‑I concentrations should be monitored and maintained within the age‑adjusted normal range by adjustment of the pegvisomant dose.</p><p>&nbsp;</p><p><u>ALT or AST elevations</u></p><p>&nbsp;</p><p>Prior to the start of SOMAVERT, patients should have an assessment of baseline levels of liver tests [serum alanine aminotransferase (ALT), aspartate aminotransferase (AST), serum total bilirubin (TBIL), and alkaline phosphatase (ALP)].</p><p>Evidence of obstructive biliary tract disease should be ruled out in patients with elevations of ALT and AST or in patients with a prior history of treatment with any somatostatin analogue. Administration of pegvisomant should be discontinued if signs of liver disease persist.</p><p>For recommendations regarding initiation of SOMAVERT, based on baseline liver tests (LTs) and recommendations for monitoring of liver tests while on SOMAVERT, refer to Table A.</p><p>&nbsp;</p><p><strong>Table A: Recommendations for initiation of SOMAVERT treatment based on baseline LTs and for periodic monitoring of LTs during SOMAVERT treatment</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>Baseline LT Levels</strong></p></td><td style="vertical-align:top"><p><strong>Recommendations</strong></p></td></tr><tr><td><p>Normal</p></td><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp; May treat with SOMAVERT.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp; Serum concentrations of ALT and AST should be monitored at 4- to 6-week intervals for the first 6 months of treatment with SOMAVERT, or at any time in patients exhibiting symptoms suggestive of hepatitis.</p></td></tr><tr><td><p>Elevated, but less than or</p><p>equal to 3 times ULN</p></td><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp; May treat with SOMAVERT; however, monitor LTs monthly for at least 1 year after initiation of therapy and then bi-annually for the next year.</p></td></tr><tr><td><p>Greater than 3 times ULN</p></td><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp; Do not treat with SOMAVERT until a comprehensive workup establishes the cause of the patient&rsquo;s liver dysfunction.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp; Determine if cholelithiasis or choledocholithiasis is present, particularly in patients with a history of prior therapy with somatostatin analogs.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp; Based on the workup, consider initiation of therapy with SOMAVERT.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp; If the decision is to treat, LTs and clinical symptoms should be monitored very closely.</p></td></tr></tbody></table><p>Abbreviations: ALT = alanine aminotransferase; AST = aspartate transaminase; LT = liver test; ULN&nbsp;= upper limit of normal.</p><p>&nbsp;</p><p>If a patient develops LT elevations, or any other signs or symptoms of liver dysfunction while receiving SOMAVERT, the following patient management is recommended (Table B).</p><p>&nbsp;</p><p><strong>Table B. Clinical recommendations based on abnormal liver test results while on SOMAVERT</strong></p><p><strong>&nbsp;</strong></p><table border="1" cellspacing="0" cellpadding="0" style="width:631px"><tbody><tr><td style="vertical-align:top"><p><strong>LT Levels and Clinical Signs/Symptoms</strong></p></td><td style="vertical-align:top"><p><strong>Recommendations</strong></p></td></tr><tr><td style="vertical-align:top"><p>Elevated, but less than or equal to 3&nbsp;times ULN</p></td><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp; May continue therapy with SOMAVERT. However, monitor LTs monthly to determine if further increases occur.</p></td></tr><tr><td style="vertical-align:top"><p>Greater than 3 but less than 5 times ULN (without signs/symptoms of hepatitis or other liver injury, or increase in serum TBIL)</p></td><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp; May continue therapy with SOMAVERT. However, monitor LTs weekly to determine if further increases occur (see below).</p><p>&middot;&nbsp;&nbsp;&nbsp; Perform a comprehensive hepatic workup to discern if &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an alternative cause of liver dysfunction is present.</p></td></tr><tr><td style="vertical-align:top"><p>At least 5 times ULN, or transaminase elevations at least 3 times ULN associated with any increase in serum TBIL (with or without signs/symptoms of hepatitis or other liver injury)</p></td><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp; Discontinue SOMAVERT immediately.</p><p>&middot;&nbsp;&nbsp;&nbsp; Perform a comprehensive hepatic workup, including serial LTs, to determine if and when serum levels return to normal.</p><p>&middot;&nbsp;&nbsp;&nbsp; If LTs normalise (regardless of whether an alternative cause of the liver dysfunction is discovered), consider cautious reinitiation of therapy with SOMAVERT, with frequent LT monitoring.</p></td></tr><tr><td style="vertical-align:top"><p>Signs or symptoms suggestive of hepatitis or other liver injury (e.g., jaundice, bilirubinuria, fatigue, nausea, vomiting, right upper quadrant pain, ascites, unexplained oedema, easy bruisability)</p></td><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp; Immediately perform a comprehensive hepatic workup.</p><p>&middot;&nbsp;&nbsp;&nbsp; If liver injury is confirmed, the drug should be discontinued.</p></td></tr></tbody></table><p>&nbsp;</p><p><u>Hypoglycaemia</u></p><p><u>&nbsp;</u></p><p>The study conducted with pegvisomant in diabetic patients treated either by insulin or by oral hypoglycaemic medicinal products revealed the risk of hypoglycaemia in this population. Therefore, in acromegalic patients with diabetes mellitus, doses of insulin or hypoglycaemic medicinal products may need to be decreased (see section&nbsp;4.5).</p><p>&nbsp;</p><p><u>Improved fertility</u></p><p>&nbsp;</p><p>The therapeutic benefits of a reduction in IGF‑I concentration which results in improvement of the patient&rsquo;s clinical condition could potentially also improve fertility in female patients (see section&nbsp;4.6).</p><p><u>&nbsp;</u></p><p><u>Pregnancy</u></p><p><u>&nbsp;</u></p><p>Acromegaly control may improve during pregnancy. Pegvisomant is not recommended during pregnancy (see section 4.6). If pegvisomant is used during pregnancy, IGF-I levels should be closely monitored and pegvisomant doses may need to be adjusted (see section 4.2) based on IGF-I values.</p><p>&nbsp;</p><p><u>Sodium content</u></p><p><u>&nbsp;</u></p><p>This medicinal product contains less than 1 mmol sodium (23 mg) per dose. Patients on low sodium diets can be informed that this medicinal product is essentially &lsquo;sodium‑free&rsquo;.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No interaction studies have been performed. It should be considered whether to continue treatment with somatostatin analogues. The use of this medicine in combination with other medicinal products for the treatment of acromegaly has not been extensively investigated.</p><p>&nbsp;</p><p>Patients receiving insulin or oral hypoglycaemic medicinal products may require dose reduction of these active substances due to the effect of pegvisomant on insulin sensitivity<strong> </strong>(see section&nbsp;4.4).</p><p>&nbsp;</p><p>Pegvisomant has significant structural similarity to growth hormone which causes it to cross‑react in commercially available growth hormone assays. Since serum concentrations of therapeutically‑effective doses of this medicine are generally 100 to 1000 times higher than the actual serum growth hormone concentrations seen in acromegalics, measurements of serum growth hormone concentrations will be spuriously reported in commercially available growth hormone assays. Pegvisomant treatment should therefore not be monitored or adjusted based on serum growth hormone concentrations reported from these assays.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u></p><p><u>&nbsp;</u></p><p>There are limited amount of data from the use of pegvisomant in pregnant women. Animal studies are insufficient with respect to reproductive toxicity (see section&nbsp;5.3).</p><p>&nbsp;</p><p>SOMAVERT is not recommended during pregnancy and in women of childbearing potential not using contraception.</p><p>&nbsp;</p><p>If pegvisomant is used during pregnancy, IGF-I levels should be closely monitored, especially during the first trimester. It may be necessary to adjust the dose of pegvisomant during pregnancy (see section 4.4).</p><p>&nbsp;</p><p><u>Breast‑feeding</u></p><p>&nbsp;</p><p>The excretion of pegvisomant in breast milk has not been studied in animals. Clinical data are too limited (one reported case) to draw any conclusion on the excretion of pegvisomant in human breast milk. Therefore, pegvisomant should not be used in breast‑feeding women. However, breast‑feeding may be continued if this medicine is discontinued: this decision should take into account the benefit of pegvisomant therapy to the mother and the benefit of breast‑feeding to the child.</p><p><u>&nbsp;</u></p><p><u>Fertility</u></p><p>&nbsp;</p><p>For pegvisomant no data on fertility are available.</p><p>&nbsp;</p><p>The therapeutic benefits of a reduction in IGF‑I concentration which results in improvement of the patient&rsquo;s clinical condition could potentially also improve fertility in female patients.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects on the ability to drive and use machines have been performed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Summary of the safety profile</u></p><p><u>&nbsp;</u></p><p>The list below contains adverse reactions seen in clinical trials with SOMAVERT.</p><p>&nbsp;</p><p>In clinical studies, for patients treated with pegvisomant (n=550), the majority of adverse reactions to pegvisomant were of mild to moderate intensity, of limited duration and did not require discontinuation of treatment.</p><p>&nbsp;</p><p>The most commonly reported adverse reactions occurring in&nbsp;&sup3;&nbsp;10% of patients with acromegaly treated with pegvisomant during the clinical trials were headache 25%, arthralgia 16% and diarrhoea 13%.</p><p>&nbsp;</p><p><u>Tabulated list of adverse reactions</u></p><p><u>&nbsp;</u></p><p>The list below contains adverse reactions seen in clinical trials or that were spontaneously reported, classified by system organ class and frequency.</p><p><u>&nbsp;</u></p><p>Adverse reactions are listed according to the following categories:</p><p>Very common:&nbsp; &sup3;1/10</p><p>Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &sup3;1/100 to &lt;1/10</p><p>Uncommon:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &sup3;1/1,000 to &lt;1/100</p><p>Not known (cannot be estimated from the available data)</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0" style="width:97%"><thead><tr><td style="vertical-align:top"><p><strong>System Organ Class</strong></p></td><td style="vertical-align:top"><p><strong>Very Common</strong></p><p><strong>(&ge;1/10)</strong></p></td><td style="vertical-align:top"><p><strong>Common</strong></p><p><strong>(&ge;1/100</strong></p><p><strong>to &lt;1/10)</strong></p><p><strong>&nbsp;</strong></p></td><td style="vertical-align:top"><p><strong>Uncommon</strong></p><p><strong>(&ge;1/1,000 to &lt;</strong></p><p><strong>1/100)</strong></p><p><strong>&nbsp;</strong></p></td><td style="vertical-align:top"><p><strong>Frequency Not Known</strong></p><p><strong>(Cannot Be Estimated From Available Data)</strong></p></td></tr></thead><tbody><tr><td style="vertical-align:top"><p>Blood and lymphatic system disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>thrombocytopenia, leukopenia, leukocytosis, haemorrhagic diathesis</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Immune system disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>hypersensitivity reactions<sup>b</sup></p></td><td style="vertical-align:top"><p>anaphylactic reaction<sup>b</sup>, anaphylactoid reaction<sup>b</sup></p></td></tr><tr><td style="vertical-align:top"><p>Metabolism and nutrition disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>hypercholesterolaemia, hyperglycaemia, hypoglycaemia, weight increased</p></td><td style="vertical-align:top"><p>hypertriglyceridemia</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Psychiatric disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>abnormal dreams</p></td><td style="vertical-align:top"><p>panic attack, short term memory loss, apathy, confusion, sleep disorder, libido increased</p></td><td style="vertical-align:top"><p>anger</p></td></tr><tr><td style="vertical-align:top"><p>Nervous system disorders</p></td><td style="vertical-align:top"><p>headache</p></td><td style="vertical-align:top"><p>somnolence, tremor, dizziness, hypoaesthesia</p></td><td style="vertical-align:top"><p>narcolepsy, migraine, dysgeusia</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Eye disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>eye pain</p></td><td style="vertical-align:top"><p>asthenopia</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Ear and labyrinth disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Meniere&rsquo;s disease</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Cardiac disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>oedema peripheral</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Vascular disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>hypertension</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Respiratory, thoracic and mediastinal disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>dyspnoea</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>laryngospasm<sup>b</sup></p></td></tr><tr><td style="vertical-align:top"><p>Gastrointestinal disorders</p></td><td style="vertical-align:top"><p>diarrhoea</p></td><td style="vertical-align:top"><p>vomiting, constipation, nausea, abdominal distension, dyspepsia, flatulence</p></td><td style="vertical-align:top"><p>haemorrhoids, salivary hypersecretion, dry mouth, tooth disorder</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Hepatobiliary disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>abnormal liver function tests (e.g. transaminase elevation) (see section&nbsp;4.4)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Skin and subcutaneous tissue disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>hyperhidrosis, contusion, pruritus<sup>b</sup>, rash<sup>b</sup></p></td><td style="vertical-align:top"><p>face oedema, dry skin, increased tendency to bruise, night sweats, erythema<sup>b</sup>, urticaria<sup>b</sup></p></td><td style="vertical-align:top"><p>angioedema<sup>b</sup></p></td></tr><tr><td style="vertical-align:top"><p>Musculoskeletal and connective tissue disorders</p></td><td style="vertical-align:top"><p>arthralgia</p></td><td style="vertical-align:top"><p>myalgia, arthritis</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Renal and urinary disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>haematuria</p></td><td style="vertical-align:top"><p>proteinuria, polyuria, renal impairment</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>General disorders and administration site conditions</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>injection site reaction (including injection site hypersensitivity), injection site bruising or bleeding, injection site hypertrophy (e.g.&nbsp;lipohypertrophy)<sup>a</sup>, influenza‑like illness, fatigue, asthenia,<strong> </strong>pyrexia</p></td><td style="vertical-align:top"><p>feeling abnormal, impaired healing, hunger</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr></tbody></table><p><!--[if supportFields]><sup><span style='font-size:
+11.0pt'><span style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>SEQ TblFnSeqID_15224161920 \n \* alphabetic \*
+MERGEFORMAT <span style='mso-element:field-separator'></span></span></sup><![endif]--><sup>a</sup><!--[if supportFields]><sup><span
+style='font-size:11.0pt'><span style='mso-element:field-end'></span></span></sup><![endif]-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Description of selected adverse reactions below</p><p><sup>b</sup>&nbsp;&nbsp;&nbsp;&nbsp; ADR related to hypersensitivity reaction</p><p>&nbsp;</p><p><u>Description of selected adverse reactions</u></p><p><u>&nbsp;</u></p><p>Most injection site reactions characterised as localised erythemas and soreness, spontaneously resolved with local symptomatic treatment, while pegvisomant therapy continued. Occurrence of injection site hypertrophy has been observed, including lipohypertrophy.</p><p>&nbsp;</p><p>The development of isolated low‑titre anti‑growth hormone antibodies was observed in 16.9% of patients treated with pegvisomant. The clinical significance of these antibodies is unknown.</p><p>&nbsp;</p><p>Systemic hypersensitivity reactions including anaphylactic/anaphylactoid reactions, laryngospasm, angioedema, generalised skin reactions (rash, erythema, pruritus, urticaria) have been reported in post marketing use. Some patients required hospitalization. Upon re‑administration, symptoms did not re‑occur in all patients.</p><p><u>&nbsp;</u></p><p><u>Reporting of suspected adverse reactions</u></p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions reactions according to their local country requirements.</p><p><strong>&nbsp;</strong></p><p><strong>To Report side effects</strong></p><p>&nbsp;</p><ul><li><strong>Saudi Arabia</strong></li></ul><p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>- The National Pharmacovigilance Centre (NPC)</p><p>o Call center: 19999</p><p>o E-mail: npc.drug@sfda.gov.sa</p><p>o Website: https://ade.sfda.gov.sa</p><p>&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p><ul><li><strong>Other GCC States</strong></li></ul><p><strong>&nbsp;</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>-&nbsp;&nbsp;&nbsp; <em>Please contact the relevant competent authority.</em></p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There is limited experience of overdose with pegvisomant. In the one reported incident of acute overdose, where 80&nbsp;mg/day was administered for 7&nbsp;days, the patient experienced a slight increase in fatigue and dry mouth.<strong> </strong>In the week following discontinuation of treatment the adverse reactions noted were: insomnia, increased fatigue, oedema peripheral, tremor, and weight gain. Two weeks after stopping treatment, leukocytosis and moderate bleeding from injection and vein puncture sites was observed which were considered possibly related to pegvisomant.</p><p>&nbsp;</p><p>In cases of overdose, administration of this medicine should be discontinued and not resumed until IGF‑I levels return to within or above the normal range.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Other anterior pituitary lobe hormones and analogues, ATC code: H01AX01.</p><p>&nbsp;</p><p><u>Mechanism of action</u></p><p>&nbsp;</p><p>Pegvisomant is an analogue of human growth hormone that has been genetically modified to be a growth hormone receptor antagonist. Pegvisomant binds to growth hormone receptors on cell surfaces, where it blocks growth hormone binding, and thus interferes with intracellular growth hormone signal transduction. Pegvisomant is highly selective for the GH receptor, and does not cross‑react with other cytokine receptors, including prolactin.</p><p>&nbsp;</p><p><u>Pharmacodynamic effects</u></p><p>&nbsp;</p><p>Inhibition of growth hormone action with pegvisomant leads to decreased serum concentrations of insulin‑like growth factor‑I (IGF‑I), as well as other growth hormone‑responsive serum proteins such as free IGF‑I, the acid‑labile subunit of IGF‑I (ALS), and insulin‑like growth factor binding protein‑3 (IGFBP‑3).</p><p>&nbsp;</p><p><u>Clinical efficacy and safety</u></p><p>&nbsp;</p><p>Acromegalic patients (n=112) have been treated in a 12‑week, randomised, double‑blind, multicentre study comparing placebo and pegvisomant. Dose‑dependent, statistically significant reductions in mean IGF‑I (p&lt;0.0001), free IGF‑I (p&lt;0.05), IGFBP‑3 (p&lt;0.05) and ALS (p&lt;0.05) were observed at all post‑baseline visits in the pegvisomant treatment groups. The serum IGF‑1 was normalised at the end of the study (week 12) in 9.7%, 38.5%, 75% and 82% of subjects treated with placebo, 10&nbsp;mg/day, 15&nbsp;mg/day or 20&nbsp;mg/day pegvisomant respectively.</p><p>&nbsp;</p><p>Statistically significant differences from placebo (p&lt;0.05) were observed for improvements in the total signs and symptoms score for all dose groups compared to placebo.</p><p>&nbsp;</p><p>A cohort of 38 acromegalic subjects has been followed in a long‑term, open‑label, dose‑titration study for at least 12 consecutive months of daily dosing with pegvisomant (mean = 55&nbsp;weeks). The mean IGF‑I concentration in this cohort fell from 917&nbsp;ng/ml to 299&nbsp;ng/ml on pegvisomant, with 92% achieving a normal (age‑adjusted) IGF‑I concentration.</p><p>&nbsp;</p><p>In different studies and also in Acrostudy, pegvisomant normalised IGF-1 levels in a high percentage of patients (&gt;70%) and significantly decreased fasting plasma glucose (FPG) and fasting plasma insulin (FPI) levels.</p><p>&nbsp;also improves insulin sensitivity, this is likely due to a blockade of the GH receptors on tissues, mainly the liver and also adipose tissue, kidneys, and skeletal muscles, thereby removing the detrimental effect of GH on insulin signaling, lipolysis, and gluconeogenesis. However, the mechanism of action of all these effects is not known with certainty. A decrease in doses of insulin or hypoglycaemic medicinal products may be needed in acromegalic patients with diabetes mellitus (see sections 4.4 and 4.5).</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Absorption</u></p><p>&nbsp;</p><p>Absorption of pegvisomant following subcutaneous administration is slow and prolonged, and peak serum pegvisomant concentrations are not generally attained until 33‑77&nbsp;hours after administration. The mean extent of absorption of a subcutaneous dose was 57% relative to an intravenous dose.</p><p>&nbsp;</p><p><u>Distribution</u></p><p>&nbsp;</p><p>The apparent volume of distribution of pegvisomant is relatively small (7‑12&nbsp;L).</p><p>&nbsp;</p><p><u>Biotransformation</u></p><p><u>&nbsp;</u></p><p>The metabolism of pegvisomant has not been studied.</p><p>&nbsp;</p><p><u>Elimination</u></p><p>&nbsp;</p><p>The mean total body systemic clearance of pegvisomant following multiple doses is estimated to be 28&nbsp;ml/h for subcutaneous doses ranging from 10 to 20&nbsp;mg/day. Renal clearance of pegvisomant is negligible and accounts for less than 1% of total body clearance. Pegvisomant is slowly eliminated from serum, with mean estimates of half‑life generally ranging from 74 to 172&nbsp;hours following either single or multiple‑doses.</p><p>&nbsp;</p><p><u>Linearity/non‑linearity</u></p><p>&nbsp;</p><p>After single subcutaneous pegvisomant administration no linearity is observed with rising doses of 10,&nbsp;15&nbsp;or 20&nbsp;mg. Approximately linear pharmacokinetics is observed at steady state in the population pharmacokinetic studies. The data from 145 patients in two long‑term studies who received daily doses of 10,&nbsp;15,&nbsp;or 20&nbsp;mg, demonstrate pegvisomant mean serum concentrations (&plusmn; SD) of approximately 8800 &plusmn; 6300, 13200 &plusmn; 8000 and 15600 &plusmn; 10300&nbsp;ng/ml, respectively.</p><p>&nbsp;</p><p>The pharmacokinetics of pegvisomant are similar in normal healthy volunteers and acromegaly patients, although heavier individuals tend to have a higher total body clearance of pegvisomant than lighter individuals, and may thus require greater doses of pegvisomant.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non‑clinical data revealed no special hazard for humans based on studies of repeated dose toxicity in rat and monkey. However, due to the marked pharmacological response in monkey, systemic exposures higher than those achieved in patients at therapeutic doses have not been studied.</p><p>&nbsp;</p><p>Malignant fibrous histiocytomas associated with fibrosis and histiocytic inflammation were observed at injection sites in males in the rat carcinogenicity study at exposure levels equivalent to three times the human exposure based on mean plasma concentrations in two long‑term studies at a daily dose of 30&nbsp;mg. The relevance of this response for humans is currently unknown. The increased incidence of injection site tumours was most probably caused by irritation and the high sensitivity of the rat to repeated subcutaneous injections.</p><p>&nbsp;</p><p>Early embryonic development and embryo-foetal development studies were conducted in pregnant rabbits with pegvisomant at subcutaneous doses of 1, 3, and 10 mg/kg/day. There was no evidence of teratogenic effects associated with pegvisomant administration during organogenesis. At 10&nbsp;mg/kg/day (6 times the maximum human therapeutic dose based on body surface area), an increase in post-implantation loss was observed in both studies. No fertility study has been conducted.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Powder:</u></p><p>Glycine (1.36 mg)</p><p>Mannitol (36 mg)</p><p>Disodium phosphate anhydrous (1.04 mg)</p><p>Sodium dihydrogen phosphate monohydrate (0.36 mg)</p><p>&nbsp;</p><p><u>Solvent:</u></p><p>Water for Injections</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the absence of compatibility studies, this medicinal product must not be mixed with other medicinal products.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                36 months.
+
+After reconstitution, the product should be used immediately.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store the powder vial(s) in a refrigerator (2&deg;C &ndash; 8&deg;C). Do not freeze. Keep the vial(s) in their carton(s) in order to protect from light.</p><p>&nbsp;</p><p>The carton(s) containing the SOMAVERT powder vial(s) may be stored at room temperature up to a maximum of 25&deg;C for a single period of up to 30 days. The Use by date should be written on the carton (up to 30 days from the date removed from the refrigerator). The vial(s) must be protected from light and should not be placed back into the refrigerator. The &nbsp;SOMAVERT powder vial(s) must be discarded if not used within the 30 days of room temperature storage or the expiry date printed on the carton, whichever is earlier.</p><p>&nbsp;</p><p>Store the pre-filled syringe(s) below 30&deg;C or store in a refrigerator (2&ordm;C - 8&deg;C). Do not freeze.</p><p>&nbsp;</p><p><u>After reconstitution:</u></p><p>For storage conditions after reconstitution of the medicinal product, see section&nbsp;6.3.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>10&nbsp;mg or 15&nbsp;mg or 20&nbsp;mg of pegvisomant in powder in a vial (type I flint glass) with a stopper (chlorobutyl rubber) and 1&nbsp;ml solvent (water for injections) in a pre-filled syringe (type&nbsp;I borosilicate glass) with a plunger stopper (bromobutyl rubber) and a tip cap (bromobutyl rubber). The colour of the protective plastic cap is specific to the strength of the product.</p><p>&nbsp;</p><p>Pack size of 30 vials, pre-filled syringes and safety needles.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The syringe and safety needle used to administer the injection are provided with the medicinal product.</p><p>&nbsp;</p><p>Before attaching the supplied safety needle the syringe cap will need to be removed from the pre-filled syringe. This is achieved by snapping it off. The syringe should be kept upright to avoid leakage and the end of the syringe should not be allowed to contact anything.</p><p>&nbsp;</p><p><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1027" type="#_x0000_t75"
+ style='width:182.65pt;height:189.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/ibrahw02/AppData/Local/Temp/1/msohtmlclip1/01/clip_image001.png"
+  o:title=""/>
+</v:shape><![endif]--><img width="244" height="253" src="file:///C:/Users/ibrahw02/AppData/Local/Temp/1/msohtmlclip1/01/clip_image002.png" /></p><p>&nbsp;</p><p>The powder should be reconstituted with 1&nbsp;ml solvent. When adding the solvent from the syringe the vial and syringe should held at an angle as shown in the diagram below.</p><p>&nbsp;</p><p><strong><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_2" o:spid="_x0000_i1026" type="#_x0000_t75" style='width:193.5pt;
+ height:201.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/ibrahw02/AppData/Local/Temp/1/msohtmlclip1/01/clip_image003.png"
+  o:title=""/>
+</v:shape><![endif]--><img width="258" height="269" src="file:///C:/Users/ibrahw02/AppData/Local/Temp/1/msohtmlclip1/01/clip_image004.png" /></strong></p><p>&nbsp;</p><p>Add the solvent to the vial of powder. The solvent should be emptied into the vial slowly to avoid the possibility of a foam forming. This would make the medicine unusable. Gently dissolve the powder with a slow, swirling motion. Do not shake vigorously, as this might cause denaturation of the active substance.</p><p>&nbsp;</p><p>After reconstitution, the reconstituted solution should be inspected visually for extraneous (or for any foreign) particulate matter or any variation in physical appearance prior to administration. In the event of either being observed, discard the medicinal product.</p><p>&nbsp;</p><p>Before withdrawing the dissolved Somavert invert the vial with the syringe still inserted into it and ensure the gap in the stopper can be seen as shown in the diagram below:</p><p><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_3" o:spid="_x0000_i1025" type="#_x0000_t75" style='width:187.5pt;
+ height:190.9pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/ibrahw02/AppData/Local/Temp/1/msohtmlclip1/01/clip_image005.png"
+  o:title=""/>
+</v:shape><![endif]--><img width="250" height="255" src="file:///C:/Users/ibrahw02/AppData/Local/Temp/1/msohtmlclip1/01/clip_image006.png" /></p><p>Pull the needle down so that the needle tip is at its lowest point in the liquid. Slowly withdraw the plunger in the syringe to withdraw the medicine from the vial. If air is seen in the syringe, tap the barrel to float the bubbles to the top, and then gently push the bubbles out into the vial.</p><p>&nbsp;</p><p>Before disposing of the syringe and needle fold the needle guard over the needle and ensure it clicks into place. The syringe and needle should never be reused.</p><p>&nbsp;</p><p>For single use only. Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Marketing Authorization Holder
+Pfizer Europe MA EEIG
+Boulevard de la Plaine 17
+1050 Bruxelles
+Belgium
+
+Manufacturer 
+Pfizer Manufacturing Belgium NV
+Rijksweg 12
+2870 Puurs
+Belgium
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                July 2022
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        0111222861
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2022
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Hizentra 4 g per 20 ml Vial
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        HUMAN NORMAL IMMUNOGLOBULIN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        200
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Subcutaneous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        do not store above 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1777.65
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="CSL BEHRING" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            CSL BEHRING
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 540]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ZIMMO TRADING ESTABLISHMENT
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            CSL BEHRING
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J06BA01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>What Hizentra is</strong></p><p>Hizentra belongs to the class of medicines called human normal immunoglobulins. Immunoglobulins are also known as antibodies and are blood proteins.</p><p>&nbsp;</p><p>How Hizentra works</p><p>Hizentra contains immunoglobulins that have been prepared from the blood of healthy people. Immunoglobulins are produced by human body&rsquo;s immune system and help your body to fight infections caused by e.g. bacteria and viruses or maintain the balance in your immune system (referred to as</p><p>immunomodulation). The medicine works in exactly the same way as the immunoglobulins naturally present in your blood.</p><p>&nbsp;</p><p>What Hizentra is used for</p><p><strong>&nbsp;</strong></p><p><strong>Replacement therapy</strong></p><p>Hizentra is used to raise abnormally low immunoglobulin levels in your blood to normal levels (replacement therapy). The medicine is used in the following situations:</p><p>&nbsp;</p><p>1. <u>Treatment of adults, children and adolescents (0-18 years) who are born with a reduced ability</u> <u>or inability to produce immunoglobulins (primary immunodeficiency syndromes). This </u>&nbsp;<u>includes conditions such as:</u></p><p>&Oslash;&nbsp; low immunoglobulin levels (hypogammaglobulinaemia) or absence of immunoglobulins (agammaglobulinaemia) in the blood</p><p>&Oslash;&nbsp; combination of low immunoglobulin levels, frequent infections and inability to produce adequate amounts of antibodies after vaccination (common variable immunodeficiency)</p><p>&Oslash;&nbsp; combination of low level or absence of immunoglobulins and absence or non-functional immune cells (severe combined immunodeficiency)</p><p>&Oslash;&nbsp; absence of certain immunoglobulin G subclasses causing recurrent infections.</p><p>&nbsp;</p><p>&nbsp;</p><p>2. <u>Treatment of patients with low or dysfunctional immunoglobulin levels in acquired conditions</u> <u>(secondary immunodeficiency) who experience severe or recurrent infections due to a</u> <u>weakened immune system resulting from other conditions or treatments.</u></p><p>&nbsp;</p><p>&nbsp;</p><p>Immunomodulatory therapy in CIDP patients</p><p>Hizentra is also used in patients with chronic inflammatory demyelinating polyneuropathy (CIDP), a form of autoimmune disease. CIDP is characterized by chronic inflammation of the peripheral nerves that causes muscle weakness and/or numbness mainly in the legs and arms. It is believed that the body&rsquo;s defense attack underlines such inflammation, and immunoglobulins present in Hizentra help to protect the nerve from being attacked (immunomodulatory therapy).</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Do <strong><u>NOT</u> </strong>infuse Hizentra:</p><p>&Oslash;&nbsp; if you were allergic to human immunoglobulins, polysorbate 80 or L-proline in the past.</p><p>ETell your doctor or healthcare professional prior to treatment if you have experienced intolerance against one of these components earlier.</p><p>&Oslash;&nbsp; if you suffer from hyperprolinaemia (a genetic disorder causing high levels of the amino acid proline in the blood).</p><p>&nbsp;</p><p>Warnings and precautions</p><p>ETalk to your doctor or healthcare professional before using Hizentra.</p><p>&nbsp;</p><p>Route of administration</p><p><u>Administer Hizentra via the subcutaneous route <strong>only </strong>(under the skin).</u> If Hizentra is accidentally administered into a blood vessel, you could develop severe allergic reaction (anaphylactic shock). The infusion rate recommended by your doctor should be adhered to. Closely monitor and carefully observe for any adverse events throughout the infusion period.</p><p>&nbsp;</p><p>Hypersensitivity / Anaphylaxis</p><p>You may be allergic (hypersensitive) to immunoglobulins without knowing it. However, true allergic reactions are rare. They may occur even if you received human immunoglobulins previously and tolerated them well. It may happen particularly if you do not have enough of the immunoglobulin type A (IgA) in your blood (IgA deficiency).</p><p>ETell your doctor prior to treatment if you have an immunoglobulin type A (IgA) deficiency. Hizentra contains residual amounts of IgA which might cause an allergic reaction.</p><p>In these rare cases allergic reactions, such as a sudden fall in blood pressure or shock, may occur (see also section 4).</p><p>EIf you notice such signs during the infusion of Hizentra, stop the infusion and contact your doctor or go to the nearest hospital immediately.</p><p>&nbsp;</p><p>Your doctor will avoid potential complications by ensuring:</p><p>&Oslash;&nbsp; that you are not sensitive to human normal immunoglobulin.</p><p>&Oslash;&nbsp; the medicine must be infused slowly at first.</p><p>&Oslash;&nbsp; that you are carefully monitored for any symptoms throughout the infusion period, especially if:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you receive human normal immunoglobulin for the first time</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you have switched from a different medicine</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; there has been a long interval (more than eight weeks) since the previous infusion.</p><p>&nbsp;</p><p>In these cases, it is recommended that you are monitored during the first infusion and for an hour afterwards. If the points above do not apply for you it is recommended that you are observed for at least 20 minutes after administration.</p><p>&nbsp;</p><p>Blood clots</p><p>ETell your doctor if you have a history of heart or blood vessel disease or blood clots, have thick blood, or have been immobile for some time. These things may increase your risk of having a blood clot after using Hizentra. Also tell your doctor what drugs you are using, as some drugs, such as those that contain the hormone estrogen (for example, birth control pills), may increase your risk of developing a blood clot. Contact your doctor immediately if you experience signs and symptoms such as shortness of breath, chest pain, pain and swelling of a limb, weakness or numbness on one side of the body after receiving Hizentra.</p><p>&nbsp;</p><p>Aseptic Meningitis Syndrome (AMS)</p><p>EContact your doctor if you experience the following signs and symptoms: severe headache, neck stiffness, drowsiness, fever, photophobia, nausea, and vomiting after receiving Hizentra. These symptoms might indicate aseptic meningitis (a temporary and reversible non-infectious inflammation of the protective membranes surrounding the brain and spinal cord). Your doctor will decide if further tests are necessary and whether Hizentra should be continued.</p><p>&nbsp;</p><p>Renal complications</p><p>ETell your doctor if you have or had previously problems with your kidneys, take medicinal products that may harm your kidneys (nephrotoxic medicinal products), have diabetes (diabetes mellitus), hypovolemia (the liquid portion of your blood is too low), thick blood (hyperviscosity), are older than 65 years, or suffer from a condition called paraproteinaemia or sepsis. In these circumstances, immunoglobulin preparations, particularly those containing sucrose, may increase the risk of serious renal complications (acute renal failure, acute tubular necrosis, proximal tubulopathy, osmotic nephrosis), including rapid loss of the kidney function (acute renal failure). Hizentra does not contain sucrose.</p><p>&nbsp;</p><p>Haemolytic anaemia</p><p>Immunoglobulin products can contain blood group antibodies that may affect certain blood tests (serological tests such as e.g. DAT, direct Coombs test) and, rarely, cause the breakdown of the red blood cells (haemolysis). It has been reported that this may lead to a subsequent decrease in the red blood cells (delayed haemolytic anaemia) during the immunoglobulin therapy.</p><p>&nbsp;</p><p>Pathogen safety</p><p>Hizentra is made from human blood plasma. This is the liquid part of the blood. When medicines are made from human blood or plasma, certain measures are put in place to prevent infections being passed on to patients. These include:</p><p>&Oslash;&nbsp; careful selection of blood and plasma donors to make sure those at risk of carrying infections are excluded, and</p><p>&Oslash;&nbsp; the testing of each donation and pools of plasma for signs of virus/infections. Manufacturers of these medicines also include additional steps in the processing of the blood or plasma that can inactivate or remove viruses.</p><p>Despite these measures, when medicines prepared from human blood or plasma are administered, the possibility of passing on infection cannot be totally excluded. This also applies to any unknown or emerging viruses or other types of infections.</p><p>The measures taken are considered effective for enveloped viruses such as human immunodeficiency virus (HIV, the AIDS virus), hepatitis B virus and hepatitis C virus (liver inflammation), and for the non-enveloped hepatitis A virus and parvovirus B19.</p><p>There is reassuring clinical experience regarding the lack of hepatitis A or parvovirus B19 transmission with Hizentra and it is also assumed that the antibody content makes an important contribution to the viral safety.</p><p>EIt is strongly recommended that every time you receive a dose of Hizentra the name and batch number of the product are recorded in order to maintain a record of the batches used (see section 3).</p><p>&nbsp;</p><p>Other medicines and Hizentra</p><p>ETell your doctor if you are using, have recently used or might use any other medicines. You must not mix other medicines with Hizentra.</p><p>&nbsp;</p><p>Live attenuated virus vaccines</p><p>ETell your vaccinating doctor prior to a vaccination about your treatment with Hizentra. Hizentra may impair the effect of some live virus vaccines such as measles, rubella, mumps and chicken pox. Therefore, after receiving this medicine you may have to wait up to 3 months before</p><p>receiving your live-attenuated vaccine. In the case of measles vaccinations the impairment may persist for up to 1 year.</p><p>&nbsp;</p><p>Blood tests</p><p>After receiving Hizentra, the results of certain blood tests (serological tests) may be impaired for a certain time.</p><p>ETell your doctor about your treatment with Hizentra prior to any blood test.</p><p>&nbsp;</p><p>&nbsp;</p><p>Pregnancy, breastfeeding and fertility</p><p>ETell your doctor if you are pregnant, plan to become pregnant or are breastfeeding. Your doctor will decide whether you can receive Hizentra during your pregnancy or while you are breastfeeding.</p><p>No clinical studies have been performed with Hizentra in pregnant women. However, medicines that contain immunoglobulins have been used in pregnant or breastfeeding women for years, and no harmful effects on the course of pregnancy or on the baby have been observed.</p><p>If you are breastfeeding and receive Hizentra, the immunoglobulins of the medicine can also be found in the breast milk. Therefore, your baby may be protected from certain infections.</p><p>&nbsp;</p><p>Driving and using machines</p><p>The ability to drive and operate machines may be impaired by some side effects associated with Hizentra. If you experience adverse reactions during treatment you should wait for these to resolve before driving or operating machines.</p><p>Hizentra contains proline</p><p>You <strong><u>must not</u> </strong>take it if you suffer from hyperprolinaemia (see also section 2). Please tell your doctor prior to treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Always use this medicine exactly as your doctor has told you. Check with your doctor if you are not sure.</p><p>&nbsp;</p><p>Dosage</p><p>Your doctor will calculate the correct dose for you taking into account your weight and response to treatment.</p><p>Do not change the dose or dosing interval without consulting with your doctor.</p><p>If you think you should receive Hizentra more or less frequently, please speak to your doctor. If you think you have missed a dose, speak to your doctor as soon as possible.</p><p>&nbsp;</p><p>Replacement therapy</p><p>Your doctor will determine whether you need a loading dose (for adults, children and adolescents) of at least 1 to 2.5 ml/kg of body weight that may be divided over several days. Following this, maintenance doses may be given at repeated intervals, from daily to once every two weeks, to reach a cumulative monthly dose of about 2 to 4 ml/kg of body weight. Your healthcare professional may adjust the dose</p><p>&nbsp;</p><p>based on your response to the treatment.</p><p>&nbsp;</p><p>&nbsp;</p><p>Immunomodulatory therapy</p><p>Your doctor will initiate the therapy with Hizentra 1 week after your last intravenous immunoglobulin infusion by administrating under the skin (subcutaneously) a weekly dose of 2.0 ml/kg of body weight. Your doctor will determine your weekly Hizentra dose (for adults, children and adolescents). The weekly maintenance doses may be divided into smaller doses and administered by desired number of times per week. For dosing every two weeks, your doctor will double the determined weekly Hizentra dose. Your healthcare professional may adjust the dose based on your response to the treatment.</p><p>&nbsp;</p><p>Method and route of administration</p><p>In case of home treatment, this will be initiated and initially monitored by a healthcare professional experienced in the treatment of immunodeficiency/CIDP and in the guidance of patients for home treatment.</p><p>&nbsp;</p><p>You will be instructed in:</p><p>&Oslash;&nbsp; aseptic infusion techniques</p><p>&Oslash;&nbsp; the keeping of a treatment diary, and</p><p>&Oslash;&nbsp; measures to be taken in case of severe side effects. <u>Only after such guidance should you follow the instructions below.</u></p><p>&nbsp;</p><p>Infusion site(s)</p><p>&Oslash;&nbsp; Administer Hizentra <strong><u>under the skin only</u></strong>.</p><p>&Oslash;&nbsp; You may infuse Hizentra into sites such as abdomen, thigh, upper arm, and lateral hip (see Figure 1). If large doses are given (&gt; 50 ml), try to administer them at multiple sites.</p><p>&Oslash;&nbsp; There is no limit to the number of infusion sites used at the same time.</p><p>&Oslash;&nbsp; In the case, you will use a device-assisted infusion technique (e.g. pump-assisted infusion), more than one infusion device can be used simultaneously.</p><p>&Oslash;&nbsp; In the case, you will use the manual push infusion technique with a syringe, you may use only one infusion site per syringe. If you need to administer an additional Hizentra syringe, you must use a new sterile injection needle and change the infusion site.</p><p>&Oslash;&nbsp; The volume of product infused into a particular site may vary.</p><p>&Oslash;&nbsp; Infusion sites should be at least 5 cm apart.</p><p>&nbsp;</p><p>&nbsp;</p><p><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Image_x0020_6" o:spid="_x0000_i1025" type="#_x0000_t75"
+ style='width:206.25pt;height:141pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/user/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png"
+  o:title=""/>
+ <o:lock v:ext="edit" aspectratio="f"/>
+</v:shape><![endif]--><img width="275" height="188" src="data:image/png;base64,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" /></p><p>Figure 1: Possible infusion sites for Hizentra</p><p>&nbsp;</p><p>Infusion rate(s)</p><p>Your doctor will determine the appropriate infusion technique and the infusion rate for you taking into account your individual dose, dosing frequency and product tolerability.</p><p>&nbsp;</p><p>Device-assisted infusion:</p><p>The recommended initial infusion rate is up to 20 ml/ hour/ site. If well-tolerated, you may gradually increase the infusion rate to 100 ml/ hour/ site for the following two infusions.</p><p>If you are a patient at a risk, as described in section 2 (see section 2), administer Hizentra at the minimum dose and infusion rate practicable.</p><p>&nbsp;</p><p>Manual push infusion:</p><p>The recommended initial infusion rate is up to 0.5 ml / min / site (30 ml / hour / site). If well-tolerated, you may increase the infusion rate up to 2.0 ml / min / site (120 ml / hour / site).</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>Other instructions for use</p><p>&Oslash;&nbsp; Hizentra is a ready-to-use solution (see section 5 and section 6)</p><p>&Oslash;&nbsp; Do not use solutions that are cloudy or contain particles.</p><p>&Oslash;&nbsp; Do not use solutions that have been frozen.</p><p>&Oslash;&nbsp; Administer solution which is at room temperature (25 &deg;C).</p><p>&Oslash;&nbsp; Once a vial has been opened, use the solution immediately.</p><p>&Oslash;&nbsp; Use aseptic technique when preparing and administering Hizentra.</p><p>&Oslash;&nbsp; Record the following data in your treatment diary:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the date of administration,</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the batch number of the medicine, and</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the infused volume, flow rate, the number and location of infusion sites.</p><p>&nbsp;</p><p>&nbsp;</p><p>If you have any further questions on the use of this medicine, please ask your doctor or healthcare professional.</p><p>&nbsp;</p><p>If you use more Hizentra than you should</p><p>If you think you have had too much Hizentra, speak to your doctor as soon as possible.</p><p>&nbsp;</p><p>&nbsp;</p><p>If you forget to use Hizentra</p><p>If you think you have missed a dose, speak to your doctor as soon as possible.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p>&nbsp;</p><p>&nbsp;</p><p>Side effects observed in controlled clinical studies are presented in order of decreasing frequency. Side effects observed in post-marketing are of unknown frequency:</p><p><strong>&nbsp;</strong></p><p>The following side effects are <strong>very common </strong>(affects more than 1 patient in 10):</p><p>&Oslash;&nbsp; Nasopharyngitis</p><p>&Oslash;&nbsp; Headache</p><p>&Oslash;&nbsp; Rash</p><p>&Oslash;&nbsp; Reactions at the infusion site</p><p>&nbsp;</p><p>&nbsp;</p><p>The following side effects are <strong>common </strong>(affects 1 to 10 patients in 100):</p><p>&Oslash;&nbsp; Dizziness</p><p>&Oslash;&nbsp; Migraine</p><p>&Oslash;&nbsp; Increased blood pressure (hypertension)</p><p>&Oslash;&nbsp; Cough</p><p>&Oslash;&nbsp; Diarrhea</p><p>&Oslash;&nbsp; Abdominal pain</p><p>&Oslash;&nbsp; Feeling sick (nausea)</p><p>&Oslash;&nbsp; Vomiting</p><p>&Oslash;&nbsp; Itching (pruritus)</p><p>&Oslash;&nbsp; Skin reaction such as blistering (urticaria)</p><p>&Oslash;&nbsp; Contact dermatitis</p><p>&nbsp;</p><p>&Oslash;&nbsp; Pain related to the musculature and bones (musculoskeletal pain)</p><p>&Oslash;&nbsp; Joint pain (arthralgia)</p><p>&Oslash;&nbsp; Tiredness (fatigue), including generally feeling unwell (malaise)</p><p>&Oslash;&nbsp; Fever</p><p>&Oslash;&nbsp; Chest pain</p><p>&Oslash;&nbsp; Flu-like symptoms</p><p>&Oslash;&nbsp; Pain</p><p>&nbsp;</p><p>&nbsp;</p><p>The following side effects are <strong>uncommon </strong>(affects 1 to 10 patients in 1.000):</p><p>&Oslash;&nbsp; Hypersensitivity</p><p>&Oslash;&nbsp; Aseptic meningitis syndrome (AMS, a temporary and reversible non-infectious inflammation of the protective membranes surrounding the brain and spinal cord)</p><p>&Oslash;&nbsp; Tremor, including psychomotor hyperactivity</p><p>&Oslash;&nbsp; Fast heartbeat (tachycardia)</p><p>&Oslash;&nbsp; Flushing</p><p>&Oslash;&nbsp; Joint inflammation (arthritis)</p><p>&Oslash;&nbsp; Muscle spasms</p><p>&Oslash;&nbsp; Muscular weakness</p><p>&Oslash;&nbsp; Chills, including low body temperature</p><p>&Oslash;&nbsp; Weight loss</p><p>&Oslash;&nbsp; Results of blood tests suggesting impaired e.g. liver and kidney function</p><p>&nbsp;</p><p>In <strong>isolated cases </strong>(post-marketing experience) hypersensitivity and anaphylactic reactions of the immune system, burning sensation, sleepiness, formation of blood clots which may be carried off in the blood circulation and which may result in blockage of a blood vessel (embolic and thrombotic events), and infusion-site ulcer have been observed in treatment with Hizentra.</p><p>&nbsp;</p><p>In isolated cases (post-marketing experience with other immunoglobulins; not observed with Hizentra) haemolytic anaemia, acute renal failure, acute tubular necrosis, proximal tubulopathy and osmotic nephrosis.</p><p>&nbsp;</p><p>ETell your doctor immediately if you have any of the following signs or symptoms during or following an infusion of Hizentra:</p><p><strong>&nbsp;</strong></p><p>&Oslash;&nbsp; You may be allergic (hypersensitive) to immunoglobulins and allergic reactions such as a sudden fall in blood pressure or shock may occur (e.g. you may feel light-headed, dizzy, faint</p><p>&nbsp;</p><p>on standing, cold in the hands and feet, sense an abnormal heart beat or chest pain, or have blurred vision).</p><p>If you notice such signs during the infusion of Hizentra, tell your doctor immediately. Please see also section 2 of this leaflet about the risk of allergic reactions.</p><p>You may reduce or even avoid possible side effects if you slowly infuse Hizentra.</p><p>&Oslash;&nbsp; Pain and/or swelling of an arm or leg with warmth over the affected area, discoloration of an arm or leg, unexplained shortness of breath, chest pain or discomfort that worsens on deep breathing, unexplained rapid pulse, numbness or weakness on one side of the body, sudden confusion, or trouble speaking or understanding could be signs of a blood clot.</p><p>&Oslash;&nbsp; Bad headache with nausea, vomiting, stiff neck, fever, and sensitivity to light could be signs of AMS.</p><p>&nbsp;</p><p>Side effects such as these may occur even when you have previously received human immunoglobulins and tolerated them well.</p><p>Please also refer to section 2 for additional details on circumstances which increase the risk of side effect.</p><p>&nbsp;</p><p>Reporting of side effects</p><p>If you get any side effects, talk to your doctor or healthcare professional. This includes any possible side effects not listed in this leaflet. By reporting side effects you can help provide more information on the safety of this medicine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&Oslash;&nbsp; Do not use this medicine after the expiry date (EXP) which is stated on the outer carton and the vial label after EXP.</p><p>&Oslash;&nbsp; Hizentra should be administered as soon as possible after opening the vial as the solution contains no preservative.</p><p>&Oslash;&nbsp; Do not store above 25&deg;C.</p><p>&Oslash;&nbsp; Do not freeze.</p><p>&Oslash;&nbsp; Do not use if Hizentra has been frozen.</p><p>&Oslash;&nbsp; Keep this medicine out of the sight and reach of children.</p><p>&Oslash;&nbsp; Keep the vial in the outer carton in order to protect from light.</p><p>&Oslash;&nbsp; Do not throw away any medicines via wastewater or household waste. Ask your doctor or healthcare professional how to throw away medicines you no longer use. These</p><p>&nbsp;</p><p>measures will help protect the environment.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>The <strong>active substance </strong>is human normal immunoglobulin. One ml contains 200 mg of human plasma protein (20 % solution), of which at least 98% is immunoglobulin type G (IgG).</p><p>The approximate percentage of IgG subclasses is as follows: IgG1 69 %, IgG2 26 %, IgG3 3 %, IgG4 2 %.</p><p>This medicine contains trace amounts of IgA (not more than 50 micrograms/ml).</p><p>&nbsp;</p><p>&nbsp;</p><p>The <strong>other ingredients </strong>(excipients) are L-proline, polysorbate 80, sodium hydroxide (is equivalent to</p><p>&lt;10 mmol/l of sodium), hydrochloric acid and water for injections.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Hizentra is provided as a ready-to-use sterile solution in single-use vials Hizentra is a clear solution for subcutaneous injection (200 mg/ml).
+The colour can vary from pale-yellow to light-brown. Hizentra is available in vials of 5, 10, 20 or 50 ml.
+Pack sizes
+Packs of 1 vial.
+
+
+Not all pack sizes may be marketed. List I- Prescription only medicines
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>CSL Behring AG</p><p>Wankdorfstrasse 10</p><p>3014 Bern Switzerland</p><p>&nbsp;</p><p>To reports any side effect(s):</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Saudi Arabia:</u></p><p>The National Pharmacovigilance Centre (NPC): SFDA Call Center: 19999</p><p>E-mail: npc.drug@sfda.gov.sa</p><p>Website: <u>https://ade.sfda.gov.sa</u></p><p>&nbsp;</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Sultanate of Oman:</u></p><p>Department of Pharmacovigilance &amp; Drug Information Directorate General of Pharmaceutical Affairs &amp; Drug Control Ministry of Health, Sultanate of Oman</p><p>Phone Nos. 22357687 / 22357686</p><p>Fax: 22358489</p><p>Email: dg-padc@moh.gov.om Website: www.moh.gov.om</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>United Arab Emirates:</u></p><p>Pharmacovigilance &amp; Medical Device section P.O.Box: 1853</p><p>Tel: 80011111</p><p>Email:<u> </u>pv@mohap.gov.ae</p><p>Drug Department</p><p>Ministry of Health &amp; Prevention Dubai, UAE</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Other GCC States:</u></p><p>Please contact the relevant competent authority.</p><p>&nbsp;</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Algeria: </u>&nbsp;http://www.cnpm.org.dz/index.php</p><p>&nbsp;</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Tunisia: </u></p><p>&nbsp;</p><p><strong>effets.indesirables@rns.tn</strong><strong> or </strong><strong>www.pharmacovigilance.rns.tn</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Jordan: </u></p><p>Email: jpc@jfda.jo</p><p>JFDA reporting link on JFDA website www.jfda.com:</p><p><u>https://primaryreporting.who-umc.org/JO</u></p><p>Tel: +962-6-5632000</p><p>&nbsp;</p><p>&nbsp;</p><p>Council of Arab Health Ministers</p><p><!--[if gte vml 1]><o:wrapblock><v:shapetype id="_x0000_t202"
+  coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="Textbox_x0020_7" o:spid="_x0000_s1026" type="#_x0000_t202"
+  style='position:absolute;margin-left:59.3pt;margin-top:6.65pt;width:466.6pt;
+  height:173.2pt;z-index:-15727616;visibility:visible;mso-wrap-style:square;
+  mso-wrap-distance-left:0;mso-wrap-distance-top:0;mso-wrap-distance-right:0;
+  mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;
+  mso-position-horizontal-relative:page;mso-position-vertical:absolute;
+  mso-position-vertical-relative:text;v-text-anchor:top' o:gfxdata="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
+" filled="f" strokeweight=".48pt">
+  <v:path arrowok="t"/>
+  <v:textbox inset="0,0,0,0">
+   <![if !mso]>
+   <table cellpadding=0 cellspacing=0 width="100%">
+    <tr>
+     <td><![endif]>
+     <div>
+     <p class=MsoNormal style='margin-top:1.0pt;margin-right:0in;margin-bottom:
+     0in;margin-left:5.35pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+     normal'>This<span style='letter-spacing:-.05pt'> </span>is<span
+     style='letter-spacing:-.05pt'> </span>a<span style='letter-spacing:-.05pt'>
+     </span><span style='letter-spacing:-.1pt'>Medicament</span><o:p></o:p></b></p>
+     <p class=MsoBodyText style='margin-top:6.3pt;margin-right:17.25pt;
+     margin-bottom:0in;margin-left:16.15pt;margin-bottom:.0001pt;text-indent:
+     -.15in;line-height:150%;mso-list:l1 level1 lfo1;tab-stops:16.15pt'><![if !supportLists]><span
+     style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+     </span></span><![endif]><span dir=LTR></span>Medicament<span
+     style='letter-spacing:-.05pt'> </span>is<span style='letter-spacing:-.1pt'>
+     </span>a<span style='letter-spacing:-.1pt'> </span>product,<span
+     style='letter-spacing:-.1pt'> </span>which<span style='letter-spacing:
+     -.25pt'> </span>affects<span style='letter-spacing:-.1pt'> </span>your<span
+     style='letter-spacing:-.05pt'> </span>health<span style='letter-spacing:
+     -.25pt'> </span>and<span style='letter-spacing:-.25pt'> </span>its<span
+     style='letter-spacing:-.2pt'> </span>consumption<span style='letter-spacing:
+     -.1pt'> </span>contrary<span style='letter-spacing:-.1pt'> </span>to<span
+     style='letter-spacing:-.1pt'> </span>instructions<span style='letter-spacing:
+     -.2pt'> </span>is dangerous for you.<o:p></o:p></p>
+     <p class=MsoBodyText style='margin-top:0in;margin-right:22.85pt;
+     margin-bottom:0in;margin-left:16.15pt;margin-bottom:.0001pt;text-indent:
+     -.15in;line-height:150%;mso-list:l1 level1 lfo1;tab-stops:16.15pt'><![if !supportLists]><span
+     style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+     </span></span><![endif]><span dir=LTR></span>Follow<span style='letter-spacing:
+     -.3pt'> </span>strictly<span style='letter-spacing:-.1pt'> </span>the<span
+     style='letter-spacing:-.1pt'> </span>doctor’s<span style='letter-spacing:
+     -.35pt'> </span>prescription,<span style='letter-spacing:-.25pt'> </span>the<span
+     style='letter-spacing:-.2pt'> </span>method<span style='letter-spacing:
+     -.25pt'> </span>of<span style='letter-spacing:-.2pt'> </span>use<span
+     style='letter-spacing:-.1pt'> </span>and<span style='letter-spacing:-.1pt'>
+     </span>the<span style='letter-spacing:-.1pt'> </span>instructions<span
+     style='letter-spacing:-.1pt'> </span>of<span style='letter-spacing:-.05pt'>
+     </span>the<span style='letter-spacing:-.1pt'> </span>pharmacist who sold
+     the medicament.<o:p></o:p></p>
+     <p class=MsoBodyText style='margin-left:16.1pt;text-indent:-10.75pt;
+     line-height:12.6pt;mso-line-height-rule:exactly;mso-list:l1 level1 lfo1;
+     tab-stops:16.1pt'><![if !supportLists]><span style='mso-list:Ignore'>-<span
+     style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><![endif]><span
+     dir=LTR></span>The<span style='letter-spacing:-.15pt'> </span>doctor<span
+     style='letter-spacing:-.2pt'> </span>and<span style='letter-spacing:-.25pt'>
+     </span>the<span style='letter-spacing:-.1pt'> </span>pharmacist<span
+     style='letter-spacing:-.05pt'> </span>are<span style='letter-spacing:-.1pt'>
+     </span>the<span style='letter-spacing:-.15pt'> </span>experts<span
+     style='letter-spacing:-.2pt'> </span>in<span style='letter-spacing:-.25pt'>
+     </span>medicines,<span style='letter-spacing:-.1pt'> </span>their<span
+     style='letter-spacing:-.05pt'> </span>benefits<span style='letter-spacing:
+     -.1pt'> </span>and<span style='letter-spacing:-.25pt'> </span><span
+     style='letter-spacing:-.1pt'>risks.</span><o:p></o:p></p>
+     <p class=MsoBodyText style='margin-top:6.4pt;margin-right:0in;margin-bottom:
+     0in;margin-left:16.1pt;margin-bottom:.0001pt;text-indent:-10.75pt;
+     mso-list:l1 level1 lfo1;tab-stops:16.1pt'><![if !supportLists]><span
+     style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+     </span></span><![endif]><span dir=LTR></span>Do<span style='letter-spacing:
+     -.15pt'> </span>not<span style='letter-spacing:-.1pt'> </span>by<span
+     style='letter-spacing:-.3pt'> </span>yourself<span style='letter-spacing:
+     -.2pt'> </span>interrupt<span style='letter-spacing:-.1pt'> </span>the<span
+     style='letter-spacing:-.15pt'> </span>period<span style='letter-spacing:
+     -.25pt'> </span>of<span style='letter-spacing:-.25pt'> </span>treatment<span
+     style='letter-spacing:-.1pt'> </span>prescribed<span style='letter-spacing:
+     -.15pt'> </span>for<span style='letter-spacing:-.05pt'> </span><span
+     style='letter-spacing:-.2pt'>you.</span><o:p></o:p></p>
+     <p class=MsoBodyText style='margin-top:6.3pt;margin-right:0in;margin-bottom:
+     0in;margin-left:16.1pt;margin-bottom:.0001pt;text-indent:-10.75pt;
+     mso-list:l1 level1 lfo1;tab-stops:16.1pt'><![if !supportLists]><span
+     style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+     </span></span><![endif]><span dir=LTR></span>Do<span style='letter-spacing:
+     -.2pt'> </span>not<span style='letter-spacing:-.1pt'> </span>repeat<span
+     style='letter-spacing:-.25pt'> </span>the<span style='letter-spacing:-.2pt'>
+     </span>same<span style='letter-spacing:-.15pt'> </span>prescription<span
+     style='letter-spacing:-.15pt'> </span>without<span style='letter-spacing:
+     -.15pt'> </span>consulting<span style='letter-spacing:-.25pt'> </span>your<span
+     style='letter-spacing:-.1pt'> doctor.</span><o:p></o:p></p>
+     <p class=MsoBodyText style='margin-top:6.35pt;margin-right:0in;margin-bottom:
+     0in;margin-left:16.1pt;margin-bottom:.0001pt;text-indent:-10.75pt;
+     mso-list:l1 level1 lfo1;tab-stops:16.1pt'><![if !supportLists]><span
+     style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+     </span></span><![endif]><span dir=LTR></span>Keep<span style='letter-spacing:
+     -.15pt'> </span>all<span style='letter-spacing:-.2pt'> </span>medicaments<span
+     style='letter-spacing:-.2pt'> </span>out<span style='letter-spacing:-.2pt'>
+     </span>of<span style='letter-spacing:-.05pt'> </span>reach<span
+     style='letter-spacing:-.1pt'> </span>of<span style='letter-spacing:-.05pt'>
+     </span><span style='letter-spacing:-.1pt'>children.</span><o:p></o:p></p>
+     </div>
+     <![if !mso]></td>
+    </tr>
+   </table>
+   <![endif]></v:textbox>
+  <w:wrap type="topAndBottom" anchorx="page"/>
+ </v:shape><![endif]--></p><table cellpadding="0" cellspacing="0" align="left"><tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><img width="628" height="236" alt="Text Box: This is a Medicament
+-	Medicament is a product, which affects your health and its consumption contrary to instructions is dangerous for you.
+-	Follow strictly the doctor’s prescription, the method of use and the instructions of the pharmacist who sold the medicament.
+-	The doctor and the pharmacist are the experts in medicines, their benefits and risks.
+-	Do not by yourself interrupt the period of treatment prescribed for you.
+-	Do not repeat the same prescription without consulting your doctor.
+-	Keep all medicaments out of reach of children.
+" src="file:///C:/Users/user/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" /></td></tr></tbody></table><p><!--[if gte vml 1]></o:wrapblock><![endif]--></p><p>&nbsp;</p><p><strong>&nbsp;</strong></p><p>Council of Arab Health Ministers Union of Arab Pharmacists</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                October 2022
+
+
+Note: Hizentra ® is a registered trademark of CSL Behring AG in many countries.
+
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p>ما هو هايزنت ا ر<br />ينتمي هوايزنت ا ر إل فئوة من الأدويوة تُسووووووووووم الجلوبيولينوات المنواعيوة البشووووووووووريوة الطبيعيوة. والجلوبيولينوات<br />المناعية تُعرَك أي ضا بالأجسام المضادة وهي من بروتينات الدم.<br />كيف يعمل هايزنت ا ر<br />يحتوي هايزنت ا ر عل جلوبيولينا ت مناعية تلأ تحضوووووووويرها من دم الأيوووووووو ا الأصووووووووحاء. والجلوبيولينات<br />المناعية يتلأ تصوووونيعها بواسووووطة الجهاف المناعي في جسوووولأ ادنسووووان، وهي تسوووواعد جسوووومك عل مكافحة<br />العدوى الناجمة مثلا عن البكتيريا والفيروسووووووا ت، وهي أي ضوووا تحافظ عل توافن جها فك المناعي )وهو ما<br />يُسوووووم بالتعديث المناعي(. يعمث الدواء بنفس الطريقة بالضوووووووووب التي تعمث بها الجلوبيولينات المناعية<br />الموجو دة في دمك بشكث طبيعي.<br />ما هي استعمالات هايزنت ا ر<br />علاج تعويضي<br />يُسووووووتعمث هايزنت ا ر لرفع مسووووووتويات الجلوبيولينات المناعية المن فضووووووة في دمك إل المسووووووتويات الطبيعية<br />)علاج تعويضي(. يُستعمث الدواء في الحا ت التالية:<br />18 سوونة( الذين لديهلأ منذ و دتهلأ نقص أو انعدام في القدرة - -1 علاج البالغين والأطفال والم ا رهقين ) 0<br />عل إنتاج الجلوبيولينات المناعية )متلافمات نقص المناعة الأولية(. وهذا يشمث حا ت مثث:<br />ان فاض مستويا ت الجلوبيولينات المناعية في الدم )نقص جلوبيولين جاما في الدم( أو انعدام <br />الجلوبيولينات المناعية )انعدام جلوبيولين جاما في الدم (<br />توليفة من ان فاض مستويا ت الجلوبيولينات المناعية، والعدوى المتكررة، وعدم القدرة عل إنتاج <br />كميات كافية من الأجسام المضادة بعد التطعيلأ )العوف المنا عي الشائع المتغير (<br />توليفة من ان فاض أو انعدام الجلوبيولينات المناعية وانعدام ال لايا المناعية أو عدم قدرتها <br />عل أداء وظيفتها )العوف المناعي المشترك الوخيلأ (<br />انعدام فئات فرعية معينة من الجلوبيولين المناعي جي مما يسبه العدوى المتكررة. <br />-2 علاج المرضىىىى الوذين يعوانون من ان فواض أو خلوث في مسووووووووووتويوات الجلوبيولينوات المنواعيوة في<br />الحالات المُكتسبة نقص المناعة الثانوي ( الذين قد تعرضووا لعدوى يوديدة أو متكررة بسوبه ضوع<br />الجهاف المناعي الناتج عن حا ت أو علاجات أخرى .<br />CIDP العلاج بالتعديل المناعي في مرضى<br />يُسوتعمث هايزنت ا ر أي ضوا في المرضو الذين يعانون من اعتلال الأعصواع المتعدد ا لتهابي المزمن المزيث<br />بحودوث التهواع مزمن في CIDP وهو أحو د أيووووووووووكوال أم ا رض المنواعوة الوذاتيوة. يتصوووووووووو (CIDP) للميوالين<br />الأعصوواع الطرفية مما يؤدي إل ضووع العضوولات ود أو خدر في السوواقين والذ ا رعين بصووفة أسوواسووي ة.<br />ومن المعتقد أن سووبه هذا ا لتهاع هو حدوث هجوم دفاعي من الجسوولأ. وتسوواعد الجلوبيولينات المناعية<br />الموجو دة في هايزنت ا ر عل حماية الأعصاع من هذا الهجوم )العلاج بالتعديث المناعي(.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p>لا تستعمل هايزنت ا ر<br />إذا كنت قد تعرضت ساب قا لحدوث أرجية )حساسية مفرطة( تجاه الجلوبيولينات المناعية البشرية، <br />برولين . - L أو بوليسوربات 80 ، أو<br />أخبر طبيبك أو أخصائي الرعاية الصحية قبث العلاج إذا كنت قد تعرضت ساب قا لعدم <br />تحمث أحد هذه المكونا ت.<br />إذا كنت تعاني من فرط برولين الدم )وهو اضط ا رع و ا رثي يؤ دي إل ارتفاع مستويات الحمض <br />الأميني برولين في الدم(.<br />التحذي ا رت والاحتياطات<br />تحدث مع طبيبك أو أخصائي الرعاية الصحية قبث أن تستعمث هايزنت ا ر. <br />طريقة الإعطا ء<br />يتلأ إعطاء هايزنت ا ر فقط بالحقن تحت الجل د. إذا تلأ حقن هايزنت ا ر في وعاء دموي عل سبيث ال طأ، فإنك<br />قد تتعرض لحدوث تفاعث أرجي يدي د )صدمة تأقية ناتجة عن الحساسية الشديدة( .<br />يجه ا لت ا زم بمعدل التسريه الذي أوص به طبيبك. يجه الم ا رقبة الدقيقة والملاحظة بعناية من جهة أي<br />أحداث مناوئة طوال مدة ادعطاء بالتسريه .<br />الحساسية المفرطة/ التفاعلات التأقية )الحساسية الشديدة(<br />قد تكون لديك أرجية )حساسية مفرطة( تجاه الجلوبيولينات المناعية دون أن تعرك ذلك. غير أنه من النادر<br />أن تحدث تفاعلات أرجية حقيقية، وهي قد تحدث حت إذا كنت قد تلقيت ساب قا جلوبيولينات مناعية بشرية<br />وتحملتها بشكث جيد. ويحدث ذلك بصفة خاصة إذا كان لديك نقص في الجلوبيولين المناعي من النوع أ<br />.)IgA في دمك )نقص (IgA)<br />يحتوي .(IgA) أخبر طبيبك قبث تلقي العلاج إذا كان لديك نقص في الجلوبيولين المناعي من النوع أ <br />مما قد يسبه حدوث تفاعث أرجي )حساسية مفرطة(. IgA هايزنت ا ر عل كميات ضئيلة من<br />في هذه الحا ت النادرة، قد تحدث تفاعلات أرجية )حساسية مفرطة(، مثلا في يكث ان فاض مفاجئ<br />.) لضغ الدم أو صدمة )انظر أي ضا البن د 4<br />إذا حظت مثث هذه العلامات أثناء تلقي حقنة هايزنت ا ر، أوق التسري ه واتصث بطبيبك أو اذهه <br />فو ا ر إل أقرع مستشف .<br />سيتجنه طبيبك المضاعفات الممكنة بأن يتأك د :<br />من أنك تعاني من حساسية تجاه الجلوبيولين المناعي البشري الطبيعي. <br />من أن الدواء يتلأ حق نه بب ء في البداية. <br />من أنك ت ضع للم ا رقبة الدقيقة من جهة أي أع ا رض طوال مدة ادعطاء بالتسريه، سيما : <br />إذا كنت تتلق الجلوبيولين المناعي البشري الطبيعي لأول مرة ●<br />إذا كنت قد تلأ تحويلك من استعمال دواء م تل ●<br />إذا كانت قد مرت فترة طويلة )أكثر من ثمانية أسابيع( منذ الحقنة السابقة. ●<br />في هذه الحا ت، يوص بم ا رقبتك أثناء إعطاء الحقنة الأول بالتسريه ولمدة ساعة بعدها. إذا للأ تنطبق<br />عليك النقاط المذكورة أعلاه، فإنه يوص عندئذ بم ا رقبتك لمدة 20 دقيقة عل الأقث بعد إعطاء الحقنة .<br />الجلطات الدموية<br />أخبر طبيبك إذا كان لديك تاريخ عن مرض ف ي القله أو الأوعية الدموية أو جلطات دموية، أو فيادة <br />في كثافة الدم، أو إذا كنت متوق فا عن الحركة لبعض الوقت. هذه الأيياء قد تؤدي إل فيادة م اطرة<br />إصابتك بجلطة دموية بعد استعمال هايزنت ا ر. أخبر طبيبك أي ضا عن الأدوية التي تستعملها، لأن<br />بعض الأدوية، مثث تلك المحتوية عل هرمون ا ستروجين )عل سبيث المثال، أق ا ر منع الحمث(،<br />قد تزيد من م اطرة إصابتك بجلطة دموية. اتصث بطبيبك فو ا ر إذا حدثت لديك علامات وأع ا رض<br />مثث ضيق التنفس، أو أللأ في الصدر، أو أللأ وتورم في أحد الأط ا رك، أو ضع أو خدر عل جانه<br />واحد من الجسلأ بعد تلقي هايزنت ا ر.<br />)AMS( متلازمة التهاب السحايا العقيم<br />اتصث بطبيبك إذا حدثت لديك العلامات والأع ا ر ض التالية: صداع يديد، تيبس العن ق، نعاس، حم ، <br />رهاع الضوء، غثيان، قيء، بعد تلقي هايزنت ا ر. هذه الأع ا رض قد تشير إل التهاع السحايا العقي لأ<br />)التهاع مؤق ت، وقابث للعكس، وغير معدي، في الأغشية الواقية المحيطة بالمخ والن اع الشوكي(.<br />سوك يقرر طبيبك ما إذا كان من الضروري إج ا رء مزيد من ا ختبا ا رت وما إذا كان سيستمر في<br />إعطائك هايزنت ا ر.<br />المضاعفات الكلوي ة <br />تلأ ادبلاغ عن حدوث تفاعلات مناوئة يديدة تؤثر عل الكل في المرض الذين يتلقون علا جا <br />بالجلوبيولين المناعي، وبصفة خاصة مع المستحض ا رت التي تحتوي عل سكروف ) يحتوي هيزنت ا ر<br />عل أي سكروف(. هذه التفاعلات تشمث الفشث الكلوي الحاد، والن ر الأنبوبي الحاد، وا عتلال الأنبوبي<br />الداني، والكلاء التناضحي. العوامث التي تزيد من م اطرة حدوث المضاعفات الكلوية تشمث، ضمن<br />أيياء أخرى، وجود قصور كلوي مسبق، داء السكري، نقص حجلأ الدم، العلاج الم ا رفق بأدوية سامة<br />للكل ، السن الذي يزيد عن 65 عا ما، التقيح، فرط لزوجة الدم، ووجود با ا ربروتين في الدم.<br />فقر الدم ا نحلال ي <br />قد تحتوي مستحض ا رت الجلوبيولينات المناعية عل أجسام مضادة لفصائث الدم والتي قد تعمث مثث <br />الهيموليسينات وتؤدي إل تغلي خلايا الدم الحم ا رء بالجلوبيولين المناعي في الجسلأ الحي. وهذا قد<br />اختبار كومبس المباير(، وبصفة نادرة إل ،DAT( يؤدي إل تفاعث مباير موجه مضاد للجلوبيولين<br />قد يحدث فقر دم انحلالي آجث بسبه فيادة IgG انحلال الدم. عقه المعالجة بالجلوبيولين المناعي<br />احتجاف خلايا الدم الحم ا رء. توجد تقارير عن حدوث فقر دم انحلالي .<br />الأمان من جهة مسببات الأم ا رض<br />يتلأ تصنيع هايزنت ا ر من بلافما دم ادنسان، وهي الجزء السائث من الدم. عندما يتلأ تصنيع الأدوية من الدم<br />أو البلافما البشرية، يتلأ ات اذ إج ا رءا ت معيَّنة لمنع انتقال العدوى إل المرض . هذه ادج ا رءا ت تشمث :<br />ا نتقاء الدقيق للمتبرعين بالدم والبلافما للتأكد من استبعاد أولئك الذين قد ينقلوا العدوى، <br />اختبار كث كمية من الدم المتبرع به ومجمعات البلافما من جهة علامات الفيروساتد العدوى. <br />أي ضا يقوم صانع و هذه الأدوية بات اذ خطوات إضافية في معالجة الدم أو البلافما بحيث يتلأ إبطال مفعو ل<br />الفيروسا ت أو الت لص منه ا.<br />ورغلأ هذه ادج ا رءات، يمكن أن يُستبعَد تما ما احتمال انتقال العدوى عند إعطاء الأدوية المصنوعة من<br />الدم أو البلافما البشرية. ينطبق هذا أي ضا عل أي فيروسات غير معروفة أو نايئة حديث ا أو غيرها من<br />أنواع العدوى .<br />فيروس ،HIV( ادج ا رءا ت المت ذة تُعتبر فعالة ضد الفيروسات المغلفة، مثث فيروس نقص المناعة البشرية<br />ا لتهاع الكبدي(، اولفيروسات غير ( C وفيروس ا لتهاع الكب دي ،B اديدف(، وفيروس ا لتهاع الكب دي<br />.B وفيروس بارفو 19 A المغلفة مثث فيروس ا لتهاع الكب دي<br />مع هايزنت ا ر B وفيروس بارفو 19 A توجد خبرة سريرية مطمئنة بشأن عدم انتقال فيروس ا لتهاع الكب دي<br />ومن المفترض أي ضا أن المحتوى من الأجسام المضادة يساهلأ بشكث كبير في الأمان الفيروسي .<br />يوص بشدة أنه في كث مرة عندما تتلق إحدى جرعا ت هايزنت ا ر، يتلأ تسجيث اسلأ المستحضر ورقلأ <br />. ) التشغيلة من أجث ا حتفاظ بسجث للتشغيلات المست دم ة )انظر البند 3<br />الأدوية الأخرى وهايزنت ا ر<br />أخبر طبيبك إذا كنت تستعمث حال يا أو إذا كنت قد استعملت منذ فترة قصيرة، أو إذا كنت مزم عا أن <br />تستعمث أي أدوية أخرى .<br />ينبغي أن ت ل الأدوية الأخرى مع هايزنت ا ر .<br />اللقاحات الفيروسية الحية الموهَّ ن ة<br />أخبر الطبي ه الذي سيقوم بتطعيمك أنك تتلق علا جا بو هايزنت ا ر . <br />قد يؤدي هايزنت ا ر إل إضعاك تأثير بعض اللقاحات الفيروسية الحية مثث الحصبة ، والحصبة الألمانية ،<br />والنكاك، وجدري الدجاج. لذلك بعد تلقي هذا الدواء، قد تحتاج أن تنتظر ح ت 3 يهور قبث أن تتلق<br />تطعي ما بلقاح حي موهَّن. في حالة التطعيلأ ض د الحصبة، قد يستمر هذا ادضعا ك لمدة تصث إل سنة .<br />اختبا ا رت الدم<br />عقه تلقي هايزنت ا ر، قد تتأثر نتائج اختبا ا رت معينة للدم )اختبا ا رت المصث( لفترة معينة.<br />أخبر طبيبك أنك تتلق علا جا بو هايزنت ا ر قبث أي اختبار للدم. <br />الحمل والإرضاع والخصوب ة<br />أخب ري طبيبك إذا كنتِ حاملا ، أو إذا كنتِ ت ططين للحمث، أو إذا كنتِ مرضعة. سيقرر طبيبك ما <br />إذا كان يمكنك تلقي هايزنت ا ر أثناء الحمث أو أثناء ادرضاع .<br />للأ يتلأ إج ا رء أي د ا رسات سريرية عل هايزنت ا ر في النساء الحوامث. غير أنه قد تلأ است دام الأدوية المحتوي ة<br />عل الجلوبيولينا ت المناع ية في النساء الحوامث أو المرضعات لسنوات عديدة، وللأ تُلاحَ ظ أي آثار ضارة<br />عل مسار الحمث أو عل المولو د.<br />إذا كنت مُرضعة وتتلقين هايزنت ا ر، فإن الجلوبيولي نا ت المناعية الموجودة في الدواء قد تُفرَف أي ضا في لب ن<br />الثدي، وبالتالي فإنها قد تعطي حماية لطفلك من بعض أنواع العد وى .<br />قيادة السيارة وتشغيل الآلات<br />ق د تضع القدرة عل القيادة أو تشغيث الآ ت بسبه بعض الآثار الجانبية المرتبطة بو هايزنت ا ر. إذا حدثت<br />لديك أي تفاعلات مناوئة أثناء العلاج، يجه أن تنتظر حت تزول هذه التفاعلات قبث أن تستأن القيادة<br />أو تشغيث الآ ت .<br />يحتوي هايزنت ا ر على برولي ن<br />لا ينبغي أن تسووووووووتعمث هذا الدواء إذا كنت تعاني من فرط برولين الدم )انظر أي ضوووووا البند 2(. برجاء أن<br />ت بر طبيبك قبث تلقي العلاج.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p>عند اسوتعمال هذا الدواء التزم دائ ما بدقة بالتعليمات المُعطاة لك من طبيبك. اسوتشور طبيبك إذا كنت غير<br />متأكد.<br />الجرعة<br />سيقوم طبيبك بحساع الجرعة الصحيحة لك مع م ا رعاة وفنك واستجابتك للعلاج.<br />تغير الجرعة أو المسافة بين الجرعات دون استشارة طبيبك.<br />إذا ظنن ت أنك يجه أن تتلق هايزنت ا ر بمعدل أكثر أو أقث تك ا ر ا ر، برجاء أن تتحدث مع طبيبك.<br />إذا ظنن ت أنك نسيت إحدى الجرعا ت، تحدث مع طبيبك في أقرع وقت ممكن.<br />العلاج التعويضي<br />سويحدد طبيبك ما إذا كنت بحاجة إل جرعة تحميث )للبالغين والأطفال والم ا رهقين( تبلغ عل الأقث 1 إل<br />2,5 ملليلترد كجلأ من وفن الجسوووولأ والتي يمكن تقسوووويمها عل عدة أيام. بعد ذلك، يمكن إعطاء جرعات<br />المداومة عل فت ا رت متكررة، بد ءا من مرة واحدة يوم يا إل مرة كث أسوووبوعين، وصوووو إل جرعة يووووهرية<br />ت ا ركمية تبلغ حوالي 2 إل 4 ملليلترد كجلأ من وفن الجسووولأ. قد يقوم أخصوووائي الرعاية الصوووحية بتعديث<br />الجرعة بنا ء عل استجابتك للعلاج.<br />العلاج بالتعديل المناعي<br />سيبدأ الطبي ه علاجك بو هايزنت ا ر بعد أسبوع واحد من آخر حقنة من الجلوبيولين المناعي المُعط بالتسريه<br />في الوريد، وذلك بأن يعطيك بالحقن تحت الجلد جرعة أسبوعية تبلغ 2,0 ملليلتر د كجلأ من وفن الجسلأ .<br />سيحدد طبيبك جرعتك الأسبوعية من هايزنت ا ر )للبالغين والأطفال والم ا رهقين( .<br />يمكن تقسيلأ جرعات المداومة الأسبوعية إل جرعات أصغر، ويتلأ إعطاؤها عل عدد الم ا رت المرغوبة في<br />الأسبوع. عند ادعطاء مرة كث أسبوعين، سيقوم طبيبك بمضاعفة جرعة هايزنت ا ر المحددة للإعطاء أسبوع يا.<br />قد يقوم أخصائي الرعاية الصحية بتعديث الجرعة بنا ء عل استجابتك للعلاج.<br />أسلوب وطريقة الإعطاء<br />في حالة العلاج بالمنزل، سيتلأ بدء العلاج وم ا رقبته في البداية بواسطة أخصائي رعاية صحية لديه خبر ة<br />وفي توجيه المرض لتلقي العلاج المنزلي. CIDP في علاج نقص المناعةد<br />سيتلأ إعطاؤك تعليمات بشأن:<br />الأساليه المعقمة دعطاء الحقنة بالتسريه، <br />كيفية كتابة مفكرة العلاج ، <br />ادج ا رءات التي يج ه ات اذها في حالة حدو ث آثار جانبية يديدة. <br />فق بع د تلقي هذا التوجيه، ستقوم باتباع التعليمات المذكورة أدناه .<br />موضع )مواضع( الإعطاء بالتسريب<br />يتلأ إعطاء هايزنت ا ر فقط بالحقن تحت الجلد. <br />يمكنك حقن هايزنت ا ر في أماكن مثث البطن، والف ذ، وأعل الذ ا رع، والجزء الجانبي من الورك <br />)انظر الشكث 1(. عند إعطاء جرعات كبيرة )&lt; 50 ملليلتر(، حاول أن تحقنها في أماكن متعدد ة<br />يوجد حد لعدد أماكن ادعطاء المست دمة في آن واحد. <br />إذا كنت ستست دم تقنية التسريه بمساعدة جهاف )مثث التسريه بمساعدة مض ة(، يمكن عندئ ذ <br />است دام أكثر من جهاف واح د للحقن بالتسري ه في آن واح د.<br />إذا كنت ستست دم تقنية التسريه بالحقن اليدوي باست دام سرنجة، لن تقدر عندئذ أن تست دم <br />سوى موضع تسريه واحد فق لكث سرنجة. إذا احتجت أن تعطي حقنة إضافية من ه ايزنت ا ر،<br />يجه أن تست دم إبرة معقمة جديدة للحقن مع تغيير م وضع التسري ه .<br />قد يتفاوت حجلأ المستحض ر الذي يتلأ حقنه في مكان معين . <br />يجه أن تكون المسافة بين أماكن الحقن 5 سلأ عل الأقث. <br />الشكث 1: الأماكن الممكنة لحقن هايزنت ا ر بالتسري ه<br />معدل )معدلات( التسري ب<br />سيحدد طبيبك تقنية التسريه ومعدل التسريه المناسبين لك أخ ذا في ا عتبار جرعتك الفردية، ومعدل<br />تك ا ر رها، وقدرتك عل تحمث المستحضر .<br />التسريه بمساعدة جهاف :<br />يصث معدل التسريه ا بتدائي الموص به حت 20 ملليلترد ساعةد م وضع . وإذا كانت القدرة عل تحمله<br />جيدة، يمكنك فيادة معدل التسريه تدريج يا حت 100 ملليلترد ساعةد م و ضع مع التسريبين التاليين .<br />إذا كنت من المرض ذوي الم اطرة، كما هو موضح في البن د 2 )انظر البن د 2(، فيجه أن تتلق هايزنت ا ر<br />بأقث جرعة ممكنة وأقث معدل تسريه ممكن من الناحية العملية.<br />التسريه بالحقن اليدوي :<br />يصث معدل التسريه ا بتدائي الموص به حت 0,5 ملليلترد دقيقةد م وضع ) 30 ملليلترد ساعةد م وضع ( .<br />وإذا كانت القدرة عل تحمله جيدة، يمكنك فيادة معدل التسريه تدريج يا حت 2,0 ملليلترد دقيقةد م وض ع<br />120 ملليلترد ساعةد م و ضع(. (<br />تعليمات أخرى خاصة بالاستعما ل<br />. ) هايزنت ا ر هو محلول جاهز للاستعمال )انظر البن د 5 والبند 6 <br />تست دم المحلول إذا كان غائ ما أو به جسيمات دقيقة . <br />تست دم المحلول إذا كان قد تلأ تجميده. <br />يجه أن يكون المحلول في درجة ح ا ررة الغرفة ) 25 &deg;م( عند استعماله. <br />بمجرد فتح القارورة، يجه استعمال المحلول فو ا ر . <br />يجه اتباع أساليه التعقيلأ عند تجهيز وإعطاء هايزنت ا ر. <br />سجث البيانات التالية في مفكرة علاجك : <br />تاريخ إعطاء الحقنة ، ●<br />رقلأ تشغيلة الدواء، ●<br />الحجلأ الذي تلأ حقنه بالتسريه، ومعدل السريان، وعدد ومواضع ادعطاء بالتسريه. ●<br />إذا كانت لديك أي أسئلة أخرى عن استعمال هذا الدواء، برجاء أن تسأل طبيبك أو أخصائي الرعاية<br />الصحية .<br />إذا استعملت هايزنت ا ر بأكثر مما ينبغ ي<br />إذا ظننت أنك أخذت من هايزنت ا ر أكثر مما ينبغي، تحدث مع طبيبك في أقرع وقت ممكن.<br />إذا نسيت أن تستعمل هايزنت ا ر<br />إذا ظننت أنك نسيت إحدى الجرعات، تحدث مع طبيبك في أقرع وقت ممكن.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p>يأنه يأن جميع الأدوية، فإن هذا الدواء قد يؤدي إل حدو ث آثار جانبية، غير أنها تحدث لجميع<br />الأي ا .<br />الآثار الجانبية التي شوهدت في الد ا رسات السريرية الخاضعة للرقابة مذكورة بالترتيب التنازلي لمعدل<br />حدوثها. الآثار الجانبية التي شوهدت في مرحلة ما بعد التسويق لا يُعرَف معدل حدوثها :<br />الآثار الجانبية التالية شائعة جدًا )تُصيه أكثر من 1 من بين 10 مرض (:<br />التهاع الأن والبلعو م <br />صداع <br />طف ح <br />تفاعلات في موضع ادعطاء بالتسري ه <br />: ) الآثار الجانبية التالية شائعة )تُصيه 1 إل 10 مرض من بين 100<br />دوخة <br />صداع نصف ي <br />ارتفاع ضغ الدم <br />سعال <br />إسهال <br />أللأ في البط ن <br />غثيا ن <br />قيء <br />حكة <br />تفاعث جلدي مثلا في يكث بثور )أرتيكاريا ( <br />التهاع جلدي تماس ي <br />أللأ متعلق بالعضلات والعظام )أللأ هيكلي عضلي ( <br />أللأ في المفاص ث <br />تعه، يشمث ادحساس بالتوعك العا م <br />حم <br />أللأ في الصدر <br />أع ا رض يبيهة بادنفلون ا ز <br />أللأ <br />: ) الآثار الجانبية التالية غير شائعة )تُصيه 1 إل 10 مرض من بين 1000<br />حساسية مفرط ة <br />التهاع مؤق ت، وقابث للعكس، وغير معدي، في الأغشية الواقية ،AMS( التهاع السحايا العقيلأ <br />المحيطة بالمخ والن اع الشوكي(<br />رعشة، تشمث فرط النشاط النفسي الحرك ي <br />فيادة سرعة ضربات القله )تسرع القله ( <br />توه ج <br />التهاع المفاص ث <br />تشنجات عضلي ة <br />ضع العضلات <br />قشعريرة، تشمث ان فاض ح ا ررة الجس لأ <br />فقدان الوف ن <br />نتائج اختبا ا رت الدم توحي بضع وظائ الكبد والكل عل سبيث المثا ل <br />في حالات منعزلة )خبرة ما بعد التسويق(: يوهد أثناء العلاج بو هايزنت ا ر حدوث حساسية مفرطة، وتفاعلات<br />تأقية )حساسية يديدة( بالجهاف المناعي، إحساس حارق، نعاس، تكوين جلطات دموية والتي ق د تنتقث في<br />مجرى الدم وتؤدي إل انسداد وعاء دموي )أحداث انصمامية وخثا رية(، وقرحة في موضع ادعطاء<br />بالتسريه .<br />في حا ت منعزلة )خبرة ما بعد التسويق مع الجلوبولينا ت المناعية الأخرى؛ للأ تُشاهَد مع هايزنت ا ر(: فقر<br />دم انحلالي، فشث كلوي حا د، ن ر أنبوبي حا د، اعتلال أنبوبي داني، كلاء تناضحي.<br />أخبر طبيبك فو اً ر إذا حدثت لديك أي من العلامات والأع ا رض التالية أثناء أو بعد تلقي حقنة هايزنت ا ر <br />بالتسريب:<br />قد تكون لديك أرجية )حساسية مفرطة( تجاه الجلوبيولينا ت المناعية وقد تحدث تفاعلات أرجية <br />مثث ا ن فا ض المفاجئ لضغ الدم أو الصدمة )قد تشعر، عل سبيث المثال، بدوخة أو دوار<br />أو إغماء عند الوقوك أو برودة في اليدين والقدمين أو خلث في ضربات القله أو أللأ في الصدر<br />أو عدم وضوح الرؤية(.<br />إذا حظت مثث هذه العلامات أثناء تلقي حقنة هايزنت ا ر، أخبر طبيبك عل الفور. انظر أي ضا<br />البند 2 من هذه النشرة بشأن م اطرة التفاعلات الأرجية .<br />يمكنك تقليث أو حت تجنه الآثار الجانبية الممكنة إذا تلقيت حقنة هايزنت ا ر بب ء .<br />قد يكون من علامات الجلطة الدموية حدوث أللأ ود أو تورم في الذ ا رع أو الساق مع ادحساس <br />بس ونة في المنطقة المصابة، تغير لون الذ ا رع أو الساق، ضيق في التنفس غير معروك<br />السبه، أللأ أو عناء في الصدر يزداد سو ءا مع التنفس العميق، فيادة سرعة النبض بدون سبه<br />معروك، خدر أو ضع عل جانه واحد من الجسلأ، تشويش مفاجئ، صعوبة في الكلام أو<br />الفهلأ.<br />حدوث صداع يديد، مع غثيان، قيء، تيبس العنق، حم ، حساسي ة AMS قد يكون من علامات <br />للضوء.<br />هذه الآثار الجانبية قد تحدث حت إذا كنت قد تلقيت ساب قا جلوبيولينات مناعية بشرية وتحملتها بشكث جيد .<br />برجاء أن تنظر أي ضا البند 2 لمزيد من التفاصيث عن الأحوال التي تؤدي إل فيادة م اطرة الآثار الجانبية .<br />الإبلاغ عن الآثار الجانبية<br />إذا حدثت لديك أي آثار جانبية، اتصث بطبيبك أو أخصائي الرعاية الصحية. هذا يشمث أي آثار جانبية<br />ممكنة غير مذكورة في هذه النشرة. فإنك بادبلاغ عن الآثار الجانبية قد تساعد في تقديلأ مزيد من المعلومات<br />عن أمان هذا الدواء.<br />&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p>-5 كيفية تخزين هايزنت ا ر<br />المذكور عل العلبة ال ارجية وعل (EXP) تستعمث هذا الدواء بعد تاريخ انتهاء الصلاحية <br />.EXP ملصق القارورة بع د كلمة<br />يجه إعطاء هايزنت ا ر في أقرع وقت ممكن بعد فتح القارورة وذلك لأن المحلول يحتوي عل <br />أي مواد حافظة.<br />يُحفَظ في درجة ح ا ررة تزيد عن 25 &deg;م . <br />ينبغي تج مي ده. <br />تست دم هايزنت ا ر إذا كان قد تلأ تجميده. <br />احفظ هذا الدواء بعيدًا عن متناول وم أ رى الأطفال. <br />احفظ القارورة في العلبة ال ارجية لحمايتها من الضوء. <br />ينبغي الت لص من أي أدوية بإلقائها في مياه الصرك أو في القمامة المنزلية. اسأل طبيبك <br />أو أخصائي الرعاية الصحية عن كيفية الت لص من الأدوية التي يتلأ ا ستغناء عنها. هذه<br />ادج ا رءات ستساعد عل حماية البيئة</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p>ما هي محتويات هايزنت ا ر<br />المادة الفعالة هي جلوبيولين مناعي بشوري طبيعي. يحتوي 1 ملليلتر عل 200 مجلأ من بروتين البلافما<br />.(IgG) البشرية )محلول 20 ٪(، منه عل الأقث 98 ٪ جلوبيولين مناعي من النوع جي<br />،٪69 IgG هي كما يلي: 1 (IgG) النسوووووووووبة المئوية التقريبية للفئات الفرعية من الجلوبيولين المناعي جي<br />.٪2 IgG4 ،٪3 IgG3 ،٪26 IgG2<br />تزيد عن 50 ميكروج ا رمد ملليلتر(. ( IgA يحتوي هذا الدواء عل كميات ضئيلة من<br />برولين، بوليسوووووربات 80 ، هيدروكسوووويد صوووووديوم )بما يقابث &gt; 10 - L المكونات الأخرى )السووووواغات( هي<br />مللي مولد لتر صوديوم(، حمض هيدروكلوريك، ماء للحق ن</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p>هايزنت ا ر هو محلول ا رئق للإعطاء بالحقن تحت الجلد ) 200 مجلأد ملليلتر( .<br />قد يتفاوت اللون من أصفر ياحه إل بني فاتح .<br />يتوافر هايزنت ا ر في قوارير 5 أو 10 أو 20 أو 50 ملليلتر.<br />أحجام العبوات<br />عبوات بها قارورة واحدة.<br />]ليس بالضرورة أن تكون جميع أحجام العبوات مطروحة في الأسواق[<br />القائمة 1 - يُصرَك فق بتذكرة طبية</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p>سي إس إل بهرنج، شركة مساهم ة<br />وانكدورك ست ا رس 10<br />3014 بير ن<br />سويس ا ر<br />للإبلاغ عن أي آثار جانبية:<br />&bull; المملكة العربية السعودية :<br />:)NPC( المركز الوطني لليقظة الدوائ ية<br />مركز ا تصال بالهيئة السعودية للغذاء والدواء: 19999<br />npc.drug@sfda.gov.sa : البريد ادلكتروني<br />https://ade.sfda.gov.sa/ : الموقع ادلكتروني<br />&bull; سلطنة عُمان:<br />دائرة التيقظ و المعلومات الدوائي ة<br />المديرية العامة للصيدلة و الرقابة الدوائية<br />و ا فرة الصحة , سلطنة عُما ن<br />هات : 0096822357686 د 0096822357687<br />فاكس: 0096822358489<br />dg-padc@moh.gov.om : البريد الأكترون<br />www.moh.gov.om : الموقع الأكترون<br />&bull; الإما ا رت العربية المتحدة :<br />قسلأ اليقظة الدوائية والأجهزة الطبي ة<br />.ع: 1853<br />هات : 80011111<br />pv@mohap.gov.ae : البريد ادلكتروني<br />إدارة الأدوية<br />و ا فرة الصحة ووقاية المجتم ع<br />دبي، ا ما ا رت العربية المتحدة<br />&bull; دول الخليج الأخري:<br />الرجاء ا تصال بالمؤسس ات والھيئات الوطنية في كث دولة.<br />http://www.cnpm.org.dz/index.php : &bull; الج ا زئر<br />www.pharmacovigilance.rns.tn أو effets.indesirables@rns.tn : &bull; تونس<br />&bull; الأردن:<br />jpc@jfda.jo : البريد ادلكتروني<br />:www.jfda.com ا رب ادبلاغ ادلكتروني عل موقع المؤسسة<br />https://primaryreporting.who-umc.org/JO<br />+962-6- الهات : 5632000<br />مجلس وز ا رء الصحة العرب<br />إن هذا دواء<br />CSL Behring<br />Hizentra&reg;<br />MEA/AR, Rev.: 19-Oct-2022 / SID indication update<br />CSL Behring Page 18 of 18<br />HizentraMEA/AR- PIL_19-Oct-2022 / SID indication update<br />-الدواء مستحضر يؤثر عل صحتك، واستهلاكه خلا فا للتعليمات يُعرّضك لل طر.<br />-اتبع بدقة وصفة الطبيه، وطريقة ا ستعمال المنصو عليها، وتعليمات الصيدلي الذي صرفها لك.<br />-إن الطبيه والصيدلي هما ال بي ا رن في الدواء و بنفعه و ضرره.<br />- تقطع مدة العلاج المحددة لك من تلقاء نفسك.<br />- تكرر صرك الدواء بدون استشارة الطبيه.<br />- تترك الأدوية في متناول أيدي الأطفال.<br />مجلس وف ا رء الصحة العر ع<br />اتحاد الصيادلة العر ع</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            أكتوبر 2022
+ملحوظة: هايزنت ا ر هو علامة تجارية مسجلة لشركة سي إس إل بهرنج، يركة مساهمة، في العديد من
+الدول.
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

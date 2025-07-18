@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        277-24-14
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2014
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        PERJETA 420 mg Concentrate for solution for infusion
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PERTUZUMAB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        420
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Concentrate for solution for infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        14
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        10178.05
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="ROCHE DIAGNOSTICS" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            ROCHE DIAGNOSTICS
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 583]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ALNAGHI COMPANY
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            ROCHE
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L01XC13
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr">Perjeta contains the active substance pertuzumab and is used to treat adult patients with breast cancer<br />when:</p><ul dir="ltr"><li>The breast cancer has been identified to be of the &ldquo;HER2-positive&rdquo; form &ndash; your doctor will test&nbsp;you for this.</li><li>The cancer has spread to other parts of the body such as the lungs or liver (metastasised) and has not previously been treated with anticancer medicines (chemotherapy) or other medicines designed to attach to HER2, or else the cancer has come back in the breast after previous treatment.</li><li>The cancer has not spread to other parts of the body and treatment is going to be given before surgery takes place (treatment before surgery is called neoadjuvant therapy)</li><li>The cancer has not spread to other parts of the body and treatment is going to be given after surgery (treatment after surgery is called adjuvant therapy)</li></ul><p dir="ltr">As well as Perjeta you will also receive trastuzumab and medicines called chemotherapy Information about these medicines is described in separate package leaflets. Ask your doctor or nurse to give you information about these other medicines.</p><p dir="ltr">&nbsp;</p><p><strong>How Perjeta works&nbsp;</strong></p><p>Perjeta is a type of medicine called a &ldquo;monoclonal antibody&rdquo; which attaches itself to specific targets in&nbsp; your body and on the cancer cells. &nbsp;</p><p>Perjeta recognises and attaches to a target called &ldquo;human epidermal growth factor receptor 2&rdquo; (HER2).&nbsp;<br />HER2 is found in large amounts on the surface of some cancer cells where it stimulates their growth.&nbsp;<br />When Perjeta attaches to the HER2 cancer cells, it may slow or stop the cancer cells from growing, or may kill them.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr"><strong>You must not be given Perjeta</strong></p><p>You must not be given Perjeta</p><ul><li>If you are allergic to pertuzumab, or to any of the other ingredients of this medicine (listed insection 6).</li></ul><p>If you are not sure, talk to your doctor or nurse before you are given Perjeta.</p><p>&nbsp;</p><p><strong>Warnings and precautions</strong></p><p>Treatment with Perjeta may affect the heart. &nbsp;Talk to your doctor or nurse before you are given Perjeta:</p><ul><li>If you have ever had heart problems (such as heart failure, treatment for serious irregular heartbeats, uncontrolled high blood pressure, recent heart attack), your heart function will be checked before and during treatment with Perjeta and your doctor will run tests to check if your heart is working properly.</li><li>If you have ever had heart problems during previous treatment with trastuzumab.</li><li>If you have ever had a chemotherapy medicine from the class called anthracyclines, e.g. doxorubicin or epirubicin &ndash; these medicines can damage heart muscle and increase the risk of heart problems with Perjeta.</li></ul><p>&nbsp;</p><p>If any of the above applies to you (or you are not sure), talk to your doctor or nurse before you are given Perjeta. See section 4 &ldquo;Serious side effects&rdquo; for more details about signs of heart problems to look out for.</p><p>&nbsp;</p><p><u>Infusion reactions</u></p><p>Infusion reactions, allergic or anaphylactic (more severe allergic) reactions can happen. Your doctor or nurse will check for side effects during your infusion and for 30 to 60 minutes afterwards. If you get any serious reaction, your doctor may stop treatment with Perjeta. Very rarely, patients have died due to anaphylactic reactions during Perjeta infusion. See section 4 &ldquo;Serious side effects&rdquo; for more details about infusion reactions to look out for during the infusion and thereafter.</p><p>&nbsp;</p><p><u>Febrile neutropenia (Low white blood cells with fever)</u></p><p>When Perjeta is given with other cancer treatments (trastuzumab and chemotherapy), the number of white blood cells may drop and fever (raised temperature) may develop. If you have inflammation of the digestive tract (e.g.sore mouth or diarrhoea) you may be more likely to develop this side effect.</p><p>&nbsp;</p><p><u>Diarrhoea</u></p><p>Treatment with Perjeta may cause severe diarrhoea. Patients over 65&nbsp;years of age have a higher risk of diarrhoea compared with patients younger than 65 years of age. Diarrhoea is a condition where your body produces more watery stools than normal. If you experience severe diarrhoea while receiving your anti-cancer treatment, your doctor may start you on anti-diarrhoeal treatment and may stop your treatment with Perjeta until the diarrhoea is under control.</p><p>&nbsp;</p><p><strong>Use in children and adolescents</strong></p><p>Perjeta should not be given to patients under the age of 18 years because there is no information on how it works in this age group.</p><p>&nbsp;</p><p><strong>Use in the elderly</strong></p><p>Patients over 65&nbsp;years of age who are treated with Perjeta are more likely to experience side effects such as reduced appetite, decrease in the number of red blood cells, weight loss, feeling tired, loss or altered taste, weak, numb, tingling or prickling sensations mainly affecting the feet and legs and diarrhoea, compared to patients younger than 65&nbsp;years of age.</p><p>&nbsp;</p><p><strong>Other medicines and Perjeta</strong></p><p>Tell your doctor or nurse if you are taking, have recently taken or might take any other medicines.</p><p>&nbsp;</p><p><strong>Pregnancy and breast-feeding</strong></p><p>Before starting treatment, you must tell your doctor or nurse if you are pregnant or breast-feeding, or if you think you may be pregnant<strong> </strong>or are planning to have a baby. They will advise you about the benefits and risks for you and your baby of taking Perjeta while you are pregnant.</p><ul><li>Tell your doctor straight away,<strong> </strong>if you get pregnant during treatment with<strong> </strong>Perjeta or during the 6 months after stopping treatment.</li><li>Ask your doctor about whether you can breast-feed during or after treatment with Perjeta.</li></ul><p>Perjeta may harm the unborn baby. You should use effective contraception during treatment with Perjeta and for 6 months after stopping treatment. Talk to your doctor about the best contraception for you.</p><p>&nbsp;</p><p><strong>Driving and using machines</strong></p><p>Perjeta may have a minor effect on you being able to drive or use machines. However, if you get any dizziness, infusion reactions, allergic or anaphylactic reactions, wait until these have gone away before driving or using machines.</p><p>&nbsp;</p><p><strong>Sodium</strong></p><p>Perjeta contains less than 1&nbsp;mmol of sodium per dose, i.e. it is essentially sodium‑free.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr"><strong>Being given this medicine</strong></p><p dir="ltr">Perjeta will be given to you by a doctor or nurse in a hospital or clinic.</p><ul dir="ltr"><li>It is given by a drip into a vein (intravenous infusion) once every three weeks.</li><li>The amount of medicine you are given and how long the infusion will last are different for the first dose and following doses.&nbsp;</li><li>The number of infusions you will be given depends on how you respond to treatment and whether you are receiving treatment before or after surgery (neoadjuvant or adjuvant therapy) or for disease which has spread.</li><li>Perjeta is given with other cancer treatments (trastuzumab andchemotherapy).</li></ul><p>&nbsp;</p><p dir="ltr"><strong>For the first infusion:</strong></p><ul dir="ltr"><li>You will be given 840&nbsp;mg of Perjeta over 60 minutes. Your doctor or nurse will check for side effects during your infusion and for 60 minutes afterwards.</li><li>You will also be given trastuzumab and chemotherapyl.</li></ul><p>&nbsp;</p><p dir="ltr"><strong>For all following infusions, if the first infusion was well tolerated:</strong></p><ul dir="ltr"><li>You will be given 420&nbsp;mg of Perjeta over 30 to 60 minutes. Your doctor or nurse will check for side effects during your infusion and for 30 to 60 minutes afterwards.</li><li>You will also be given trastuzumab and chemotherapy.</li></ul><p>&nbsp;</p><p dir="ltr">For further information on dosing of trastuzumab and chemotherapy (which can cause side effects as well), please refer to the package leaflet for these products. If you have questions about these medicines, please ask your doctor or nurse.&nbsp;</p><p>&nbsp;</p><p dir="ltr"><strong>If you forget to have Perjeta</strong></p><p dir="ltr">If you forget or miss your appointment to receive Perjeta make another appointment as soon as possible. If it has been 6 weeks or more since your last visit a higher Perjeta dose of 840&nbsp;mg will be given to you.</p><p>&nbsp;</p><p dir="ltr"><strong>If you stop having Perjeta</strong></p><p dir="ltr">Do not stop having this medicine without talking to your doctor first. It is important that you are given all the infusions that have been recommended.</p><p>&nbsp;</p><p dir="ltr">If you have any further questions on the use of this medicine, ask your doctor or nurse.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr">Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p dir="ltr"><strong>Serious side effects<br />Tell a doctor or nurse straight away, if you notice any of the following side effects:</strong></p><ul dir="ltr"><li>Very severe or persistent diarrhoea (7 or more stools per day).</li><li>A decrease in the number or low amount of white blood cells (shown in a blood test), with or without fever, which may increase the risk of an infection.</li><li>Infusion reactions with symptoms that can either be mild or more severe and may include feeling sick (nausea), fever, chills, feeling tired, headache, loss of appetite, joint and muscle pains, and hot flushes.</li><li>Allergic and anaphylactic (more severe allergic) reactions with symptoms that may include swelling of your face and throat, with difficulty in breathing. Very rarely, patients have died due to anaphylactic reactions during Perjeta infusion.</li><li>Heart problems (heart failure) with symptoms that can include cough, shortness of breath, and swelling (fluid retention) in your legs or arms.</li><li>Tumour lysis syndrome (a condition which may happen when cancer cells die quickly, causing changes in blood levels of minerals and metabolites shown in a blood test). Symptoms may include kidney problems (weakness, shortness of breath, fatigue and confusion), heart problems (fluttering of the heart of a faster or slower heartbeat), seizures, vomiting or diarrhea and tingling in the mouth, hands or feet</li></ul><p dir="ltr">Tell a doctor or nurse straight away, if you notice any of the side effects above.</p><p dir="ltr"><strong>Other side effects include:<br />Very common (may affect more than 1 in 10 people):</strong></p><ul dir="ltr"><li>Diarrhoea</li><li>Hair loss</li><li>Feeling sick or being tired</li><li>Rash</li><li>Inflammation of your digestive tract (e.g. sore mouth)</li><li>Decrease in the number of red blood cells &ndash; shown in a blood test</li><li>Joint or muscle pain, muscle weakness</li><li>Constipation</li><li>Reduced appetite</li><li>Loss of or altered taste</li><li>Fever</li><li>Swollen ankles or other body parts due to your body retaining too much water</li><li>Not being able to sleep</li><li>Hot flushes</li><li>Weak, numb, tingling or prickling sensations mainly affecting the feet and legs</li><li>Nose bleeds</li><li>Cough</li><li>Heartburn</li><li>Dry, itchy or acne like skin</li><li>Nail problems</li><li>Sore throat, red, sore or runny nose, flu-like symptoms and fever</li><li>Producing more tears</li><li>Fever associated with dangerously low levels of a type of white blood cell (neutrophils)</li><li>Pain in the body, arms, legs, and belly</li><li>Shortness of breath</li><li>Feeling dizzy</li></ul><p>&nbsp;</p><p dir="ltr"><strong>Common (may affect up to 1 in 10 people):</strong></p><ul dir="ltr"><li>A feeling of numbness, prickling or tingling in feet or hands; sharp jabbing, throbbing, freezing or burning pain; feeling pain from something which should not be painful such as a light touch; less able to feel changes in heat or cold; loss of balance or coordination</li><li>Inflammation of the nail bed where the nail and skin meet</li><li>Infection of the ear, nose or throat</li><li>Condition in which the left ventricle of the heart is functionally impaired with or without symptoms</li></ul><p>&nbsp;</p><p><strong>Uncommon (may affect up to 1 in 100 people):</strong></p><ul dir="ltr"><li>Chest symptoms such as a dry cough or breathlessness (possible signs of interstitial lung disease, a condition of damage to the tissues around the air sacs in the lungs)</li><li>Fluid around the lungs causing difficulty in breathing</li></ul><p dir="ltr">&nbsp;</p><p dir="ltr">If you experience any of the above symptoms after treatment with Perjeta has been stopped, you should consult your doctor immediately and inform him or her that you have previously been treated with Perjeta.</p><p dir="ltr">Some of the side effects which you get may be due to your breast cancer. If you are given Perjeta with trastuzumab and chemotherapy at the same time, some side effects may also be due to these other medicines.</p><p dir="ltr">&nbsp;</p><p dir="ltr"><strong>Reporting of side effects</strong><br />If you get any side effects, talk to your doctor or nurse. This includes any possible side effects not listed in this leaflet. By reporting side effects you can help provide more information on the safety of this medicine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr">Perjeta will be stored by the health professionals at the hospital or clinic.</p><ul dir="ltr"><li>The storage details are as follows:</li><li>Keep this medicine out of the sight and reach of children.</li><li>Do not use this medicine after the expiry date which is stated on the outer carton after EXP. The</li><li>expiry date refers to the last day of that month.</li><li>Store in a refrigerator (2&deg;C-8&deg;C).</li><li>Do not freeze.</li><li>Keep the vial in the outer carton in order to protect from light.</li><li>Do not use this medicine if you notice any particles in the liquid or it is the wrong colour (please see section 6).</li><li>Do not throw away any medicines via wastewater or household waste. Ask your pharmacist how to throw away medicines you no longer use. These measures will help to protect the environment.</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <ul dir="ltr"><li>The active substance is pertuzumab. Each vial contains a total of 420&nbsp;mg pertuzumab at a concentration of 30&nbsp;mg/ml</li><li>The other ingredients are glacial acetic acid, L-histidine, sucrose, polysorbate 20 and water for injections</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Perjeta is a concentrate for solution for infusion. It is a clear to slightly pearly (opalescent), colourless to pale yellow liquid. It is supplied in a glass vial containing 14 ml concentrate.
+Each pack contains one vial. 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr"><strong>F. Hoffmann-La Roche Ltd,<br />Grenzacherstrasse 124,<br />CH-4070 Basel,<br />Switzerland</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                This leaflet was last revised in January 2021
+
+To report any side effect(s):
+Saudi Arabia:
+
+The National Pharmacovigilance and Drug Safety Centre (NPC)
+o Fax: +966-11-205-7662
+o SFDA call center: 19999
+o E-mail: npc.drug@sfda.gov.sa
+o Website: https://ade.sfda.gov.sa/
+
+Other GCC States:
+Please contact the relevant competent authority.
+
+Council of Arab Health Ministers:
+
+This is a Medicament
+Medicament is a product which affects your health and its consumption contrary to instructions
+is dangerous for you.
+Follow strictly the doctor’s prescription, the method of use and the instructions of the
+pharmacist who sold the medicament.
+The doctor and the pharmacist are the experts in medicines, their benefits and risks.
+Do not by yourself interrupt the period of treatment prescribed for you.
+Do not repeat the same prescription without consulting your doctor.
+Keep all medicaments out of reach of children.
+
+Council of Arab Health Ministers
+Union of Arab Pharmacists
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p>يحتوي بيرجيتا على المادة الفعالة بيرتوزوماب وهو يستخدم لعلاج البالغين ممن يعانون من سرطان الثدي في الحالات التالية:</p><ul dir="rtl"><li>تم تحديد سرطان الثدي كونه من النوع (HER2) موجب &ndash; سيفحصك طبيبك لاكتشاف ذلك.</li><li>انتشار السرطان لأجزاء أخرى من الجسم مثل الرئتين أو الكبد (النمو الثانوي للورم الخبيث) ولم يتم علاجه من قبل باستخدام الأدوية المضادة للسرطان (العلاج الكيماوي) أو بالأدوية الأخرى المصممة للارتباط بمستقبلات HER2، أو في حالة معاودة ظهور الورم مرة أخرى في الثدي بعد علاجه سابقاً.</li><li>عدم انتشار السرطان لأجزاء أخرى من الجسم وسيتم إعطاء العلاج قبل الخضوع للجراحة (يسمى العلاج ما قبل الجراحة بالعلاج المبدئي المساعد).</li><li>عدم انتشار السرطان لأجزاء أخرى من الجسم وسيتم إعطاء العلاج بعد الجراحة (يسمى العلاج بعد الجراحة بالعلاج المساعد)</li></ul><p><br />بالإضافة لبيرجيتا ستتلقى أيضاً تراستوزوماب وأدوية العلاج الكيماوي الاخرى، والمعلومات الخاصة بهذه الأدوية متاحة في<br />نشرات العبوات الخاصة بها. اسأل الطبيب أو الممرض للحصول على معلومات عن هذه الأدوية الأخرى.</p><p>&nbsp;</p><p dir="RTL"><strong>كيف يعمل بيرجيتا:</strong></p><p dir="RTL">بيرجيتا هو نوع من الأدوية يطلق عليه &quot; الأجسام المضادة وحيدة النسيلة&quot; والتي تربط نفسها بأهداف محددة في جسمك وفي الخلايا السرطانية.</p><p dir="RTL">يتعرف بيرجيتا على هدف معين يطلق عليه بمُستقبِل عامل النمو الجلدي البشري 2 (HER2) ويلتصق به. ويوجد HER2 بكميات كبيرة على سطح بعض الخلايا السرطانية حيث يحفز نموها. عندما يلتصق بيرجيتا بخلايا HER2 السرطانية فقد يبطئ نموها أو يوقفه تماما، وقد يقتلها.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p><strong>يجب عليك عدم تناول دواء بيرجيتا في الحالات التالية:</strong></p><ul><li>إن كنت تعاني من الحساسية تجاه بيرتوزوماب أو أي من المواد الأخرى المكونة لهذا الدواء (مذكورة في القسم 6).</li></ul><p>إن كنت غير متأكد، تحدث مع طبيبك أو الممرضة قبل تناول بيرجيتا.&nbsp;</p><p>&nbsp;</p><p><strong>التحذيرات والاحتياطات:</strong><br />قد يؤثر العلاج باستخدام بيرجيتا على القلب. تحدث مع طبيبك أو الممرضة قبل تناول بيرجيتا في الحالات التالية:</p><ul dir="rtl"><li>إن كنت قد تعرضت لمشاكل قلبية من قبل (مثل فشل القلب أو إذا سبق لك الحصول على علاج لعدم انتظام ضربات القلب الخطيرة أو ارتفاع غير منضبط في ضغط الدم أو تعرضت مؤخرًا لأزمة قلبية)، سيتم فحص وظائف القلب لديك قبل وأثناء العلاج باستخدام بيرجيتا، وسيخضعك طبيبك لاختبارات للتأكد من عمل قلبك بشكل جيد.</li><li>إن كنت قد تعرضت من قبل للإصابة بمشاكل في القلب أثناء العلاج باستخدام تراستوزوماب.</li><li>إذا سبق لك الحصول على العلاج الكيماوي باستخدام الأدوية من فئة أنثراسيكلين، مثل دوكسوروبيسين أو ايبيروبوسين، فهذه الأدوية من الممكن أن تؤدي إلى فشل عضلة القلب وتزيد من خطر التعرض لمشكلات القلب مع بيرجيتا.</li></ul><p>في حالة انطباق أي من الحالات السابقة عليك (أو إن كنت غير متأكدًا)، تحدث مع طبيبك أو الممرضة قبل تناول بيرجيتا. أنظر القسم 4 &quot;الآثار الجانبية الخطيرة&quot; لمعرفة المزيد من التفاصيل حول علامات مشاكل القلب التي يجب الانتباه إليها.</p><p><br /><u>ردود فعل الجسم خلال حقن الدواء:</u><br />قد تحدث ردود فعل جسمية ناتجة عن تناول المحاليل مثل الحساسية أو الحساسية المفرطة. ستخضع للفحص من قبل طبيبك أو الممرضة لاكتشاف أية آثار جانبية أثناء حقن المحلول ولمدة من 30 إلى 60 دقيقة بعده. من النادر أن تتسبب ردود الفعل الجسمية والحساسية المفرطة بالوفاة. في حالة حدوث أي تفاعل خطير، قد يوقف طبيبك العلاج باستخدام بيرجيتا. أنظر القسم 4 &quot; الآثار الجانبية الخطيرة&quot; لمعرفة المزيد من التفاصيل حول التفاعلات الجسمانية التي يجب الانتباه لها خلال أو بعد حقن المحلول.</p><p><br /><u>الحمى النيتروفيلية (حمى انخفاض خلايا الدم البيضاء المعتدلة):</u><br />عندما يتم إعطاء بيرجيتا مع علاجات السرطان أخرى (تراستوزوماب والعلاج الكيماوي)، قد ينخفض عدد كرات الدم البيضاء وتصاب بالحمى (ارتفاع درجة الحرارة).&nbsp; وإن كنت مصابًا بالتهاب في الجهاز الهضمي (مثل قرحة الفم أو الإسهال)، فإنك تكون أكثر عرضة لهذا النوع من الآثار الجانبية.</p><p><br /><u>الإسهال</u></p><p>قد يسبب العلاج باستخدام بيرجيتا حدوث إسهال حاد. والمرضى الذين تزيد أعمارهم عن 65 عاماً هم الأكثر عرضة للإصابة بالاسهال مقارنة بالمرضى الذين تقل أعمارهم عن 65 عاماً. والإسهال هو حالة يخرج فيها الجسم براز سائل أكثر من المعدل الطبيعي.&nbsp; فإذا كان لديك تجربة سابقة من حدوث الإسهال الحاد أثناء تناول العلاجات المضادة للسرطان، فقد يقرر الطبيب استخدام أدوية مضادة للإسهال أولا مع إيقاف العلاج باستخدام بيرجيتا لحين السيطرة على الإسهال.</p><p>&nbsp;</p><p dir="RTL"><strong>الاستخدام من قبل كبار السن</strong></p><p dir="RTL">المرضى الذين تزيد أعمارهم عن 65 عامًا والذين يتعالجون باستخدام بيرجيتا هم أكثر عرضة للإصابة بآثار جانبية مثل فقدان الشهية ، انخفاض عدد كرات الدم الحمراء ، فقدان الوزن ، الشعور بالتعب ، فقدان أو تغير المذاق، إحساس بالضعف أو التنميل أو الخدر وغالبًا ما يؤثر على القدمين والساقين، والإسهال مقارنة بالمرضى الذين تقل أعمارهم عن 65 عامًا.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الاستخدام من قبل الأطفال والمراهقين</strong></p><p dir="RTL">لا يجب إعطاء بيرجيتا للمرضى تحت 18 سنة حيث لا تتوافر معلومات عن كيفية عمله مع هذه المجموعة العمرية.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>بيرجيتا والأدوية الأخرى</strong></p><p dir="RTL">أخبر طبيبك أو الممرضة إن كنت تتناول أو قد تتناول أية أدوية أخرى.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الحمل والرضاعة الطبيعية</strong></p><p dir="RTL">قبل البدء في العلاج، عليك اخبار طبيبك أو الممرضة إن كنت حاملًا أو تمارسين الرضاعة الطبيعية، أو إن كنت تعتقدين إنك حاملًا، أو إن كنت تخططين للإنجاب، سيمنحونك النصيحة حول المزايا والمخاطر التي قد تتعرضين لها أنت أو طفلك عند تناول بيرجيتا أثناء الحمل.</p><ul dir="rtl"><li>&nbsp;أخبري طبيبك مباشرة إن كنت حاملًا أثناء تلقي العلاج باستخدام بيرجيتا أو خلال 6 أشهر من توقف العلاج.</li><li>اسألي طبيبك عما إذا كان بإمكانك ممارسة الرضاعة الطبيعية خلال أو بعد العلاج باستخدام بيرجيتا.</li></ul><p dir="RTL">قد يؤذي بيرجيتا جنينك. عليك استخدام وسيلة فعالة لمنع الحمل خلال فترة العلاج باستخدام بيرجيتا ولمدة 6 أشهر بعد توقف العلاج. تحدثي مع طبيبك حول أفضل وسيلة لمنع الحمل بالنسبة لك.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>القيادة واستخدام الآلات</strong></p><p dir="RTL">من المحتمل أن يؤثر بيرجيتا تأثيراً ضئيلاً على قدرتك على القيادة أو استخدام الآلات. ومع ذلك، ولكن في حالة حدوث أي نوع من أنواع الحساسية أو الحساسية المفرطة نتيجة لاستخدام المحلول، يجب الانتظار حتى زوال هذه الأعراض قبل قيادة السيارة أو استخدام الآلات.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الصوديوم</strong></p><p>يحتوي بيرجيتا على أقل من مليمول من الصوديوم لكل جرعة، أي يمكن اعتباره خالي من الصوديوم.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">سيتم إعطاؤك بيرجيتا من قبل طبيبك أو الممرضة داخل المستشفى أو العيادة.</p><ul dir="rtl"><li>يتم إعطاء الدواء كقطرات عبر الوريد (محلول وريدي) مرة واحدة كل ثلاثة أسابيع.</li><li>تختلف كمية الدواء التي يتم إعطاؤك إياها ومدة المحلول من الجرعة الأولى للجرعات التالية.</li><li>يعتمد عدد المحاليل التي يتم إعطاؤك إياها على درجة استجابتك للعلاج وما إذا كنت تتلقى العلاج قبل أم بعد الجراحة (العلاج المساعد الحديث أو العلاج الكيماوي المساعد).</li><li>يعطى بيرجيتا مع أدوية أخرى لعلاج السرطان (تراستوزوماب أو العلاج الكيماوي).</li></ul><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>جرعة المحلول لأول مرة:</strong></p><ul dir="rtl"><li>سيتم إعطاؤك 840 مج من بيرجيتا على مدار 60 دقيقة. وستخضع للفحص من قبل الطبيب أو الممرضة للتأكد من عدم حدوث أي آثار جانبية أثناء حقن المحلول وبعد إكمال 60 دقيقة من انتهاء الحقن.</li><li>&nbsp;سيتم إعطاؤك أيضًا تراستوزوماب أو العلاج الكيماوي.</li></ul><p dir="rtl">&nbsp;</p><p dir="RTL"><strong>لجرعات المحلول التالية: </strong></p><ul dir="rtl"><li>سيتم إعطاؤك 420 مج من بيرجيتا على مدار 30 إلى 60 دقيقة. وستخضع للفحص من قبل الطبيب أو الممرضة للتأكد من عدم حدوث أي آثار جانبية أثناء حقن المحلول وبعد إكمال 30 إلى 60 دقيقة من انتهاء الحقن.</li><li>سيتم إعطاؤك أيضًا تراستوزوماب أو العلاج الكيماوي.</li></ul><p dir="RTL">للمزيد من المعلومات حول جرعة تراستوزوماب والعلاج الكيماوي (اللذان قد يتسببا أيضًا في التعرض لآثار جانبية)، يرجى الرجوع إلى نشرة العبوة الخاصة بهذه الأدوية. إن كان لديك أية أسئلة حول هذه الأدوية، يرجى الرجوع لطبيبك أو الممرضة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إن نسيت تناول بيرجيتا</strong></p><p dir="RTL">إن نسيت أو تغيبت عن موعد تناول بيرجيتا، يجب حجز موعد جديد في أسرع وقت. وفي حالة مضي 6 أسابيع أو أكثر من تلقيك لآخر جرعة من بيرجيتا، سيتم إعطاؤك جرعة أكبر تبلغ 840 مج.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إن توقفت عن تناول بيرجيتا</strong></p><p dir="RTL">لا تتوقف عن تناول هذا الدواء دون الرجوع لطبيبك أولًا. من المهم أن تتناول جميع جرعات الدواء الموصى بها.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إن كان لديك أية أسئلة إضافية حول استخدام هذا الدواء، اسأل طبيبك أو الممرضة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثل أي دواء آخر، قد يتسبب هذا الدواء في التعرض لآثار جانبية، على الرغم من انها لا تحدث لجميع الأشخاص.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الآثار الجانبية الخطيرة</strong></p><p dir="RTL"><strong>اطلع طبيبك أو الممرضة فورًا إذا لاحظت أي من الآثار الجانبية التالية:</strong></p><ul dir="rtl"><li>اسهال شديد أو مستمر (7 مرات تبرز أو أكثر في اليوم الواحد)</li><li>انخفاض في عدد أو كمية كرات الدم البيضاء (يظهر في تحليل الدم)، مع حمى أو بدون، مما قد يزيد من خطر إصابتك بالعدوى.</li><li>ردود فعل من حقن المحلول مع أعراض قد تكون طفيفة أو حادة، وقد يشمل ذلك الشعور بالإعياء (الغثيان) أو الحمى أو القشعريرة أو الشعور بالتعب أو الصداع أو فقدان الشهية أو ألم العضلات أو المفاصل أو الهبات الساخنة.</li><li>حساسية أو حساسية مفرطة مع أعراض قد تشمل تورم الوجه أو الحلق مع صعوبة في التنفس، من النادر أن تتسبب ردود الفعل الجسمية والحساسية المفرطة بالوفاة.</li><li>مشاكل في القلب (فشل القلب) مع أعراض قد تشمل السعال أو قصر النفس أو التورم (احتباس السوائل) في الساقين أو الذراعين.</li><li>متلازمة انحلال الورم (حالة قد تحدث عندما تموت الخلايا السرطانية بسرعة مما يسبب تغير في مستويات الدم من المعادن ونواتج الأيض الواضحة في تحليل الدم). قد تشمل الأعراض مشاكل في الكلى (ضعف أو قصر في التنفس أو شعور بالتعب أو الارتباك)، مشاكل في القلب (عدم انتظام نبضات القلب الواضح من خلال سرعة أو بطء نبضات القلب)، نوبات الصرع أو قيئ أو إسهال أو تنميل في الفم أو اليدين أو القدمين.</li></ul><p dir="RTL">&nbsp;</p><p dir="RTL">أخبر طبيبك أو الممرضة فورًا إذا لاحظت أي من الآثار الجانبية السابقة.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>تشمل الآثار الجانبية الأخرى ما يلي:</strong></p><p dir="RTL"><strong>شائعة للغاية (تؤثر على أكثر من 1 في كل 10 أشخاص):</strong></p><ul dir="rtl"><li>الإسهال</li><li>فقدان الشعر</li><li>الشعور بالإعياء أو التعب</li><li>الطفح الجلدي</li><li>التهاب الجهاز الهضمي (مثال: قرحة الفم)</li><li>انخفاض عدد كرات الدم الحمراء - يظهر في تحليل الدم</li><li>ألم في المفاصل أو العضلات، أو ضعف في العضلات</li><li>الإمساك</li><li>فقدان الشهية</li><li>فقدان أو تغير المذاق</li><li>الحمى</li><li>تورم الكاحل أو أجزاء أخرى من الجسم نتيجة لحبس الجسم لكمية كبيرة من المياه.</li><li>عدم القدرة على النوم</li><li>الهبات الساخنة</li><li>إحساس بالضعف أو التنميل أو الخدر وغالبًا ما يؤثر على القدمين والساقين.</li><li>نزيف الأنف</li><li>السعال</li><li>حرقة المعدة</li><li>جفاف الجلد أو حكة أو ظهور بثور تشبه حب الشباب</li><li>مشاكل في الأظافر</li><li>ألم في الحلق واحمرار أو ألم أو سيلان الأنف، أعراض مشابهة للأنفلونزا والحمى</li><li>زيادة افراز القنوات الدمعية</li><li>حمى مرتبطة بالانخفاض الخطير في نوع معين من كريات الدم البيضاء (المعتدلة)</li><li>ألم في الجسم والذراعين والساقين والبطن</li><li>ضيق في التنفس</li><li>الشعور بالدوار</li></ul><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>شائعة (قد تؤثر على 1 من كل 10 أشخاص):</strong></p><ul dir="rtl"><li>شعور بالخدر أو الوخز أو التنميل في القدمين أو الساقين أو وخز حاد أو خفقان شديد أو تجمد أو ألم حارق أو الشعور بالألم من شيء من غير المحتمل أن يسبب الألم مثل اللمس الخفيف أو عدم القدرة على الشعور بتغير الحرارة أو البرودة أو فقدان التوازن أو التوافق.</li><li>التهاب الطبقة بين الظفر والجلد.</li><li>التهاب في الأذن، الأنف، أو الحلق.</li><li>الحالة حيث تتعرض وظائف البطين الأيسر للقصور مع أو بدون الإصابة بأعراض.</li></ul><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>غير شائعة (قد تؤثر على 1 من كل 100 شخص):</strong></p><ul dir="rtl"><li>أعراض تؤثر على الجهاز التنفسي مثل السعال الجاف أو انقطاع التنفس (علامات محتملة على وجود مرض الرئة الخلالي وهي حالة طبية تتلف فيها الأنسجة الموجودة حول الأكياس الهوائية في الرئة).</li><li>وجود سوائل حول الرئة مما يسبب صعوبة في التنفس.</li></ul><p dir="RTL">إن تعرضت لأي من الأعراض السابقة بعد التوقف عن العلاج باستخدام بيرجيتا، عليك استشارة الطبيب فورًا وابلاغه بأنك سبق لك العلاج باستخدام بيرجيتا.</p><p dir="RTL">&nbsp;</p><p dir="RTL">بعض الأعراض التي قد تتعرض لها قد تكون نتيجة لسرطان الثدي، وإن كنت تتناول بيرجيتا مع تراستوزوماب أو العلاج الكيماوي في نفس الوقت، فقد تكون بعض الآثار الجانبية نتيجة لتناولك تلك الأدوية أيضًا.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>التبليغ عن الآثار الجانبية</strong></p><p dir="RTL">في حالة حدوث أي آثار جانبية، تحدث مع طبيبك أو الممرضة. ويشمل ذلك أي آثار جانبية غير مذكورة في هذه النشرة. عن طريق الإبلاغ عن الآثار الجانبية، يمكنك المساعدة في توفير المزيد من المعلومات حول سلامة هذا الدواء.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">سيتم تخزين بيرجيتا من قبل متخصص الرعاية الصحية في المستشفى أو العيادة. وتفاصيل التخزين هي كما يلي:</p><ul dir="rtl"><li>يحفظ هذا الدواء بعيدًا عن متناول الأطفال.</li><li>لا تستخدم هذا الدواء بعد مرور تاريخ انتهاء الصلاحية المذكور على العبوة الكرتون الخارجية بعد كلمة EXP. يشير تاريخ انتهاء الصلاحية المعني إلى اليوم الأخير من ذلك الشهر.</li><li>يخزن في الثلاجة في درجة حرارة ما بين 2 -8 درجة مئوية.</li><li>لا تجمد هذا الدواء.</li><li>احتفظ بالقارورة داخل العبوة الخارجية لحمايتها من الضوء.</li><li>لا تستخدم هذا الدواء إن لاحظت وجود أية شوائب في السائل أو إن كان باللون الخطأ (أنظر القسم 6).</li><li>لا تتخلص من هذا الدواء عبر مياه الصرف أو النفايات المنزلية، اسأل الصيدلي الخاص بك عن كيفية التخلص من الأدوية التي لم تعد تستخدمها. تساعد هذه الإجراءات على حماية البيئة.</li></ul>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>يحتوي بيرجيتا على </strong></p><ul dir="rtl"><li>المادة الفعالة هي بيرتوزوماب، وتحتوي كل قارورة على إجمالي 450 مج من بيرتوزوماب بتركيز 30 مج/مل.</li><li>المكونات الأخرى هي حمض الأسيتيك الجليدي و ال-هستيدين والسكروز وبوليسوربات 20 وماء للحقن.</li></ul><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="rtl">بيرجيتا هو محلول مركز للحقن. وهو سائل شفاف لؤلؤي قليلًا (براق)، عديم اللون إلى لون الأصفر الشاحب. يتوفر في قوارير زجاجية تحتوي على 14 مل من المحلول المركز.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">إف. هوفمان &ndash; لا روش المحدودة،</p><p dir="RTL">124 جرينزاشيرستراس،</p><p dir="RTL">سي إتش &ndash; 4070 بازل،</p><p dir="RTL">&nbsp;سويسرا.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            تمت مراجعة هذه النشرة بتاريخ يناير 2021.
+
+للإبلاغ عن أي آثار جانبية
+
+المملكة العربية السعودية:
+-	المركز الوطني للتيقظ والسلامة الدوائية
+o	فاكس: 7662-205-11-966+
+o	مركز اتصالات الهيئة العامة للغذاء والدواء: (19999).
+o	بريد الكتروني: npc.drug@sfda.gov.sa
+o	الموقع الإلكتروني: www.sfda.gov.sa/npc
+
+
+دول مجلس التعاون الخليجي الأخرى:
+-	يرجى التواصل مع الهيئة المعنية ذات الصلة.
+
+مجلس وزراء الصحة العرب:
+ (هذا المنتج دوائي)
+-	قد تؤثر المنتجات الدوائية على صحتك، ويعد استهلاكه بخلاف الطريقة المحددة أمرًا خطيرًا.
+-	اتبع وصفة الطبيب وطريقة الاستخدام وتعليمات الصيدلي الذي باع لك هذا الدواء بدقة.
+-	الطبيب والصيدلي هم الخبراء في المنتجات الدوائية وفوائدها ومخاطرها.
+-	لا توقف فترة العلاج المحددة لك من تلقاء نفسك.
+-	لا تكرر استخدام نفس الوصفة الطبية دون استشارة طبيبك.
+-	احتفظ بجميع المنتجات الدوائية بعيدًا عن متناول الأطفال.
+
+مجلس وزراء الصحة العرب
+اتحاد الصيادلة العرب
+
+
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2306210823
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2013
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        HEPSERA 10MG TABLET
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        ADEFOVIR DIPIVOXIL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1871.95
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="GLAXOSMITHKLINE (GSK)" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            GLAXOSMITHKLINE (GSK)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 1182]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            GLAXO SAUDI ARABIA
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            GLAXO SAUDI ARABIA
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J05AF08
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                HEPSERA®
+Adefovir dipivoxil
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each tablet for oral use contains 10 mg adefovir dipivoxil. For excipients, see List of Excipients.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                HEPSERA tablets, 10 mg are white to off-white, round, flat-faced tablets with a beveled edge and debossed with “GS KNU” on one side* and blank on the other side, or debossed with “GSK KNU” on one side and blank on the other side.*
+*depending on what is approved locally
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>HEPSERA is indicated for the treatment of chronic hepatitis B in adults with evidence of hepatitis B viral replication.<br />Reductions in viral replication and improvements in liver function have also been demonstrated in supportive studies in a limited number of chronic hepatitis B patients with genotypic evidence of lamivudine-resistance, including patients with compensated or decompensated liver disease and patients co-infected with HIV (see Warnings and Precautions).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adults (18-65 years)<br />The recommended dose of HEPSERA is 10 mg (one tablet) once daily taken orally with or without food.<br />The indication has been obtained primarily based on clinical trials of 48 weeks duration. The optimum duration of treatment is unknown.<br />The relationship between treatment response and long-term outcomes such as hepatocellular carcinoma or decompensated cirrhosis is not known.<br />Children and adolescents (&lt;18 years)</p><p>The safety and efficacy of HEPSERA in patients under the age of 18 years have not been established (see Warnings and Precautions).<br />Elderly (&gt;65 years)<br />The safety and efficacy of HEPSERA in patients over the age of 65 years have not been established (see Warnings and Precautions). Caution should be exercised when prescribing HEPSERA to the elderly, keeping in mind the greater frequency of decreased renal or cardiac function in these patients and the increase in concomitant diseases or use of other medicinal products concomitantly in the elderly.<br />Renal impairment<br />Adefovir is eliminated by renal excretion, therefore adjustments of the dosing interval are required in patients with renal dysfunction. No adjustment of the dosing interval is required in patients with a creatinine clearance &ge; 50 ml/min. Adjustments of the dosing interval are required in patients with a creatinine clearance &lt; 50 ml/min, as detailed in Table 1. The recommended dosing frequency according to renal function must not be exceeded (see Warnings and Precautions and Pharmacokinetics, Special Patient Populations). Although patients with renal impairment were included in a pharmacokinetic study, the safety and effectiveness of these dosing interval guidelines have not been clinically evaluated. Therefore, clinical response to treatment should be closely monitored in these patients. Patients with creatinine clearance below 10mL/min have not been studied.<br />Table 1: Dosing recommendations in patients with renal impairment<br />&nbsp;</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td style="width:135px">&nbsp;</td><td rowspan="1" colspan="2" style="width:220px">Creatinine Clearance (ml/min)dd</td><td style="width:143px">Haemodialysis Patients*</td></tr><tr><td style="width:135px">&nbsp;</td><td style="width:77px">30-49</td><td style="width:143px">10-29</td><td style="width:143px">&nbsp;</td></tr><tr><td style="width:135px">Recommended Dose and Dosing Interval</td><td style="width:77px">10 mg every 48 hours</td><td style="width:143px">10 mg every 72 hours</td><td style="width:143px">10 mg every 7 days following dialysis</td></tr></tbody></table><p>*dosing recommendation derived in study where high flux dialysis was conducted three times a week.<br />Hepatic impairment<br />No dose adjustment is required in patients with hepatic impairment (see Pharmacokinetics, Special Patient Populations, Hepatic Impairment).<br />Treatment discontinuation in patients with chronic hepatitis B infection</p><p>&nbsp;</p><p>Treatment with Hepsera may be discontinued if there is HBsAg loss or HBsAg seroconversion, otherwise the optimal duration of treatment is unknown.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                HEPSERA is contraindicated in patients with known hypersensitivity to adefovir, adefovir dipivoxil or to any of the excipients in HEPSERA tablets.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Doses higher than those recommended must not be administered.<br />Renal function<br />Treatment with HEPSERA 10mg may result in renal impairment. While the overall risk of renal impairment in patients with adequate renal function is low, this is of special importance in patients at risk of or having underlying renal dysfunction and patients receiving medicinal products that may affect renal function. It is recommended that creatinine clearance is calculated in all patients prior to initiating therapy with Hepsera.<br />It is important to monitor renal function for all patients during treatment with HEPSERA. In patients at risk of, or with a history of, renal dysfunction, routine monitoring for changes in both serum creatinine and serum phosphate is recommended.<br />As adefovir is eliminated by renal excretion, the dose should be adjusted in patients with a creatinine clearance of &lt;50 mL/minute. (see Dosage and Administration). Patients with end-stage renal disease (ESRD) managed with forms of dialysis other than haemodialysis, e.g. ambulatory peritoneal dialysis, have not been studied.<br />Elevations in serum creatinine and/or decreases in serum phosphate have been observed in clinical studies when adefovir dipivoxil was administered at doses three to twelve times higher than the recommended dose of 10 mg for the treatment of chronic hepatitis B.<br />In post-liver transplantation patients, changes in serum creatinine were observed. These changes were generally mild and were observed in patients with multiple risk factors for changes in renal function (see Adverse Reactions).<br />HEPSERA has not been evaluated in patients receiving nephrotoxic medicinal products or medicinal products which are secreted by the same renal transporter, human Organic Anion Transporter 1 (hOAT1).<br />Care should be taken with co-administration of 10 mg HEPSERA and medicinal products that are eliminated by active tubular secretion, as this may lead to an increase in serum concentrations of either adefovir or the co-administered medicinal product due to competition for this elimination pathway (see Interactions).<br />Hepatic function</p><p>Patients with advanced liver disease or cirrhosis should be monitored closely during the initiation of therapy.<br />Patients should be closely monitored for several months after stopping treatment as exacerbations of hepatitis have occurred after discontinuation of 10 mg HEPSERA. These exacerbations occurred in the absence of HBeAg seroconversion and presented as serum ALT elevations and increases in serum HBV DNA. Elevations in serum ALT that occurred in patients with compensated liver function treated with 10 mg adefovir dipivoxil were not accompanied by clinical or laboratory changes associated with liver decompensation. Most events appear to have been self-limited. Patients with advanced liver disease or cirrhosis may be at higher risk of hepatic decompensation and severe exacerbations of hepatitis, including fatalities, have been reported.<br />Occurrence of lactic acidosis (in the absence of hypoxemia), sometimes fatal, usually associated with severe hepatomegaly and hepatic steatosis, have been reported with the use of nucleoside analogues. Treatment with nucleoside analogues should be discontinued when rapidly elevating aminotransferase levels, progressive hepatomegaly or metabolic lactic acidosis of unknown etiology occur. Caution should be exercised when prescribing nucleoside analogues to any patient (particularly obese women) with hepatomegaly, or other known risk factors for liver disease. These patients should be followed closely.<br />Co-infection with HIV<br />Treatment with 10 mg HEPSERA has not been shown to be effective against HIV replication. Patients co-infected with HIV should have their HIV RNA controlled (&lt; 400 copies/ml) with proven antiretroviral therapy before treatment with HEPSERA 10 mg for HBV infection.<br />For HIV co-infected patients not requiring anti-retroviral therapy, there is a risk of HIV mutation when using adefovir alone for treating chronic hepatitis B<br />Other<br />Safety and efficacy in children and adolescent patients (under the age of 18 years), and elderly patients over 65 years of age have not been established.<br />Patients should be advised that therapy with HEPSERA has not been proven to reduce the risk of transmission of hepatitis B virus to others and therefore appropriate precautions should still be taken.<br />Pivalic acid, a product of the in vivo metabolism of adefovir dipivoxil to adefovir, conjugates with free carnitine with subsequent renal excretion. Therefore HEPSERA should be administered with care to patients with known carnitine deficiency (congenital). The clinical significance of binding with carnitine is unknown. There are no data on the concurrent administration of HEPSERA and agents which may reduce carnitine levels such as valproic acid, or other compounds liberating pivalic acid. In clinical studies of HEPSERA 10 mg daily for treatment of patients with chronic HBV, changes in serum carnitine levels were similar between HEPSERA and placebo-treated patients. Therefore, patients do not require routine L-carnitine</p><p>supplementation or monitoring of serum carnitine levels when treated with HEPSERA 10 mg daily.<br />Hepsera should not be administered concurrently with tenofovir DF or tenofovir DF- containing products including Truvada (emtricitabine/tenofovir DF combination tablet) and Atripla (efavirenz/emtricitabine/tenofovir DF combination tablet).</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adefovir is excreted renally, by a combination of glomerular filtration and active tubular secretion (see Clinical Pharmacology, Pharmacodynamics. Apart from ibuprofen, lamivudine, paracetamol, trimethoprim.sulphamethoxazole and tenofovir DF, the effect of co-administration of 10 mg adefovir dipivoxil with medicinal products that are excreted renally or other drugs known to affect renal function have not been evaluated.<br />Co-administration of 10 mg HEPSERA with other medicinal products that are eliminated by tubular secretion or alter tubular secretion may increase serum concentrations of either adefovir or the co-administered medicinal product (see Warnings and Precautions).<br />Adefovir did not alter the pharmacokinetics of trimethoprim/sulphamethoxazole, paracetamol, ibuprofen and lamivudine.<br />Concomitant administration of 10 mg HEPSERA and 800 mg ibuprofen 3 times daily resulted in increases in AUC and Cmax of adefovir of 23% and 33% respectively. These increases are considered to be due to higher bioavailability rather than a reduction in renal clearance of adefovir.<br />Based on the results of in vitro experiments and the known elimination pathway of adefovir, the potential for CYP450 mediated interactions involving adefovir with other medicinal products is low.<br />Co-administration of 10 mg HEPSERA and 100 mg lamivudine did not alter the pharmacokinetic profile of either medicinal product.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Fertility<br />Studies in animals have shown no effects on male or female fertility (see Pre-clinical Safety Data).<br />Pregnancy<br />There are no adequate data on the use of HEPSERA in pregnant women.<br />Studies in animals with intravenously administered adefovir have shown reproductive toxicity (see Non-Clinical Information). Studies of HEPSERA in orally dosed animals do not indicate teratogenic or fetotoxic effects.</p><p>HEPSERA should be used during pregnancy only if the potential benefit justifies the potential risk to the foetus.<br />There are no data on the effect of HEPSERA on transmission of HBV from mother to infant. Therefore, the standard recommended procedures for immunisation of infants should be followed to prevent neonatal acquisition of HBV.<br />Given that the potential risks to developing human foetuses are unknown, women of child-bearing potential treated with HEPSERA must use effective contraception.<br />Lactation<br />It is not known whether adefovir is excreted in human milk. Mothers should be instructed not to breast-feed if they are taking HEPSERA tablets.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There have been no studies to investigate the effect of HEPSERA on driving performance or the ability to operate machinery. A detrimental effect on such activities would not be predicted from the pharmacology of the drug.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Frequencies are defined as very common (&gt;1/10), common (&gt;1/100 and &lt;1/10), and uncommon (&gt;1/1000 and &lt;1/100).<br />Clinical Trial Data:<br />Adults with compensated liver disease<br />Assessment of adverse reactions is based on two studies in which 522 patients with chronic hepatitis B and compensated liver disease received double-blind treatment with 10 mg HEPSERA (n=294) or placebo (n=228) for 48 weeks.<br />The adverse reactions considered at least possibly related to treatment in the first 48 weeks of treatment are listed below, by body system organ class and absolute frequency. Adverse reactions in the 10 mg adefovir dipivoxil and placebo-treated groups occurred with similar frequency.<br />Laboratory abnormalities observed in these studies occurred with similar frequency in the 10 mg HEPSERA and placebo-treated groups with the exception of hepatic transaminase elevations which occurred more frequently in the placebo-treated group (see Hepatobiliary disorders).<br />Gastrointestinal disorders:<br />Common: diarrhoea, abdominal pain, dyspepsia, nausea, flatulence<br />General disorders and administrative site conditions:</p><p>Very common: asthenia<br />Nervous system disorders:<br />Common: headache<br />Renal and urinary disorders:<br />Uncommon: increase in serum creatinine<br />Increased creatinine was identified as an adverse reaction with extended open-label treatment in two studies.<br />In 125 HBeAg negative patients (up to 226 weeks duration), 4 patients had confirmed increases in serum creatinine of at least 0.5 mg/dL from baseline with 1 patient discontinuing from the study due to the elevated serum creatinine concentration<br />In 65 HBeAg positive patients (up to 234 weeks duration), 6 patients had confirmed increases in serum creatinine of at least 0.5 mg/dL from baseline with 2 patients discontinuing from the study due to the elevated serum creatinine concentration.<br />Hepatobiliary disorders:<br />Common: post-treatment elevations of ALT<br />Clinical and laboratory evidence of exacerbations of hepatitis have occurred after discontinuation of treatment with 10 mg HEPSERA. In patients followed for up to 6 months after discontinuation of treatment, post-treatment elevations in ALT were observed at a higher incidence in patients who had received 10 mg HEPSERA than in patients who had received placebo. These post-treatment ALT flares were self-limiting in nature and were not associated with clinical or laboratory evidence of decompensated liver disease.<br />Pre- and post-transplantation lamivudine-resistant liver disease<br />Pre-(n=226) and post- (n=241) liver transplantation patients with chronic hepatitis B and lamivudine-resistant HBV were treated in an open-label study with 10 mg HEPSERA once daily for up to 203 weeks with a median time on treatment of 51 and 99 weeks respectively. The adverse reactions considered at least possibly related to treatment were:<br />Gastrointestinal disorders:<br />Common: abdominal pain, nausea, vomiting, diarrhoea<br />Skin and subcutaneous tissue disorders:<br />Common: rash, pruritus<br />Metabolism and nutrition disorders:</p><p>&nbsp;</p><p>Common: hypophosphotemia<br />General disorders and administration site conditions:<br />Common: asthenia<br />Nervous system disorders:<br />Common: headache<br />Renal and urinary disorders:<br />Very common: increases in creatinine<br />Common: renal failure, abnormal renal function<br />Changes in renal function occurred in waitlisted and post-liver transplantation patients with risk factors for renal dysfunction, including concomitant use of cyclosporine and tacrolimus, renal insufficiency at baseline, hypertension, diabetes and on-study transplantation. Four percent (19/467) of patients discontinued treatment with HEPSERA due to renal adverse events.<br />Post-marketing data<br />In addition to adverse reaction reports from clinical trials, the following possible adverse reactions have also been identified during post-approval use of adefovir dipivoxil. Because these events have been reported voluntarily from a population of unknown size, estimates of frequency cannot be made.<br />Musculoskeletal and connective tissue disorders:<br />Myopathy, osteomalacia (both associated with renal proximal tubulopathy)<br />Metabolism and nutrition disorders:<br />Hypophosphotemia<br />Gastrointestinal disorders:<br />Pancreatitis<br />Renal and urinary disorders:<br />Fanconi syndrome, proximal renal tubulopathy</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Symptoms and Signs<br />Daily doses of adefovir, 25-50 times greater (250 mg and 500 mg daily) than those recommended for the treatment of chronic HBV infection, administered for 14 days to HIV positive subjects, have been associated with mild to moderate gastrointestinal effects.<br />Treatment<br />If overdose occurs, the patient must be monitored for evidence of toxicity, and standard supportive treatment applied as necessary.<br />Adefovir can be removed by haemodialysis; the median weight-corrected haemodialysis clearance of adefovir is 104 ml/min. The elimination of adefovir by peritoneal dialysis has not been studied.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Mechanism of Action:<br />Adefovir dipivoxil is an oral prodrug of adefovir, an acyclic nucleotide phosphonate analogue of adenosine monophosphate, which is actively transported into mammalian cells where it is converted by host enzymes to adefovir diphosphate. Adefovir diphosphate inhibits viral polymerases by competing for direct binding with the natural substrate (deoxyadenosine triphosphate) and, after incorporation into viral DNA, causes DNA chain termination. Adefovir diphosphate selectively inhibits HBV DNA polymerases at concentrations 12-, 700-, and 10-fold lower than those needed to inhibit human DNA polymerases &alpha;, &beta;, and &gamma;, respectively. Adefovir diphosphate has an intracellular half-life of 12 to 36 hours in activated and resting lymphocytes.<br />Pharmacodynamic effects:<br />Adefovir is active against hepadnaviruses in vitro, including all common forms of lamivudine-resistant HBV (L528M, M552I, M552V, L528M/M552V), famciclovir-associated mutations (V521L, P525L, L528M, T532S or V555I) and hepatitis B immunoglobulin escape mutations (T476N and W501Q), and in in vivo animal models of HBV.<br />Two mutations (rtN236T and rtA181V) in the HBV reverse transcriptase domain have been shown to be associated with resistance to adefovir.<br />In vitro, the rtN236T mutation conferred a 4- to 14-fold reduced susceptibility and the ttA181V mutation conferred a 2.5 to 4.2-fold reduced susceptibility to adefovir.</p><p>In vitro, the rtN236T mutation conferred a 2- to 3-fold reduced susceptibility to lamivudine and the rt A181V mutation conferred a 1- to 14- fold reduced susceptibility to lamivudine.<br />Resistance to adefovir dipivoxil can result in viral load rebound which may result in exacerbation of hepatitis B and, in the setting of diminished hepatic function, lead to liver decompensation and possible fatal outcome.<br />In patients with evidence of lamivudine resistance (rtL180M, rtA181T, and/or rtM2041/V) or with prior lamivudine exposure, adefovir dipivoxil should be used in combination with lamivudine and not as adefovir dipivoxil monotherapy in order to reduce the risk of resistance to adefovir.<br />In order to reduce the risk of resistance in patients receiving adefovir dipivoxil monotherapy, a modification of treatment should be considered if serum HBV DNA remains above 1000 copies/ml.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Absorption<br />Adefovir dipivoxil is a dipivaloyloxymethyl ester prodrug of the active ingredient adefovir. The oral bioavailability of adefovir from 10 mg HEPSERA is 59%. Following oral administration of a single dose of 10 mg HEPSERA to chronic hepatitis B patients, the median (range) peak serum concentration (Cmax) was achieved after 1.75 h (0.58-4.0 h). Median Cmax and AUC0-&infin; values were 16.70 (9.66-30.56) ng/ml and 204.40 (109.75-356.05) ng.h/ml, respectively. Co-administration of 10 mg HEPSERA with food did not affect systemic exposure to adefovir.<br />Distribution<br />Preclinical studies show that after oral administration of adefovir dipivoxil, adefovir is distributed to most tissues with the highest concentrations occurring in kidney, liver and intestinal tissues. In vitro binding of adefovir to human plasma or human serum proteins is  4 %, respectively over the adefovir concentration range of 0.1 to 25 g/ml. The volume of distribution at steady-state following intravenous administration of 1.0 or 3.0 mg/kg/day is 392  75 and 352  9 ml/kg, respectively.<br />Metabolism<br />Following oral administration, adefovir dipivoxil is rapidly converted to adefovir. At concentrations substantially higher (&gt; 4000 fold) than those observed in vivo, adefovir did not inhibit any of the following human CYP450 isoforms: CYP1A2, CYP2D6, CYP2C9, CYP2C19, CYP3A4. Adefovir is not a substrate for these enzymes. Based on the results of these in vitro experiments and the known elimination pathway of adefovir, the potential for CYP450 mediated interactions involving adefovir with other medicinal products is low.</p><p>Elimination<br />Adefovir is excreted renally by a combination of glomerular filtration and active tubular secretion. After repeated administration of 10 mg HEPSERA, 45% of the dose is recovered as adefovir in the urine over 24 hours. Plasma adefovir concentrations declined in a biexponential manner with a median terminal elimination half-life of 7.22 h (4.72-10.70 h).<br />Linearity/non-linearity: The pharmacokinetics of adefovir are proportional to dose over an adefovir dipivoxil dose range of 10 to 60 mg and are not influenced by repeat dosing.</p><p>Special Patient Populations:<br />Gender:<br />The pharmacokinetics of adefovir were similar in male and female patients.<br />Elderly:<br />Pharmacokinetic studies have not been conducted in the elderly.<br />Children:<br />Pharmacokinetic studies have not been conducted in children.<br />Ethnicity:<br />The available data do not appear to indicate any difference in pharmacokinetics with regard to race.<br />Renal impairment<br />In patients with moderately or severely impaired renal function or with end-stage renal disease (ESRD) requiring dialysis, Cmax, AUC0-&infin; and t1/2 of adefovir were increased. It is recommended that the dosing interval of 10 mg HEPSERA is modified in patients with creatinine clearance &lt; 50 ml/min or in patients who already have ESRD and require dialysis (see Dosage and Administration).<br />The mean (+ SD) pharmacokinetic parameters of adefovir following administration of a single dose of 10 mg HEPSERA to patients with varying degrees of renal impairment are described in the table below:</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>Renal Function Group</td><td>Un-impaired</td><td>Mild</td><td>Moderate</td><td>Severe</td></tr><tr><td>Baseline Creatinine Clearance (mL/min)</td><td>&gt;80<br />(n=7)</td><td>50-80<br />(n=8)</td><td>30-49<br />(n=7)</td><td>10-29<br />(n=10)</td></tr><tr><td>Cmax (ng/ml)</td><td>17.8+3.22</td><td>22.4+4.04</td><td>28.5+8.57</td><td>51.6+10.3</td></tr><tr><td>AUC0- (ng.h/mL)</td><td>201+40.8</td><td>266+55.7</td><td>455+176</td><td>1240+629</td></tr><tr><td>CL/F (mL/min)</td><td>469+99.0</td><td>356+85.6</td><td>237+118</td><td>91.7+51.3</td></tr><tr><td>CLrenal (mL/min)</td><td>231+48.9</td><td>148+39.3</td><td>83.9+27.5</td><td>37.0+18.4</td></tr></tbody></table><p>A four-hour period of haemodialysis removed approximately 35% of the adefovir dose. The effect of peritoneal dialysis on adefovir removal has not been evaluated.<br />Hepatic impairment<br />Pharmacokinetic properties were similar in patients with moderate and severe hepatic impairment compared to healthy volunteers (see Dosage and Administration).</p><p>Clinical data<br />Emergence of adefovir resistant HBV during clinical studies:<br />Monotherapy<br />In placebo-controlled Phase 3 clinical trials, genotypic and phenotypic analyses were conducted on HBV isolates from 271 patients with HBeAg positive or presumed precore mutant chronic hepatitis B, treated with 10 mg HEPSERA for 48 weeks. No HBV DNA polymerase mutations associated with resistance to adefovir were identified when patients were genotyped at baseline and at week 48<br />In HBeAg-negative patients, the cumulative probability of adefovir-associated resistance mutations was 3%, 11%, 18% and 29% at 96, 144, 192 and 240 weeks, respectively.<br />In HBeAg-positive patients, the incidence of adefovir-associated resistance mutations was 3%, 17%, and 20% after a median duration exposure of 135, 189 and 235 weeks respectively.<br />Studies where adefovir dipivoxil was added to ongoing lamivudine in patients with lamivudine resistance</p><p>In an open-label study of pre- and post-liver transplantation patients with clinical evidence of lamivudine-resistant HBV, no adefovir-associated resistance mutations were observed at week 48.<br />With up to 3 years of exposure, no patients receiving both HEPSERA and lamivudine developed resistance to HEPSERA. However, 4 patients who discontinued lamivudine treatment developed the rtN236T mutation while receiving HEPSERA monotherapy, and all experienced serum HBV rebound.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The primary dose-limiting toxic effect associated with administration of HEPSERA in animals (mice, rats and monkeys) was renal tubular nephropathy characterised by histological alterations and/or increases in blood urea nitrogen and serum creatinine. Nephrotoxicity was observed in animals at systemic exposures at least 3-10 times higher than those achieved in humans at the recommended therapeutic dose of 10 mg/day.<br />No effects on male or female fertility, or reproductive performance, occurred in rats and there was no embryotoxicity or teratogenicity in rats or rabbits administered HEPSERA orally.<br />When HEPSERA was administered intravenously to pregnant rats at doses associated with notable maternal toxicity (20 mg/kg/day-systemic exposure approximately 38 times that achieved in humans at the therapeutic dose), embryotoxicity and an increased incidence of foetal malformations (anasarca, depressed eye bulge, umbilical hernia and kinked tail) were observed. No adverse effects on development were seen at 2.5 mg/kg/day administered intravenously (systemic exposure approximately 12 times that achieved in humans at the therapeutic dose).<br />HEPSERA was mutagenic in the in vitro mouse lymphoma cell assay (with or without metabolic activation), but was not clastogenic in the in vivo mouse micronucleus assay at doses up to 2,000 mg/kg.<br />HEPSERA was not mutagenic in microbial mutagenicity assays involving Salmonella typhimurium (Ames) and Escherichia coli in the presence and absence of metabolic activation. Adefovir induced chromosomal aberrations in the in vitro human peripheral blood lymphocyte assay without metabolic activation.<br />In long-term carcinogenicity studies in rats and mice with HEPSERA, no treatment-related increase in tumour incidence was found in mice at 10 mg/kg/day or in rats at 5 mg/kg/day (systemic exposures approximately 10 and 4 times those achieved in man at the therapeutic dose of 10 mg/day, respectively).</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregelatinised starch (gluten free); croscarmellose sodium; lactose monohydrate; talc and magnesium stearate.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                The expiry date is indicated on the packaging.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above 30C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>HEPSERA tablets are supplied in high density polyethylene (HDPE) bottles with a child-resistant closure. Each bottle contains 30 tablets and silica gel desiccant.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.<br />Not all presentations are available in every country.</p><p>HEPSERA is a rigestered trademark of the GlaxoSmithKline group of companies.<br />&copy;2012 GlaxoSmithKline group of companies. All rights reserved.</p><p>INSTRUCTIONS TO THE PATIENT<br />THIS IS A MEDICAMENT<br />- Medicament is a product which affects your health, and its consumption contrary to instructions is dangerous for you.</p><p>- Follow strictly the doctor&rsquo;s prescription, the method of use and the instructions of the pharmacist who sold the medicament.<br />- The doctor and the pharmacist are experts in medicine, its benefits and risks.<br />- Do not by yourself, interrupt the period of treatment prescribed for you.<br />- Do not repeat the same prescription without consulting your doctor.<br />KEEP MEDICAMENT OUT OF REACH OF CHILDREN<br />Council of Arab Health Ministers<br />Union of Arab Pharmacists</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Manufactured by:
+Patheon Inc. Mississauga, Canada
+Packed by:
+Glaxo Saudi Arabia Ltd.*, Jeddah, KSA
+*member of the GlaxoSmithKline group of companies
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Version number: GCCSI12/IPI07
+Date of issue: 13 October 2008
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

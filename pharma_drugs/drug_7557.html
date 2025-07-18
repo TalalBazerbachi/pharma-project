@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1-989-15
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2015
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        DAKLINZA 60 mg film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        DACLATASVIR
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        60
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        28
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        41564.8
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="AstraZeneca Pharmaceuticals LP" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            AstraZeneca Pharmaceuticals LP
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 530]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Salehiya Trading Co.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            BRISTOL-MYERS SQUIBB
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J05AP07
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Daklinza contains the active ingredient daclatasvir. It is used to treat adults with hepatitis C, an infectious disease that affects the liver, caused by the hepatitis C virus.</p><p>&nbsp;</p><p>This medicine works by stopping the hepatitis C virus from multiplying and infecting new cells. This lowers the amount of hepatitis C virus in your body and removes the virus from your blood over a period of time.</p><p>&nbsp;</p><p>Daklinza must always be used together with other medicines against hepatitis C infection and must never be used by itself.</p><p>&nbsp;</p><p>It is very important that you also read the package leaflets for the other medicines that you will be taking with Daklinza. If you have any questions about your medicines, please ask your doctor or pharmacist.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&sect;&nbsp; if you are allergic to daclatasvir or any of the other ingredients of this medicine (listed in section 6 of this leaflet)</p><p>&sect;&nbsp; if you are taking (by mouth or other ways that affect the whole body) any of the following medicines</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; phenytoin, carbamazepine, oxcarbazepine or phenobarbital, used to treat epileptic seizures</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rifampicin, rifabutin or rifapentine, antibiotics used to treat tuberculosis</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dexamethasone, a steroid used to treat allergic and inflammatory diseases</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; medicines containing St. John&rsquo;s wort <em>(Hypericum</em><em> perforatum</em>, a herbal preparation).</p><p>These medicines lower the effect of Daklinza and may result in your treatment not working. If you take any of these medicines, tell your doctor immediately.</p><p>Since Daklinza must always be used in combination with other medicines against hepatitis C infection, please make sure that you read the &quot;Do not take&quot; section of the package leaflets for these medicines. If you are unsure of any information in the package leaflets, please contact your doctor or pharmacist.</p><p>Warnings and precautions</p><p>Talk to your doctor or pharmacist before taking Daklinza.</p><p>&nbsp;</p><p>Tell your doctor if any of the following applies:</p><p>&sect;&nbsp; you currently take, or have taken in the last few months, the medicine amiodarone to treat irregular heartbeats (your doctor may consider alternative treatments if you have taken this medicine)</p><p>&sect;&nbsp; you have a current or previous infection with the hepatitis B virus, since your doctor may want to monitor you more closely</p><p>&sect;&nbsp; your liver is damaged and not functioning properly (decompensated liver disease)</p><p>Tell your doctor immediately if you are taking any medicines for heart problems and during treatment you experience:</p><p>&sect;&nbsp; Shortness of breath</p><p>&sect;&nbsp; Light-headedness</p><p>&sect;&nbsp; Palpitations</p><p>&sect;&nbsp; Fainting</p><p>Children and adolescents</p><p>Daklinza is not recommended for patients below 18 years of age. Daklinza has not yet been studied in children and adolescents.</p><p>Other medicines and Daklinza</p><p>Tell your doctor or pharmacist if you are taking, have recently taken or might take any other &nbsp;medicines. This is because Daklinza may affect the way some medicines work. In addition some medicines may affect the way Daklinza works. Your doctor may need to adjust the dose of Daklinza or you may not be able to take Daklinza with certain medicines.</p><p>Do not take Daklinza if you are taking any of the following medicines:</p><p>&sect;&nbsp; phenytoin, carbamazepine, oxcarbazepine or phenobarbital, used to treat epileptic seizures</p><p>&sect;&nbsp; rifampicin, rifabutin or rifapentine, antibiotics used to treat tuberculosis</p><p>&sect;&nbsp; dexamethasone, a steroid used to treat allergic and inflammatory diseases</p><p>&sect;&nbsp; medicines containing St. John&rsquo;s wort (<em>Hypericum</em><em> perforatum</em>, a herbal preparation).</p><p>These medicines lower the effect of Daklinza so your treatment will not work. If you take any of these medicines, tell your doctor immediately.</p><p>&nbsp;</p><p>Tell your doctor if you take any of the following medicines:</p><p>&sect;&nbsp; amiodarone or digoxin, used to treat irregular heart beats</p><p>&sect;&nbsp; atazanavir/ritonavir, atazanavir/cobicistat, elvitegravir/cobicistat/emtricitabine/tenofovir disoproxil fumarate combination tablet, etravirine, nevirapine or efavirenz, used to treat HIV infection</p><p>&sect;&nbsp; boceprevir or telaprevir, used to treat hepatitis C infection</p><p>&sect;&nbsp; clarithromycin, telithromycin or erythromycin, used to treat bacterial infections</p><p>&sect;&nbsp; warfarin and other similar medicines called vitamin K antagonists used to thin the blood. Your &nbsp;doctor may need to increase the frequency of your blood tests to check how well your blood can clot.</p><p>&sect;&nbsp; dabigatran etexilate, used to prevent blood clots</p><p>&sect;&nbsp; ketoconazole, itraconazole, posaconazole or voriconazole, used to treat fungal infections</p><p>&sect;&nbsp; verapamil, diltiazem, nifedipine or amlodipine, used to decrease blood pressure</p><p>&sect;&nbsp; rosuvastatin, atorvastatin, fluvastatin, simvastatin, pitavastatin or pravastatin, used to lower blood</p><p>&nbsp;</p><p>&nbsp;</p><p>cholesterol</p><p>&sect;&nbsp; oral contraceptives</p><p>&nbsp;</p><p>With some of these medicines, your doctor may need to adjust your dose of Daklinza.</p><p>Pregnancy and contraception</p><p>Tell your doctor if you are pregnant, think you may be pregnant or are planning to become pregnant. If you become pregnant, stop taking Daklinza and tell your doctor immediately.</p><p>&nbsp;</p><p>If you are pregnant you must not take Daklinza.</p><p>If you can become pregnant, use effective contraception during and for 5 weeks after your treatment with Daklinza.</p><p>&nbsp;</p><p>Daklinza is sometimes used together with ribavirin. Ribavirin can harm your unborn baby. It is therefore very important that you (or your partner) do not become pregnant during this treatment.</p><p>&nbsp;</p><p>Breast-feeding</p><p>It is not known whether Daklinza passes into human breast milk. You should not breastfeed during treatment with Daklinza.</p><p>&nbsp;</p><p>Driving and using machines</p><p>Some patients have reported dizziness, difficulty concentrating, and vision problems while taking Daklinza with other medicines for their hepatitis C infection. If you have any of these side effects, do not drive or use any tools or machines.</p><p>&nbsp;</p><p>Daklinza contains lactose</p><p>If you have been told by your doctor that you have an intolerance to some sugars (e.g. lactose), talk to your doctor before taking Daklinza.</p><p>&nbsp;</p><p>Daklinza contains sodium</p><p>This medicine contains less than 1 mmol sodium (23 mg) per maximum dose of 90 mg, that is to say essentially &lsquo;sodium-free&rsquo;.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Always take this medicine exactly as your doctor has told you. Check with your doctor or pharmacist if you are not sure.</p><p>&nbsp;</p><p>Recommended dose</p><p>The recommended dose of Daklinza is <strong>60 mg once a day</strong>. Swallow the tablet whole. Do not chew or crush the tablet as it has a very unpleasant taste. Daklinza can be taken with or without a meal.</p><p>&nbsp;</p><p>Some other medicines can interact with Daklinza, affecting the levels of Daklinza in your body. If you are taking any of these medicines, your doctor may decide to change your daily dose of Daklinza to ensure that the treatment is safe and effective for you.</p><p>&nbsp;</p><p>Since Daklinza must always be used with other medicines against hepatitis C infection, please read the package leaflets for these medicines. If you have any questions, ask your doctor or pharmacist.</p><p>&nbsp;</p><p>How long to take Daklinza</p><p>Make sure you take Daklinza for as long as your doctor has told you to take it.</p><p>&nbsp;</p><p>The duration of your treatment with Daklinza will be either 12 or 24 weeks. The duration of your treatment will depend on whether you have previously received treatment for your hepatitis C infection, the condition of your liver, and what other medicines you will take with Daklinza. You may have to take your other medicines for different lengths of time.</p><p>&nbsp;</p><p>If you take more Daklinza than you should</p><p>If you accidentally take more Daklinza tablets than your doctor recommended, contact your doctor at once or contact the nearest hospital for advice. Keep the tablet blister with you so that you can easily</p><p>&nbsp;</p><p>describe what you have taken.</p><p>&nbsp;</p><p>If you forget to take Daklinza</p><p>&nbsp;</p><p>It is important not to miss a dose of this medicine. If you do miss a dose:</p><p>&sect;&nbsp; and you notice within 20 hours of the time you usually take Daklinza, you must take the tablet as soon as possible. Then take the next dose at your usual time.</p><p>&sect;&nbsp; and you notice 20 hours or more after the time you usually take Daklinza, wait and take the next dose at your usual time. Do not take a double dose (two doses close together).</p><p>&nbsp;</p><p>If you stop taking Daklinza</p><p>It is important that you continue to take Daklinza during the whole treatment period. Otherwise the medicine may not work against the hepatitis C virus. <strong>Do not stop taking Daklinza unless your doctor told you to stop.</strong></p><p><strong>&nbsp;</strong></p><p>If you have any further questions on the use of this medicine, ask your doctor or pharmacist.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p>&nbsp;</p><p>When Daklinza is used together with sofosbuvir (without ribavirin), the following side effects have been reported.</p><p>&nbsp;</p><p><strong>Very common </strong>(may affect more than 1 in 10 people):</p><p>&sect;&nbsp; headache, fatigue</p><p>&nbsp;</p><p><strong>Common </strong>(may affect up to 1 in 10 people):</p><p>&sect;&nbsp; difficulty sleeping</p><p>&sect;&nbsp; dizziness</p><p>&sect;&nbsp; migraine</p><p>&sect;&nbsp; nausea (feeling sick), diarrhoea, abdominal pain</p><p>&sect;&nbsp; joint pain, aching or tender muscles, not caused by exercise</p><p>&nbsp;</p><p>When Daklinza is used together with sofosbuvir and ribavirin, the following side effects have been reported.</p><p>&nbsp;</p><p><strong>Very common </strong>(may affect more than 1 in 10 people):</p><p>&sect;&nbsp; headache, nausea (feeling sick), fatigue</p><p>&sect;&nbsp; reduction in red blood cells (anaemia)</p><p>&nbsp;</p><p><strong>Common </strong>(may affect up to 1 in 10 people):</p><p>&sect;&nbsp; decreased appetite</p><p>&sect;&nbsp; difficulty sleeping, irritability</p><p>&sect;&nbsp; dizziness</p><p>&sect;&nbsp; migraine</p><p>&sect;&nbsp; shortness of breath, cough, nasal congestion (blocked nose)</p><p>&sect;&nbsp; hot flush</p><p>&sect;&nbsp; dry skin, unusual hair loss or thinning, rash, itching</p><p>&sect;&nbsp; diarrhoea, vomiting, abdominal pain, constipation, heartburn, excessive gas in the stomach or bowel</p><p>&sect;&nbsp; dry mouth</p><p>&sect;&nbsp; joint pain, aching or tender muscles, not caused by exercise</p><p>&nbsp;</p><p>When Daklinza is used together with peginterferon alfa and ribavirin the reported side effects are the same as those listed in the package leaflets for these medicines. The most common of these side effects are listed below.</p><p>&nbsp;</p><p><strong>Very common </strong>(may affect more than 1 in 10 people):</p><p>&nbsp;</p><p>&sect;&nbsp; decreased appetite</p><p>&sect;&nbsp; difficulty sleeping</p><p>&sect;&nbsp; headache</p><p>&sect;&nbsp; shortness of breath</p><p>&sect;&nbsp; nausea</p><p>&sect;&nbsp; fatigue</p><p>&sect;&nbsp; flu-like illness, fever</p><p>&sect;&nbsp; itching, dry skin, unusual hair loss or thinning, rash</p><p>&sect;&nbsp; diarrhoea</p><p>&sect;&nbsp; cough</p><p>&sect;&nbsp; joint pain, aching or tender muscles, not caused by exercise, unusual weakness</p><p>&sect;&nbsp; irritability</p><p>&sect;&nbsp; reduction in red blood cells (anaemia), reduction in white blood cells</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Keep this medicine out of the sight and reach of children.</p><p>&nbsp;</p><p>Do not use this medicine after the expiry date which is stated on the carton and blister after &quot;EXP&quot;. The expiry date refers to the last day of that month.</p><p>&nbsp;</p><p>This medicine does not require any special storage conditions.</p><p>&nbsp;</p><p>Do not throw away any medicines via wastewater or household waste. Ask your pharmacist how to throw away medicines you no longer use. These measures will help protect the environment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&sect;&nbsp; The active substance is daclatasvir. Each film-coated tablet contains 60 mg daclatasvir (as dihydrochloride)</p><p>&sect;&nbsp; The other ingredients are</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Tablet core: </em>anhydrous lactose (see section 2), microcrystalline cellulose, croscarmellose sodium, silicon dioxide (E551) and magnesium stearate</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Film-coating: </em>hypromellose, titanium dioxide (E171), macrogol 400, indigo carmine aluminum lake (E132), yellow iron oxide (E172)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Daklinza 60 mg: the film-coated tablet is light green, biconvex, pentagonal shape with "BMS" debossed on one side and "215" on the other side.
+
+Daklinza 60 mg film-coated tablets are available in packs of 28 tablets in non-perforated calendar blisters and perforated unit dose blisters.
+
+Not all packages may be marketed in your country.
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+ <v:stroke joinstyle="miter"/>
+ <v:path gradientshapeok="t" o:connecttype="rect"/>
+</v:shapetype><v:shape id="_x0000_s1026" type="#_x0000_t202" style='position:absolute;
+ left:0;text-align:left;margin-left:190.7pt;margin-top:696.1pt;width:239.4pt;
+ height:22.35pt;z-index:-251658240;mso-position-horizontal-relative:page;
+ mso-position-vertical-relative:page' o:allowincell="f" filled="f"
+ strokeweight=".20458mm">
+ <v:textbox inset="0,0,0,0"/>
+ <w:wrap anchorx="page" anchory="page"/>
+</v:shape><![endif]--></p><p>Bristol-Myers Squibb Pharma EEIG</p><p>Uxbridge Business Park</p><p>Sanderson Road Uxbridge UB8 1DH</p><p>United Kingdom</p><p>Bulk Manufacturer:</p><p>&nbsp;</p><p>AstraZeneca Pharmaceuticals LP</p><p>4601 Highway 62 East</p><p>Mount Vernon, Indiana 47620 USA</p><p>&nbsp;</p><p><strong>Packaged and released by: </strong></p><p>Bristol-Myers Squibb S.r.l</p><p>Loc. Fontana del Ceraso</p><p>03012 Anagni (FR)</p><p>Italy</p><p><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+ <v:stroke joinstyle="miter"/>
+ <v:path gradientshapeok="t" o:connecttype="rect"/>
+</v:shapetype><v:shape id="_x0000_s1026" type="#_x0000_t202" style='position:absolute;
+ left:0;text-align:left;margin-left:190.7pt;margin-top:696.1pt;width:239.4pt;
+ height:22.35pt;z-index:-251658240;mso-position-horizontal-relative:page;
+ mso-position-vertical-relative:page' o:allowincell="f" filled="f"
+ strokeweight=".20458mm">
+ <v:textbox style='mso-next-textbox:#_x0000_s1026' inset="0,0,0,0"/>
+ <w:wrap anchorx="page" anchory="page"/>
+</v:shape><![endif]--></p><table cellpadding="0" cellspacing="0"><tbody><tr><td>&nbsp;<p>&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p><table cellpadding="0" cellspacing="0"><tbody><tr><td><br />&nbsp;</td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Jun 2018
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">یحتوي داكلینزا على المادة الفعالة داكلاتازفیر. وهو یستخدم لعلاج البالغین الذین یعانون من التهاب الكبد سي، وهو مرض مُعدٍ یصیب الكبد، وینتج عن الإصابة بفیروس التهاب الكبد سي.</p><p dir="RTL">هذا الدواء یعمل عن طریق إیقاف فیروس التهاب الكبد سي من التكاثر وٕاصابة خلایا جدیدة. وهذا یقلل من كمیة فیروس التهاب الكبد سي في الجسم ویزیل الفیروس من الدم على مدى فترة من الزمن.</p><p dir="RTL">یجب أن یتم استخدام داكلینزا دائمًا جنبًا إلى جنب مع الأدویة الأخرى المضادة للإصابة بالتهاب الكبد سي ویجب ألا یستخدم أبدًا بمفرده.</p><p dir="RTL">من المهم جداً أن تقرأ أيضاً نشرات عبوات الأدویة الأخرى التي سوف تتناولها مع داكلینزا. وٕاذا كانت لدیك أي أسئلة حول الأدویة &nbsp;الخاصة بك، فیرجى سؤال طبیبك أو الصیدلي.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لدیك حساسیة من داكلاتاسفیر أو أيٍّ من المكونات الأخرى لهذا الدواء (المدرجة في القسم 6 من هذه النشرة)</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تأخذ (عن طریق الفم أو غیرها من الطرق التي تؤثر في الجسم كله) أیاً من الأدویة التالیة</p><p dir="RTL">- الفینیتوین، كاربامازیبین، اوكسكاربازیبین أو الفینوباربیتال، والتي تستخدم لعلاج نوبات الصرع</p><p dir="RTL">- ریفامبیسین، ریفابیتین أو ریفابنتین، والمضادات الحیویة المستخدمة لعلاج السل</p><p dir="RTL">- دیكسامیثازون، وهو ستیروید یستخدم لعلاج أمراض الحساسیة والالتهابات</p><p dir="RTL">- الأدویة التي تحتوي على نبتة سانت جون (هیبریكم بیرفوراتوم، مستحضر عشبي(.</p><p dir="RTL">هذه الأدویة تقلل من تأثیر داكلینزا ویمكن أن تؤدي إلى عدم عمل العلاج الخاص بك. إذا كنت تأخذ أیاً من هذه الأدویة، فأخبر طبیبك فوراً.</p><p dir="RTL">ولأن داكلینزا یجب أن یستخدم دائمًا بالتزامن مع الأدویة الأخرى المضادة للإصابة بالتهاب الكبد سي، فیرجى التأكد من قراءة هذا القسم &quot;لا تقم بتناول&quot; من منشورات العبوات لهذه الأدویة. إذا لم تكن متأكدًا من أيٍّ من المعلومات الواردة في نشرات العبوة، فیرجى الاتصال بالطبیب أو الصیدلي.</p><p dir="RTL"><strong>تحذيرات واحتیاطات</strong></p><p dir="RTL">تحدث إلى طبیبك أو الصیدلي قبل تناول داكلینزا</p><p dir="RTL">أخبر طبیبك إذا كان أيٌّ مما یلي ینطبق علیك:</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ان كنت تتناول حالیا، أو قد تناولت في الأشهر القلیلة الماضیة ، دواء الأمیودارون لعلاج عدم انتظام ضربات القلب &nbsp;(طبیبك قد یقرر لك علاجات البدیلة إذا كنت قد اخذت هذا الدواء(</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لدیك عدوى حالیة أو سابقة مع فیروس التهاب الكبد B، حیث قد یرغب طبیبك في مراقبتك عن كثب</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قمت بزارعة كبد، أو تنتظر زراعة كبد أو زراعة الأعضاء الأخرى</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كبدك متضرراً ولا یعمل بشكل صحیح (مرض الكبد اللا تعويضي)</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>أخبر طبیبك فوراً إذا كنت تأخذ أي أدویة لمشاكل في القلب و خلال فترة العلاج واجهت</strong><strong>:</strong></p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ضیق في التنفس</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; دوخة بسیطة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الخفقان</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الإغماء</p><p dir="RTL"><strong>الأطفال والمراهقون</strong></p><p dir="RTL">لا ینصح باستخدام داكلینزا للمرضى الذین تقل أعمارهم عن 18 سنة. لم یتم إجراء دراسات على داكلینزا بعد في الأطفال والمراهقين.</p><p dir="RTL"><strong>الأدویة الأخرى وداكلینزا</strong></p><p dir="RTL">أخبر طبیبك أو الصیدلي إذا كنت تتناول، أو قد تناولت مؤخراً أو قد تتناول أي أدویة أخرى. وذلك لأن داكلینزا قد یؤثر في طریقة عمل بعض الأدویة. وٕاضافة إلى ذلك فإن بعض الأدویة قد تؤثر في الطریقة التي یعمل بها داكلینزا. قد یحتاج طبیبك إلى ضبط جرعة داكلینزا أو قد لا تكون قادراً على تناول داكلینزا مع بعض الأدویة.</p><p dir="RTL"><strong>لا تقم بتناول داكلینزا إذا كنت تتناول أیاً من الأدویة التالیة</strong><strong>:</strong></p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الفینیتوین، كاربامازیبین، اوكسكاربازیبین أو الفینوباربیتال، وتستخدم لعلاج نوبات الصرع</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ریفامبیسین، ریفابیتین أو ریفابنتین، والمضادات الحیویة المستخدمة لعلاج السل</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; دیكسامیثازون، وهو ستیروید یستخدم لعلاج أمراض الحساسیة والالتهابات</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأدویة التي تحتوي على نبتة سانت جون (بیرفوراتوم، مستحضر عشبي)</p><p dir="RTL">هذه الأدویة تقلل تأثیر داكلینزا ولذلك فإن العلاج الخاص بك لن یعمل. إذا كنت تتناول أیاً من هذه الأدویة، فأخبر طبیبك فورًا.</p><p dir="RTL"><strong>أخبر طبیبك إذا كنت تتناول أیاً من الأدویة التالیة:</strong></p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أمیدرون أو دیجوكسین، ویستخدم لعلاج خفقان القلب.</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اتازنفیر / ریتونافیر، دارونافیر / ریتونافیر، لوبینافیر / ریتونافیر، إیترافیرین، نیفیرابین، ایفافیرنز أو أي دواء متراكب مع كوبیكیستات، والذي یستخدم لعلاج عدوى فیروس نقص المناعة البشریة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بوكیبریفیر أو تیلابریفیر، والذي یستخدم لعلاج عدوى التهاب الكبد الوبائي سي</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كلاریثرومیسین، تیلیریثرومیسین أو الاریثرومیسین، الذي یستخدم لعلاج الالتهابات البكتیریة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الوارفارین والأدویة المماثلة الأخرى والمعروفة بمضادات فیتامین ك وتستخدم لتخفیف تجلط الدم. قد یحتاج طبیبك إلى زیادة وتیرة اختبارات الدم للتحقق من مدى التجلط الذي قد یحدث في الدم.</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; دابیقاترن إیتیكسیلات، ویستخدم لمنع تجلط الدم</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الكیتوكونازول، الایتراكونازول، بوساكونازول أو فوریكونازول، وتستخدم لعلاج الالتهابات الفطریة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فيرابامیل، دیلتیازیم، نیفیدیبین أو أملودیبین، وتستخدم لخفض ضغط الدم</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; رسیوفاستاتین، أتورفاستاتین، فلوفاستاتین، سیمفاستاتین، بیتافاستاتین أو برافاستاتین، وتستخدم لخفض نسبة الكولسترول في الدم</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; وسائل منع الحمل التي یتم تناولها عن طریق الفم</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد یحتاج طبیبك إلى ضبط جرعة داكلینزا مع بعض هذه الأدویة</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الحمل ووسائل منع الحمل</strong></p><p dir="RTL">قومي بإخبار طبیبك إذا كنت حاملا، أو تعتقدین أنك قد تكونین حاملا أو تخططین لتصبحي حاملا. إذا أصبحت حاملا، قومي بإیقاف تناول داكلینزا وأخبري طبیبك فوراً.</p><p dir="RTL">إذا كنتِ حاملًا فیجب عدم تناول داكلینزا.</p><p dir="RTL">إذا كان من الممكن أن تصبحي حاملًا، فعلیك باستخدام وسائل منع حمل فعَّالة أثناء ولمدة 5 أسابیع بعد العلاج الخاص بداكلینزا.</p><p dir="RTL">في بعض الأحیان یستخدم داكلینزا جنبًا إلى جنب مع ریبافیرین. وریبافیرین یمكن أن یضر الطفل الذي لم یولد بعد. لذا؛ فمن المهم جداً ألا تصبحي حاملًا أثناء هذا العلاج.</p><p dir="RTL"><strong>الرضاعة الطبیعیة</strong></p><p dir="RTL">من غیر المعروف ما إذا كان داكلینزا یمر في حلیب الثدي البشري. یجب عدم القیام بالرضاعة الطبیعیة أثناء العلاج بداكلینزا.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>القیادة واستخدام الآلات</strong></p><p dir="RTL">ذكر بعض المرضى حدوث الدوخة، وصعوبة التركیز، ومشكلات في الرؤیة عند تناول داكلینزا مع أدویة أخرى لعدوى التهاب الكبد سي. إذا كان لدیك أي من هذه الآثار الجانبیة، فلا تقم بالقیادة أو استخدام أي أدوات أو آلات.</p><p dir="RTL"><strong>یحتوي داكلینزا على اللاكتوز</strong></p><p dir="RTL">إذا أخبرك الطبیب من قبل أن لدیك حساسیة لبعض السكریات (مثل اللاكتوز)، فقم بالتحدث مع طبیبك قبل تناول داكلینزا.</p><p dir="RTL"><strong>یحتوي داكلینزا على الصودیوم</strong></p><p dir="RTL">یحتوي هذا الدواء على أقل من 1 ملي مول من الصودیوم ( 23 ملغ) لكل جرعة قصوى قدرها 90 ملغ، وهذا یعني بشكل أساسي &quot;خالیة من الصودیوم&quot;.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">قم بتناول هذا الدواء تمامًا كما قد أخبرك طبیبك. استشِرْ طبیبك أو الصیدلي إذا لم تكن متأكدًا.</p><p dir="RTL"><strong>الجرعة الموصى بها</strong></p><p dir="RTL">الجرعة الموصى بها هي قرص واحد مرة واحدة یومياً<strong> </strong>من داكلینزا 60 ملغ. قم بابتلاع القرص بأكمله. لا تقم بمضغ أو سحق القرص لأن له طعم غیر مستساغ للغایة. یمكن أن تتناول داكلینزا مع أو بدون وجبة الطعام.</p><p dir="RTL">یمكن لبعض الأدویة الأخرى أن تتفاعل مع داكلینزا، مما یؤثر في مستویات داكلینزا في جسمك. إذا كنت تتناول أیاً من هذه الأدویة، فإن طبیبك قد یقرر تغییر الجرعة الیومیة من داكلینزا للتأكد من أن العلاج آمن وفعَّال بالنسبة لك.</p><p dir="RTL">لأن داكلینزا یجب دائمًا أن یستخدم مع أدویة أخرى ضد عدوى التهاب الكبد سي، فیُرجى قراءة منشورات عبوات هذه الأدویة. إذا كان لدیك أي أسئلة، فاسأل طبیبك أو الصیدلي.</p><p dir="RTL"><strong>ما هي مدة تناول داكلینزا</strong></p><p dir="RTL">تأكد من أن تأخذ داكلینزا طالما أخبرك طبیبك أن تقوم بتناوله.</p><p dir="RTL">سوف تكون مدة العلاج بداكلینزا إما 12 أو 24 أسبوعًا. وتعتمد مدة العلاج على ما إذا كنت قد تلقیت سابقًا علاجًا لعدوى التهاب الكبد سي الخاص بك، وعلى حالة الكبد، وما هي الأدویة الأخرى التي سوف یتم تناولها مع داكلینزا. وقد تضطر إلى تناول الأدویة الأخرى الخاصة بك لفترات مختلفة من الزمن.</p><p dir="RTL"><strong>إذا كنت قد تناولت من داكلینزا أكثر مما یجب</strong></p><p dir="RTL">إذا كنت قد تناولت عن غیر قصد من أقراص داكلینزا أكثر مما قد أوصى به الطبیب، فاتصل بطبیبك على الفور أو اتصل بأقرب مستشفى للحصول على المشورة. احتفظ بشریط الأقراص معك بحیث یمكنك وصف ما قد تناولته بسهولة.</p><p dir="RTL"><strong>إذا كنت قد نسیت أن تتناول داكلینزا</strong></p><p dir="RTL">من المهم عدم تفویت جرعة من هذا الدواء.</p><p dir="RTL">إذا كنت قد نسیت تناول جرعة:</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ولاحظت في غضون 20 ساعة من الوقت الذي عادةً ما تتناول فیه داكلینزا، فیجب أن تتناول القرص في أقرب وقت ممكن. ثم قم بتناول الجرعة التالیة في الوقت المعتاد الخاص بك.</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ولاحظت في غضون 20 ساعة أو أكثر بعد الوقت الذي عادةً ما تتناول فیه داكلینزا، فانتظر وتناول الجرعة المقبلة في الوقت المعتاد الخاص بك. لا تأخذ جرعة مضاعفة (جرعتین قریبتین من بعضهما).</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>إذا كنت قد توقفت عن تناول داكلینزا</strong></p><p dir="RTL">من المهم أن تستمر في تناول داكلینزا خلال فترة العلاج كاملة. وٕالا فإن الدواء قد لا یعمل ضد فیروس التهاب الكبد سي.</p><p dir="RTL">لا تتوقف عن أخذ داكلينزا إلا إذا قال لك طبیبك أن تتوقف.</p><p dir="RTL">إذا كان لدیك أي أسئلة أخرى عن استخدام هذا الدواء، فاسأل طبیبك أو الصیدلي.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثل جمیع الأدویة، یمكن لهذا الدواء أن یسبب آثاراً جانبیة، على الرغم من أنها لا تحدث للجمیع.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تم الإبلاغ عن الآثار الجانبیة التالیة عند استخدام داكلینزا بالتزامن مع سوفوسبوفیر (بدون ریبافیرین).</p><p dir="RTL">شائعة جداً (قد تؤثر في أكثر من 1 من بین 10 أشخاص):</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صداع، غثیان، تعب</p><p dir="RTL">شائعة (قد تؤثر فیما یصل إلى 1 من بین 10 أشخاص):</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة النوم</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الدوخة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الصداع النصفي</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام العضلات المفاصل، ولیس الناجم عن التمرین الریاضیة</p><p dir="RTL">تم الإبلاغ عن الآثار الجانبیة التالیة عند استخدام داكلینزا بالتزامن مع سوفوسبوفیر مع ریبافیرین.</p><p dir="RTL">شائعة جداً (قد تؤثر في أكثر من 1 من بین 10 أشخاص):</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صداع، غثیان (الشعور بالمرض)، والتعب</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في خلایا الدم الحمراء (فقر الدم)</p><p dir="RTL">شائعة (قد تؤثر فیما یصل إلى 1 من بین 10 أشخاص):</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض الشهیة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة في النوم والتهیج</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الدوخة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الصداع النصفي</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ضیق في التنفس السعال، احتقان الأنف (انسداد الأنف)</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لفحة ساخنة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الحكة، وجفاف الجلد، وفقدان أو ترقق الشعر غیر المعتاد، والطفح الجلدي</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الإسهال، وآلام في البطن العلیا، والإمساك، والغاز الزائد في المعدة أو الأمعاء، والحرقة، والتقیؤ</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جفاف الفم</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام العضلات المفاصل، ولیس الناجم عن التمرین الریاضیة</p><p dir="RTL">عند استخدام داكلینزا جنبًا إلى جنب مع بیغ انترفیرون ألفا وریبافیرین فإن الآثار الجانبیة المبلغ عنها هي نفسها المذكورة في نشرة المریض لهذه الأدویة. ویتم إدراج الأكثر شیوعًا من هذه الآثار الجانبیة أدناه.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">شائعة جداً (قد تؤثر في أكثر من 1 من بین 10 أشخاص):</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض الشهیة</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة النوم</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الصداع</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ضیق في التنفس</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الغثیان</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التعب</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مرض شبیه بالإنفلونزا، والحمى</p><p dir="RTL"><strong>&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>الحكة، وجفاف الجلد، وفقدان أو ترقق الشعر غیر المعتاد، والطفح الجلدي<strong> </strong></p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الإسهال</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; السعال</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام المفاصل، آلام العضلات ، غیر الناجمة عن ممارسة الریاضة، ضعف غیر عادي</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهیج</p><p dir="RTL"><strong>&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>انخفاض في خلایا الدم الحمراء (فقر الدم)، وانخفاض في خلایا الدم البیضاء</p><p dir="RTL">&nbsp;</p><p dir="RTL">الإبلاغ عن الآثار الجانبیة</p><p dir="RTL">إذا حدثت لك أي آثار جانبیة، فقم بإخبار طبیبك أو الصیدلي. ویشمل ذلك أي آثار جانبیة محتملة غیر المدرجة في هذه النشرة.</p><p dir="RTL">ومن خلال الإبلاغ عن الآثار الجانبیة یمكن أن تساعد في توفیر مزیدٍ من المعلومات حول سلامة هذا الدواء.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">قم بحفظ هذا الدواء بعیدًا عن متناول أیدي الأطفال.</p><p dir="RTL">قم بتخزینه عند درجة حرارة أقل من 30 درجة مئویة.</p><p dir="RTL">لا تستخدم هذا الدواء بعد تاریخ انتهاء الصلاحیة المدرج على العبوة والشریط بعد كلمة &quot;EXP&quot;، یشیر تاریخ انتهاء الصلاحیة إلى الیوم الأخیر من ذلك الشهر.</p><p dir="RTL">لا تتخلص من أي أدویة عن طریق میاه الصرف الصحي أو النفایات المنزلیة. اسأل الصیدلي عن كیفیة التخلص من الأدویة التي لم تعد مستخدمة. سوف تساعد هذه التدابیر في حمایة البیئة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المادة الفعَّالة هي داكلاتاسفیر. یحتوي كل قرص مغلف على 60 مجم داكلاتاسفیر (على شكل هیدروكلورید)</p><p dir="RTL">&sect;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المكونات الأخرى</p><p dir="RTL">&nbsp;- &nbsp;مركز القرص: اللاكتوز اللامائي (انظر القسم 2)، السلیلوز الدقیق الكریستالات، كروس كارمیللوز الصودیوم، ثاني أكسید</p><p dir="RTL">&nbsp;السیلیكون (E551) وستيرات المغنسيوم</p><p dir="RTL">&nbsp;- الغلاف: هیبرومیللوز، وثاني أكسید التيتانيوم (E171) ماكروغول 400، لون الألومنيوم النيلي القرمزي (E132)، وأكسيد الحديد الأصفر (E172)</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">داكلینزا 60 مجم القرص المغلف أخضر فاتح اللون، محدب الوجهین، خماسي الشكل مع كلمة &quot;BMS&quot; &nbsp;محفورة على جانب واحد و&quot;215&quot; على الجانب الآخر.</p><p dir="RTL">&nbsp;</p><p dir="RTL">یتوفر داكلینزا 60 مجم في علب مكونة من 28 قرصًا في أشرطة تقویم غیر مثقبة وأشرطة مثقبة موحدة الجرعة.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">بریستول مایرز سكویب فارما EEIG</p><p dir="RTL">أوكسبریدج بزنس بارك</p><p dir="RTL">ساندرسون الطریق</p><p dir="RTL">أوكسبریدج UB8 1DH</p><p dir="RTL">المملكة المتحدة</p><p dir="RTL">&nbsp;</p><p dir="RTL">مصنع المادة الخام:</p><p dir="RTL">أسترا زینیكا فارماسوتیكال إل بي</p><p dir="RTL">4601 الطریق السریع 62 شرق،</p><p dir="RTL">ماونت فیرنون، إندیانا 47620</p><p dir="RTL">الولایات المتحدة الأمریكیة</p><p dir="RTL">&nbsp;</p><p dir="RTL">تمت تعبئته، وٕاصداره من قبل :</p><p dir="RTL">بریستول-مایرز سكویب S.r.l</p><p dir="RTL">الموضع. فونتانا دیل كیراسو</p><p dir="RTL">&nbsp;03012 اناجني (FR)</p><p dir="RTL">إیطالیا</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            يونيو 2018
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        5-244-03
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2003
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Co-Aprovel 150-12.5 MG TABLET
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        IRBESARTAN,HYDROCHLOROTHIAZIDE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        150,12.5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        28
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        do not store above 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        63
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="sanofi-aventis" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            sanofi-aventis
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2218]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Sanofi Arabia Trading Co. Ltd
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            sanofi-aventis
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        C09DA04
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Aprovel 150 mg film-coated tablets.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each film-coated tablet contains 150 mg of irbesartan. 
+ 
+Excipient with known effect: 51.00 mg of lactose monohydrate per film-coated tablet. 
+ 
+For the full list of excipients, see section 6.1. 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film-coated tablet. 
+White to off-white, biconvex, and oval-shaped with a heart debossed on one side and the number 2872 engraved on the other side. 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Aprovel is indicated in adults for the treatment of essential hypertension.</p><p>It is also indicated for the treatment of renal disease in adult patients with hypertension and type 2 diabetes mellitus as part of an antihypertensive medicinal product regimen (see sections 4.3, 4.4, 4.5 and 5.1).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Posology</p><p>The usual recommended initial and maintenance dose is 150 mg once daily, with or without food.</p><p>Aprovel at a dose of 150 mg once daily generally provides a better 24 hour blood pressure control than 75 mg. However, initiation of therapy with 75 mg could be considered, particularly in haemodialysed patients and in the elderly over 75 years.</p><p>In patients insufficiently controlled with 150 mg once daily, the dose of Aprovel can be increased to 300 mg, or other antihypertensive agents can be added (see sections 4.3, 4.4, 4.5 and 5.1). In particular, the addition of a diuretic such as hydrochlorothiazide has been shown to have an additive effect with Aprovel (see section 4.5).</p><p>In hypertensive type 2 diabetic patients, therapy should be initiated at 150 mg irbesartan once daily and titrated up to 300 mg once daily as the preferred maintenance dose for treatment of renal disease. The demonstration of renal benefit of Aprovel in hypertensive type 2 diabetic patients is based on studies where irbesartan was used in addition to other antihypertensive agents, as needed, to reach target blood pressure (see sections 4.3, 4.4, 4.5 and 5.1).</p><p>Special Populations</p><p><em>Renal impairment</em>: no dosage adjustment is necessary in patients with impaired renal function. A lower starting dose (75 mg) should be considered for patients undergoing haemodialysis (see section 4.4).</p><p><em>Hepatic impairment</em>: no dosage adjustment is necessary in patients with mild to moderate hepatic impairment. There is no clinical experience in patients with severe hepatic impairment.</p><p><em>Older people</em>: although consideration should be given to initiating therapy with 75 mg in patients over 75 years of age, dosage adjustment is not usually necessary for older people.</p><p><em>Paediatric population</em>: the safety and efficacy of Aprovel in children aged 0 to 18 has not been established. Currently available data are described in section 4.8, 5.1 and 5.2 but no recommendation on a posology can be made.</p><p>Method of Administration For oral use.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1. Second and third trimesters of pregnancy (see sections 4.4 and 4.6). 
+The concomitant use of Aprovel with aliskiren-containing products is contraindicated in patients with diabetes mellitus or renal impairment (glomerular filtration rate (GFR) <60 ml/min/1.73m2) (see sections 4.5 and 5.1). 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Intravascular volume depletion</u>: symptomatic hypotension, especially after the first dose, may occur in patients who are volume and/or sodium depleted by vigorous diuretic therapy, dietary salt restriction, diarrhoea or vomiting. Such conditions should be corrected before the administration of Aprovel.</p><p>&nbsp;</p><p><u>Renovascular hypertension</u>: there is an increased risk of severe hypotension and renal insufficiency when patients with bilateral renal artery stenosis or stenosis of the artery to a single functioning kidney are treated with medicinal products that affect the renin-angiotensin-aldosterone system. While this is not documented with Aprovel, a similar effect should be anticipated with angiotensin-II receptor antagonists.</p><p>&nbsp;</p><p><u>Renal impairment and kidney transplantation</u>: when Aprovel is used in patients with impaired renal function, a periodic monitoring of potassium and creatinine serum levels is recommended. There is no experience regarding the administration of Aprovel in patients with a recent kidney transplantation.</p><p>&nbsp;</p><p><u>Hypertensive patients with type 2 diabetes and renal disease</u>: the effects of irbesartan both on renal and cardiovascular events were not uniform across all subgroups, in an analysis carried out in the study with patients with advanced renal disease. In particular, they appeared less favourable in women and non-white subjects (see section 5.1).</p><p>&nbsp;</p><p><u>Dual blockade of the renin-angiotensin-aldosterone system (RAAS):</u></p><p><u>T</u>here is evidence that the concomitant use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren increases the risk of hypotension, hyperkalaemia and decreased renal function (including acute renal failure). Dual blockade of RAAS through the combined use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren is therefore not recommended (see sections 4.5 and 5.1).&nbsp; If dual blockade therapy is considered absolutely necessary, this should only occur under specialist supervision and subject to frequent close monitoring of renal function, electrolytes and blood pressure. ACE-inhibitors and angiotensin II receptor blockers should not be used concomitantly in patients with diabetic nephropathy.</p><p><u>Hyperkalaemia</u>: as with other medicinal products that affect the renin-angiotensin-aldosterone system, hyperkalaemia may occur during the treatment with Aprovel, especially in the presence of renal impairment, overt proteinuria due to diabetic renal disease, and/or heart failure. Close monitoring of serum potassium in patients at risk is recommended (see section 4.5).</p><p>&nbsp;</p><p><u>Lithium</u>: the combination of lithium and Aprovel is not recommended (see section 4.5).</p><p>&nbsp;</p><p><u>Aortic and mitral valve stenosis, obstructive hypertrophic cardiomyopathy</u>: as with other vasodilators, special caution is indicated in patients suffering from aortic or mitral stenosis, or obstructive hypertrophic cardiomyopathy.</p><p>&nbsp;</p><p><u>Primary aldosteronism</u>: patients with primary aldosteronism generally will not respond to antihypertensive medicinal products acting through inhibition of the renin-angiotensin system. Therefore, the use of Aprovel is not recommended.</p><p>&nbsp;</p><p><u>General</u>: in patients whose vascular tone and renal function depend predominantly on the activity of the renin-angiotensin-aldosterone system (e.g. patients with severe congestive heart failure or underlying renal disease, including renal artery stenosis), treatment with angiotensin<strong> </strong>converting enzyme inhibitors or angiotensin-II receptor antagonists that affect this system has been associated with acute hypotension, azotaemia, oliguria, or rarely acute renal failure. As with any antihypertensive agent, excessive blood pressure decrease in patients with ischaemic cardiopathy or ischaemic cardiovascular disease could result in a myocardial infarction or stroke.</p><p>As observed for angiotensin converting enzyme inhibitors, irbesartan and the other angiotensin antagonists are apparently less effective in lowering blood pressure in black people than in non-blacks, possibly because of higher prevalence of low-renin states in the black hypertensive population (see section 5.1).</p><p>&nbsp;</p><p><u>Pregnancy:</u> Angiotensin II Receptor Antagonists (AIIRAs) should not be initiated during pregnancy. Unless continued AIIRA therapy is considered essential, patients planning pregnancy should be changed to alternative antihypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with AIIRAs should be stopped immediately, and, if appropriate, alternative therapy should be started (see sections 4.3 and 4.6).</p><p>&nbsp;</p><p><u>Lactose</u>:<strong><em> </em></strong>this medicinal product contains lactose. Patients with rare hereditary problems of galactose intolerance, the Lapp lactase deficiency or glucose-galactose malabsorption should not take this medicinal product.</p><p>&nbsp;</p><p><u>Paediatric population</u>: irbesartan has been studied in paediatric populations aged 6 to 16 years old but the current data are insufficient to support an extension of the use in children until further data become available (see sections 4.8, 5.1 and 5.2).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Diuretics and other antihypertensive agents</u>: other antihypertensive agents may increase the hypotensive effects of irbesartan; however Aprovel has been safely administered with other antihypertensive agents, such as beta-blockers, long-acting calcium channel blockers, and thiazide diuretics. Prior treatment with high dose diuretics may result in volume depletion and a risk of hypotension when initiating therapy with Aprovel (see section 4.4).</p><p><u>Aliskiren-containing products and ACE-inhibitors</u>: Clinical trial data has shown that dual blockade of the renin-angiotensin-aldosterone system (RAAS) through the combined use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren is associated with a higher frequency of adverse events such as hypotension, hyperkalaemia and decreased renal function (including acute renal failure) compared to the use of a single RAAS-acting agent (see sections 4.3, 4.4 and 5.1).</p><p><u>Potassium supplements and potassium-sparing diuretics</u>:<em> </em>based on experience with the use of other medicinal products that affect the renin-angiotensin system, concomitant use of potassium-sparing diuretics, potassium supplements, salt substitutes containing potassium or other medicinal products that may increase serum potassium levels (e.g. heparin) may lead to increases in serum potassium and is, therefore, not recommended (see section 4.4).</p><p><u>Lithium</u>:<em> </em>reversible increases in serum lithium concentrations and toxicity have been reported during concomitant administration of lithium with angiotensin converting enzyme inhibitors. Similar effects have been very rarely reported with irbesartan so far. Therefore, this combination is not recommended (see section 4.4). If the combination proves necessary, careful monitoring of serum lithium levels is recommended.</p><p><u>Non-steroidal anti-inflammatory drugs</u>: when angiotensin II antagonists are administered simultaneously with non-steroidal anti-inflammatory drugs (i.e. selective COX-2 inhibitors, acetylsalicylic acid (&gt; 3 g/day) and non-selective NSAIDs), attenuation of the antihypertensive effect may occur.</p><p>As with ACE inhibitors, concomitant use of angiotensin II antagonists and NSAIDs may lead to an increased risk of worsening of renal function, including possible acute renal failure, and an increase in serum potassium, especially in patients with poor pre-existing renal function. The combination should be administered with caution, especially in the elderly. Patients should be adequately hydrated and consideration should be given to monitoring renal function after initiation of concomitant therapy, and periodically thereafter.<strong><em> </em></strong></p><p><u>Additional information on irbesartan interactions</u>: in clinical studies, the pharmacokinetic of irbesartan is not affected by hydrochlorothiazide. Irbesartan is mainly metabolised by CYP2C9 and to a lesser extent by glucuronidation. No significant pharmacokinetic or pharmacodynamic interactions were observed when irbesartan was coadministered with warfarin, a medicinal product metabolised by CYP2C9. The effects of CYP2C9 inducers such as rifampicin on the pharmacokinetic of irbesartan have not been evaluated. The pharmacokinetic of digoxin was not altered by coadministration of irbesartan.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u>:</p><p>The use of AIIRAs is not recommended during the first trimester of pregnancy (see section 4.4). The use of AIIRAs is contraindicated during the second and third trimesters of pregnancy (see sections 4.3 and 4.4).</p><p>Epidemiological evidence regarding the risk of teratogenicity following exposure to ACE inhibitors during the first trimester of pregnancy has not been conclusive; however a small increase in risk cannot be excluded. Whilst there is no controlled epidemiological data on the risk with Angiotensin II Receptor Antagonists (AIIRAs), similar risks may exist for this class of drugs. Unless continued AIIRA therapy is considered essential, patients planning pregnancy should be changed to alternative antihypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with AIIRAs should be stopped immediately, and, if appropriate, alternative therapy should be started.</p><p>Exposure to AIIRA therapy during the second and third trimesters is known to induce human fetotoxicity (decreased renal function, oligohydramnios, skull ossification retardation) and neonatal toxicity (renal failure, hypotension, hyperkalaemia). (See section 5.3).</p><p>Should exposure to AIIRAs have occurred from the second trimester of pregnancy, ultrasound check of renal function and skull is recommended.</p><p>Infants whose mothers have taken AIIRAs should be closely observed for hypotension (see sections 4.3 and 4.4).</p><p><u>Breast-feeding</u>:</p><p>Because no information is available regarding the use of Aprovel during breast-feeding, Aprovel is not recommended and alternative treatments with better established safety profiles during breast-feeding are preferable, especially while nursing a newborn or preterm infant.</p><p>It is unknown whether irbesartan or its metabolites are excreted in human milk.</p><p>Available pharmacodynamic/toxicological data in rats have shown excretion of irbesartan or its metabolites in milk (for details see 5.3).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects on the ability to drive and use machines have been performed. Based on its pharmacodynamic properties, irbesartan is unlikely to affect this ability. When driving vehicles or operating machines, it should be taken into account that dizziness or weariness may occur during treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In placebo-controlled trials in patients with hypertension, the overall incidence of adverse events did not differ between the irbesartan (56.2%) and the placebo groups (56.5%). Discontinuation due to any clinical or laboratory adverse event was less frequent for irbesartan-treated patients (3.3%) than for placebo-treated patients (4.5%). The incidence of adverse events was not related to dose (in the recommended dose range), gender, age, race, or duration of treatment.</p><p>In diabetic hypertensive patients with microalbuminuria and normal renal function, orthostatic dizziness and orthostatic hypotension were reported in 0.5% of the patients (i.e., uncommon) but in excess of placebo.</p><p>The following table presents the adverse drug reactions that were reported in placebo-controlled trials in which 1,965 hypertensive patients received irbesartan. Terms marked with a star (*) refer to the adverse reactions that were additionally reported in &gt; 2% of diabetic hypertensive patients with chronic renal insufficiency and overt proteinuria and in excess of placebo. The frequency of adverse reactions listed below is defined using the following convention:</p><p>very common (&ge; 1/10); common (&ge; 1/100 to &lt; 1/10); uncommon (&ge; 1/1,000 to &lt; 1/100); rare (<sub>&ge;</sub> 1/10,000 to &lt; 1/1,000); very rare (&lt; 1/10,000). Within each frequency grouping, undesirable effects are presented in order of decreasing seriousness.</p><p>Adverse reactions additionally reported from post&ndash;marketing experience are also listed. These adverse reactions are derived from spontaneous reports.</p><p><em><u>Blood and lymphatic system disorders</u> </em>Not known:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; thrombocytopenia</p><p><em><u>Immune system disorders:</u> </em></p><p>Not known:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; hypersensitivity reactions such as angioedema, rash, urticaria<em> </em></p><p><em><u>Metabolism and nutrition disorders:</u> </em>Not known:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hyperkalaemia</p><p><em><u>Nervous system disorders:</u> </em></p><p>Common: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dizziness, orthostatic dizziness*</p><p>Not known: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vertigo, headache</p><p><em><u>Ear and labyrinth disorder:</u> </em>Not known: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tinnitus</p><p><em><u>Cardiac disorders:</u> </em>Uncommon: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tachycardia</p><p><em><u>Vascular disorders:</u> </em></p><p>Common: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; orthostatic hypotension* Uncommon: &nbsp;&nbsp; flushing<em> </em></p><p><em><u>Respiratory, thoracic and mediastinal disorders:</u> </em></p><p>Uncommon: &nbsp;&nbsp;&nbsp;&nbsp; cough</p><p><em><u>Gastrointestinal disorders:</u> </em></p><p>Common: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nausea/vomiting</p><p>Uncommon: diarrhoea, dyspepsia/heartburn Not known: dysgeusia</p><p><em><u>Hepatobiliary disorders:</u> </em></p><p>Uncommon: &nbsp;&nbsp;&nbsp;&nbsp; jaundice</p><p>Not known: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hepatitis, abnormal liver function<em> </em></p><p><em><u>Skin and subcutaneous tissue disorders:</u> </em></p><p>Not known: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; leukocytoclastic vasculitis</p><p><em><u>Musculoskeletal and connective tissue disorders:</u>&nbsp; </em></p><p>Common: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; musculoskeletal pain*</p><p>Not known: &nbsp;&nbsp;&nbsp;&nbsp; arthralgia, myalgia (in some cases associated with increased plasma creatine kinase levels), muscle cramps</p><p><em><u>Renal and urinary disorders:</u> </em></p><p>Not known: impaired renal function including cases of renal failure in patients at risk (see section 4.4)</p><p><em><u>Reproductive system and breast disorders:</u> </em>Uncommon: sexual dysfunction</p><p><em><u>General disorders and administration site conditions:</u> </em></p><p>Common: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fatigue Uncommon: &nbsp;&nbsp;&nbsp;&nbsp; chest pain<em> </em></p><p><em><u>Investigations:</u> </em></p><p>Very common: Hyperkalaemia* occurred more often in diabetic patients treated with irbesartan than with placebo. In diabetic hypertensive patients with microalbuminuria and normal renal function, hyperkalaemia (&ge; 5.5 mEq/L) occurred in 29.4% of the patients in the irbesartan 300 mg group and 22% of the patients in the placebo group. In diabetic hypertensive patients with chronic renal insufficiency and overt proteinuria, hyperkalaemia (&ge; 5.5 mEq/L) occurred in 46.3% of the patients in the irbesartan group and 26.3% of the patients in the placebo group.</p><p>Common: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; significant increases in plasma creatine kinase were commonly observed (1.7%) in irbesartan treated subjects. None of these increases were associated with identifiable clinical musculoskeletal events.</p><p>In 1.7% of hypertensive patients with advanced diabetic renal disease treated with irbesartan, a decrease in haemoglobin*, which was not clinically significant, has been observed.</p><p><u>Paediatric population</u>:</p><p>In a randomised trial of 318 hypertensive children and adolescents aged 6 to 16 years, the following adverse reactions occurred in the 3-week double-blind phase: headache (7.9%), hypotension (2.2%), dizziness (1.9%), cough (0.9%). In the 26-week open-label period of this trial the most frequent laboratory abnormalities observed were creatinine increases (6.5%) and elevated CK values in 2% of child recipients.</p><p>To report any side effect(s):</p><p>&bull; Saudi Arabia:</p><p>- The National Pharmacovigilance and Drug Safety Centre (NPC) o Fax: +966-11-205-7662 o Call NPC at</p><p>+966-11-2038222, Exts: 2317-2356-2340. o SFDA call center : 19999 o E-mail: npc.drug@sfda.gov.sa o Website: www.sfda.gov.sa/npc &bull; Sanofi- Pharmacovigilance: KSA_Pharmacovigilance@sanofi.com</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Experience in adults exposed to doses of up to 900 mg/day for 8 weeks revealed no toxicity. The most likely manifestations of overdose are expected to be hypotension and tachycardia; bradycardia might also occur from overdose. No specific information is available on the treatment of overdose with Aprovel. The patient should be closely monitored, and the treatment should be symptomatic and supportive. Suggested measures include induction of emesis and/or gastric lavage. Activated charcoal may be useful in the treatment of overdose. Irbesartan is not removed by haemodialysis.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Angiotensin-II antagonists, plain. ATC code: C09C A04.</p><p><u>Mechanism of action</u>:<strong> </strong>Irbesartan is a potent, orally active, selective angiotensin-II receptor (type AT<sub>1</sub>) antagonist. It is expected to block all actions of angiotensin-II mediated by the AT<sub>1</sub> receptor, regardless of the source or route of synthesis of angiotensin-II. The selective antagonism of the angiotensin-II (AT<sub>1</sub>) receptors results in increases in plasma renin levels and angiotensin-II levels, and a decrease in plasma aldosterone concentration. Serum potassium levels are not significantly affected by irbesartan alone at the recommended doses. Irbesartan does not inhibit ACE (kininase-II), an enzyme which generates angiotensin-II and also degrades bradykinin into inactive metabolites.</p><p>Irbesartan does not require metabolic activation for its activity.</p><p><u>Clinical efficacy</u>:<strong> </strong></p><p>Hypertension</p><p>Irbesartan lowers blood pressure with minimal change in heart rate. The decrease in blood pressure is dose-related for once a day doses with a tendency towards plateau at doses above 300 mg. Doses of 150-300 mg once daily lower supine or seated blood pressures at trough (i.e. 24 hours after dosing) by an average of 8-13/5-8 mm Hg (systolic/diastolic) greater than those associated with placebo. Peak reduction of blood pressure is achieved within 3-6 hours after administration and the blood pressure lowering effect is maintained for at least 24 hours. At 24 hours the reduction of blood pressure was 60-70% of the corresponding peak diastolic and systolic responses at the recommended doses. Once daily dosing with 150 mg produced trough and mean 24 hour responses similar to twice daily dosing on the same total dose.</p><p>The blood pressure lowering effect of Aprovel is evident within 1-2 weeks, with the maximal effect occurring by 4-6 weeks after start of therapy. The antihypertensive effects are maintained during long term therapy. After withdrawal of therapy, blood pressure gradually returns toward baseline. Rebound hypertension has not been observed.</p><p>The blood pressure lowering effects of irbesartan and thiazide-type diuretics are additive. In patients not adequately controlled by irbesartan alone, the addition of a low dose of hydrochlorothiazide (12.5 mg) to irbesartan once daily results in a further placebo-adjusted blood pressure reduction at trough of 7-10/3-6 mm Hg (systolic/diastolic).</p><p>The efficacy of Aprovel is not influenced by age or gender. As is the case with other medicinal products that affect the renin-angiotensin system, black hypertensive patients have notably less response to irbesartan monotherapy. When irbesartan is administered concomitantly with a low dose of hydrochlorothiazide (e.g. 12.5 mg daily), the antihypertensive response in black patients approaches that of white patients.</p><p>There is no clinically important effect on serum uric acid or urinary uric acid secretion.</p><p>Paediatric population</p><p>Reduction of blood pressure with 0.5 mg/kg (low), 1.5 mg/kg (medium) and 4.5 mg/kg (high) target titrated doses of irbesartan was evaluated in 318 hypertensive or at risk (diabetic, family history of hypertension) children and adolescents aged 6 to 16 years over a three week period. At the end of the three weeks the mean reduction from baseline in the primary efficacy variable, trough seated systolic blood pressure (SeSBP) was 11.7 mmHg (low dose), 9.3 mmHg (medium dose), 13.2 mmHg (high dose). No significant difference was apparent between these doses. Adjusted mean change of trough seated diastolic blood pressure (SeDBP) was as follows: 3.8 mmHg (low dose), 3.2 mmHg (medium dose), 5.6 mmHg (high dose). Over a subsequent two week period where patients were re-randomized to either active medicinal product or placebo, patients on placebo had increases of 2.4 and 2.0 mmHg in SeSBP and SeDBP compared to +0.1 and -0.3 mmHg changes respectively in those on all doses of irbesartan (see section 4.2).</p><p>Hypertension and type 2 diabetes with renal disease</p><p>The &ldquo;Irbesartan Diabetic Nephropathy Trial (IDNT)&rdquo; shows that irbesartan decreases the progression of renal disease in patients with chronic renal insufficiency and overt proteinuria. IDNT was a double blind, controlled, morbidity and mortality trial comparing Aprovel, amlodipine and placebo. In</p><p>1,715 hypertensive patients with type 2 diabetes, proteinuria &ge; 900 mg/day and serum creatinine ranging from 1.0-3.0 mg/dl, the long-term effects (mean 2.6 years) of Aprovel on the progression of renal disease and all-cause mortality were examined. Patients were titrated from 75 mg to a maintenance dose of 300 mg Aprovel, from 2.5 mg to 10 mg amlodipine, or placebo as tolerated. Patients in all treatment groups typically received between 2 and 4 antihypertensive agents (e.g., diuretics, beta blockers, alpha blockers) to reach a predefined blood pressure goal of <sub>&le;</sub> 135/85 mmHg or a 10 mmHg reduction in systolic pressure if baseline was &gt; 160 mmHg. Sixty per cent (60%) of patients in the placebo group reached this target blood pressure whereas this figure was 76% and 78% in the irbesartan and amlodipine groups respectively. Irbesartan significantly reduced the relative risk in the primary combined endpoint of doubling serum creatinine, end-stage renal disease (ESRD) or allcause mortality. Approximately 33% of patients in the irbesartan group reached the primary renal composite endpoint compared to 39% and 41% in the placebo and amlodipine groups [20% relative risk reduction versus placebo (p = 0.024) and 23% relative risk reduction compared to amlodipine (p = 0.006)]. When the individual components of the primary endpoint were analysed, no effect in all cause mortality was observed, while a positive trend in the reduction in ESRD and a significant reduction in doubling of serum creatinine were observed.</p><p>Subgroups consisting of gender, race, age, duration of diabetes, baseline blood pressure, serum creatinine, and albumin excretion rate were assessed for treatment effect. In the female and black subgroups which represented 32% and 26% of the overall study population respectively, a renal benefit was not evident, although the confidence intervals do not exclude it. As for the secondary endpoint of fatal and non-fatal cardiovascular events, there was no difference among the three groups in the overall population, although an increased incidence of non-fatal MI was seen for women and a decreased incidence of non-fatal MI was seen in males in the irbesartan group versus the placebobased regimen. An increased incidence of non-fatal MI and stroke was seen in females in the irbesartan-based regimen versus the amlodipine-based regimen, while hospitalization due to heart failure was reduced in the overall population. However, no proper explanation for these findings in women has been identified.</p><p>The study of the &ldquo;Effects of Irbesartan on Microalbuminuria in Hypertensive Patients with type 2</p><p>Diabetes Mellitus (IRMA 2)&rdquo; shows that irbesartan 300 mg delays progression to overt proteinuria in patients with microalbuminuria. IRMA 2 was a placebo-controlled double blind morbidity study in 590 patients with type 2 diabetes, microalbuminuria (30-300 mg/day) and normal renal function (serum creatinine <sub>&le;</sub> 1.5 mg/dl in males and &lt; 1.1 mg/dl in females). The study examined the long-term effects (2 years) of Aprovel on the progression to clinical (overt) proteinuria (urinary albumin excretion rate (UAER) &gt; 300 mg/day, and an increase in UAER of at least 30% from baseline). The predefined blood pressure goal was &le; 135/85 mmHg. Additional antihypertensive agents (excluding ACE inhibitors, angiotensin II receptor antagonists and dihydropyridine calcium blockers) were added as needed to help achieve the blood pressure goal. While similar blood pressure was achieved in all treatment groups, fewer subjects in the irbesartan 300 mg group (5.2%) than in the placebo (14.9%) or in the irbesartan 150 mg group (9.7%) reached the endpoint of overt proteinuria, demonstrating a 70% relative risk reduction versus placebo (p = 0.0004) for the higher dose. An accompanying improvement in the glomerular filtration rate (GFR) was not observed during the first three months of treatment. The slowing in the progression to clinical proteinuria was evident as early as three months and continued over the 2 year period. Regression to normoalbuminuria (&lt; 30 mg/day) was more frequent in the Aprovel 300 mg group (34%) than in the placebo group (21%).</p><p>Dual blockade of the renin-angiotensin-aldosterone system (RAAS)</p><p>Two large randomised, controlled trials (ONTARGET (ONgoing Telmisartan Alone and in combination with Ramipril Global Endpoint Trial) and VA NEPHRON-D (The Veterans Affairs Nephropathy in Diabetes)) have examined the use of the combination of an ACE-inhibitor with an angiotensin II receptor blocker. ONTARGET was a study conducted in patients with a history of cardiovascular or cerebrovascular disease, or type 2 diabetes mellitus accompanied by evidence of end-organ damage. VA NEPHRON-D was a study in patients with type 2 diabetes mellitus and diabetic nephropathy.</p><p>These studies have shown no significant beneficial effect on renal and/or cardiovascular outcomes and mortality, while an increased risk of hyperkalaemia, acute kidney injury and/or hypotension as compared to monotherapy was observed. Given their similar pharmacodynamic properties, these results are also relevant for other ACE-inhibitors and angiotensin II receptor blockers.</p><p>ACE-inhibitors and angiotensin II receptor blockers should therefore not be used concomitantly in patients with diabetic nephropathy.</p><p>ALTITUDE (Aliskiren Trial in Type 2 Diabetes Using Cardiovascular and Renal Disease Endpoints) was a study designed to test the benefit of adding aliskiren to a standard therapy of an ACE-inhibitor or an angiotensin II receptor blocker in patients with type 2 diabetes mellitus and chronic kidney disease, cardiovascular disease, or both. The study was terminated early because of an increased risk of adverse outcomes. Cardiovascular death and stroke were both numerically more frequent in the aliskiren group than in the placebo group and adverse events and serious adverse events of interest (hyperkalaemia, hypotension and renal dysfunction) were more frequently reported in the aliskiren group than in the placebo group.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>After oral administration, irbesartan is well absorbed: studies of absolute bioavailability gave values of approximately 60-80%. Concomitant food intake does not significantly influence the bioavailability of irbesartan. Plasma protein binding is approximately 96%, with negligible binding to cellular blood components. The volume of distribution is 53 - 93 litres. Following oral or intravenous administration of <sup>14</sup>C irbesartan, 80-85% of the circulating plasma radioactivity is attributable to unchanged irbesartan. Irbesartan is metabolised by the liver via glucuronide conjugation and oxidation. The major circulating metabolite is irbesartan glucuronide (approximately 6%). <em>In vitro</em> studies indicate that irbesartan is primarily oxidised by the cytochrome P450 enzyme CYP2C9; isoenzyme CYP3A4 has negligible effect.</p><p>Irbesartan exhibits linear and dose proportional pharmacokinetics over the dose range of 10 to 600 mg. A less than proportional increase in oral absorption at doses beyond 600 mg (twice the maximal recommended dose) was observed; the mechanism for this is unknown. Peak plasma concentrations are attained at 1.5 - 2 hours after oral administration. The total body and renal clearance are 157 -</p><p>&nbsp;176 and 3 - 3.5 ml/min, respectively. The terminal elimination half-life of irbesartan is 11 - 15 hours.</p><p>Steady-state plasma concentrations are attained within 3 days after initiation of a once-daily dosing regimen. Limited accumulation of irbesartan (&lt; 20%) is observed in plasma upon repeated once-daily dosing. In a study, somewhat higher plasma concentrations of irbesartan were observed in female hypertensive patients. However, there was no difference in the half-life and accumulation of irbesartan. No dosage adjustment is necessary in female patients. Irbesartan AUC and C<sub>max</sub> values were also somewhat greater in oldersubjects (&ge; 65 years) than those of young subjects (18 - 40 years). However the terminal half-life was not significantly altered. No dosage adjustment is necessary in older people.</p><p>Irbesartan and its metabolites are eliminated by both biliary and renal pathways. After either oral or IV administration of <sup>14</sup>C irbesartan, about 20% of the radioactivity is recovered in the urine, and the remainder in the faeces. Less than 2% of the dose is excreted in the urine as unchanged irbesartan.</p><p>Paediatric population</p><p>The pharmacokinetics of irbesartan were evaluated in 23 hypertensive children after the administration of single and multiple daily doses of irbesartan (2 mg/kg) up to a maximum daily dose of 150 mg for four weeks. Of those 23 children, 21 were evaluable for comparison of pharmacokinetics with adults (twelve children over 12 years, nine children between 6 and 12 years). Results showed that C<sub>max</sub>, AUC and clearance rates were comparable to those observed in adult patients receiving 150 mg irbesartan daily. A limited accumulation of irbesartan (18%) in plasma was observed upon repeated once daily dosing.</p><p><u>Renal impairment</u>: in patients with renal impairment or those undergoing haemodialysis, the pharmacokinetic parameters of irbesartan are not significantly altered. Irbesartan is not removed by haemodialysis.</p><p><u>Hepatic impairment</u>: in patients with mild to moderate cirrhosis, the pharmacokinetic parameters of irbesartan are not significantly altered.&nbsp;</p><p>Studies have not been performed in patients with severe hepatic impairment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There was no evidence of abnormal systemic or target organ toxicity at clinically relevant doses. In</p><p>non-clinical safety studies, high doses of irbesartan (&ge; 250 mg/kg/day in rats and &ge; 100 mg/kg/day in macaques) caused a reduction of red blood cell parameters (erythrocytes, haemoglobin, haematocrit). At very high doses (&ge; 500 mg/kg/day) degenerative changes in the kidney (such as interstitial nephritis, tubular distension, basophilic tubules, increased plasma concentrations of urea and creatinine) were induced by irbesartan in the rat and the macaque and are considered secondary to the hypotensive effects of the medicinal product which led to decreased renal perfusion. Furthermore,</p><p>irbesartan induced hyperplasia/hypertrophy of the juxtaglomerular cells (in rats at &ge; 90 mg/kg/day, in macaques at &ge; 10 mg/kg/day). All of these changes were considered to be caused by the pharmacological action of irbesartan. For therapeutic doses of irbesartan in humans, the hyperplasia/ hypertrophy of the renal juxtaglomerular cells does not appear to have any relevance.</p><p>There was no evidence of mutagenicity, clastogenicity or carcinogenicity.</p><p>Fertility and reproductive performance were not affected in studies of male and female rats even at oral doses of irbesartan causing some parental toxicity (from 50 to 650 mg/kg/day), including mortality at the highest dose. No significant effects on the number of corpora lutea, implants, or live fetuses were observed. Irbesartan did not affect survival, development, or reproduction of offspring.</p><p>Studies in animals indicate that the radiolabeled irbesartan is detected in rat and rabbit fetuses. Irbesartan is excreted in the milk of lactating rats.</p><p>Animal studies with irbesartan showed transient toxic effects (increased renal pelvic cavitation, hydroureter or subcutaneous oedema) in rat foetuses, which were resolved after birth. In rabbits, abortion or early resorption were noted at doses causing significant maternal toxicity, including mortality. No teratogenic effects were observed in the rat or rabbit.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Tablet core:</p><p>Lactose monohydrate</p><p>Microcrystalline cellulose Croscarmellose sodium</p><p>Hypromellose</p><p>Silicon dioxide</p><p>Magnesium stearate.</p><p>Film-coating:</p><p>Lactose monohydrate</p><p>Hypromellose</p><p>Titanium dioxide Macrogol 3000</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Incompatibilities </strong>Not applicable. <strong>6.3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shelf life </strong>3 years.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years. 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above 30&deg;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Cartons of 14 film-coated tablets in PVC/PVDC/Aluminium blisters. Cartons of 28 film-coated tablets in PVC/PVDC/Aluminium blisters. Cartons of 30 film-coated tablets in PVC/PVDC/Aluminium blisters.</p><p>Cartons of 56 film-coated tablets in PVC/PVDC/Aluminium blisters.</p><p>Cartons of 84 film-coated tablets in PVC/PVDC/Aluminium blisters. Cartons of 90 film-coated tablets in PVC/PVDC/Aluminium blisters. Cartons of 98 film-coated tablets in PVC/PVDC/Aluminium blisters.</p><p>Cartons of 56 x 1 film-coated tablet in PVC/PVDC/Aluminium perforated unit dose blisters.</p><p>Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Sanofi Clir SNC 
+54, rue La Boétie 
+F-75008 Paris - France 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                EU/1/97/046/021-025 
+EU/1/97/046/032 
+EU/1/97/046/035 
+EU/1/97/046/038 
+
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

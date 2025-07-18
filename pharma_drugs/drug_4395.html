@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        32-883-21
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1982
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        DOGMATIL CAPS 50MG
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SULPIRIDE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Capsule, hard
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        21.4
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="sanofi-aventis" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            sanofi-aventis
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2218]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Sanofi Arabia Trading Co. Ltd
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            sanofi-aventis
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        N05AL01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Dogmatil® 50 mg, hard capsules
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Sulpiride................................................................................................................................. 50.00 mg
+for one hard capsule.
+For the full list of excipients, see Section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hard capsules.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>&minus; Short-term symptomatic treatment of anxiety in adults when the usual therapeutic measures have failed.<br />&minus; Serious behavioral disorders (agitation, self-mutilation, stereotypy) in children over 6 years of age, particularly in patients with autistic syndromes.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Oral use.<br />The minimum effective dose should always be used. If the patient&rsquo;s clinical condition allows, treatment should be initiated at a low dose, then gradual dosage titration may be used.<br />Adults:<br />&minus; Short-term symptomatic treatment of anxiety when the usual therapeutic measures have failed:<br />The daily dose is 50 to 150 mg for a period of not more than 4 weeks.<br />Children over 6 years of age:<br />&minus; Serious behavioral disorders (agitation, self-mutilation, stereotypy), particularly in patients with autistic syndromes:<br />The daily dose is 5 to 10 mg/kg.<br />The oral solution dosage form is more suitable for children.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                This medicine is contraindicated in the following situations:
+• hypersensitivity to sulpiride or to one of the other ingredients of the drug,
+• prolactin-dependent tumors (e.g. pituitary gland prolactinomas and breast cancer),
+• known or suspected pheochromocytoma,
+• in combination with mequitazine, non-antiparkinsonian dopamine agonists (cabergoline, quinagolide, rotigotine), citalopram and escitalopram (see Section 4.5).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Special warnings<br />&bull; Potentially fatal neuroleptic malignant syndrome: if unexplained fever occurs, treatment must imperatively be discontinued, since this may be one of the symptoms of the malignant syndrome reported with neuroleptic drugs (pallor, hyperthermia, autonomic disorders, consciousnessdisorders, muscle rigidity). Signs of autonomic dysfunction, such as perspiration and changes in arterial blood pressure may occur before hyperthermia and thus constitute early warning signs. Although this effect of neuroleptics may be idiosyncratic in origin, there may be predisposing risk factors, such as dehydration and organic brain damage.<br />&bull; Prolonged QT interval: sulpiride can cause a dose-dependent prolongation of the QT interval. This effect, which is known to increase the risk of serious ventricular arrhythmias, particularly torsades de pointes, is enhanced in patients with bradycardia, hypokalemia and congenital or acquired QT prolongation (when sulpiride is taken with a medicinal product prolonging the QT interval) (see Section 4.8)<br />Consequently, before administering the drug, and if the clinical situation permits, patients should be checked for the following risk factors that could promote this type of arrhythmia:<br />&bull; bradycardia of less than 55 beats per minute,<br />&bull; hypokalemia,<br />&bull; congenital QT interval prolongation,<br />&bull; ongoing treatment with a drug likely to induce marked bradycardia (less than 55 beats per minute), hypokalemia, delayed intracardiac conduction, or QT interval prolongation (see Sections 4.3 and 4.5).<br />Except in emergencies, it is recommended that an ECG be performed as part of the initial evaluation of patients due to receive treatment with a neuroleptic agent.<br />Stroke<br />In randomized, placebo-controlled clinical studies in elderly patients with dementia and treated with certain atypical antipsychotic agents, a higher risk of stroke was observed versus placebo. The mechanism underlying this increased risk is unknown. Increased risk with other antipsychotics or in other patient populations cannot be ruled out. The drug should be used with caution in patients with risk factors for stroke.<br />Elderly patients with dementia<br />The risk of mortality is increased in elderly patients with psychosis associated with dementia who are treated with antipsychotic drugs.<br />Analysis of 17 placebo-controlled studies (mean duration of 10 weeks), conducted in patients mainly taking atypical antipsychotic drugs, showed that the risk of mortality increased 1.6- to 1.7-fold in patients treated with these medicinal products versus placebo.<br />After a mean treatment period of 10 weeks, the risk of mortality was 4.5% in the treated patient group versus 2.6% in the placebo group.<br />Although the causes of death varied in the clinical trials with the atypical antipsychotic drugs, the majority of deaths appeared to be either cardiovascular (e.g. heart failure, sudden death) or infectious (e.g. pneumonia).<br />Epidemiological studies suggest that treatment with conventional antipsychotic drugs may increase mortality, as is the case for atypical antipsychotic drugs.<br />The respective contribution of the antipsychotic drug and patient characteristics to the increase in mortality found in the epidemiological studies is unclear.<br />Venous thromboembolism: cases of venous thromboembolism (VTE) have been reported with antipsychotic drugs. Since patients treated with antipsychotic drugs often present acquired risk factors for VTE, any potential risk factors for VTE must be identified before and during treatment with Dogmatil and preventive measures should be implemented (see Section 4.8).<br />Administration of this medicinal product is not recommended with alcohol, levodopa, antiparkinsonian dopamine agonists, antiparasitic agents that are likely to induce torsades de pointes, methadone, other neuroleptics and drugs that are likely to include torsades de pointes (see Section 4.5).<br />The risk of tardive dyskinesia should be taken into account, even at low doses, particularly in elderly subjects.<br />As the efficacy and safety of sulpiride have not been fully studied in children, precautions should be taken when using this drug (see Section 4.2). An annual clinical examination to assess learning ability is recommended due to the cognitive effects of the drug. Dosage should be regularly adjusted based on the child&rsquo;s clinical status.</p><p>The administration of tablets or hard capsules is contraindicated in children under 6 years of age since this may lead to choking.<br />This medicinal product contains lactose and is therefore not recommended in patients with galactose intolerance, Lapp lactase deficiency or glucose or galactose malabsorption syndrome (rare hereditary diseases).<br />Precautions for use<br />In patients with diabetes or with risk factors for diabetes who are starting treatment with sulpiride, appropriate blood glucose monitoring should be carried out.<br />Except in special cases, this drug should not be administered in patients with Parkinson&rsquo;s disease.<br />In patients with renal failure, reduce the dosage and increase monitoring; in the event of serious renal failure, intermittent treatment courses are recommended.<br />Monitoring of treatment with sulpiride must be intensified in:<br />&bull; epileptic patients, as sulpiride may lower the seizure threshold; cases of seizure have been reported in patients treated with sulpiride (see Section 4.8),<br />&bull; elderly patients with greater susceptibility to postural hypotension, sedation and extrapyramidal effects.<br />Cases of leukopenia, neutropenia and agranulocytosis have been reported with antipsychotic agents, including Dogmatil. Unexplained infections or unexplained fever can be signs of leukopenia (see Section 4.8) and require blood tests immediately.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>+ Sedative agents<br />It must be taken into account that many drugs or substances can have additive depressant effects on the central nervous system and contribute to a decrease in alertness. These drugs include morphine derivatives (analgesics, antitussives, and replacement therapies), neuroleptics, barbiturates, benzodiazepines, non-benzodiazepine anxiolytics (such as meprobamate), hypnotics, sedative antidepressants (amitriptyline, doxepin, mianserin, mirtazapine, trimipramine), sedative H1-antihistamines, centrally-acting antihypertensives, baclofen and thalidomide.<br />+ Drugs likely to induce torsades de pointes:<br />This serious cardiac rhythm disorder can be caused by a number of medicinal products, antiarrhythmics or not. Hypokalemia (see Potassium-depleting drugs) is a promoting factor, as is bradycardia (see Bradycardia-inducing drugs) and preexisting congenital or acquired QT interval prolongation.<br />The medicines involved are in particular class IA and III antiarrhythmics as well as some neuroleptics.<br />For dolasetron, erythromycin, spiramycin and vincamine, only intravenously administered dosage forms are concerned by this interaction.<br />Coadministration of two torsadogenic drugs is generally contraindicated.<br />However methadone, as well as certain sub-classes, are exceptions:<br />&bull; antiparasitics (halofantrine, lumefantrine, pentamidine) are only not recommended in combination with other torsadogenic drugs;<br />&bull; neuroleptics likely to induce torsades de pointes are also not recommended but are not contraindicated in combination with other torsadogenic drugs.<br />Contraindicated combinations (See Section 4.3)<br />+ Non-antiparkinsonian dopamine agonists (cabergoline, quinagolide, rotigotine)<br />Mutual antagonism between dopamine agonists and neuroleptics.<br />+ Mequitazine<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes.</p><p>+ Citalopram, escitalopram<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes.<br />Inadvisable combinations (See Section 4.4)<br />+ Antiparasitic agents likely to induce torsades de pointes (halofantrine, lumefantrine, pentamidine)<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes.<br />If possible, treatment with one of the two drugs should be discontinued.<br />If coadministration cannot be avoided, QT interval should be checked before treatment and the ECG monitored.<br />+ Antiparkinsonian dopamine agonists (amantadine, apomorphine, bromocriptine, entacapone, lisuride, pergolide, piribedil, pramipexole, rasagiline, ropinirole, selegiline)<br />Mutual antagonism between the dopamine agonists and neuroleptics.<br />Dopamine agonists can cause or worsen psychotic disorders. If treatment with neuroleptics is required in patients with Parkinson&#39;s disease treated with dopamine agonists, these dopamine agents should be tapered off gradually (sudden discontinuation of dopamine agonists exposes the patient to a risk of &quot;neuroleptic malignant syndrome&quot;).<br />+ Other drugs likely to induce torsades de pointes: class IA antiarrhythmics (quinidine, hydroquinidine, disopyramide) and class III antiarrhythmics (amiodarone, dronedarone, sotalol, dofetilide, ibutilide), and other drugs such as arsenic compounds, bepridil, cisapride, diphemanil, dolasetron IV, erythromycin IV, levofloxacin, mizolastine, prucalopride, vincamine IV, moxifloxacin, spiramycin IV and toremifene.<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes.<br />+ Other neuroleptics likely to induce torsades de pointes (amisulpride, chlorpromazine, cyamemazine, droperidol, flupentixol, fluphenazine, haloperidol, levomepromazine, pimozide, pipamperone, pipotiazine, sertindole, sultopride, tiapride, zuclopethicol)<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes.<br />+ Alcohol consumption<br />Alcohol potentiates the sedative effects induced by these substances.<br />Impaired alertness may make driving vehicles and using machines dangerous.<br />Patients should avoid consuming alcoholic beverages or medicines containing alcohol.<br />+ Levodopa<br />Mutual antagonism between levodopa and neuroleptics.<br />In patients with Parkinson&rsquo;s disease, minimum effective doses of each of these drugs should be used.<br />+ Methadone<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes.<br />Combinations requiring precautions for use<br />+ Azithromycin<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes. ECG and clinical monitoring during co-administration.<br />+ Beta-blockers in heart failure (bisoprolol, carvedilol, metoprolol, nebivolol)<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes. Clinical and ECG monitoring required.<br />+ Bradycardia-inducing drugs (particularly class Ia antiarrhythmics, beta-blockers, certain class III antiarrhythmics, certain calcium channel blockers, digitalis drugs, pilocarpine, anticholinesterase agents):</p><p>Increased risk of ventricular arrhythmias, particularly torsades de pointes.<br />Clinical and ECG monitoring required.<br />+ Clarithromycin<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes. ECG and clinical monitoring during co-administration.<br />+ Potassium-depleting drugs (potassium-depleting diuretics, alone or in combination, stimulant laxatives, glucocorticoids, tetracosactide and amphotericin B IV)<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes.<br />Any hypokalemia should be corrected before administration, and clinical, electrolyte and ECG monitoring performed.<br />+ Lithium<br />Risk of neuropsychiatric signs suggestive of neuroleptic malignant syndrome or lithium poisoning. Regular clinical and laboratory test monitoring is required, particularly at the start of co-administration.<br />+ Roxithromycin<br />Increased risk of ventricular arrhythmias, particularly torsades de pointes. ECG and clinical monitoring during co-administration.<br />+ Sucralfate<br />Decreased gastrointestinal absorption of sulpiride.<br />Allow for an interval between administration of sucralfate and sulpiride (more than 2 hours, if possible).<br />+ Topical agents for gastrointestinal use, antacids and charcoal<br />Decreased gastrointestinal absorption of sulpiride. Allow for an interval between administration of these agents and sulpiride (more than 2 hours, if possible).<br />Combinations to be taken into account<br />+ Other sedatives<br />Increased central nervous system depression. Driving and operating machines may be hazardous due to impaired alertness.<br />+ Antihypertensives<br />Increased risk of hypotension, particularly postural.<br />+ Beta-blockers (except esmolol and sotalol)<br />(For beta-blockers used in heart failure, see also &ldquo;Combinations requiring precautions for use&rdquo;)<br />Vasodilator effect and risk of hypotension, particularly postural (additive effect).<br />+ Nitrates, nitrites and related drugs<br />Increased risk of hypotension, particularly postural.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy<br />Good mental health should preferably be maintained throughout pregnancy to avoid any decompensation. If drug therapy is necessary to ensure this mental wellbeing, it must be instituted or continued at an effective dose throughout pregnancy.<br />Analysis of exposed pregnancies has not revealed any particular teratogenic effect with sulpiride.<br />Injectable neuroleptics used in emergency situations can cause hypotension in the mother.<br />Use of sulpiride may be considered at any stage of pregnancy.</p><p>Newborns exposed to antipsychotic drugs (including Dogmatil) during the third trimester of pregnancy are at risk for adverse effects including extrapyramidal and/or withdrawal symptoms that may vary in intensity and duration after birth. The following reactions have been reported: agitation, hypertonia, hypotonia, tremor, drowsiness, respiratory distress and feeding difficulties. Newborns must therefore be monitored closely.<br />Breast-feeding<br />As sulpiride is excreted in breast milk, breast-feeding is not recommended during treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The attention of patients, particularly those who drive or use machines, should be drawn to the risk of drowsiness associated with the use of this medicinal product (see Section 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Nervous system disorders:<br />&bull; early-onset dyskinesia (spasmodic torticollis, oculogyric crises, trismus) reversible following administration of an anticholinergic antiparkinsonian agent,<br />&bull; extrapyramidal syndrome:<br />o akinetic symptoms with or without hypertonia, partially resolving with anticholinergic antiparkinsonian agents,<br />o hyperkinetic-hypertonic, excitatory motor activity,<br />o akathisia,<br />&bull; tardive dyskinesia, characterized by involuntary rhythmic movements particularly of the tongue and/or face, have been observed, as is the case with all neuroleptics during prolonged treatment: anticholinergic antiparkinsonian agents have no effect or may cause exacerbation,<br />&bull; sedation or drowsiness,<br />&bull; seizures, (see Section 4.4).<br />&bull; potentially fatal neuroleptic malignant syndrome (see Section 4.4).<br />Endocrine disorders:<br />&bull; transient hyperprolactinemia, reversible on treatment discontinuation, possibly inducing amenorrhea, galactorrhea, gynecomastia, impotence or frigidity.<br />Metabolism and nutrition disorders:<br />&bull; weight gain.<br />Cardiac disorders:<br />&bull; QT interval prolongation,<br />&bull; ventricular arrhythmias such as torsades de pointes and ventricular tachycardia, which can lead to ventricular fibrillation or cardiac arrest,<br />&bull; sudden death (see Section 4.4).<br />Vascular disorders:<br />&bull; postural hypotension,<br />&bull; cases of venous thromboembolism, including cases of pulmonary embolism and deep vein thrombosis, have been reported with antipsychotic agents. The frequency of these effects is unknown (see Section 4.4).<br />Hepatobiliary disorders:<br />&bull; increased liver enzymes.<br />Skin and subcutaneous tissue disorders:<br />&bull; maculopapular rash.<br />Blood and lymphatic system disorders:<br />Unknown frequency<br />&bull; leukopenia, neutropenia and agranulocytosis (see Section 4.4).</p><p>Pregnancy, puerperium and perinatal conditions:<br />Unknown frequency<br />&bull; neonatal withdrawal syndrome (see Section 4.6).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Experience with sulpiride overdose is limited. Dyskinesia with spasmodic torticollis, protrusion of the tongue and trismus may occur.<br />Certain patients may develop potentially life-threatening Parkinsonian syndrome or even coma.<br />Sulpiride is partly eliminated by dialysis.<br />There is no specific antidote to sulpiride.<br />Symptomatic treatment, resuscitation under strict continuous respiratory and cardiac monitoring (risk of QT interval prolongation), which should be maintained until the patient recovers.<br />If severe extrapyramidal syndrome develops, an anticholinergic agent must be administered.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>NEUROLEPTIC ANTIPSYCHOTIC<br />BENZAMIDE, ATC Code: N05AL01<br />Sulpiride interferes in cerebral dopaminergic nerve transmission and exerts an activating action simulating a dopaminomimetic effect. At higher doses, sulpiride also has an antiproductive action.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>* Following oral administration of one 50 mg hard capsule, peak sulpiride plasma concentrations are reached in 3 to 6 hours, corresponding to 0.25 mg/l.<br />The bioavailability of the oral forms is 25 to 35%, with high inter-individual variability.<br />The pharmacokinetic profile of sulpiride remains linear after administration of doses ranging from 50 mg to 300 mg.<br />* Sulpiride is rapidly distributed into tissue: the apparent volume of distribution at steady state is 0.94 l/kg.<br />Plasma protein binding is approximately 40%.<br />Sulpiride is excreted in breast milk to a limited extent, and crosses the placental barrier.<br />* Sulpiride undergoes slight metabolism in humans.<br />* Sulpiride mainly undergoes renal excretion, by glomerular filtration. Total clearance is 126 ml/min. The plasma elimination half-life is 7 hours.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Lactose, methylcellulose, talc, magnesium stearate.<br />Composition of the hard capsule coating: gelatin, titanium dioxide.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store at a temperature not exceeding 30&deg;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>20, 30, 50, 100 or 300 hard capsules in heat-formed (PVC/Aluminum) blister packs.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                sanofi-aventis France
+1-13 boulevard Romain Rolland
+75014 Paris, France
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                May 21, 2013
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

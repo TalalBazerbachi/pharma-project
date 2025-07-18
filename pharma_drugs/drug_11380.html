@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1312211467
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2021
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Cefepime Amarox
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        CEFEPIME HYDROCHLORIDE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        1000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder for solution for injection/infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        29
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Jodas Expoim Pvt Ltd" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Jodas Expoim Pvt Ltd
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2177]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Deltapharma International Co
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Saudi Amarox
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J01DE01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Cefepime Powder for solution for injection or infusion 1 g/vial. 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each vial contains Cefepime dihydrochloride monohydrate corresponding to 1 g Cefepime. 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder for solution for injection or infusion. 
+Product description: White to pale yellow powder. 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adults</p><p>Cefepime is indicated in adults for the treatment of these infections when caused by susceptible microbial strains:</p><p>-&nbsp; lower respiratory tract infections (including pneumonia and bronchitis)</p><p>-&nbsp; urinary tract infections (uncomplicated and complicated, including pyelonephritis)</p><p>-&nbsp; infections of the skin and skin structures</p><p>-&nbsp; intra-abdominal infections (including peritonitis and biliary tract infections)</p><p>-&nbsp; gynecological infections</p><p>-&nbsp; Bacteraemia that is or may be associated with any of the above infections</p><p>-&nbsp; empirical therapy febrile neutropenia. Cefepime as monotherapy is indicated for the&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;empirical treatment of patients with febrile neutropenia. In patients at high risk of&nbsp; &nbsp;&nbsp;&nbsp;serious infections(for example, patients who have recently undergone a bone marrow&nbsp;&nbsp;&nbsp;&nbsp; transplant, patients with hypotension, haematological malignancies or severe or&nbsp;&nbsp;&nbsp;&nbsp; prolonged neutropenia) antimicrobial monotherapy may not be appropriate.&nbsp;</p><p>&nbsp;</p><p>&nbsp; There are insufficient data to support the use of cefepime monotherapy in these patients&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (see section 5.1).</p><p>-&nbsp; surgical prophylaxis in patients undergoing intra-abdominal surgery (see section 5.1)<strong> </strong></p><p>Pediatric population</p><p>Cefepime is indicated in children older than 2 months for the treatment of these infections when caused by susceptible microbial strains:</p><p>-&nbsp; pneumonia</p><p>-&nbsp; urinary tract infections (uncomplicated and complicated, including pyelonephritis)</p><p>-&nbsp; infections of the skin and skin structures</p><p>-&nbsp; septic conditions (septicemia)</p><p>-&nbsp; empirical therapy of febrile nonropropy. Cefepime as monotherapy is indicated for the empirical treatment of patients with febrile neutropenia. In patients at high risk of serious infections (for example, patients who recently underwent bone marrow transplantation, patients with hypotension, haematological malignancy or with severe or prolonged neutropenia) antimicrobial monotherapy may not be required be appropriate. There are insufficient data to support the use of cefepime monotherapy in these patients (see point</p><p>5.1).</p><p>- bacterial meningitis</p><p>Cultures and susceptibility testing should be performed to determine the susceptibility of the causal agent to cefepime.</p><p>Empirical therapy with CEFEPIME may be initiated before the results of these tests are known, however, once the results are available, the choice of antibiotic needs to be adjusted accordingly. The wide bactericidal spectrum against gram-positive and gramnegative bacteria allows the use CEFEPIME as monotherapy before the identification of a pathogenic microbe. In patients at risk mixed aerobic-anaerobic infections, especially if cefepime-insensitive bacteria may be present (see section 5.1), recommends that concomitant anti-anaerobic therapy be initiated before the result is known tests. Then, depending on the sensitivity result, combine CEFEPIME with other anti-infectives the agent may or may not be necessary.</p><p>&nbsp;</p><p><strong>4.3 Contraindications</strong></p><p>Hypersensitivity to the active substance or to any of the excipients listed in section 6.1 or to other cephalosporins or other beta-lactam antibiotics (eg penicillins, monobactams and carbapenems).</p><p><strong>&nbsp;</strong></p><p><strong>4.4 Special warnings and precautions for use </strong></p><p>Hypersensitivity reactions</p><p>As with all beta-lactam antibiotics, severe and occasionally fatal hypersensitivity reactions have been reported.</p><p>Prior to initiating cefepime therapy, the patient should be carefully monitored for possible previous hypersensitivity reactions to cefepime, beta-lactams or other medicinal products. Cefepime should be used with caution in patients with a history of asthma or a tendency to allergies. The patient must be closely monitored during the first administration. If an allergic reaction occurs, treatment must be stopped immediately.</p><p>Severe hypersensitivity reactions may require epinephrine (adrenaline) and other supportive treatment.</p><p>Antibacterial activity of cefepime</p><p>Due to the relatively limited spectrum of antibacterial activity, cefepime is not suitable for the treatment of certain types of infections until the pathogen is identified and its susceptibility is known, or unless there is a strong suspicion that the pathogen is very likely to be suitable for cefepime treatment (see section 5.1).</p><p>Renal impairment</p><p>In patients with renal impairment (creatinine clearance  50 ml / min) or other conditions that impair renal function, the dose of CEFEPIME should be adjusted to compensate for the lower degree of renal elimination. Because high and prolonged serum antibiotic concentrations may occur at normal dosing in patients with renal insufficiency or other conditions that impair renal function, the maintenance dose should be reduced when cefepime is administered to such patients. The continuous dose should be determined based on the degree of renal impairment, the severity of the infection and the susceptibility of the causal organisms (see sections 4.2 and 5.2).</p><p>The following serious adverse reactions have been reported during post-marketing surveillance: reversible encephalopathy (disturbances of consciousness including confusion, hallucinations, stupor and coma), myoclonus, seizures (including nonconvulsive status epilepticus) and / or renal failure (see section 4.8). The majority of cases occurred in patients with renal impairment who received doses of CEFEPIME in excess of the recommended doses.</p><p>In general, neurotoxic symptoms resolved after discontinuation of cefepime and / or hemodialysis, but were fatal in a few cases.</p><p>&nbsp;</p><p>Diarrhea associated with Clostridium difficile</p><p>Clostridium difficile diarrhea (CDAD) has been reported with almost all broad-spectrum antibiotics, including cefepime, and can range in severity from mild diarrhea to fatal colitis. Therefore, it is important to consider this diagnosis in all patients who develop diarrhea associated with antibiotics. Careful medical history is required as CDAD has been reported 2 months after administration of antibacterial agents. If CDAD is suspected or confirmed, ongoing antibiotic therapy must be discontinued if it is not effective against C. difficile.</p><p>Antibiotics should be used with caution in any patient with any form of allergy, especially to medications. If such an allergic reaction occurs after administration of CEFEPIME, treatment should be discontinued and the patient treated appropriately. Severe hypersensitivity reactions require adrenaline treatment and supportive therapy as needed.</p><p>Insensitive strains may overgrow even with CEFEPIME treatment. If superinfection occurs during treatment with CEFEPIME, adequate measures should be taken. When drugs with potentially nephrotoxic effects, such as aminoglycosides or strong diuretics, are co-administered with CEFEPIME, renal function should be closely monitored.</p><p>Elderly patients</p><p>Of the more than 6,400 adults treated with CEFEPIME in clinical trials, 35% were over 65 years of age and 16% were over 75 years of age. In clinical trials in which geriatric patients received the usual recommended adult dose, clinical efficacy and safety did not differ from clinical efficacy and safety in non-geriatric adult patients unless the patients had renal insufficiency. There was only a slight prolongation of the elimination half-life and renal clearance values were lower compared to younger subjects. Dose adjustment is recommended in case of impaired renal function (see section 4.2).</p><p>Cefepime is known to be excreted predominantly by the kidneys and the risk of toxic reactions to this drug may be higher in patients with impaired renal function. As elderly patients are likely to have reduced renal function, dose selection should be considered and renal function should be monitored (see sections 4.8 and 5.1). Serious adverse reactions such as reversible encephalopathy (disturbances of consciousness including confusion, hallucinations, stupor and coma), myoclonus, seizures (including non-convulsive status epilepticus) and / or renal failure occurred in geriatric patients with renal insufficiency receiving the usual dose of cefepime. (see section 4.8).</p><p>Interference with serological tests</p><p>A positive Coombs&#39; test has been reported in patients treated with cefepime twice daily without evidence of haemolysis.</p><p>Cephalosporin antibiotics may cause a false positive reaction to urinary glucose in copper reduction tests (Benedict&#39;s or Fehling&#39;s solution or Clinitest tablets), but not when enzymatic tests (glucose oxidation tests) are used for glycosuria. Therefore, the use of glucose tests based on the enzymatic reaction of glucose oxidase is recommended</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Route of Must be added Approximate Approximate administration Amount Thinners (ml) final&nbsp; concentration</p><p>in a bottle &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cefepime (mg / ml)</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>in a bottle &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cefepime (mg / ml)</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>Intravenous &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11.4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90</p><p>Vial 1.0 g&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;12.8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 160</p><p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.0 g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>Intramuscular &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>1.0 g bottle &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 230</p><p>&nbsp;</p><p>Method of administration</p><p>Intravenous (i.v.) administration</p><p>It is preferred for serious and life-threatening infections, especially when there is a possibility of development shock.</p><p>or direct i.v. administration, CEFEPIME is reconstituted in sterile water for injections, 5% glucose for injection or 0.9% sodium chloride injection in dilution volumes according to Table 1. It is administered slowly directly into vein for 3-5 minutes or added to the infusion set during i.v. infusion compatible intravenous fluids (see section 6.2). For administration of CEFEPIME i.v. CEFEPIME solution is prepared by infusion as for</p><p>i.v. injection, as described above, and then an appropriate amount of solution is added to the infusion bottle with one of compatible intravenous fluids listed in section 6.2. The solution thus prepared is to be infused administered for approximately 30 minutes.</p><p>Intramuscular (i.m.) administration</p><p>CEFEPIME should be reconstituted with one of the following fluids in compliance with the dilution volumes listed in Table 1: sterile water for injections, 0.9% sodium chloride solution for injection, 5% glucose or bacteriostatic water for injections with parabens or benzyl alcohol. It is applied deep into the large muscle mass (upper outer quadrant m.glutei max.).</p><p>In a pharmacokinetic study, doses of up to 1 g (volumes less than 3.1 ml) were administered at a single injection site. The maximum intramuscular dose (2 g / 6.2 ml) was administered at two sites. Although CEFEPIME can be reconstituted with 0.5% or 1% lidocaine chloride, this is usually not necessary because intramuscular administration of CEFEPIME is only mildly painful.</p><p>Dosage</p><p>Adults and children weighing  40 kg</p><p>Instructions for dosing CEFEPIME in adults and children weighing more than 40 kg with normal renal function are given in Table 2:</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p><p>Table 2&nbsp; Recommended dosing schedule for adult and pediatric patients weighing  40 kg and normal kidney function *</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Severity of infection &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dosage and method of Interval between doses</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; administration &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mild to moderate urinary tract &nbsp;&nbsp;&nbsp; 0.5-1.0 g i.v. or i.m. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12 o&#39;clock</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; infections &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp; &nbsp;</p><p>Mild to moderate infections</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 g i.v. or i.m. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12 o&#39;clock</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; other than urinary tract &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Severe infections &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 g i.v. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12 o&#39;clock</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Very severe or life-threatening 2 g i.v. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8o&#39;clock</p><p>&nbsp;&nbsp;&nbsp; &nbsp;</p><p>infections</p><p>&nbsp;</p><p>* The usual duration of therapy is 7-10 days, more serious infections may require longer treatment. For empirical treatment of febrile neutropenia, the usual duration of treatment should not be less than 7 days or until the neutropenia resolves.</p><p>Surgical prophylaxis (adults)</p><p>The recommended dosage for the prevention of infection in patients undergoing intraabdominal surgery is as follows:</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Individual i.v. dose of 2 g CEFEPIME (as a 30-minute infusion) starting 60 minutes before the start of the operation. A single dose of 500 mg metronidazole i.v. should be given immediately after the end of the CEFEPIME infusion. The preparation and administration of metronidazole are as described in the Package Leaflet. Due to incompatibility, CEFEPIME and metronidazole must not be mixed in the same container (see section 6.2). It is recommended that the cannula be flushed with a compatible fluid prior to metronidazole administration.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If surgery lasts longer than 12 hours after prophylactic administration of CEFEPIME, a second dose of CEFEPIME should be administered in the same manner 12 hours after the initial dose, followed by another dose of metronidazole.</p><p><em>&nbsp;</em></p><p><em>Patients with renal impairment </em></p><p>In patients with impaired renal function, the dose of cefepime must be adjusted to compensate for the reduced renal elimination. The recommended starting dose of cefepime in patients with mild to moderate renal impairment should be the same as in patients with normal renal function. Table 3 lists the recommended maintenance doses for adult patients with renal insufficiency:</p><p>Table 3&nbsp;&nbsp;&nbsp; Maintenance dosing schedule for adult patients with renal impairment * Creatinine&nbsp; clearance (ml / min)<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </sub>Recommended maintenance dose</p><p>more than 50 &nbsp; Normal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; no adjustment is &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 g for 12 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 mg for&nbsp; &nbsp;&nbsp;&nbsp; dosing, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; required &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strokes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12 courses</p><p>2 g for 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 g for 12 strokes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;strokes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>30 &ndash; 50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 g for&nbsp; 12 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 g for 24 courses &nbsp;&nbsp;&nbsp; 1 g for 24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 mg for</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strokes<sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; courses<sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </sub>24 hours<sub> </sub></p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 g for 24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 g for 24 courses &nbsp;&nbsp;&nbsp; 500 mg in 24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 mg in 24</p><p>11-29 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; courses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hours &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hours</p><p>&nbsp;</p><p>&le;10 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 g for 24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 mg in 24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 250 mg in 24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 250 mg in 24</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; courses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hours &nbsp; courses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; courses hemodialysis * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 mg in 24 &nbsp; 500 mg in 24 &nbsp; 500 mg in 24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 mg in 24</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hours &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hours &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hours &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hours&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p><p>* Pharmacokinetic models indicate that dose reduction is required in these patients.</p><p>In patients treated with cefepime who are currently receiving hemodialysis, cefepime should be dosed as follows: an initial dose of 1 g of cefepime on the first day of therapy and then 500 mg daily for all infections except febrile neutropenia, where the daily dose is 1 g. when dialysis is taking place, cefepime should not be given until after dialysis. If possible, cefepime should be given at the same time each day.</p><p>If only serum creatinine levels are available, creatinine clearance (Clkr, in ml / min) can be calculated according to the following formulas (Cockroft and Gault formulas). Serum creatinine should reflect a balanced state of renal function:</p><table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td style="vertical-align:top"><p>American formula:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in men: Clkr =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>body weight (in kg) x (140 - age [in years])</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72 x serum creatinine level (in mg / dl)</p><p>EU formula:</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>body weight (in kg) x (140 - age [in years]. 1,23)</u> in men: Clkr =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 72 x serum creatinine level (in mol / l)</p><p>&nbsp;</p><p>in women: Clkr = 0.85 x value in men</p><p><em>&nbsp;</em></p><p><em>Dialysis patients </em></p><p>In hemodialysis patients, approximately 68% of the total dose of cefepime present in the body at the beginning of dialysis is eliminated during 3 hours of dialysis. In patients on continuous ambulatory peritoneal dialysis, CEFEPIME may be administered at the doses recommended in patients with normal renal function, eg 500 mg, 1 g or 2 g depending on the severity of the infection, but every 48 hours.</p><p>Patients with hepatic impairment</p><p>No dose adjustment is required in these patients.</p><p>Children with normal kidney function (2 months and older)</p><p><em>&nbsp;</em></p></td></tr></tbody></table><p><em>Usual recommended doses: </em></p><p>Pneumonia, urinary tract infections, infections of the skin and skin structures:</p><p>Children older than 2 months, weighing up to 40 kg: 50 mg / kg every 12 hours for 10 days. For more serious infections, the interval can be shortened to 8 hours. Septicemia, bacterial meningitis and empirical treatment of febrile neutropenia:</p><p>Children older than 2 months weighing up to 40 kg: 50 mg / kg every 8 hours for 7-10 days.</p><p>Experience with CEFEPIME in children less than 2 months of age is limited. Although experience has been gained with 50 mg / kg, modeling of pharmacokinetic data in children older than 2 months indicates that a dose of 30 mg / kg every 12 or 8 hours may be considered in children aged 1 to 2 months. Both doses - 50 mg / kg for patients older than 2 months and 30 mg / kg for patients aged 1-2 months - are comparable to the 2 g dose in adults. The administration of CEFEPIME to these patients must be closely monitored.</p><p>For children weighing more than 40 kg, the same dosing regimens apply as for adults. Dosing in children should not exceed the maximum recommended dose for adults (2 g</p><p>every 8 hours).</p><p>Experience with intramuscular administration to children is limited.</p><p><em>&nbsp;Children with renal impairment </em></p><p>Dosage adjustment of CEFEPIME should be considered in these pediatric patients, as the primary route of excretion of cefepime in children is urinary excretion. The same prolongation of administration intervals and / or dose reduction should be used as shown in Table 3.</p><p>If only the serum creatinine value is known, its clearance can be estimated using one of the following methods:</p><p>creatinine clearance (ml / min / 1.73 m2) = 0.55 x height (in cm) / serum creatinine (mg /</p><p>100 ml) or creatinine clearance (ml / min / 1.73 m2) = 0.52 x height (in cm) / serum creatinine (mg / 100 ml) - 3.6</p><p>Elderly patients Because elderly patients are likely to have impaired renal function, the dose should be chosen carefully and renal function monitored. Dose adjustment is recommended if renal function is impaired.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1 or to other cephalosporins or other beta-lactam antibiotics (eg penicillins, monobactams and carbapenems). 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Hypersensitivity reactions</p><p>As with all beta-lactam antibiotics, severe and occasionally fatal hypersensitivity reactions have been reported.</p><p>Prior to initiating cefepime therapy, the patient should be carefully monitored for possible previous hypersensitivity reactions to cefepime, beta-lactams or other medicinal products. Cefepime should be used with caution in patients with a history of asthma or a tendency to allergies. The patient must be closely monitored during the first administration. If an allergic reaction occurs, treatment must be stopped immediately.</p><p>Severe hypersensitivity reactions may require epinephrine (adrenaline) and other supportive treatment.</p><p>Antibacterial activity of cefepime</p><p>Due to the relatively limited spectrum of antibacterial activity, cefepime is not suitable for the treatment of certain types of infections until the pathogen is identified and its susceptibility is known, or unless there is a strong suspicion that the pathogen is very likely to be suitable for cefepime treatment (see section 5.1).</p><p>Renal impairment</p><p>In patients with renal impairment (creatinine clearance  50 ml / min) or other conditions that impair renal function, the dose of CEFEPIME should be adjusted to compensate for the lower degree of renal elimination. Because high and prolonged serum antibiotic concentrations may occur at normal dosing in patients with renal insufficiency or other conditions that impair renal function, the maintenance dose should be reduced when cefepime is administered to such patients. The continuous dose should be determined based on the degree of renal impairment, the severity of the infection and the susceptibility of the causal organisms (see sections 4.2 and 5.2).</p><p>The following serious adverse reactions have been reported during post-marketing surveillance: reversible encephalopathy (disturbances of consciousness including confusion, hallucinations, stupor and coma), myoclonus, seizures (including nonconvulsive status epilepticus) and / or renal failure (see section 4.8). The majority of cases occurred in patients with renal impairment who received doses of CEFEPIME in excess of the recommended doses.</p><p>In general, neurotoxic symptoms resolved after discontinuation of cefepime and / or hemodialysis, but were fatal in a few cases.</p><p>&nbsp;</p><p>Diarrhea associated with Clostridium difficile</p><p>Clostridium difficile diarrhea (CDAD) has been reported with almost all broad-spectrum antibiotics, including cefepime, and can range in severity from mild diarrhea to fatal colitis. Therefore, it is important to consider this diagnosis in all patients who develop diarrhea associated with antibiotics. Careful medical history is required as CDAD has been reported 2 months after administration of antibacterial agents. If CDAD is suspected or confirmed, ongoing antibiotic therapy must be discontinued if it is not effective against C. difficile.</p><p>Antibiotics should be used with caution in any patient with any form of allergy, especially to medications. If such an allergic reaction occurs after administration of CEFEPIME, treatment should be discontinued and the patient treated appropriately. Severe hypersensitivity reactions require adrenaline treatment and supportive therapy as needed.</p><p>Insensitive strains may overgrow even with CEFEPIME treatment. If superinfection occurs during treatment with CEFEPIME, adequate measures should be taken. When drugs with potentially nephrotoxic effects, such as aminoglycosides or strong diuretics, are co-administered with CEFEPIME, renal function should be closely monitored.</p><p>Elderly patients</p><p>Of the more than 6,400 adults treated with CEFEPIME in clinical trials, 35% were over 65 years of age and 16% were over 75 years of age. In clinical trials in which geriatric patients received the usual recommended adult dose, clinical efficacy and safety did not differ from clinical efficacy and safety in non-geriatric adult patients unless the patients had renal insufficiency. There was only a slight prolongation of the elimination half-life and renal clearance values were lower compared to younger subjects. Dose adjustment is recommended in case of impaired renal function (see section 4.2).</p><p>Cefepime is known to be excreted predominantly by the kidneys and the risk of toxic reactions to this drug may be higher in patients with impaired renal function. As elderly patients are likely to have reduced renal function, dose selection should be considered and renal function should be monitored (see sections 4.8 and 5.1). Serious adverse reactions such as reversible encephalopathy (disturbances of consciousness including confusion, hallucinations, stupor and coma), myoclonus, seizures (including non-convulsive status epilepticus) and / or renal failure occurred in geriatric patients with renal insufficiency receiving the usual dose of cefepime. (see section 4.8).</p><p>Interference with serological tests</p><p>A positive Coombs&#39; test has been reported in patients treated with cefepime twice daily without evidence of haemolysis.</p><p>Cephalosporin antibiotics may cause a false positive reaction to urinary glucose in copper reduction tests (Benedict&#39;s or Fehling&#39;s solution or Clinitest tablets), but not when enzymatic tests (glucose oxidation tests) are used for glycosuria. Therefore, the use of glucose tests based on the enzymatic reaction of glucose oxidase is recommended.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No interaction studies have been performed.</p><p>Increased bleeding is possible when combined with anticoagulants, thrombolytics and antiplatelet agents.</p><p>Probenecid slows the renal elimination of cefepime, thereby prolonging and enhancing its effectiveness.</p><p>In combination with alcohol consumption, cefepime could cause an &quot;antabuse, disulfiram&quot; reaction with nausea and vomiting.</p><p>Due to the occurrence of false positive results in the examination of urine glucose, the use of glucose oxidase analytical methods is preferred.</p><p>Concomitant treatment with bacteriostatic antibiotics may interfere with the action of beta-lactam antibiotics.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Fertility</u></p><p>No deterioration in fertility was observed in rats. No data are available on the effect of cefepime on human fertility. The potential risk for humans is unknown.<strong> </strong></p><p><u>Pregnancy</u></p><p>There are no adequate and well-controlled studies in pregnant women. No direct or indirect effect on fetal development was found in reproductive experiments in mice, rats and rabbits. Animal studies are insufficient with respect to effects on fertility and fetal development, parturition and postnatal development (see section 5.3). Therefore, it is recommended that CEFEPIME be used in pregnant women only if clearly needed and if the therapeutic benefit justifies the potential risk.</p><p><u>Breast feeding</u></p><p>Cefepime is excreted in human breast milk, albeit in very low concentrations. Therefore, CEFEPIME should be used with caution during breast-feeding only after very careful consideration of the expected benefits and potential risks.<strong> </strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects on the ability to drive and use machines have been performed. However, possible side effects such as altered consciousness, dizziness, confusion or hallucinations may affect the ability to drive and use machines (see sections 4.4 and 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The following side effects and changes in laboratory tests have been reported with cephalosporin antibiotics: Stevens-Johnson syndrome, erythema multiforme, toxic epidermal necrolysis, toxic neuropathy, aplastic anemia, haemolytic anemia, bleeding and false positive urine glucose results.</p><p>In clinical trials (N = 5598), the most common adverse reactions were indigestion and hypersensitivity reactions (see Table 4).</p><p><strong>Table 4&nbsp;&nbsp;&nbsp;&nbsp; Adverse reactions reported in clinical trials &lt;0,05 % 0,05-0,1 % &nbsp;&nbsp;&nbsp;&nbsp; &gt;0,1-1 % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;1 % </strong></p><p><strong>&nbsp;</strong></p><p>Hypersensitivity Anaphylaxis&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pruritus, urticaria &nbsp;&nbsp;&nbsp; Rash (1.8%)</p><table border="0" cellspacing="0" cellpadding="0" style="width:592px"><tbody><tr><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="2" style="vertical-align:top"><p>Gastrointestinal symptoms</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>Abdominal pain, constipation, unspecified candidiasis</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>Nausea, vomiting, oral candidiasis, colitis (including pseudomembrano</p><p>us colitis)</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="2" style="vertical-align:top"><p>Diarrhea (1.2%)</p><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td style="vertical-align:top"><p><strong>&nbsp;</strong></p></td><td>&nbsp;</td></tr><tr><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>Central nervous system</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>Seizures</p><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>Dizziness, paraesthesia, taste changes</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p><p>Headache</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="2" style="vertical-align:top"><p>Other reactions</p><p>&nbsp;</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="4" style="vertical-align:top"><p>Vasodilation, dyspnoea, genital pruritus, chills, IV infusion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; site inflammation</p><p>(0.1%)</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>Fever, vaginitis, erythema</p><p>&nbsp;</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="5" style="vertical-align:top"><p>Local reactions at the i.v. infusion (5.2%), including phlebitis (2.9%), inflammation or pain at the i.m. injection (2.6%)</p></td><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="5" style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="4" style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="2" style="vertical-align:top"><p><strong>&nbsp;</strong></p></td><td>&nbsp;</td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr></tbody></table><p><u>Postmarketing experience</u></p><p>The following side effects have been reported during the worldwide post-marketing experience.</p><p>Table 5 lists all reported adverse reactions by organ classification and frequency using the following occurrence criteria: very common (&ge;1 / 10), common (&ge;1 / 100 to &lt;1/10), uncommon (&ge;1 / 1000 to &lt;1/100), rare (&ge;1 / 10,000 to &lt;1 / 1,000), very rare (&lt;1 / 10,000) and not known (cannot be estimated from the available data).</p><p>Within each frequency grouping, adverse reactions are presented in order of decreasing seriousness.</p><p><strong>Table 5&nbsp;&nbsp; Adverse reactions reported in clinical trials or during post-marketing experience (MedDRA terminology) Organ </strong></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Occurrence &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MedDRA terminologie </strong></p><p><strong>classification </strong></p><p>Infections and Less common Oral candidiasis, vaginal infections infestations</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rare &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Candidiasis</p><p>&nbsp;</p><p>Renal and urinary &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is not known &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Renal failure, toxic nephropathy disorders</p><p>Reproductive system Rare Genital pruritus and breast disorders&nbsp;</p><p>General disorders Common Infusion site reactions, injection site and administration pain, injection site inflammation site conditions Less common Pyrexia, inflammation at the infusion site</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rare &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Winter</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Very common &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Positive Coombs test</p><p>Examination</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Common &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Increase &nbsp;&nbsp; in &nbsp;&nbsp; alkaline &nbsp;&nbsp;&nbsp; phosphatase,</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;increase in alanine aminotransferase, increase in aspartate aminotransferase, increase in blood bilirubin, increase in prothrombin time, increase in partial thromboplastin time</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Less common &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Increase in blood urea, increase in</p><p>blood creatinine</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is not known &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; False positivity for urine glucose</p><p>and Adverse reactions generally accepted as being related to other substances in this class</p><p>Pediatric population</p><p>The safety profile of CEFEPIME in infants and children is similar to that in adults. The most commonly reported adverse reaction in clinical trials was rash.</p><p>&nbsp;</p><p><strong><u>Reporting of suspected adverse reactions</u></strong></p><p>Reporting suspected adverse reactions after marketing authorization is important. This allows you to continue to monitor the benefit-risk balance of the medicine. Healthcare professionals are asked to report any suspected adverse reactions via:</p><p>&nbsp;The national Pharmacovigilance and Drug Safety Centre (NPC)</p><p>&nbsp;Fax: +966-11-205-7662</p><p>&nbsp;Call NPC at +966-11-2038222, Exts: 2317- 2356-2353-2354-2334-2340</p><p>&nbsp;Toll free phone: 8002490000</p><p>&nbsp;E- mail: npc.drug@sfda.gov.sa &nbsp;<br />Website: www.sfda.gov.sa/npc</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In severe overdose - especially in patients with impaired renal function - hemodialysis will help to remove cefepime from the body; peritoneal dialysis is not effective. Sudden overdose has occurred at high doses in patients with renal impairment (see sections 4.2 and 4.3). Signs of overdose include encephalopathy (disorders of consciousness including confusion, hallucinations, stupor and coma), myoclonus and seizures (see section 4.8).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:581px"><tbody><tr><td colspan="2" style="vertical-align:top"><p>Pharmacotherapeutic group: cephalosporins IV. generation, ATC code: J01DE01</p><p>CEFEPIME is a cephalosporin antibiotic IV. generation with a broad spectrum of efficacy for intramuscular or intravenous administration.</p><p>&nbsp;</p><p><u>Mechanism of action</u></p><p>Cefepime is a bactericidal substance that inhibits cell wall synthesis. It works against many gram-positive and gram-negative bacteria, including most strains resistant to the treatment of aminoclycosides and third-generation cephalosporins.</p></td></tr><tr><td style="vertical-align:top"><p><u>Pharmacodynamic effects </u></p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr></tbody></table><p>Cefepime is highly resistant to hydrolysis by most beta-lactamases, has a low affinity for chromosomally encoded beta-lactamases, and rapidly penetrates Gram-negative bacterial cells.</p><p>In studies with Escherichia coli and Enterobacter cloacae, cefepime bound with the highest affinity to penicillin binding protein (PBP) 3, then to PBP 2, and finally to PBP 1a and 1b. Binding to PBP 2 was significantly higher affinity than other parenteral cephalosporins. This may increase the antibacterial activity of cefepime. The moderate affinity of cefepime for PBP 1a and 1b probably also contributes to its overall antibacterial activity.</p><p>Cefepime has been shown to be bactericidal against a wide range of bacteria using the Time Kill Assay method and determining the minimum bactericidal concentration (MBC). The ratio of minimum bactericidal and inhibitory concentration (MBC / MIC) for</p><p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td style="vertical-align:top"><p>cefepime was &le; 2 for more than 80% of all isolated gram-positive and gram-negative strains tested. The synergistic effect with aminoglycosides was demonstrated in vitro mainly on isolates of Pseudomonas aeruginosa.</p><p>The prevalence of resistance of individual bacterial strains may vary from region to region and over time. It is therefore recommended to obtain local information on strain susceptibility before starting treatment.</p><p>&nbsp;</p><p>Cefepime has been shown to be effective against most of the following microorganisms:</p><p>&nbsp;</p><p><strong>Gram-positive aerobic microorganisms:</strong><sub> </sub>Staphylococcus aureus (including betalactamase-producing strains), Staphylococcus epidermidis (including beta-lactamaseproducing strains), other staphylococci including S. hominis and S. saprophyticus, Streptococcus pyogenes (group A streptococci), Streptococcus group (Streptococcus agc) pneumoniae (including moderately penicillin-resistant strains with a penicillin MIC from 0.1 to 1 /g / ml), other -hemolytic streptococci (group C, G, F), p. bovis (Group D), p. viridans. Note: Most enterococcal strains, such as Enterococcus faecalis and methicillinresistant staphylococcal strains, are resistant to most cephalosporins, including CEFEPIME.</p><p><strong>Gram-negative aerobic microorganisms: </strong>Acinetobacter calcoaceticus (subspecies anitratus, lwoffi), Aeromonas hydrophila, Capnocytophaga sp., Citrobacter sp. (including C. diversus and C. freundii), Campylobacter jejuni, Enterobacter sp. (including E. cloacae, E. aerogenes, E. sakazakii), Escherichia coli, Gardnerella vaginalis, Haemophilus ducreyi, Haemophilus influenzae (including beta-lactamase producing strains), Haemophilus parainfluenzae, Hafnia alvei, Klebsiella sp. (including K.pneumoniae, K. oxytoca, K. ozaenae), Legionella sp., Morganella morganii, Moraxella catarrhalis (Branhamella catarrhalis, including beta-lactamase-producing strains), Neisseria gonorrhoeae (including beta-lactamase-producing strains), Neisseria meningitidis, Pantoea agglomerans (formerly known as Enterobacter agglomerans), Proteus sp.</p><p>(including P. mirabilis, P. vulgaris), Providencia sp. (including P. rettgeri, P, stuartii), Pseudomonas sp. (including P. aeruginosa, P. putida, P. stutzeri), Salmonella sp., Serratia (including S. marcescens, S. liquefaciens), Shigella sp., Yersinia enterocolitica.<strong> </strong></p><p>Note: Cefepime is ineffective against numerous strains of Stenotrophomonas maltophilia (formerly known as Xanthomonas maltophilia [Pseudomonas maltophilia]).</p></td></tr></tbody></table><p><strong>Anaerobic microorganisms: </strong>Bacteroides sp., Clostridium perfringens, Fusobacterium sp., Mobiluncus sp., Peptostreptococcus sp., Pervotella melaninogenica (formerly known as Bacteroides melaninogenicus), Veillonella sp.<strong> </strong></p><p>Note: Cefepime is ineffective against Bacteroides fragilis and Clostridium difficile.</p><p>The prevalence of acquired resistance may vary geographically and over time for selected species. Information on local resistance should be obtained from the local bacteriology laboratory and should be taken into account when choosing empirical treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:581px"><tbody><tr><td colspan="21" style="vertical-align:top"><p><u>Adults</u></p><p>Mean plasma concentrations of cefepime found in healthy adult men after administration of cefepime at doses of 0.5-1.0 and 2.0 g in a single 30-minute i.v. infusion or after i.m. submission, summarizes table no.7.</p></td><td colspan="2"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td colspan="19" style="vertical-align:top"><p>Table 7&nbsp;&nbsp;&nbsp; Mean plasma concentrations of cefepime (mg / ml) in healthy adult males</p></td><td colspan="2" style="vertical-align:top"><p><strong>&nbsp;</strong></p></td><td colspan="2"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td colspan="5" rowspan="2" style="vertical-align:top"><p><strong>Dose of cefepime </strong></p></td><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>0,5 h</p></td><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td colspan="4" rowspan="2" style="vertical-align:top"><p>1h</p></td><td rowspan="2" style="vertical-align:top"><p>2h</p></td><td colspan="4" rowspan="2" style="vertical-align:top"><p>4h</p></td><td rowspan="2" style="vertical-align:top"><p>8h</p></td><td colspan="5" rowspan="2" style="vertical-align:top"><p>12h</p></td><td>&nbsp;</td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td colspan="5" style="vertical-align:top"><p>0.5 g i.v</p></td><td colspan="3" style="vertical-align:top"><p>38.2</p></td><td colspan="4" style="vertical-align:top"><p>21.6</p></td><td style="vertical-align:top"><p>11.6</p></td><td colspan="4" style="vertical-align:top"><p>5.0</p></td><td style="vertical-align:top"><p>1.4</p></td><td colspan="5" style="vertical-align:top"><p>0.2</p></td><td>&nbsp;</td></tr><tr><td colspan="5" style="vertical-align:top"><p>1 g i.v</p></td><td colspan="3" style="vertical-align:top"><p>78.7</p></td><td colspan="4" style="vertical-align:top"><p>44.5</p></td><td style="vertical-align:top"><p>24.3</p></td><td colspan="4" style="vertical-align:top"><p>10.5</p></td><td style="vertical-align:top"><p>2.4</p></td><td colspan="5" style="vertical-align:top"><p>0.6</p></td><td>&nbsp;</td></tr><tr><td colspan="5" style="vertical-align:top"><p>2 g i.v</p></td><td colspan="3" style="vertical-align:top"><p>163.1</p></td><td colspan="4" style="vertical-align:top"><p>85.8</p></td><td style="vertical-align:top"><p>44.8</p></td><td colspan="4" style="vertical-align:top"><p>19.2</p></td><td style="vertical-align:top"><p>3.9</p></td><td colspan="5" style="vertical-align:top"><p>1.1</p></td><td>&nbsp;</td></tr><tr><td colspan="5" style="vertical-align:top"><p>0.5 g i.m</p></td><td colspan="3" style="vertical-align:top"><p>8.2</p></td><td colspan="4" style="vertical-align:top"><p>12.5</p></td><td style="vertical-align:top"><p>12.0</p></td><td colspan="4" style="vertical-align:top"><p>6.9</p></td><td style="vertical-align:top"><p>1.9</p></td><td colspan="5" style="vertical-align:top"><p>0.7</p></td><td>&nbsp;</td></tr><tr><td colspan="5" style="vertical-align:top"><p>1 g i.m</p></td><td colspan="3" style="vertical-align:top"><p>14.8</p></td><td colspan="4" style="vertical-align:top"><p>25.9</p></td><td style="vertical-align:top"><p>26.3</p></td><td colspan="4" style="vertical-align:top"><p>16.0</p></td><td style="vertical-align:top"><p>4.5</p></td><td colspan="5" style="vertical-align:top"><p>1.4</p></td><td>&nbsp;</td></tr><tr><td colspan="5" style="vertical-align:top"><p>2 g i.m</p></td><td colspan="3" style="vertical-align:top"><p>36.1</p></td><td colspan="4" style="vertical-align:top"><p>49.9</p></td><td style="vertical-align:top"><p>51.3</p></td><td colspan="4" style="vertical-align:top"><p>31.5</p></td><td style="vertical-align:top"><p>8.7</p></td><td colspan="5" style="vertical-align:top"><p>2.3</p></td><td>&nbsp;</td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td colspan="21" style="vertical-align:top"><p><u>Absorption</u></p><p>Following intramuscular administration, cefepime is completely absorbed. The concentration of cefepime in various tissues and fluids is shown in Table 8. Table 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Average concentrations of cefepime in various body fluids (g / ml)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;and tissues (g / g) in healthy adult men</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p><strong>Body fluids or tissues </strong></p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td colspan="5" rowspan="2" style="vertical-align:top"><p><strong>A dose of i.v. </strong></p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td colspan="3" rowspan="3" style="vertical-align:top"><p><strong>Average sampling time after batch (hours) </strong></p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p></td><td colspan="4" style="vertical-align:top"><p><strong>Average concentration</strong></p></td><td colspan="3" rowspan="3" style="vertical-align:top"><p><strong>&nbsp;</strong></p></td><td>&nbsp;</td></tr><tr><td colspan="4" rowspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td>&nbsp;</td></tr><tr><td colspan="5" style="vertical-align:top"><p><strong>&nbsp;</strong></p></td><td>&nbsp;</td></tr><tr><td colspan="3" style="vertical-align:top"><p>Power</p></td><td colspan="7" style="vertical-align:top"><p>500 mg</p><p>1g</p><p>2g</p></td><td colspan="5" style="vertical-align:top"><p>0-4</p><p>0-4</p><p>0-4</p></td><td colspan="8" style="vertical-align:top"><p>292</p><p>926</p><p>3120</p></td><td>&nbsp;</td></tr><tr><td colspan="3" style="vertical-align:top"><p>Bile</p></td><td colspan="7" style="vertical-align:top"><p>2g</p></td><td colspan="5" style="vertical-align:top"><p>9.4</p></td><td colspan="8" style="vertical-align:top"><p>17.8</p></td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><p>&nbsp;</p></td></tr></tbody></table><p>Peritoneal</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18.3</p><p>fluid</p><p>Fluid blisters &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 81.4</p><p>Bronchial</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24.1</p><p>mucosa</p><p>Sputum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.4</p><p>Prostate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31.5</p><p>Appendix &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2</p><p>Gallbladder &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11.9</p><p><u>Biotransformation / Elimination</u></p><p>Cefepime is metabolised to N-methylpyrrolidine, which is rapidly converted to N-oxide. Approximately 85% of administered cefepime is excreted unchanged in the urine, therefore high concentrations of cefepime are found in the urine. Less than 1% of the administered substance is excreted in the urine as N-methylpyrrolidine, 6.8% as N-oxide and 2.5% as epimer of cefepime. The proportion of binding to serum proteins averages</p><p>16.4% and does not depend on the serum concentration.</p><p>The mean elimination half-life of cefepime is approximately 2 hours and does not vary with dose from 250 mg to 2 g. In healthy subjects, no accumulation occurred at doses up to 2 g i.v. every 8 hours for 9 days. The mean body clearance is 120 ml / min. The mean renal clearance of cefepime is 110 ml / min, indicating that cefepime is excreted almost exclusively by the kidneys, mainly by glomerular filtration.</p><p><em>Special populations </em></p><p>Clinical improvement has been seen in cystic fibrosis patients treated with CEFEPIME for acute pulmonary exacerbations. (n = 24, median 15 years, age range 5-47 years). Antibiotic treatment does not necessarily mean bacteriological eradication in this patient population. No clinically relevant changes in cefepime pharmacokinetics were observed in cystic fibrosis patients.</p><p><em>Renal damage </em></p><p>The elimination half-life is prolonged in patients with varying degrees of renal insufficiency, with a linear relationship between total clearance and creatinine clearance. This serves as a basis for recommending dose adjustments in this patient group (see</p><p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td style="vertical-align:top"><p>section 4.2). The mean half-life in patients with severe renal impairment requiring dialysis is 13 hours for hemodialysis and 19 hours for continuous peritoneal dialysis.</p><p>Liver damage</p><p>The pharmacokinetics of cefepime were not altered in patients with hepatic impairment who received a single dose of 1 g. No dose adjustment of Cefepime is required in this patient population.</p><p>Elderly patients</p><p>Healthy volunteers over the age of 65 who received a single i.v. dose of 1 g of</p><p>CEFEPIME, had higher AUC and lower renal clearance compared to younger subjects.</p><p>Dose adjustment in elderly patients is recommended if they have impaired renal function (see section 4.2).</p><p>Pediatric population The pharmacokinetics of single and repeated doses of cefepime were evaluated in patients aged 2.1 months to 11.2 years who received a dose of 50 mg / kg i.v. infusion or i.m. injection; repeated doses were administered every 8 or 12 hours for at least 48 hours. After individual i.v. At the dose, the mean total body clearance was 3.3 ml / min / kg and the mean volume of distribution was 0.3 l / kg. The overall mean elimination half-life was 1.7 hours. Average excretion cefepime was 60.4% of the administered dose and the most important route of elimination was renal clearance (mean 2.0 ml / min / kg).</p><p>After repeated i.v. At steady state plasma concentrations of cefepime at steady state were similar to those after the first dose, accumulation occurred only slightly. Other pharmacokinetic parameters in infants and children did not differ, either by single dose or repeated administration, as well as different dosing regimens (8 or 12 hours). No differences were observed between the pharmacokinetics of different age groups or genders.</p><p>After i.m. administration at steady state, a mean peak plasma concentration of 68 g / ml was reached at 0.75 hours. The average minimum concentration after i.m. steady state administration was 6.0 /g / ml after 8 hours. Mean bioavailability after i.m. administration was 82%.</p><p>The concentrations of cefepime in cerebrospinal fluid corresponding to plasma concentrations are shown in Table 9.</p><p><strong>Table 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mean (SD) plasma (PL) and cerebrospinal fluid (CSF) concentrations and CSF / PL of cefepime in infants and children * </strong></p></td></tr></tbody></table><p>* Patients ranged in age from 3.1 months to 12 years, with a mean (SD) of 2.6 (3.0) years. Patients with suspected CNS infection were treated with cefepime at a dose of 50 mg / kg given i.v. infusion lasting 5-20 min. every 8 hours. Individual plasma and cerebrospinal fluid samples were obtained from selected patients on day 2 or 3 of cefepime treatment at the end of the infusion.</p><p><strong>&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Long-term animal studies to determine carcinogenicity have not been performed. In vitro and in vivo genotoxicity tests have shown that cefepime is not genotoxic. Standard fertility tests in rats showed no impairment of fertility.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>L-Arginine.</p><p>CEFEPIME is a sterile mixture of cefepime dihydrochloride monohydrate and arginine.&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>CEFEPIME must not be mixed with other medicines in the same syringe or infusion bottle.</p><p>CEFEPIME solution, like most beta-lactam antibiotics, should not be added to metronidazole, vancomycin, gentamicin, tobramycin sulphate or netilmicin sulphate solutions due to physical or chemical incompatibility. If concomitant therapy with CEFEPIME is indicated, each of these antibiotics may be administered separately.</p><p><u>Intravenously</u></p><p>CEFEPIME is compatible at concentrations between 1mg/mL, 90 mg/mL and 40 mg / ml with one of the following intravenous infusion fluids: Sterile water for injection,&nbsp; 0.9% sodium chloride injection, 5% or 10% dextrose injection, 1/6 M Sodium Lactate injection,</p><p>5% dextrose+ 0.9% sodium chloride injection, Ringer&rsquo;s Lactate + 5% dextrose injection . These solutions are stable for 24 hours at room temperature up to 25 &deg; C or 7 days in a refrigerator (2-8 &deg; C).</p><table border="0" cellspacing="0" cellpadding="0" style="width:580px"><tbody><tr><td style="vertical-align:top"><p><u>Intramuscularly</u></p><p>CEFEPIME is compatible at concentration of 230 mg/mL after reconstitution and&nbsp; stable for 24 hours at room temperature (20 &deg; C - 25 &deg; C) or for 7 days in a refrigerator (2 &deg; C - 8 &deg; C) when diluted with the following substances: sterile water for injections, 0.9% sodium chloride solution for injection, 5% dextrose injection, 0.5% Lidocaine hydrochloride Injection, 1 % Lidocaine hydrochloride injection, Sterile Bacteriostatic water for injection with parabens, Sterile water for injection with Benzyl alcohol.</p></td></tr><tr><td style="vertical-align:top"><p>Note: Parenteral drugs must be inspected visually for particulate matter prior to</p></td></tr></tbody></table><p>administration. If present in the solution, do not use the solution. Like other cephalosporins, CEFEPIME powder or solution may darken to an amber color on storage without loss of efficacy.</p><p><strong>&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                2 years 
+Chemical and physical in-use stability after dilution has been demonstrated for 7 days when stored at 2 ° C - 8 ° C (in a refrigerator) or for 24 hours when stored at 15 ° C - 25 ° C. 
+From a microbiological point of view, the product should be used immediately. If not used immediately, in-use storage times and conditions prior to use are the responsibility of the user and would normally not be longer than 24 hours at 2 ° C - 8 ° C, unless reconstitution has taken place in controlled and validated aseptic conditions. 
+ 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 30&deg;C. Keep the vial in the outer carton in order to protect from light.</p><p>For storage conditions of the reconstituted medicinal product, see section 6.3.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Cefepime1 g is supplied in 20 ml clear&nbsp; glass vials stoppered with 20 mm grey colored bromo butyl rubber stopper(RFU) sealed with 20 mm aluminium&nbsp; flip-off seal, containing a white polypropylene disc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>special requirements.<strong> </strong></p><p>Any unused product or waste material should be disposed of in accordance with local requirements.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Saudi Amarox Industrial Company 
+Aljameah Street, Malaz quarter, Riyadh 11441 
+Saudi Arabia 
+Tel: +966 11 477 2215 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                NA
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

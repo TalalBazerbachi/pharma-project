@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        30-972-18
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2018
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        BELARA 0.03MG/2MG F.C.TABLET
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        CHLORMADINONE ACETATE, ETHINYLESTRADIOL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        2 , 0.03
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        21
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        21.9
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="GEDEON RICHTER PLC." />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            GEDEON RICHTER PLC.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 354]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            SAUDI INTERNATIONAL TRADING COMPANY LTD (SITCO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            AJA PHARMACEUTICAL INDUSTRIES
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        G03AA15 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Belara 0.03 mg/2 mg film-coated tablets
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                One film-coated tablet contains 0.030 mg ethinylestradiol and 2 mg chlormadinone acetate (corresponding to 1.71 mg chlormadinone).
+Excipient with known effect: 69.5 mg lactose monohydrate. For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film-coated tablet, round, pale pink, biconvex film-coated tablet.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Hormonal contraception.</p><p style="text-align:justify">The decision to prescribe Belara should take into consideration the individual woman&rsquo;s current risk factors, particularly those for venous thromboembolism (VTE), and how the risk of VTE with Belara compares with other combined hormonal contraceptives (CHCs) (see sections 4.3 and 4.4).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify"><u>Posology</u></p><p style="text-align:justify">One film-coated tablet must be taken every day at the same time (preferably in the evening) on 21 consecutive days, followed by a seven-day break in which no film-coated tablets are taken; menstruation-like withdrawal bleeding should occur two to four days after the administration of the last film-coated tablet. After the seven-day medication-free interval, medication should be continued with the next pack of Belara, regardless of whether bleeding has ceased or not.</p><p style="text-align:justify">The film-coated tablets should be pressed out of the blister pack at the position marked with the corresponding weekday and swallowed whole, if necessary with a little liquid. The film-coated tablets are to be taken daily following the direction of the arrow.</p><p style="text-align:justify"><u>Starting the administration of the film-coated tablets</u></p><p style="text-align:justify"><em>No previous administration of a hormonal contraceptive (during the last menstruation cycle)</em></p><p style="text-align:justify">The first film-coated tablet should be taken on day one of the women&rsquo;s natural cycle, i.e. on the first day of the next menstruation. If the first film-coated tablet is taken on the first day of the menstruation,&nbsp;contraception starts on the first day of administration and also continues during the seven-day medication-free interval.</p><p style="text-align:justify">The first film-coated tablet can also be taken on the 2nd - 5th day of menstruation, irrespective of whether bleeding has ceased or not. In this case additional mechanical contraceptive measures must be taken during the first seven days of administration.</p><p style="text-align:justify">If menstruation had started more than five days earlier, then the woman should be instructed to wait until her next menstruation before starting to take Belara.</p><p style="text-align:justify"><em>Switching from another hormonal contraceptive to Belara <u>Switching from another combined hormonal contraceptive</u></em></p><p style="text-align:justify">The woman should start taking Belara on the day following the usual tablet-free or placebo tablet interval of her previous combined hormonal contraceptive.</p><p style="text-align:justify"><em><u>Switching from a progestogen-only pill (&quot;POP&quot;)</u></em></p><p style="text-align:justify">The first Belara film-coated tablet should be taken on the day after stopping the progestogen-only preparation. During the first seven days additional mechanical contraceptive measures must be used.</p><p style="text-align:justify"><em><u>Switching from a contraceptive hormone injection or implant</u></em></p><p style="text-align:justify">Administration of Belara can be started on the day of the removal of the implant or on the day of the originally planned injection. During the first seven days additional mechanical contraceptive measures must be used.</p><p style="text-align:justify"><em>After a miscarriage or an abortion in the first trimester</em></p><p style="text-align:justify">After a miscarriage or an abortion in the first trimester, administration of Belara can be started immediately. In this case no further contraceptive measures are necessary.</p><p style="text-align:justify"><em>After childbirth or after a miscarriage or abortion in the second trimester</em></p><p style="text-align:justify">After childbirth women who do not breast-feed can start administration 21-28 days after delivery in which case no additional mechanical contraceptive measures are required.</p><p style="text-align:justify">If administration starts more than 28 days after childbirth, additional mechanical contraceptive measures are necessary during the first seven days.</p><p style="text-align:justify">If the woman has already had sexual intercourse, pregnancy must be ruled out or she must wait until her next menstruation before starting administration.</p><p style="text-align:justify"><em>Lactation (see section 4.6)</em></p><p style="text-align:justify">Belara should not be taken by breast-feeding women.</p><p style="text-align:justify"><em>After discontinuation of Belara</em></p><p style="text-align:justify">After discontinuation of Belara the current cycle may be prolonged with about a week. <u>Irregular tablet administration</u></p><p style="text-align:justify">If the user has forgotten to take a film-coated tablet, but takes it <strong>within 12 hours, </strong>no further contraceptive measures are necessary. The user should continue taking the film-coated tablets as usual.</p><p style="text-align:justify">If the user is <strong>more than 12 hours </strong>late in taking the film-coated tablet, contraceptive protection may be reduced. The management of missed tablets can be guided by the following two basic rules:</p><p style="text-align:justify">1.&nbsp; tablet-taking must never be discontinued for longer than 7 days</p><p style="text-align:justify">2.&nbsp; 7 days of uninterrupted tablet-taking are required to attain adequate suppression of the hypothalamic-pituitary-ovarian-axis.</p><p style="text-align:justify">The last forgotten film-coated tablet should be taken immediately, even if this means taking two tablets at the same time. The other film-coated tablets should be taken as usual. In addition other mechanical contraceptive measures, e.g. condoms, are also to be used for the next seven days. If tablets were missed in week 1 of the cycle and intercourse took place in the seven days prior to the missing of tablets (including the tablet-free interval), the possibility of a pregnancy should be considered. The more tablets are missed and the closer they are to the regular tablet-free interval, the higher the risk of a pregnancy.</p><p style="text-align:justify">If the current pack contains less than seven tablets, the next pack of Belara must be started as soon as the current pack is finished, i.e. there should be no interval between the packs. Normal withdrawal bleeding will probably not occur until the second pack has been used; however, breakthrough bleeding or spotting may often occur during tablet administration. If withdrawal bleeding does not occur after taking the second pack, then a pregnancy test should be carried out.</p><p style="text-align:justify"><u>Instructions in case of vomiting or diarrhoea</u></p><p style="text-align:justify">If vomiting occurs within 4 hours after administration of the tablets or severe diarrhoea develops, absorption may be incomplete and reliable contraception is no longer ensured. In this case the instructions in section &quot;Irregular tablet administration&quot; (see above) should be followed. Belara administration should be continued.</p><p style="text-align:justify"><u>How to postpone a withdrawal bleed</u></p><p style="text-align:justify">To delay a period the woman should continue with another blister pack of Belara without a tablet-free interval. The extension can be carried on for as long as wished until the end of the second pack. During the extension the woman may experience breakthrough bleeding or spotting. Regular intake of Belara is then resumed after the usual 7-day tablet-free interval.</p><p style="text-align:justify">To shift her periods to another day of the week than the woman is used to with her current scheme, she can be advised to shorten her forthcoming tablet-free interval by as many days as she likes. The shorter the interval, the higher the risk that she does not have a withdrawal bleed and will experience breakthrough bleeding and spotting during the subsequent pack (just as when delaying a period)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Combined hormonal contraceptives (CHCs) should not be used in the following conditions. Belara should be discontinued immediately if one of these conditions occurs during administration:
+-	Loss of control of diabetes mellitus.
+-	Uncontrolled hypertension or a significant increase in blood pressure (values constantly above 140/90 mm Hg).
+-	Presence or risk of venous thromboembolism (VTE)
+-	Venous thromboembolism – current VTE (on anticoagulants) or history of (eg. deep venous thrombosis [DVT] or pulmonary embolism [PE]).
+- Known hereditary or acquired predisposition for venous thromboembolism, such as APC- resistance, (including Factor V Leiden), antithrombin-III-deficiency, protein C
+deficiency, protein S deficiency.
+-	Major surgery with prolonged immobilisation (see section 4.4).
+-	A high risk of venous thromboembolism due to the presence of multiple risk factors (see section 4.4).
+-	Presence or risk of arterial thromboembolism (ATE)
+-	Arterial thromboembolism – current arterial thromboembolism, history of arterial thromboembolism (e.g. myocardial infarction) or prodromal condition (e.g. angina pectoris).
+-	Cerebrovascular disease – current stroke, history of stroke or prodromal condition (e.g. transient ischaemic attack, TIA).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Warnings</p><p>Smoking increases the risk of severe cardiovascular side-effects of the combined hormonal contraceptive (CHC). This risk increases with increasing age and cigarette consumption and is very pronounced in women above the age of 35 years. Women above the age of 35 who smoke should use other contraceptive methods.</p><p>CHC administration is associated with an increased risk of various serious diseases such as myocardial infarction, thromboembolism, stroke, or hepatic neoplasms. Other risk factors such as hypertension, hyperlipidaemia, obesity and diabetes distinctly increase the morbidity and mortality risk.</p><p>If any of the conditions or risk factors mentioned below is present, the suitability of Belara should be discussed with the woman.</p><p>In the event of aggravation, or first appearance of any of these conditions or risk factors, the woman should be advised to contact her doctor to determine whether the use of Belara should be discontinued.</p><p>Thromboembolism and Other Vascular Diseases</p><p>Results from epidemiological studies show that there is a connection between the administration of hormonal contraceptives and an increased risk of venous or arterial thromboembolic diseases, e.g. myocardial infarction, apoplexy, deep-vein thrombosis and pulmonary embolism. These events are rare. Extremely rarely, thrombosis has been reported to occur in CHC users in other blood vessels, e.g. hepatic, mesenteric, renal or retinal veins and arteries.</p><p><strong>Risk of venous thromboembolism (VTE)</strong></p><p>The use of any combined hormonal contraceptive (CHC) increases the risk of venous thromboembolism (VTE) compared with no use. <strong>Products that contain levonorgestrel, norgestimate or norethisterone are associated with the lowest risk of VTE. It is not yet known how the risk with Belara compares with these lower risk products. The decision to use any product other than one known to have the lowest VTE risk should be taken only after a discussion with the woman to ensure she understands the risk of VTE with CHCs, how her current risk factors influence this risk, and that her VTE risk is highest in the first ever year of use. There is also some evidence that the risk is increased when a CHC is re-started after a break in use of 4 weeks or more</strong>.</p><p>In women who do not use a CHC and are not pregnant about 2 out of 10,000 will develop a VTE over the period of one year. However, in any individual woman the risk may be far higher, depending on her underlying risk factors (see below).</p><p>Epidemiological studies in women who use low dose combined hormonal contraceptives (&lt;50 &mu;g ethinylestradiol) have found that out of 10,000 women between about 6 and 12 will develop a VTE in one year.</p><p>Out of 10,000 women who use a levonorgestrel-containing CHC about 6<sup><sup>[1]</sup></sup> will develop a VTE in one year.</p><p>It is not yet known how the risk with chlormadinone-containing CHCs compares with the risk with levonorgestrel-containing CHCs.</p><p>The number of VTEs per year with low dose CHCs is fewer than the number expected in women during pregnancy or in the postpartum period.</p><p>VTE may be fatal in 1-2% of cases.</p><p><strong><u>Risk factors for VTE</u></strong></p><p>The risk for venous thromboembolic complications in CHC users may increase substantially in a woman with additional risk factors, particularly if there are multiple risk factors (see table).</p><p>Belara is contraindicated if a woman has multiple risk factors that put her at high risk of venous thrombosis (see section 4.3). If a woman has more than one risk factor, it is possible that the increase in risk is greater than the sum of the individual factors &ndash; in this case her total risk of VTE should be considered. If the balance of benefits and risks is considered to be negative a CHC should not be prescribed (see section 4.3).</p><p><strong>Table: Risk factors for VTE</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td><p><strong>Risk factor </strong></p></td><td><p><strong>Comment</strong></p></td></tr><tr><td><p>Obesity (body mass index over 30&nbsp;kg/m&sup2;)</p></td><td><p>Risk increases substantially as BMI rises.</p><p>Particularly important to consider if other risk factors are also present.</p></td></tr><tr><td><p>Prolonged immobilisation, major surgery, any surgery to the legs or pelvis, neurosurgery, or major trauma</p><p>Note: temporary immobilisation including air travel &gt;4 hours can also be a risk factor for VTE, particularly in women with other risk factors</p></td><td><p>In these situations it is advisable to discontinue use of the patch/pill/ring (in the case of elective surgery at least four weeks in advance) and not resume until two weeks after complete remobilisation. Another method of contraception should be used to avoid unintentional pregnancy.</p><p>Antithrombotic treatment should be considered if Belara has not been discontinued in advance.</p><p>&nbsp;</p></td></tr><tr><td><p>Positive family history (venous thromboembolism ever in a sibling or parent especially at a relatively early age e.g. before 50)</p></td><td><p>If a hereditary predisposition is suspected, the woman should be referred to a specialist for advice before deciding about any CHC use.</p></td></tr><tr><td><p>Other medical conditions associated with VTE</p></td><td><p>Cancer, systemic lupus erythematosus, haemolytic uraemic syndrome, chronic inflammatory bowel disease (Crohn&rsquo;s disease or ulcerative colitis) and sickle cell disease</p></td></tr><tr><td><p>Increasing age</p></td><td><p>Particularly above 35 years</p></td></tr></tbody></table><p>There is no consensus about the possible role of varicose veins and superficial thrombophlebitis in the onset or progression of venous thrombosis.</p><p>The increased risk of thromboembolism in pregnancy, and particularly the 6 week period of the puerperium, must be considered (for information on &ldquo;Fertility, pregnancy and lactation&rdquo; see section 4.6).</p><p><strong><u>Symptoms of VTE (deep vein thrombosis and pulmonary embolism)</u></strong></p><p>In the event of symptoms women should be advised to seek urgent medical attention and to inform the healthcare professional that she is taking a CHC.</p><p>Symptoms of deep vein thrombosis (DVT) can include:</p><p>- unilateral swelling of the leg and/or foot or along a vein in the leg;</p><p>- pain or tenderness in the leg which may be felt only when standing or walking;</p><p>- increased warmth in the affected leg; red or discoloured skin on the leg.</p><p>Symptoms of pulmonary embolism (PE) can include:</p><p>- sudden onset of unexplained shortness of breath or rapid breathing;</p><p>- sudden coughing which may be associated with haemoptysis;</p><p>- sharp chest pain;</p><p>- severe lightheadedness or dizziness;</p><p>- rapid or irregular heartbeat.</p><p>Some of these symptoms (e.g. &ldquo;shortness of breath&rdquo;, &ldquo;coughing&rdquo;) are non-specific and might be misinterpreted as more common or less severe events (e.g. respiratory tract infections).</p><p>Other signs of vascular occlusion can include: sudden pain, swelling and slight blue discoloration of an extremity.</p><p>If the occlusion occurs in the eye symptoms can range from painless blurring of vision which can progress to loss of vision. Sometimes loss of vision can occur almost immediately.</p><p><strong>Risk of arterial thromboembolism (ATE)</strong></p><p>Epidemiological studies have associated the use of CHCs with an increased risk for arterial thromboembolism (myocardial infarction) or for cerebrovascular accident (e.g. transient ischaemic attack, stroke). Arterial thromboembolic events may be fatal.</p><p><strong><u>Risk factors for ATE</u></strong></p><p>The risk of arterial thromboembolic complications or of a cerebrovascular accident in CHC users increases in women with risk factors (see table). Belara is contraindicated if a woman has one serious or multiple risk factors for ATE that puts her at high risk of arterial thrombosis (see section 4.3). If a woman has more than one risk factor, it is possible that the increase in risk is greater than the sum of the individual factors - in this case her total risk should be considered. If the balance of benefits and risks is considered to be negative a CHC should not be prescribed (see section 4.3).</p><p><strong>Table: Risk factors for ATE</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td><p><strong>Risk factor</strong></p></td><td><p><strong>Comment</strong></p></td></tr><tr><td><p>Increasing age</p></td><td><p>Particularly above 35 years</p></td></tr><tr><td><p>Smoking</p></td><td><p>Women should be advised not to smoke if they wish to use a CHC. Women over 35 who continue to smoke should be strongly advised to use a different method of contraception.</p></td></tr><tr><td><p>Hypertension</p></td><td><p>&nbsp;</p></td></tr><tr><td><p>Obesity (body mass index over 30&nbsp;kg/m<sup>2</sup>)</p></td><td><p>Risk increases substantially as BMI increases.</p><p>Particularly important in women with additional risk factors.</p></td></tr><tr><td><p>Positive family history (arterial thromboembolism ever in a sibling or parent especially at relatively early age e.g. below 50)</p></td><td><p>If a hereditary predisposition is suspected, the woman should be referred to a specialist for advice before deciding about any CHC use.</p></td></tr><tr><td><p>Migraine</p></td><td><p>An increase in frequency or severity of migraine during CHC use (which may be prodromal of a cerebrovascular event) may be a reason for immediate discontinuation.</p></td></tr><tr><td><p>Other medical conditions associated with adverse vascular events</p></td><td><p>Diabetes mellitus, hyperhomocysteinaemia, valvular heart disease and atrial fibrillation, dyslipoproteinaemia and systemic lupus erythematosus.</p></td></tr></tbody></table><p><strong><u>Symptoms of ATE</u></strong></p><p><u>In the event of symptoms women should be advised to seek</u> urgent medical attention and to inform the healthcare professional that she is taking a CHC.</p><p>Symptoms of a cerebrovascular accident can include:</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sudden numbness or weakness of the face, arm or leg, especially on one side of the body;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sudden trouble walking, dizziness, loss of balance or coordination;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sudden confusion, trouble speaking or understanding;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sudden trouble seeing in one or both eyes;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sudden, severe or prolonged headache with no known cause;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loss of consciousness or fainting with or without seizure.</p><p>Temporary symptoms suggest the event is a transient ischaemic attack (TIA).</p><p>Symptoms of myocardial infarction (MI) can include:</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pain, discomfort, pressure, heaviness, sensation of squeezing or fullness in the chest, arm, or below the breastbone;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; discomfort radiating to the back, jaw, throat, arm, stomach;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; feeling of being full, having indigestion or choking;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sweating, nausea, vomiting or dizziness;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; extreme weakness, anxiety, or shortness of breath;</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rapid or irregular heartbeats.</p><p>CHC users must be informed that they must consult their physician in the event of possible symptoms of thrombosis. Belara must be discontinued on suspicion or confirmation of thrombosis.</p><p>Tumours</p><p>Some epidemiological studies indicate that the long-term use of hormonal contraceptives is a risk factor for the development of cervical cancer in women infected with the human papilloma virus (HPV). However, there is still controversy about the extent to which this finding is influenced by confounding effects (e.g. differences in the number of sexual partners or the use of mechanical contraceptive measures) (see also &quot;Medical examination&quot;).</p><p>A meta-analysis from 54 epidemiological studies reported a slightly increased relative risk (RR&nbsp;=&nbsp;1.24) of breast cancer in women who are currently using CHCs. The increased risk is transient and during the course of 10 years after cessation of CHC use this increased riskdesreases. These studies do not provide evidence for causation. The observed pattern of increased risk may be due to an earlier diagnosis of breast cancer in CHC users, the biological effects of CHCs or a combination of both.</p><p>In rare cases benign, and in even fewer cases malignant, liver tumours have been reported during the administration of hormonal contraceptives. In isolated cases these tumours have led to life-threatening intra-abdominal haemorrhage. In the event of severe abdominal pain that does not recede spontaneously, hepatomegaly or signs of intra-abdominal haemorrhage the possibility of a liver tumour must be taken into account and Belara must be discontinued.</p><p>Other Diseases</p><p>Depressed mood and depression are well-known undesirable effects of hormonal contraceptive use (see section 4.8). Depression can be serious and is a well-known risk factor for suicidal behaviour and suicide. Women should be advised to contact their physician in case of mood changes and depressive symptoms, including shortly after initiating the treatment.</p><p>Many women taking hormonal contraceptives had a slight increase in blood pressure; however a clinically significant increase is rare. The connection between the administration of hormonal contraceptives and clinically manifest hypertension has so far not been confirmed. If there is a clinically significant increase in blood pressure during the administration of &nbsp;Belara, the preparation should be discontinued and the hypertension treated. Belara can be continued as soon as blood pressure values have returned to normal on antihypertensive therapy.</p><p>In women with a history of herpes gestationis there may be a recurrence during CHC administration.</p><p>In women with a history of hypertriacylglycerolemia or a family history of such the risk of pancreatitis is increased during CHC administration. Acute or chronic disturbances of liver function may necessitate discontinuation of CHC use until the liver function values return to normal. Recurrence of cholestatic jaundice which occurred first during pregnancy or previous use of sex hormones necessitates discontinuation of CHCs.</p><p>CHCs may affect peripheral insulin resistance or glucose tolerance. Therefore diabetics should be monitored carefully whilst taking hormonal contraceptives.</p><p>Uncommonly, chloasma may occur, particularly in women with a history of chloasma gravidarum. Women with a tendency to develop chloasma should avoid exposure to the sun and ultraviolet radiation during the administration of hormonal contraceptives.</p><p>Precautions</p><p>The administration of estrogen or estrogen/progestogen combinations may have negative effects on certain diseases/conditions. Special medical supervision is necessary in:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; epilepsy</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; multiple sclerosis</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tetany</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; migraine (see also section 4.3)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; asthma</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cardiac or renal insufficiency</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chorea minor</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; diabetes mellitus (see also section 4.3)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; liver diseases (see also section 4.3)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dyslipoproteinaemia (see also section 4.3)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; auto-immune diseases (including systemic lupus erythematosus)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; obesity</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hypertension (see also section 4.3)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endometriosis</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; varicosis</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; phlebitis (see also section 4.3)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blood coagulation disorders (see also section 4.3)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mastopathy</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; uterine myoma</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; herpes gestationis</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; depression</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chronic inflammatory bowel disease (Crohn&acute;s disease, ulcerative colitis; see also section 4.8)</p><p>Medical examination/consultation</p><p>Prior to the initiation or reinstitution of Belara a complete medical history (including family history) should be taken and pregnancy must be ruled out. Blood pressure should be measured and a physical examination should be performed, guided by the contraindications (see section 4.3) and warnings (see section 4.4).</p><p>It is important to draw a woman&rsquo;s attention to the information on venous and arterial thrombosis, including the risk of Belara compared with other CHCs, the symptoms of VTE and ATE, the known risk factors and what to do in the event of a suspected thrombosis.</p><p>The woman should also be instructed to carefully read the user leaflet and to adhere to the advice given. The frequency and nature of examinations should be based on established practice guidelines and be adapted to the individual woman.</p><p>Women should be advised that hormonal contraceptives do not protect against HIV infections (AIDS) and other sexually transmitted diseases.</p><p><em>Concomitant treatment of moderate papulopustolar form of acne</em></p><p>The treatment of acne with Belara is strictly limited only to the women, that require hormonal contraception and was for them carefully evaluated the safety of contraception by this product<br />see &ldquo;Medical examination&rdquo;).</p><p>Impaired efficacy</p><p>Omission of a film-coated tablet (see &quot;Irregular tablet administration&quot;), vomiting or intestinal disorders including diarrhoea, the long-term concomitant administration of certain medicinal products (see section 4.5) or in very rare cases metabolic disorders may impair contraceptive efficacy.</p><p>Impact on cycle control</p><p>Breakthrough bleeding and spotting</p><p>All hormonal contraceptives may cause irregular vaginal bleeding (breakthrough bleeding/spotting) particularly in the first few administration cycles. Therefore a medical assessment of irregular cycles should only be made after an adjustment period of about three cycles. If during administration of Belara breakthrough bleeding persists or occurs after previously regular cycles, an examination should be carried out to rule out pregnancy or an organic disorder. After pregnancy and an organic disorder have been ruled out, Belara can be continued or a switch made to another medicinal product.</p><p>Intracyclic bleeding may be a sign of impaired contraceptive efficacy (see &quot;Irregular tablet administration&quot;, &quot;Instructions in case of vomiting&quot;).</p><p>Absence of withdrawal bleeding</p><p>After 21 days of administration withdrawal bleeding usually occurs. Occasionally and particularly in the first few months of administration withdrawal bleeding may be absent. However, this needs not to be an indication of a reduced contraceptive effect. If bleeding is not present after one administration cycle in which a film-coated tablet was not forgotten, the tablet-free period of seven days was not extended, no other medicines were taken concomitantly, and there was no vomiting or diarrhoea, conception is unlikely and the administration of &nbsp;Belara can be continued. If Belara was not taken according to instructions before the first absence of withdrawal bleeding or withdrawal bleeding does not occur in two consecutive cycles, pregnancy must be ruled out before continuing administration.</p><p>Herbal medicines containing St-John&#39;s-wort (<em>Hypericum perforatum</em>) should not be taken together with Belara (see section 4.5).</p><p><u>ALT elevations </u></p><p>During clinical trials with patients treated for hepatitis C virus infections (HCV) with the medicinal products containing ombitasvir/paritaprevir/ritonavir and dasabuvir with or without ribavirin, transaminase (ALT) elevations higher than 5 times the upper limit of normal (ULN) occurred significantly more frequent in women using ethinylestradiol-containing medications such as combined hormonal contraceptives (CHCs) (see sections 4.3 and 4.5).</p><p><u>Excipient</u></p><p>This medicinal product contains lactose (as lactose monohydrate).</p><p>Patients with rare hereditary problems of galactose intolerance, total lactase deficiency or glucose-galactose malabsorption should not take this medicine.</p><p>[1] Mid-point of range of 5-7 per 10,000 WY, based on a relative risk for CHCs containing levonorgestrel versus non-use of approximately 2.3 to 3.</p><p>&nbsp;</p><p style="text-align:justify">&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Note: The prescribing information of concomitant medications should be consulted to identify potential interactions.</p><p><u>Pharmacodynamic interactions</u></p><p>Concomitant use with the medicinal products containing ombitasvir/paritaprevir/ritonavir and dasabuvir, with or without ribavirin may increase the risk of ALT elevations (see sections 4.3 and 4.4).</p><p>Therefore, Belara users must switch to an alternative method of contraception (e.g., progestagen only contraception or non-hormonal methods) prior to starting therapy with this combination drug regimen. Belara can be restarted 2 weeks following completion of treatment with this combination drug regimen.</p><p><u>Pharmacokinetic interactions</u></p><p><u>Effects of other medicinal products on Belara</u></p><p>Interactions can occur with drugs that induce microsomal enzymes which can result in increased clearance of sex hormones and which may lead to breakthrough bleeding and/or contraceptive failure.</p><p><em>Management</em></p><p>Enzyme induction can already be observed after a few days of treatment. Maximal enzyme induction is generally seen within a few weeks. After the cessation of drug therapy enzyme induction may be sustained for about 4 weeks.</p><p><em>Short-term treatment</em></p><p>Women on treatment with enzyme inducing drugs should temporarily use a barrier method or another method of contraception in addition to the COC. The barrier method must be used during the whole time of the concomitant drug therapy and for 28 days after its discontinuation.</p><p>If the drug therapy runs beyond the end of the tablets in the COC pack, the next COC pack should be started right after the previous one without the usual tablet-free interval.</p><p><em>Long-term treatment</em></p><p>In women on long-term treatment with enzyme-inducing active substances, another reliable, non‑hormonal, method of contraception is recommended.</p><p><em><u>The following interactions have been reported in the literature.</u></em></p><p>Substances increasing the clearance of COCs (diminished efficacy of COCs by enzyme-induction), e.g.:</p><p>Barbiturates, bosentan, carbamazepine, phenytoin, primidone, rifampicin, and HIV medication ritonavir, nevirapine and efavirenz and possibly also felbamate, griseofulvin, oxcarbazepine, topiramate and products containing the herbal remedy St. John&#39;s Wort (hypericum perforatum) .</p><p><em><u>Substances with variable effects on the clearance of COCs</u></em></p><p>When co-administered with COCs, many combinations of HIV protease inhibitors and non-nucleoside reverse transcriptase inhibitors, including combinations with HCV inhibitors can increase or decrease plasma concentrations of estrogen or progestins. The net effect of these changes may be clinically relevant in some cases.</p><p>Therefore, the prescribing information of concomitant HIV/HCV medications should be consulted to identify potential interactions and any related recommendations. In case of any doubt, an additional barrier contraceptive method should be used by women on protease inhibitor or non-nucleoside reverse transcriptase inhibitor therapy.</p><p><u>Effects of Belara on other medicinal products</u></p><p>Oral contraceptives may affect the metabolism of certain other active substances. Accordingly, plasma and tissue concentrations may either increase (e.g. ciclosporin) or decrease (e.g. lamotrigine).</p><p><u>Other forms of interactions</u></p><p>Insulin or oral antidiabetic requirements may be altered due to effects on glucose tolerance (see section 4.4).</p><p>All medicines that increase gastrointestinal motility (e.g. metoclopramide) or impair absorption (e.g. activated charcoal) may reduce the serum concentrations of ethinylestradiol.</p><p><u>Laboratory tests</u></p><p>The use of contraceptive steroids may influence the results of certain laboratory tests, including biochemical parameters of liver, thyroid, adrenal and renal function, plasma levels of (carrier) proteins, e.g. corticosteroid-binding globulin and lipid/lipoprotein fractions, parameters of carbohydrate metabolism and parameters of coagulation and fibrinolysis. Changes generally remain within the normal laboratory range.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u></p><p>Belara is not indicated during pregnancy. Prior to using the medicine pregnancy must be ruled out. If pregnancy occurs during &nbsp;Belara &nbsp;treatment, the medicinal product is to be discontinued immediately. Extensive epidemiological studies have shown no clinical evidence of teratogenic or foetotoxic effects when estrogens were accidentally taken during pregnancy in combination with other progestogens in doses similar to those in Belara. Although animal experiments have shown evidence of reproductive toxicity (see section 5.3), clinical data of more than 330 exposed human pregnancies did not show any embryotoxic effects of chlormadinone acetate.</p><p>The increased risk of VTE during the postpartum period should be considered when re-starting Belara (see sections 4.2 and 4.4).</p><p><u>Breast-feeding</u></p><p>Lactation may be affected by estrogens as they may affect the quantity and composition of the breast milk. Small quantities of contraceptive steroids and/or their metabolites may be excreted in the breastmilk and may affect the child. Therefore Belara should not be used during lactation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Combined hormonal contraceptives are not known to have negative effects on the ability to drive or to operate machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Clinical studies with Belara have shown that the most frequent side- effects (&gt; 20%) were breakthrough bleeding, spotting, headache and breast discomfort.</p><p>The following side-effects have been reported after administration of Belara in a clinical study with 1629 women.</p><p>The frequencies are defined as follows:</p><p>very common (&sup3;&nbsp;1/10)</p><p>common (&sup3;&nbsp;1/100 to &lt;&nbsp;1/10)</p><p>uncommon (&sup3;&nbsp;1/1000 to &lt;&nbsp;1/100)</p><p>rare (&sup3;&nbsp;1/10&nbsp;000 to &lt;&nbsp;1/1000)</p><p>very rare (&lt;&nbsp;1/10&nbsp;000)</p><p><em>Psychiatric disorders</em></p><p>Common: depressed mood, nervousness, irritability</p><p><em>Nervous system disorders</em></p><p>Common: dizziness, migraine (and/or aggravation of it)</p><p><em>Eye disorders</em></p><p>Common: visual disturbance</p><p>Rare: conjunctivitis, discomfort during contact lens usage</p><p><em>Ear and labyrinth disorders</em></p><p>Rare: sudden hearing loss, tinnitus</p><p><em>Vascular disorders</em></p><p>Rare: hypertension, hypotension, cardiovascular collapse, varicose vein, venous or arterial thromboembolism</p><p><em>Gastrointestinal disorders</em></p><p>Very common: nausea</p><p>Common: vomiting</p><p>Uncommon: abdominal pain, abdominal distension, diarrhoea</p><p><em>Skin and subcutaneous tissue disorders</em></p><p>Common: acne</p><p>Uncommon: pigmentation disorder, chloasma, alopecia, dry skin</p><p>Rare: urticaria, allergy skin reaction, eczema, erythema, pruritus, aggravated psoriasis, hirsutismus</p><p>Vera rare: erythema nodosum</p><p><em>Musculoskeletal and connective tissue disorders</em></p><p>Uncommon: back pain, muscle disorders</p><p><em>Reproductive system and breast disorders</em></p><p>Very common: vaginal discharge, dysmenorrhoea, amenorrhoea</p><p>Common: lower abdominal pain</p><p>Uncommon: galactorrhoea, fibroadenoma of the breast, vaginal candidiasis, ovarial cysts</p><p>Rare: breast enlargement, vulvovaginitis, menorrhagia, premenstrual syndrome</p><p><em>General disorders and administration site conditions</em></p><p>Common: fatigue, feeling of heavy legs, oedema, increased weight</p><p>Uncommon: Decreased libido, sweating</p><p>Rare: increased apetite</p><p><em>Investigations:</em></p><p>Common: increased blood pressure</p><p>Uncommon: changes of blood lipids, including hypertriacylglycerolemia</p><p>In addition, the following adverse reactions associated with active substances, ethinylestradiol and chlormadinone acetate have been reported in post-marketing use: asthenia.</p><p><em>Description of selected adverse reactions</em></p><p>The following side-effects have also been reported on administration of combined hormonal contraceptives:</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An increased risk of arterial and venous thrombotic and thrombo-embolic events, including myocardial infarction, stroke, transient ischemic attacks, venous thrombosis and pulmonary embolism has been observed in women using CHCs, which are discussed in more detail in section 4.4.</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An increased risk of biliary tract diseases has been reported in some studies on the long-term administration of CHCs.</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In rare cases benign, and even more rarely, malignant liver tumours have been observed after the administration of hormonal contraceptives, and in isolated cases have resulted in life threatening intra‑abdominal haemorrhage (see section 4.4).</p><p>&shy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aggravation of chronic inflammatory bowel disease (Crohn&acute;s disease, ulcerative colitis; see also section 4.4)</p><p>For other serious side-effects such as cancer of the cervix or breast see section 4.4.</p><p>Interactions</p><p>Breakthrough bleeding and/or contraceptive failure may result from interactions of other drugs (enzyme inducers) with oral contraceptives (see section 4.5).</p><p>To report any side effect(s):</p><ul><li><strong>Saudi Arabia:</strong><ul><li>The National Pharmacovigilance Centre (NPC)<ul><li>Fax: +966-11-205-7662</li><li>SFDA Call Center: 19999</li><li>E-mail: npc.drug@sfda.gov.sa</li><li>Website: https://ade.sfda.gov.sa&nbsp;</li></ul></li></ul></li><li><strong>Other GCC States:</strong><br />Please contact the relevant competent authority.</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There is no information on serious toxic effects in the case of an overdose. The following symptoms may occur: nausea, vomiting and, particularly in young girls, slight vaginal bleeding. There is no antidote; these are to be treated symptomatically. Monitoring of the electrolyte and water balance and liver function may be necessary in rare cases.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Sex hormones and modulators of the genital system; progestogens and estrogens, fixed combination.</p><p>ATC code: G03AA15.</p><p>Belara is combined hormonal contraceptive with antiandrogenic effect. It contains estrogen ethynylestradiol and progestine chlormandinone acetate.</p><p><u>Mechanism of action</u></p><p>The continuous intake of Belara for 21&nbsp;days inhibits pituitary FSH and LH secretion, and thus ovulation. The endometrium proliferates and undergoes secretory transformation. The consistence of the cervical mucus is changed. This prevents sperm migration through the cervical canal and alters sperm motility.</p><p>The lowest daily dose of chlormadinone acetate for complete inhibition of ovulation is 1.7&nbsp;mg. The full endometrial transformation dose is 25&nbsp;mg per cycle.</p><p>Antiandrogenous effect of the combination of ethinylestradiol and chlormadinone-acetate is partly caused by lovering of the concentration of androgens in serum. By increasing SHBG (specific binding protein of the sexual hormones) decreases estradiole the amount of the free testosterone in blood.</p><p>Chlormadinone acetate is an antiandrogenic progestogen.</p><p>Its effect is based on its ability to displace androgens from their receptors. This results in inhibition or decrease of effect of endogenous or exogenous androgens.</p><p>Ethinylestradiol decreases the production of fat (smear).</p><p>Clinical efficacy</p><p>In clinical studies in which the administration of ethinylestradiol 0.03&nbsp;mg and chlormadinone acetate 2&nbsp;mg film-coated tablet was tested for up to 2 years in 1655 women and more than 22&nbsp;000 menstruation cycles, there were 12 pregnancies. In 7 women administration errors, concomitant diseases causing nausea or vomiting, or concomitant administration of medicines known to reduce the contraceptive effect of hormonal contraceptives were present in the period of conception.</p><table border="1" cellspacing="0" cellpadding="0" style="width:88%"><tbody><tr><td><p><strong>Type of use</strong></p></td><td><p><strong>Number of pregnancies</strong></p></td><td><p><strong>Pearl index</strong></p></td><td><p><strong>95% confidence interval</strong></p></td></tr><tr><td style="vertical-align:top"><p>typical use</p></td><td><p>12</p></td><td><p>0.698</p></td><td><p>[0.389; 1.183]</p></td></tr><tr><td style="vertical-align:top"><p>perfect use</p></td><td><p>5</p></td><td><p>0.291</p></td><td><p>[0.115; 0.650]</p></td></tr></tbody></table><p>The effect of Belara on moderate papulopustulose form of acne was evaluated in placebo controlled study (6 cycles of treatment in 251 women) in comparative study with 0.03 mf EE combined with 0.15 mg Ln (12 cycles of treatment in 200 women). As primary endpoint was evaluated the number of respondents, number of patients where the number of papulas and/or pustulas on half of the face was decreased in the period between first examination and&nbsp; after 6 or 12 treatment cycles of 50 %.</p><p>Belara had statistically signific and higher answer in acne in comparison with placebo (64,1% vs. 43,7%). Complete burn out of seborea was in 41.5% patients after 6 cycles using Belara vs. 23.9 % patients with placebo.</p><p>In comparison with EE/LN reached Belara significantly higher answer of acne compared to comparator (59.4% vs 45.9%, ITT analysis). During 12 cycles there was complete burn out of seborea in 80% patients using Belara vs. 76,2% in patients using EE/LN.</p><p>Moreover there was performed study vs. Combination 0,03 EE and 0.15 mg desogestrelum. Positive effect on acne was in Belara as well as in EE/desogestrelum, but in both treatment groups there was not possible o obtain statistically significant results because of high nember of patients that resignd from the study.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify"><em>Chlormadinone acetate (CMA)</em></p><p style="text-align:justify"><u>Absorption</u></p><p style="text-align:justify">On oral administration CMA is rapidly and almost completely absorbed. The systemic bioavailability of CMA is high as it is not subject to first-pass metabolism. Peak plasma concentrations are reached after 1-2 hours.</p><p style="text-align:justify"><u>Distribution</u></p><p style="text-align:justify">The binding of CMA to human plasma proteins, mainly albumin, is more than 95%. CMA has no binding affinity for SHBG or CBG. CMA is stored primarily in fatty tissue.</p><p style="text-align:justify"><u>Biotransformation</u></p><p style="text-align:justify">Various reduction and oxidation processes and conjugation to glucuronides and sulphates result in a variety of metabolites. The principal metabolites in human plasma are 3&alpha;- and 3&szlig;-hydroxy-CMA with biological half-lives that do not differ essentially from that of non-metabolised CMA. The 3-hydroxy metabolites show similar antiandrogenic activity as CMA itself. In the urine the metabolites appear mainly as conjugates. After enzymatic cleavage the main metabolite is 2&alpha;-hydroxy-CMA besides the 3-hydroxy-metabolites and dihydroxy metabolites.</p><p style="text-align:justify"><u>Elimination</u></p><p style="text-align:justify">CMA is eliminated from the plasma with a mean half-life of about 34 hours (after a single dose) and about 36-39 hours (after multiple doses). After oral administration CMA and its metabolites are excreted both renally and in the faeces in about equal amounts.</p><p style="text-align:justify"><em>Ethinylestradiol (EE)</em></p><p style="text-align:justify"><u>Absorption</u></p><p style="text-align:justify">EE is rapidly and almost completely absorbed after oral administration and mean peak plasma concentrations are reached after 1.5 hours. On account of presystemic conjugation and first-pass metabolism in the liver the absolute bioavailability is only about 40% and is subject to considerable interindividual variation (20-65%).</p><p style="text-align:justify"><u>Distribution</u></p><p style="text-align:justify">The EE plasma concentrations reported in the literature vary considerably. Approximately 98% of the EE is bound to plasma proteins, almost exclusively to albumin.</p><p style="text-align:justify"><u>Biotransformation</u></p><p style="text-align:justify">Like natural estrogens, EE is biotransformed via (cytochrome P-450 mediated) hydroxylation at the aromatic ring. The main metabolite is 2-hydroxy-EE, which is metabolised to other metabolites and conjugates. EE undergoes presystemic conjugation both in the mucosa of the small intestine and the liver. In the urine mainly glucuronides, and in the bile and plasma mainly sulphates are found.</p><p style="text-align:justify"><u>Elimination</u></p><p style="text-align:justify">The mean plasma half-life of EE is approximately 12-14 hours. EE is excreted via the kidneys and faeces in the ratio 2:3. The EE sulphate excreted in the bile after hydrolysis by intestinal bacteria is subject to enterohepatic circulation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">The acute toxicity of estrogens is low. On account of the pronounced differences between experimental animal species and in relation to humans, the results of animal studies with estrogens have only limited predictive value for humans. Ethinylestradiol, a synthetic estrogen frequently used in hormonal contraceptives, has an embryolethal effect in laboratory animals even in relatively low doses; anomalies of the urogenital tract and feminisation of male foetuses have been observed. These effects are regarded as species-specific.</p><p style="text-align:justify">Chlormadinone acetate has exhibited embryolethal effects in rabbits, rats and mice. Moreover, teratogenicity was observed at embryotoxic doses in rabbits and already at the lowest dose tested (1&nbsp;mg/kg/day) in mice. The significance of these findings for human administration is unclear.</p><p style="text-align:justify">Preclinical data from conventional studies on chronic toxicity, genotoxicity and carcinogenic potential showed no special risks for humans apart from those already described in other sections of the SPC.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u><em>Tablet core</em></u></p><p>lactose monohydrate,</p><p>maize starch,</p><p>povidone K 30,</p><p>magnesium stearate,</p><p><u><em>Tablet film coating</em></u></p><p>hypromellose 6&nbsp;910/6</p><p>lactose monohydrate,</p><p>macrogol 6000,</p><p>propylene glycol,</p><p>talc,</p><p>titanium dioxide (E 171),</p><p>red iron oxide (E 172).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store&nbsp;30 &deg;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>PVC/PVDC/Aluminium foil blister pack with 1x21 film-coated tablets</p><p>PVC/PVDC/Aluminium foil blister pack with 3x21 film-coated tablets</p><p>PVC/PVDC/Aluminium foil blister pack with 6x21 film-coated tablets</p><p>Not all&nbsp; pack sizes may be marketed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                AJA Pharmaceutical Industries Company, Ltd. 
+Hail Industrial City MODON, Street No 32 
+PO Box 6979, Hail 55414 
+Kingdom of Saudi Arabia
+Tel: +966 11 268 7900
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                December 2020
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1505233640
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2023
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Prodein Plus
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PARACETAMOL,CODEINE,CAFFEINE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        500,8,30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Soluble tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        9.20
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="OMAN PHARMACEUTICAL PRODUCTS" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            OMAN PHARMACEUTICAL PRODUCTS
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 354]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            SAUDI INTERNATIONAL TRADING COMPANY LTD (SITCO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            OMAN PHARMACEUTICAL PRODUCTS
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        N06BC01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        N02AJ06
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Prodein Plus soluble Tablets Paracetamol 500mg, Codeine Phosphate Hemihydrate 8mg, Caffeine 30mg.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each tablet contains Paracetamol 500 mg, Codeine Phosphate Hemihydrate 8 mg and Caffeine 30 mg.
+Excipient(s) with known effect: Sorbitol and Sodium. For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Effervescent Tablet.
+A white round flat beveled edge tablet with rough surface.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Codeine-containing products are indicated in patients older than 12 years of age for the short-term treatment of acute, moderate pain which is not relieved by paracetamol or ibuprofen alone. Prodein Plus soluble tablet is indicated in the management of symptoms of headache, including migraine, toothache, backache, common cold, influenza, menstrual pain, musculoskeletal pain.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Posology</p><p>Adults 1-2 tablets up to four times daily as required to a 8 tablets in 24 hours. The dose should not be repeated more frequently than every 4 hours.<br />Adolescents aged 16 to18 years of age: 1-2 tablets every 6 hours.Do not exceed 4 doses, equivalent to 8 tablets. Adolescents aged 12 years to 18 years: This medicine is not recommended for use in children aged 12 years to 18 years with compromised respiratory&nbsp;function for the symptomatic treatment of cough and/or cold (see section 4.4). 1 tablet every 6 hours. Do not exceed 4 doses, equivalent to 4 tablets.</p><p>Paediatric population</p><p>Children aged less than 12 years: This medicine is contraindicated in children below the age of 12 years for the symptomatic treatment of cough and/or cold (see section 4.3). Codeine should not be used in children below the age of 12 years because of the risk of opioid toxicity due to the variable and unpredictable metabolism of codeine to morphine (see sections 4.3 and 4.4).</p><p>Elderly patients<br />Experience has indicated that normal adult dose of paracetamol is usually appropriate. However in frail, immobile, elderly subjects or in elderly patients with renal or hepatic impairment, a reduction in the amount or frequency of dosing may be appropriate.</p><p>The maximum daily dose of paracetamol should not exceed 60mg/kg/day (up to a maximum of 2g per day) in the following situations, unless directed by a physician:<br />&bull; Weight less than 50kg<br />&bull; Chronic alcoholism<br />&bull; Dehydration<br />&bull; Chronic malnutrition<br />Do not exceed the stated dose.<br />The duration of treatment should be limited to 3 days and if no effective pain relief is achieved the patients/carers should be advised to seek the views of a physician.<br />Renal Impairment<br />It is recommended, when giving paracetamol to patients with renal impairment, to reduce the dose and to increase the minimum interval between each administration to at least 6 hours unless directed otherwise by a physician. See table below:<br />Glomerular filtration rate<br />Dose<br />10-50 ml/min<br />500mg every 6 hours<br />&lt;10ml/min<br />500mg every 8 hours<br />The restrictions related to the use of paracetamol products in patients with renal impairment are primarily a consequence of the paracetamol content of the drug (see section 4.4).</p><p>Hepatic Impairment</p><p>In patients with hepatic impairment or Gilbert&rsquo;s Syndrome, the dose should be reduced or the dosing interval prolonged. The daily dose of paracetamol should not exceed 2g/day unless directed by a physician. The restrictions related to the use of paracetamol products in patients with hepatic impairment are primarily a consequence of the paracetamol content of the drug (see section 4.4).<br />Method of administration<br />For oral administration only.<br />Tablets should be dissolved in at least half a glass of water.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                 Hypersensitivity to the active substances or to any of the excipients listed in section 6.1.  Acute asthma;  In all paediatric patients (0-18 years of age) who undergo tonsillectomy and/or adenoidectomy for obstructive sleep apnoea syndrome due to an increased risk of developing serious and life-threatening adverse reactions (see section 4.4)  In women during breastfeeding (see section 4.6)  In patients for whom it is known they are CYP2D6 ultra-rapid metabolisers  In children below the age of 12 years for the symptomatic treatment of cough and/or cold due to an increased risk of developing serious and life-threatening adverse reactions;  In patients with chronic constipation.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Patients who have been diagnosed with liver or kidney impairment must seek medical advice before taking paracetamol or codeine. Underlying liver disease increases the risk of paracetamol-related liver damage. The hazard of overdose is greater in those with non-cirrhotic alcoholic liver disease. Care should be observed in administering the product to any patients whose condition may be exacerbated by opioids, particularly the elderly, who are especially sensitive to their central and gastro-intestinal effects, those on concurrent CNS depressant drugs and those with prostate hypertrophy.</p><p>Excessive intake of caffeine (e.g. coffee, tea and some canned drinks) should be avoided while taking this product. Patients with inflammatory or obstructive bowel disorders or acute abdominal conditions should consult a doctor before using this product. Patients with a history of cholecystectomy should consult a doctor before using this product as it may cause acute pancreatitis in some patients. Prodein plus soluble tablet contains codeine whose regular or prolonged use may produce psychological and physical dependence. This product should be used with caution in patients with current or past history of substance abuse or dependence (including drug or alcohol) or mental illness (eg: major depression). Abuse or misuse may result in overdose and/or death (see section 4.9) Prolonged regular use, except under medical supervision, may lead to physical and psychological dependence (addiction) and result in withdrawal symptoms, such as restlessness and irritability once the drug is stopped. Prolonged use of any type of painkiller for headaches can make them worse. If this situation is experienced or suspected, medical advice should be obtained and treatment should be discontinued. The diagnosis of &#39;medication overuse headache&#39; should be suspected in patients who have frequent or daily headaches despite (or because of) the regular use of headache medications. Caution is advised if paracetamol is administered concomitantly with flucloxacillin due to increased risk of high anion gap metabolic acidosis (HAGMA), particularly in patients with severe renal impairment, sepsis, malnutrition and other sources of glutathione deficiency (e.g. chronic alcoholism), as well as those using maximum daily doses of paracetamol. Close monitoring, including measurement of urinary 5-oxoproline, is recommended. Paracetamol should be administered only with particular caution under the following circumstances: &bull; Glutathione deficiency &bull; Chronic alcoholism &bull; Dehydration &bull; Chronic malnutrition &bull; The elderly &bull; Adults and adolescents weighing less than 50 kg &bull; Renal impairment (GFR &le;50ml/min) &bull; Glucose-6-phosphate dehydrogenase deficiency &bull; Haemolytic anaemia &bull; Concomitant treatment with medicinal products affecting hepatic function &bull; Hepatic impairment &bull; Gilbert&rsquo;s Syndrome (familial non-haemolytic jaundice)</p><p>Patients taking, or who have taken, monoamine oxidase inhibitors (MAOIs) within the preceding two weeks (see section 4.5) should not take this product. Risk from concomitant use of sedative medicines such as benzodiazepines or related drugs Concomitant use of Prodein plus and sedative medicines such as benzodiazepines or related drugs may result in sedation, respiratory depression, coma and death. Because of these risks, concomitant use with these sedative medicines should be under medical supervision and reserved for patients for whom alternative treatment options are not possible. If a decision is made to prescribe Prodein plus concomitantly with sedative medicines, the lowest effective dose should be used, and the duration of treatment should be as short as possible. The patients should be followed closely for signs and symptoms of respiratory depression and sedation. In this respect, it is strongly recommended to inform patients and their caregivers to be aware of these symptoms (see section 4.5) Do not take with other paracetamol or codeine containing medicines. Immediate medical advice should be sought in the event of overdosage even if the patient feels well because the risk of irreversible liver damage (see section 4.9). Codeine, as with other opioids should be used with caution in patients with hypotension, hypothyroidism, head injury or raised intracranial pressure. CYP2D6 metabolism Codeine is metabolised by the liver enzyme CYP2D6 into morphine, its active metabolite. If a patient has a deficiency or is completely lacking this enzyme an adequate analgesic effect will not be obtained. Estimates indicate that up to 7% of the Caucasian population may have this deficiency. However, if the patient is an extensive or ultra-rapid metabolizer, there is an increased risk of developing side effects of opioid toxicity even at commonly prescribed doses. These patients convert codeine into morphine rapidly resulting in higher than expected serum morphine levels. General symptoms of opioid toxicity include confusion, somnolence, shallow breathing, small pupils, nausea, vomiting, constipation and lack of appetite. In severe cases this may include symptoms of circulatory and respiratory depression, which may be life-threatening and very rarely fatal.Estimates of prevalence of ultra-rapid metabolisers in different populations are summarized below:</p><p>Paediatric population<br />Post-operative use in children There have been reports in the published literature that codeine given post-operatively in children after tonsillectomy and/or adenoidectomy for obstructive sleep apnoea, led to rare, but life-threatening adverse events including death (see also section 4.3). All children received doses of codeine that were within the appropriate dose range; however there was evidence that these children were either ultra-rapid or extensive metabolisers in their ability to metabolise codeine to morphine. Children with compromised respiratory function Codeine is not recommended for use in children in whom respiratory function might be compromised including neuromuscular disorders, severe cardiac or respiratory conditions, upper respiratory or lung infections, multiple trauma or extensive surgical procedures. These factors may worsen symptoms of morphine toxicity. This product should be used only when clearly necessary. Prolonged use without medical supervision may be harmful. Do not take for more than 3 days without consulting a doctor. Do not exceed the stated dose. In general, medicinal products containing paracetamol should be taken for only a few days without the advice of a physician or dentist and not at high doses. If high fever or signs of secondary infection occur or if symptoms persist for longer than 3 days, a physician should be consulted. Prolonged or frequent use is discouraged. Patients should be advised not to take other paracetamol containing products concurrently. Taking multiple daily doses in one administration can severely damage the liver; in such case medical assistance should be sought immediately.</p><p>If symptoms persist, consult your doctor. Keep this medicine out of the sight and reach of children. Each effervescent tablet contains 427 mg of sodium, equivalent to 21% of the WHO recommended maximum daily intake for sodium. The maximum daily dose of this product is equivalent to 171% of the WHO recommended maximum daily intake for sodium.The effervescent tablet is considered high in sodium. This should be particularly taken into account for those on a low salt diet.The product should be used with caution in patients with hypertension, oedema or renal insufficiency because of the sodium content. This medicine contains 50mg sorbitol (E 420) per tablet. Sorbitol is a source of fructose. Patients with hereditary fructose intolerance (HFI) should not take/be given this medicinal product.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Paracetamol</p><p>The rate of paracetamol absorption may be increased by metoclopramide or domperidone and may be reduced by cholestyramine. Colestyramine should not be administered within one hour of taking paracetamol. The anticoagulant effect of warfarin and other coumarins may be enhanced by prolonged regular daily use of paracetamol with increased risk of bleeding; occasional doses have no significant effect. The use of drugs which induce hepatic microsomal enzymes, such as anticonvulsants and oral contraceptive steroids, may increase the extent of metabolism of paracetamol, resulting in reduced plasma concentrations of the drug and a faster elimination rate. Drugs which induce hepatic microsomal enzymes, such as alcohol and barbiturates, may increase the hepatotoxicity of paracetamol, particularly after overdose. In case of concomitant treatment with probenecid, the dose of paracetamol should be reduced because probenecid reduces the clearance of paracetamol by 50% because it prevents the conjugation of paracetamol with glucuronic acid. Paracetamol may affect the half-life of chloramphenicol. Evidence of a clinically relevant interaction appears to be lacking. Although no routine monitoring is needed, it is important to bear in mind this potential interaction when these two medications are concomitantly administered, especially in malnourished patients.</p><p>Phenytoin may reduce the analgesic and antipyretic effects of paracetamol and may increase the<br />formation of the toxic N-acetyl-p-benzoquinone imine (NAPQI) metabolite of paracetamol<br />leading to increased risk of hepatotoxicity.<br />Caution should be taken when paracetamol is used concomitantly with flucloxacillin as<br />concurrent intake has been associated with high anion gap metabolic acidosis, especially in<br />patients with risk factors (see section 4.4)<br />Codeine<br />Opiate analgesics may interact with monoamine oxidase inhibitors (MAOIs) and result in<br />serotonin syndrome. Whilst evidence is limited for the interaction with codeine, it is<br />recommended that the product should not be taken concurrently or within two weeks of stopping<br />treatment with a MAOI. The effect of CNS depressants (including alcohol) may be potentiated<br />by codeine.<br />Codeine may antagonize the effects of metoclopramide and domperidone on gastrointestinal<br />motility.<br />Concomitant use of antimuscarinics or medications with antimuscarinic action may result in an<br />increased risk of severe constipation, which may led to paralytic ileus and or/urinary retention.<br />Quinidine can inhibit the analgesic effect of codeine.<br />Codeine may delay the absorption of mexiletine and thus reduce the antiarrhythmic effect of the<br />latter. Cimetidine inhibits the metabolism of opioid analgesics resulting in increased plasma<br />concentrations.<br />Sedative medicines such as benzodiazepines or related drugs<br />The concomitant use of opioids with sedative medicines such as benzodiazepines or related<br />drugs increases the risk of sedation, respiratory depression, coma and death because of additive<br />CNS depressant effect. The dose and duration of concomitant use should be limited (see section<br />4.4).<br />Caffeine<br />Caffeine, a CNS stimulant, has an antagonistic effect towards the action of sedatives and<br />tranquilisers. Caffeine may enhance the tachycardiac effect of some decongestants.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy<br />Use during pregnancy should be avoided, unless advised by a physician. This includes maternal<br />use during labour because of the potential for respiratory depression in the neonate.Regular use</p><p>of codeine during pregnancy may cause physical dependence in the foetus leading to withdrawal<br />symptoms in the neonate.<br />The safety of paracetamol-caffeine-codeine during pregnancy has not been established relative to<br />the possible adverse effects onfoetal development and should be avoided.In pregnancy a total<br />daily consumption above 200 mg caffeine per day could possibly increase the risk of<br />spontaneous abortion and low birth weight.<br />Breastfeeding<br />This medicine is contraindicated in women during breastfeeding (see section 4.3).<br />At normal therapeutic doses codeine and its active metabolite may be present in breast milk at<br />very low doses and is unlikely to adversely affect the breast fed infant.However, if the patient is<br />an ultra-rapid metaboliser of CYP2D6, higher levels of the active metabolite, morphine, may be<br />present in breast milk and on very rare occasions may result in symptoms of opioid toxicity in<br />the infant, which may be fatal.<br />Paracetamol and caffeine are excreted in breast milk but not in a clinically significant amount.<br />Although significant caffeine toxicity has not been observed in breastfed infants, caffeine may<br />have a stimulating effect on the infant.<br />Fertility<br />There are no data available regarding the influence of paracetamol, codeine and caffeine on<br />fertility.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Patients should be advised not to drive or operate machinery if affected by drowsiness.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adverse reactions reported from extensive post-marketing experience are tabulated below by<br />System Organ Class and frequency. The following convention has been utilised for the<br />classification of undesirable effects: very common (&ge;1/10), common (&ge;1/100, &lt;1/10),<br />uncommon (&ge;1/1,000, &lt;1/100), rare (&ge;1/10,000, &lt;1/1000), very rare (&lt;1/10,000), not known<br />(cannot be estimated from available data).</p><p>Caffeine</p><p>When the recommended paracetamol-caffeine-codeine dosing regimen is combined with dietary<br />caffeine intake, the resulting higher dose of caffeine may increase the potential for caffeinerelated<br />adverse effects such as insomnia, restlessness, anxiety, irritability, headaches,<br />gastrointestinal disturbances and palpitations.</p><p>Codeinev</p><p>Adverse reactions identified during post-marketing use are listed below by organ system class.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Overuse of this product, defined as consumption of quantities in excess of the recommended dose, or consumption for a prolonged period of time may lead to physical or psychological dependency. Symptoms of restlessness and irritability may result when treatment is stopped.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Opioids in combination with non-opioid analgesics, codeine and paracetamol, ATC Code: N02AJ06. Paracetamol is an analgesic and antipyretic. Codeine is a centrally acting weak analgesic. Codeine exerts its effect through &mu; opioid receptors, although codeine has low affinity for these receptors, and its analgesic effect is due to its conversion to morphine. Codeine, particularly in combination with other analgesics such as paracetamol, has been shown to be effective in acute nociceptive pain.<br />Caffeine is a potent stimulator of the CNS.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Paracetamol is rapidly and almost completely absorbed from the gastrointestinal tract. It is relatively uniformly distributed throughout most body fluids and exhibits variable protein binding. Excretion is almost completely renal, in the form of conjugated metabolites. Caffeine is absorbed readilyafter oral administration, maximal plasma concentrations are achieved within one hour and the plasma half-life is about 3.5 hours. 65-80% of administered caffeine is excreted in the urine as l-methyluric acid l- methylxanthine.</p><p>Codeine phosphate is well absorbed after oral administration and iswidely distributed. About 86% is excreted in the urine in 24 hours; 40 - 70% is free or conjugated codeine, 5 - 15% is free or conjugated morphine, and 10 - 20% is free or conjugated norcodeine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Codeine and caffeine, individually and in combination, have a well-established safety profile. There are no pre-clinical data of relevance to the prescriber which are additional to that already included in other sections of the SPC.</p><p>Conventional studies using the currently accepted standards for the evaluation of toxicity to reproduction and development are not available for paracetamol.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The active ingredients are Paracetamol 500 mg, codeine phosphaste hemoihydrate 8 mg and caffeine anhydrous 30mg.<br />The other ingredients are sodium bicarbonate, sorbitol, saccharin sodium, anhydrous citric acid, povidone, sodium lauryl sulphate, dimethicone, purified water, sodium carbonate anhydrous and dichloromethane.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>N/A</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                24 months
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 30&deg;C.<br />Keep out of the reach and sight of children.<br />Protect from light and moisture.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Packs of Prodein Plus Soluble Tablets contain 20 effervescent tablets (5 x 4&rsquo;s).<br />Prodein Plus Soluble Tablets packed in 4 ply laminated foil Plain 195mm composed of 4 layer glassine paper 41 gsm, polyethylene film (ldpe) 75 gauge, Aluminium foil 9 microns, Polyethylene film (LDPE) 150 gauge. Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Oman Pharmaceutical Products Co. L.L.C.
+Raysut Industrial Estate,
+Salalah, 124 P.O.Box: 2240, PC.211,
+Sultanate of Oman
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                May 2023
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

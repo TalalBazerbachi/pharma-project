@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1609211061
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2021
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Kovaltry
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        HUMAN COAGULATION FACTOR VIII
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        500
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        IU
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder and solvent for solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        876.40
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="BAYER HEALTHCARE" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            BAYER HEALTHCARE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2947]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Bayer Saudi Arabia
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            BAYER AG
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        B02BD02
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Kovaltry 250 IU powder and solvent for solution for injection
+Kovaltry 500 IU powder and solvent for solution for injection
+Kovaltry 1000 IU powder and solvent for solution for injection
+Kovaltry 2000 IU powder and solvent for solution for injection
+Kovaltry 3000 IU powder and solvent for solution for injection
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Kovaltry 250 IU powder and solvent for solution for injection
+Kovaltry contains approximately 250 IU (100 IU / 1 mL) of recombinant human coagulation factor VIII (INN: octocog alfa) after reconstitution.
+
+Kovaltry 500 IU powder and solvent for solution for injection
+Kovaltry contains approximately 500 IU  (200 IU / 1 mL) of recombinant human coagulation factor VIII (INN: octocog alfa) after reconstitution.
+
+Kovaltry 1000 IU powder and solvent for solution for injection
+Kovaltry contains approximately 1000 IU (400 IU / 1 mL) of recombinant human coagulation factor VIII (INN: octocog alfa) after reconstitution.
+
+Kovaltry 2000 IU powder and solvent for solution for injection
+Kovaltry contains approximately 2000 IU (400 IU / 1 mL) of recombinant human coagulation factor VIII (INN: octocog alfa) after reconstitution.
+
+Kovaltry 3000 IU powder and solvent for solution for injection
+Kovaltry contains approximately 3000 IU (600 IU / 1 mL) of recombinant human coagulation factor VIII (INN: octocog alfa) after reconstitution.
+
+The potency (IU) is determined using the European Pharmacopoeia chromogenic assay. The specific activity of Kovaltry is approximately 4000 IU/mg protein.
+
+Octocog alfa (Full length recombinant human coagulation factor VIII (rDNA)) is a purified protein that has 2,332 amino acids. It is produced by recombinant DNA technology in baby hamster kidney cells (BHK) into which the human factor VIII gene has been introduced. Kovaltry is prepared without the addition of any human or animal derived protein in the cell culture process, purification or final formulation. 
+
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder and solvent for solution for injection
+
+Powder: solid, white to slightly yellow.
+Solvent: water for injections, a clear solution.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment and prophylaxis of bleeding in patients with haemophilia&nbsp;A (congenital factor&nbsp;VIII deficiency). Kovaltry can be used for all age groups.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment should be under the supervision of a physician experienced in the treatment of haemophilia.</p><p>&nbsp;</p><p><u>Treatment monitoring</u></p><p>&nbsp;</p><p>During the course of treatment, appropriate determination of factor&nbsp;VIII levels is advised to guide the dose to be administered and the frequency of repeated infusions. Individual patients may vary in their response to factor&nbsp;VIII, demonstrating different half‑lives and recoveries. Dose based on bodyweight may require adjustment in underweight or overweight patients.</p><p>&nbsp;</p><p>In the case of major surgical interventions in particular, precise monitoring of the substitution therapy by means of coagulation analysis (plasma factor&nbsp;VIII activity) is indispensable.</p><p><em>&nbsp;</em></p><p><u>Posology</u></p><p>&nbsp;</p><p>The dose and duration of the substitution therapy depend on the severity of the factor&nbsp;VIII deficiency, on the location and extent of the bleeding and on the patient&#39;s clinical condition.</p><p>&nbsp;</p><p>The number of units of factor&nbsp;VIII administered is expressed in International Units (IU), which are related to the current WHO standard for factor&nbsp;VIII products. Factor&nbsp;VIII activity in plasma is expressed either as a percentage (relative to normal human plasma) or in International Units (relative to an International Standard for factor&nbsp;VIII in plasma).</p><p>&nbsp;</p><p>One International Unit (IU) of factor&nbsp;VIII activity is equivalent to that quantity of factor&nbsp;VIII in one&nbsp;mL of normal human plasma.</p><p>&nbsp;</p><p><em>On demand treatment</em></p><p>&nbsp;</p><p>The calculation of the required dose of factor&nbsp;VIII is based on the empirical finding that 1&nbsp;International Unit (IU) factor&nbsp;VIII per kg body weight raises the plasma factor&nbsp;VIII activity by 1.5% to 2.5%&nbsp;of&nbsp;normal&nbsp;activity.</p><p>The required dose is determined using the following formula:</p><p>&nbsp;</p><p>Required units = body weight (kg) x desired factor&nbsp;VIII rise (% or&nbsp;IU/dL) x reciprocal of observed recovery (i.e. 0.5 for recovery of 2.0%).</p><p>&nbsp;</p><p>The amount to be administered and the frequency of administration should always be targeted to the clinical effectiveness required in the individual case.</p><p>&nbsp;</p><p>In the case of the following haemorrhagic events, the factor&nbsp;VIII activity should not fall below the given level (in % of normal) in the corresponding period. The following table can be used to guide dosing in bleeding episodes and surgery:</p><p>&nbsp;</p><p><strong>Table&nbsp;1: Guide for dosing in bleeding episodes and surgery</strong></p><table cellspacing="0" cellpadding="0" border="1"><tbody><tr><td style="vertical-align:top; width:140.6pt"><p><strong>Degree of haemorrhage/ Type of surgical procedure</strong></p></td><td style="vertical-align:top; width:114.55pt"><p><strong>Factor&nbsp;VIII level required (%) (IU/dL)</strong></p></td><td style="vertical-align:top; width:170.1pt"><p><strong>Frequency of doses (hours)/</strong></p><p><strong>Duration of therapy (days)</strong></p></td></tr><tr><td style="vertical-align:top; width:140.6pt"><p><u>Haemorrhage</u></p><p>&nbsp;</p><p>Early haemarthrosis, muscle bleeding or oral bleeding</p></td><td style="vertical-align:top; width:114.55pt"><p style="text-align:center">&nbsp;</p><p style="text-align:center">&nbsp;</p><p style="text-align:center">20&nbsp;‑&nbsp;40</p></td><td style="vertical-align:top; width:170.1pt"><p>Repeat every 12 to 24&nbsp;hours. At least 1&nbsp;day, until the bleeding episode as indicated by pain is resolved or healing is achieved.</p></td></tr><tr><td style="vertical-align:top; width:140.6pt"><p>More extensive haemarthrosis, muscle bleeding or haematoma</p></td><td style="vertical-align:top; width:114.55pt"><p style="text-align:center">30&nbsp;‑&nbsp;60</p></td><td style="vertical-align:top; width:170.1pt"><p>Repeat infusion every 12&nbsp;‑&nbsp;24&nbsp;hours for 3&nbsp;‑&nbsp;4&nbsp;days or more until pain and acute disability are resolved.</p></td></tr><tr><td style="vertical-align:top; width:140.6pt"><p>Life threatening haemorrhages</p></td><td style="vertical-align:top; width:114.55pt"><p style="text-align:center">60&nbsp;‑&nbsp;100</p></td><td style="vertical-align:top; width:170.1pt"><p>Repeat infusion every 8 to 24&nbsp;hours until threat is resolved</p></td></tr><tr><td style="vertical-align:top; width:140.6pt"><p><u>Surgery</u></p><p>Minor surgery</p><p>including tooth extraction</p></td><td style="vertical-align:top; width:114.55pt"><p style="text-align:center">&nbsp;</p><p style="text-align:center">&nbsp;</p><p style="text-align:center">30&nbsp;‑&nbsp;60</p></td><td style="vertical-align:top; width:170.1pt"><p>&nbsp;</p><p>Every 24&nbsp;hours, at least 1&nbsp;day, until healing is achieved.</p></td></tr><tr><td style="vertical-align:top; width:140.6pt"><p>Major surgery</p></td><td style="vertical-align:top; width:114.55pt"><p style="text-align:center">80&nbsp;‑&nbsp;100</p><p style="text-align:center">(pre- and post-operative)</p></td><td style="vertical-align:top; width:170.1pt"><p>Repeat infusion every 8&nbsp;‑&nbsp;24&nbsp;hours until adequate wound healing, then therapy for at least another 7&nbsp;days to maintain a factor&nbsp;VIII activity of 30% to 60%&nbsp;(IU/dL).</p></td></tr></tbody></table><p>&nbsp;</p><p><em>Prophylaxis</em></p><p>For long term prophylaxis against bleeding in patients with severe haemophilia&nbsp;A, the usual doses for adolescents (&ge;&nbsp;12&nbsp;years age) and adult patients are 20 to 40&nbsp;IU of Kovaltry per kg body weight two to three times per week.</p><p>In some cases, especially in younger patients, shorter dose intervals or higher doses may be necessary.</p><p>&nbsp;</p><p><em>Paediatric population</em></p><p>A safety and efficacy study has been performed in children of 012&nbsp;years (see section&nbsp;5.1); limited data are available for children below 1&nbsp;year.</p><p>The recommended prophylaxis doses are 20‑50&nbsp;IU/kg twice weekly, three times weekly or every other day according to individual requirements. For paediatric patients above the age&nbsp;of&nbsp;12, the dose recommendations are the same as for adults.</p><p>&nbsp;</p><p><u>Method of administration</u></p><p>&nbsp;</p><p>Intravenous use.</p><p>&nbsp;</p><p>Kovaltry should be injected intravenously over 2 to 5&nbsp;minutes depending on the total volume. The rate of administration should be determined by the patient&rsquo;s comfort level (maximal rate of infusion: 2&nbsp;mL/min).</p><p>For instructions on reconstitution of the medicinal product before administration, see section&nbsp;6.6 and the package leaflet.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                •	Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+•	Known allergic reactions to mouse or hamster proteins.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Traceability</u></p><p>&nbsp;</p><p>In order to improve traceability of biological medicinal products, the name and the batch number of the administered product should be clearly recorded.</p><p>&nbsp;</p><p><u>Hypersensitivity</u></p><p>&nbsp;</p><p>Allergic type hypersensitivity reactions are possible with Kovaltry.</p><p>If symptoms of hypersensitivity occur, patients should be advised to discontinue the use of the medicinal product immediately and contact their physician.</p><p>Patients should be informed of the early signs of hypersensitivity reactions including hives, generalised urticaria, tightness of the chest, wheezing, hypotension, and anaphylaxis.</p><p>&nbsp;</p><p>In case of shock, standard medical treatment for shock should be implemented.</p><p>&nbsp;</p><p><u>Inhibitors</u></p><p>&nbsp;</p><p>The formation of neutralising antibodies (inhibitors) to factor&nbsp;VIII is a known complication in the management of individuals with haemophilia&nbsp;A. These inhibitors are usually IgG immunoglobulins directed against the factor&nbsp;VIII procoagulant activity, which are quantified in Bethesda Units (BU) per&nbsp;mL of plasma using the modified assay. The risk of developing inhibitors is correlated to the severity of the disease as well as the exposure to factor&nbsp;VIII , this risk being highest within the first 50&nbsp;exposure&nbsp;days but continues throughout life although the risk is uncommon.</p><p>&nbsp;</p><p>The clinical relevance of inhibitor development will depend on the titre of the inhibitor, with low titre posing less of a risk of insufficient clinical response than high titre inhibitors.</p><p>&nbsp;</p><p>In general, all patients treated with coagulation factor&nbsp;VIII products should be carefully monitored for the development of inhibitors by appropriate clinical observations and laboratory tests (see section&nbsp;4.2).</p><p>If the expected factor&nbsp;VIII activity plasma levels are not attained, or if bleeding is not controlled with an appropriate dose, testing for factor&nbsp;VIII inhibitor presence should be performed. In patients with high levels of inhibitor, factor&nbsp;VIII therapy may not be effective and other therapeutic options should be considered. Management of such patients should be directed by physicians with experience in the care of haemophilia and factor&nbsp;VIII inhibitors.</p><p>&nbsp;</p><p><u>Cardiovascular events</u></p><p>&nbsp;</p><p>In patients with existing cardiovascular risk factors, substitution therapy with FVIII may increase the cardiovascular risk.</p><p>&nbsp;</p><p><u>Catheter‑related complications</u></p><p>&nbsp;</p><p>If a central venous access device (CVAD) is required, risk of CVAD‑related complications including local infections, bacteraemia and catheter site thrombosis should be considered.</p><p>&nbsp;</p><p>It is strongly recommended that every time that Kovaltry is administered to a patient, the name and batch number of the product are recorded in order to maintain a link between the patient and the batch of the medicinal product.</p><p>&nbsp;</p><p><u>Paediatric population</u></p><p>&nbsp;</p><p>The listed warnings and precautions apply both to adults and children.</p><p>&nbsp;</p><p><u>Sodium content</u></p><p>&nbsp;</p><p>This medicinal product contains less than 1&nbsp;mmol sodium (23&nbsp;mg) per dose, i.e. essentially &lsquo;sodium‑free&rsquo;.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No interactions of human coagulation factor&nbsp;VIII (rDNA) products with other medicinal products have been reported.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u></p><p>&nbsp;</p><p>Animal reproduction studies have not been conducted with factor&nbsp;VIII. Based on the rare occurrence of haemophilia&nbsp;A in women, experience regarding the use of factor&nbsp;VIII during pregnancy is not available.</p><p>Therefore, factor&nbsp;VIII should be used during pregnancy only if clearly indicated.</p><p>&nbsp;</p><p><u>Breast-feeding</u></p><p>&nbsp;</p><p>It is unknown whether Kovaltry is excreted in human milk. The excretion in animals has not been studied. Therefore, factor&nbsp;VIII should be used during breast‑feeding only if clearly indicated.</p><p>&nbsp;</p><p><u>Fertility</u></p><p>&nbsp;</p><p>No animal fertility studies have been conducted with Kovaltry and its effect on human fertility has not been established in controlled clinical trials. Since Kovaltry is a replacement protein of endogenous factor&nbsp;VIII, no adverse effects on fertility are expected.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>If patients experience dizziness or other symptoms affecting their ability to concentrate and react, it is recommended that they do not drive or use machines until the reaction subsides.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Summary of the safety profile</u></p><p>&nbsp;</p><p>Hypersensitivity or allergic reactions (which may include angioedema, burning and stinging at the infusion site, chills, flushing, generalised urticaria, headache, hives, hypotension, lethargy, nausea, restlessness, tachycardia, tightness of the chest, tingling, vomiting, wheezing) have been observed and may in some cases progress to severe anaphylaxis (including shock).</p><p>Development of antibodies to mouse and hamster protein with related hypersensitivity reactions may occur.</p><p>&nbsp;</p><p>Development of neutralising antibodies (inhibitors) may occur in patients with haemophilia&nbsp;A treated with factor&nbsp;VIII (FVIII), including with Kovaltry. If such inhibitors occur, the condition may manifest itself as an insufficient clinical response. In such cases, it is recommended that a specialised haemophilia centre be contacted.</p><p>&nbsp;</p><p><u>Tabulated list of adverse reactions</u></p><p>&nbsp;</p><p>The table presented below is according to the MedDRA system organ classification (SOC and Preferred Term Level). Frequencies have been evaluated according to the following convention: very common (&ge;&nbsp;1/10), common (&ge;&nbsp;1/100 to &lt;&nbsp;1/10), uncommon (&ge;&nbsp;1/1,000 to &lt;&nbsp;1/100) , rare (&ge;1/10,000 to &lt;1/1,000); very rare (&lt;1/10,000).</p><p>Within each frequency grouping, adverse reactions are presented in order of decreasing seriousness.</p><p>&nbsp;</p><p><strong>Table&nbsp;2: Frequency of adverse drug reactions in clinical trials</strong></p><table cellspacing="0" cellpadding="0" border="1"><tbody><tr><td style="height:28.05pt; vertical-align:top; width:199.85pt"><p><strong>MedDRA</strong></p><p><strong>System Organ Class </strong></p></td><td style="height:28.05pt; vertical-align:top; width:119.55pt"><p><strong>Adverse reactions </strong></p></td><td style="height:28.05pt; vertical-align:top; width:123.55pt"><p><strong>Frequency </strong></p><p>&nbsp;</p></td></tr><tr><td rowspan="2" style="height:17.25pt; vertical-align:top; width:199.85pt"><p><strong>Blood and lymphatic system disorders</strong></p></td><td style="height:17.25pt; vertical-align:top; width:119.55pt"><p>Lymphadenopathy</p></td><td style="height:17.25pt; vertical-align:top; width:123.55pt"><p>common</p></td></tr><tr><td style="height:17.25pt; vertical-align:top; width:119.55pt"><p>FVIII inhibition</p></td><td style="height:17.25pt; vertical-align:top; width:123.55pt"><p>very common (PUPs)*</p><p>uncommon (PTPs)*</p></td></tr><tr><td style="height:11.9pt; vertical-align:top; width:199.85pt"><p><strong>Immune system disorders</strong></p></td><td style="height:11.9pt; vertical-align:top; width:119.55pt"><p>Hypersensitivity</p></td><td style="height:11.9pt; vertical-align:top; width:123.55pt"><p>uncommon</p></td></tr><tr><td style="height:11.9pt; vertical-align:top; width:199.85pt"><p><strong>Psychiatric disorders</strong></p></td><td style="height:11.9pt; vertical-align:top; width:119.55pt"><p>Insomnia</p></td><td style="height:11.9pt; vertical-align:top; width:123.55pt"><p>common</p></td></tr><tr><td rowspan="2" style="height:11.9pt; vertical-align:top; width:199.85pt"><p><strong>Nervous system disorders</strong></p></td><td style="height:11.9pt; vertical-align:top; width:119.55pt"><p>Headache, dizziness</p></td><td style="height:11.9pt; vertical-align:top; width:123.55pt"><p>common</p></td></tr><tr><td style="height:11.9pt; vertical-align:top; width:119.55pt"><p>Dysgeusia</p></td><td style="height:11.9pt; vertical-align:top; width:123.55pt"><p>uncommon</p></td></tr><tr><td style="height:11.9pt; vertical-align:top; width:199.85pt"><p><strong>Cardiac disorders</strong></p></td><td style="height:11.9pt; vertical-align:top; width:119.55pt"><p>Palpitation, sinus tachycardia</p></td><td style="height:11.9pt; vertical-align:top; width:123.55pt"><p>common</p></td></tr><tr><td style="height:26.25pt; vertical-align:top; width:199.85pt"><p><strong>Vascular disorders</strong></p></td><td style="height:26.25pt; vertical-align:top; width:119.55pt"><p>Flushing</p></td><td style="height:26.25pt; vertical-align:top; width:123.55pt"><p>uncommon</p></td></tr><tr><td style="height:26.25pt; vertical-align:top; width:199.85pt"><p><strong>Gastrointestinal disorders</strong></p></td><td style="height:26.25pt; vertical-align:top; width:119.55pt"><p>Abdominal pain, abdominal discomfort, dyspepsia</p></td><td style="height:26.25pt; vertical-align:top; width:123.55pt"><p>common</p></td></tr><tr><td rowspan="2" style="height:26.25pt; vertical-align:top; width:199.85pt"><p><strong>Skin and subcutaneous tissue disorders</strong></p></td><td style="height:26.25pt; vertical-align:top; width:119.55pt"><p>Pruritus, rash***, dermatitis allergic</p></td><td style="height:26.25pt; vertical-align:top; width:123.55pt"><p>common</p><p>&nbsp;</p></td></tr><tr><td style="height:26.25pt; vertical-align:top; width:119.55pt"><p>Urticaria</p></td><td style="height:26.25pt; vertical-align:top; width:123.55pt"><p>uncommon</p></td></tr><tr><td style="height:26.25pt; vertical-align:top; width:199.85pt"><p><strong>General disorders and administration site conditions</strong></p></td><td style="height:26.25pt; vertical-align:top; width:119.55pt"><p>Pyrexia, chest discomfort, injection site reactions **</p></td><td style="height:26.25pt; vertical-align:top; width:123.55pt"><p>common</p></td></tr></tbody></table><p style="margin-left:0in">* Frequency is based on studies with all FVIII&nbsp;products which included patients with severe haemophilia&nbsp;A. PTPs = previously-treated patients, PUPs = previously-untreated patients</p><p>** includes injection site extravasation, hematoma, infusion site pain, pruritus, swelling</p><p>*** rash, rash erythematous, rash pruritic</p><p>&nbsp;</p><p><u>Description of selected adverse reactions</u></p><p>&nbsp;</p><p>The most frequently reported adverse reactions in PTPs were related to potential hypersensitivity reactions, including headache, pyrexia, pruritus, rash, and abdominal discomfort.</p><p>&nbsp;</p><p><em>Immunogenicity</em></p><p>The immunogenicity of Kovaltry was evaluated in previously treated patients (PTPs).</p><p>During clinical trials with Kovaltry in approximately 200 pediatric and adult patients diagnosed with severe hemophilia A (FVIII:C &lt; 1%) with previous exposure to factor VIII concentrates &ge; 50 ED, one case of transient low titer inhibitor occurred in the ongoing LEOPOLD Kids Part A extension study.</p><p>&nbsp;</p><p><em>Paediatric population</em></p><p>In completed clinical studies with 71&nbsp;paediatric previously treated patients, the frequency, type and severity of adverse reactions in children were found to be similar to those in adults.</p><p>&nbsp;</p><p><u>Reporting of suspected adverse reactions</u></p><p>&nbsp;</p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product.</p><p>&nbsp;</p><p><strong>To report any side effect(s):</strong></p><p>The National Pharmacovigilance Centre (NPC).</p><p>SFDA call center: 19999.</p><p>E - mail: npc.drug@sfda.gov.sa.</p><p>Website: https://ade.sfda.gov.sa</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No symptoms of overdose with recombinant human coagulation factor&nbsp;VIII have been reported.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: antihemorrhagics: blood coagulation factor&nbsp;VIII, ATC&nbsp;code B02BD02.</p><p>&nbsp;</p><p><u>Mechanism of action</u></p><p>&nbsp;</p><p>The factor&nbsp;VIII/von Willebrand factor (vWF) complex consists of two molecules (factor&nbsp;VIII and vWF) with different physiological functions. When infused into a haemophiliac patient, factor&nbsp;VIII binds to vWF in the patient&rsquo;s circulation. Activated factor&nbsp;VIII acts as a cofactor for activated factor&nbsp;IX, accelerating the conversion of factor&nbsp;X to activated factor&nbsp;X. Activated factor&nbsp;X converts prothrombin into thrombin. Thrombin then converts fibrinogen into fibrin and a clot can be formed. Haemophilia&nbsp;A is a sex‑linked hereditary disorder of blood coagulation due to decreased levels of factor&nbsp;VIII:C and results in profuse bleeding into joints, muscles or internal organs, either spontaneously or as a result of accidental or surgical trauma. By replacement therapy the plasma levels of factor&nbsp;VIII are increased, thereby enabling a temporary correction of the factor deficiency and correction of the bleeding tendencies.</p><p>&nbsp;</p><p>Of note, annualised bleeding rate (ABR) is not comparable between different factor concentrates and between different clinical studies.</p><p>&nbsp;</p><p>Kovaltry does not contain von Willebrand factor.</p><p>&nbsp;</p><p><u>Pharmacodynamic effects</u></p><p>&nbsp;</p><p>The activated partial thromboplastin time (aPTT) is prolonged in people with haemophilia. Determination of aPTT is a conventional <em>in&nbsp;vitro</em> assay for biological activity of factor&nbsp;VIII. Treatment with rFVIII normalizes the aPTT similar to that achieved with plasma‑derived factor&nbsp;VIII.</p><p>&nbsp;</p><p><u>Clinical efficacy and safety</u></p><p>&nbsp;</p><p><em>Control and Prevention of Bleeding</em></p><p>Two&nbsp;multi-centre, open-label, cross-over, uncontrolled, randomised studies in previously treated adults/adolescents with severe haemophilia&nbsp;A (&lt;&nbsp;1%) and one&nbsp;multi-centre, open-label, uncontrolled study in previously treated children &lt;&nbsp;12&nbsp;years with severe haemophilia&nbsp;A were conducted.</p><p>&nbsp;</p><p style="margin-left:0in; margin-right:0in">A total of 204&nbsp;subjects have been included in the clinical trial program, 153&nbsp;subjects &ge;&nbsp;12&nbsp;years and 51&nbsp;subjects &lt;&nbsp;12&nbsp;years. 140&nbsp;subjects were treated for at least 12&nbsp;months, and 55 of these subjects for a median of 24&nbsp;months.</p><p>&nbsp;</p><p><em>Paediatric population &lt;12 years</em></p><p>The paediatric trial enrolled 51&nbsp;PTPs with severe haemophilia&nbsp;A, 26 subjects in the age group 6-12&nbsp;years and 25 subjects in the age group &lt;6&nbsp;years having accumulated a median number of 73&nbsp;EDs (range:&nbsp;37&nbsp;to&nbsp;103&nbsp;EDs). Subjects were treated with 2 or 3&nbsp;injections per week or up to every&nbsp;other&nbsp;day at a dose of 25&nbsp;to&nbsp;50&nbsp;IU/kg. Consumption for prophylaxis and treatment of bleeds, annualised bleed rates and success rate for bleed treatment are presented in Table 3</p><p>&nbsp;</p><p><strong>Table&nbsp;3: Consumption and overall success rates (patients treated with prophylaxis only)</strong></p><table cellspacing="0" cellpadding="0" border="1" style="width:624px"><thead><tr><td style="height:38.0pt; vertical-align:top; width:97.55pt"><p style="margin-left:0in; margin-right:0in; text-align:center"><strong>&nbsp;</strong></p></td><td style="height:38.0pt; vertical-align:top; width:56.7pt"><p style="text-align:center"><strong>Younger children</strong></p><p style="text-align:center"><strong>(0&nbsp;&lt;6&nbsp;</strong></p><p style="text-align:center"><strong>years)</strong></p></td><td style="height:38.0pt; vertical-align:top; width:56.7pt"><p style="text-align:center"><strong>Older children</strong></p><p style="text-align:center"><strong>(6&nbsp;&lt;12&nbsp;</strong></p><p style="text-align:center"><strong>years)</strong></p></td><td colspan="3" style="height:38.0pt; vertical-align:top; width:193.05pt"><p style="text-align:center"><strong>Adolescents and adults</strong></p><p style="text-align:center"><strong>12‑65&nbsp;years</strong></p></td><td style="height:38.0pt; vertical-align:top; width:63.8pt"><p style="text-align:center"><strong>Total</strong></p></td></tr><tr><td style="height:24.9pt; vertical-align:top; width:97.55pt"><p style="text-align:center">&nbsp;</p><p style="margin-left:0in; margin-right:0in; text-align:center"><strong>&nbsp;</strong></p></td><td style="height:24.9pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center"><strong>&nbsp;</strong></p></td><td style="height:24.9pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center"><strong>&nbsp;</strong></p></td><td style="height:24.9pt; vertical-align:top; width:65.5pt"><p style="text-align:center"><strong>Study&nbsp;1</strong></p></td><td style="height:24.9pt; vertical-align:top; width:63.75pt"><p style="text-align:center"><strong>Study&nbsp;2</strong></p><p style="text-align:center">&nbsp;</p><p style="text-align:center"><strong>2&nbsp;x/week dosing</strong></p></td><td style="height:24.9pt; vertical-align:top; width:63.8pt"><p style="text-align:center"><strong>Study&nbsp;2</strong></p><p style="text-align:center">&nbsp;</p><p style="text-align:center"><strong>3&nbsp;x/week dosing</strong></p></td><td style="height:24.9pt; vertical-align:top; width:63.8pt"><p style="margin-left:0in; margin-right:0in; text-align:center"><strong>&nbsp;</strong></p></td></tr></thead><tbody><tr><td style="height:37.35pt; vertical-align:top; width:97.55pt"><p><strong>Study participants</strong></p></td><td style="height:37.35pt; vertical-align:top; width:56.7pt"><p style="text-align:center">25</p></td><td style="height:37.35pt; vertical-align:top; width:56.7pt"><p style="text-align:center">26</p></td><td style="height:37.35pt; vertical-align:top; width:65.5pt"><p style="text-align:center">62</p></td><td style="height:37.35pt; vertical-align:top; width:63.75pt"><p style="text-align:center">28</p></td><td style="height:37.35pt; vertical-align:top; width:63.8pt"><p style="text-align:center">31</p></td><td style="height:37.35pt; vertical-align:top; width:63.8pt"><p style="text-align:center">172</p></td></tr><tr><td style="height:12.45pt; vertical-align:top; width:97.55pt"><p style="margin-left:0in; margin-right:0in"><strong>&nbsp;</strong></p></td><td style="height:12.45pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:65.5pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.75pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.8pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.8pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td></tr><tr><td style="height:75.35pt; vertical-align:top; width:97.55pt"><p><strong>Dose/prophylaxis injection, IU/kg BW</strong></p><p><strong>median (min, max)</strong></p></td><td style="height:75.35pt; vertical-align:top; width:56.7pt"><p style="text-align:center">36&nbsp;IU/kg</p><p style="text-align:center">(21; 58&nbsp;IU/kg)</p></td><td style="height:75.35pt; vertical-align:top; width:56.7pt"><p style="text-align:center">32&nbsp;IU/kg</p><p style="text-align:center">(22; 50&nbsp;IU/kg)</p></td><td style="height:75.35pt; vertical-align:top; width:65.5pt"><p style="text-align:center">31&nbsp;IU/kg</p><p style="text-align:center">(21; 43&nbsp;IU/kg)</p></td><td style="height:75.35pt; vertical-align:top; width:63.75pt"><p style="text-align:center">30&nbsp;IU/kg</p><p style="text-align:center">(21; 34&nbsp;IU/kg)</p></td><td style="height:75.35pt; vertical-align:top; width:63.8pt"><p style="text-align:center">37&nbsp;IU/kg</p><p style="text-align:center">(30; 42&nbsp;IU/kg)</p></td><td style="height:75.35pt; vertical-align:top; width:63.8pt"><p style="text-align:center">32&nbsp;IU/kg</p><p style="text-align:center">(21; 58&nbsp;IU/kg)</p><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td></tr><tr><td style="height:12.45pt; vertical-align:top; width:97.55pt"><p style="margin-left:0in; margin-right:0in"><strong>&nbsp;</strong></p></td><td style="height:12.45pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:65.5pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.75pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.8pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.8pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td></tr><tr><td style="height:50.45pt; vertical-align:top; width:97.55pt"><p><strong>ABR &ndash; all bleeds (median, Q1,Q3)</strong></p></td><td style="height:50.45pt; vertical-align:top; width:56.7pt"><p style="text-align:center">2.0</p><p style="text-align:center">(0.0; 6.0)</p></td><td style="height:50.45pt; vertical-align:top; width:56.7pt"><p style="text-align:center">0.9</p><p style="text-align:center">(0.0; 5.8)</p></td><td style="height:50.45pt; vertical-align:top; width:65.5pt"><p style="text-align:center">1.0</p><p style="text-align:center">(0.0; 5.1)</p></td><td style="height:50.45pt; vertical-align:top; width:63.75pt"><p style="text-align:center">4.0</p><p style="text-align:center">(0.0; 8.0)</p></td><td style="height:50.45pt; vertical-align:top; width:63.8pt"><p style="text-align:center">2.0</p><p style="text-align:center">(0.0; 4.9)</p></td><td style="height:50.45pt; vertical-align:top; width:63.8pt"><p style="text-align:center">2.0</p><p style="text-align:center">(0.0; 6.1)</p></td></tr><tr><td style="height:12.45pt; vertical-align:top; width:97.55pt"><p style="margin-left:0in; margin-right:0in"><strong>&nbsp;</strong></p></td><td style="height:12.45pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:56.7pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:65.5pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.75pt"><p style="margin-left:11.9pt; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.8pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td><td style="height:12.45pt; vertical-align:top; width:63.8pt"><p style="margin-left:0in; margin-right:0in; text-align:center">&nbsp;</p></td></tr><tr><td style="height:51.1pt; vertical-align:top; width:97.55pt"><p><strong>Dose/injection for bleed treatment</strong></p><p><strong>Median (min; max)</strong></p></td><td style="height:51.1pt; vertical-align:top; width:56.7pt"><p style="text-align:center">39&nbsp;IU/kg</p><p style="text-align:center">(21;72&nbsp;IU/kg)</p></td><td style="height:51.1pt; vertical-align:top; width:56.7pt"><p style="text-align:center">32&nbsp;IU/kg</p><p style="text-align:center">(22; 50&nbsp;IU/kg)</p></td><td style="height:51.1pt; vertical-align:top; width:65.5pt"><p style="text-align:center">29&nbsp;IU/kg</p><p style="text-align:center">(13; 54&nbsp;IU/kg)</p></td><td style="height:51.1pt; vertical-align:top; width:63.75pt"><p style="text-align:center">28&nbsp;IU/kg</p><p style="text-align:center">(19; 39&nbsp;IU/kg)</p></td><td style="height:51.1pt; vertical-align:top; width:63.8pt"><p style="text-align:center">31&nbsp;IU/kg</p><p style="text-align:center">(21; 49&nbsp;IU/kg)</p></td><td style="height:51.1pt; vertical-align:top; width:63.8pt"><p style="text-align:center">31&nbsp;IU/kg</p><p style="text-align:center">(13; 72&nbsp;IU/kg)</p></td></tr><tr><td style="height:25.5pt; vertical-align:top; width:97.55pt"><p><strong>Success rate*</strong></p></td><td style="height:25.5pt; vertical-align:top; width:56.7pt"><p style="text-align:center">92.4%</p></td><td style="height:25.5pt; vertical-align:top; width:56.7pt"><p style="text-align:center">86.7%</p></td><td style="height:25.5pt; vertical-align:top; width:65.5pt"><p style="text-align:center">86.3%</p></td><td style="height:25.5pt; vertical-align:top; width:63.75pt"><p style="text-align:center">95.0%</p></td><td style="height:25.5pt; vertical-align:top; width:63.8pt"><p style="text-align:center">97.7%</p></td><td style="height:25.5pt; vertical-align:top; width:63.8pt"><p style="text-align:center">91.4%</p></td></tr></tbody></table><p>ABR annualised bleed rate</p><p>Q1 first quartile; Q3 third quartile</p><p>BW: Body weight</p><p>*Success rate defined as % of bleeds treated successfully with &le;&nbsp;2 infusions</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The pharmacokinetic (PK) profile of Kovaltry was evaluated in PTPs with severe haemophilia&nbsp;A following 50&nbsp;IU/kg in 21&nbsp;subjects &ge;&nbsp;18&nbsp;years, 5&nbsp;subjects &ge;&nbsp;12&nbsp;years and &lt;&nbsp;18&nbsp;years and 19&nbsp;subjects &lt;&nbsp;12&nbsp;years of age.</p><p>&nbsp;</p><p>A population PK model was developed based on all available factor&nbsp;VIII measurements (from dense PK sampling and all recovery samples) throughout the 3&nbsp;clinical studies allowing calculation of PK parameters for subjects in the various studies. The table&nbsp;4 below provides PK parameters based on the population PK model.</p><p>&nbsp;</p><p><strong>Table&nbsp;4: PK parameters (geometric mean (%CV)) based on chromogenic assay. *</strong></p><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td style="vertical-align:top; width:91.1pt"><p style="text-align:center"><strong>PK parameter</strong></p></td><td style="vertical-align:top; width:90.7pt"><p style="text-align:center">&ge; <strong>18&nbsp;years</strong></p><p style="text-align:center"><strong>N=109</strong></p></td><td style="vertical-align:top; width:90.55pt"><p style="text-align:center"><strong>12-&lt;18&nbsp;years</strong></p><p style="text-align:center"><strong>N=23</strong></p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center"><strong>6-&lt;12&nbsp;years</strong></p><p style="text-align:center"><strong>N=27</strong></p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center"><strong>0-&lt;6&nbsp;years</strong></p><p style="text-align:center"><strong>N=24</strong></p></td></tr><tr><td style="vertical-align:top; width:91.1pt"><p style="text-align:center">T<sub>1/2</sub> (h)</p></td><td style="vertical-align:top; width:90.7pt"><p style="text-align:center">14.8 (34)</p></td><td style="vertical-align:top; width:90.55pt"><p style="text-align:center">13.3 (24)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">14.1 (31)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">13.3 (24)</p></td></tr><tr><td style="vertical-align:top; width:91.1pt"><p style="text-align:center">AUC (IU.h/dL)<sup>**</sup></p></td><td style="vertical-align:top; width:90.7pt"><p style="text-align:center">1,858 (38)</p></td><td style="vertical-align:top; width:90.55pt"><p style="text-align:center">1,523 (27)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">1,242 (35)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">970 (25)</p></td></tr><tr><td style="vertical-align:top; width:91.1pt"><p style="text-align:center">CL (dL/h/kg)</p></td><td style="vertical-align:top; width:90.7pt"><p style="text-align:center">0.03 (38)</p></td><td style="vertical-align:top; width:90.55pt"><p style="text-align:center">0.03 (27)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">0.04 (35)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">0.05 (25)</p></td></tr><tr><td style="vertical-align:top; width:91.1pt"><p style="text-align:center">V<sub>ss</sub> (dL/kg)</p></td><td style="vertical-align:top; width:90.7pt"><p style="text-align:center">0.56 (14)</p></td><td style="vertical-align:top; width:90.55pt"><p style="text-align:center">0.61 (14)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">0.77 (15)</p></td><td style="vertical-align:top; width:90.6pt"><p style="text-align:center">0.92 (11)</p></td></tr><tr><td colspan="5" style="vertical-align:top; width:453.55pt"><p>* Based on population PK estimates</p><p>**AUC calculated for a dose of 50&nbsp;IU/kg</p></td></tr></tbody></table><p>&nbsp;</p><p>Repeated PK measurements after 6 to 12&nbsp;months of prophylaxis treatment with Kovaltry did not indicate any relevant changes in PK characteristics after long‑term treatment.</p><p>&nbsp;</p><p>In an international study involving 41 clinical laboratories, the performance of Kovaltry in FVIII:C assays was evaluated and compared to a marketed full length rFVIII product. Consistent results were determined for both products. The FVIII:C of Kovaltry can be measured in plasma with a one‑stage coagulation assay as well as with a chromogenic assay using the routine methods of the laboratory.</p><p>&nbsp;</p><p>The analysis of all recorded <em>incremental</em> recoveries in previously treated patients demonstrated a median rise of &gt;&nbsp;2%&nbsp;(&gt;&nbsp;2&nbsp;IU/dL) per IU/kg body weight for Kovaltry. This result is similar to the reported values for factor&nbsp;VIII derived from human plasma. There was no relevant change over the 6‑12&nbsp;months treatment period.</p><p>&nbsp;</p><p><strong>Table&nbsp;5: Phase&nbsp;III <em>incremental</em> recovery results</strong></p><table cellspacing="0" cellpadding="0" border="1" style="width:432.35pt"><thead><tr><td style="vertical-align:top; width:276.45pt"><p><strong>Study participants</strong></p></td><td style="vertical-align:top; width:155.9pt"><p style="text-align:center"><strong>N=115</strong></p></td></tr><tr><td style="vertical-align:top; width:276.45pt"><p>Chromogenic assay results</p><p>Median; (Q1; Q3) (IU/dL&nbsp;/&nbsp;IU/kg)</p></td><td style="vertical-align:top; width:155.9pt"><p style="text-align:center">2.3 (1.8; 2.6)</p></td></tr><tr><td style="vertical-align:top; width:276.45pt"><p>One-stage assay results</p><p>Median; (Q1; Q3) (IU/dL&nbsp;/&nbsp;IU/kg)</p></td><td style="vertical-align:top; width:155.9pt"><p style="text-align:center">2.2 (1.8; 2.4)</p></td></tr></thead></table><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-clinical data reveal no special risk for humans based on safety pharmacology, <em>in&nbsp;vitro</em> genotoxicity, and short term repeat-dose toxicity studies. Repeat-dose toxicity studies longer than 5&nbsp;days, reproductive toxicity studies, and carcinogenicity studies, have not been performed. Such studies are not considered meaningful due to the production of antibodies against the heterologous human protein in animals. Also factor&nbsp;VIII is an intrinsic protein and not known to cause any reproductive or carcinogenic effects.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Powder</u></p><p>Sucrose</p><p>Histidine</p><p>Glycine (E 640)</p><p>Sodium chloride</p><p>Calcium chloride dihydrate (E 509)</p><p>Polysorbate&nbsp;80 (E 433)</p><p>Acetic acid, glacial (for pH adjustment) (E 260)</p><p>&nbsp;</p><p><u>Solvent</u></p><p>Water for injections</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the absence of compatibility studies, this medicinal product must not be mixed with other medicinal products<em>.</em></p><p>&nbsp;</p><p>Only the provided infusion sets should be used for reconstitution and injection because treatment failure can occur as a consequence of human recombinant coagulation factor&nbsp;VIII adsorption to the internal surfaces of some infusion equipment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                30 months
+
+The chemical and physical in-use stability after reconstitution has been demonstrated for 3 hours at room temperature.
+After reconstitution, from a microbiological point of view, the product should be used immediately. If not used immediately, in use storage times and conditions prior to use are the responsibility of the user.
+
+Do not refrigerate after reconstitution.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store in a refrigerator (2&nbsp;&deg;C&nbsp;‑&nbsp;8&nbsp;&deg;C).</p><p>Do not freeze.</p><p>Keep the vial and the pre&nbsp;filled&nbsp;syringe in the outer carton in order to protect from light.</p><p>&nbsp;</p><p>Within its overall shelf life of 30&nbsp;months the product when kept in its outer carton, may be stored up to 30&nbsp;&deg;C for a limited period of 6&nbsp;months. In this case, the product expires at the end of this 6&nbsp;month period or the expiry date on the product vial, whichever is earlier. The new expiry date must be noted on the outer carton.</p><p>&nbsp;</p><p>For storage conditions after reconstitution of the medicinal product, see section&nbsp;6.3.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Each single package of Kovaltry contains:</p><p style="margin-left:.5in; margin-right:0in; text-indent:-.5in"><!--[if !supportLists]-->&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->one vial with powder (10&nbsp;mL clear glass type&nbsp;1 vial with grey halogenobutyl rubber blend stopper and aluminium seal)</p><p style="margin-left:.5in; text-indent:-.5in"><!--[if !supportLists]-->&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->one pre-filled syringe with 2.5&nbsp;mL (for 250&nbsp;IU, 500&nbsp;IU and 1000&nbsp;IU) or 5&nbsp;mL (for 2000&nbsp;IU and 3000&nbsp;IU) solvent (clear glass cylinder type&nbsp;1 with grey bromobutyl rubber blend stopper)</p><p style="margin-left:.5in; margin-right:0in; text-indent:-.5in"><!--[if !supportLists]-->&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->syringe plunger rod</p><p style="margin-left:.5in; margin-right:0in; text-indent:-.5in"><!--[if !supportLists]-->&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->vial adapter</p><p style="margin-left:.5in; text-indent:-.5in"><!--[if !supportLists]-->&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->one venipuncture set</p><p>&nbsp;</p><p><u>Pack sizes</u></p><p style="margin-left:64.35pt; text-indent:-64.35pt"><!--[if !supportLists]-->-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->1 single pack.</p><p style="margin-left:64.35pt; text-indent:-64.35pt"><!--[if !supportLists]-->-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[endif]-->1 multipack with 30 single packs.</p><p>Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Detailed instructions for preparation and administration are contained in the package leaflet provided with Kovaltry.</p><p>&nbsp;</p><p>The reconstituted medicinal product is a clear and colourless solution.</p><p>Kovaltry powder should only be reconstituted with the supplied solvent (2.5&nbsp;mL or 5&nbsp;mL water for injections) in the prefilled syringe and the vial adapter. For infusion, the product must be prepared under aseptic conditions. If any component of the package is opened or damaged, do not use this component.</p><p>After reconstitution the solution is clear. Parenteral medicinal products should be inspected visually for particulate matter and discoloration prior to administration. Do not use Kovaltry if you notice visible particulate matter or turbidity.</p><p>&nbsp;</p><p>After reconstitution, the solution is drawn back into the syringe. Kovaltry should be reconstituted and administered with the components (vial adapter, prefilled syringe, venipuncture set) provided with each package.</p><p>&nbsp;</p><p>The reconstituted product must be filtered prior to administration to remove potential particulate matter in the solution. Filtering is achieved by using the vial adapter.</p><p>The venipuncture set provided with the product must not be used for drawing blood because it contains an in&nbsp;line filter.</p><p>&nbsp;</p><p>For single use only.</p><p>Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Bayer AG
+51368 Leverkusen
+Germany
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                09/2020
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

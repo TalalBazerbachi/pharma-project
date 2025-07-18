@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2204257268
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2019
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        HEXAXIM VACCINE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        TETANUS TOXOID,DIPHTHERIA TOXOID,PERTUSSIS TOXOID,Haemagglutinin,INACTIVATED POLIO VIRUS (IPV) TYPE 1,INACTIVATED POLIO VIRUS (IPV) TYPE 2,INACTIVATED POLIO VIRUS (IPV) TYPE 3,HEPATITIS B VIRUS HBSAG SURFACE ANTIGEN,HAEMOPHILUS INFLUENZAE TYPE B
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        40,20,25,25,25,8,32,10,12
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intramuscular use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Suspension for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        0
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        48
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1579
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="SANOFI PASTEUR SA" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            SANOFI PASTEUR SA
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 634]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ARAB COMPANY FOR PHARMACEUTICAL PRODUCTS (ARABIO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            SANOFI PASTEUR SA
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J07CA09
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>HEXAXIM (DTaP-IPV-HB-Hib) is a vaccine used to protect against infectious diseases.</p><p>&nbsp;</p><p>HEXAXIM helps to protect against diphtheria, tetanus, pertussis, hepatitis B, poliomyelitis and serious diseases caused by <em>Haemophilus influenzae</em> type b. HEXAXIM is given to children from six weeks of age.</p><p>&nbsp;</p><p>The vaccine works by causing the body to produce its own protection (antibodies) against the bacteria and viruses that cause these different infections:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Diphtheria is an infectious disease that usually first affects the throat. In the throat, the infection causes pain and swelling that can lead to suffocation. The bacterium that causes the disease also makes a toxin (poison) that can damage the heart, kidneys, and nerves.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tetanus (often called lock jaw) is usually caused by the tetanus bacterium entering a deep wound. The bacterium makes a toxin (poison) that causes spasms of the muscles leading to inability to breathe and the possibility of suffocation.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pertussis (often called whooping cough) is a highly infectious illness that affects the airways. It causes severe coughing that may lead to problems with breathing. The coughing often has a &ldquo;whooping&rdquo; sound. The cough may last for one to two months or longer. Whooping cough can also cause ear infections, chest infections (bronchitis) that may last a long time, lung infections (pneumonia), fits, brain damage, and even death.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hepatitis B is caused by the hepatitis B virus. It causes the liver to become swollen (inflamed). In some people, the virus can stay in the body for a long time and can eventually lead to serious liver problems, including liver cancer.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Poliomyelitis (often just called polio) is caused by viruses that affect the nerves. It can lead to paralysis or muscle weakness most commonly of the legs. Paralysis of the muscles that control breathing and swallowing can be fatal.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Haemophilus influenzae</em> type b infections (often just called Hib) are serious bacterial infections and can cause meningitis (inflammation of the outer covering of the brain), which can lead to brain damage, deafness, epilepsy, or partial blindness. Infection can also cause inflammation and swelling of the throat leading to difficulties in swallowing and breathing. The infection can affect other parts of the body such as the blood, lungs, skin, bones, and joints.</p><p>&nbsp;</p><p><strong>Important information about the protection provided</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEXAXIM will only help to prevent these diseases if they are caused by the bacteria or viruses targeted by the vaccine. Your child could get diseases with similar symptoms if they are caused by other bacteria or viruses.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The vaccine does not contain any live bacteria or viruses and it cannot cause any of the infectious diseases against which it protects.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This vaccine does not protect against infections caused by other types of <em>Haemophilus influenzae</em> nor against meningitis due to other micro-organisms.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEXAXIM will not protect against hepatitis infection caused by other agents such as hepatitis A, hepatitis C, and hepatitis E.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Because symptoms of hepatitis B take a long time to develop, it is possible for unrecognised hepatitis B infection to be present at the time of vaccination. The vaccine may not prevent hepatitis B infection in such cases.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As with any vaccine, HEXAXIM may not protect 100% of children who receive the vaccine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>To make sure that HEXAXIM is suitable for your child, it is important to talk to your doctor or nurse if any of the points below apply to your child. If there is anything you do not understand, ask your doctor, pharmacist, or nurse to explain.</p><p>&nbsp;</p><p><strong>Do not use </strong><strong>HEXAXIM if your child:</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has had respiratory disorder or swelling of the face (anaphylactic reaction) after administration of HEXAXIM.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has had an allergic reaction</p><p>- to the active substances,</p><p>- to any of the excipients listed in section 6,</p><p>- to glutaraldehyde, formaldehyde, neomycin, streptomycin or polymyxin B, as these substances are used during the manufacturing process,</p><p>- after previous administration of HEXAXIM or any other diphtheria, tetanus, pertussis, poliomyelitis, hepatitis B, or Hib containing vaccines.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; suffered from a severe reaction affecting the brain (encephalopathy) within 7 days of a prior dose of a pertussis vaccine (acellular or whole cell pertussis).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has an uncontrolled condition or severe illness affecting the brain and nervous system (uncontrolled neurologic disorder), or uncontrolled epilepsy.</p><p>&nbsp;</p><p><strong>Warnings and precautions</strong></p><p>Talk to your doctor, pharmacist or nurse before vaccination if your child:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has a moderate or high temperature or an acute illness (e.g. fever, sore throat, cough, cold, or flu). Vaccination with HEXAXIM may need to be delayed until your child is better.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has had any of the following events after receiving a pertussis vaccine, as the decision to give further doses of pertussis containing vaccine will need to be carefully considered:</p><p>- fever of 40&deg;C or above within 48 hours of vaccination not due to another identifiable cause.</p><p>- collapse or shock-like state with hypotonic-hyporesponsive episode (drop in energy) within 48 hours of vaccination.</p><p>- persistent, inconsolable crying lasting 3 hours or more, occurring within 48 hours of vaccination.</p><p>- fits (convulsions) with or without fever, occurring within 3 days of vaccination.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; previously had Guillain-Barr&eacute; syndrome (temporary inflammation of nerves causing pain, paralysis, and sensitivity disorders) or brachial neuritis (severe pain and decreased mobility of arm and shoulder) after being given a vaccine containing tetanus toxoid (an inactivated form of tetanus toxin). In this case, the decision to give any further vaccine containing tetanus toxoid should be evaluated by your doctor.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is having a treatment that suppresses her/his immune system (the body&rsquo;s natural defenses) or has any disease that causes the weakness of the immune system. In these cases the immune response to the vaccine may be decreased. It is normally recommended to wait until the end of the treatment or disease before vaccinating. However children with long standing problems with their immune system such as HIV infection (AIDS) may still be given HEXAXIM, but the protection may not be as good as in children whose immune system is healthy.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; suffers from an acute or chronic illness including chronic renal insufficiency or failure (inability of the kidneys to work properly).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; suffers from any undiagnosed illness of the brain or epilepsy that is not controlled. Your doctor will assess the potential benefit offered by vaccination.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has any problems with the blood that cause easy bruising or bleeding for a long time after minor cuts. Your doctor will advise you whether your child should have HEXAXIM.</p><p>&nbsp;</p><p>Fainting can occur following, or even before, any needle injection. Therefore, tell your doctor or nurse your child fainted with a previous injection.</p><p><strong>&nbsp;</strong></p><p><strong>Other medicines or vaccines and </strong><strong>HEXAXIM</strong></p><p>Tell your doctor or nurse if your child is taking, has recently taken, or might take any other medicines or vaccines.</p><p>HEXAXIM can be given at the same time as other vaccines such as pneumococcal vaccines, measles, mumps, rubella vaccines, varicella vaccines, rotavirus vaccines or meningococcal vaccines.</p><p>When given at the same time with other vaccines, HEXAXIM will be given at different injection sites.</p><p>&nbsp;</p><p><strong>HEXAXIM contains phenylalanine, potassium and sodium </strong></p><p><strong>&nbsp;</strong></p><p>HEXAXIM contains 85 micrograms phenylalanine in each 0.5 mL dose. Phenylalanine may be harmful if you have phenylketonuria (PKU), a rare genetic disorder in which phenylalanine builds up because the body cannot remove it properly.</p><p>HEXAXIM contains less than 1 mmol potassium (39 mg) and less than 1 mmol sodium (23 mg) per dose, that is to say essentially &ldquo;potassium-free&rdquo; and &ldquo;sodium-free&rdquo;.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>HEXAXIM will be given to your child by a doctor or nurse trained in the use of vaccines and who are equipped to deal with any uncommon severe allergic reaction to the injection (see section 4 Possible side effects).</p><p>HEXAXIM is given as an injection into a muscle (intramuscular route IM) in the upper part of your child&rsquo;s leg or upper arm. The vaccine will never be given into a blood vessel or into or under the skin.</p><p>&nbsp;</p><p>The recommended dose is as follows:</p><p>&nbsp;</p><p><u>First course of vaccination (primary vaccination)</u></p><p>Your child will receive either two injections given at an interval of two months, or three injections given at an interval of one to two months (at least four weeks apart). This vaccine should be used according to the local vaccination programme.</p><p>&nbsp;</p><p><u>Additional injections (booster)</u></p><p>After the first course of injections, your child will receive a booster dose, in accordance with local recommendations, at least 6 months after the last dose of the first course. Your doctor will tell you when this dose should be given.</p><p>&nbsp;</p><p><strong>If your child misses a dose of </strong><strong>HEXAXIM</strong></p><p>If your child misses a scheduled injection, it is important that you discuss with your doctor or nurse who will decide when to give the missed dose.</p><p>It is important to follow the instructions from the doctor or nurse that your child completes the course of injections. If not, your child may not be fully protected against the diseases.</p><p>&nbsp;</p><p>If you have any further questions on the use of this vaccine, ask your doctor, pharmacist, or nurse.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this vaccine can cause side effects, although not everybody gets them.</p><p>&nbsp;</p><p><strong>Serious allergic reactions (anaphylactic reaction)</strong></p><p>If any of these symptoms occur after leaving the place where your child received his/her injection, you must consult a doctor IMMEDIATELY:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; difficulty in breathing</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blueness of the tongue or lips</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a rash</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swelling of the face or throat</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sudden and serious malaise with drop in blood pressure causing dizziness and loss of consciousness, accelerated heart rate associated with respiratory disorders.</p><p>When these signs or symptoms (signs or symptoms of anaphylactic reaction) occur they usually develop quickly after the injection is given and while the child is still in the clinic or doctor&rsquo;s surgery.</p><p>&nbsp;</p><p>Serious allergic reactions are a rare possibility (may affect up to 1 in 1 000 people) after receiving this vaccine.</p><p>&nbsp;</p><p><strong>Other side effects</strong></p><p>If your child experiences any of the following side effects, please tell your doctor, nurse, or pharmacist.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Very common side effects (may affect more than 1 in 10 people) are:</p><p>- loss of appetite (anorexia)</p><p>- crying</p><p>- sleepiness (somnolence)</p><p>- vomiting</p><p>- fever (temperature 38&deg;C or higher)</p><p>- irritability</p><p>- pain, redness, or swelling at the injection site</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Common side effects (may affect up to 1 in 10 people) are:</p><p>- abnormal crying (prolonged crying)</p><p>- diarrhoea</p><p>- injection site hardness (induration)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Uncommon side effects (may affect up to 1 in 100 people) are:</p><p>- allergic reaction</p><p>- high fever (temperature 39.6&deg;C or higher)</p><p>- lump (nodule) at the injection site</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rare side effects (may affect up to 1 in 1 000 people) are:</p><p>- rash</p><p>- large reactions at the injection site (larger than 5 cm), including extensive limb swelling from the injection site beyond one or both joints. These reactions start within 24-72 hours after vaccination, may be associated with redness, warmth, tenderness, or pain at the injection site, and get better within 3-5 days without the need for treatment.</p><p>- fits (convulsions) with or without fever</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Very rare side effects (may affect up to 1 in 10 000 people) are:</p><p>- episodes when your child goes into a shock-like state or is pale, floppy and unresponsive for a period of time (hypotonic reactions or hypotonic hyporesponsive episodes HHE).</p><p>&nbsp;</p><p><strong>Potential side effects</strong></p><p>&nbsp;</p><p>Other side effects not listed above have been reported occasionally with other diphtheria, tetanus, pertussis, poliomyelitis, hepatitis B, or Hib-containing vaccines and not directly with HEXAXIM:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Temporary inflammation of nerves causing pain, paralysis and sensitivity disorders (Guillain-Barr&eacute; syndrome), and severe pain and decreased mobility of arm and shoulder (brachial neuritis) have been reported after administration of a tetanus containing vaccine.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation of several nerves causing sensory disorders or weakness of limbs (polyradiculoneuritis), facial paralysis, visual disturbances, sudden dimming or loss of vision (optic neuritis), inflammatory disease of brain and spinal cord (central nervous system demyelination, multiple sclerosis) have been reported after administration of a hepatitis B antigen containing vaccine.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Swelling or inflammation of the brain (encephalopathy/encephalitis).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In babies born very prematurely (at or before 28 weeks of gestation) longer gaps than normal between breaths may occur for 2 - 3 days after vaccination.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Swelling of one or both feet and lower limbs which may occur along with bluish discoloration of the skin (cyanosis), redness, small areas of bleeding under the skin (transient purpura), and severe crying following vaccination with <em>Haemophilus influenzae</em> type b containing vaccines. If this reaction occurs, it is mainly after first injections and within the first few hours following vaccination. All symptoms should disappear completely within 24 hours without need for treatment.</p><p>&nbsp;</p><p><strong>Reporting of side effects</strong><!--[if supportFields]><b style='mso-bidi-font-weight:
+normal'><span lang=EN-GB style='mso-no-proof:yes'><span style='mso-element:
+field-begin'></span> DOCVARIABLE vault_nd_c1dbd020-2af1-45c5-86ab-892262b97e66
+\* MERGEFORMAT <span style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-no-proof:yes'><span
+style='mso-element:field-end'></span></span></b><![endif]--></p><p>If your child gets any side effects, talk to your doctor, pharmacist, or nurse. This includes any possible side effects not listed in this leaflet. By reporting side effects you can help provide more information on the safety of this medicine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Keep this vaccine out of the sight and reach of children.</p><p>Do not use this vaccine after the expiry date which is stated on the carton and the label after EXP. The expiry date refers to the last day of that month.</p><p>Store in a refrigerator (2&deg;C &ndash; 8&deg;C).</p><p>Do not freeze.</p><p>Keep the vaccine in the outer carton in order to protect it from the light.</p><p>&nbsp;</p><p>Do not throw away any medicines via wastewater or household waste. Ask your pharmacist how to throw away medicines you no longer use. These measures will help to protect the environment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>What </strong><strong>HEXAXIM contains</strong></p><p><strong>&nbsp;</strong></p><p>The active substances are per dose (0.5 mL)<sup>1</sup>:</p><p>Diphtheria Toxoid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not less than 20&nbsp;IU<sup>2,4 </sup>(30 Lf)</p><p>Tetanus Toxoid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not less than 40&nbsp;IU<sup>3,4 </sup>(10 Lf)</p><p><em>Bordetella</em> <em>pertussis</em> antigens</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pertussis Toxoid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25&nbsp;micrograms</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filamentous Haemagglutinin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25&nbsp;micrograms</p><p>Poliovirus (Inactivated)<sup>5</sup></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;1 (Mahoney)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29&nbsp;D-antigen&nbsp;units<sup>6</sup></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;2 (MEF-1)<sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </sup>7&nbsp;D-antigen&nbsp;units<sup>6</sup></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;3 (Saukett)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26&nbsp;D-antigen units<sup>6</sup></p><p>Hepatitis B surface antigen<sup>7</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;micrograms</p><p><em>Haemophilus influenzae</em> type b polysaccharide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12&nbsp;micrograms</p><p>(Polyribosylribitol Phosphate)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>conjugated to Tetanus protein&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22-36&nbsp;micrograms</p><p>&nbsp;</p><p><sup>1</sup> Adsorbed on aluminium hydroxide, hydrated (0.6&nbsp;mg Al<sup>3+</sup>)</p><p><sup>2</sup> As lower confidence limit (p= 0.95) and not less than 30 IU as mean value</p><p><sup>3</sup> As lower confidence limit (p= 0.95)</p><p><sup>4</sup> Or equivalent activity determined by an immunogenicity evaluation</p><p><sup>5</sup> Cultivated on Vero cells</p><p><sup>6</sup> These antigen quantities are strictly the same as those previously expressed as 40-8-32 D-antigen units, for virus type 1, 2 and 3 respectively, when measured by another suitable immunochemical method</p><p><sup>7</sup> Produced in yeast <em>Hansenula polymorpha</em> cells by recombinant DNA technology</p><p>The other ingredients are:</p><p>Disodium hydrogen phosphate, potassium dihydrogen phosphate, trometamol, sucrose, essential amino acids including L-phenylalanine, sodium hydroxide and/or acetic acid and/or hydrochloric acid (for pH adjustment), and water for injections.</p><p>&nbsp;</p><p>The vaccine may contain traces of glutaraldehyde, formaldehyde, neomycin, streptomycin, and polymyxin B.</p><p>&nbsp;</p><p><strong>What </strong><strong>HEXAXIM looks like and contents of the pack</strong></p><p>HEXAXIM is provided as a suspension for injection in vial (0.5 mL).</p><p>HEXAXIM is available in pack containing 10 vials.</p><p>&nbsp;</p><p>After shaking, the normal appearance of the vaccine is a whitish cloudy suspension.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                
+HEXAXIM is provided as a suspension for injection in vial (0.5 mL).
+HEXAXIM is available in pack containing 10 vials.
+After shaking, the normal appearance of the vaccine is a whitish cloudy suspension.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong><u>Marketing Authorisation Holder: </u></strong></p><p>Sanofi Pasteur, 14 Espace Henry Vall&eacute;e, 69007 Lyon, France</p><p>&nbsp;</p><p><strong><u>Manufacturer: </u></strong></p><p>Sanofi Pasteur, 1541 avenue Marcel M&eacute;rieux, 69280 Marcy l&#39;Etoile, France</p><p>Sanofi Pasteur, Parc Industriel d&#39;Incarville, 27100 Val de Reuil, France</p><p>&nbsp;</p><p><strong><u>Secondary Packaging: </u></strong></p><p>Arab Company for Pharmaceutical Products (ARABIO)</p><p>Plot # 6, Makkah Industrial Zone, Al Umrah District,</p><p>Makkah, Kingdome of Saudi Arabia</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                14-11-2024
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">هيكساكسيم (DTaP-IPV-HB-Hib) هو لقاح يُستخدم للحماية من الأمراض المعدية.</p><p dir="RTL">يساعد هيكساكسيم على الحماية من الإصابة بالأمراض التالية: الدفتيريا &quot;الخناق&quot; والكزاز والسعال الديكي &quot;الشاهوق&quot; والتهاب الكبد ب وشلل الأطفال والأمراض الخطيرة التي تسببها المستديمة النزليّة من النمط ب. يُعطى هيكساكسيم للأطفال من عمر ستة أسابيع.</p><p dir="RTL">يعمل اللقاح عن طريق تحفيز الجسم على إنتاج الحماية الخاصة به (الأجسام المضادة) ضد البكتيريا والفيروسات التي تسبب الأمراض المختلفة التالية:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; الدفتيريا &quot;الخناق&quot; مرض معدٍ يصيب عادة الحلق أوّلاً. تسبّب العدوى الألم والتورّم في الحلق مما قد يؤدّي إلى الاختناق. كما تفرز البكتيريا المسببة للمرض سمًّا يمكن أن يُلحق الضرر بالقلب والكلى والأعصاب.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; الكزاز (غالبًا ما يُسمّى كزاز الفك) يحدث عادة بسبب دخول بكتيريا الكزاز عبر جرح عميق. تفرز البكتيريا سمًّا يسبّب التشنّجات في العضلات، مما يؤدّي إلى عدم القدرة على التنفّس واحتماليّة الاختناق.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; الشاهوق (يُطلق عليه غالبًا السعال الديكي) هو مرض شديد العدوى يُصيب الجهاز التنفسي. يسبّب سعالاً شديدًا قد يؤدي إلى مشاكل في التنفّس. غالبًا ما يكون للسعال صوت يشبه &quot;صوت الديك&quot;. قد يستمرّ السعال لمدّة شهر إلى شهرين أو أكثر. يمكن أن يسبب السعال الديكي أيضًا التهابات الأذن والتهابات الصدر (التهاب الشعب الهوائيّة) التي قد تستمرّ لفترة طويلة، والتهابات الرئة (الالتهاب الرئوي)، وتشنّجات وتلف في الدماغ وحتّى الوفاة.&nbsp;&nbsp;</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; التهاب الكبد الوبائي (ب) ناجم عن فيروس التهاب الكبد (ب) وهو يؤدّي إلى تورّم الكبد (التهاب). يمكن أن يبقى الفيروس في الجسم لفترة طويلة عند بعض الأشخاص، ويمكن أن يؤدّي في النهاية إلى مشاكل خطيرة في الكبد، بما في ذلك سرطان الكبد.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; التهاب سنجابية النخاع (غالبًا ما يُطلق عليه شلل الأطفال فقط) يحدث بسبب فيروسات تصيب الأعصاب. يمكن أن تؤدّي الإصابة إلى الشلل أو ضعف العضلات الذي يكون أكثر شيوعًا في الساقين. كما يمكن أن يكون شلل العضلات التي تتحكّم في التنفّس والبلع قاتلاً.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; عدوى المستديمة النزليّة من النوع (ب) (التي تُسمّى غالبًا Hib) هي عدوى بكتيريّة خطيرة يمكن أن تسبّب التهاب السحايا (التهاب الغطاء الخارجي للدماغ)، مما قد يؤدي إلى تلف الدماغ أو الصمم أو الصرع أو العمى الجزئي. يمكن أن تسبّب العدوى أيضًا التهاب الحلق وتورّمه، مما يؤدي إلى صعوبات في البلع والتنفّس. ويمكن أن تؤثّر العدوى على أجزاء أخرى من الجسم مثل الدم والرئتين والجلد والعظام والمفاصل.&nbsp;</p><p dir="RTL"><strong>معلومات مهمّة حول الحماية التي يوفّرها اللقاح</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; سوف يساعد هيكساكسيم على منع هذه الأمراض فقط إذا كانت ناجمة عن البكتيريا أو الفيروسات المستهدفة باللقاح. قد يُصاب طفلك بأعراض مشابهة إذا كانت ناجمة عن بكتيريا أو فيروسات أخرى.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; لا يحتوي اللقاح على أيّ بكتيريا أو فيروسات حيّة ولا يمكن أن يسبّب أيًا من الأمراض المعدية التي أُعدّ للحماية منها.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; لا يحمي هذا اللقاح من الالتهابات التي تسببها أنواع أخرى من المستديمة النزليّة أو ضد التهاب السحايا الذي تسبّبه كائنات حيّة دقيقة أخرى.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; لن يحمي هيكساكسيم من عدوى التهاب الكبد الناتج عن عوامل أخرى مثل التهاب الكبد A والتهاب الكبد C والتهاب الكبد E.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; نظرًا لأنّ أعراض التهاب الكبد ب B تستغرق وقتًا طويلاً لتتطوّر، فمن الممكن أن تكون عدوى التهاب الكبد ب B غير الظاهرة موجودة وقت التطعيم. قد لا يمنع اللقاح عدوى التهاب الكبد ب في مثل هذه الحالات.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; كما هو الحال مع أيّ لقاح، لا يمنح هيكساكسيم الحماية 100% للأطفال الذين يتلقون اللقاح. &nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><em>للتأكّد من أنّ </em>هيكساكسيم مناسب لطفلك، من المهمّ التحدّث مع طبيبك أو ممرّضتك إذا كانت أيّ من النقاط أدناه تنطبق على طفلك. إذا استعصى عليك فهم أيّ شيء، فاطلب من طبيبك أو الصيدلي أو الممرّض(ة) توضيحه لك.</p><p dir="RTL"><strong>لا تستخدمِ هيكساكسيم إذا كان طفلك:</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; لديه اضطراب في الجهاز التنفّسي أو تورّم في الوجه (ردّ فعل تأقي) بعد تلقّي هيكساكسيم.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; لديه ردّ فعل تحسسي:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تجاه المواد الفعالة،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تجاه أيّ من المواد غير الفعالة المدرجة في الفقرة رقم 6،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تجاه الغلوتارالدهيد أو الفورمالديهايد أو النيومايسين أو الستربتومايسين أو البوليميكسين ب، لأنّه يتمّ استخدام هذه المواد أثناء عملية التصنيع،</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بعد تلقي لقاح هيكساكسيم في السابق أو أي لقاحات أخرى تحتوي على الدفتيريا أو الكزاز أو السعال الديكي أو شلل الأطفال أو التهاب الكبد ب أو Hib.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; قد عانى من رد فعل شديد يؤثر على الدماغ (اعتلال الدماغ) في غضون 7 أيام من جرعة سابقة من لقاح السعال الديكي (السعال الديكي اللاخلوي أو الخلوي الكامل).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; يعاني من حالة غير منضبطة أو مرض شديد يؤثر على الدماغ والجهاز العصبي (اضطراب عصبي غير منضبط) أو الصرع غير المنضبط.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>التحذيرات والاحتياطات</strong></p><p dir="RTL">تحدّث إلى طبيبك أو الصيدلي أو الممرّض(ة) قبل التطعيم إذا كان طفلك:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; يعاني من حمى معتدلة أو مرتفعة أو مرض حاد (مثل الحمى أو التهاب الحلق أو السعال أو الزكام أو الأنفلونزا). قد يلزم تأخير التطعيم بهيكساكسيم حتى يتحسّن طفلك.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; تعرّض لأيّ من الأحداث التالية بعد تلقّي لقاح السعال الديكي، وذلك لأنّ قرار إعطاء جرعات إضافيّة من لقاح السعال الديكي سيحتاج حينها إلى دراسة متأنيّة:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حمى تصل إلى 40 درجة مئوية أو أعلى في غضون 48 ساعة من التطعيم بدون سبب آخر واضح.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الانهيار أو حالة شبيهة بالصدمة مع حالة ارتخاء وانخفاض رد الفعل (انخفاض في الطاقة) في غضون 48 ساعة من التطعيم.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بكاء مستمر لا يستجيب للتهدئة لمدة 3 ساعات أو أكثر، يحدث في غضون 48 ساعة من التطعيم.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نوبات (تشنّجات) مع أو بدون حمى، تحدث في غضون 3 أيام من التطعيم.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; عانى من متلازمة غيلان باريه (التهاب مؤقت في الأعصاب يسبب الألم والشلل واضطرابات حسيّة) أو التهاب الأعصاب العضديّة (ألم شديد وتناقص حركة الذراع والكتف) بعد تلقي لقاح يحتوي على تكسُيد الكزاز (شكل غيرنشط من ذيفان الكزاز). في هذه الحالة، يجب على طبيبك تقييم قرار إعطاء أي لقاح آخر يحتوي على ذوفان الكزاز.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; يخضع لعلاج مثبّط للمناعة (الدفاعات الطبيعيّة للجسم) أو يعاني من أي مرض يسبب ضعف الجهاز المناعي. في هذه الحالات قد تنخفض الاستجابة المناعيّة للقاح. يوصى عادة بالانتظار حتى نهاية العلاج أو المرض قبل التطعيم. ومع ذلك، يمكن إعطاء هيكساكسيم للأطفال الذين يعانون من مشاكل طويلة الأمد في جهاز المناعة مثل عدوى فيروس نقص المناعة البشرية (الإيدز)، ولكن قد لا يحظون بحماية جيدة كما هو الحال لدى الأطفال الذين يتمتعون بنظام مناعة طبيعي.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; يعاني من مرض حاد أو مزمن بما في ذلك القصور أو الفشل الكلوي المزمن (عجز الكلى عن العمل بشكل صحيح).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; يعاني من أي مرض غير مشخّص في الدماغ أو الصرع غير المنضبط. سيقوم الطبيب بتقييم الفوائد المحتملة التي يوفّرها التطعيم.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp; يعاني من أيّ مشاكل في الدم تسبب سهولة حدوث الكدمات أو النزيف الذي يستمرّ لفترة طويلة بعد جروح طفيفة. سوف ينصحك طبيبك إذا كان يمكن إعطاء هيكساكسيم لطفلك.</p><p dir="RTL">يمكن أن يحدث إغماء بعد، أو حتى قبل، أيّ حقن إبرة. لذلك، أخبر الطبيب أو الممرّض(ة) أنّ طفلك أغميَ عليه مع حقنة سابقة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>أدوية أو لقاحات أخرى و</strong><strong>هيكساكسيم</strong></p><p dir="RTL">أخبر طبيبك أو ممرضك عما إذا كان طفلك يتناول أو تناول مؤخرًا أو قد يتناول أي أدوية أو لقاحات أخرى.</p><p dir="RTL">يمكن إعطاء هيكساكسيم في الوقت ذاته مع لقاحات أخرى مثل لقاحات المكورات الرئوية أو اللقاح الثلاثي &quot;الحصبة &ndash; النكاف-&nbsp; الحصبة الألمانيّة&quot; أو لقاحات الحماق أو لقاحات فيروس الروتا أو لقاحات المكورات السحائية.</p><p dir="RTL">عندما يتم إعطاء هيكساكسيم في الوقت نفسه مع لقاحات أخرى، سوف يُعطى في مواقع حقن مختلفة.</p><p dir="RTL"><strong>يحتوي </strong><strong>هيكساكسيم</strong><strong> على الفينيل ألانين والبوتاسيوم والصوديوم</strong></p><p dir="RTL">يحتوي هيكساكسيم على 85 ميكروغرام من الفينيل ألانين في كل جرعة من 0.5 مل. قد يكون الفينيل ألانين ضارًا إذا كنت تعاني من بيلة الفينيل كيتون، وهو اضطراب وراثي نادر يتراكم فيه الفينيل ألانين لأنّ الجسم لا يستطيع إزالته بشكل صحيح.</p><p dir="RTL">يحتوي هيكساكسيم على أقلّ من 1 مليمول من البوتاسيوم (39 ملغ) وأقل من 1 مليمول من الصوديوم (23 ملغ) لكلّ جرعة، وهذا يعني بشكل أساسي أنّه &quot;خالٍ من البوتاسيوم&quot; و&quot;خالٍ من الصوديوم&quot;.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">سيتم إعطاء هيكساكسيم لطفلك من قبل طبيب أو ممرض(ة) مدرّب(ة) على استخدام اللقاحات ولديهما استعداد للتعامل مع أي رد فعل تحسسي شديد غير شائع ينجم عن الحقن (انظر الفقرة 4 - الأعراض الجانبيّة المحتملة).</p><p dir="RTL">يتم إعطاء هيكساكسيم عن طريق الحقن في العضلات في الجزء العلوي من ساق طفلك أو الجزء العلوي من ذراعه. لن يتم إعطاء اللقاح في وعاء دموي أو داخل الجلد أو تحته.</p><p dir="RTL">الجرعة الموصى بها هي كما يلي:</p><p dir="RTL"><u>الدورة الأولى للتطعيم (التطعيم الأولي)</u></p><p dir="RTL">سوف يتلقى طفلك إما حقنتين بينهما فاصل زمني مدّته شهران أو ثلاث حقن بين كلّ حقنة وأخرى فاصل زمني يتراوح من شهر إلى شهرين (أربعة أسابيع على الأقل). يجب استخدام هذا اللقاح وفقًا لبرنامج التطعيم المحلي.</p><p dir="RTL"><u>حقن إضافيّة (معززة)</u></p><p dir="RTL">سيتلقى طفلك جرعة معززة بعد دورة التطعيم الأولى، وفقًا للتوصيات المحلية، بعد 6 أشهرعلى الأقل من آخر جرعة في الدورة الأولى. سيخبرك طبيبك بموعد إعطاء هذه الجرعة.</p><p dir="RTL"><strong>إذا فوّت طفلك جرعة من هيكساكسيم</strong></p><p dir="RTL">إذا فات طفلك تلقّي حقنة مقررة، فمن المهم أن تناقش مع طبيبك أو ممرضك الذي سيقرر وقت إعطاء الجرعة الفائتة.</p><p dir="RTL">من المهم اتباع إرشادات الطبيب أو الممرض(ة) بشأن متابعة الحقن المقررة لطفلك. إذا لم تلتزم بذلك، فقد لا يتمتع طفلك بالحماية الكاملة من الأمراض.</p><p dir="RTL">إذا كان لديك أي أسئلة أخرى حول استخدام هذا اللقاح، اسأل طبيبك أو الصيدلي أو الممرض(ة).</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">كما هو الحال مع سائر الأدوية، يمكن أن يسبب هذا اللقاح أعراضًا جانبية، مع أنّها لا تحدث لدى جميع من يستخدمه.</p><p dir="RTL"><strong>تفاعلات حساسية خطيرة (رد الفعل التأقي)</strong></p><p dir="RTL">في حالة حدوث أي من الأعراض التالية بعد مغادرة المكان الذي تلقى فيه طفلك اللقاح، يجب عليك استشارة الطبيب فورًا:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة في التنفّس</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ازرقاق اللسان أو الشفتين</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورّم في الوجه أو الحلق</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الشعور بتوعّك مفاجئ وخطير مع انخفاض في ضغط الدم بسبب الدوخة وفقدان الوعي، وتسارع معدّل ضربات القلب المرتبط باضطرابات الجهاز التنفّسي.</p><p dir="RTL">عندما تحدث هذه العلامات أو الأعراض (علامات أو أعراض رد الفعل التحسسي) فإنها عادة ما تتطور بسرعة بعد إعطاء الحقن بينما لا يزال الطفل في عيادة الطبيب.</p><p dir="RTL">الحساسية الخطيرة هي احتمال نادر (قد تؤثر على ما يصل إلى 1 من كل 1000 شخص) بعد تلقي هذا اللقاح.</p><p dir="RTL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>أعراض جانبيّة أخرى</strong></p><p dir="RTL">إذا تعرّض طفلك لأيّ من الأعراض الجانبية التالية، يرجى إخبار الطبيب أو الممرض(ة) أو الصيدلي.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأعراض الجانبية الشائعة جدًا (قد تؤثر على أكثر من 1 من كل 10 أشخاص) هي:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فقدان الشهية</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بكاء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نعاس</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قيء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حمى (درجة حرارة 38 درجة مئوية أو أعلى)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; هيجان</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم أو احمرار أو تورّم في موقع الحقن</p><p dir="RTL">&nbsp;</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأعراض الجانبية الشائعة (قد تؤثر على ما يصل إلى 1 من كل 10 أشخاص) هي:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بكاء غير طبيعي (بكاء مُطوّل)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إسهال</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تيبّس موقع الحقن (تصلّب)</p><p dir="RTL">&nbsp;</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأعراض الجانبية غير الشائعة (قد تؤثر على ما يصل إلى 1 من كل 100 أشخاص) هي:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; رد فعل تحسسي</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتفاع في درجة الحرارة (درجة الحرارة تصل إلى 39.6 درجة مئوية أو أعلى)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ظهور كتلة (عُقيدة) في موقع الحقن</p><p dir="RTL">&nbsp;</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأعراض الجانبية النادرة (قد تؤثر على ما يصل إلى 1 من كل 1000 أشخاص) هي:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ردود فعل واسعة في موقع الحقن (تتجاوز 5 سم)، بما في ذلك تورم واسع النطاق للطرف الذي تمّ الحقن فيه يتجاوز واحد أو كلا المفصلين. تبدأ ردود الفعل هذه في غضون 24-72 ساعة بعد التطعيم، وقد تترافق مع احمرار أو دفء أو إيلام أو ألم في موقع الحقن، وتتحسن في غضون 3-5 أيام دون الحاجة إلى العلاج.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نوبات (تشنّجات) مع أو بدون حمى.</p><p dir="RTL">&nbsp;</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأعراض الجانبية النادرة جدًا (قد تؤثر على ما يصل إلى 1 من كل 10000 أشخاص) هي:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فترات يدخل طفلك فيها في حالة تشبه الصدمة أو يصبح شاحبًا ومرتخيًا ولا يستجيب لفترة من الزمن (ردود فعل منخفضة التوتّر أو نوبات ارتخاء وانخفاض ردّ الفعل HHE).</p><p dir="RTL"><strong>الأعراض الجانبيّة المحتملة</strong></p><p dir="RTL">تمّ الإبلاغ عن أعراض جانبية أخرى غير مذكورة أعلاه من حين لآخر مع لقاحات الدفتيريا، والكزاز، والسعال الديكي، وشلل الأطفال، والتهاب الكبد ب الأخرى، أو لقاحات محتوية على Hib وليس مع هيكساكسيم مباشرة:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تم الإبلاغ عن التهاب مؤقت في الأعصاب يسبب الألم والشلل واضطرابات حسيّة (متلازمة غيلان باريه) وألم شديد وتدني القدرة في حركة الذراع والكتف (التهاب الأعصاب العضدية) بعد تناول لقاح يحتوي على الكزاز.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تمّ الإبلاغ عن حدوث التهاب الكثير من الأعصاب التي تسبب الاضطرابات الحسيّة أو ضعف الأطراف (التهاب الأعصاب والجذور)، وشلل الوجه، الاضطرابات البصريّة، غباش العين المفاجئ أو فقدان الرؤية (التهاب العصب البصري)، مرض التهاب الدماغ والحبل الشوكي (فقدان الميالين بالجهاز العصبي المركزي، التصلب المتعدد) بعد إعطاء لقاح يحتوي على مستضد التهاب الكبد ب.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورّم أو التهاب الدماغ (اعتلال الدماغ/التهاب الدماغ).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد تحدث فجوات أطول من المعتاد بين الأنفاس لدى الأطفال المولودين قبل الأوان &quot;الخدّج&quot; (عند أو قبل 28 أسبوعًا من الحمل) لمدة يومين إلى ثلاثة أيام بعد التطعيم.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد يحدث تورّم في إحدى القدمين أو كلتيهما والأطراف السفلية مع احتمال تغيّر لون الجلد إلى الأزرق (زرقة)، واحمرار، ونزيف تحت الجلد في مناطق صغيرة (فرفرية عابرة)، والبكاء الشديد بعد التطعيم بلقاحات المستدمية النزلية من النوع ب. إذا حدث رد الفعل هذا، فإنّه يحدث بشكل أساسي بعد الحقن الأولي وخلال الساعات القليلة الأولى بعد التطعيم. يجب أن تختفي جميع الأعراض تمامًا خلال 24 ساعة دون الحاجة إلى علاج.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>التبليغ عن الأعراض الجانبيّة</strong></p><p dir="RTL">إذا أصيب طفلك بأيّ أعراض جانبيّة، تحدّث إلى طبيبك أو الصيدلي أو الممرّض (ة). يتضمّن ذلك أي أعراض جانبيّة محتملة غير مذكورة في هذه النشرة. من خلال الإبلاغ عن الأعراض الجانبيّة، يمكنك المساعدة في توفير مزيد من المعلومات حول سلامة هذا الدواء.</p><p dir="RTL"><strong>للإبلاغ عن أيّ عارض (أعراض) جانبيّ (ة):</strong><strong> </strong></p><p dir="RTL"><strong>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>المملكة العربية السعودية:</strong></p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المركز الوطني للتّيقُّظ &nbsp;والسلامة الدوائية:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مركز اتصال الهيئة العامة للغذاء والدواء: 19999</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; البريد الإلكتروني: npc.drug@sfda.gov.sa</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الموقع الإلكتروني: https://ade.sfda.gov.sa/</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سانوفي للتّيقُّظ والسلامة الدوائية:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +966-54-428-4797</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KSA_Pharmacovigilance@sanofi.com &nbsp;</p></td></tr></tbody></table>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">إحفظ هذا اللقاح بعيدًا عن نظر الأطفال ومتناولهم.</p><p dir="RTL">لا تستعمل هذا اللقاح بعد تاريخ انتهاء الصلاحية المدوّن على علبة الكرتون والملصق بعد EXP. يشير تاريخ انتهاء الصلاحية إلى اليوم الأخير من الشهر المذكور.</p><p dir="RTL">يُحفظ في البرّاد (بين درجتين مئويّتين و8 درجات مئويّة).</p><p dir="RTL">لا تجمّده.</p><p dir="RTL">تُحفظ قارورة اللقاح داخل علبة الكرتون الخارجيّة لحمايتها من الضوء.</p><p dir="RTL">لا تتخلّص من أيّ أدوية عن طريق مياه الصرف الصحي أو النفايات المنزليّة. إسأل الصيدلي عن كيفيّة التخلّص من الأدوية التي لم تعد تستعملها. فمن شأن هذه التدابير أن تساعد في حماية البيئة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>محتويات هيكساكسيم</strong></p><p dir="RTL">المواد الفعالة في كلّ جرعة مكوّنة من 0.5 مل <sup>1:</sup></p><p dir="RTL">توكسُيد الدفتيريا&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا يقلّ عن 20 وحدة دوليّة<sup>2,4</sup><strong> </strong>(30 Lf)</p><p dir="RTL">توكسُيد<strong> </strong>&nbsp;التيتانوس &quot;الكزاز&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا يقلّ عن 40 وحدة دوليّة <sup>3,4</sup> (10 Lf)</p><p dir="RTL">مستضدّات البورديتيلا الشاهوقيّة</p><p dir="RTL">ذوفان الشاهوق&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25 ميكروجرام</p><p dir="RTL">الراص الدموي الخيطي&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25 ميكروجرام</p><p dir="RTL">فيروس شلل الأطفال (المُعطل)<sup>5</sup></p><p dir="RTL">النوع 1 (ماهوني)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29 دي وحدات مستضد<sup>6</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p dir="RTL">النوع 2 (إم إي إف-1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 دي وحدات مستضد<sup>6</sup></p><p dir="RTL">النوع 3 (سوكيت)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26 دي وحدات مستضد<sup>6</sup></p><p dir="RTL">مستضد السطح لفيروس التهاب الكبد الوبائي ب<sup>7</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 ميكروجرام</p><p dir="RTL">المستديمة النزلية نوع ب عديد السكريد&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12 ميكروجرام</p><p dir="RTL">(فوسفات بوليريبوسيلريبوتيل)</p><p dir="RTL">مقترن ببروتين الكزاز&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22-36 ميكروجرام</p><p dir="RTL"><em><sup>1</sup></em><em> ممتزّ على هيدروكسيد الألمنيوم المائي (0.6 ملغ </em><em>Al<sup>3+</sup></em><em>)</em></p><p dir="RTL"><em><sup>2</sup></em><em> </em><em>كحد أدنى للثقة </em><em>(p= 0.95)</em><em> ولا يقل عن 30 وحدة دولية كقيمة متوسطة</em></p><p dir="RTL"><em><sup>3</sup></em><em> كحد أدنى للثقة </em><em>(p= 0.95)</em></p><p dir="RTL"><em><sup>4 </sup></em><em>أو نشاط مكافئ يحدده تقييم الاستمناع</em></p><p dir="RTL"><em><sup>5 </sup></em><em>مزروعة في خلايا فيرو</em></p><p dir="RTL"><em><sup>6</sup></em><em>هذه الكميات المستضدية هي نفسها كالمعبّر عنها سابقًا 40-8-32 دي وحدة مستضد، لفيروس نوع 1، 2&nbsp; و3 تباعًا،عندما تُقاس بواسطة طريقة كيميائية مناعية مناسبة أخرى</em><em> </em></p><p dir="RTL"><em><sup>7 </sup></em><em>أُنتجت في خلايا خميرة هانسينولا بوليمورفا باستخدام تقنيّة الهندسة الوراثيّة</em></p><p dir="RTL">المحتويات الأخرى:</p><p dir="RTL">فوسفات الهيدروجين ثنائي الصوديوم، فوسفات البوتاسيوم ثنائي الهيدروجين، تروميتامول، سكروز، أحماض أمينيّة أساسيّة بما في ذلك إل-فينيل ألانين، هيدروكسيد الصوديوم و/أو حمض الأسيتيك و/أو حمض الهيدروكلوريك (لتعديل الرقم الهيدروجيني)، والماء المخصص للحقن.&nbsp;</p><p dir="RTL">قد يحتوي اللقاح على آثار من الغلوتارالدهيد والفورمالديهايد والنيومايسين والستربتومايسين والبوليمكسين ب.&nbsp;&nbsp;&nbsp;</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>الشكل الصيدلاني لهيكساكسيم ومحتويات العبوة</strong></p><p dir="RTL">يتوفّر هيكساكسيم على شكل معلّق معدّ للحقن في قارورة (0.5 مل).</p><p dir="RTL">هيكساكسيم متاح في عبوة تحتوي على 10 قوارير.</p><p dir="RTL">يظهر اللقاح بعد رجّه على شكل معلّق عكر ضارب إلى البياض.</p><p dir="RTL"><strong>حامل رخصة التسويق</strong></p><p dir="RTL">شركة سانوفي باستير، 14 ايسبيس هينري فالي، 69007 ليون، فرنسا</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>حامل رخصة التسويق</strong></p><p dir="RTL">شركة سانوفي باستير، 14 ايسبيس هينري فالي، 69007 ليون، فرنسا</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong><u>الشركة المصنعة:</u></strong></p><p dir="RTL">شركة سانوفي باستير، ميرسيلتو، فرنسا</p><p dir="RTL">شركة سانوفي باستير، فالدي روي، فرنسا</p><p dir="RTL"><strong><u>مصنع التغليف الثانوي:</u></strong></p><p dir="RTL">الشركة العربية للمستحضرات الدوائية (ARABIO)، مكة المكرمة، المملكة العربية السعودية</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>أ. للإبلاغ عن أيّ عارض (أعراض) جانبيّ (ة):</strong></p><p dir="RTL"><strong>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>المملكة العربية السعودية:</strong></p><p dir="RTL">&nbsp;</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المركز الوطني للتّيقُّظ &nbsp;والسلامة الدوائية:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مركز اتصال الهيئة العامة للغذاء والدواء: 19999</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; البريد الإلكتروني: npc.drug@sfda.gov.sa</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الموقع الإلكتروني: https://ade.sfda.gov.sa/</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سانوفي للتّيقُّظ والسلامة الدوائية:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +966-54-428-4797</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KSA_Pharmacovigilance@sanofi.com &nbsp;</p></td></tr></tbody></table><p>&nbsp;</p><p><span style="text-align:unset">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><strong style="text-align:unset">دول الخليج العربي الأخرى:</strong><span style="text-align:unset">&nbsp; &nbsp;&nbsp;</span></p><p dir="RTL"><strong>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><!--[if gte vml 1]><o:wrapblock><v:shapetype id="_x0000_t202"
+  coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="Text_x0020_Box_x0020_6" o:spid="_x0000_s1026"
+  type="#_x0000_t202" style='position:absolute;left:0;text-align:left;
+  margin-left:-7.35pt;margin-top:16.05pt;width:480.5pt;height:25.7pt;
+  text-indent:0;z-index:-251657216;visibility:visible;mso-wrap-style:square;
+  mso-width-percent:0;mso-height-percent:0;mso-wrap-distance-left:0;
+  mso-wrap-distance-top:0;mso-wrap-distance-right:0;mso-wrap-distance-bottom:0;
+  mso-position-horizontal:absolute;mso-position-horizontal-relative:margin;
+  mso-position-vertical:absolute;mso-position-vertical-relative:text;
+  mso-width-percent:0;mso-height-percent:0;mso-width-relative:page;
+  mso-height-relative:page;v-text-anchor:top' o:gfxdata="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
+YkyTdxxqWgFBp7yenOFw6y+7I5CUpdNy9g45LJigFdtNc8VZ5nKUxikkUigucRhzDifGkhrRykR9
+QFc2g49W5iKjYUGquzTI9lV1YPGTAeKLSTrNIXa6BtIvoST/Z/thmBSevXpYdPlHBMulFxagjAYz
+B0pXZ501LV2BiYZ9/SbeAAAA//8DAFBLAQItABQABgAIAAAAIQC75UiUBQEAAB4CAAATAAAAAAAA
+AAAAAAAAAAAAAABbQ29udGVudF9UeXBlc10ueG1sUEsBAi0AFAAGAAgAAAAhAK0wP/HBAAAAMgEA
+AAsAAAAAAAAAAAAAAAAANgEAAF9yZWxzLy5yZWxzUEsBAi0AFAAGAAgAAAAhAD1PFWROBAAAYg0A
+AB8AAAAAAAAAAAAAAAAAIAIAAGNsaXBib2FyZC9kcmF3aW5ncy9kcmF3aW5nMS54bWxQSwECLQAU
+AAYACAAAACEAnE5eIeIGAAA6HAAAGgAAAAAAAAAAAAAAAACrBgAAY2xpcGJvYXJkL3RoZW1lL3Ro
+ZW1lMS54bWxQSwECLQAUAAYACAAAACEAnGZGQbsAAAAkAQAAKgAAAAAAAAAAAAAAAADFDQAAY2xp
+cGJvYXJkL2RyYXdpbmdzL19yZWxzL2RyYXdpbmcxLnhtbC5yZWxzUEsFBgAAAAAFAAUAZwEAAMgO
+AAAAAA==
+" filled="f" strokeweight=".58pt">
+  <v:textbox inset="0,0,0,0">
+   <![if !mso]>
+   <table cellpadding=0 cellspacing=0 width="100%">
+    <tr>
+     <td><![endif]>
+     <div>
+     <p class=MsoBodyText dir=RTL style='margin-top:.25pt;margin-right:.5in;
+     margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:right;
+     text-indent:-.25in;mso-pagination:none;mso-list:l0 level1 lfo5;text-autospace:
+     none;direction:rtl;unicode-bidi:embed'><![if !supportLists]><span
+     style='font-size:12.0pt;font-family:"Calibri",sans-serif;mso-fareast-font-family:
+     Calibri;color:windowtext;mso-ansi-language:EN-US;mso-ansi-font-style:normal;
+     mso-bidi-font-style:italic'><span style='mso-list:Ignore'>-<span
+     style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     </span></span></span><![endif]><span dir=RTL></span><span lang=AR-SA
+     style='font-size:12.0pt;color:windowtext;font-style:normal;mso-ansi-font-style:
+     italic'>يُرجى الاتصال بالسلطة المختصّة ذات الصلة</span><span lang=EN-GB
+     dir=LTR style='color:windowtext;font-style:normal;mso-bidi-font-style:
+     italic'><o:p></o:p></span></p>
+     <p class=MsoBodyText style='margin-top:.25pt;margin-right:0in;margin-bottom:
+     0in;margin-left:.5in;margin-bottom:.0001pt;text-indent:-.25in;mso-pagination:
+     none;mso-list:l0 level1 lfo5;text-autospace:none'><![if !supportLists]><span
+     style='font-size:12.0pt;font-family:"Calibri",sans-serif;mso-fareast-font-family:
+     Calibri;color:windowtext;mso-ansi-language:EN-US;font-style:normal;
+     mso-bidi-font-style:italic'><span style='mso-list:Ignore'>-<span
+     style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     </span></span></span><![endif]><span dir=LTR></span><span lang=EN-GB
+     style='color:windowtext;font-style:normal;mso-bidi-font-style:italic'><o:p>&nbsp;</o:p></span></p>
+     </div>
+     <![if !mso]></td>
+    </tr>
+   </table>
+   <![endif]></v:textbox>
+  <w:wrap type="topAndBottom" anchorx="margin"/>
+ </v:shape><![endif]-->-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يُرجى الاتصال بالسلطة المختصّة ذات الصلة<!--[if gte vml 1]></o:wrapblock><![endif]--></p><p dir="RTL"><strong>ب. مجلس وزراء الصحة العرب</strong></p><p dir="RTL">مجلس وزراء الصحة العرب</p><p dir="RTL">واتحاد الصيادلة العرب</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">ج. تم تقديم هذه النشرة للمراجعة من قبل الهيئة العامة للغذاء والدواء في المملكة العربيّة السعوديّة</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><strong>إن هذا الدواء</strong></p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الدواء مستحضر يؤثر على صحتك واستهلاكه خلافاً للتعليمات يعرّضك للخطر.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اتبع بدقة وصفة الطبيب، وطريقة الإستعمال المنصوص عليها، وتعليمات الصيدلي الذي صرف الدواء لك.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الطبيب والصيدلي هما الخبيران في الدواء، وفي نفعه وضرره.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تقطع مدة العلاج المحددة لك من تلقاء نفسك.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تكرر صرف الدواء بدون استشارة طبيبك.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تترك الأدوية في متناول الأطفال.</p></td></tr></tbody></table>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            14-11-2024
+
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

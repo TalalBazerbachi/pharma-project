@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        3011200300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2020
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Bosentan OHRE Pharma
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        BOSENTAN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        62.5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        56
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        5504.1
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="PHARMACEUTICAL WORKS POLPHARMA S.A." />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            PHARMACEUTICAL WORKS POLPHARMA S.A.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 461]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            QOMEL MEDICAL DRUG STORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            OHRE Pharma
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        C02KX01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Bosentan OHRE Pharma 62.5 mg Film coated tablets
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each film-coated tablet contains 62.5 mg bosentan (as monohydrate).
+Excipients with known effect:
+Each film-coated tablet also contains 27 mg lactose monohydrate.
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film-coated tablet (tablets):
+Yellow film-coated tablets, round and biconvex, after breakage color of tablet core is white to yellow
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Treatment of pulmonary arterial hypertension (PAH) to improve exercise capacity and symptoms in patients with WHO functional class III. Efficacy has been shown in:<br />&bull; Primary (idiopathic and heritable) pulmonary arterial hypertension<br />&bull; Pulmonary arterial hypertension secondary to scleroderma without significant interstitial pulmonary disease<br />&bull; Pulmonary arterial hypertension associated with congenital systemic-to-pulmonary shunts and Eisenmenger&rsquo;s physiology<br />Some improvements have also been shown in patients with pulmonary arterial hypertension WHO functional class II (see section 5.1).<br />Bosentan is also indicated to reduce the number of new digital ulcers in patients with systemic sclerosis and ongoing digital ulcer disease (see section 5.1).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Method of administration<br />Tablets are to be taken orally morning and evening, with or without food. The film-coated tablets are to be swallowed with water.<br />Posology<br />Pulmonary arterial hypertension<br />Treatment should only be initiated and monitored by a physician experienced in the treatment of pulmonary arterial hypertension.<br />Adults<br />In adult patients, Bosentan treatment should be initiated at a dose of 62.5 mg twice daily for 4 weeks and then increased to the maintenance dose of 125 mg twice daily. The same recommendations apply to re-introduction of Bosentan after treatment interruption (see section 4.4).<br />Paediatric population<br />Paediatric pharmacokinetic data have shown that bosentan plasma concentrations in children with PAH aged from 1 year to 15 years were on average lower than in adult patients and were not increased by increasing the dose of Bosentan above 2 mg/kg body weight or by increasing the dosing frequency from twice daily to three times daily (see section 5.2). Increasing the dose or the dosing frequency will likely not result in additional clinical benefit.<br />Based on these pharmacokinetic results, when used in children with PAH 1 year and older, the recommended starting and maintenance dose is 2 mg/kg morning and evening.<br />In neonates with persistent pulmonary hypertension of the newborn (PPHN), the benefit of bosentan has not been shown in the standard-of-care treatment. No recommendation on a posology can be made (see sections 5.1 and 5.2).<br />Management in case of clinical deterioration of PAH<br />In the case of clinical deterioration (e.g., decrease in 6-minute walk test distance by at least 10% compared with pre-treatment measurement) despite Bosentan treatment for at least 8 weeks (target dose for at least 4 weeks), alternative therapies should be considered. However, some patients who show no response after 8 weeks of treatment with Bosentan may respond favourably after an additional 4 to 8 weeks of treatment.<br />In the case of late clinical deterioration despite treatment with Bosentan (i.e., after several months of treatment), the treatment should be re-assessed. Some patients not responding well to 125 mg twice daily of Bosentan may slightly improve their exercise capacity when the dose is increased to 250 mg twice daily. A careful benefit/risk assessment should be made, taking into consideration that the liver toxicity is dose dependent (see sections 4.4 and 5.1).<br />Discontinuation of treatment<br />There is limited experience with abrupt discontinuation of Bosentan in patients with pulmonary arterial hypertension. No evidence for acute rebound has been observed. However, to avoid the possible occurrence of harmful clinical deterioration due to potential rebound effect, gradual dose reduction (halving the dose for 3 to 7 days) should be considered. Intensified monitoring is recommended during the discontinuation period.<br />If the decision to withdraw Bosentan is taken, it should be done gradually while an alternative therapy is introduced.<br />Systemic sclerosis with ongoing digital ulcer disease<br />Treatment should only be initiated and monitored by a physician experienced in the treatment of systemic sclerosis.<br />Adults<br />Bosentan treatment should be initiated at a dose of 62.5 mg twice daily for 4 weeks and then increased to the maintenance dose of 125 mg twice daily. The same recommendations apply to re-introduction of Bosentan after treatment interruption (see section 4.4).<br />Controlled clinical study experience in this indication is limited to 6 months (see section 5.1).<br />The patient&rsquo;s response to treatment and need for continued therapy should be re-evaluated on a regular basis. A careful benefit/risk assessment should be made, taking into consideration the liver toxicity of bosentan (see sections 4.4 and 4.8).<br />Paediatric population<br />There are no data on the safety and efficacy in patients under the age of 18 years. Pharmacokinetic data are not available for Bosentan in young children with this disease.<br />Special populations<br />Patients with hepatic impairment<br />Bosentan is contraindicated in patients with moderate to severe liver dysfunction (see sections 4.3, 4.4 and 5.2). No dose adjustment is needed in patients with mild hepatic impairment (i.e., Child-Pugh class A) (see section 5.2).<br />Patients with renal impairment<br />No dose adjustment is required in patients with renal impairment. No dose adjustment is required in patients undergoing dialysis (see section 5.2).<br />Elderly population<br />No dose adjustment is required in patients over the age of 65 years.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                • Hypersensitivity to the active substance or to any of the excipients listed in section 6.1
+• Moderate to severe hepatic impairment, i.e., Child-Pugh class B or C (see section 5.2)
+• Baseline values of liver aminotransferases, i.e., aspartate aminotransferases (AST) and/or alanine aminotransferases (ALT), greater than 3 times the upper limit of normal (see section 4.4)
+• Concomitant use of cyclosporine A (see section 4.5)
+• Pregnancy (see sections 4.4 and 4.6)
+• Women of child-bearing potential who are not using reliable methods of contraception (see sections 4.4, 4.5 and 4.6)
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">The efficacy of Bosentan has not been established in patients with severe pulmonary arterial hypertension. Transfer to a therapy that is recommended at the severe stage of the disease (e.g., epoprostenol) should be considered if the clinical condition deteriorates (see section 4.2).<br />The benefit/risk balance of bosentan has not been established in patients with WHO class I functional status of pulmonary arterial hypertension.<br />Bosentan should only be initiated if the systemic systolic blood pressure is higher than 85 mmHg.<br />Bosentan has not been shown to have a beneficial effect on the healing of existing digital ulcers.<br />Liver function<br />Elevations in liver aminotransferases, i.e., aspartate and alanine aminotransferases (AST and/or ALT), associated with bosentan are dose dependent. Liver enzyme changes typically occur within the first 26 weeks of treatment but may also occur late in treatment (see section 4.8). These increases may be partly due to competitive inhibition of the elimination of bile salts from hepatocytes but other mechanisms, which have not been clearly established, are probably also involved in the occurrence of liver dysfunction. The accumulation of bosentan in hepatocytes leading to cytolysis with potentially severe damage of the liver, or an immunological mechanism, are not excluded. Liver dysfunction risk may also be increased when medicinal products that are inhibitors of the bile salt export pump, e.g., rifampicin, glibenclamide and cyclosporine A (see sections 4.3 and 4.5), are co-administered with bosentan, but limited data are available.<br />Liver aminotransferase levels must be measured prior to initiation of treatment and subsequently at monthly intervals for the duration of treatment with Bosentan. In addition, liver aminotransferase levels must be measured 2 weeks after any dose increase.<br />Recommendations in case of ALT/AST elevations<br />ALT/AST levels<br />Treatment and monitoring recommendations<br />&gt; 3 and &le; 5 &times; ULN<br />The result should be confirmed by a second liver test; if confirmed, a decision should be made on an individual basis to continue Bosentan, possibly at a reduced dose, or to stop Bosentan administration (see section 4.2). Monitoring of aminotransferase levels should be continued at least every 2 weeks. If the aminotransferase levels return to pre-treatment values continuing or re-introducing Bosentan according to the conditions described below should be considered.<br />&gt; 5 and &le; 8 &times; ULN<br />The result should be confirmed by a second liver test; if confirmed, treatment should be stopped and aminotransferase levels monitored at least every 2 weeks. If the aminotransferase levels return to pre-treatment values re-introducing Bosentan according to the conditions described below should be considered.<br />&gt; 8 &times; ULN<br />Treatment must be stopped and re-introduction of Bosentan is not to be considered.<br />In the case of associated clinical symptoms of liver injury, i.e., nausea, vomiting, fever, abdominal pain, jaundice, unusual lethargy or fatigue, flu-like syndrome (arthralgia, myalgia, fever), treatment must be stopped and re-introduction of Bosentan is not to be considered.<br />Re-introduction of treatment<br />Re-introduction of treatment with Bosentan should only be considered if the potential benefits of treatment with Bosentan outweigh the potential risks and when liver aminotransferase levels are within pre-treatment values. The advice of a hepatologist is recommended. Re-introduction must follow the guidelines detailed in section 4.2. Aminotransferase levels must then be checked within 3 days after re-introduction, then again after a further 2 weeks, and thereafter according to the recommendations above.<br />ULN = Upper Limit of Normal<br />Haemoglobin concentration<br />Treatment with bosentan has been associated with dose-related decreases in haemoglobin concentration (see section 4.8). In placebo-controlled studies, bosentan-related decreases in haemoglobin concentration were not progressive, and stabilised after the first 4&ndash;12 weeks of treatment. It is recommended that haemoglobin concentrations be checked prior to initiation of treatment, every month during the first 4 months, and quarterly thereafter. If a clinically relevant decrease in haemoglobin concentration occurs, further evaluation and investigation should be undertaken to determine the cause and need for specific treatment. In the post-marketing period, cases of anaemia requiring red blood cell transfusion have been reported (see section 4.8).<br />Women of child-bearing potential<br />As Bosentan may render hormonal contraceptives ineffective, and taking into account the risk that pulmonary hypertension deteriorates with pregnancy as well as the teratogenic effects observed in animals:<br />&bull; Bosentan treatment must not be initiated in women of child-bearing potential unless they practise reliable contraception and the result of the pre-treatment pregnancy test is negative<br />&bull; Hormonal contraceptives cannot be the sole method of contraception during treatment with Bosentan<br />&bull; Monthly pregnancy tests are recommended during treatment to allow early detection of pregnancy<br />For further information see sections 4.5 and 4.6.<br />Pulmonary veno-occlusive disease<br />Cases of pulmonary oedema have been reported with vasodilators (mainly prostacyclins) when used in patients with pulmonary veno-occlusive disease. Consequently, should signs of pulmonary oedema occur when Bosentan is administered in patients with PAH, the possibility of associated veno-occlusive disease should be considered. In the post-marketing period there have been rare reports of pulmonary oedema in patients treated with Bosentan who had a suspected diagnosis of pulmonary veno-occlusive disease.<br />Pulmonary arterial hypertension patients with concomitant left ventricular failure<br />No specific study has been performed in patients with pulmonary hypertension and concomitant left ventricular dysfunction. However, 1,611 patients (804 bosentan- and 807 placebo-treated patients) with severe chronic heart failure (CHF) were treated for a mean duration of 1.5 years in a placebo-controlled study (study AC-052-301/302 [ENABLE 1 &amp; 2]). In this study there was an increased incidence of hospitalisation due to CHF during the first 4&ndash;8 weeks of treatment with bosentan, which could have been the result of fluid retention. In this study, fluid retention was manifested by early weight gain, decreased haemoglobin concentration and increased incidence of leg oedema. At the end of this study, there was no difference in overall hospitalisations for heart failure nor in mortality between bosentan- and placebo-treated patients. Consequently, it is recommended that patients be monitored for signs of fluid retention (e.g., weight gain), especially if they concomitantly suffer from severe systolic dysfunction. Should this occur, starting treatment with diuretics is recommended, or the dose of existing diuretics should be increased. Treatment with diuretics should be considered in patients with evidence of fluid retention before the start of treatment with Bosentan.<br />Pulmonary arterial hypertension associated with HIV infection<br />There is limited clinical study experience with the use of Bosentan in patients with PAH associated with HIV infection, treated with antiretroviral medicinal products (see section 5.1). An interaction study between bosentan and lopinavir+ritonavir in healthy subjects showed increased plasma concentrations of bosentan, with the maximum level during the first 4 days of treatment (see section 4.5). When treatment with Bosentan is initiated in patients who require ritonavir-boosted protease inhibitors, the patient&rsquo;s tolerability of Bosentan should be closely<br />monitored with special attention, at the beginning of the initiation phase, to the risk of hypotension and to liver function tests. An increased long-term risk of hepatic toxicity and haematological adverse events cannot be excluded when bosentan is used in combination with antiretroviral medicinal products. Due to the potential for interactions related to the inducing effect of bosentan on CYP450 (see section 4.5), which could affect the efficacy of antiretroviral therapy, these patients should also be monitored carefully regarding their HIV infection.<br />Pulmonary hypertension secondary to chronic obstructive pulmonary disease (COPD)<br />Safety and tolerability of bosentan was investigated in an exploratory, uncontrolled 12-week study in 11 patients with pulmonary hypertension secondary to severe COPD (stage III of GOLD classification). An increase in minute ventilation and a decrease in oxygen saturation were observed, and the most frequent adverse event was dyspnoea, which resolved with discontinuation of bosentan.<br />Concomitant use with other medicinal products<br />Concomitant use of Bosentan and cyclosporine A is contraindicated (see sections 4.3 and 4.5).<br />Concomitant use of Bosentan with glibenclamide, fluconazole and rifampicin is not recommended. For further details please refer to section 4.5.<br />Concomitant administration of both a CYP3A4 inhibitor and a CYP2C9 inhibitor with Bosentan should be avoided (see section 4.5).<br />Lactose intolerance<br />Bosentan OHRE Pharma contains lactose monohydrate. Patients with rare hereditary problems of galactose intolerance, the Lapp lactase deficiency or glucose -galactose malabsorption should not take this medicinal product.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Bosentan is an inducer of the cytochrome P450 (CYP) isoenzymes CYP2C9 and CYP3A4. In vitro data also suggest an induction of CYP2C19. Consequently, plasma concentrations of substances metabolised by these isoenzymes will be decreased when Bosentan is co-administered. The possibility of altered efficacy of medicinal products metabolised by these isoenzymes should be considered. The dosage of these products may need to be adjusted after initiation, dose change or discontinuation of concomitant Bosentan treatment.<br />Bosentan is metabolised by CYP2C9 and CYP3A4. Inhibition of these isoenzymes may increase the plasma concentration of bosentan (see ketoconazole). The influence of CYP2C9 inhibitors on bosentan concentration has not been studied. The combination should be used with caution.<br />Fluconazole and other inhibitors of both CYP2C9 and CYP3A4: Concomitant administration with fluconazole, which inhibits mainly CYP2C9, but to some extent also CYP3A4, could lead to large increases in plasma concentrations of bosentan. The combination is not recommended. For the same reason, concomitant administration of both a potent CYP3A4 inhibitor (such as ketoconazole, itraconazole or ritonavir) and a CYP2C9 inhibitor (such as voriconazole) with Bosentan is not recommended.<br />Cyclosporine A: co-administration of Bosentan and cyclosporine A (a calcineurin inhibitor) is contraindicated (see section 4.3). When co-administered, initial trough concentrations of bosentan were approximately 30-fold higher than those measured after bosentan alone. At steady state, bosentan plasma concentrations were 3- to 4-fold higher than with bosentan alone. The mechanism of this interaction is most likely inhibition of transport protein-mediated uptake of bosentan into hepatocytes by cyclosporine. The blood concentrations of cyclosporine A (a CYP3A4 substrate) decreased by approximately 50%. This is most likely due to induction of CYP3A4 by bosentan.<br />Tacrolimus, sirolimus: co-administration of tacrolimus or sirolimus and Bosentan has not been studied in man but co-administration of tacrolimus or sirolimus and Bosentan may result in increased plasma concentrations of bosentan in analogy to co-administration with cyclosporine A. Concomitant Bosentan may reduce the plasma concentrations of tacrolimus and sirolimus. Therefore, concomitant use of Bosentan and tacrolimus or sirolimus is<br />not advisable. Patients in need of the combination should be closely monitored for adverse events related to Bosentan and for tacrolimus and sirolimus blood concentrations.<br />Glibenclamide: co-administration of bosentan 125 mg twice daily for 5 days decreased the plasma concentrations of glibenclamide (a CYP3A4 substrate) by 40%, with potential significant decrease of the hypoglycaemic effect. The plasma concentrations of bosentan were also decreased by 29%. In addition, an increased incidence of elevated aminotransferases was observed in patients receiving concomitant therapy. Both glibenclamide and bosentan inhibit the bile salt export pump, which could explain the elevated aminotransferases. This combination should not be used. No drug-drug interaction data are available with the other sulfonylureas.<br />Rifampicin: co-administration in 9 healthy subjects for 7 days of bosentan 125 mg twice daily with rifampicin, a potent inducer of CYP2C9 and CYP3A4, decreased the plasma concentrations of bosentan by 58%, and this decrease could achieve almost 90% in an individual case. As a result, a significantly reduced effect of bosentan is expected when it is co-administered with rifampicin. Concomitant use of rifampicin and Bosentan is not recommended. Data on other CYP3A4 inducers, e.g., carbamazepine, phenobarbital, phenytoin and St. John&rsquo;s wort are lacking, but their concomitant administration is expected to lead to reduced systemic exposure to bosentan. A clinically significant reduction of efficacy cannot be excluded.<br />Lopinavir+ritonavir (and other ritonavir-boosted protease inhibitors): co-administration of bosentan 125 mg twice daily and lopinavir+ritonavir 400+100 mg twice daily for 9.5 days in healthy volunteers resulted in initial trough plasma concentrations of bosentan that were approximately 48-fold higher than those measured after bosentan administered alone. On day 9, plasma concentrations of bosentan were approximately 5-fold higher than with bosentan administered alone. Inhibition by ritonavir of transport protein-mediated uptake into hepatocytes and of CYP3A4, thereby reducing the clearance of bosentan, most likely causes this interaction. When administered concomitantly with lopinavir+ritonavir, or other ritonavir-boosted protease inhibitors, the patient&rsquo;s tolerability of Bosentan should be monitored.<br />After co-administration of bosentan for 9.5 days, the plasma exposures to lopinavir and ritonavir decreased to a clinically non significant extent (by approximately 14% and 17%, respectively). However, full induction by bosentan might not have been reached and a further decrease of protease inhibitors cannot be excluded. Appropriate monitoring of the HIV therapy is recommended. Similar effects would be expected with other ritonavir-boosted protease inhibitors (see section 4.4).<br />Other antiretroviral agents: no specific recommendation can be made with regard to other available antiretroviral agents due to the lack of data. Due to the marked hepatotoxicity of nevirapine, which could add to bosentan liver toxicity, this combination is not recommended.<br />Hormonal contraceptives: co-administration of bosentan 125 mg twice daily for 7 days with a single dose of oral contraceptive containing norethisterone 1 mg + ethinyl estradiol 35 mcg decreased the AUC of norethisterone and ethinyl estradiol by 14% and 31%, respectively. However, decreases in exposure were as much as 56% and 66%, respectively, in individual subjects. Therefore, hormone-based contraceptives alone, regardless of the route of administration (i.e., oral, injectable, transdermal or implantable forms), are not considered as reliable methods of contraception (see sections 4.4 and 4.6).<br />Warfarin: co-administration of bosentan 500 mg twice daily for 6 days decreased the plasma concentrations of both S-warfarin (a CYP2C9 substrate) and R-warfarin (a CYP3A4 substrate) by 29% and 38%, respectively. Clinical experience with concomitant administration of bosentan with warfarin in patients with pulmonary arterial hypertension did not result in clinically relevant changes in International Normalized Ratio (INR) or warfarin dose (baseline versus end of the clinical studies). In addition, the frequency of changes in warfarin dose during the studies due to changes in INR or due to adverse events was similar among bosentan- and placebo-treated patients. No dose adjustment is needed for warfarin and similar oral anticoagulant agents when bosentan is initiated, but intensified monitoring of INR is recommended, especially during bosentan initiation and the up-titration period.<br />Simvastatin: co-administration of bosentan 125 mg twice daily for 5 days decreased the plasma concentrations of simvastatin (a CYP3A4 substrate) and its active &beta;-hydroxy acid metabolite by 34% and 46%, respectively. The plasma concentrations of bosentan were not affected by concomitant simvastatin. Monitoring of cholesterol levels and subsequent dosage adjustment should be considered.<br />Ketoconazole: co-administration for 6 days of bosentan 62.5 mg twice daily with ketoconazole, a potent CYP3A4 inhibitor, increased the plasma concentrations of bosentan approximately 2-fold. No dose adjustment of Bosentan is considered necessary. Although not demonstrated through in vivo studies, similar increases in bosentan plasma concentrations are expected with the other potent CYP3A4 inhibitors (such as itraconazole or ritonavir). However, when combined with a CYP3A4 inhibitor, patients who are poor metabolisers of CYP2C9 are at risk of increases in bosentan plasma concentrations that may be of higher magnitude, thus leading to potential harmful adverse events.<br />Epoprostenol: limited data obtained from a study (AC-052-356 [BREATHE-3]) in which 10 paediatric patients received the combination of bosentan and epoprostenol indicate that after both single- and multiple-dose administration, the Cmax and AUC values of bosentan were similar in patients with or without continuous infusion of epoprostenol (see section 5.1).<br />Sildenafil: co-administration of bosentan 125 mg twice daily (steady state) with sildenafil 80 mg three times a day (at steady state) concomitantly administered during 6 days in healthy volunteers resulted in a 63% decrease in the sildenafil AUC and a 50% increase in the bosentan AUC. Caution is recommended in the case of co-administration.<br />Digoxin: co-administration for 7 days of bosentan 500 mg twice daily with digoxin decreased the AUC, Cmax and Cmin of digoxin by 12%, 9% and 23%, respectively. The mechanism for this interaction may be induction of P-glycoprotein. This interaction is unlikely to be of clinical relevance.<br />Paediatric population<br />Interaction studies have only been performed in adults.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Pregnancy<br />Studies in animals have shown reproductive toxicity (teratogenicity, embryotoxicity, see section 5.3). There are no reliable data on the use of Bosentan in pregnant women. The potential risk for humans is still unknown. Bosentan is contraindicated in pregnancy (see section 4.3).<br />Use in women of child-bearing potential<br />Before the initiation of Bosentan treatment in women of child-bearing potential, the absence of pregnancy should be checked, appropriate advice on reliable methods of contraception provided, and reliable contraception initiated. Patients and prescribers must be aware that due to potential pharmacokinetic interactions, Bosentan may render hormonal contraceptives ineffective (see section 4.5). Therefore, women of child-bearing potential must not use hormonal contraceptives (including oral, injectable, transdermal or implantable forms) as the sole method of contraception but must use an additional or an alternative reliable method of contraception. If there is any doubt about what contraceptive advice should be given to the individual patient, consultation with a gynaecologist is recommended. Because of possible hormonal contraception failure during Bosentan treatment, and also bearing in mind the risk that pulmonary hypertension severely deteriorates with pregnancy, monthly pregnancy tests during treatment with Bosentan are recommended to allow early detection of pregnancy.<br />Breast-feeding<br />It is not known whether bosentan is excreted into human breast milk. Breast-feeding is not recommended during treatment with Bosentan.<br />Fertility<br />Animal studies showed testicular effects (see section 5.3). In a study investigating the effects of bosentan on testicular function in male PAH patients, 8 out of 24 patients showed a decreased sperm concentration from baseline of at least 42% after 3 or 6 months of treatment with bosentan. Based on these findings and preclinical data, it cannot be excluded that bosentan may have a detrimental effect on spermatogenesis in men. In male children, a long-term impact on fertility after treatment with bosentan cannot be excluded.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">No specific studies have been conducted to assess the direct effect of Bosentan on the ability to drive and use machines. However, Bosentan may induce hypotension, with symptoms of dizziness or syncope that could affect the ability to drive or use machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">In 20 placebo-controlled studies, conducted in a variety of therapeutic indications, a total of 2,486 patients were treated with bosentan at daily doses ranging from 100 mg to 2000 mg and 1,838 patients were treated with placebo. The mean treatment duration was 45 weeks. Adverse reactions were defined as events occurring in at least 1% of patients on bosentan and at a frequency at least 0.5% more than on placebo. The most frequent adverse reactions are headache (11.5%), oedema/fluid retention (13.2%), abnormal liver function test (10.9%) and anaemia/haemoglobin decrease (9.9%).<br />Treatment with bosentan has been associated with dose-dependent elevations in liver aminotransferases and decreases in haemoglobin concentration (see section 4.4, Special warnings and precautions for use).<br />Adverse reactions observed in 20 placebo-controlled studies and post-marketing experience with bosentan are ranked according to frequency using the following convention: very common (&ge; 1/10); common (&ge;1/100 to &lt; 1/10); uncommon (&ge; 1/1,000 to &lt; 1/100); rare (&ge; 1/10,000 to &lt; 1/1,000); very rare (&lt; 1/10,000); not known (cannot be estimated from the available data).<br />Within each frequency grouping, adverse reactions are presented in order of decreasing seriousness. No clinically relevant differences in adverse reactions were observed between the overall dataset and the approved indications.<br />System organ class<br />Frequency<br />Adverse reaction<br />Blood and lymphatic system disorders<br />Common<br />Anaemia, haemoglobin decrease, (see section 4.4)<br />Not known<br />Anaemia or haemoglobin decreases requiring red blood cell transfusion1<br />Uncommon<br />Thrombocytopenia1<br />Uncommon<br />Neutropenia, leukopenia1<br />Immune system disorders<br />Common<br />Hypersensitivity reactions (including dermatitis, pruritus and rash)2<br />Rare<br />Anaphylaxis and/or angioedema1<br />Nervous system disorders<br />Very common<br />Headache3,<br />Common<br />Syncope1, 4<br />Cardiac disorders<br />Common<br />Palpitations 1, 4<br />Vascular disorders<br />Common<br />Flushing<br />Common<br />Hypotension1, 4<br />Respiratory, thoracic and mediastinal disorders<br />Common<br />Nasal congestion1<br />Gastrointestinal disorders<br />Common<br />Gastrooesophageal reflux disease<br />Diarrhoea<br />Hepatobiliary disorders<br />Very common<br />Abnormal liver function test , (see section 4.4)<br />Uncommon<br />Aminotransferase elevations associated with hepatitis (including possible exacerbation of underlying hepatitis) and/or jaundice1 (see section 4.4)<br />Rare<br />Liver cirrhosis, liver failure1<br />Skin and subcutaneous disorders<br />Common<br />Erythema<br />General disorders and administration site conditions<br />Very common<br />Oedema, fluid retention5<br />1 Data derived from post-marketing experience, frequencies based on statistical modelling of placebo-controlled<br />clinical trial data.<br />2 Hypersensitivity reactions were reported in 9.9% of patients on bosentan and 9.1% of patients on placebo.<br />3 Headache was reported in 11.5% of patients on bosentan and 9.8% of patients on placebo.<br />4 These types of reactions can also be related to the underlying disease.<br />5Oedema or fluid retention was reported in 13.2% of patients on bosentan and 10.9% of patients on placebo.<br />In the post-marketing period rare cases of unexplained hepatic cirrhosis were reported after prolonged therapy with Tracleer in patients with multiple co-morbidities and therapies with medicinal products. There have also been rare reports of liver failure. These cases reinforce the importance of strict adherence to the monthly schedule for monitoring of liver function for the duration of treatment with Tracleer (see section 4.4).<br />Paediatric population<br />Uncontrolled clinical studies in paediatric patients:<br />The safety profile in the first paediatric uncontrolled study performed with the film-coated tablet (BREATHE-3: n = 19, median age 10 years [range 3&ndash;15 years], open-label bosentan 2 mg/kg twice daily; treatment duration 12 weeks) was similar to that observed in the pivotal trials in adult patients with PAH. In BREATHE-3, the most frequent adverse reactions were flushing (21%), headache, and abnormal liver function test (each 16%).<br />A pooled analysis of uncontrolled paediatric studies conducted in PAH with the bosentan 32 mg dispersible tablet formulation (FUTURE 1/2, FUTURE 3/Extension) included a total of 100 children treated with bosentan 2 mg/kg twice daily (n = 33), 2 mg/kg three times daily (n = 31), or 4 mg/kg twice daily (n = 36). At enrolment, six patients were between 3 months and 1 year old, 15 children were between 1 and less than 2 years old, and 79 were between 2 and 12 years old. The median treatment duration was 71.8 weeks (range 0.4&ndash;258 weeks).<br />The safety profile in this pooled analysis of uncontrolled paediatric studies was similar to that observed in the pivotal trials in adult patients with PAH except for infections, which were more frequently reported than in adults (69.0% vs 41.3%).This difference in infection frequency may in part be due to the longer median treatment exposure in the paediatric set (median 71.8 weeks) compared to the adult set (median 17.4 weeks). The most frequent adverse events were upper respiratory tract infections (25%), pulmonary (arterial) hypertension (20%), nasopharyngitis (17%), pyrexia (15%), vomiting (13%), bronchitis (10%), abdominal pain (10%), and diarrhoea (10%). There was no relevant difference in adverse event frequencies between patients above and below the age of 2 years, however this is based on only 21 children less than 2 years, including 6 patients between 3 months to 1 year of age. Adverse events of liver abnormalities and anaemia/haemoglobin decrease occurred in 9% and 5% of patients, respectively.<br />In a randomised placebo-controlled study, conducted in PPHN patients (FUTURE-4), a total of 13 neonates were treated with the bosentan dispersible tablet formulation at a dose of 2 mg/kg twice daily (8 patients were on placebo). The median bosentan and placebo treatment duration was, respectively, 4.5 days (range 0.5&ndash;10.0 days) and 4.0 days (range 2.5-6.5 days). The most frequent adverse events in the bosentan- and the placebo-treated patients were, respectively, anaemia or haemoglobin decrease (7 and 2 patients), generalised oedema (3 and 0 patients), and vomiting (2 and 0 patients).<br />Laboratory abnormalities<br />Liver test abnormalities<br />In the clinical programme, dose-dependent elevations in liver aminotransferases generally occurred within the first 26 weeks of treatment, usually developed gradually, and were mainly asymptomatic. In the post-marketing period rare cases of liver cirrhosis and liver failure have been reported.<br />The mechanism of this adverse effect is unclear. These elevations in aminotransferases may reverse spontaneously while continuing treatment with the maintenance dose of Tracleer or after dose reduction, but interruption or cessation may be necessary (see section 4.4).<br />In the 20 integrated placebo-controlled studies, elevations in liver aminotransferases &ge; 3 times the upper limit of normal (ULN) were observed in 11.2% of the bosentan-treated patients as compared to 2.4% of the placebo-treated patients. Elevations to &ge; 8 &times; ULN were seen in 3.6% of the bosentan-treated patients and 0.4% of the placebo-treated patients. Elevations in aminotransferases were associated with elevated bilirubin (&ge; 2 &times; ULN) without evidence of biliary obstruction in 0.2% (5 patients) on bosentan and 0.3% (6 patients) on placebo.<br />In the pooled analysis of 100 PAH patients from uncontrolled paediatric studies FUTURE 1/2 and FUTURE 3/Extension, elevations in liver aminotransferases &ge; 3 &times; ULN were observed in 2% of patients.<br />In the FUTURE-4 study including 13 neonates with PPHN treated with bosentan 2 mg/kg twice daily for less than 10 days (range 0.5&ndash;10.0 days) there were no cases of liver aminotransferases &ge; 3 &times; ULN during treatment, but one case of hepatitis occurred 3 days after the end of bosentan treatment.<br />Haemoglobin<br />In the adult placebo-controlled studies, a decrease in haemoglobin concentration to below 10 g/dL from baseline was reported in 8.0% of bosentan-treated patients and 3.9% of placebo-treated patients (see section 4.4).<br />In the pooled analysis of 100 PAH children from uncontrolled paediatric studies FUTURE 1/2 and FUTURE 3/Extension, a decrease in haemoglobin concentration from baseline to below 10 g/dL was reported in 10.0% of patients. There was no decrease to below 8 g/dL.<br />In the FUTURE-4 study, 6 out of 13 bosentan-treated neonates with PPHN experienced a decrease in haemoglobin from within the reference range at baseline to below the lower limit of normal during the treatment.<br />Reporting of suspected adverse reactions<br />Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions via the national reporting system listed in Appendix V.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Bosentan has been administered as a single dose of up to 2400 mg to healthy subjects and up to 2000 mg/day for 2 months in patients with a disease other than pulmonary hypertension. The most common adverse reaction was headache of mild to moderate intensity.<br />Massive overdose may result in pronounced hypotension requiring active cardiovascular support. In the post-marketing period there was one reported overdose of 10,000 mg of Tracleer taken by an adolescent male patient. He had symptoms of nausea, vomiting, hypotension, dizziness, sweating and blurred vision. He recovered completely within 24 hours with blood pressure support. Note: bosentan is not removed through dialysis.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Pharmacotherapeutic group: other antihypertensives, ATC code: C02KX01<br />Mechanism of action<br />Bosentan is a dual endothelin receptor antagonist (ERA) with affinity for both endothelin A and B (ETA and ETB) receptors. Bosentan decreases both pulmonary and systemic vascular resistance resulting in increased cardiac output without increasing heart rate.<br />The neurohormone endothelin-1 (ET-1) is one of the most potent vasoconstrictors known and can also promote fibrosis, cell proliferation, cardiac hypertrophy and remodelling, and is pro-inflammatory. These effects are mediated by endothelin binding to ETA and ETB receptors located in the endothelium and vascular smooth<br />muscle cells. ET-1 concentrations in tissues and plasma are increased in several cardiovascular disorders and connective tissue diseases, including pulmonary arterial hypertension, scleroderma, acute and chronic heart failure, myocardial ischaemia, systemic hypertension and atherosclerosis, suggesting a pathogenic role of ET-1 in these diseases. In pulmonary arterial hypertension and heart failure, in the absence of endothelin receptor antagonism, elevated ET-1 concentrations are strongly correlated with the severity and prognosis of these diseases.<br />Bosentan competes with the binding of ET-1 and other ET peptides to both ETA and ETB receptors, with a slightly higher affinity for ETA receptors (Ki = 4.1&ndash;43 nanomolar) than for ETB receptors (Ki = 38&ndash;730 nanomolar). Bosentan specifically antagonises ET receptors and does not bind to other receptors.<br />Efficacy<br />Animal models<br />In animal models of pulmonary hypertension, chronic oral administration of bosentan reduced pulmonary vascular resistance and reversed pulmonary vascular and right ventricular hypertrophy. In an animal model of pulmonary fibrosis, bosentan reduced collagen deposition in the lungs.<br />Efficacy in adult patients with pulmonary arterial hypertension<br />Two randomised, double-blind, multi-centre, placebo-controlled studies have been conducted in 32 (study AC-052-351) and 213 (study AC-052-352 [BREATHE-1]) adult patients with WHO functional class III&ndash;IV pulmonary arterial hypertension (primary pulmonary hypertension or pulmonary hypertension secondary mainly to scleroderma). After 4 weeks of bosentan 62.5 mg twice daily, the maintenance doses studied in these studies were 125 mg twice daily in AC-052-351, and 125 mg twice daily and 250 mg twice daily in AC-052-352.<br />Bosentan was added to patients&rsquo; current therapy, which could include a combination of anticoagulants, vasodilators (e.g., calcium channel blockers), diuretics, oxygen and digoxin, but not epoprostenol. Control was placebo plus current therapy.<br />The primary endpoint for each study was change in 6-minute walk distance at 12 weeks for the first study and 16 weeks for the second study. In both studies, treatment with bosentan resulted in significant increases in exercise capacity. The placebo-corrected increases in walk distance compared to baseline were 76 metres (p = 0.02; t-test) and 44 metres (p = 0.0002; Mann-Whitney U test) at the primary endpoint of each study, respectively. The differences between the two groups, 125 mg twice daily and 250 mg twice daily, were not statistically significant but there was a trend towards improved exercise capacity in the group treated with 250 mg twice daily.<br />The improvement in walk distance was apparent after 4 weeks of treatment, was clearly evident after 8 weeks of treatment and was maintained for up to 28 weeks of double-blind treatment in a subset of the patient population.<br />In a retrospective responder analysis based on change in walking distance, WHO functional class and dyspnoea of the 95 patients randomised to bosentan 125 mg twice daily in the placebo-controlled studies, it was found that at week 8, 66 patients had improved, 22 were stable and 7 had deteriorated. Of the 22 patients stable at week 8, 6 improved at week 12/16 and 4 deteriorated compared with baseline. Of the 7 patients who deteriorated at week 8, 3 improved at week 12/16 and 4 deteriorated compared with baseline.<br />Invasive haemodynamic parameters were assessed in the first study only. Treatment with bosentan led to a significant increase in cardiac index associated with a significant reduction in pulmonary artery pressure, pulmonary vascular resistance and mean right atrial pressure.<br />A reduction in symptoms of pulmonary arterial hypertension was observed with bosentan treatment. Dyspnoea measurement during walk tests showed an improvement in bosentan-treated patients. In the AC-052-352 study, 92% of the 213 patients were classified at baseline as WHO functional class III and 8% as class IV. Treatment with bosentan led to a WHO functional class improvement in 42.4% of patients (placebo 30.4%). The overall change in WHO functional class during both studies was significantly better among bosentan-treated patients as compared with placebo-treated patients. Treatment with bosentan was associated with a significant reduction in the rate of clinical worsening compared with placebo at 28 weeks (10.7% vs 37.1%, respectively; p = 0.0015).<br />In a randomised, double-blind, multi-centre, placebo-controlled study (AC-052-364 [EARLY]), 185 PAH patients in WHO functional class II (mean baseline 6-minute walk distance of 435 metres) received bosentan 62.5 mg twice daily for 4 weeks followed by 125 mg twice daily (n = 93), or placebo (n = 92) for 6 months. Enrolled patients were PAH-treatment-na&iuml;ve (n = 156) or on a stable dose of sildenafil (n = 29). The co-primary endpoints were percentage change from baseline in pulmonary vascular resistance (PVR) and change from baseline in 6-minute walk distance to Month 6 versus placebo. The table below illustrates the pre-specified protocol analyses.<br />PVR (dyn.sec/cm5)<br />6-Minute Walk Distance (m)<br />Placebo (n=88)<br />Bosentan (n=80)<br />Placebo (n=91)<br />Bosentan (n=86)<br />Baseline (BL); mean (SD)<br />802 (365)<br />851 (535)<br />431 (92)<br />443 (83)<br />Change from BL; mean (SD)<br />128 (465)<br />&minus;69 (475)<br />&minus;8 (79)<br />11 (74)<br />Treatment effect<br />&minus;22.6%<br />19<br />95% CL<br />&minus;34, &minus;10<br />&minus;4, 42<br />P-value<br />&lt; 0.0001<br />0.0758<br />PVR = pulmonary vascular resistance<br />Treatment with bosentan was associated with a reduction in the rate of clinical worsening, defined as a composite of symptomatic progression, hospitalisation for PAH and death, compared with placebo (proportional risk reduction 77%, 95% CI 20%&ndash;94%, p = 0.0114). The treatment effect was driven by improvement in the component symptomatic progression. There was one hospitalisation related to PAH worsening in the bosentan group and three hospitalisations in the placebo group. Only one death occurred in each treatment group during the 6-month double-blind study period, therefore no conclusion can be drawn on survival.<br />Long-term data were generated from all 173 patients who were treated with bosentan in the controlled phase and/or were switched from placebo to bosentan in the open-label extension phase of the EARLY study. The mean duration of exposure to bosentan treatment was 3.6 &plusmn; 1.8 years (up to 6.1 years), with 73% of patients treated for at least 3 years and 62% for at least 4 years. Patients could receive additional PAH treatment as required in the open-label extension. The majority of patients were diagnosed with idiopathic or heritable pulmonary arterial hypertension (61%). Overall, 78% of patients remained in WHO functional class II. Kaplan-Meier estimates of survival were 90% and 85% at 3 and 4 years after the start of treatment, respectively. At the same timepoints, 88% and 79% of patients remained free from PAH worsening (defined as all-cause death, lung transplantation, atrial septostomy or start of intravenous or subcutaneous prostanoid treatment). The relative contributions of previous placebo treatment in the double-blind phase and of other medications started during the open-label extension period are unknown.<br />In a prospective, multi-centre, randomised, double-blind, placebo-controlled study (AC-052-405 [BREATHE-5]), patients with pulmonary arterial hypertension WHO functional class III and Eisenmenger physiology associated with congenital heart disease received bosentan 62.5 mg twice daily for 4 weeks, then 125 mg twice daily for a further 12 weeks (n = 37, of whom 31 had a predominantly right to left, bidirectional shunt). The primary objective was to show that bosentan did not worsen hypoxaemia. After 16 weeks, the mean oxygen saturation was increased in the bosentan group by 1.0% (95% CI &ndash;0.7%&ndash;2.8%) as compared to the placebo group (n = 17 patients), showing that bosentan did not worsen hypoxaemia. The mean pulmonary vascular resistance was significantly reduced in the bosentan group (with a predominant effect observed in the subgroup of patients with bidirectional intracardiac shunt). After 16 weeks, the mean placebo-corrected increase in 6-minute walk distance was 53 metres (p = 0.0079), reflecting improvement in exercise capacity. Twenty-six patients continued to receive bosentan in the 24-week open-label extension phase (AC-052-409) of the BREATHE-5 study (mean duration of treatment = 24.4 &plusmn; 2.0 weeks) and, in general, efficacy was maintained.<br />An open-label, non-comparative study (AC-052-362[BREATHE-4]) was performed in 16 patients with WHO functional class III PAH associated with HIV infection. Patients were treated with bosentan 62.5 mg twice daily for 4 weeks followed by 125 mg twice daily for a further 12 weeks. After 16 weeks&rsquo; treatment, there were significant improvements from baseline in exercise capacity: the mean increase in 6-minute walk distance was 91.4 metres<br />from 332.6 metres on average at baseline (p &lt; 0.001). No formal conclusion can be drawn regarding the effects of bosentan on antiretroviral drug efficacy (see also section 4.4).<br />There are no studies to demonstrate beneficial effects of Tracleer treatment on survival. However, long-term vital status was recorded for all 235 patients who were treated with bosentan in the two pivotal placebo-controlled studies (AC-052-351 and AC-052-352) and/or their two uncontrolled, open-label extensions. The mean duration of exposure to bosentan was 1.9 years &plusmn; 0.7 years (min: 0.1 years; max: 3.3 years) and patients were observed for a mean of 2.0 &plusmn; 0.6 years. The majority of patients were diagnosed as primary pulmonary hypertension (72%) and were in WHO functional class III (84%). In this total population, Kaplan-Meier estimates of survival were 93% and 84% 1 and 2 years after the start of treatment with bosentan, respectively. Survival estimates were lower in the subgroup of patients with PAH secondary to systemic sclerosis. The estimates may have been influenced by the initiation of epoprostenol treatment in 43/235 patients.<br />Studies performed in children with pulmonary arterial hypertension<br />BREATHE-3 (AC-052-356)<br />Bosentan film-coated tablets were evaluated in an open-label uncontrolled study in 19 paediatric patients with pulmonary arterial hypertension aged 3 to 15 years. This study was primarily designed as a pharmacokinetic study (see section 5.2). Patients had primary pulmonary hypertension (10 patients) or pulmonary arterial hypertension related to congenital heart diseases (9 patients) and were in WHO functional class II (n = 15 patients, 79%) or class III (n = 4 patients, 21%) at baseline. Patients were divided into three body-weight groups and dosed with bosentan at approximately 2 mg/kg twice daily for 12 weeks. Half of the patients in each group were already being treated with intravenous epoprostenol and the dose of epoprostenol remained constant for the duration of the study.<br />Haemodynamics were measured in 17 patients. The mean increase from baseline in cardiac index was 0.5 L/min/m2, the mean decrease in mean pulmonary arterial pressure was 8 mmHg, and the mean decrease in PVR was 389 dyn&middot;sec&middot;cm-5. These haemodynamic improvements from baseline were similar with or without co-administration of epoprostenol. Changes in exercise test parameters at week 12 from baseline were highly variable and none were significant.<br />FUTURE 1/2 (AC-052-365/AC-052-367)<br />FUTURE 1 was an open-label, uncontrolled study that was conducted with the dispersible tablet formulation of bosentan administered at a maintenance dose of 4 mg/kg twice daily to 36 patients from 2 to 11 years of age. It was primarily designed as a pharmacokinetic study (see section 5.2). At baseline, patients had idiopathic (31 patients [86%]) or familial (5 patients [14%]) PAH, and were in WHO functional class II (n = 23 patients, 64%) or class III (n = 13 patients, 36%). In the FUTURE 1 study, the median exposure to study treatment was 13.1 weeks (range: 8.4 to 21.1). 33 of these patients were provided with continued treatment with bosentan dispersible tablets at a dose of 4 mg/kg twice daily in the FUTURE 2 uncontrolled extension phase for a median overall treatment duration of 2.3 years (range: 0.2 to 5.0 years). At baseline in FUTURE 1, 9 patients were taking epoprostenol. 9 patients were newly initiated on PAH-specific medication during the study. The Kaplan-Meier event-free estimate for worsening of PAH (death, lung transplantation, or hospitalisation for PAH worsening) at 2 years was 78.9%. The Kaplan-Meier estimate of overall survival at 2 years was 91.2%.<br />FUTURE 3 (AC-052-373)<br />In this open-label randomised study with the bosentan 32 mg dispersible tablet formulation, 64 children with stable PAH from 3 months to 11 years of age were randomised to 24 weeks bosentan treatment 2 mg/kg twice daily (n = 33) or 2 mg/kg three times daily (n = 31). 43 (67.2%) were &ge; 2 years to 11 years old, 15 (23.4%) were between 1 and 2 years old, and 6 (9.4%) were between 3 months and 1 year old. The study was primarily designed as a pharmacokinetic study (see section 5.2) and efficacy endpoints were only exploratory. The aetiology of PAH, according to Dana Point classification, included idiopathic PAH (46%), heritable PAH (3%), associated PAH after corrective cardiac surgery (38%), and PAH-CHD associated with systemic-to-pulmonary shunts, including Eisenmenger syndrome (13%). Patients were in WHO functional class I (n = 19 patients, 29 %), class II (n = 27 patients, 42%) or class III (n = 18 patients, 28%) at start of study treatment. At study entry, patients were treated with PAH medications (most frequently PDE-5 inhibitor [sildenafil] alone [35.9%], bosentan<br />alone [10.9%], and a combination of bosentan, iloprost, and sildenafil in 10.9% of patients) and continued their PAH treatment during the study.<br />At study start, less than half of the patients included (45.3% = 29/64) had bosentan treatment alone not combined with other PAH-medication. 40.6% (26/64) remained on bosentan monotherapy during the 24 weeks of study treatment without experiencing PAH worsening. The analysis on the global population included (64 patients) showed that the majority had remained at least stable (i.e., without deterioration) based on non-paediatric-specific WHO functional class assessment (97% twice daily, 100% three times daily) and physicians&rsquo; global clinical impression (94% twice daily, 93% three times daily) during the treatment period. The Kaplan-Meier event-free estimate for worsening of PAH (death, lung transplantation, or hospitalisation for PAH worsening) at 24 weeks was 96.9% and 96.7% in the twice daily and three times daily groups, respectively.<br />There was no evidence of any clinical benefit with 2 mg/kg three times daily as compared to 2 mg/kg twice daily dosing.<br />Study performed in neonates with persistent pulmonary hypertension of the newborn (PPHN):<br />FUTURE 4 (AC-052-391)<br />This was a double-blind, placebo-controlled, randomised study in pre-term or term neonates (gestational age 36&ndash;42 weeks) with PPHN. Patients with suboptimal response to inhaled nitric oxide (iNO) despite at least 4 hours of continuous treatment were treated with bosentan dispersible tablets at 2 mg/kg twice daily (N = 13) or placebo (N = 8) via nasogastric tube as add-on therapy on top of iNO until complete weaning of iNO or until treatment failure (defined as need for extra-corporeal membrane oxygenation [ECMO] or initiation of alternative pulmonary vasodilator) and for a maximum of 14 days.<br />The median exposure to study treatment was 4.5 (range: 0.5&ndash;10.0) days in the bosentan group and 4.0 (range: 2.5&ndash;6.5) days in the placebo group.<br />The results did not indicate an additional benefit of bosentan in this population:<br />&bull; The median time to complete weaning from iNO was 3.7 days (95% CLs 1.17, 6.95) on bosentan and 2.9 days (95% CLs 1.26, 4.23) on placebo (p = 0.34).<br />&bull; The median time to complete weaning from mechanical ventilation was 10.8 days (95% CLs 3.21, 12.21 days) on bosentan and 8.6 days (95% CLs 3.71, 9.66 days) on placebo (p = 0.24).<br />&bull; One patient in the bosentan group had treatment failure (need for ECMO as per protocol definition), which was declared based on increasing Oxigenation Index values within 8 h after the first study drug dose. This patient recovered within the 60-day follow-up period.<br />Combination with epoprostenol<br />The combination of bosentan and epoprostenol has been investigated in two studies: AC-052-355 (BREATHE-2) and AC-052-356 (BREATHE-3). AC-052-355 was a multi-centre, randomised, double-blind, parallel-group study of bosentan versus placebo in 33 patients with severe pulmonary arterial hypertension who were receiving concomitant epoprostenol therapy. AC-052-356 was an open-label, uncontrolled study; 10 of the 19 paediatric patients were on concomitant bosentan and epoprostenol therapy during the 12-week study. The safety profile of the combination was not different from the one expected with each component and the combination therapy was well tolerated in children and adults. The clinical benefit of the combination has not been demonstrated.<br />Systemic sclerosis with digital ulcer disease<br />Two randomised, double-blind, multi-centre, placebo-controlled studies have been conducted in 122 (study AC-052-401 [RAPIDS-1]) and 190 (study AC-052-331 [RAPIDS-2]) adult patients with systemic sclerosis and digital ulcer disease (either ongoing digital ulcers or a history of digital ulcers within the previous year). In study AC-052-331, patients had to have at least one digital ulcer of recent onset, and across the two studies 85% of patients had ongoing digital ulcer disease at baseline. After 4 weeks of bosentan 62.5 mg twice daily, the maintenance dose studied in both these studies was 125 mg twice daily. The duration of double-blind therapy was 16 weeks in study AC-052-401, and 24 weeks in study AC-052-331.<br />Background treatments for systemic sclerosis and digital ulcers were permitted if they remained constant for at least 1 month prior to the start of treatment and during the double-blind study period.<br />The number of new digital ulcers from baseline to study endpoint was a primary endpoint in both studies. Treatment with bosentan resulted in fewer new digital ulcers for the duration of therapy, compared with placebo. In study AC-052-401, during 16 weeks of double-blind therapy, patients in the bosentan group developed a mean of 1.4 new digital ulcers vs 2.7 new digital ulcers in the placebo group (p = 0.0042). In study AC-052-331, during 24 weeks of double-blind therapy, the corresponding figures were 1.9 vs 2.7 new digital ulcers, respectively (p = 0.0351). In both studies, patients on bosentan were less likely to develop multiple new digital ulcers during the study and took longer to develop each successive new digital ulcer than did those on placebo. The effect of bosentan on reduction of the number of new digital ulcers was more pronounced in patients with multiple digital ulcers.<br />No effect of bosentan on time to healing of digital ulcers was observed in either study.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">The pharmacokinetics of bosentan have mainly been documented in healthy subjects. Limited data in patients show that the exposure to bosentan in adult pulmonary arterial hypertension patients is approximately 2-fold greater than in healthy adult subjects.<br />In healthy subjects, bosentan displays dose- and time-dependent pharmacokinetics. Clearance and volume of distribution decrease with increased intravenous doses and increase with time. After oral administration, the systemic exposure is proportional to dose up to 500 mg. At higher oral doses, Cmax and AUC increase less than proportionally to the dose.<br />Absorption<br />In healthy subjects, the absolute bioavailability of bosentan is approximately 50% and is not affected by food. The maximum plasma concentrations are attained within 3&ndash;5 hours.<br />Distribution<br />Bosentan is highly bound (&gt; 98%) to plasma proteins, mainly albumin. Bosentan does not penetrate into erythrocytes.<br />A volume of distribution (Vss) of about 18 litres was determined after an intravenous dose of 250 mg.<br />Biotransformation and elimination<br />After a single intravenous dose of 250 mg, the clearance was 8.2 L/h. The terminal elimination half-life (t1/2) is 5.4 hours.<br />Upon multiple dosing, plasma concentrations of bosentan decrease gradually to 50%&ndash;65% of those seen after single dose administration. This decrease is probably due to auto-induction of metabolising liver enzymes. Steady-state conditions are reached within 3&ndash;5 days.<br />Bosentan is eliminated by biliary excretion following metabolism in the liver by the cytochrome P450 isoenzymes, CYP2C9 and CYP3A4. Less than 3% of an administered oral dose is recovered in urine.<br />Bosentan forms three metabolites and only one of these is pharmacologically active. This metabolite is mainly excreted unchanged via the bile. In adult patients, the exposure to the active metabolite is greater than in healthy subjects. In patients with evidence of the presence of cholestasis, the exposure to the active metabolite may be increased.<br />Bosentan is an inducer of CYP2C9 and CYP3A4 and possibly also of CYP2C19 and the P-glycoprotein. In vitro, bosentan inhibits the bile salt export pump in hepatocyte cultures.<br />In vitro data demonstrated that bosentan had no relevant inhibitory effect on the CYP isoenzymes tested (CYP1A2, 2A6, 2B6, 2C8, 2C9, 2D6, 2E1, 3A4). Consequently, bosentan is not expected to increase the plasma concentrations of medicinal products metabolised by these isoenzymes.<br />Pharmacokinetics in special populations<br />Based on the investigated range of each variable, it is not expected that the pharmacokinetics of bosentan will be influenced by gender, body weight, race, or age in the adult population to any relevant extent.<br />Children<br />Pharmacokinetics were studied in paediatric patients in 4 clinical studies (BREATHE-3, FUTURE 1, FUTURE-3 and FUTURE-4 see section 5.1). Due to limited data in children below 2 years of age, pharmacokinetics remain not well characterised in this age category.<br />Study AC-052-356 [BREATHE-3]) evaluated the pharmacokinetics of single and multiple oral doses of the film-coated tablet formulation of bosentan in 19 children aged from 3 to 15 years with pulmonary arterial hypertension (PAH) who were dosed on the basis of body weight with 2 mg/kg twice daily. In this study, the exposure to bosentan decreased with time in a manner consistent with the known auto-induction properties of bosentan. The mean AUC (CV%) values of bosentan in paediatric patients treated with 31.25, 62.5 or 125 mg twice daily were 3,496 (49), 5,428 (79), and 6,124 (27) ng&middot;h/mL, respectively, and were lower than the value of 8,149 (47) ng&middot;h/mL observed in adult patients with PAH receiving 125 mg twice daily. At steady state, the systemic exposures in paediatric patients weighing 10&ndash;20 kg, 20&ndash;40 kg and &gt; 40 kg were 43%, 67% and 75%, respectively, of the adult systemic exposure.<br />In study AC-052-365 [FUTURE 1] dispersible tablets were administered in 36 PAH children aged from 2 to 11 years. No dose proportionality was observed as steady-state bosentan plasma concentrations and AUCs were similar at oral doses of 2 and 4 mg/kg (AUC&tau;: 3,577 ng&middot;h/mL and 3,371 ng&middot;h/mL for 2 mg/kg twice daily and 4 mg/kg twice daily, respectively). The average exposure to bosentan in these paediatric patients was about half the exposure in adult patients at the 125 mg twice daily maintenance dose but showed a large overlap with the exposures in adults.<br />In study AC-052-373 [FUTURE 3], using dispersible tablets, the exposure to bosentan in the patients treated with 2 mg/kg twice daily was comparable to that in the FUTURE 1 study. In the overall population (n = 31), 2 mg/kg twice daily resulted in a daily exposure of 8,535 ng&middot;h/mL; AUC&tau;was 4,268 ng&middot;h/mL (CV: 61%). In patients between 3 months and 2 years, the daily exposure was 7,879 ng&middot;h/mL; AUC&tau;was 3,939 ng&middot;h/mL (CV: 72%). In patients between 3 months and 1 year (n=2), AUC&tau;was 5,914 ng&middot;h/mL (CV: 85%) and in patients between 1 and 2 years (n=7), AUC&tau;was 3,507 ng&middot;h/mL (CV: 70%). In the patients above 2 years (n = 22) the daily exposure was 8,820 ng&middot;h/mL; AUC&tau;was 4,410 ng&middot;h/mL (CV: 58%). Dosing bosentan 2 mg/kg three times daily did not increase exposure, daily exposure was 7,275 ng&middot;h/mL (CV: 83%, n = 27).<br />Based on the findings in studies BREATHE-3, FUTURE 1, and FUTURE-3, it appears that the exposure to bosentan reaches a plateau at lower doses in paediatric patients than in adults, and that doses higher than 2 mg/kg twice daily (4 mg/kg twice daily or 2 mg/kg three times daily) will not result in greater exposure to bosentan in paediatric patients.<br />In study AC-052-391 [FUTURE 4] conducted in neonates, bosentan concentrations increased slowly and continuously over the first dosing interval, resulting in low exposure (AUC0-12 in whole blood: 164 ng&middot;h/mL, n = 11). At steady-state, AUC&tau; was 6,165 ng&middot;h/mL (CV: 133%, n = 7), which is similar to the exposure observed in adult PAH patients receiving 125 mg twice daily and taking into account a blood/plasma distribution ratio of 0.6.<br />The consequences of these findings regarding hepatotoxicity are unknown. Gender and concomitant use of intravenous epoprostenol had no significant effect on the pharmacokinetics of bosentan.<br />Hepatic impairment<br />In patients with mildly impaired liver function (Child-Pugh class A) no relevant changes in the pharmacokinetics have been observed. The steady-state AUC of bosentan was 9% higher and the AUC of the active metabolite, Ro 48-5033, was 33% higher in patients with mild hepatic impairment than in healthy volunteers.<br />The impact of moderately impaired liver function (Child-Pugh class B) on the pharmacokinetics of bosentan and its primary metabolite Ro 48-5033 was investigated in a study including 5 patients with pulmonary hypertension associated with portal hypertension and Child-Pugh class B hepatic impairment, and 3 patients with pulmonary arterial hypertension from other causes and normal liver function. In the patients with Child-Pugh class B liver impairment, the mean (95% CI) steady-state AUC of bosentan was 360 (212-613) ng.h/mL, i.e., 4.7 times higher, and the mean (95% CI) AUC of the active metabolite Ro 48-5033 was 106 (58.4-192) ng.h/mL, i.e., 12.4 times higher than in the patients with normal liver function (bosentan: mean [95% CI] AUC: 76.1 [9.07-638] ng.h/mL; Ro 48-5033: mean [95% CI] AUC 8.57 [1.28-57.2] ng.h/ml). Though the number of patients included was limited and with high variability, these data indicate a marked increase in the exposure to bosentan and its primary metabolite Ro 48-5033 in patients with moderate liver function impairment (Child-Pugh class B).<br />The pharmacokinetics of bosentan have not been studied in patients with Child-Pugh class C hepatic impairment. Tracleer is contra-indicated in patients with moderate to severe hepatic impairment, i.e., Child-Pugh class B or C (see section 4.3).<br />Renal impairment<br />In patients with severe renal impairment (creatinine clearance 15&ndash;30 mL/min), plasma concentrations of bosentan decreased by approximately 10%. Plasma concentrations of bosentan metabolites increased about 2-fold in these patients as compared to subjects with normal renal function. No dose adjustment is required in patients with renal impairment. There is no specific clinical experience in patients undergoing dialysis. Based on physicochemical properties and the high degree of protein binding, bosentan is not expected to be removed from the circulation by dialysis to any significant extent (see section 4.2).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">A 2-year carcinogenicity study in mice showed an increased combined incidence of hepatocellular adenomas and carcinomas in males, but not in females, at plasma concentrations about 2 to 4 times the plasma concentrations achieved at the therapeutic dose in humans. In rats, oral administration of bosentan for 2 years produced a small, significant increase in the combined incidence of thyroid follicular cell adenomas and carcinomas in males, but not in females, at plasma concentrations about 9 to 14 times the plasma concentrations achieved at the therapeutic dose in humans. Bosentan was negative in tests for genotoxicity. There was evidence of a mild thyroid hormonal imbalance induced by bosentan in rats. However, there was no evidence of bosentan affecting thyroid function (thyroxine, TSH) in humans.<br />The effect of bosentan on mitochondrial function is unknown.<br />Bosentan has been shown to be teratogenic in rats at plasma levels higher than 1.5 times the plasma concentrations achieved at the therapeutic dose in humans. Teratogenic effects, including malformations of the head and face and of the major vessels, were dose dependent. The similarities of the pattern of malformations observed with other ET receptor antagonists and in ET knock-out mice indicate a class effect. Appropriate precautions must be taken for women of child-bearing potential (see sections 4.3, 4.4 and 4.6).<br />Development of testicular tubular atrophy and impaired fertility has been linked with chronic administration of endothelin receptor antagonists in rodents.<br />In fertility studies in male and female rats, no effects on sperm count, motility and viability, or on mating performance or fertility were observed at exposures that were 21 and 43 times the expected therapeutic level in humans, respectively; nor was there any adverse effect on the development of the pre-implantation embryo or on implantation.<br />Slightly increased incidence of testicular tubular atrophy was observed in rats given bosentan orally at doses as low as 125 mg/kg/day (about 4 times the maximum recommended human dose [MRHD] and the lowest doses tested) for two years but not at doses as high as 1500 mg/kg/day (about 50 times the MRHD) for 6 months. In a juvenile rat toxicity study, where rats were treated from Day 4 post partum up to adulthood, decreased absolute weights of testes and epididymides, and reduced number of sperm in epididymides were observed after weaning. The NOAEL was 21 times (at Day 21 post partum) and 2.3 times (Day 69 post partum) the human therapeutic exposure, respectively.<br />However, no effects on general development, growth, sensory, cognitive function and reproductive performance were detected at 7 (males) and 19 (females) times the human therapeutic exposure at Day 21 post partum. At adult age (Day 69 post partum) no effects of bosentan were detected at 1.3 (males) and 2.6 (females) times the therapeutic exposure in children with PAH.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Tablet core:<br />Lactose monohydrate<br />Hypromellose<br />Croscarmellose sodium<br />Magnesium stearate<br />Film coat:<br />Hypromellose<br />Titanium dioxide (E171)<br />Lactose monohydrate<br />Macrogol 3350<br />Triacetin<br />Iron oxide yellow (E172)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                24 months
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">This medicine does not require any special storage conditions.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">Al/PVC blisters containing 14 film-coated tablets.<br />Cartons contain 14, 56 or 112 film-coated tablets.<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p dir="ltr">No special requirements for disposal.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                OHRE Pharma 1 rue des Ursulines - 37000 Tours –France
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                27 June 2020
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

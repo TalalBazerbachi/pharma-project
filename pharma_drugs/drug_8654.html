@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2705245356
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2018
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        POSTINOR-2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        LEVONORGESTREL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        0.75
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        OTC
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        60
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        38.55
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="GEDEON RICHTER" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            GEDEON RICHTER
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 354]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            SAUDI INTERNATIONAL TRADING COMPANY LTD (SITCO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            AJA PHARMACEUTICAL INDUSTRIES
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        G03AC03
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Postinor-2 750 micrograms tablets
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each tablet contains 0.75 mg levonorgestrel. Excipient with known effect:
+71.25 mg lactose monohydrate in each tablet.
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Almost white, round, rimmed, flat tablets with an impressed mark of “INOR”on one side. Diameter is about 6 mm
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Emergency contraception within 72 hours of unprotected sexual intercourse or failure of a contraceptive method.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify"><u>Posology</u></p><p style="text-align:justify">Treatment necessitates the intake of two tablets.</p><p style="text-align:justify">The highest efficacy is achieved if the first tablet is taken as soon as possible (and no later than 72 hours) after unprotected intercourse.</p><p style="text-align:justify">The second tablet should be taken 12 hours (and no later than 16 hours) after the first tablet (for efficacy data, see section 5.1).</p><p style="text-align:justify">If vomiting occurs within three hours of taking either tablet, another tablet should be taken immediately.</p><p style="text-align:justify">Postinor-2 can be used at any time during the menstrual cycle unless menstrual bleeding is overdue.</p><p style="text-align:justify">After using emergency contraception it is recommended to use a local barrier method (e.g. condom, diaphragm, spermicide, cervical cap) until the next menstrual period starts. The use of Postinor-2 does not contraindicate the continuation of regular hormonal contraception.</p><p style="text-align:justify"><em>Paediatric population</em></p><p style="text-align:justify">Levonorgestrel is not recommended in children.</p><p style="text-align:justify">Very limited data are available in women under 16 years of age.</p><p style="text-align:justify"><u>Method of administration</u> For oral administration.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Emergency contraception is an occasional method. It should in no instance replace a regular contraceptive method.</p><p style="text-align:justify">Emergency contraception does not prevent a pregnancy in every instance.</p><p style="text-align:justify">If there is uncertainty about the timing of the unprotected intercourse or if the woman has had unprotected intercourse more than 72 hours earlier in the same menstrual cycle, conception may have occurred. Treatment with Postinor-2 following the second act of intercourse may therefore be ineffective in preventing pregnancy. If menstrual periods are delayed by more than 5 days or abnormal bleeding occurs at the expected date of menstrual periods or pregnancy is suspected for any other reason, pregnancy should be excluded.</p><p style="text-align:justify">If pregnancy occurs after treatment with Postinor-2, the possibility of an ectopic pregnancy should be considered. The absolute risk of ectopic pregnancy is likely to be low, as levonorgestrel prevents ovulation and fertilisation. Ectopic pregnancy may continue, despite the occurrence of uterine bleeding. Therefore, levonorgestrel should be used with increased caution by patients who are at risk of ectopic pregnancy (previous history of salpingitis or of ectopic pregnancy).</p><p style="text-align:justify">Postinor-2 is not recommended in patients with severe hepatic dysfunction.</p><p style="text-align:justify">Severe malabsorption syndromes, such as Crohn&rsquo;s disease, might impair the efficacy of Postinor-2. Women suffering from these conditions should be referred to a doctor for emergency contraception.</p><p style="text-align:justify">After Postinor-2 intake, menstrual periods are usually normal and occur at the expected date. They can sometimes occur earlier or later than expected by a few days. Women should be advised to make a medical appointment to initiate or adopt a method of regular contraception. If no withdrawal bleed occurs in the next pill-free period following the use of Postinor-2 after regular hormonal contraception, pregnancy should be ruled out.</p><p style="text-align:justify">Repeated administration within a menstrual cycle is not advisable because of the possibility of disturbance of the cycle.</p><p style="text-align:justify">Limited and inconclusive data suggest that there may be reduced efficacy of Postinor-2 with increasing body weight or body mass index (BMI) (see section 5.1). In all women, emergency contraception should be taken as soon as possible after unprotected intercourse, regardless of the woman&rsquo;s body weight or BMI.</p><p style="text-align:justify">Postinor-2 is not as effective as a conventional regular method of contraception and is suitable only as an emergency measure. Women who present for repeated courses of emergency contraception should be advised to consider long-term methods of contraception.</p><p style="text-align:justify">Use of emergency contraception does not replace the necessary precautions against sexually transmitted diseases.</p><p style="text-align:justify">This medicinal product contains lactose. Patients with rare hereditary problems of galactose intolerance, lactose intolerance or glucose-galactose malabsorption should not take this medicine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">The metabolism of levonorgestrel is enhanced by concomitant use of liver enzyme inducers.</p><p style="text-align:justify">Drugs suspected of having the capacity to reduce the efficacy of levonorgestrel containing medication include barbiturates (including primidone), phenytoin, carbamazepine, herbal medicines containing Hypericum perforatum (St. John&rsquo;s Wort), rifampicin, ritonavir, rifabutin, griseofulvin and efavirenz. Women taking such drugs should be referred to the doctor for advice.</p><p style="text-align:justify">Medicines containing levonorgestrel may increase the risk of cyclosporin toxicity due to possible inhibition of cyclosporin metabolism.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify"><u>Pregnancy</u></p><p style="text-align:justify">Postinor-2 should not be given to pregnant women. It will not interrupt the pregnancy.</p><p style="text-align:justify">In the case of continued pregnancy, limited epidemiological data indicate no adverse effects on the foetus but there are no clinical data on the potential consequences if doses greater than 1.5 mg of levonorgestrel are taken (see section 5.3).</p><p style="text-align:justify"><u>Breast-feeding</u></p><p style="text-align:justify">Levonorgestrel is secreted into breast milk. Potential exposure of an infant to levonorgestrel can be reduced if the breast-feeding woman takes the tablets immediately after feeding and avoids nursing at least 8 hours following each Postinor-2 administration.</p><p style="text-align:justify"><u>Fertility</u></p><p style="text-align:justify">Levonorgestrel increases the possibility of cycle disturbances which can sometimes lead to earlier or later ovulation date. These changes can result in modified fertility date, however, there are no fertility data in the long term.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects on the ability to drive and use machines have been performed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">The most commonly reported undesirable effect was nausea.</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p style="text-align:justify"><strong>System Organ Class MedDRA 16.0</strong></p></td><td colspan="2" style="vertical-align:top"><p style="text-align:justify"><strong>Frequency of adverse reactions</strong></p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Very common</strong></p><p style="text-align:justify">(&gt;10)</p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Common</strong></p><p style="text-align:justify">(&gt;1/100 to &lt;1/10)</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Nervous system disorders</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">Headache</p></td><td style="vertical-align:top"><p style="text-align:justify">Dizziness</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Gastrointestinal disorders</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">Nausea</p><p style="text-align:justify">Abdominal pain lower</p></td><td style="vertical-align:top"><p style="text-align:justify">Diarrhoea</p><p style="text-align:justify">Vomiting</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Reproductive system and breast disorders</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">Bleeding not related to menses</p></td><td style="vertical-align:top"><p style="text-align:justify">Delay of menses more than 7 days</p><p style="text-align:justify">Menstruation irregular Breast tenderness</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>General disorders and</strong></p><p style="text-align:justify"><strong>administration site conditions</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">Fatigue</p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p></td></tr></tbody></table><p style="text-align:justify">Bleeding patterns may be temporarily disturbed, but most women will have their next menstrual period within 5-7 days of the expected time.</p><p style="text-align:justify">If the next menstrual period is more than 5 days overdue pregnancy should be excluded.</p><p style="text-align:justify"><strong><em>From post-marketing surveillance additionally, the following adverse events have been reported: Gastrointestinal disorders</em></strong></p><p style="text-align:justify">Very rare (&lt;1/10,000): abdominal pain</p><p style="text-align:justify"><strong><em>Skin and subcutaneous tissue disorders</em></strong></p><p style="text-align:justify">Very rare (&lt;1/10,000): rash, urticaria, pruritus</p><p style="text-align:justify"><strong><em>Reproductive system and breast disorders</em></strong></p><p style="text-align:justify">Very rare (&lt;1/10,000): pelvic pain, dysmenorrhoea</p><p style="text-align:justify"><strong><em>General disorders and administration site conditions</em></strong></p><p style="text-align:justify">Very rare (&lt;1/10,000): face oedema</p><p style="text-align:justify"><u>Reporting of suspected adverse reactions</u></p><p style="text-align:justify">Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product.</p><p>To report any side effect(s):</p><ul><li><strong>Saudi Arabia:</strong><ul><li>The National Pharmacovigilance Centre (NPC)<ul><li>Fax: +966-11-205-7662</li><li>SFDA Call Center: 19999</li><li>E-mail: npc.drug@sfda.gov.sa</li><li>Website: https://ade.sfda.gov.sa&nbsp;</li></ul></li></ul></li><li><strong>Other GCC States:</strong><br />Please contact the relevant competent authority.</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Serious undesirable effects have not been reported following acute ingestion of large doses of oral contraceptives. Overdose may cause nausea, and withdrawal bleeding may occur. There are no specific antidotes and treatment should be symptomatic.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Pharmacotherapeutic group: Sex hormones and modulators of the genital system, emergency contraceptives, ATC code: G03AD01</p><p style="text-align:justify">The precise mode of action of Postinor-2 is not known.</p><p style="text-align:justify">At the recommended regimen, levonorgestrel is thought to work mainly by preventing ovulation and fertilisation if the intercourse has taken place in the preovulatory phase, when the likelihood of fertilisation is the highest. It is not effective once the process of implantation has begun.</p><p style="text-align:justify"><em>Efficacy</em>: It was estimated from the results of an earlier clinical study, that 750 micrograms of levonorgestrel (taken as two 750 microgram doses with a 12 hour interval) prevents 85% of expected pregnancies. Efficacy appears to decline with time of start of treatment after intercourse (95% if started within 24 hours, 85% if started between 24 and 48 hours, 58% if started between 48 and 72 hours).</p><p style="text-align:justify">Results from a recent clinical study showed that two 750 microgram tablets of levonorgestrel taken at the same time (and within 72 hours of unprotected sex) prevented 84% of expected pregnancies. There was no difference between pregnancy rates in case of women who were treated on the third or the fourth day after the unprotected act of intercourse (p&gt;0.2).</p><p style="text-align:justify">There is limited and inconclusive data on the effect of high body weight/high BMI on the contraceptive efficacy. In three WHO studies no trend for a reduced efficacy with increasing body weight/BMI was observed (Table 1), whereas in the two other studies (Creinin et al., 2006 and Glasier et al., 2010) a reduced contraceptive efficacy was observed with increasing body weight or BMI (Table 2). Both meta-analyses excluded intake later than 72 hours after unprotected intercourse (i.e. off-label use of levonorgestrel) and women who had further acts of unprotected intercourse.</p><p style="text-align:justify">Table 1: Meta-analysis on three WHO studies (Von Hertzen et al., 1998 and 2002; Dada et al., 2010)</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>BMI (kg/m<sup>2</sup>)</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Underweight 0 - 18.5</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Normal 18.5-25</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Overweight 25-30</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Obese</strong></p><p style="text-align:justify"><strong>&ge; 30</strong></p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>N total</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">600</p></td><td style="vertical-align:top"><p style="text-align:justify">3952</p></td><td style="vertical-align:top"><p style="text-align:justify">1051</p></td><td style="vertical-align:top"><p style="text-align:justify">256</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>N pregnancies</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">11</p></td><td style="vertical-align:top"><p style="text-align:justify">39</p></td><td style="vertical-align:top"><p style="text-align:justify">6</p></td><td style="vertical-align:top"><p style="text-align:justify">3</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Pregnancy rate</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">1.83%</p></td><td style="vertical-align:top"><p style="text-align:justify">0.99%</p></td><td style="vertical-align:top"><p style="text-align:justify">0.57%</p></td><td style="vertical-align:top"><p style="text-align:justify">1.17%</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Confidence Interval</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">0.92 &ndash; 3.26</p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">0.70 &ndash; 1.35</p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">0.21 &ndash; 1.24</p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">0.24 &ndash; 3.39</p></td></tr></tbody></table><p style="text-align:justify">Table 2: Meta-analysis on studies of Creinin et al., 2006 and Glasier et al., 2010</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>BMI (kg/m<sup>2</sup>)</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Underweight0 - 18.5</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Normal18.5-25</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Overweight25-30</strong></p></td><td style="vertical-align:top"><p style="text-align:justify"><strong>Obese&ge; 30</strong></p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>N total</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">64</p></td><td style="vertical-align:top"><p style="text-align:justify">933</p></td><td style="vertical-align:top"><p style="text-align:justify">339</p></td><td style="vertical-align:top"><p style="text-align:justify">212</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>N pregnancies</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">1</p></td><td style="vertical-align:top"><p style="text-align:justify">9</p></td><td style="vertical-align:top"><p style="text-align:justify">8</p></td><td style="vertical-align:top"><p style="text-align:justify">11</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Pregnancy rate</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">1.56%</p></td><td style="vertical-align:top"><p style="text-align:justify">0.96%</p></td><td style="vertical-align:top"><p style="text-align:justify">2.36%</p></td><td style="vertical-align:top"><p style="text-align:justify">5.19%</p></td></tr><tr><td style="vertical-align:top"><p style="text-align:justify"><strong>Confidence</strong></p><p style="text-align:justify"><strong>Interval</strong></p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">0.04 &ndash; 8.40</p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">0.44 &ndash; 1.82</p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">1.02 &ndash; 4.60</p></td><td style="vertical-align:top"><p style="text-align:justify">&nbsp;</p><p style="text-align:justify">2.62 &ndash; 9.09</p></td></tr></tbody></table><p style="text-align:justify">At the recommended regimen, levonorgestrel is not expected to induce significant modification of blood clotting factors, and lipid and carbohydrate metabolism.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Orally administered levonorgestrel is rapidly and almost completely absorbed.</p><p style="text-align:justify">The results of a pharmacokinetic study carried out with 16 healthy women showed that following ingestion of two doses of 0.75 mg levonorgestrel 12 hours apart maximum drug serum levels of 13.8 ng/ml were found at 2 hours.</p><p style="text-align:justify">After reaching maximum serum levels, the concentration of levonorgestrel decreased with a mean elimination half-life of about 26 hours.</p><p style="text-align:justify">Levonorgestrel is not excreted in unchanged form but as metabolites. Levonorgestrel metabolites are excreted in about equal proportions with urine and faeces. The biotransformation follows the known pathways of steroid metabolism; levonorgestrel is hydroxylated in the liver and the metabolites are excreted as glucuronide conjugates.</p><p style="text-align:justify">No pharmacologically active metabolites are known.</p><p style="text-align:justify">Levonorgestrel is bound to serum albumin and sex hormone binding globulin (SHBG). Only about 1.5% of the total serum levels are present as free steroid, but 65% are specifically bound to SHBG. The absolute bioavailability of levonorgestrel was determined to be almost 100% of the dose administered.</p><p style="text-align:justify">About 0.1% of the maternal dose can be transferred via milk to the nursed infant.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p style="text-align:justify">Animal experiments with levonorgestrel have shown virilisation of female foetuses at high doses. Preclinical data reveal no special hazard for humans, beyond information included in other sections of the SPC.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Colloidal anhydrous silica, potato starch, magnesium stearate, talc, maize starch, lactose monohydrate (71.25 mg).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                2 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above&nbsp;30&deg;C</p><p>Store&nbsp;in the original packaging in order to protect from light.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>2 tablets in PVC//Al blister pack, in folded carton box.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                AJA Pharmaceutical Industries Company, Ltd. 
+Hail Industrial City MODON, Street No 32 
+PO Box 6979, Hail 55414 
+Kingdom of Saudi Arabia
+Tel: +966 11 268 7900
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                May 2017
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

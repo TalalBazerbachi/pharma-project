@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        47-444-20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2021
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Irma-HCT 150 mg / 12.5 mg 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        IRBESARTAN,HYDROCHLOROTHIAZIDE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        150,12.5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        28
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        do not store above 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="GLOBAL PHARMA" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            GLOBAL PHARMA
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 360]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Farouk, Maamoun Tamer & CO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            GLOBAL PHARMA
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        C09DA04
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Irma-HCT 150 mg/12.5 mg film-coated tablets.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Irma-HCT 150 mg/12.5 mg 
+Each film-coated tablet contains 150 mg of irbesartan and 12.5 mg of hydrochlorothiazide. 
+Excipient with known effect: 
+Each film-coated tablet contains lactose monohydrate. 
+
+For the full list of excipients, see section 6.1.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film-coated tablets.
+
+Irma-HCT 150 mg/12.5 mg film-coated tablets are peach coloured, oval-shaped, film coated tablets debossed with “GP 77” on one side and plain on the other side.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment of essential hypertension.</p><p>This fixed dose combination is indicated in adult patients whose blood pressure is not adequately controlled on irbesartan or hydrochlorothiazide alone (see section 5.1).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Posology</u></p><p>Irma-HCT can be taken once daily, with or without food.</p><p>Dose titration with the individual components (i.e. irbesartan and hydrochlorothiazide) may be recommended.</p><p>When clinically appropriate direct change from monotherapy to the fixed combinations may be considered:</p><p>▪ Irma-HCT 150 mg/12.5 mg may be administered in patients whose blood pressure is not adequately controlled with hydrochlorothiazide or irbesartan 150 mg alone;</p><p>▪ Irma-HCT 300 mg/12.5 mg may be administered in patients insufficiently controlled by irbesartan 300 mg or by Irma-HCT 150 mg/12.5 mg.</p><p>▪ Irma-HCT 300 mg/25 mg may be administered in patients insufficiently controlled by Irma-HCT 300 mg/12.5 mg.</p><p>Doses higher than 300 mg irbesartan/25 mg hydrochlorothiazide once daily are not recommended.</p><p>When necessary, Irma-HCT may be administered with another antihypertensive medicinal product (see sections 4.3, 4.4, 4.5 and 5.1).</p><p><u>Special Populations</u></p><p><em>Renal impairment</em></p><p>Due to the hydrochlorothiazide component, Irma-HCT is not recommended for patients with severe renal dysfunction (creatinine clearance &lt; 30 ml/min). Loop diuretics are preferred to thiazides in this population. No dosage adjustment is necessary in patients with renal impairment whose renal creatinine clearance is &ge; 30 ml/min (see sections 4.3 and 4.4).</p><p><em>Hepatic impairment</em></p><p>Irma-HCT is not indicated in patients with severe hepatic impairment. Thiazides should be used with caution in patients with impaired hepatic function. No dosage adjustment of Irma-HCT is necessary in patients with mild to moderate hepatic impairment (see section 4.3).</p><p><em>Older people</em></p><p>No dosage adjustment of Irma-HCT is necessary in older people.</p><p><em>Paediatric population</em></p><p>Irma-HCT is not recommended for use in children and adolescents because the safety and efficacy have not been established. No data are available.</p><p><u>Method of Administration</u></p><p>For oral use.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                ▪ Hypersensitivity to the active substances or to any of the excipients listed in section 6.1, or to other sulfonamide-derived substances (hydrochlorothiazide is a sulfonamide-derived substance)
+▪ Second and third trimesters of pregnancy (see sections 4.4 and 4.6)
+▪ Severe renal impairment (creatinine clearance < 30 ml/min)
+▪ Refractory hypokalaemia, hypercalcaemia
+▪ Severe hepatic impairment, biliary cirrhosis and cholestasis
+▪ The concomitant use of Irma-HCT with aliskiren-containing products is contraindicated in patients with diabetes mellitus or renal impairment (glomerular filtration rate (GFR) <60 ml/min/1.73 m²) (see sections 4.5 and 5.1).
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Hypotension - Volume-depleted patients:</u>&nbsp;Irbesartan/hydrochlorothiazide combination has been rarely associated with symptomatic hypotension in hypertensive patients without other risk factors for hypotension. Symptomatic hypotension may be expected to occur in patients who are volume and/or sodium depleted by vigorous diuretic therapy, dietary salt restriction, diarrhoea or vomiting. Such conditions should be corrected before initiating therapy with Irma HCT.</p><p><u>Renal artery stenosis - Renovascular hypertension:</u>&nbsp;there is an increased risk of severe hypotension and renal insufficiency when patients with bilateral renal artery stenosis or stenosis of the artery to a single functioning kidney are treated with angiotensin converting enzyme inhibitors or angiotensin-II receptor antagonists. While this is not documented with Irbesartan/hydrochlorothiazide combination, a similar effect should be anticipated.</p><p><u>Renal impairment and kidney transplantation:</u>&nbsp;when Irma-HCT is used in patients with impaired renal function, a periodic monitoring of potassium, creatinine and uric acid serum levels is recommended. There is no experience regarding the administration of irbesartan/hydrochlorothiazide combination in patients with a recent kidney transplantation. Irma-HCT should not be used in patients with severe renal impairment (creatinine clearance &lt; 30 ml/min) (see section 4.3). Thiazide diuretic-associated azotaemia may occur in patients with impaired renal function. No dosage adjustment is necessary in patients with renal impairment whose creatinine clearance is &ge; 30 ml/min. However, in patients with mild to moderate renal impairment (creatinine clearance &ge; 30 ml/min but &lt; 60 ml/min) this fixed dose combination should be administered with caution.</p><p><u>Dual blockade of the renin-angiotensin-aldosterone system (RAAS)</u>: there is evidence that the concomitant use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren increases the risk of hypotension, hyperkalaemia and decreased renal function (including acute renal failure). Dual blockade of RAAS through the combined use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren is therefore not recommended (see sections 4.5 and 5.1). If dual blockade therapy is considered absolutely necessary, this should only occur under specialist supervision and subject to frequent close monitoring of renal function, electrolytes and blood pressure. ACE-inhibitors and angiotensin II receptor blockers should not be used concomitantly in patients with diabetic nephropathy.</p><p><u>Hepatic impairment:</u>&nbsp;thiazides should be used with caution in patients with impaired hepatic function or progressive liver disease, since minor alterations of fluid and electrolyte balance may precipitate hepatic coma. There is no clinical experience with irbesartan/hydrochlorothiazide combination in patients with hepatic impairment.</p><p><u>Aortic and mitral valve stenosis, obstructive hypertrophic cardiomyopathy:</u>&nbsp;as with other vasodilators, special caution is indicated in patients suffering from aortic or mitral stenosis, or obstructive hypertrophic cardiomyopathy.</p><p><u>Primary aldosteronism:</u>&nbsp;patients with primary aldosteronism generally will not respond to antihypertensive medicinal products acting through inhibition of the renin-angiotensin system. Therefore, the use of Irma-HCT is not recommended.</p><p><u>Metabolic and endocrine effects:</u>&nbsp;thiazide therapy may impair glucose tolerance. In diabetic patients dosage adjustments of insulin or oral hypoglycemic agents may be required. Latent diabetes mellitus may become manifest during thiazide therapy.</p><p>Increases in cholesterol and triglyceride levels have been associated with thiazide diuretic therapy; however at the 12.5 mg dose contained in Irma HCT, minimal or no effects were reported.</p><p>Hyperuricaemia may occur or frank gout may be precipitated in certain patients receiving thiazide therapy.</p><p><u>Electrolyte imbalance:</u>&nbsp;as for any patient receiving diuretic therapy, periodic determination of serum electrolytes should be performed at appropriate intervals.</p><p>Thiazides, including hydrochlorothiazide, can cause fluid or electrolyte imbalance (hypokalaemia, hyponatraemia, and hypochloremic alkalosis). Warning signs of fluid or electrolyte imbalance are dryness of mouth, thirst, weakness, lethargy, drowsiness, restlessness, muscle pain or cramps, muscular fatigue, hypotension, oliguria, tachycardia, and gastrointestinal disturbances such as nausea or vomiting.</p><p>Although hypokalaemia may develop with the use of thiazide diuretics, concurrent therapy with irbesartan may reduce diuretic-induced hypokalaemia. The risk of hypokalaemia is greatest in patients with cirrhosis of the liver, in patients experiencing brisk diuresis, in patients who are receiving inadequate oral intake of electrolytes and in patients receiving concomitant therapy with corticosteroids or ACTH. Conversely, due to the irbesartan component of Irma-HCT hyperkalaemia might occur, especially in the presence of renal impairment and/or heart failure, and diabetes mellitus. Adequate monitoring of serum potassium in patients at risk is recommended. Potassium-sparing diuretics, potassium supplements or potassium-containing salts substitutes should be co-administered cautiously with Irma-HCT (see section 4.5).</p><p>There is no evidence that irbesartan would reduce or prevent diuretic-induced hyponatraemia. Chloride deficit is generally mild and usually does not require treatment.</p><p>Thiazides may decrease urinary calcium excretion and cause an intermittent and slight elevation of serum calcium in the absence of known disorders of calcium metabolism. Marked hypercalcaemia may be evidence of hidden hyperparathyroidism. Thiazides should be discontinued before carrying out tests for parathyroid function.</p><p>Thiazides have been shown to increase the urinary excretion of magnesium, which may result in hypomagnaesemia.</p><p><u>Lithium:</u>&nbsp;the combination of lithium and Irma-HCT is not recommended (see section 4.5).</p><p><u>Anti-doping test:</u>&nbsp;hydrochlorothiazide contained in this medicinal product could produce a positive analytic result in an anti-doping test.</p><p><u>General:</u>&nbsp;in patients whose vascular tone and renal function depend predominantly on the activity of the renin-angiotensin-aldosterone system (e.g. patients with severe congestive heart failure or underlying renal disease, including renal artery stenosis), treatment with angiotensin converting enzyme inhibitors or angiotensin-II receptor antagonists that affect this system has been associated with acute hypotension, azotaemia, oliguria, or rarely acute renal failure (see section 4.5). As with any antihypertensive agent, excessive blood pressure decrease in patients with ischemic cardiopathy or ischemic cardiovascular disease could result in a myocardial infarction or stroke.</p><p>Hypersensitivity reactions to hydrochlorothiazide may occur in patients with or without a history of allergy or bronchial asthma, but are more likely in patients with such a history.</p><p>Exacerbation or activation of systemic lupus erythematosus has been reported with the use of thiazide diuretics.</p><p>Cases of photosensitivity reactions have been reported with thiazides diuretics (see section 4.8). If photosensitivity reaction occurs during treatment, it is recommended to stop the treatment. If a re-administration of the diuretic is deemed necessary, it is recommended to protect exposed areas to the sun or to artificial UVA.</p><p><u>Pregnancy:</u>&nbsp;angiotensin II Receptor Antagonists (AIIRAs) should not be initiated during pregnancy. Unless continued AIIRA therapy is considered essential, patients planning pregnancy should be changed to alternative antihypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with AIIRAs should be stopped immediately, and, if appropriate, alternative therapy should be started (see sections 4.3 and 4.6).</p><p><u>Acute Myopia and Secondary Acute Angle-Closure Glaucoma:</u>&nbsp;sulfonamide drugs or sulfonamide derivative drugs can cause an idiosyncratic reaction, resulting in transient myopia and acute angle-closure glaucoma. While hydrochlorothiazide is a sulfonamide, only isolated cases of acute angle-closure glaucoma have been reported so far with hydrochlorothiazide. Symptoms include acute onset of decreased visual acuity or ocular pain and typically occur within hours to weeks of drug initiation. Untreated acute angle-closure glaucoma can lead to permanent vision loss. The primary treatment is to discontinue drug intake as rapidly as possible. Prompt medical or surgical treatments may need to be considered if the intraocular pressure remains uncontrolled. Risk factors for developing acute angle-closure glaucoma may include a history of sulfonamide or penicillin allergy (see section 4.8).</p><p><u>Lactose</u>: Patients with rare hereditary problems of galactose intolerance, total lactase deficiency or glucose-galactose malabsorption should not take this medicine.</p><p><u>Non-melanoma skin cancer</u></p><p>An increased risk of non-melanoma skin cancer (NMSC) [basal cell carcinoma (BCC) and squamous cell carcinoma (SCC)] with increasing cumulative dose of hydrochlorothiazide (HCTZ) exposure has been observed in two epidemiological studies based on the Danish National Cancer Registry.</p><p>Photosensitizing actions of HCTZ could act as a possible mechanism for NMSC.</p><p>Patients taking HCTZ should be informed of the risk of NMSC and advised to regularly check their skin for any new lesions and promptly report any suspicious skin lesions. Possible preventive measures such as limited exposure to sunlight and UV rays and, in case of exposure, adequate protection should be advised to the patients in order to minimize the risk of skin cancer. Suspicious skin lesions should be promptly examined potentially including histological examinations of biopsies. The use of HCTZ may also need to be reconsidered in patients who have experienced previous NMSC (see also section 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Other antihypertensive agents:</u>&nbsp;the antihypertensive effect of Irma-HCT may be increased with the concomitant use of other antihypertensive agents. Irbesartan and hydrochlorothiazide (at doses up to 300 mg irbesartan/25 mg hydrochlorothiazide) have been safely administered with other antihypertensive agents including calcium channel blockers and beta-adrenergic blockers. Prior treatment with high dose diuretics may result in volume depletion and a risk of hypotension when initiating therapy with irbesartan with or without thiazide diuretics unless the volume depletion is corrected first (see section 4.4).</p><p><u>Aliskiren-containing products or ACE-inhibitors:</u>&nbsp;clinical trial data has shown that dual blockade of the renin-angiotensin-aldosterone system (RAAS) through the combined use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren is associated with a higher frequency of adverse events such as hypotension, hyperkalaemia and decreased renal function (including acute renal failure) compared to the use of a single RAAS-acting agent (see sections 4.3, 4.4 and 5.1).</p><p><u>Lithium:</u>&nbsp;reversible increases in serum lithium concentrations and toxicity have been reported during concomitant administration of lithium with angiotensin converting enzyme inhibitors. Similar effects have been very rarely reported with irbesartan so far. Furthermore, renal clearance of lithium is reduced by thiazides so the risk of lithium toxicity could be increased with Irma HCT. Therefore, the combination of lithium and Irma-HCT is not recommended (see section 4.4). If the combination proves necessary, careful monitoring of serum lithium levels is recommended.</p><p><u>Medicinal products affecting potassium:</u>&nbsp;the potassium-depleting effect of hydrochlorothiazide is attenuated by the potassium-sparing effect of irbesartan. However, this effect of hydrochlorothiazide on serum potassium would be expected to be potentiated by other medicinal products associated with potassium loss and hypokalaemia (e.g. other kaliuretic diuretics, laxatives, amphotericin, carbenoxolone, penicillin G sodium). Conversely, based on the experience with the use of other medicinal products that blunt the renin<strong>-</strong>angiotensin system, concomitant use of potassium<strong>-</strong>sparing diuretics, potassium supplements, salt substitutes containing potassium or other medicinal products that may increase serum potassium levels (e.g. heparin sodium) may lead to increases in serum potassium. Adequate monitoring of serum potassium in patients at risk is recommended (see section 4.4).</p><p><u>Medicinal products affected by serum potassium disturbances:</u>&nbsp;periodic monitoring of serum potassium is recommended when Irma-HCT is administered with medicinal products affected by serum potassium disturbances (e.g. digitalis glycosides, antiarrhythmics).</p><p><u>Non-steroidal anti-inflammatory drugs:</u>&nbsp;when angiotensin II antagonists are administered simultaneously with non-steroidal anti- inflammatory drugs (i.e. selective COX-2 inhibitors, acetylsalicylic acid (&gt; 3 g/day) and non-selective NSAIDs), attenuation of the antihypertensive effect may occur.</p><p>As with ACE inhibitors, concomitant use of angiotensin II antagonists and NSAIDs may lead to an increased risk of worsening of renal function, including possible acute renal failure, and an increase in serum potassium, especially in patients with poor pre-existing renal function. The combination should be administered with caution, especially in the elderly. Patients should be adequately hydrated and consideration should be given to monitoring renal function after initiation of concomitant therapy, and periodically thereafter.</p><p><u>Additional information on irbesartan interactions:</u>&nbsp;in clinical studies, the pharmacokinetic of irbesartan is not affected by hydrochlorothiazide. Irbesartan is mainly metabolised by CYP2C9 and to a lesser extent by glucuronidation. No significant pharmacokinetic or pharmacodynamic interactions were observed when irbesartan was coadministered with warfarin, a medicinal product metabolised by CYP2C9. The effects of CYP2C9 inducers such as rifampicin on the pharmacokinetic of irbesartan have not been evaluated. The pharmacokinetic of digoxin was not altered by co-administration of irbesartan.</p><p><u>Additional information on hydrochlorothiazide interactions:</u>&nbsp;when administered concurrently, the following medicinal products may interact with thiazide diuretics:</p><p><em>Alcohol:</em>&nbsp;potentiation of orthostatic hypotension may occur;</p><p><em>Antidiabetic medicinal products (oral agents and insulins):</em>&nbsp;dosage adjustment of the antidiabetic medicinal product may be required (see section 4.4);</p><p><em>Colestyramine and Colestipol resins:</em>&nbsp;absorption of hydrochlorothiazide is impaired in the presence of anionic exchange resins. Irma-HCT should be taken at least one hour before or four hours after these medications;</p><p><em>Corticosteroids, ACTH:</em>&nbsp;electrolyte depletion, particularly hypokalaemia, may be increased;</p><p><em>Digitalis glycosides:</em>&nbsp;thiazide induced hypokalaemia or hypomagnaesemia favour the onset of digitalis-induced cardiac arrhythmias (see section 4.4);</p><p><em>Non-steroidal anti-inflammatory drugs:</em>&nbsp;the administration of a non-steroidal anti-inflammatory drug may reduce the diuretic, natriuretic and antihypertensive effects of thiazide diuretics in some patients;</p><p><em>Pressor amines (e.g. noradrenaline):</em>&nbsp;the effect of pressor amines may be decreased, but not sufficiently to preclude their use;</p><p><em>Nondepolarizing skeletal muscle relaxants (e.g. tubocurarine):</em>&nbsp;the effect of nondepolarizing skeletal muscle relaxants may be potentiated by hydrochlorothiazide;</p><p><em>Antigout medicinal products:</em>&nbsp;dosage adjustments of antigout medicinal products may be necessary as hydrochlorothiazide may raise the level of serum uric acid. Increase in dosage of probenecid or sulfinpyrazone may be necessary. Co<strong>-</strong>administration of thiazide diuretics may increase the incidence of hypersensitivity reactions to allopurinol;</p><p><em>Calcium salts:</em>&nbsp;thiazide diuretics may increase serum calcium levels due to decreased excretion. If calcium supplements or calcium sparing medicinal products (e.g. vitamin D therapy) must be prescribed, serum calcium levels should be monitored and calcium dosage adjusted accordingly;</p><p><em>Carbamazepine:&nbsp;</em>concomitant use of carbamazepine and hydrochlorothiazide has been associated with the risk of symptomatic hyponatraemia. Electrolytes should be monitored during concomitant use. If possible, another class of diuretics should be used;</p><p><em>Other interactions:</em>&nbsp;the hyperglycaemic effect of beta-blockers and diazoxide may be enhanced by thiazides. Anticholinergic agents (e.g. atropine, beperiden) may increase the bioavailability of thiazide-type diuretics by decreasing gastrointestinal motility and stomach emptying rate. Thiazides may increase the risk of adverse effects caused by amantadine. Thiazides may reduce the renal excretion of cytotoxic medicinal products (e.g. cyclophosphamide, methotrexate) and potentiate their myelosuppressive effects.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u></p><p><em>Angiotensin II Receptor Antagonists (AIIRAs)</em></p><table border="1" cellspacing="0" cellpadding="0" style="width:652px"><tbody><tr><td style="vertical-align:top"><p>The use of AIIRAs is not recommended during the first trimester of pregnancy (see section 4.4). The use of AIIRAs is contraindicated during the second and third trimesters of pregnancy (see sections 4.3 and 4.4).</p></td></tr></tbody></table><p>Epidemiological evidence regarding the risk of teratogenicity following exposure to ACE inhibitors during the first trimester of pregnancy has not been conclusive; however a small increase in risk cannot be excluded. Whilst there is no controlled epidemiological data on the risk with Angiotensin II Receptor Antagonists (AIIRAs), similar risks may exist for this class of drugs. Unless continued AIIRA therapy is considered essential, patients planning pregnancy should be changed to alternative antihypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with AIIRAs should be stopped immediately, and, if appropriate, alternative therapy should be started.</p><p>Exposure to AIIRA therapy during the second and third trimesters is known to induce human foetotoxicity (decreased renal function, oligohydramnios, skull ossification retardation) and neonatal toxicity (renal failure, hypotension, hyperkalaemia). (See section 5.3).</p><p>Should exposure to AIIRAs have occurred from the second trimester of pregnancy, ultrasound check of renal function and skull is recommended.</p><p>Infants whose mothers have taken AIIRAs should be closely observed for hypotension (see sections 4.3 and 4.4).</p><p><em>Hydrochlorothiazide</em></p><p>There is limited experience with hydrochlorothiazide during pregnancy, especially during the first trimester. Animal studies are insufficient. Hydrochlorothiazide crosses the placenta. Based on the pharmacological mechanism of action of hydrochlorothiazide its use during the second and third trimester may compromise foeto-placental perfusion and may cause foetal and neonatal effects like icterus, disturbance of electrolyte balance and thrombocytopenia.</p><p>Hydrochlorothiazide should not be used for gestational oedema, gestational hypertension or preeclampsia due to the risk of decreased plasma volume and placental hypoperfusion, without a beneficial effect on the course of the disease.</p><p>Hydrochlorothiazide should not be used for essential hypertension in pregnant women except in rare situations where no other treatment could be used.</p><p>Since Irma-HCT contains hydrochlorothiazide, it is not recommended during the first trimester of pregnancy. A switch to a suitable alternative treatment should be carried out in advance of a planned pregnancy.</p><p><u>Breast-feeding</u></p><p><em>Angiotensin II Receptor Antagonists (AIIRAs)</em></p><p>Because no information is available regarding the use of irbesartan/hydrochlorothiazide combination during breast-feeding, Irma-HCT is not recommended and alternative treatments with better established safety profiles during breast-feeding are preferable, especially while nursing a newborn or preterm infant.</p><p>It is unknown whether irbesartan or its metabolites are excreted in human milk.</p><p>Available pharmacodynamic/toxicological data in rats have shown excretion of irbesartan or its metabolites in milk (for details see 5.3).</p><p><em>Hydrochlorothiazide</em></p><p>Hydrochlorothiazide is excreted in human milk in small amounts. Thiazides in high doses causing intense diuresis can inhibit the milk production. The use of Irma-HCT during breast feeding is not recommended. If Irma-HCT is used during breast feeding, doses should be kept as low as possible.</p><p><u>Fertility</u></p><p>Irbesartan had no effect upon fertility of treated rats and their offspring up to the dose levels inducing the first signs of parental toxicity (see section 5.3).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Based on its pharmacodynamic properties, Irma-HCT is unlikely to affect the ability to drive and use machines. When driving vehicles or operating machines, it should be taken into account that occasionally dizziness or weariness may occur during treatment of hypertension.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Irbesartan/hydrochlorothiazide combination</u></p><p>Among 898 hypertensive patients who received various doses of irbesartan/hydrochlorothiazide (range: 37.5 mg/6.25 mg to 300 mg/25 mg) in placebo-controlled trials, 29.5% of the patients experienced adverse reactions. The most commonly reported ADRs were dizziness (5.6%), fatigue (4.9%), nausea/vomiting (1.8%), and abnormal urination (1.4%). In addition, increases in blood urea nitrogen (BUN) (2.3%), creatine kinase (1.7%) and creatinine (1.1%) were also commonly observed in the trials.</p><p>Table 1 gives the adverse reactions observed from spontaneous reporting and in placebo-controlled trials.</p><p>The frequency of adverse reactions listed below is defined using the following convention:</p><p>very common (&ge; 1/10); common (&ge; 1/100 to &lt; 1/10); uncommon (&ge; 1/1,000 to &lt; 1/100); rare (&ge; 1/10,000 to &lt; 1/1,000); very rare (&lt; 1/10,000). Within each frequency grouping, undesirable effects are presented in order of decreasing seriousness.</p><table border="1" cellspacing="0" cellpadding="0" style="width:691px"><tbody><tr><td colspan="3" style="vertical-align:top"><p><strong>Table 1:</strong>&nbsp;Adverse Reactions in Placebo-Controlled Trials and Spontaneous Reports</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p><em>Investigations:</em></p></td><td style="vertical-align:top"><p>Common:</p></td><td style="vertical-align:top"><p>increases in blood urea nitrogen (BUN), creatinine and creatine kinase</p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>decreases in serum potassium and sodium</p></td></tr><tr><td style="vertical-align:top"><p><em>Cardiac disorders:</em></p></td><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>syncope, hypotension, tachycardia, oedema</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p><em>Nervous system disorders:</em></p></td><td style="vertical-align:top"><p>Common:</p></td><td style="vertical-align:top"><p>dizziness</p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>orthostatic dizziness</p></td></tr><tr><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>headache</p></td></tr><tr><td style="vertical-align:top"><p><em>Ear and labyrinth disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>tinnitus</p></td></tr><tr><td style="vertical-align:top"><p><em>Respiratory, thoracic and mediastinal disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>cough</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p><em>Gastrointestinal disorders:</em></p></td><td style="vertical-align:top"><p>Common:</p></td><td style="vertical-align:top"><p>nausea/vomiting</p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>diarrhoea</p></td></tr><tr><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>dyspepsia, dysgeusia</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p><em>Renal and urinary disorders:</em></p></td><td style="vertical-align:top"><p>Common:</p></td><td style="vertical-align:top"><p>abnormal urination</p></td></tr><tr><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>impaired renal function including isolated cases of renal failure in patients at risk (see section 4.4)</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p><em>Musculoskeletal and connective tissue disorders:</em></p></td><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>swelling extremity</p></td></tr><tr><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>arthralgia, myalgia</p></td></tr><tr><td style="vertical-align:top"><p><em>Metabolism and nutrition disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>hyperkalaemia</p></td></tr><tr><td style="vertical-align:top"><p><em>Vascular disorders:</em></p></td><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>flushing</p></td></tr><tr><td style="vertical-align:top"><p><em>General disorders and administration site conditions:</em></p></td><td style="vertical-align:top"><p>Common:</p></td><td style="vertical-align:top"><p>fatigue</p></td></tr><tr><td style="vertical-align:top"><p><em>Immune system disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>cases of hypersensitivity reactions such as angioedema, rash, urticaria</p></td></tr><tr><td style="vertical-align:top"><p><em>Hepatobiliary disorders:</em></p></td><td style="vertical-align:top"><p>Uncommon:</p><p>Not known:</p></td><td style="vertical-align:top"><p>jaundice</p><p>hepatitis, abnormal liver function</p></td></tr><tr><td style="vertical-align:top"><p><em>Reproductive system and breast disorders:</em></p></td><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>sexual dysfunction, libido changes</p></td></tr></tbody></table><p><u>Additional information on individual components:</u>&nbsp;in addition to the adverse reactions listed above for the combination product, other adverse reactions previously reported with one of the individual components may be potential adverse reactions with irbesartan/hydrochlorothiazide combination. Tables 2 and 3 below detail the adverse reactions reported with the individual components of irbesartan/hydrochlorothiazide combination.</p><table border="1" cellspacing="0" cellpadding="0" style="width:691px"><tbody><tr><td colspan="3" style="vertical-align:top"><p><strong>Table 2:&nbsp;</strong>Adverse reactions reported with the use of&nbsp;<strong>irbesartan</strong>&nbsp;alone</p></td></tr><tr><td style="vertical-align:top"><p><em>Blood and lymphatic system disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>thrombocytopenia</p></td></tr><tr><td style="vertical-align:top"><p><em>General disorders and administration site conditions:</em></p></td><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>chest pain</p></td></tr><tr><td style="vertical-align:top"><p><em>Immune system disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>Anaphylactic reaction including anaphylactic shock</p></td></tr><tr><td colspan="3" style="vertical-align:top"><p><strong>Table 3:</strong>&nbsp;Adverse reactions reported with the use of&nbsp;<strong>hydrochlorothiazide</strong>&nbsp;alone</p></td></tr><tr><td style="vertical-align:top"><p><em>Investigations:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>electrolyte imbalance (including hypokalaemia and hyponatraemia, see section 4.4), hyperuricaemia, glycosuria, hyperglycaemia, increases in cholesterol and triglycerides</p></td></tr><tr><td style="vertical-align:top"><p><em>Cardiac disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>cardiac arrhythmias</p></td></tr><tr><td style="vertical-align:top"><p><em>Blood and lymphatic system disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>aplastic anaemia, bone marrow depression, neutropenia/agranulocytosis, haemolytic anaemia, leucopenia, thrombocytopenia</p></td></tr><tr><td style="vertical-align:top"><p><em>Nervous system disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>vertigo, paraesthesia, light-headedness, restlessness</p></td></tr><tr><td style="vertical-align:top"><p><em>Eye disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>transient blurred vision, xanthopsia, acute myopia and secondary acute angle-closure glaucoma</p></td></tr><tr><td style="vertical-align:top"><p><em>Respiratory, thoracic and mediastinal disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>respiratory distress (including pneumonitis and pulmonary oedema)</p></td></tr><tr><td style="vertical-align:top"><p><em>Gastrointestinal disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>pancreatitis, anorexia, diarrhoea, constipation, gastric irritation, sialadenitis, loss of appetite</p></td></tr><tr><td style="vertical-align:top"><p><em>Renal and urinary disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>interstitial nephritis, renal dysfunction</p></td></tr><tr><td style="vertical-align:top"><p><em>Skin and subcutaneous tissue disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>anaphylactic reactions, toxic epidermal necrolysis, necrotizing angitis (vasculitis, cutaneous vasculitis), cutaneous lupus erythematosus-like reactions, reactivation of cutaneous lupus erythematosus, photosensitivity reactions, rash, urticaria</p></td></tr><tr><td style="vertical-align:top"><p><em>Musculoskeletal and connective tissue disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>weakness, muscle spasm</p></td></tr><tr><td style="vertical-align:top"><p><em>Vascular disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>postural hypotension</p></td></tr><tr><td style="vertical-align:top"><p><em>General disorders and administration site conditions:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>fever</p></td></tr><tr><td style="vertical-align:top"><p><em>Hepatobiliary disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>jaundice (intrahepatic cholestatic jaundice)</p></td></tr><tr><td style="vertical-align:top"><p><em>Psychiatric disorders:</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>depression, sleep disturbances</p></td></tr><tr><td style="vertical-align:top"><p><em>Neoplasms benign, malignant and unspecified (incl cysts and polyps)</em></p></td><td style="vertical-align:top"><p>Not known:</p></td><td style="vertical-align:top"><p>non-melanoma skin cancer (basal cell carcinoma and squamous cell carcinoma)</p></td></tr></tbody></table><p>Non-melanoma skin cancer: Based on available data from epidemiological studies, cumulative dose dependent association between HCTZ and NMSC has been observed (see also sections 4.4 and 5.1).</p><p>The dose dependent adverse events of hydrochlorothiazide (particularly electrolyte disturbances) may increase when titrating the hydrochlorothiazide.</p><p><strong><u>Reporting of suspected adverse reactions</u></strong></p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product.</p><p>Healthcare professionals are asked to report any suspected adverse reactions at:</p><p>&nbsp;</p><p>&bull; Saudi Arabia: The National Pharmacovigilance and Drug Safety Centre (NPC) ,Fax: +966-11-205-7662,</p><p>Call NPC at +966-11-2038222, Exts 2317-2356-2340.</p><p>Reporting Hotline: 19999,</p><p>E-mail: npc.drug@sfda.gov.sa &nbsp;,</p><p>Website: www.sfda.gov.sa/npc</p><p>&nbsp;</p><p>&bull; Other GCC States: Please contact the relevant competent authority</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No specific information is available on the treatment of overdose with irbesartan/hydrochlorothiazide combination. The patient should be closely monitored, and the treatment should be symptomatic and supportive. Management depends on the time since ingestion and the severity of the symptoms. Suggested measures include induction of emesis and/or gastric lavage. Activated charcoal may be useful in the treatment of overdose. Serum electrolytes and creatinine should be monitored frequently. If hypotension occurs, the patient should be placed in a supine position, with salt and volume replacements given quickly.</p><p>The most likely manifestations of irbesartan overdose are expected to be hypotension and tachycardia; bradycardia might also occur.</p><p>Overdose with hydrochlorothiazide is associated with electrolyte depletion (hypokalaemia, hypochloremia, hyponatraemia) and dehydration resulting from excessive diuresis. The most common signs and symptoms of overdose are nausea and somnolence. Hypokalaemia may result in muscle spasms and/or accentuate cardiac arrhythmias associated with the concomitant use of digitalis glycosides or certain anti-arrhythmic medicinal products.</p><p>Irbesartan is not removed by haemodialysis. The degree to which hydrochlorothiazide is removed by haemodialysis has not been established.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: angiotensin-II antagonists, combinations</p><p>ATC code: C09DA04.</p><p><u>Mechanism of action</u></p><p>Irma-HCT is a combination of an angiotensin-II receptor antagonist, irbesartan, and a thiazide diuretic, hydrochlorothiazide. The combination of these ingredients has an additive antihypertensive effect, reducing blood pressure to a greater degree than either component alone.</p><p>Irbesartan is a potent, orally active, selective angiotensin-II receptor (AT<sub>1</sub>&nbsp;subtype) antagonist. It is expected to block all actions of angiotensin-II mediated by the AT<sub>1</sub>&nbsp;receptor, regardless of the source or route of synthesis of angiotensin-II. The selective antagonism of the angiotensin-II (AT<sub>1</sub>) receptors results in increases in plasma renin levels and angiotensin-II levels, and a decrease in plasma aldosterone concentration. Serum potassium levels are not significantly affected by irbesartan alone at the recommended doses in patients without risk of electrolyte imbalance (see sections 4.4 and 4.5). Irbesartan does not inhibit ACE (kininase-II), an enzyme which generates angiotensin-II and also degrades bradykinin into inactive metabolites. Irbesartan does not require metabolic activation for its activity.</p><p>Hydrochlorothiazide is a thiazide diuretic. The mechanism of antihypertensive effect of thiazide diuretics is not fully known. Thiazides affect the renal tubular mechanisms of electrolyte reabsorption, directly increasing excretion of sodium and chloride in approximately equivalent amounts. The diuretic action of hydrochlorothiazide reduces plasma volume, increases plasma renin activity, increases aldosterone secretion, with consequent increases in urinary potassium and bicarbonate loss, and decreases in serum potassium. Presumably through blockade of the renin-angiotensin-aldosterone system, co-administration of irbesartan tends to reverse the potassium loss associated with these diuretics. With hydrochlorothiazide, onset of diuresis occurs in 2 hours, and peak effect occurs at about 4 hours, while the action persists for approximately 6-12 hours.</p><p>The combination of hydrochlorothiazide and irbesartan produces dose-related additive reductions in blood pressure across their therapeutic dose ranges. The addition of 12.5 mg hydrochlorothiazide to 300 mg irbesartan once daily in patients not adequately controlled on 300 mg irbesartan alone resulted in further placebo-corrected diastolic blood pressure reductions at trough (24 hours post-dosing) of 6.1 mm Hg. The combination of 300 mg irbesartan and 12.5 mg hydrochlorothiazide resulted in an overall placebo-subtracted systolic/diastolic reductions of up to 13.6/11.5 mm Hg.</p><p>Limited clinical data (7 out of 22 patients) suggest that patients not controlled with the 300 mg/12.5 mg combination may respond when uptitrated to 300 mg/25 mg. In these patients, an incremental blood pressure lowering effect was observed for both systolic blood pressure (SBP) and diastolic blood pressure (DBP) (13.3 and 8.3 mm Hg, respectively).</p><p>Once daily dosing with 150 mg irbesartan and 12.5 mg hydrochlorothiazide gave systolic/diastolic mean placebo-adjusted blood pressure reductions at trough (24 hours post-dosing) of 12.9/6.9 mm Hg in patients with mild-to-moderate hypertension. Peak effects occurred at 3-6 hours. When assessed by ambulatory blood pressure monitoring, the combination 150 mg irbesartan and 12.5 mg hydrochlorothiazide once daily produced consistent reduction in blood pressure over the 24 hours period with mean 24-hour placebo-subtracted systolic/diastolic reductions of 15.8/10.0 mm Hg. When measured by ambulatory blood pressure monitoring, the trough to peak effects of irbesartan/hydrochlorothiazide combination 150 mg/12.5 mg were 100%. The trough to peak effects measured by cuff during office visits were 68% and 76% for irbesartan/hydrochlorothiazide combination 150 mg/12.5 mg and irbesartan/hydrochlorothiazide combination 300 mg/12.5 mg, respectively. These 24-hour effects were observed without excessive blood pressure lowering at peak and are consistent with safe and effective blood-pressure lowering over the once-daily dosing interval.</p><p>In patients not adequately controlled on 25 mg hydrochlorothiazide alone, the addition of irbesartan gave an added placebo-subtracted systolic/diastolic mean reduction of 11.1/7.2 mm Hg.</p><p>The blood pressure lowering effect of irbesartan in combination with hydrochlorothiazide is apparent after the first dose and substantially present within 1-2 weeks, with the maximal effect occurring by 6-8 weeks. In long-term follow-up studies, the effect of irbesartan/hydrochlorothiazide was maintained for over one year. Although not specifically studied with the irbesartan/hydrochlorothiazide combination, rebound hypertension has not been seen with either irbesartan or hydrochlorothiazide.</p><p>The effect of the combination of irbesartan and hydrochlorothiazide on morbidity and mortality has not been studied. Epidemiological studies have shown that long term treatment with hydrochlorothiazide reduces the risk of cardiovascular mortality and morbidity.</p><p>There is no difference in response to irbesartan/hydrochlorothiazide combination, regardless of age or gender. As is the case with other medicinal products that affect the renin-angiotensin system, black hypertensive patients have notably less response to irbesartan monotherapy. When irbesartan is administered concomitantly with a low dose of hydrochlorothiazide (e.g. 12.5 mg daily), the antihypertensive response in black patients approaches that of non-black patients.</p><p><u>Clinical efficacy and safety</u></p><p>Efficacy and safety of irbesartan/hydrochlorothiazide combination as initial therapy for severe hypertension (defined as SeDBP &ge; 110 mmHg) was evaluated in a multicentre, randomized, double-blind, active-controlled, 8-week, parallel-arm study. A total of 697 patients were randomized in a 2:1 ratio to either irbesartan/hydrochlorothiazide 150 mg/12.5 mg or to irbesartan 150 mg and systematically force-titrated (before assessing the response to the lower dose) after one week to irbesartan/hydrochlorothiazide 300 mg/25 mg or irbesartan 300 mg, respectively.</p><p>The study recruited 58% males. The mean age of patients was 52.5 years, 13% were &ge; 65 years of age, and just 2% were &ge; 75 years of age. Twelve percent (12%) of patients were diabetic, 34% were hyperlipidemic and the most frequent cardiovascular condition was stable angina pectoris in 3.5% of the participants.</p><p>The primary objective of this study was to compare the proportion of patients whose SeDBP was controlled (SeDBP &lt; 90 mmHg) at Week 5 of treatment. Forty-seven percent (47.2%) of patients on the combination achieved trough SeDBP &lt; 90 mmHg compared to 33.2% of patients on irbesartan (p = 0.0005). The mean baseline blood pressure was approximately 172/113 mmHg in each treatment group and decreases of SeSBP/SeDBP at five weeks were 30.8/24.0 mmHg and 21.1/19.3 mmHg for irbesartan/hydrochlorothiazide and irbesartan, respectively (p &lt; 0.0001).</p><p>The types and incidences of adverse events reported for patients treated with the combination were similar to the adverse event profile for patients on monotherapy. During the 8-week treatment period, there were no reported cases of syncope in either treatment group. There were 0.6% and 0% of patients with hypotension and 2.8% and 3.1% of patients with dizziness as adverse reactions reported in the combination and monotherapy groups, respectively.</p><p><u>Dual blockade of the renin-angiotensin-aldosterone system (RAAS)</u></p><p>Two large randomised, controlled trials (ONTARGET (ONgoing Telmisartan Alone and in combination with Ramipril Global Endpoint Trial) and VA NEPHRON-D (The Veterans Affairs Nephropathy in Diabetes)) have examined the use of the combination of an ACE-inhibitor with an angiotensin II receptor blocker. ONTARGET was a study conducted in patients with a history of cardiovascular or cerebrovascular disease, or type 2 diabetes mellitus accompanied by evidence of end-organ damage. VA NEPHRON-D was a study in patients with type 2 diabetes mellitus and diabetic nephropathy.</p><p>These studies have shown no significant beneficial effect on renal and/or cardiovascular outcomes and mortality, while an increased risk of hyperkalaemia, acute kidney injury and/or hypotension as compared to monotherapy was observed. Given their similar pharmacodynamic properties, these results are also relevant for other ACE-inhibitors and angiotensin II receptor blockers.</p><p>ACE-inhibitors and angiotensin II receptor blockers should therefore not be used concomitantly in patients with diabetic nephropathy.</p><p>ALTITUDE (Aliskiren Trial in Type 2 Diabetes Using Cardiovascular and Renal Disease Endpoints) was a study designed to test the benefit of adding aliskiren to a standard therapy of an ACE-inhibitor or an angiotensin II receptor blocker in patients with type 2 diabetes mellitus and chronic kidney disease, cardiovascular disease, or both. The study was terminated early because of an increased risk of adverse outcomes. Cardiovascular death and stroke were both numerically more frequent in the aliskiren group than in the placebo group and adverse events and serious adverse events of interest (hyperkalaemia, hypotension and renal dysfunction) were more frequently reported in the aliskiren group than in the placebo group.</p><p><em>Non-melanoma skin cancer:</em></p><p>Based on available data from epidemiological studies, cumulative dose-dependent association between HCTZ and NMSC has been observed. One study included a population comprised of 71,533 cases of BCC and of 8,629 cases of SCC matched to 1,430,833 and 172,462 population controls, respectively. High HCTZ use (&ge;50,000 mg cumulative) was associated with an adjusted OR of 1.29 (95% CI: 1.23-1.35) for BCC and 3.98 (95% CI: 3.68-4.31) for SCC. A clear cumulative dose response relationship was observed for both BCC and SCC. Another study showed a possible association between lip cancer (SCC) and exposure to HCTZ: 633 cases of lip-cancer were matched with 63,067 population controls, using a risk-set sampling strategy. A cumulative dose-response relationship was demonstrated with an adjusted OR 2.1 (95% CI: 1.7-2.6) increasing to OR 3.9 (3.0-4.9) for high use (~25,000 mg) and OR 7.7 (5.7-10.5) for the highest cumulative dose (~100,000 mg) (see also section 4.4).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Concomitant administration of hydrochlorothiazide and irbesartan has no effect on the pharmacokinetics of either medicinal product.</p><p><u>Absorption</u></p><p>Irbesartan and hydrochlorothiazide are orally active agents and do not require biotransformation for their activity. Following oral administration of Irma HCT, the absolute oral bioavailability is 60-80% and 50-80% for irbesartan and hydrochlorothiazide, respectively. Food does not affect the bioavailability of Irma HCT. Peak plasma concentration occurs at 1.5-2 hours after oral administration for irbesartan and 1-2.5 hours for hydrochlorothiazide.</p><p>Distribution</p><p>Plasma protein binding of irbesartan is approximately 96%, with negligible binding to cellular blood components. The volume of distribution for irbesartan is 53-93 litres. Hydrochlorothiazide is 68% protein-bound in the plasma, and its apparent volume of distribution is 0.83-1.14 l/kg.</p><p><u>Linearity/non-linearity</u>Irbesartan exhibits linear and dose proportional pharmacokinetics over the dose range of 10 to 600 mg. A less than proportional increase in oral absorption at doses beyond 600 mg was observed; the mechanism for this is unknown. The total body and renal clearance are 157-176 and 3.0-3.5 ml/min, respectively. The terminal elimination half-life of irbesartan is 11-15 hours. Steady-state plasma concentrations are attained within 3 days after initiation of a once-daily dosing regimen. Limited accumulation of irbesartan (&lt; 20%) is observed in plasma upon repeated once-daily dosing. In a study, somewhat higher plasma concentrations of irbesartan were observed in female hypertensive patients. However, there was no difference in the half-life and accumulation of irbesartan. No dosage adjustment is necessary in female patients. Irbesartan AUC and C<sub>max</sub>&nbsp;values were also somewhat greater in older subjects (&ge; 65 years) than those of young subjects (18-40 years). However the terminal half-life was not significantly altered. No dosage adjustment is necessary in older people. The mean plasma half-life of hydrochlorothiazide reportedly ranges from 5-15 hours.</p><p>Biotransformation</p><p>Following oral or intravenous administration of&nbsp;<sup>14</sup>C irbesartan, 80-85% of the circulating plasma radioactivity is attributable to unchanged irbesartan. Irbesartan is metabolised by the liver via glucuronide conjugation and oxidation. The major circulating metabolite is irbesartan glucuronide (approximately 6%).&nbsp;<em>In vitro</em>&nbsp;studies indicate that irbesartan is primarily oxidised by the cytochrome P450 enzyme CYP2C9; isoenzyme CYP3A4 has negligible effect.</p><p><u>Elimination</u></p><p>Irbesartan and its metabolites are eliminated by both biliary and renal pathways. After either oral or intravenous administration of&nbsp;<sup>14</sup>C irbesartan, about 20% of the radioactivity is recovered in the urine, and the remainder in the faeces. Less than 2% of the dose is excreted in the urine as unchanged irbesartan. Hydrochlorothiazide is not metabolized but is eliminated rapidly by the kidneys. At least 61% of the oral dose is eliminated unchanged within 24 hours. Hydrochlorothiazide crosses the placental but not the blood-brain barrier, and is excreted in breast milk.</p><p><u>Renal impairment</u></p><p>In patients with renal impairment or those undergoing haemodialysis, the pharmacokinetic parameters of irbesartan are not significantly altered. Irbesartan is not removed by haemodialysis. In patients with creatinine clearance &lt; 20 ml/min, the elimination half-life of hydrochlorothiazide was reported to increase to 21 hours.</p><p><u>Hepatic impairment</u></p><p>In patients with mild to moderate cirrhosis, the pharmacokinetic parameters of irbesartan are not significantly altered. Studies have not been performed in patients with severe hepatic impairment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Irbesartan/hydrochlorothiazide</u></p><p>The potential toxicity of the irbesartan/hydrochlorothiazide combination after oral administration was evaluated in rats and macaques in studies lasting up to 6 months. There were no toxicological findings observed of relevance to human therapeutic use.</p><p>The following changes, observed in rats and macaques receiving the irbesartan/hydrochlorothiazide combination at 10/10 and 90/90 mg/kg/day, were also seen with one of the two medicinal products alone and/or were secondary to decreases in blood pressure (no significant toxicologic interactions were observed):</p><p>▪ kidney changes, characterized by slight increases in serum urea and creatinine, and hyperplasia/hypertrophy of the juxtaglomerular apparatus, which are a direct consequence of the interaction of irbesartan with the renin-angiotensin system;</p><p>▪ slight decreases in erythrocyte parameters (erythrocytes, haemoglobin, haematocrit);</p><p>▪ stomach discoloration, ulcers and focal necrosis of gastric mucosa were observed in few rats in a 6 months toxicity study at irbesartan 90 mg/kg/day, hydrochlorothiazide 90 mg/kg/day, and irbesartan/hydrochlorothiazide 10/10 mg/kg/day. These lesions were not observed in macaques;</p><p>▪ decreases in serum potassium due to hydrochlorothiazide and partly prevented when hydrochlorothiazide was given in combination with irbesartan.</p><p>Most of the above mentioned effects appear to be due to the pharmacological activity of irbesartan (blockade of angiotensin-II-induced inhibition of renin release, with stimulation of the renin-producing cells) and occur also with angiotensin converting enzyme inhibitors. These findings appear to have no relevance to the use of therapeutic doses of irbesartan/hydrochlorothiazide in humans.</p><p>No teratogenic effects were seen in rats given irbesartan and hydrochlorothiazide in combination at doses that produced maternal toxicity. The effects of the irbesartan/hydrochlorothiazide combination on fertility have not been evaluated in animal studies, as there is no evidence of adverse effect on fertility in animals or humans with either irbesartan or hydrochlorothiazide when administered alone. However, another angiotensin-II antagonist affected fertility parameters in animal studies when given alone. These findings were also observed with lower doses of this other angiotensin-II antagonist when given in combination with hydrochlorothiazide.</p><p>There was no evidence of mutagenicity or clastogenicity with the irbesartan/hydrochlorothiazide combination. The carcinogenic potential of irbesartan and hydrochlorothiazide in combination has not been evaluated in animal studies.</p><p><u>Irbesartan</u></p><p>There was no evidence of abnormal systemic or target organ toxicity at clinically relevant doses. In non-clinical safety studies, high doses of irbesartan (&ge; 250 mg/kg/day in rats and &ge; 100 mg/kg/day in macaques) caused a reduction of red blood cell parameters (erythrocytes, haemoglobin, haematocrit). At very high doses (&ge; 500 mg/kg/day) degenerative changes in the kidneys (such as interstitial nephritis, tubular distention, basophilic tubules, increased plasma concentrations of urea and creatinine) were induced by irbesartan in the rat and the macaque and are considered secondary to the hypotensive effects of the medicinal product which led to decreased renal perfusion. Furthermore, irbesartan induced hyperplasia/hypertrophy of the juxtaglomerular cells (in rats at &ge; 90 mg/kg/day, in macaques at &ge; 10 mg/kg/day). All of these changes were considered to be caused by the pharmacological action of irbesartan. For therapeutic doses of irbesartan in humans, the hyperplasia/hypertrophy of the renal juxtaglomerular cells does not appear to have any relevance.</p><p>There was no evidence of mutagenicity, clastogenicity or carcinogenicity.</p><p>Fertility and reproductive performance were not affected in studies of male and female rats even at oral doses of irbesartan causing some parental toxicity (from 50 to 650 mg/kg/day), including mortality at the highest dose. No significant effects on the number of corpora lutea, implants, or live foetuses were observed. Irbesartan did not affect survival, development, or reproduction of offspring. Studies in animals indicate that the radiolabelled irbesartan is detected in rat and rabbit foetuses. Irbesartan is excreted in the milk of lactating rats.</p><p>Animal studies with irbesartan showed transient toxic effects (increased renal pelvic cavitation, hydroureter or subcutaneous oedema) in rat foetuses, which were resolved after birth. In rabbits, abortion or early resorption was noted at doses causing significant maternal toxicity, including mortality. No teratogenic effects were observed in the rat or rabbit.</p><p><u>Hydrochlorothiazide</u></p><p>Although equivocal evidence for a genotoxic or carcinogenic effect was found in some experimental models, the extensive human experience with hydrochlorothiazide has failed to show an association between its use and an increase in neoplasms.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><u>Tablet core: </u></strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Carboxymethylcellulose Calcium</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colloidal Silicon Dioxide</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Povidone</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sodium Starch Glycolate</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Talc</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Magnesium stearate</p><p>&nbsp;</p><p><strong><u>Film-coating: </u></strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hypromellose</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lactose monohydrate</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Titanium dioxide</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Polyethylene Glycol 3000</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Iron Oxide Yellow</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Iron Oxide Red</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                2 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above 30&deg;C.</p><p>Store in the original package in order to protect from moisture.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Cartons of 28 film-coated tablets (14&rsquo;s Blister X 2 ) &nbsp;in White opaque PVC/PE/PVdC/ Aluminium Blister</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Globalpharma Co. LLC, DIP, Jebel Ali, Dubai, UAE.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                27th October, 2019
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

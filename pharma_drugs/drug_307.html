@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1601244734
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2012
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        OMIZ PLUS 40MG CAPSULE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        OMEPRAZOLE,SODIUM BICARBONATE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        40,1100
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Capsule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        28
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        120.1
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="TABUK PHARMACEUTICAL MANUFACTURING CO." />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            TABUK PHARMACEUTICAL MANUFACTURING CO.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 409]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Tabuk Pharmaceutical Manufacturing Company
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Tabuk Pharmaceutical Manufacturing Company
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        A02BC01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Omiz Plus 40 mg Capsules. 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Omiz Plus  40/1100 mg: Each capsule contains: Omeprazole 40 mg and Sodium Bicarbonate 1100 mg
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                White body and dark blue cap, size "00" hard gelatin capsules, imprinted with "ZD40" on the body ,containing white to off-white powder
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><em>Omiz Plus </em></strong>is a proton pump inhibitor indicated for:</p><p>&nbsp;</p><p>Short-term treatment of active duodenal ulcer</p><p>Short-term treatment of active benign gastric ulcer</p><p>Treatment of gastroesophageal reflux disease (GERD)</p><p>Maintenance of healing of erosive esophagitis</p><p>&nbsp;</p><p>The safety and effectiveness of <strong><em>Omiz Plus </em></strong>in pediatric patients (&lt;18 years of age) have not been established.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><em>Omiz Plus </em></strong>is available as a capsule in 20 mg and 40 mg strengths for adult use. Directions for use for each indication are summarized in below.</p><p>&nbsp;</p><p>Since both the 20 mg and 40 mg capsules<strong> </strong>contain the same amount of sodium bicarbonate</p><p>(1100 mg), two capsules of 20 mg are not equivalent to one capsule of <strong><em>Omiz Plus </em></strong>40 mg; therefore, two 20 mg capsules of <strong><em>Omiz Plus </em></strong>should not be substituted for one capsule of <strong><em>Omiz Plus </em></strong>40 mg.</p><p>&nbsp;</p><p><strong><em>Omiz Plus </em></strong>should be taken on an empty stomach at least one hour before a meal.</p><p>&nbsp;</p><p><strong>Recommended Doses of <em>Omiz Plus by</em> Indication for Adults 18 Years and Older:</strong></p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>Indication</strong></p></td><td style="vertical-align:top"><p><strong>Recommended Dose</strong></p></td><td style="vertical-align:top"><p><strong>Frequency</strong></p></td></tr><tr><td style="vertical-align:top"><p>Short-Term Treatment of Active Duodenal Ulcer</p></td><td style="vertical-align:top"><p>20 mg</p></td><td style="vertical-align:top"><p>Once daily for 4 weeks*</p></td></tr><tr><td style="vertical-align:top"><p>Benign Gastric Ulcer</p></td><td style="vertical-align:top"><p>40 mg</p></td><td style="vertical-align:top"><p>Once daily for 4-8 weeks</p></td></tr><tr><td style="vertical-align:top"><p>Gastroesophageal Reflux Disease (GERD):</p><p>-Symptomatic GERD</p><p>(with no esophageal erosions).</p><p>-Erosive Esophagitis</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>20 mg</p><p>&nbsp;</p><p>&nbsp;</p><p>20 mg</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>Once daily for up to 4</p><p>weeks</p><p>&nbsp;</p><p>Once daily for 4-8 weeks</p></td></tr><tr><td style="vertical-align:top"><p>Maintenance of Healing of Erosive Esophagitis</p></td><td style="vertical-align:top"><p>20 mg</p></td><td style="vertical-align:top"><p>Once daily</p></td></tr></tbody></table><p>&nbsp;&nbsp;&nbsp;&nbsp;</p><p>&nbsp;* *Most patients heal within 4 weeks. Some patients may require an additional 4 weeks of therapy.</p><p><strong>** </strong><strong>Controlled studies do not extend beyond 12 months.</strong></p><p><strong><sup>+</sup></strong><strong> For additional information</strong></p><p><strong>&nbsp;</strong></p><p><u>Administration of Capsules </u></p><p><strong>Omiz Plus</strong> Capsules should be swallowed intact with water. DO NOT USE OTHER LIQUIDS. DO NOT OPEN CAPSULE AND SPRINKLE CONTENTS INTO FOOD.</p><p>&nbsp;</p><p><strong>Geriatric Use </strong></p><p>Omeprazole was administered to over 2000 elderly individuals (&ge; 65 years of age) in clinical trials in the U.S. and Europe. There were no differences in safety and effectiveness between the elderly and younger subjects. Other reported clinical experience has not identified differences in response between the elderly and younger subjects, but greater sensitivity of some older individuals cannot be ruled out.</p><p>Pharmacokinetic studies with buffered omeprazole have shown the elimination rate was somewhat decreased in the elderly and bioavailability was increased. The plasma clearance of omeprazole was 250 mL/min (about half that of young subjects). The plasma half-life averaged one hour, about twice that in nonelderly, healthy subjects taking <strong>Omeprazole and Sodium Bicarbonate.</strong> However, no dosage adjustment is necessary in the elderly.</p><p><strong>Hepatic Impairment </strong></p><p>Consider dose reduction, particularly for maintenance of healing of erosive esophagitis. <em>&nbsp;</em></p><p><strong>Renal Impairment </strong></p><p>No dose reduction is necessary.</p><p><strong>Asian Population </strong></p><p>Recommend dose reduction, particularly for maintenance of healing of erosive esophagitis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Omiz Plus is contraindicated in patients with known hypersensitivity to any components of the formulation. Hypersensitivity reactions may include anaphylaxis, anaphylactic shock, angioedema, bronchospasm, acute interstitial nephritis, and urticaria.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Concomitant Gastric Malignancy</strong></p><p>Symptomatic response to therapy with omeprazole does not preclude the presence of gastric malignancy.</p><p>&nbsp;</p><p><strong>Atrophic gastritis</strong></p><p>Atrophic gastritis has been noted occasionally in gastric corpus biopsies from patients treated long-term with omeprazole.</p><p>&nbsp;</p><p><strong>Acute Interstitial Nephritis</strong></p><p>Acute interstitial nephritis has been observed in patients taking PPIs including omeprazole and sodium bicarbonate. Acute interstitial nephritis may occur at any point during PPI therapy and is generally attributed to an idiopathic hypersensitivity reaction. Discontinue omeprazole and sodium bicarbonate if acute interstitial nephritis develops.</p><p>&nbsp;</p><p><strong>Cyanocobalamin (vitamin B-12) Deficiency</strong></p><p>Daily treatment with any acid-suppressing medications over a long period of time (e.g., longer than 3 years) may lead to malabsorption of cyanocobalamin (vitamin B-12) caused by hypo-or achlorhydria. Rare reports of cyanocobalamin deficiency occurring with acid-suppressing therapy have been reported in the literature. This diagnosis should be considered if clinical symptoms consistent with cyanocobalamin deficiency are observed.</p><p>&nbsp;</p><p><strong>Buffer Content</strong></p><p>Each <strong>Omiz Plus</strong> Capsule contains 1100 mg (13 mEq) of sodium bicarbonate. The total content of sodium in each capsule is 304 mg.</p><p>The sodium content of <strong>Omiz Plus</strong> products should be taken into consideration when administering to patients on a sodium restricted diet.</p><p>Because <strong>Omiz Plus</strong> products contain sodium bicarbonate, they should be used with caution in patients with Bartter&rsquo;s syndrome, hypokalemia, hypocalcemia, and problems with acid-base balance. Long-term administration of bicarbonate with calcium or milk can cause milk-alkali syndrome.</p><p>Chronic use of sodium bicarbonate may lead to systemic alkalosis and increased sodium intake can produce edema and weight increase.</p><p>&nbsp;</p><p><strong>Clostridium difficile Associated Diarrhea</strong></p><p>Published observational studies suggest that PPI therapy like omeprazole and sodium bicarbonate may be associated with an increased risk of Clostridium difficile associated diarrhea, especially in hospitalized patients. This diagnosis should be considered for diarrhea that does not improve.</p><p>Patients should use the lowest dose and shortest duration of PPI therapy appropriate to the condition being treated.</p><p>&nbsp;</p><p><strong>Interaction with clopidogrel</strong></p><p>Avoid concomitant use of omeprazole and sodium bicarbonate with clopidogrel. Clopidogrel is a prodrug. Inhibition of platelet aggregation by clopidogrel is entirely due to an active metabolite. The metabolism of clopidogrel to its active metabolite can be impaired by use with concomitant medications, such as omeprazole, that interfere with CYP2C19 activity. Concomitant use of clopidogrel with 80 mg omeprazole reduces the pharmacological activity of clopidogrel, even when administered 12 hours apart. When using omeprazole and sodium bicarbonate, consider alternative anti-platelet therapy.</p><p><strong>&nbsp;</strong></p><p><strong>Bone Fracture </strong></p><p>Several published observational studies suggest that proton pump inhibitor (PPI) therapy may be associated with an increased risk for osteoporosis-related fractures of the hip, wrist, or spine. The risk of fracture was increased in patients who received high-dose, defined as multiple daily doses, and long-term PPI therapy (a year or longer). Patients should use the lowest dose and shortest duration of PPI therapy appropriate to the condition being treated. Patients at risk for osteoporosis-related fractures should be managed according to the established treatment guidelines.</p><p>&nbsp;</p><p><strong>Hypomagnesemia</strong></p><p>Hypomagnesemia, symptomatic and asymptomatic, has been reported rarely in patients treated with PPIs for at least three months, in most cases after a year of therapy. Serious adverse events include tetany, arrhythmias, and seizures. In most patients, treatment of hypomagnesemia required magnesium replacement and discontinuation of the PPI.</p><p>For patients expected to be on prolonged treatment or who take PPIs with medications such as digoxin or drugs that may cause hypomagnesemia (e.g., diuretics), health care professionals may consider monitoring magnesium levels prior to initiation of PPI treatment and periodically.</p><p>&nbsp;</p><p><strong>Concomitant Use of Omeprazole and Sodium Bicarbonate with St John&rsquo;s Wort or Rifampin</strong></p><p>Drugs which induce CYP2C19 OR CYP34A (such as St John&#39;s Wort or rifampin) can substantially decrease omeprazole concentrations. Avoid concomitant use of omeprazole and sodium bicarbonate with St John&#39;s Wort or rifampin.</p><p>&nbsp;</p><p><strong>Interactions with Investigations for Neuroendocrine Tumors</strong></p><p>Serum chromogranin A (CgA) levels increase secondary to drug-induced decreases in gastric acidity. The increased CgA level may cause false positive results in diagnostic investigations for neuroendocrine tumors. Providers should temporarily stop omeprazole treatment before assessing CgA levels and consider repeating the test if initial CgA levels are high. If serial tests are performed (e.g. for monitoring), the same commercial laboratory should be used for testing, as reference ranges between tests may vary.</p><p>&nbsp;</p><p><strong>Concomitant Use of Omiz Plus with Methotrexate</strong></p><p>Literature suggests that concomitant use of PPIs with methotrexate (primarily at high dose; see methotrexate prescribing information) may elevate and prolong serum levels of methotrexate and/or its metabolite, possibly leading to methotrexate toxicities. In high-dose methotrexate administration, a temporary withdrawal of the PPI may be considered in some patients.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellpadding="0" style="width:100%"><tbody><tr><td><p><strong>Drugs for which gastric pH can affect bioavailability</strong></p><p>Due to its effects on gastric acid secretion, omeprazole can reduce the absorption of drugs where gastric pH is an important determinant of their bioavailability. Like with other drugs that decrease the intragastric acidity, the absorption of drugs such as ketoconazole, atazanavir, iron salts, erlotinib, and mycophenolate mofetil (MMF) can decrease, while the absorption of drugs such a digoxin can increase during treatment with omeprazole.</p><p>Concomitant treatment with omeprazole (20mg daily) and digoxin in healthy subjects increased the bioavailability of digoxin by 10% (30% in two subjects). Coadministration of digoxin with omeprazole and sodium bicarbonate is expected to increase the systemic exposure of digoxin. Therefore, patients may need to be monitored when digoxin is taken concomitantly with omeprazole and sodium bicarbonate.</p><p>Co-administration of omeprazole in healthy subjects and in transplant patients receiving MMF has been reported to reduce the exposure to the active metabolite, mycophenolic acid (MPA), possibly due to a decrease in MMF solubility at an increased gastric pH. The clinical relevance of reduced MPA exposure on organ rejection has been established in transplant patients receiving omeprazole and sodium bicarbonate and MMF. Use omeprazole and sodium bicarbonate with caution in transplant patients receiving MMF.</p><p><strong>Drugs metabolized by cytrochrom P450 (CYP)</strong></p><p>Omeprazole can prolong the elimination of diazepam, warfarin and phenytoin, drugs that are metabolized by oxidation in the liver. There have been reports of increased INR and prothrombin time in patients receiving proton pump inhibitors, including omeprazole, and warfarin concomitantly. Increases in INR and prothrombin time may lead to abnormal bleeding and even death. Patients treated with proton pump inhibitors and warfarin may</p><p>need to be monitored for increases in INR and prothrombin time.</p><p>Although in normal subjects no interaction with theophylline or propranolol was found, there have been clinical reports of interaction with other drugs metabolized via the cytochrome P-450 system (e.g., cyclosporine, disulfiram, benzodiazepines). Patients should be monitored to determine if it is necessary to adjust the dosage of these drugs when taken concomitantly with <strong><em>Omiz Plus</em></strong>.</p><p>Concomitant administration of omeprazole and voriconazole (a combined inhibitor of CYP2C19 and CYP3A4) resulted in more than doubling of the Omeprazole exposure. Dose adjustment of omeprazole is not normally required. When voriconazole (400 mg every 12 hours for one day, then 200 mg for 6 days) was given with Omeprazole (40 mg once daily for 7 days) to healthy subjects, it significantly increased the steady-state C<sub>max</sub> and AUC0-24 of Omeprazole, an average of 2 times (90% CI: 1.8, 2.6) and 4 times (90% CI: 3.3, 4.4) respectively as compared to when Omeprazole was given without voriconazole.</p><p>Drugs known to induce CYP2C19 or CYP3A4 (such as rifampin) may lead to decreased omeprazole serum levels. In a cross-over study in 12 healthy male subjects, St John&#39;s wort (300 mg three times daily for 14 days), an inducer of CYP3A4, decreased the systemic exposure of omeprazole in CYP2C19 poor metabolisers (C<sub>max</sub> and AUC decreased by 37.5% and 37.9%, respectively) and extensive metabolisers (C<sub>max</sub> and AUC decreased by 49.6% and 43.9%, respectively). Avoid concomitant use of St. John&#39;s Wort or rifampin with omeprazole.</p><p>&nbsp;</p><p><strong>Antiretroviral Agents</strong></p><p>Concomitant administration of atazanavir and proton pump inhibitors is not recommended. Co-administration of atazanavir with proton pump inhibitors is expected to substantially decrease atazanavir plasma concentrations and thereby reduce its therapeutic effect.</p><p>Omeprazole has been reported to interact with some antiretroviral drugs. The clinical importance and the mechanisms behind these interactions are not always known.</p><p>Increased gastric pH during omeprazole treatment may change the absorption of the antiretroviral drug. Other possible interaction mechanisms are via CYP2C19. For some antiretroviral drugs, such as atazanavir and nelfinavir, decreased serum levels have been reported when given together with Omeprazole. Following multiple doses of nelfinavir (1250 mg, twice daily) and Omeprazole (40 mg, daily), AUC was decreased by 36%</p><p>and 92%, C<sub>max</sub> by 37% and 89% and C<sub>min</sub> by 39% and 75% respectively</p><p>for nelfinavir and M8. Following multiple doses of atazanavir (400 mg, daily) and Omeprazole (40 mg, daily, 2 hours before atazanavir), AUC was decreased by 94%, C<sub>max</sub> by 96%, and C<sub>min</sub> by 95%. Concomitant administration with Omeprazole and drugs such as atazanavir and nelfinavir is therefore not recommended.</p><p>&nbsp;</p><p><em>Increased Concentration of Saquinavir</em></p><p>&nbsp;</p><p>For other antiretroviral drugs, such as saquinavir, elevated serum levels have been reported with an increase in AUC by 82%, in C<sub>max</sub> by 75% and in C<sub>min</sub> by 106% following multiple dosing of saquinavir/ritonavir (1000/100 mg) twice daily for 15 days with Omeprazole 40 mg daily co-administered days 11 to 15. Dose reduction of saquinavir should be considered from the safety perspective for individual patients. There are also some antiretroviral drugs of which unchanged serum levels have been reported when given with Omeprazole.</p><p>&nbsp;</p><p><strong>Combination Therapy with Clarithromycin</strong></p><p>Concomitant administration of clarithromycin with other drugs can lead to serious adverse reactions due to drug interaction [See Warnings and Precautions in prescribing information for clarithromycin]. Because of these drug interactions, clarithromycin is contraindicated for co-administration with certain drugs. [See Contraindications in prescribing information for clarithromycin]</p><p>&nbsp;</p><p><strong>Clopidogrel</strong></p><p>Omeprazole is an inhibitor of CYP2C19 enzyme. Clopidogrel is metabolized to its active metabolite in part by CYP2C19. Concomitant use of omeprazole 80 mg results in reduced plasma concentrations of the active metabolite of clopidogrel and a reduction in platelet inhibition. Avoid concomitant administration of <strong>Omiz Plus</strong> with clopidogrel. When using <strong>Omiz Plus</strong>, consider use of alternative anti-platelet therapy. [See Pharmacokinetics]</p><p>&nbsp;</p><p><strong>Tacrolimus</strong></p><p>Concomitant administration of omeprazole and tacrolimus may increase the serum levels of tacrolimus.</p><p>&nbsp;</p><p><strong>Interactions with Investigations of Neuroendocrine Tumors</strong></p><p>Drug-induced decrease in gastric acidity results in enterochromaffin-like cell hyperplasia and increased Chromogranin A levels which may interfere with investigations for neuroendocrine tumors. [See Clinical Pharmacology].</p><p>&nbsp;</p><p><strong>Methotrexate</strong></p><p>Case reports, published population pharmacokinetic studies, and retrospective analyses suggest that concomitant administration of PPIs and methotrexate (primarily at high dose; see methotrexate prescribing information) may elevate and prolong serum levels of methotrexate and/or its metabolite hydroxymethotrexate. However, no formal drug interaction studies of methotrexate with PPIs have been conducted. [See Warnings and Precautions].</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em>Pregnancy Category C</em></p><p>There are no adequate and well-controlled studies on the use of <strong>Omiz Plus</strong> in pregnant women. Available epidemiologic data fail to demonstrate an increased risk of major congenital malformations or other adverse pregnancy outcomes with first trimester omeprazole use. Teratogenicity was not observed in animal reproduction studies with administration of oral esomeprazole magnesium in rats and rabbits with doses about68 times and 42 times, respectively, an oral human dose of 40 mg (based on a body surface area basis for a 60 kg person). However, changes in bone morphology were observed in offspring of rats dosed through most of pregnancy and lactation at doses equal to or greater than approximately 33.6 times an oral human dose of 40 mg (see Animal Data). Because of the observed effect at high doses of esomeprazole magnesium on developing bone in rat studies, <strong>Omiz Plus</strong> should be used during pregnancy only if the potential benefit justifies the potential risk to the fetus.</p><p><u>Human Data </u></p><p>Four published epidemiological studies compared the frequency of congenital abnormalities among infants born to women who used omeprazole during pregnancy with the frequency of abnormalities among infants of women exposed to H2-receptor antagonists or other controls.</p><p>A population-based retrospective cohort epidemiological study from the Swedish Medical Birth Registry, covering approximately 99% of pregnancies, from 1995-99, reported on 955 infants (824 exposed during the first trimester with 39 of these exposed beyond first trimester, and 131 exposed after the first trimester) whose mothers used omeprazole during pregnancy. The number of infants exposed in utero to omeprazole that had any malformation, low birth weight, low Apgar score, or hospitalization was similar to the number observed in this population. The number of infants born with ventricular septal defects and the number of stillborn infants was slightly higher in the omeprazole-exposed infants than the expected number in this population.</p><p>A population-based retrospective cohort study covering all live births in Denmark from 1996-2009, reported on 1,800 live births whose mothers used omeprazole during the first trimester of pregnancy and 837, 317 live births whose mothers did not use any proton pump inhibitor. The overall rate of birth defects in infants born to mothers with first trimester exposure to omeprazole was 2.9% and 2.6% in infants born to mothers not exposed to any proton pump inhibitor during the first trimester.</p><p>A retrospective cohort study reported on 689 pregnant women exposed to either H2-blockers or omeprazole in the first trimester (134 exposed to omeprazole) and 1,572 pregnant women unexposed to either during the first trimester. The overall malformation rate in offspring born to mothers with first trimester exposure to omeprazole, an H2-blocker, or were unexposed was 3.6%, 5.5%, and 4.1% respectively.</p><p>A small prospective observational cohort study followed 113 women exposed to omeprazole during pregnancy (89% first trimester exposures). The reported rate of major congenital malformations was 4% in the omeprazole group, 2% in controls exposed to non-teratogens, and 2.8% in disease-paired controls. Rates of spontaneous and elective abortions, preterm deliveries, gestational age at delivery, and mean birth weight were similar among the groups.</p><p>Several studies have reported no apparent adverse short-term effects on the infant when single dose oral or intravenous omeprazole was administered to over 200 pregnant women as premedication for cesarean section under general anesthesia.</p><p>Animal Data Reproductive studies conducted with omeprazole in rats at oral doses up to 138 mg/kg/day (about 33.6 times an oral human dose of 40 mg on a body surface area basis) and in rabbits at doses up to 69 mg/kg/day (about 33.6times an oral human dose of 40 mg on a body surface area basis) did not disclose any evidence for a teratogenic potential of omeprazole. In rabbits, omeprazole in a dose range of 6.9 to 69.1 mg/kg/day (about 3.36 to 33.6 times an oral human dose of 40 mg on a body surface area basis) produced dose-related increases in embryo-lethality, fetal resorptions, and pregnancy disruptions. In rats, dose-related embryo/fetal toxicity and postnatal developmental toxicity were observed in offspring resulting from parents treated with omeprazole at 13.8 to 138.0 mg/kg/day (about 3.36 to 33.6 times an oral human dose of 40 mg on a body surface area basis).</p><p>Reproduction studies have been performed with esomeprazole magnesium in rats at oral doses up to 280 mg/kg/day (about 68 times an oral human dose of 40 mg on a body surface area basis) and in rabbits at oral doses up to 86 mg/kg/day (about42 times an oral human dose of 40 mg on a body surface area basis) and have revealed no evidence of impaired fertility or harm to the fetus due to esomeprazole magnesium.</p><p>A pre-and postnatal developmental toxicity study in rats with additional endpoints to evaluate bone development were performed with the S-enantiomer, esomeprazole magnesium at oral doses of 14 to 280 mg/kg/day (about 3.4 to 68 times an oral human dose of 40 mg of esomeprazole on a body surface area basis). Neonatal/early postnatal (birth to weaning) survival was decreased at doses equal to or greater than 138 mg/kg/day (about</p><p>33.6 times an oral human dose of 40 mg on a body surface area basis). Body weight and body weight gain were reduced and neurobehavioral or general developmental delays in the immediate post-weaning timeframe were evident at doses equal to or greater than 69 mg /kg/day (about 16.8 times an oral human dose of 40 mg on a body surface area basis). In addition, decreased femur length, width and thickness of cortical bone, decreased thickness of the tibial growth plate and minimal to mild bone marrow hypocellularity were noted at doses of esomeprazole magnesium equal to or greater than 14 mg/kg/day (about 3.4 times an oral human dose of 40 mg on a body surface area basis). Physeal dysplasia in the femur was observed in offspring of rats treated with oral doses of esomeprazole magnesium at doses equal to or greater than 138 mg/kg/day (about 33.6 times an oral human dose of 40 mg on a body surface area basis).</p><p>Effects on maternal bone were observed in pregnant and lactating rats in a pre-and postnatal toxicity study when esomeprazole magnesium was administered at oral doses of 14 to 280 mg/kg/day (about 3.4 to 68 times an oral human dose of 40 mg on a body surface area basis). When rats were dosed from gestational day 7 through weaning on postnatal day 21, a statistically significant decrease in maternal femur weight of up to 14% (as compared to placebo treatment) was observed at doses of esomeprazole magnesium equal to or greater than 138 mg/kg/day (about 33.6 times an oral human dose of 40 mg on a body surface area basis).</p><p>A pre-and post natal development study in rats with esomeprazole strontium (using equimolar doses compared to esomeprazole magnesium study) produced similar results in dams and pups as described above.</p><p><strong>Nursing Mothers </strong></p><p>&nbsp;</p><p>Omeprazole concentrations have been measured in breast milk of a woman following oral administration of 20 mg. The peak concentration of omeprazole in breast milk was less than 7% of the peak serum concentration. The concentration will correspond to 0.004 mg of omeprazole in 200 mL of milk. Because omeprazole is excreted in human milk, because of the potential for serious adverse reactions in nursing infants from omeprazole, and because of the potential for tumorigenicity shown for omeprazole in rat carcinogenicity studies, a decision should be made to discontinue nursing or to discontinue the drug, taking into account the importance of the drug to the mother. In addition, sodium bicarbonate should be used with caution in nursing mothers.</p><p><strong>Pediatric Use </strong></p><p>Safety and effectiveness of <strong>Omiz Plus</strong> have not been established in pediatric patients less than 18 years of age.</p><p><u>Juvenile Animal Data</u></p><p>In a juvenile rat toxicity study, esomeprazole was administered with both magnesium and strontium salts at oral doses about 34 to 68 times a daily human dose of 40 mg on a body surface area basis. Increases in death were seen at the high dose, and at all doses of esomeprazole, there were decreases in body weight, body weight gain, femur weight and femur length, and decreases in overall growth.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No effects are foreseen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The most common side effects (1-10% of patients) are headache, abdominal pain, constipation, diarrhoea, flatulence and nausea/vomiting.</p><p>The following adverse drug reactions have been identified or suspected in the clinical trials programme for omeprazole and post-marketing. None was found to be dose-related. Adverse reactions listed below are classified according to frequency and System Organ Class (SOC). Frequency categories are defined according to the following convention: Very common (&ge; 1/10), Common (&ge; 1/100 to &lt; 1/10), Uncommon (&ge; 1/1,000 to &lt; 1/100), Rare (&ge; 1/10,000 to &lt; 1/1,000), Very rare (&lt; 1/10,000), Not known (cannot be estimated from the available data).</p><table border="1" cellspacing="0" cellpadding="0" style="width:100%"><tbody><tr><td style="vertical-align:top"><p><strong>SOC/frequency</strong></p></td><td style="vertical-align:top"><p><strong>Adverse reaction</strong></p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Blood and lymphatic system disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Leukopenia, thrombocytopenia</p></td></tr><tr><td style="vertical-align:top"><p>Very rare:</p></td><td style="vertical-align:top"><p>Agranulocytosis, pancytopenia</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Immune system disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Hypersensitivity reactions e.g. fever, angioedema and anaphylactic reaction/shock</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Metabolism and nutrition disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Hyponatraemia</p></td></tr><tr><td style="vertical-align:top"><p>Unknown:</p></td><td style="vertical-align:top"><p>Hypomagnesaemia (see section 4.4)</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Psychiatric disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>Insomnia</p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Agitation, confusion, depression</p></td></tr><tr><td style="vertical-align:top"><p>Very rare:</p></td><td style="vertical-align:top"><p>Aggression, hallucinations</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Nervous system disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Common:</p></td><td style="vertical-align:top"><p>Headache</p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>Dizziness, paraesthesia, somnolence</p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Taste disturbance</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Eye disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Blurred vision</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Ear and labyrinth disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>Vertigo</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Respiratory, thoracic and mediastinal disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Bronchospasm</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Gastrointestinal disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Common:</p></td><td style="vertical-align:top"><p>Abdominal pain, constipation, diarrhoea, flatulence, nausea/vomiting</p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Dry mouth, stomatitis, gastrointestinal candidiasis</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Hepatobiliary disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>Increased liver enzymes</p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Hepatitis with or without jaundice</p></td></tr><tr><td style="vertical-align:top"><p>Very rare:</p></td><td style="vertical-align:top"><p>Hepatic failure, encephalopathy in patients with pre-existing liver disease</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Skin and subcutaneous tissue disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>Dermatitis, pruritus, rash, urticaria</p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Alopecia, photosensitivity</p></td></tr><tr><td style="vertical-align:top"><p>Very rare:</p></td><td style="vertical-align:top"><p>Erythema multiforme, Stevens-Johnson syndrome, toxic epidermal necrolysis(TEN)</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Musculoskeletal and connective tissue disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>Fracture of the hip, wrist or spine (see section 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Arthralgia, myalgia</p></td></tr><tr><td style="vertical-align:top"><p>Very rare:</p></td><td style="vertical-align:top"><p>Muscular weakness</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Renal and urinary disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Interstitial nephritis</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Reproductive system and breast disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>Very rare:</p></td><td style="vertical-align:top"><p>Gynaecomastia</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>General disorders and administration site conditions</strong></p></td></tr><tr><td style="vertical-align:top"><p>Uncommon:</p></td><td style="vertical-align:top"><p>Malaise, peripheral oedema</p></td></tr><tr><td style="vertical-align:top"><p>Rare:</p></td><td style="vertical-align:top"><p>Increased sweating</p></td></tr></tbody></table><p><strong><em>&nbsp;</em></strong></p><p><strong><u>To report any side effects:</u></strong></p><p>&middot;&nbsp;&nbsp;&nbsp; <strong>Saudi Arabia</strong></p><p>The National Pharmacovigilance and Drug Safety Center (NPC)</p><p>Fax: +966-11-205-7662</p><p>Call NPC at:&nbsp; +966-11-2038222,</p><p>Exts: 2317-2356-2340.</p><p>Reporting hotline: 19999</p><p>E-mail: npc.drug@sfda.gov.sa</p><p>Website: www.sfda.gov.sa/npc</p><p>&middot;&nbsp;&nbsp;&nbsp; <strong>Other GCC States:</strong></p><p>Please contact the relevant competent authority.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Reports have been received of overdosage with omeprazole in humans. Doses ranged up to 2400 mg (120 times the usual recommended clinical dose). Manifestations were variable, but included confusion, drowsiness, blurred vision, tachycardia, nausea, vomiting, diaphoresis, flushing, headache, dry mouth, and other adverse reactions similar to those seen in normal clinical experience. Symptoms were transient, and no serious clinical outcome has been reported when omeprazole was taken alone. No specific antidote for omeprazole overdosage is known. Omeprazole is extensively protein bound and is, therefore, not readily dialyzable. In the event of overdosage, treatment should be symptomatic and supportive.</p><p>As with the management of any overdose, the possibility of multiple drug ingestion should be considered. For current information on treatment of any drug overdose, a certified Regional Poison Control Center should be contacted. Telephone numbers are listed in the Physicians&rsquo; Desk Reference (PDR) or local telephone book.</p><p>Single oral doses of omeprazole at 1350, 1339, and 1200 mg/kg were lethal to mice, rats, and dogs, respectively. Animals given these doses showed sedation, ptosis, tremors, convulsions, and decreased activity, body temperature, and respiratory rate and increased depth of respiration.</p><p>In addition, a sodium bicarbonate overdose may cause hypocalcemia, hypokalemia, hypernatremia, and seizures.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><em>Pharmacotherapeutic group:</em></strong> Proton Pump Inhibitor.</p><p>&nbsp;</p><p><strong><em>ATC Code:</em></strong> A02BC01</p><p>&nbsp;</p><p><strong>Mechanism of Action:</strong></p><p>Omeprazole belongs to a class of antisecretory compounds, the substituted benzimidazoles, that do not exhibit anticholinergic or H2 histamine antagonistic properties, but that suppress gastric acid secretion by specific inhibition of the H+/K+ ATPase enzyme system at the secretory surface of the gastric parietal cell. Because this enzyme system is regarded as the acid (proton) pump within the gastric mucosa, omeprazole has been characterized as a gastric acid-pump inhibitor, in that it blocks the final step of acid production. This effect is dose related and leads to inhibition of both basal and stimulated acid secretion irrespective of the stimulus. Animal studies indicate that after rapid disappearance from plasma, omeprazole can be found within the gastric mucosa for a day or more.</p><p>&nbsp;</p><p>Omeprazole is acid labile and thus rapidly degraded by gastric acid. <strong>Omiz Plus</strong> Capsules are immediate-release formulations that contain sodium bicarbonate which raises the gastric pH and thus protects omeprazole from acid degradation.</p><p>&nbsp;</p><p><strong>Antisecretory Activity:</strong></p><p>Results from a PK/PD study of the antisecretory effect of repeated once-daily dosing of 40 mg and 20 mg of <strong>Omeprazole</strong> Oral Suspension in healthy subjects are shown in Table 5 below.</p><p><strong>Table 5: Effect of Omeprazole and Sodium Bicarbonate Oral Suspension on Intragastric pH, Day 7</strong></p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p>Parameter</p></td><td colspan="2" style="vertical-align:top"><p><strong>Omeprazole/Sodium Bicarbonate</strong></p></td></tr><tr><td style="vertical-align:top"><p>40 mg/ 1680 mg</p><p>(n=24)</p></td><td style="vertical-align:top"><p>20 mg/ 1680 mg</p><p>(n=28)</p></td></tr><tr><td style="vertical-align:top"><p>% Decrease from Baseline for Integrated</p><p>Gastric Acidity (mmol&sdot;hr/L)</p></td><td style="vertical-align:top"><p>84%</p></td><td style="vertical-align:top"><p>82%</p></td></tr><tr><td style="vertical-align:top"><p>Coefficient of variation</p></td><td style="vertical-align:top"><p>20%</p></td><td style="vertical-align:top"><p>24%</p></td></tr><tr><td style="vertical-align:top"><p>% Time Gastric pH &gt; 4* (Hours)*</p></td><td style="vertical-align:top"><p>77%</p><p>(18.6 h)</p></td><td style="vertical-align:top"><p>51%</p><p>(12.2 h)</p></td></tr><tr><td style="vertical-align:top"><p>Coefficient of variation</p></td><td style="vertical-align:top"><p>27%</p></td><td style="vertical-align:top"><p>43%</p></td></tr><tr><td style="vertical-align:top"><p>Median pH</p></td><td style="vertical-align:top"><p>5.2</p></td><td style="vertical-align:top"><p>4.2</p></td></tr><tr><td style="vertical-align:top"><p>Coefficient of variation</p></td><td style="vertical-align:top"><p>17%</p></td><td style="vertical-align:top"><p>37%</p></td></tr></tbody></table><p>Note: Values represent medians. All parameters were measured over a 24-hour period.</p><p>* p &lt; 0.05 20 mg vs. 40 mg</p><p>&nbsp;</p><p>Results from a separate PK/PD study of antisecretory effect on repeated once-daily dosing of 40 mg/1100 mg and 20 mg/1100 mg of <strong>Omeprazole and Sodium Bicarbonate</strong> Capsules in healthy subjects show similar effects in general on the above three PD parameters as those for <strong>Omeprazole and Sodium Bicarbonate</strong> 40 mg/1680 mg and 20 mg/1680 mg Oral Suspension, respectively.</p><p>&nbsp;</p><p>The antisecretory effect lasts longer than would be expected from the very short (1 hour) plasma half-life, apparently due to irreversible binding to the parietal H+/K+ ATPase enzyme.</p><p>&nbsp;</p><p><strong>Enterochromaffin-like (ECL) Cell Effects:</strong></p><p>In 24-month carcinogenicity studies in rats, a dose-related significant increase in gastric carcinoid tumors and ECL cell hyperplasia was observed in both male and female animals carcinoid tumors have also been observed in rats subjected to fundectomy or long-term treatment with other proton pump inhibitors or high doses of H2-receptor antagonists. Human gastric biopsy specimens have been obtained from more than 3000 patients treated with Omeprazole in long-term clinical trials. The incidence of ECL cell hyperplasia in these studies increased with time; however, no case of ECL cell carcinoids, dysplasia, or neoplasia has been found in these patients. These studies are of insufficient duration and size to rule out the possible influence of long-term administration of Omeprazole on the development of any premalignant or malignant conditions.</p><p>&nbsp;</p><p><strong>Serum Gastrin Effects:</strong></p><p>In studies involving more than 200 patients, serum gastrin levels increased during the first 1 to 2 weeks of once-daily administration of therapeutic doses of Omeprazole in parallel with inhibition of acid secretion. No further increase in serum gastrin occurred with continued treatment. In comparison with histamine H2-receptor antagonists, the median increases produced by 20 mg doses of Omeprazole were higher (1.3 to 3.6 fold vs. 1.1 to 1.8 fold increase). Gastrin values returned to pretreatment levels, usually within 1 to 2 weeks after discontinuation of therapy.</p><p>&nbsp;</p><p>Increased gastrin causes enterochromaffin-like cell hyperplasia and increased serum Chromogranin A (CgA) levels. The increased CgA levels may cause false positive results in diagnostic investigations for neuroendocrine tumors.</p><p>&nbsp;</p><p><strong>Other Effects:</strong></p><p>Systemic effects of omeprazole in the CNS, cardiovascular and respiratory systems have not been found to date. Omeprazole, given in oral doses of 30 or 40 mg for 2 to 4 weeks, had no effect on thyroid function, carbohydrate metabolism, or circulating levels of parathyroid hormone, cortisol, estradiol, testosterone, prolactin, cholecystokinin or secretin. No effect on gastric emptying of the solid and liquid components of a test meal was demonstrated after a single dose of omeprazole 90 mg. In healthy subjects, a single I.V. dose of omeprazole (0.35 mg/kg) had no effect on intrinsic factor secretion. No systematic dose-dependent effect has been observed on basal or stimulated pepsin output in humans. However, when intragastric pH is maintained at 4.0 or above, basal pepsin output is low, and pepsin activity is decreased.</p><p>As do other agents that elevate intragastric pH, omeprazole administered for 14 days in healthy subjects produced a significant increase in the intragastric concentrations of viable bacteria. The pattern of the bacterial species was unchanged from that commonly found in saliva. All changes resolved within three days of stopping treatment.</p><p>&nbsp;</p><p>The course of Barrett&rsquo;s esophagus in 106 patients was evaluated in a U.S. double-blind controlled study of omeprazole 40 mg b.i.d. for 12 months followed by 20 mg b.i.d. for 12 months or ranitidine 300 mg b.i.d. for 24 months. No clinically significant impact on Barrett&rsquo;s mucosa by antisecretory therapy was observed. Although neosquamous epithelium developed during antisecretory therapy, complete elimination of Barrett&rsquo;s mucosa was not achieved. No significant difference was observed between treatment groups in development of dysplasia in Barrett&rsquo;s mucosa and no patient developed esophageal carcinoma during treatment. No significant differences between treatment groups were observed in development of ECL cell hyperplasia, corpus atrophic gastritis, corpus intestinal metaplasia, or colon polyps exceeding 3 mm in diameter.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Absorption:</strong></p><p>In separate in vivo bioavailability studies, when Omeprazole and Sodium Bicarbonate<strong><em> </em></strong>Capsules are administered on an empty stomach 1 hour prior to a meal, the absorption of omeprazole is rapid, with mean peak plasma levels (% CV) of omeprazole being 1954 ng/mL (33%) and 1526 ng/mL (49%), respectively, and time to peak of approximately 30 minutes (range 10-90 min) after a single-dose or repeated-dose administration.</p><p>Following single or repeated once daily dosing, peak plasma concentrations of omeprazole from Omeprazole and Sodium Bicarbonate<strong><em> </em></strong>are approximately proportional from 20 to 40 mg doses, but a greater than linear mean AUC (three-fold increase) is observed when doubling the dose to 40 mg. The bioavailability of Omeprazole from Omeprazole and Sodium Bicarbonate increases upon repeated administration.</p><p>When Omeprazole and Sodium Bicarbonate<strong><em> </em></strong>is administered 1 hour after a meal, the Omeprazole AUC is reduced by approximately 24% relative to administration 1 hour prior to a meal.</p><p>&nbsp;</p><p><strong>Distribution:</strong></p><p>Omeprazole is bound to plasma proteins. Protein binding is approximately 95%.</p><p>&nbsp;</p><p><strong>Metabolism:</strong></p><p>Following single-dose oral administration of Omeprazole, the majority of the dose (about 77%) is eliminated in urine as at least six metabolites. Two metabolites have been identified as hydroxyomeprazole and the corresponding carboxylic acid. The remainder of the dose was recoverable in feces. This implies a significant biliary excretion of the metabolites of omeprazole. Three metabolites have been identified in plasma &ndash; the sulfide and sulfone derivatives of Omeprazole, and hydroxyomeprazole. These metabolites have very little or no antisecretory activity.</p><p>&nbsp;</p><p><strong>Excretion:</strong></p><p>Following single-dose oral administration of omeprazole, little if any, unchanged drug is excreted in urine. The mean plasma omeprazole half-life in healthy subjects is approximately 1 hour (range 0.4 to 3.2 hours) and the total body clearance is 500-600 mL/min.</p><p>&nbsp;</p><p><strong>Concomitant Use with Clopidogrel</strong></p><p>In a crossover clinical study, 72 healthy subjects were administered clopidogrel (300 mg loading dose followed by 75 mg per day) alone and with omeprazole (80 mg at the same time as clopidogrel) for 5 days. The exposure to the active metabolite of clopidogrel was decreased by 46% (Day 1) and 42% (Day 5) when clopidogrel and omeprazole were administered together. Results from another crossover study in healthy subjects showed a similar pharmacokinetic interaction between clopidogrel (300 mg loading dose/75 mg daily maintenance dose) and omeprazole 80 mg daily when coadministered for 30 days. Exposure to the active metabolite of clopidogrel was reduced by 41% to 46% over this time period.</p><p>&nbsp;</p><p>In another study, 72 healthy subjects were given the same doses of clopidogrel and 80 mg omeprazole but the drugs were administered 12 hours apart; the results were similar, indicating that administering clopidogrel and omeprazole at different times does not prevent their interaction.</p><p>&nbsp;</p><p><strong>Concomitant Use with Mycophenolate Mofetil</strong></p><p>Administration of omeprazole 20 mg twice daily for 4 days and a single 1000 mg dose of MMF approximately one hour after the last dose of omeprazole to 12 healthy subjects in a cross-over study resulted in a 52% reduction in the C<sub>max</sub> and 23% reduction in the AUC of MPA.</p><p>&nbsp;</p><p><strong>Special Populations:</strong></p><p><strong>&nbsp;</strong></p><p><strong>Geriatric </strong></p><p><strong>&nbsp;</strong></p><p>The elimination rate of omeprazole was somewhat decreased in the elderly, and bioavailability was increased. Omeprazole was 76% bioavailable when a single 40-mg oral dose of omeprazole (buffered solution) was administered to healthy elderly subjects, versus 58% in young subjects given the same dose. Nearly 70% of the dose was recovered in urine as metabolites of omeprazole and no unchanged drug was detected. The plasma clearance of omeprazole was 250 mL/min (about half that of young subjects) and its plasma half-life averaged one hour, similar to that of young healthy subjects.</p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>Pediatric </strong></p><p>The pharmacokinetics of <strong>Omeprazole and Sodium Bicarbonate</strong> has not been studied in patients &lt; 18 years of age.</p><p><strong>&nbsp;</strong></p><p><strong>Gender </strong></p><p>There are no known differences in the absorption or excretion of omeprazole between males and females</p><p><strong>&nbsp;</strong></p><p><strong>Hepatic Insufficiency</strong></p><p>In patients with chronic hepatic disease, the bioavailability of omeprazole from a buffered solution increased to approximately 100% compared to an</p><p>I.V. dose, reflecting decreased first-pass effect, and the mean plasma half-life of the drug increased to nearly 3 hours compared to the mean half-life of 1 hour in normal subjects. Plasma clearance averaged 70 mL/min, compared to a value of 500-600 mL/min in normal subjects. Dose reduction, particularly where maintenance of healing of erosive esophagitis is indicated, for the hepatically impaired should be considered.</p><p>&nbsp;</p><p><strong>Renal Insufficiency</strong></p><p><strong>&nbsp;</strong></p><p>In patients with chronic renal impairment, whose creatinine clearance ranged between 10 and 62 mL/min/1.73 m2, the disposition of omeprazole from a buffered solution was very similar to that in healthy subjects, although there was a slight increase in bioavailability. Because urinary excretion is a primary route of excretion of omeprazole metabolites, their elimination slowed in proportion to the decreased creatinine clearance. No dose reduction is necessary in patients with renal impairment.</p><p>&nbsp;</p><p><strong>Asian Population </strong></p><p><strong>&nbsp;</strong></p><p>In pharmacokinetic studies of single 20-mg omeprazole doses, an increase in AUC of approximately four-fold was noted in Asian subjects compared to Caucasians. Dose adjustment, particularly where maintenance of healing of erosive esophagitis is indicated, for Asian subjects should be considered.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Animal Toxicology</strong></p><p><strong>&nbsp;</strong></p><p><em>Reproductive Toxicology Studies </em></p><p>Reproduction studies conducted in pregnant rats with omeprazole at doses up to 138 mg/kg/day (about 33.6times an oral human dose of 40 mg on a body surface area basis) and in pregnant rabbits at doses up to 69 mg/kg/day (about 33.6times an oral human dose of 40 mg on a body surface area basis) did not disclose any evidence for a teratogenic potential of omeprazole. In rabbits, omeprazole in a dose range of 6.9 to 69 mg/kg/day (about 3.3 to</p><p>33.6 times the human dose of 40 mg/day on a body surface area basis) produced dose-related increases in embryo-lethality, fetal resorptions and pregnancy disruptions. In rats, dose-related embryo/fetal toxicity and postnatal developmental toxicity were observed in offspring resulting from parents treated with omeprazole at 13.8 to 138.0 mg/kg/day (about 3.3 to 33.6 times the human dose of 40 mg/day on a body surface area basis).</p><p>&nbsp;</p><p>&nbsp;</p><p><u>Juvenile Animal Study</u></p><p>A 28-day toxicity study with a 14-day recovery phase was conducted in juvenile rats with esomeprazole magnesium at doses of 70 to 280 mg /kg/day (about 17 to 68 times a daily oral human dose of 40 mg on a body surface area basis). An increase in the number of deaths at the high dose of 280 mg /kg/day was observed when juvenile rats were administered esomeprazole magnesium from postnatal day 7 through postnatal day 35. In addition, doses equal to or greater than 140 mg/kg/day (about 34 times a daily oral human dose of 40 mg on a body surface area basis), produced treatment-related decreases in body weight (approximately 14%) and body weight gain, decreases in femur weight and femur length, and affected overall growth. Comparable findings described above have also been observed in this study with another esomeprazole salt, esomeprazole strontium, at equimolar doses of esomeprazole.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Sodium Bicarbonate</p><p>Croscarmellose Sodium</p><p>Magnesium Stearate&nbsp;&nbsp;&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellpadding="0" style="width:100%"><tbody><tr><td><p>None known.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                2 years. 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellpadding="0" style="width:100%"><tbody><tr><td><p>Store below 30&deg;C</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>28 Capsules packed in 4 PVC/Aclar blisters and each blister contains 7 capsules, packed in printed carton with folded leaflet.&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The cap should be replaced firmly after use.</p><p>To be dispensed in original containers.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Tabuk Pharmaceutical Manufacturing Company
+Astra Industrial Group Building
+Salah Aldain Road, King Abdulaziz Area
+Riyadh, Saudi Arabia
+P.O.Box 28170 Riyadh 11437
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                May 2018
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

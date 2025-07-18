@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        3-5235-23
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2020
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        RIVAXEL 13.3MG/24HRS TRANSDERMAL PATCHES
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        RIVASTIGMINE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        27 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Transdermal use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Transdermal patch
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Patch
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        185.50
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="SK Chemicals Co., Ltd" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            SK Chemicals Co., Ltd
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 360]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Farouk, Maamoun Tamer & CO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            SK CHEMICALS CO . LTD
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Rivaxel 13.3 mg/ 24 h Transdermal Patch
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each transdermal patch releases 13.3 mg of rivastigmine per 24 hours. Each transdermal patch of 15 cm2 contains 27 mg of rivastigmine.
+For a full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Double-layered adhesive, round-shaped, white and translucent backing film with 5 cm2 area and rectangular release liner film with embossing.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Symptomatic treatment of mild to moderately severe Alzheimer&rsquo;s dementia.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>(See Section 5.2 Pharmacokinetic properties-special patient population)</p><p>Treatment should be initiated and supervised by a physician experienced in the diagnosis and treatment of Alzheimer&rsquo;s dementia. Diagnosis should be made according to current guidelines. Similar to any treatment initiated in patients with dementia, therapy with rivastigmine should only be started if a caregiver is available to regularly administer and monitor the treatment.</p><p><u>Posology</u></p><p>Transdermal patches</p><p>Rivaxel 13.3 mg/24 h</p><p>Rivastigmine <em>in vivo </em>release rates per 24 h: 13.3 mg</p><ul><li>Initial dose</li></ul><p>Treatment is started with 4.6 mg/24 h.</p><ul><li>&nbsp;Maintenance dose</li></ul><p>After a minimum of four weeks of treatment and if well tolerated according to the treating physician, the dose of 4.6 mg/24 h should be increased to 9.5 mg/24 h, the daily recommended effective dose, which should be continued for as long as the patient continues to demonstrate therapeutic benefit.</p><ul><li>&nbsp;Dose escalation</li></ul><p>9.5 mg/24 h is the recommended daily effective dose which should be continued for as long as the patient continues to demonstrate therapeutic benefit. If well tolerated and only after a minimum of six months of treatment at 9.5 mg/24 h, the treating physician may consider increasing the dose to 13.3 mg/24 h in patients who have demonstrated a meaningful cognitive deterioration (e.g. decrease in the MMSE) and/or functional decline (based on physician judgement) while on the recommended daily effective dose of 9.5 mg/24 h (see section 5.1).</p><p>The clinical benefit of rivastigmine should be reassessed on a regular basis. Discontinuation should also be considered when evidence of a therapeutic effect at the optimal dose is no longer present.</p><p>Treatment should be temporarily interrupted if gastrointestinal adverse reactions are observed until these adverse reactions resolve. Transdermal patch treatment can be resumed at the same dose if treatment is not interrupted for more than three days. Otherwise treatment should be re-initiated with 4.6 mg/24 h.</p><ul><li>Switching from capsules or oral solution to transdermal patches</li></ul><p>Based on comparable exposure between oral and transdermal rivastigmine (see section 5.2), patients treated with capsules or oral solutions containing rivastigmine can be switched to Rivaxel transdermal patches as follows:</p><p>-&nbsp;&nbsp;A patient on a dose of 3 mg/day oral rivastigmine can be switched to 4.6 mg/24 h transdermal patches.</p><p>-&nbsp;&nbsp;A patient on a dose of 6 mg/day oral rivastigmine can be switched to 4.6 mg/24 h transdermal patches.</p><p>-&nbsp;&nbsp;A patient on a stable and well tolerated dose of 9 mg/day oral rivastigmine can be switched to 9.5 mg/24 h transdermal patches. If the oral dose of 9 mg/day has not been stable and well tolerated, a switch to 4.6 mg/24 h transdermal patches is recommended.</p><p>-&nbsp;&nbsp;A patient on a dose of 12 mg/day oral rivastigmine can be switched to 9.5 mg/24 h transdermal patches.</p><p>After switching to 4.6 mg/24 h transdermal patches, provided these are well tolerated after a minimum of four weeks of treatment, the dose of 4.6 mg/24 h should be increased to 9.5 mg/24 h, which is the recommended effective dose.</p><p>It is recommended to apply the first transdermal patch on the day following the last oral dose.</p><ul><li>&nbsp;Special populations</li></ul><p><em>Paediatric population:</em></p><p>There is no relevant use of rivastigmine in the paediatric population in the treatment of Alzheimer&rsquo;s disease.</p><p><em>Patients with body weight below 50 kg:</em></p><p>Particular caution should be exercised in titrating patients with body weight below 50 kg above the recommended effective dose of 9.5 mg/24 h (see section 4.4). They may experience more adverse reactions and may be more likely to discontinue due to adverse reactions.</p><p><em>Hepatic impairment:</em></p><p>No dose adjustment is necessary for patients with hepatic impairment. However, due to increased exposure in these populations as observed with the oral forms, dosing recommendations to titrate according to individual tolerability should be closely followed as patients with clinically significant hepatic impairment might experience more adverse reactions. Patients with severe hepatic impairment have not been studied (see sections 4.4 and 5.2).</p><p><em>Renal impairment:</em></p><p>No dose adjustment is necessary for patients with renal impairment. However, due to increased exposure in these populations as observed with the oral forms, dosing recommendations to titrate according to individual tolerability should be closely followed as patients with clinically significant renal impairment might experience more adverse reactions (see sections 4.4 and 5.2).</p><p><u>Method of administration</u></p><p>Transdermal patches should be applied once a day to clean, dry, hairless, intact healthy skin on the upper or lower back, upper arm or chest, in a place which will not be rubbed by tight clothing. It is not recommended to apply the transdermal patch to the thigh or to the abdomen due to decreased bioavailability of rivastigmine observed when the transdermal patch is applied to these areas of the body.</p><p>The transdermal patch should not be applied to skin that is red, irritated or cut. Reapplication to the exact&nbsp; same skin location within 14 days should be avoided to minimise the potential risk of skin irritation.</p><p><strong>Patients and caregivers should be instructed on important administration instructions:</strong></p><ul><li>The previous day&rsquo;s patch must be removed before applying a new one every day (see section 4.9).</li><li>The patch should be replaced by a new one after 24 hours. Only one patch should be worn at a time (see section 4.9).</li><li>The patch should be pressed down firmly for at least 30 seconds using the palm of the hand until the edges stick well.</li><li>If the patch falls off, a new one should be applied for the rest of the day, then it should be replaced at the same time as usual the next day.</li><li>The patch can be used in everyday situations, including bathing and during hot weather.</li><li>The patch should not be exposed to any external heat sources (e.g. excessive sunlight, saunas, solarium) for long periods of time.</li><li>The patch should not be cut into pieces.</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                The use of this medicinal product is contraindicated in patients with known hypersensitivity to the active substance rivastigimine, to other carbamate derivatives or to any of the excipients listed in section 6.1.
+Previous history of application site reactions suggestive of allergic contact dermatitis with rivastigmine patch (see section 4.4).
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The incidence and severity of adverse reactions generally increase with increasing doses, particularly at dose changes. If treatment is interrupted for more than three days, it should be re-initiated with 4.6 mg/24 h.</p><p><u>Misuse of the medicinal product and dosing errors resulting in overdose</u></p><p>Misuse of the medicinal product and dosing errors with rivastigmine transdermal patch have resulted in serious adverse reactions; some cases have required hospitalisation, and rarely led to death (see section 4.9). Most cases of misuse of the medicinal product and dosing errors have involved not removing the old patch when putting on a new one and the use of multiple patches at the same time. Patients and their caregivers must be instructed on important administration instructions for Rivaxel transdermal patch (see section 4.2).</p><p><u>Gastrointestinal disorders</u></p><p>Gastrointestinal disorders such as nausea, vomiting and diarrhoea are dose-related, and may occur when initiating treatment and/or increasing the dose (see section 4.8). These adverse reactions occur more commonly in women. Patients who show signs or symptoms of dehydration resulting from prolonged vomiting or diarrhoea can be managed with intravenous fluids and dose reduction or discontinuation if recognised and treated promptly. Dehydration can be associated with serious outcomes.</p><p><u>Weight loss</u></p><p>Patients with Alzheimer&rsquo;s disease may lose weight whilst taking cholinesterase inhibitors, including rivastigmine. The patient&rsquo;s weight should be monitored during therapy with Rivaxel transdermal patches.</p><p><u>Other adverse reactions</u></p><p>Care must be taken when prescribing Rivaxel transdermal patches:</p><ul><li>to patients with sick sinus syndrome or conduction defects (sino-atrial block, atrio- ventricular block) (see section 4.8)</li><li>to patients with active gastric or duodenal ulcers or patients predisposed to these conditions because rivastigmine may cause increased gastric secretions (see section 4.8)</li><li>to patients predisposed to urinary obstruction and seizures because cholinomimetics may induce or exacerbate these diseases</li><li>to patients with a history of asthma or obstructive pulmonary disease</li></ul><p><u>Skin application site reactions</u></p><p>Skin application site reactions may occur with rivastigmine patch and are usually mild or moderate in intensity. Patients and caregivers should be instructed accordingly.</p><p>These reactions are not in themselves an indication of sensitisation. However, use of rivastigmine patch may lead to allergic contact dermatitis.</p><p>Allergic contact dermatitis should be suspected if application site reactions spread beyond the patch size, if there is evidence of a more intense local reaction (e.g. increasing erythema, oedema, papules, vesicles) and if symptoms do not significantly improve within 48 hours after patch removal. In these cases, treatment should be discontinued (see section 4.3).</p><p>Patients who develop application site reactions suggestive of allergic contact dermatitis to rivastigmine patch and who still require rivastigmine treatment should only be switched to oral rivastigmine after negative allergy testing and under close medical supervision. It is possible that some patients sensitised to rivastigmine by exposure to rivastigmine patch may not be able to take rivastigmine in any form.</p><p>There have been rare post-marketing reports of patients experiencing disseminated skin hypersensitivity reactions when administered rivastigmine irrespective of the route of administration (oral, transdermal). In these cases, treatment should be discontinued (see section 4.3).</p><p><u>Other warnings and precautions</u></p><p>Rivastigmine may exacerbate or induce extrapyramidal symptoms.</p><p>Contact with the eyes should be avoided after handling Rivaxel transdermal patches (see section 5.3). Hands should be washed with soap and water after removing the patch. In case of contact with eyes or if the eyes become red after handling the patch, rinse immediately with plenty of water and seek medical advice if symptoms do not resolve.</p><p><u>Special populations</u></p><ul><li>Patients with body weight below 50 kg:</li></ul><p>Patients with body weight below 50 kg may experience more adverse reactions and may be more likely to discontinue due to adverse reactions (see section 4.2). Carefully titrate andmonitor these patients for adverse reactions (e.g. excessive nausea or vomiting) and consider reducing the maintenance dose to the 4.6 mg/24 h transdermal patch if such adverse reactions develop.</p><ul><li>Hepatic impairment:</li></ul><p>Patients with clinically significant hepatic impairment might experience more adverse reactions (see section 4.2 and 5.2). Consider using the 4.6 mg/24h transdermal patch both as initial and maximum dose in these patients.</p><ul><li>Renal impairment:</li></ul><p>Patients with clinically significant renal impairment might experience more adverse reactions (see sections 4.2 and 5.2). Consider using the 4.6 mg/24 h transdermal patch both as initial and maximum dose in these patients.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No specific interaction studies have been performed with rivastigmine transdermal patches.</p><p>As a cholinesterase inhibitor, rivastigmine may exaggerate the effects of succinylcholine- type muscle relaxants during anaesthesia. Caution is recommended when selecting anaesthetic agents. Possible dose adjustments or temporarily stopping treatment can be considered if needed.</p><p>In view of its pharmacodynamic effects, rivastigmine should not be given concomitantly with other cholinomimetic substances and might interfere with the activity of anticholinergic medicinal products.</p><p>No pharmacokinetic interaction was observed between oral rivastigmine and digoxin, warfarin, diazepam or fluoxetine in studies in healthy volunteers. The increase in prothrombin time induced by warfarin is not affected by administration of oral rivastigmine. No untoward effects on cardiac conduction were observed following concomitant administration of digoxin and oral rivastigmine.</p><p>Concomitant administration of rivastigmine with commonly prescribed medicinal products, such as antacids, antiemetics, antidiabetics, centrally acting antihypertensives, beta blockers, calcium channel blockers, inotropic agents, antianginals, non-steroidal anti-inflammatory agents, oestrogens, analgesics, benzodiazepines and antihistamines, was not associated with an alteration in the kinetics of rivastigmine or an increased risk of clinically relevant untoward effects.</p><p>According to its metabolism, metabolic interactions with other medicinal products appear unlikely, although rivastigmine may inhibit the butyrylcholinesterase mediated metabolism of other substances.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u></p><p>Pregnancy Category B</p><p>No clinical data on exposed pregnancies are available. In peri/postnatal studies in rats, an&nbsp; increased&nbsp; gestation time was observed. Rivastigmine should&nbsp; not be&nbsp; used during pregnancy unless clearly necessary.</p><p><u>Breast-feeding</u></p><p>In animals, rivastigmine is excreted into milk. It is not known if rivastigmine is excreted into human milk. Therefore, women on rivastigmine should not breast-feed.</p><p><u>Fertility</u></p><p>No effects on fertility or embryofoetal development were observed in rats and rabbits, except at doses related to maternal toxicity.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Alzheimer&rsquo;s disease may cause gradual impairment of driving performance or compromise the ability to use machines. Furthermore, rivastigmine may induce syncope or delirium. As a consequence, rivastigmine has minor or moderate influence on the ability to drive and use machines. Therefore, in patients with dementia treated with rivastigmine, the ability to continue driving or operating complex machines should be routinely evaluated by the treating physician.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Summary of the safety profile</u></p><p>Application site skin reactions (usually mild to moderate application site erythema), are the most frequent adverse reactions observed with the use of rivastigmine transdermal patch. The next most common adverse reactions are gastrointestinal in nature including nausea and vomiting.</p><p>Adverse reactions in Table 1 are listed according to MedDRA system organ class and frequency category. Frequency categories are defined using the following convention: very common (&ge;1/10); common (&ge;1/100 to &lt;1/10); uncommon (&ge;1/1,000 to &lt;1/100); rare (&ge;1/10,000 to &lt;1/1,000); very rare (&lt;1/10,000); not known (cannot be estimated from the available data).</p><p><u>Tabulated list of adverse reactions</u></p><p>Table 1 displays the adverse reactions reported in 854 patients with Alzheimer&rsquo;s dementia treated in randomised, double-blind, placebo and active-controlled clinical studies with rivastigmine transdermal patches for a duration of 24-48 weeks and from post-marketing data</p><p>Table 1</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2" style="vertical-align:top"><p><strong>Infections and infestations</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Urinary tract infection</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Metabolism and nutrition disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Anorexia, decreased appetite</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Uncommon</p></td><td style="vertical-align:top; width:719px"><p>Dehydration</p></td></tr><tr><td style="vertical-align:top; width:151px"><p><strong>Psychiatric disorders</strong></p></td><td style="vertical-align:top; width:719px"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Anxiety, depression, delirium, agitation</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Uncommon</p></td><td style="vertical-align:top; width:719px"><p>Aggression</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Not known</p></td><td style="vertical-align:top; width:719px"><p>Hallucinations, restlessness</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Nervous system disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Headache, syncope, dizziness</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Uncommon</p></td><td style="vertical-align:top; width:719px"><p>Psychomotor hyperactivity</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Very rare</p></td><td style="vertical-align:top; width:719px"><p>Extrapyramidal symptoms</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Not known</p></td><td style="vertical-align:top; width:719px"><p>Worsening of Parkinson&rsquo;s disease, seizure</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Cardiac disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Uncommon</p></td><td style="vertical-align:top; width:719px"><p>Bradycardia</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Not known</p></td><td style="vertical-align:top; width:719px"><p>Atrioventricular block, atrial fibrillation, tachycardia, sick sinus syndrome</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Vascular disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Not known</p></td><td style="vertical-align:top; width:719px"><p>Hypertension</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Gastrointestinal disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Nausea, vomiting, diarrhoea, dyspepsia, abdominal pain</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Uncommon</p></td><td style="vertical-align:top; width:719px"><p>Gastric ulcer</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Not known</p></td><td style="vertical-align:top; width:719px"><p>Pancreatitis</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Hepatobiliary disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Not known</p></td><td style="vertical-align:top; width:719px"><p>Hepatitis, elevated liver function tests</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Skin and subcutaneous tissue disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Rash</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Not known</p></td><td style="vertical-align:top; width:719px"><p>Pruritus, erythema, urticaria, vesicles, allergic dermatitis, disseminated cutaneous hypersensitivity reactions</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>&nbsp;Renal and urinary disorders</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Urinary incontinence</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>&nbsp;General disorders and administration site conditions</strong></p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Common</p></td><td style="vertical-align:top; width:719px"><p>Application site skin reactions (e.g. application site erythema, application site pruritus, application site oedema, application site dermatitis, application site irritation), asthenic conditions (e.g. fatigue, asthenia), pyrexia, weight decreased</p></td></tr><tr><td style="vertical-align:top; width:151px"><p>Rare</p></td><td style="vertical-align:top; width:719px"><p>Fall</p></td></tr></tbody></table><p><u>Description of selected adverse reactions</u></p><p>When doses higher than 13.3 mg/24 h were used in the above-mentioned placebo- controlled study, insomnia and cardiac failure were observed more frequently than with 13.3 mg/24 h or placebo, suggesting a dose effect relationship. However, these events did not occur at a higher frequency with rivastigmine 13.3 mg/24 h transdermal patches than with placebo.</p><p>The following adverse reactions have only been observed with rivastigmine capsules and oral solution and not in clinical studies with rivastigmine transdermal patches: Somnolence, malaise, tremor, confusion, sweating increased (common); duodenal ulcers, angina pectoris (rare); gastrointestinal haemorrhage (very rare); and some cases of severe vomiting were associated with oesophageal rupture (not known).</p><p><u>Skin irritation</u></p><p>In a&nbsp; 24-week double-blind,&nbsp; placebo-controlled clinical trial,&nbsp; skin reactions&nbsp; were measured at each visit using a skin irritation rating scale that rated&nbsp; the&nbsp; degree of erythema, oedema, scaling, fissures, pruritus and pain/stinging/burning at the application site. The most commonly observed symptom was erythema which disappeared within 24 hours in the vast majority of patients. In a 24-week double blind study, the most commonly observed symptoms (skin irritation rating scale) with rivastigmine 9.5 mg/24 h transdermal patches were very slight (21.8%), mild (12.5%) or moderate (6.5%) erythema or very slight (11.9%), mild (7.3%) or moderate (5.0%) pruritus. The most commonly observed severe symptoms with rivastigmine 9.5 mg/24 h transdermal patches were pruritus (1.7%) and erythema (1.1%). Most skin reactions were limited to the application site and resulted in discontinuation in only 2.4% of the patients in the rivastigmine 9.5 mg/24 h transdermal patch group.</p><p>In a 48-week active-controlled clinical trial, cases of skin irritation were captured as patient&nbsp; or caregiver reported adverse reactions. The most commonly reported skin irritation events during the first 24 weeks of the double-blind period with rivastigmine 13.3 mg/24 h transdermal patches and rivastigmine 9.5 mg/24 h transdermal patches, respectively were application site erythema (5.7% vs 4.6%) and application site pruritus (3.6% vs 2.8%). The percentages decreased in both rivastigmine 13.3 mg/24 h transdermal patch and rivastigmine 9.5 mg/24 h transdermal patch treatment groups over time (&gt;24 weeks): application site erythema (0.8% vs. 1.6%) and application site pruritus (0.4% vs. 1.2%), respectively. Application site pruritus led to discontinuation in 1.1% of the patients from each of the treatment groups during the total 48-week double-blind treatment phase. Application site reactions were mostly mild to moderate in severity and were rated as severe in less than 2% of patients.</p><p>A direct comparison of the rate of skin irritation events reported in each of these studies cannot be made due to the difference in data collection methods employed.</p><p><u>Reporting of suspected adverse reactions</u></p><ul><li>Saudi Arabia:</li></ul><p>The National Pharmacovigilance and Drug Safety Centre (NPC)</p><p>Fax: +966-11-205-7662</p><p>Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.</p><p>Toll free phone: 8002490000</p><p>E-mail:<u> npc.drug@sfda.gov.sa</u></p><p>Website:<u> www.sfda.gov.sa/npc</u></p><ul><li>&nbsp;Other GCC States: Please contact the relevant competent authority.</li></ul><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Symptoms</u></p><p>Most cases of accidental overdose of oral rivastigmine have not been associated with any clinical signs or symptoms and almost all of the patients concerned continued rivastigmine treatment. Where symptoms have occurred, they have included nausea, vomiting and diarrhoea, hypertension or hallucinations. Due to the known vagotonic effect of cholinesterase inhibitors on heart rate, bradycardia and/or syncope may also occur. Ingestion of 46 mg of oral rivastigmine occurred in one case; following conservative management the patient fully recovered within 24 hours. Overdose with rivastigmine transdermal patch resulting from misuse/dosing errors (application of multiple patches at a time) has been reported in the post-marketing setting. The typical symptoms reported among these cases are similar to those seen with cases of overdose associated with rivastigmine oral formulations.</p><p><u>Treatment</u></p><p>As rivastigmine has a plasma half-life of about 3.4 hours and a duration of acetylcholinesterase inhibition of about 9 hours, it is recommended that in cases of asymptomatic overdose all rivastigmine transdermal patches should be removed immediately and no further transdermal patch should be applied for the next 24 hours. In overdose accompanied by severe nausea and vomiting, the use of antiemetics should be considered. Symptomatic treatment for other adverse reactions should be given as necessary.</p><p>In massive overdose, atropine can be used. An initial dose of 0.03 mg/kg intravenous atropine sulphate is recommended, with subsequent doses based on clinical response.</p><p>Use of scopolamine as an antidote is not recommended.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Psychoanaleptics; anti-dementia drugs; anticholinesterases, ATC code: N06DA03</p><p>Rivastigmine is an acetyl- and butyrylcholinesterase inhibitor of the carbamate type, thought to facilitate cholinergic neurotransmission by slowing the degradation of acetylcholine released by functionally intact cholinergic neurones. Thus, rivastigmine may have an ameliorative effect on cholinergic-mediated cognitive deficits in dementia associated with Alzheimer&rsquo;s disease.</p><p>Rivastigmine interacts with its target enzymes by forming a covalently bound complex that temporarily inactivates the enzymes. In healthy young men, an oral 3 mg dose decreases acetylcholinesterase (AChE) activity in CSF by approximately 40% within the first 1.5 hours after administration. Activity of the enzyme returns to baseline levels about 9 hours after the maximum inhibitory effect has been achieved. In patients with Alzheimer&rsquo;s disease, inhibition of AChE in CSF by oral rivastigmine was dose-dependent up to 6 mg given twice daily, the highest dose tested. Inhibition of butyrylcholinesterase activity in CSF of 14 Alzheimer patients treated by oral rivastigmine was similar to the inhibition of AChE activity.</p><p><u>Clinical studies in Alzheimer&rsquo;s dementia</u></p><p>The efficacy of rivastigmine transdermal patches in patients with Alzheimer&rsquo;s dementia has been demonstrated in a 24-week double-blind, placebo-controlled core study and its open-label extension phase and in a 48-week double-blind comparator study.</p><ul><li>24-week placebo-controlled study</li></ul><p>Patients involved in the placebo-controlled study had an MMSE (Mini-Mental State Examination) score of 10&ndash;20. Efficacy was established by the use of independent, domain-specific assessment tools which were applied at regular intervals during the 24- week treatment period. These include the ADAS-Cog (Alzheimer&rsquo;s Disease Assessment Scale &ndash; Cognitive subscale, a performance-based measure of cognition) and the ADCS- CGIC (Alzheimer&rsquo;s Disease Cooperative Study &ndash; Clinician&rsquo;s Global Impression of Change, a comprehensive global assessment of the patient by the physician incorporating caregiver input), and the ADCS-ADL (Alzheimer&rsquo;s Disease Cooperative Study &ndash; Activities of Daily Living, a caregiver-rated assessment of the activities of daily living including personal hygiene, feeding, dressing, household chores such as shopping, retention of ability to orient oneself to surroundings as well as involvement in activities related to finances). The 24-week results for the three assessment tools are summarised in Table 2.</p><p>Table 2</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>ITT-LOCF population</p></td><td style="vertical-align:top"><p>Rivastigmine transdermal patches</p><p>9.5 mg/24 h</p><p>N = 251</p></td><td style="vertical-align:top"><p>Rivastigmine capsules</p><p>12 mg/day</p><p>N = 256</p></td><td style="vertical-align:top"><p>Placebo</p><p>&nbsp;</p><p>N = 282</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p><strong>ADAS-Cog</strong></p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(n=248)</p></td><td style="vertical-align:top"><p>(n=253)</p></td><td style="vertical-align:top"><p>(n=281)</p></td></tr><tr><td style="vertical-align:top"><p>Mean baseline &plusmn; SD</p></td><td style="vertical-align:top"><p>27.0 &plusmn; 10.3</p></td><td style="vertical-align:top"><p>27.9 &plusmn; 9.4</p></td><td style="vertical-align:top"><p>28.6 &plusmn; 9.9</p></td></tr><tr><td style="vertical-align:top"><p>Mean change at week 24 &plusmn; SD</p></td><td style="vertical-align:top"><p>-0.6 &plusmn; 6.4</p></td><td style="vertical-align:top"><p>-0.6 &plusmn; 6.2</p></td><td style="vertical-align:top"><p>1.0 &plusmn; 6.8</p></td></tr><tr><td style="vertical-align:top"><p>p-value versus placebo</p></td><td style="vertical-align:top"><p>0.005*<sup>1</sup></p></td><td style="vertical-align:top"><p>0.003*<sup>1</sup></p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p><strong>ADCS-CGIC</strong></p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(n=248)</p></td><td style="vertical-align:top"><p>(n=253)</p></td><td style="vertical-align:top"><p>(n=278)</p></td></tr><tr><td style="vertical-align:top"><p>Mean score &plusmn; SD</p></td><td style="vertical-align:top"><p>3.9 &plusmn; 1.20</p></td><td style="vertical-align:top"><p>3.9 &plusmn; 1.25</p></td><td style="vertical-align:top"><p>4.2 &plusmn; 1.26</p></td></tr><tr><td style="vertical-align:top"><p>p-value versus placebo</p></td><td style="vertical-align:top"><p>0.010*<sup>2</sup></p></td><td style="vertical-align:top"><p>0.009*<sup>2</sup></p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p><strong>ADCS-ADL</strong></p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(n=247)</p></td><td style="vertical-align:top"><p>(n=254)</p></td><td style="vertical-align:top"><p>(n=281)</p></td></tr><tr><td style="vertical-align:top"><p>Mean baseline &plusmn; SD</p></td><td style="vertical-align:top"><p>50.1 &plusmn; 16.3</p></td><td style="vertical-align:top"><p>49.3 &plusmn; 15.8</p></td><td style="vertical-align:top"><p>49.2 &plusmn; 16.0</p></td></tr><tr><td style="vertical-align:top"><p>Mean change at week 24 &plusmn; SD</p></td><td style="vertical-align:top"><p>-0.1 &plusmn; 9.1</p></td><td style="vertical-align:top"><p>-0.5 &plusmn; 9.5</p></td><td style="vertical-align:top"><p>-2.3 &plusmn; 9.4</p></td></tr><tr><td style="vertical-align:top"><p>p-value versus placebo</p></td><td style="vertical-align:top"><p>0.013*<sup>1</sup></p></td><td style="vertical-align:top"><p>0.039*<sup>1</sup></p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr></tbody></table><p>* p&le;0.05 versus placebo</p><p>ITT: Intent-To-Treat; LOCF: Last Observation Carried Forward</p><p><sup>1</sup>Based on ANCOVA with treatment and country as factors and baseline value as a covariate. Negative ADAS-Cog changes indicate improvement. Positive ADCS-ADL changes indicate improvement.</p><p><sup>2</sup>Based on CMH test (van Elteren test) blocking for country. ADCS-CGIC scores &lt;4 indicate improvement.</p><p>The results for clinically relevant responders from the 24-week placebo-controlled study are provided in Table 3. Clinically relevant improvement was defined a priori as at least 4-point improvement on the ADAS-Cog, no worsening on the ADCS-CGIC, and no worsening on the ADCS-ADL.</p><p>Table 3</p><table border="1" cellspacing="0" cellpadding="0" style="width:737px"><tbody><tr><td style="vertical-align:top; width:297px"><p>&nbsp;</p></td><td colspan="3" style="vertical-align:top; width:437px"><p>Patients with clinically significant response (%)</p></td></tr><tr><td style="vertical-align:top; width:297px"><p>&nbsp;</p><p>ITT-LOCF population</p></td><td style="vertical-align:top; width:164px"><p>Rivastigmine transdermal patches 9.5 mg/24 h</p><p>N = 251</p></td><td style="vertical-align:top; width:195px"><p>Rivastigmine capsules 12 mg/day</p><p>N = 256</p></td><td style="vertical-align:top; width:78px"><p>Placebo</p><p>&nbsp;</p><p>N = 282</p></td></tr><tr><td style="vertical-align:top; width:297px"><p>At least 4 points improvement on ADAS- Cog</p><p>with no worsening on ADCSCGIC and ADCS-ADL</p></td><td style="vertical-align:top; width:164px"><p>17.4</p></td><td style="vertical-align:top; width:195px"><p>19.0</p></td><td style="vertical-align:top; width:78px"><p>10.5</p></td></tr><tr><td style="vertical-align:top; width:297px"><p>p-value versus placebo</p></td><td style="vertical-align:top; width:164px"><p>0.037*</p></td><td style="vertical-align:top; width:195px"><p>0.004*</p></td><td style="vertical-align:top; width:78px"><p>&nbsp;</p></td></tr></tbody></table><p>*p&lt;0.05 versus placebo</p><p>As suggested by compartmental modelling, 9.5 mg/24 h transdermal patches exhibited exposure similar to that provided by an oral dose of 12 mg/day.</p><ul><li>48-week active comparator controlled study</li></ul><p>Patients involved in the active comparator controlled study had an initial baseline MMSE score of 10-24. The study was designed to compare the efficacy of the 13.3 mg/24 h transdermal patch against the 9.5 mg/24 h transdermal patch during a 48-week double-blind treatment phase in Alzheimer&rsquo;s disease patients who demonstrated functional and cognitive decline after an initial 24-48 week open label treatment phase while on a maintenance dose of 9.5 mg/24 h transdermal patch. Functional decline was assessed by the investigator and cognitive decline was defined as a decrease in the MMSE score of &gt;2 points from the previous visit or a decrease of&nbsp; &gt;3 points from baseline. Efficacy was established by the use of ADAS-Cog (Alzheimer&rsquo;s Disease Assessment Scale &ndash; Cognitive subscale, a performance-based measure of cognition) and the ADCS-IADL (Alzheimer&rsquo;s Disease Cooperative Study &ndash; Instrumental Activities of Daily Living) assessing instrumental activities which include maintaining finances, meal preparation, shopping, ability to orient oneself to surroundings, ability to be left unattended. The 48-week results for the two assessment tools are summarised in Table 4.</p><p>Table 4</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2" rowspan="2" style="vertical-align:top"><p>Population/Visit</p></td><td colspan="2" style="vertical-align:top"><p>Rivastigmine patch 15 cm<sup>2</sup></p><p>(n = 265)</p></td><td colspan="2" style="vertical-align:top"><p>Rivastigmine patch 10 cm<sup>2</sup></p><p>(n = 271)</p></td><td colspan="3" style="vertical-align:top"><p>Rivastigmine patch 15 cm<sup>2</sup></p></td><td style="vertical-align:top"><p>Rivastig mine patch 10 cm<sup>2</sup></p></td></tr><tr><td style="vertical-align:top"><p>n</p></td><td style="vertical-align:top"><p>Mean</p></td><td style="vertical-align:top"><p>n</p></td><td style="vertical-align:top"><p>Mean</p></td><td style="vertical-align:top"><p>DLSM</p></td><td colspan="2" style="vertical-align:top"><p>95% CI</p></td><td style="vertical-align:top"><p>p-value</p></td></tr><tr><td colspan="10" style="vertical-align:top"><p><strong>ADAS-Cog</strong></p></td></tr><tr><td style="vertical-align:top"><p>LOCF</p></td><td style="vertical-align:top"><p>Baseline</p></td><td style="vertical-align:top"><p>264</p></td><td style="vertical-align:top"><p>34.4</p></td><td style="vertical-align:top"><p>268</p></td><td style="vertical-align:top"><p>34.9</p></td><td colspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>DB-</p><p>week 48</p></td><td style="vertical-align:top"><p>Value</p></td><td style="vertical-align:top"><p>264</p></td><td style="vertical-align:top"><p>38.5</p></td><td style="vertical-align:top"><p>268</p></td><td style="vertical-align:top"><p>39.7</p></td><td colspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Change</p></td><td style="vertical-align:top"><p>264</p></td><td style="vertical-align:top"><p>4.1</p></td><td style="vertical-align:top"><p>268</p></td><td style="vertical-align:top"><p>4.9</p></td><td colspan="2" style="vertical-align:top"><p>-0.8</p></td><td style="vertical-align:top"><p>(-2.1,0.5)</p></td><td style="vertical-align:top"><p>0.227</p></td></tr><tr><td colspan="10" style="vertical-align:top"><p><strong>ADCS-IADL</strong></p></td></tr><tr><td style="vertical-align:top"><p>LOCF</p></td><td style="vertical-align:top"><p>Baseline</p></td><td style="vertical-align:top"><p>265</p></td><td style="vertical-align:top"><p>27.5</p></td><td style="vertical-align:top"><p>271</p></td><td style="vertical-align:top"><p>25.8</p></td><td colspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Wee</p><p>k 48</p></td><td style="vertical-align:top"><p>Value</p></td><td style="vertical-align:top"><p>265</p></td><td style="vertical-align:top"><p>23.1</p></td><td style="vertical-align:top"><p>271</p></td><td style="vertical-align:top"><p>19.6</p></td><td colspan="2" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Change</p></td><td style="vertical-align:top"><p>265</p></td><td style="vertical-align:top"><p>-4.4</p></td><td style="vertical-align:top"><p>271</p></td><td style="vertical-align:top"><p>-6.2</p></td><td colspan="2" style="vertical-align:top"><p>2.2</p></td><td style="vertical-align:top"><p>(0.8, 3.6)</p></td><td style="vertical-align:top"><p>0.002*</p></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p>CI &ndash; confidence interval.</p><p>DLSM &ndash; difference in least square means.</p><p>LOCF &ndash; Last Observation Carried Forward.</p><p>ADAS-cog scores: A negative difference in DLSM indicates greater improvement in rivastigmine 15 cm<sup>2</sup> as compared to rivastigmine 10 cm<sup>2</sup>.</p><p>ADCS-IADL scores: A positive difference in DLSM indicates greater improvement in rivastigmine 15 cm<sup>2</sup> as compared to rivastigmine 10 cm<sup>2</sup>.</p><p>N is the number of patients with an assessment at baseline (last assessment in the initial open-label phase) and with at least 1 post-baseline assessment (for the LOCF).</p><p>The DLSM, 95% CI, and p-value are based on an ANCOVA (analysis of covariance) model adjusted for country and baseline ADAS-cog score.</p><p>* p&lt;0.05</p><p>Source: Study D2340-Table 11-6 and Table 11-7</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Absorption</u></p><p>Absorption of rivastigmine from rivastigmine transdermal patches is slow. After the first dose, detectable plasma concentrations are observed after a lag time of 0.5-1 hour. C<sub>max</sub> is reached after 10- 16 hours. After the peak, plasma concentrations slowly decrease over the remainder of the 24-hour period of application. With multiple dosing (such as at steady state), after the previous transdermal patch&nbsp; is replaced&nbsp; with a new&nbsp; one, plasma concentrations initially decrease slowly for about 40 minutes on average, until absorption from the newly applied transdermal patch becomes faster than elimination, and plasma levels begin to rise again to reach a new peak at approximately 8 hours. At steady state, trough levels are approximately 50% of peak levels, in contrast to oral administration, with which concentrations fall off to virtually zero between doses. Although less pronounced than with the oral formulation, exposure to rivastigmine (C<sub>max</sub> and AUC) increased over-proportionally by a factor of 2.6 when escalating from 4.6 mg/24 h to 9.5 mg/24 h. The fluctuation index (FI), a measure of the relative difference between peak and trough concentrations ((C<sub>max</sub>-C<sub>min</sub>)/C<sub>avg</sub>), was 0.58 for rivastigmine 4.6 mg/24 h transdermal patches and 0.77 for rivastigmine 9.5 mg/24 h transdermal patches, thus demonstrating a much smaller fluctuation between trough and peak concentrations than for the oral formulation (FI = 3.96 (6 mg/day) and 4.15 (12 mg/day)).</p><p>The dose of rivastigmine released from the transdermal patch over 24 hours (mg/24 h) cannot be directly equated to the amount (mg) of rivastigmine contained in a capsule with respect to plasma concentration produced over 24 hours.</p><p>The single-dose inter-subject variability in rivastigmine pharmacokinetic parameters (normalised to dose/kg bodyweight) was 43% (C<sub>max</sub>) and 49% (AUC<sub>0-24h</sub>) after transdermal administration versus 74% and 103%, respectively, after the oral form. The inter-patient variability in a steady-state study in Alzheimer&rsquo;s dementia was at most 45% (C<sub>max</sub>) and 43% (AUC<sub>0-24h</sub>) after use of the transdermal patch, and 71% and 73%, respectively, after administration of the oral form.</p><p>A relationship between active substance exposure at steady state (rivastigmine and metabolite NAP226-90) and bodyweight was observed in Alzheimer&rsquo;s dementia patients. Compared to a patient with a body weight of 65 kg, the rivastigmine steady- state concentrations in a patient with a body weight of 35 kg would be approximately doubled, while for a patient with a body weight of 100 kg the concentrations would be approximately halved. The effect of bodyweight on active substance exposure suggests special attention to patients with very low body weight during up-titration (see section 4.4).</p><p>Exposure (AUC&infin;) to rivastigmine (and metabolite NAP266-90) was highest when the transdermal patch was applied to the upper back, chest, or upper arm and approximately 20&ndash;30% lower when applied to the abdomen or thigh.</p><p>There was no relevant accumulation of rivastigmine or the metabolite NAP226-90 in plasma in patients with Alzheimer&rsquo;s disease, except that plasma levels were higher on the second day of transdermal patch therapy than on the first.</p><p><u>Distribution</u></p><p>Rivastigmine is weakly bound to plasma proteins (approximately 40%). It readily crosses the blood brain barrier and has an apparent volume of distribution in the range of 1.8- 2.7 l/kg.</p><p><u>Biotransformation</u></p><p>Rivastigmine is rapidly and extensively metabolised with an apparent elimination half- life in plasma of approximately 3.4 hours after removal of the transdermal patch. Elimination was absorption rate limited (flip-flop kinetics), which explains the longer t&frac12; after transdermal patch (3.4 h) versus oral or intravenous administrations (1.4 to 1.7 h). Metabolism is primarily via cholinesterase-mediated hydrolysis to the metabolite NAP226-90. <em>In vitro</em>, this metabolite shows minimal inhibition of acetylcholinesterase (&lt;10%).</p><p>Based on evidence from <em>in vitro </em>and animal studies, the major cytochrome P450 isoenzymes are minimally involved in rivastigmine metabolism. Total plasma clearance of rivastigmine was approximately 130 l/h after a 0.2 mg intravenous dose and decreased to 70 l/h after a 2.7 mg intravenous dose, which is consistent with the non- linear, over-proportional pharmacokinetics of rivastigmine due to saturation of its elimination.</p><p>The metabolite-to-parent AUC&infin; ratio was around 0.7 after transdermal patch versus 3.5 after oral administration, indicating that much less metabolism occurred after dermal compared to oral treatment. Less NAP226-90 is formed following application of the transdermal patch, presumably because of the lack of presystemic (hepatic first- pass) metabolism, in contrast to oral administration.</p><p><u>Elimination</u></p><p>Unchanged rivastigmine is found in trace amounts in the urine; renal excretion of the metabolites is the major route of elimination after transdermal patch administration. Following administration of oral 14C-rivastigmine, renal elimination was rapid and essentially complete (&gt;90%) within 24 hours. Less than 1% of the administered dose is excreted in the faeces.</p><p><u>Elderly population</u></p><p>Age had no impact on the exposure to rivastigmine in Alzheimer&rsquo;s disease patients treated with rivastigmine transdermal patches.</p><p><u>Hepatic impairment</u></p><p>No study was conducted with rivastigmine transdermal patches in subjects with hepatic impairment. After oral administration, the C<sub>max</sub> of rivastigmine was approximately 60% higher and the AUC of rivastigmine was more than twice as high in subjects with mild to moderate hepatic impairment than in healthy subjects.</p><p><u>Renal impairment</u></p><p>No study was conducted with rivastigmine transdermal patches in subjects with renal impairment. After oral administration, C<sub>max</sub> and AUC of rivastigmine were more than twice as high in Alzheimer patients with moderate renal impairment compared with healthy subjects; however there were no changes in C<sub>max</sub> and AUC of rivastigmine in Alzheimer patients with severe renal impairment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Oral and topical repeated-dose toxicity studies in mice, rats, rabbits, dogs and minipigs revealed only effects associated with an exaggerated pharmacological action. No target organ toxicity was observed. Oral and topical dosing in animal studies was limited due to the sensitivity of the animal models used.</p><p>Rivastigmine was not mutagenic in a standard battery of <em>in vitro </em>and <em>in vivo </em>tests, except in a chromosomal aberration test in human peripheral lymphocytes at a dose exceeding 104 times the foreseen clinical exposure. The <em>in vivo </em>micronucleus test was negative.</p><p>No evidence of carcinogenicity was found in oral and topical studies in mice and in an oral study in rats at the maximum tolerated dose. The exposure to rivastigmine and its metabolites was approximately equivalent to human exposure with highest doses of rivastigmine capsules and transdermal patches.</p><p>In animals, rivastigmine crosses the placenta and is excreted into milk. Oral studies in pregnant rats and rabbits gave no indication of teratogenic potential on the part of rivastigmine. Specific dermal studies in pregnant animals have not been conducted.</p><p>Rivastigmine transdermal patches were not phototoxic. In some other dermal toxicity studies, a mild irritant effect on the skin of laboratory animals, including controls, was observed. This may indicate a potential for rivastigmine transdermal patches to induce mild erythema in patients. When administered to rabbit eyes in primary eye irritation studies, rivastigmine caused reddening and swelling of the conjunctiva, corneal opacities and miosis which persisted for 7 days. Therefore, the patient/caregiver should avoid contact with the eyes after handling of the patch (see section 4.4).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Film:</u></p><ul><li>Polyester film</li><li>Fluoro-coated polyester film</li></ul><p><u>Drug matrix:</u></p><ul><li>&nbsp;Acrylic adhesive</li><li>Acrylates copolymer poly(butyl methacrylat-co-methyl methacrylat) (80:20) (Plastoid B)</li><li>&nbsp;Ethyl acetate</li></ul><p><u>Adhesive matrix:</u></p><ul><li>Silicone adhesive</li></ul><p><u>Protective gas:</u></p><ul><li>Nitrogen, low-oxygen<u> </u></li></ul><p><u>Imprinting:</u></p><ul><li>Thermal transfer ribbon</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>To prevent interference with the adhesive properties of the transdermal patch, no cream, lotion or powder should be applied to the skin area where the medicinal product is to be applied.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                24 months
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store in the original package, below 30&deg;C.</p><p>Store in the original package in order to protect from light.</p><p>Keep the transdermal patch in the sachet until use.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Rivaxel transdermal patches are individually packaged in heat-sealed sachets made of paper/ polyethylene terephthalate/ aluminium/ polyacrylonitrile. The 30 sachets will be then packed in a paper carton as a secondary package.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Used transdermal patches should be folded in half, with the adhesive side inwards, placed in the original sachet and discarded safely and out of the reach and sight of children. Any used or unused transdermal patches should be disposed of in accordance with local requirements or returned to the pharmacy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                SK Chemicals Co. Ltd.
+South Korea
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                12/2022
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

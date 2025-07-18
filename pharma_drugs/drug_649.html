@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        90-10-93
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1993
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        MAGNEVIST INJ.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        GADOPENTETATE DIMEGLUMINE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        469.01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Ampoule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1735.25
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="BAYER AG" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            BAYER AG
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 392]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            AL-KAMAL IMPORT OFFICE CO. LTD.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            BAYER PHARMA AG
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        NA
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Magnevist®
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each ml contains 0.5 mmol gadopentetate
+dimeglumine (equivalent to 469.01 mg gadopentetate dimeglumine).
+For full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Solution for injection.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Therapeutic indications<br />This medicinal product is for diagnostic use only as a paramagnetic contrast medium in cranial, spinal<br />and whole body (MRI) including the facial skull, the neck region, the thoracic space including the heart<br />and abdominal space, the female breast, the pelvis and the active and passive locomotive apparatus, and<br />imaging of vessels throughout the body.<br />In particular, Magnevist permits diagnostic information:<br />For the demonstration or exclusion of tumours, inflammations and vascular lesions;<br />For determination of the spread and demarcation of these lesions;<br />For the differentiation of the internal structure of lesions;<br />For assessment of the circulatory situation of normal and pathologically changed tissues;<br />For the differentiation of tumour and scar tissue after therapy;<br />For the recognition of recurrent prolapse of a disk after surgery.<br />For the semi-quantitative evaluation of renal function combined with anatomical organ diagnosis..</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Method of administration<br />Magnevist is to be administered only be intravenous injection.<br />Nausea and vomiting are known possible adverse reactions of all extracellular MRI contrast media.<br />The patient should therefore refrain from eating for 2 hours prior to investigation to avoid aspiration.<br />The usual precautions for MRI (e.g. exclusion of cardiac pacemakers and other ferro-magnetic objects<br />including vascular clips etc) must be observed.<br />Instructions for use/handling<br />Magnevist should only be drawn up into the syringe immediately before use.<br />The rubber stopper should never be pierced more than once.<br />Any contrast medium not used in one examination must be discarded.<br />Contrast-enhanced MRI can start immediately after administration of the medium. T1- weighted<br />scanning sequences are particularly suitable for contrast-enhanced examinations with Magnevist.<br />Ideally the patient should be recumbent during administration, and should be kept under supervision<br />for at least 30 minutes after the injection.<br />v018_0 Page 2 of 11<br />Posology<br />The recommended doses are given in ml of Magnevist per kg body weight.<br />Adults:<br />Cranial and spinal MRI<br />In general, the administration of 0.2ml Magnevist per kg body weight (equivalent to 0.1mmol<br />gadopentetate dimeglumine per kg body weight) is sufficient to provide diagnostically adequate<br />contrast.<br />If a strong clinical suspicion of a lesion persists despite a normal scan, a further injection of 0.2ml or<br />even 0.4ml Magnevist per kg body weight within 30 minutes may increase the diagnostic yield.<br />For the exclusion of metastases or recurrent tumours, injection of 0.6ml Magnevist per kg body weight<br />may increase the diagnostic yield.<br />Maximum single dose: 0.6ml Magnevist per kg of body weight.<br />Whole body MRI<br />In general, the administration of 0.2ml Magnevist per kg body weight is sufficient to provide<br />diagnostically adequate contrast.<br />In special cases, e.g. in lesions with poor vascularisation and/or a small extracellular space, 0.4ml<br />Magnevist per kg body weight may be necessary for an adequate contrast especially with relatively<br />less heavily T1-weighted scanning sequences.<br />For the exclusion of a lesion or tumour recurrences the injection of 0.6ml Magnevist per kg body<br />weight may increase the diagnostic yield.<br />Maximum single dose: 0.6ml Magnevist per kg of body weight.<br />Special Populations<br />Renal impairment<br />Magnevist is contraindicated in patients with severe renal impairment (GFR &lt; 30 ml / min / 1.73 m2)<br />and/or acute kidney injury and in patients in the perioperative liver transplantation period (see section<br />4.3). Magnevist should only be used after careful risk/benefit evaluation in patients with moderate<br />renal impairment (GFR 30 &ndash; 59 ml / min / 1.73 m2) at a dose not exceeding 0.2 ml per kg body weight<br />(see section 4.4). More than one dose should not be used during a scan. Because of the lack of<br />information on repeated administration, Magnevist injections should not be repeated unless the interval<br />between injections is at least 7 days.<br />Hepatic impairment<br />Since gadopentetate is almost exclusively eliminated in an unchanged form via the kidneys, no dosage<br />adjustment is considered necessary in patients with moderate hepatic impairment. Data on patients with<br />severe hepatic impairment are not available (see section 5.2).<br />Elderly (aged 65 years and above)<br />No dosage adjustment is considered necessary. Caution should be exercised in elderly patients (see<br />section 4.4).<br />v018_0 Page 3 of 11<br />Paediatric Population<br />Cranial and spinal MRI<br />Children (including infants under the age of 2 years):<br />0.2ml Magnevist per kg bodyweight is sufficient to provide diagnostically adequate contrast. In<br />infants (under 2 years of age) the required dose should be administered by hand.<br />Magnevist is contraindicated in neonates up to 4 weeks of age (see section 4.3).<br />Due to immature renal function in infants up to 1 year of age Magnevist should only be used in these<br />patients after careful consideration at a dose not exceeding 0.2 ml per kg body weight. More than one<br />dose should not be used during a scan. Because of the lack of information on repeated administration,<br />Magnevist injections should not be repeated unless the interval between injections is at least 7 days.<br />If a strong clinical suspicion of a lesion persists despite a normal scan in patients over 1 year of age, a<br />further injection of 0.2ml Magnevist per kg body weight within 30 minutes may increase the<br />diagnostic yield.<br />Whole body MRI<br />Children (over the age of 2 years):<br />In general, 0.2ml Magnevist per kg body weight is sufficient to provide diagnostically adequate<br />contrast.<br />In special cases, e.g. in lesions with poor vascularisation and/or a small extracellular space, 0.4ml<br />Magnevist per kg body weight may be necessary for an adequate contrast especially with relatively<br />less heavily T1-weighted scanning sequences.<br />Neonates and Infants under the age of 2 years:<br />Magnevist is contrainidicated in neonates up to 4 weeks of age (see section 4.3).<br />Experience in children under the age of 2 years is limited. However, this limited experience has shown<br />that 0.2ml Magnevist per kg body weight may be used in this particular age group. In infants (under<br />2 years of age) the required dose should be administered by hand.<br />Due to immature renal function in infants up to 1 year of age Magnevist should only be used in these<br />patients after careful consideration at a dose not exceeding 0.2 ml per kg body weight. More than one<br />dose should not be used during a scan. Because of the lack of information on repeated administration,<br />Magnevist injections should not be repeated unless the interval between injections is at least 7 days</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity or allergy to the active substance or to any of the excipients listed in section 6.1 (see
+also Section 4.4).
+Use of Magnevist is contraindicated in patients with severe renal impairment
+(GFR <30 ml/min/1.73m2) and/or acute kidney injury, in patients in the perioperative liver
+transplantation period and in neonates up to 4 weeks of age (see section 4.4).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Hypersensitivity and hypersensitivity reactions<br />Particularly careful risk-benefit assessment is required in patients with known hypersensitivity to<br />Magnevist.<br />v018_0 Page 4 of 11<br />As with other intravenous contrast agents, Magnevist can be associated with anaphylactoid /<br />hypersensitivity or other idiosyncratic reactions (characterised by cardiovascular, respiratory or<br />cutaneous manifestations) ranging to severe reactions including shock.<br />The risk of hypersensitivity reactions is higher in case of:<br />&middot; previous reaction to contrast media,<br />&middot; history of bronchial asthma,<br />&middot; history of allergic disorders<br />In patients with an allergic disposition (especially with a history of the above-mentioned conditions)<br />the decision to use Magnevist must be made after particularly careful evaluation of the risk-benefit<br />ratio.<br />Most of these reactions occur within half an hour of administration. Therefore, post-procedure<br />observation of the patient is recommended.<br />Medication for the treatment of hypersensitivity reactions as well as readiness for institution of<br />emergency measures are necessary.<br />Delayed reactions (hours later or up to several days) have been rarely observed (see section 4.8<br />Undesirable effects).<br />Patients who experience hypersensitivity reactions while taking beta blockers may be resistant to<br />treatment effects of beta agonists.<br />Patients with cardiovascular disease are more susceptible to serious or even fatal outcomes of severe<br />hypersensitivity reactions.<br />&middot; Patients with impaired renal function<br />Prior to administration of Magnevist, all patients should be screened for renal dysfunction by<br />obtaining laboratory tests.<br />There have been reports of nephrogenic systemic fibrosis (NSF) associated with use of Magnevist and<br />some other gadolinium-containing contrast agents in patients with acute or chronic severe renal<br />impairment (GFR &lt;30ml/min/1.73 m2) and/or acute kidney injury. Magnevist is contraindicated in<br />these patients (see section 4.3). Patients undergoing liver transplantation are at particular risk since the<br />incidence of acute renal failure is high in this group. Therefore Magnevist must not be used in patients<br />in the perioperative liver transplantation period and in neonates (see section 4.3).<br />The risk for development of NSF in patients with moderate renal impairment (GFR 30-<br />59 ml/min/1.73m2) is unknown, therefore, Magnevist should only be used after careful risk-benefit<br />evaluation in patients with moderate renal impairment.<br />Haemodialysis shortly after Magnevist administration may be useful at removing Magnevist from the<br />body. Approximately 70% of the administered dose is removed with each dialysis session, such that<br />after 3 dialysis sessions of 3 hours each, about 97% of the total administered dose is eliminated from<br />the body. There is no evidence to support the initiation of haemodialysis for prevention or treatment of<br />NSF in patients not already undergoing haemodialysis.<br />&middot; Neonates and infants<br />Magnevist is contraindicated in neonates up to 4 weeks of age (see section 4.3). Due to immature renal<br />function in infants up to 1 year of age, Magnevist should only be used in these patients after careful<br />consideration (see section 4.2).<br />v018_0 Page 5 of 11<br />&middot; Elderly<br />As the renal clearance of gadopentetate may be impaired in the elderly, it is particularly important to<br />screen patients aged 65 years and older for renal dysfunction.<br />&middot; Seizure disorders<br />Patients with seizure disorders or intracranial lesions may be at increased risk of seizure activity, as<br />this has been reported rarely in association with Magnevist administration (see section 4.8).<br />For patients predisposed to seizures, precautionary measures should be taken, e.g. close monitoring; all<br />equipment and drugs necessary to counter any convulsions which may occur must be made ready for<br />use beforehand.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No interaction studies with other medicinal products have been conducted.<br />The results of serum iron determinations using complexometric methods (e.g. bathophenanthroline)<br />may result in falsely low values for up to 24 hours after the administration of Magnevist because of the<br />free DTPA contained in the contrast-medium solution</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy<br />There are no data from the use of gadopentetate in pregnant women. Animal studies have shown<br />reproductive toxicity at repeated high doses (see section 5.3). Magnevist should not be used during<br />pregnancy unless the clinical condition of the woman requires use of gadopentetate.<br />&middot; Lactation<br />Small amounts of gadopentetate dimeglumine (up to 0.04% of the administered dose) are excreted in<br />human milk. A risk to the suckling child cannot be excluded. Breast-feeding should be discontinued<br />for at least 24 hours after the administration of Magnevist.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None stated.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The overall safety profile of Magnevist is based on data from post-marketing surveillance and from<br />more than 11,000 patients in clinical trials.<br />The most frequently observed adverse drug reactions (&sup3; 0.4%) in patients receiving Magnevist in<br />clinical trials are various injection site reactions, headache and nausea.<br />Most of the adverse drug reactions in clinical trials were of mild to moderate intensity.<br />Overall, the most serious adverse drug reactions in patients receiving Magnevist are:<br />&middot; Nephrogenic systemic fibrosis<br />&middot; Anaphylactoid reactions/anaphylactoid shock<br />Delayed hypersensitivity/anaphylactoid reactions (hours later up to several days) have been rarely<br />observed (see section 4.4).<br />v018_0 Page 6 of 11<br />The adverse drug reactions observed with Magnevist are represented in the table below. They are<br />classified according to System Organ Class (MedDRA). The most appropriate MedDRA term is used<br />to describe a certain reaction and its synonyms and related conditions.<br />Adverse drug reactions from clinical trials are classified according to their frequencies. Frequency<br />groupings are defined according to the following convention: uncommon: &ge; 1/1,000 to &lt; 1/100; rare:<br />&ge;1/10,000 to &lt;1/1,000. The adverse drug reactions identified only during post-marketing surveillance,<br />and for which a frequency could not be estimated, are listed under &lsquo;not known&rsquo;.<br />Table 1: Adverse drug reactions reported in clinical trials or during post-marketing surveillance<br />in patients treated with Magnevist.<br />System organ class Uncommon Rare Not known<br />Blood and lymphatic<br />system disorders<br />Serum iron increased*<br />Immune system disorders Hypersensitivity<br />/anaphylactoid reaction<br />(e.g. anaphylactoid<br />shock*, Anaphylactoid<br />reaction&sect; *,<br />Hypersensitivity<br />reactions&sect; *, Shock&sect; *,<br />Hypotension&sect; *,<br />Conjunctivitis, Loss of<br />consciousness&sect; *, Throat<br />tightness*, Sneezing,<br />Urticaria, Pruritus, Rash,<br />Erythema, Dyspnoea*,<br />Respiratory arrest&sect; *,<br />Bronchospasm&sect; *,<br />Wheezing,<br />Laryngospasm&sect; *,<br />Laryngeal oedema&sect; *,<br />Pharyngeal oedema&sect; *,<br />Cyanosis&sect; *, Rhinitis&sect;,<br />Angioedema&sect; *, Oedema<br />face*, Reflex<br />tachycardia&sect;)<br />Psychiatric disorders Disorientation Agitation<br />Confusion<br />Nervous system disorders Dizziness<br />Headache<br />Dysgeusia<br />Convulsion*<br />Paraesthesia<br />Burning sensation<br />Tremor<br />Coma*<br />Somnolence*<br />Speech disorder<br />Parosmia<br />Eye disorders Visual disturbance<br />Eye pain<br />Lacrimation<br />Ear and labyrinth<br />disorders<br />Hearing impaired<br />Ear pain<br />Cardiac disorders Tachycardia*<br />Arrhythmia<br />Cardiac arrest*<br />Heart rate<br />decreased/bradycardia*<br />Vascular disorders Thrombophlebitis<br />Flushing<br />Vasodilatation<br />Syncope*<br />Vasovagal reaction<br />Blood pressure increased<br />Respiratory, thoracic and<br />mediastinal disorders<br />Throat irritation<br />Pharyngolaryngeal pain /<br />Respiratory distress<br />Respiratory rate<br />v018_0 Page 7 of 11<br />pharynx discomfort<br />Cough<br />increased or Respiratory<br />rate decreased<br />Pulmonary oedema*<br />Gastrointestinal disorders Vomiting<br />Nausea<br />Abdominal pain<br />Stomach discomfort<br />Diarrhoea<br />Toothache<br />Dry mouth<br />Oral soft tissue pain and<br />paraesthesia<br />Salivation<br />Hepatobiliary disorders Blood bilirubin increased<br />Hepatic enzyme<br />increased<br />Skin and subcutaneous<br />tissue disorders<br />Nephrogenic Systemic<br />Fibrosis (NSF)*, ***<br />Musculoskeletal,<br />connective tissue and<br />bone disorders<br />Pain in extremity Back pain<br />Arthralgia<br />Renal and urinary<br />disorders<br />Acute renal failure*,**<br />Increased serum<br />creatinine**<br />Urinary incontinence<br />Urinary urgency<br />General disorders and<br />administration site<br />conditions<br />Pain<br />Feeling hot<br />Feeling cold<br />Injection site<br />reactions (e.g.<br />Injection site<br />coldness,<br />paraesthesia,<br />swelling, warmth,<br />pain, oedema,<br />irritation,<br />haemorrhage,<br />erythema, discomfort,<br />necrosis&sect;,<br />thrombophlebitis&sect;,<br />phlebitis&sect;,<br />inflammation&sect;,<br />extravasation&sect;)<br />Chest pain<br />Pyrexia<br />Oedema peripheral<br />Malaise<br />Fatigue<br />Thirst<br />Asthenia<br />Chills<br />Sweating<br />Body temperature<br />increased or Body<br />temperature decreased<br />* Life-threatening and/or fatal cases have been reported.<br />** In patients with pre-existing renal impairment.<br />*** In patients with acute or chronic severe renal impairment<br />&sect; Reactions identified only during post-marketing surveillance (frequency not known).<br />Cases of nephrogenic systemic fibrosis (NSF) have been reported with Magnevist (see section 4.4).<br />In patients with dialysis-dependent renal failure who received Magnevist, delayed and transient<br />inflammatory-like reactions such as fever, chills and C-reactive protein increase have been commonly<br />observed. These patients had the MRI examination with Magnevist on the day before haemodialysis.<br />v018_0 Page 8 of 11<br />Reporting of suspected adverse reactions<br />Reporting suspected adverse reactions after authorisation of the medicinal product is important. It<br />allows continued monitoring of the benefit/risk balance of the medicinal product.<br />To report any side effect(s):<br />National Pharmacovigilance and Drug Safety Center (NPC).<br />Fax: + 966 - 11 - 205 - 7662.<br />Call NPC at +966 - 11 - 2038222,<br />Ext.: 2317 - 2356 - 2353 - 2354 - 2334 - 2340.<br />Toll - free: 8002490000.<br />E - mail: npc.drug@sfda.gov.sa.<br />Website: www.sfda.gov.sa/npc</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No signs of intoxication secondary to an inadvertent overdose have so far been observed or reported<br />on clinical use.<br />Accidental overdose may cause the following effects due to the hyperosmolality of Magnevist:<br />increase of pulmonary artery pressure, osmotic diuresis, hypervolaemia and dehydration.<br />In case of inadvertent overdose, renal function should be monitored in patients with renal impairment.<br />Magnevist can be removed by haemodialysis (see section 4.4). However, there is no evidence that<br />haemodialysis is suitable for prevention of nephrogenic systemic fibrosis (NSF).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: paramagnetic contrast media<br />ATC Code: V08CA01<br />&middot; Mechanism of action<br />Magnevist is a paramagnetic contrast agent for magnetic resonance imaging.<br />When T1-weighted scanning sequences are used in magnetic resonance imaging, the gadopentetateinduced<br />shortening of the spin-lattice relaxation time (T1) of excited water protons leads to an increase<br />of the signal intensity and, hence, to an increase of the image contrast of certain tissues.<br />&middot; Pharmacodynamic effects<br />Gadopentetate is a highly paramagnetic compound which leads to distinct shortening of the relaxation<br />times even at low concentrations. The paramagnetic efficacy at a magnetic field strength of 1.5 T and<br />37&deg;C, the relaxivity (r1) - determined from the influence on the T1 relaxation time of the water protons<br />in plasma and the relaxivity (r2) &ndash; determined from the influence on the T2 relaxation time - is about<br />4.1 &plusmn; 0.2 l/(mmol&times;sec) and 4.6 &plusmn; 0.8 l/(mmol&times;sec), respectively. The relaxivities display only slight<br />dependency on the strength of the magnetic field.<br />Diethylene triamine pentaacetic acid (DTPA) forms a complex with the paramagnetic gadolinium ion<br />with high in-vivo and in-vitro stability (thermodynamic stability constant: log KGdL = 22-23).<br />Gadopentetate dimeglumine is a highly water-soluble, hydrophilic compound with a partition<br />coefficient between n-butanol and buffer at pH 7.6 of about 0.0001. When tested in vitro with the<br />enzymes acetylcholinesterase and lysozyme at clinically relevant concentrations gadopentetate<br />dimeglumine did not display significant inhibitory interaction. Magnevist does not activate the<br />complement system and, therefore, probably has a very low potential for inducing anaphylactoid<br />reactions.<br />In higher concentrations and on prolonged incubation, gadopentetate dimeglumine has a slight in-vitro<br />effect on erythrocyte morphology. After intravenous administration of Magnevist in man, the<br />v018_0 Page 9 of 11<br />reversible process could lead to weak intravascular haemolysis, which might explain the slight<br />increase of serum bilirubin and iron occasionally observed in the first few hours after injection.<br />Physico-chemical properties of Magnevist 0.5 mmol/ml are listed below:<br />Magnevist 0.5 mmol/ml (0.5 mol /l)<br />Contrast medium concentration (mg/ml) 469.01<br />Contrast medium content (g) per vial of 5ml 2.3<br />10ml 4.7<br />15ml 7.0<br />20ml 9.4<br />30ml 14.1<br />Osmolarity at 37&deg;C (mosmol/l solution) 1440.0<br />Osmolality at 37&deg;C (mosmol/kg H20) 1960.0<br />Osmotic pressure at 37&deg;C (atm) 49.8<br />(MPa) 5.06<br />Density (g/ml or kg/l) at 20&deg;C 1.210<br />at 37&deg;C 1.195<br />Viscosity (mPa.s) at 20&deg;C 4.9<br />at 37&deg;C 2.9<br />pH 7.0 - 7.9</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Gadopentetate behaves in the organism like other highly hydrophilic biologically inert compounds (e.g<br />mannitol or inulin).<br />&middot; Absorption and distribution<br />After intravenous administration of Magnevist, plasma levels decline rapidly bi-exponentially with a<br />terminal half-life of about 90 minutes.<br />Gadopentetate is rapidly distributed in the extracellular space. The total distribution volume of<br />gadopentetate is about 0.26 l per kg. Protein binding is negligible.<br />In studies in rats and dogs, relatively high concentrations of the intact gadolinium complex were found<br />in the kidneys amounting to about 0.15% of administered dose seven days after intravenous<br />administration of radioactively labelled gadopentetate. Less than 1% of the administered dose was<br />found in the remaining parts of the body of both species. Gadopentetate neither penetrates nor passes a<br />blood-testis barrier. The small amount which overcomes the placental barrier is quickly eliminated by<br />the foetus.<br />In a clinical study in lactating women (aged 23-38 years), less than 0.04% of administered<br />gadopentetate was excreted into human breast milk. In rats, absorption from the gastrointestinal tract<br />after oral administration was found to be small (4%).<br />&middot; Metabolism<br />Gadopentetate is not metabolised.<br />&middot; Elimination<br />Gadopentetate is eliminated in unchanged form via the kidneys by glomerular filtration. The fraction<br />eliminated extra-renally is less than 1% of the administered dose.<br />An average of 83% of the dose was eliminated within 6 hours post-injection. About 91% of the dose<br />was recovered in the urine within the first 24 hours. The renal clearance of gadopentetate was about<br />120ml/min/1.73m2 and is therefore comparable to substances that are exclusively excreted by<br />glomerular filtration (e.g. inulin or 51Cr-EDTA).<br />v018_0 Page 10 of 11<br />&middot; Characteristics in special patient populations<br />Elderly population (aged 65 years and above)<br />Magnevist is excreted renally and its clearance is reduced with age as expected due to the age-related<br />physiological reduction in renal function. Magnevist urinary recovery remains similar to non-elderly<br />subjects.<br />Renal impairment<br />In patients with impaired renal function; the serum half-life of gadopentetate is prolonged due to the<br />reduced glomerular filtration rate. After administration of a single intravenous dose to 10 patients with<br />impaired renal function (4 patients with mild renal impairment [creatinine clearance &sup3; 60 to<br />&lt; 90 ml/min] and 6 patients with moderate renal impairment [creatinine clearance &sup3; 30 to<br />&lt; 60 ml/min]), mean half-lives were 2.6 &plusmn; 1.2 hours and 4.2 &plusmn; 2.0 hours for the mildly and moderately<br />impaired patients, respectively, as compared to 1.6 &plusmn; 0.13 hours in healthy subjects.<br />Gadopentetate is completely renally excreted within two days in patients with slightly to moderately<br />impaired renal function (creatinine clearance &gt; 30 ml/min).<br />Paediatric population<br />In a study with paediatric patients aged 2 months to &lt; 2 years the pharmacokinetics (body weightnormalised<br />clearance, distribution volume, area under the concentration-time curve and terminal halflife)<br />of gadopentetate were similar to adults.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-clinical data reveal no special hazard for humans based on conventional studies of safety<br />pharmacology, systemic toxicity, genotoxicity, carcinogenic potential and contact sensitising potential.<br />&middot; Reproduction toxicity<br />Reproduction-toxicological studies with Magnevist gave no indication of a teratogenic potential<br />following the administration of Magnevist during pregnancy.<br />With daily dosage in the pregnant rat for 10 days of 12.5 times, and in the pregnant rabbit for 13 days<br />of at least 7.5 times the human dose per unit weight, there was slight retardation of foetal growth and<br />ossification.<br />&middot; Local tolerance<br />Experimental local tolerance studies following a single paravenous, subcutaneous as well as<br />intramuscular application indicated that slight local intolerance reactions could occur at the<br />administration site after inadvertent paravenous administration.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>List of excipients<br />Meglumine<br />Pentetic acid (DTPA)<br />Water for injection</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the absence of compatibility studies, this medicinal product must not be mixed with other medicinal<br />products.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Keep the container (vials, ampoules) in the outer carton in order to protect from light.<br />Store below 30&deg;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Colourless glass injection vials with 5ml, 10ml, 15ml, 20ml and 30ml<br />chlorinated butyl rubber stoppers and pure<br />aluminium lacquered flange caps<br />Colourless glass ampoules 10ml, 15ml, and 20ml<br />Not all pack sizes may be marketed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>This medicinal product should be visually inspected before use.<br />Magnevist should not be used in case of severe discolouration, the occurrence of particulate matter or a<br />defective container.<br />The peel-off tracking label on the vials/ampoules should be stuck onto the patient record to enable<br />accurate recording of the gadolinium contrast agent used. The dose used should also be recorded. If<br />electronic patient records are used, the name of the product, the batch number and the dose should be<br />entered into the patient record.<br />Please also refer to section 4.2.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Bayer Pharma AG,
+Berlin, Germany
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 May 2016
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

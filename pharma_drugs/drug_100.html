@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2801256768
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1996
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        PANTOZOL 40MG TAB
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PANTOPRAZOLE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        40
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Gastro-resistant coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        87.95
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="TAKEDA GMBH" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            TAKEDA GMBH
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 359]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Cigalah Group
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            ACINO PHARMA AG
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        A02BC02
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Pantozol 40 mg gastro-resistant tablets
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each gastro-resistant tablet contains 40 mg of pantoprazole (as sodium sesquihydrate).
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Gastro-resistant tablet (tablet).
+Yellow, oval, biconvex film-coated tablet imprinted with “P 40” in brown ink on one side.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pantozol 40 mg is indicated for use in adults and adolescents 12 years of age and above for:<br />&minus; Reflux oesophagitis.<br />Pantozol 40 mg is indicated in adults for:<br />&minus; Eradication of Helicobacter pylori (H. pylori) in combination with appropriate antibiotic therapy in<br />patients with H. pylori associated ulcers.<br />&minus; Gastric and duodenal ulcer.<br />&minus; Zollinger-Ellison-Syndrome and other pathological hypersecretory conditions.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Posology<br />Adults and adolescents 12 years of age and above<br />Reflux oesophagitis<br />One tablet of Pantozol 40 mg per day. In individual cases the dose may be doubled (increase to 2 tablets<br />Pantozol 40 mg daily) especially when there has been no response to other treatment. A 4-week period is<br />usually required for the treatment of reflux oesophagitis. If this is not sufficient, healing will usually be<br />achieved within a further 4 weeks.<br />Adults<br />Eradication of H. pylori in combination with two appropriate antibiotics<br />In H. pylori positive patients with gastric and duodenal ulcers, eradication of the germ by a combination<br />therapy should be achieved. Considerations should be given to official local guidance (e.g. national<br />recommendations) regarding bacterial resistance and the appropriate use and prescription of antibacterial<br />agents. Depending upon the resistance pattern, the following combinations can be recommended for the<br />eradication of H. pylori:<br />a) twice daily one tablet Pantozol 40 mg<br />+ twice daily 1000 mg amoxicillin<br />+ twice daily 500 mg clarithromycin</p><p>b) twice daily one tablet Pantozol 40 mg<br />+ twice daily 400 - 500 mg metronidazole (or 500 mg tinidazole)<br />+ twice daily 250 - 500 mg clarithromycin<br />c) twice daily one tablet Pantozol 40 mg<br />+ twice daily 1000 mg amoxicillin<br />+ twice daily 400 - 500 mg metronidazole (or 500 mg tinidazole)<br />In combination therapy for eradication of H. pylori infection, the second Pantozol 40 mg tablet should be<br />taken 1 hour before the evening meal. The combination therapy is implemented for 7 days in general and<br />can be prolonged for a further 7 days to a total duration of up to two weeks. If, to ensure healing of the<br />ulcers, further treatment with pantoprazole is indicated, the dose recommendations for duodenal and<br />gastric ulcers should be considered.<br />If combination therapy is not an option, e.g. if the patient has tested negative for H. pylori, the following<br />dose guidelines apply for Pantozol 40 mg monotherapy:<br />Treatment of gastric ulcer<br />One tablet of Pantozol 40 mg per day. In individual cases the dose may be doubled (increase to 2 tablets of<br />Pantozol 40 mg daily) especially when there has been no response to other treatment. A 4-week period is<br />usually required for the treatment of gastric ulcers. If this is not sufficient, healing will usually be achieved<br />within a further 4 weeks.<br />Treatment of duodenal ulcer<br />One tablet of Pantozol 40 mg per day. In individual cases the dose may be doubled (increase to 2 tablets of<br />Pantozol 40 mg daily) especially when there has been no response to other treatment. A duodenal ulcer<br />generally heals within 2 weeks. If a 2-week period of treatment is not sufficient, healing will be achieved<br />in almost all cases within a further 2 weeks.<br />Zollinger-Ellison-Syndrome and other pathological hypersecretory conditions<br />For the long-term management of Zollinger-Ellison-Syndrome and other pathological hypersecretory<br />conditions patients should start their treatment with a daily dose of 80 mg (2 tablets of Pantozol 40 mg<br />40 mg). Thereafter, the dose can be titrated up or down as needed using measurements of gastric acid<br />secretion to guide. With doses above 80 mg daily, the dose should be divided and given twice daily. A<br />temporary increase of the dose above 160 mg pantoprazole is possible but should not be applied longer<br />than required for adequate acid control.<br />Treatment duration in Zollinger-Ellison syndrome and other pathological hypersecretory conditions is not<br />limited and should be adapted according to clinical needs.<br />Patients with hepatic impairment<br />A daily dose of 20 mg pantoprazole (1 tablet of 20 mg pantoprazole) should not be exceeded in patients<br />with severe liver impairment. Pantozol 40 mg must not be used in combination treatment for eradication<br />of H. pylori in patients with moderate to severe hepatic dysfunction since currently no data are available<br />on the efficacy and safety of Pantozol 40 mg in combination treatment of these patients (see section 4.4).<br />Patients with renal impairment<br />No dose adjustment is necessary in patients with impaired renal function. Pantozol 40 mg must not be<br />used in combination treatment for eradication of H. pylori in patients with impaired renal function since<br />currently no data are available on the efficacy and safety of Pantozol 40 mg in combination treatment for<br />these patients (see section 5.2).</p><p>Older people<br />No dose adjustment is necessary in older people (see section 5.2).<br />Paediatric population<br />Pantozol 40 mg is not recommended for use in children below 12 years of age because of limited data on<br />safety and efficacy in the age group (see section 5.2).<br />Method of administration<br />Oral use<br />The tablets should not be chewed or crushed, and should be swallowed whole 1 hour before a meal with<br />some water.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance, substituted benzimidazoles, any of the other excipients listed in
+section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Hepatic impairment<br />In patients with severe liver impairment, the liver enzymes should be monitored regularly during treatment<br />with pantoprazole, particularly on long-term use. In the case of a rise of the liver enzymes, the treatment<br />should be discontinued (see section 4.2).<br />Combination therapy<br />In the case of combination therapy, the summaries of product characteristics of the respective medicinal<br />products should be observed.<br />Gastric malignancy<br />Symptomatic response to pantoprazole may mask the symptoms of gastric malignancy and may delay<br />diagnosis. In the presence of any alarm symptom (e. g. significant unintentional weight loss, recurrent<br />vomiting, dysphagia, haematemesis, anaemia or melaena) and when gastric ulcer is suspected or present,<br />malignancy should be excluded.<br />Further investigation is to be considered if symptoms persist despite adequate treatment.<br />Co-administration with HIV protease inhibitors<br />Co-administration of pantoprazole is not recommended with HIV protease inhibitors for which absorption<br />is dependent on acidic intragastric pH such as atazanavir, due to significant reduction in their<br />bioavailability (see section 4.5).<br />Influence on vitamin B12 absorption<br />In patients with Zollinger-Ellison syndrome and other pathological hypersecretory conditions requiring<br />long-term treatment, pantoprazole, as all acid-blocking medicines, may reduce the absorption of<br />vitamin B12 (cyanocobalamin) due to hypo- or achlorhydria. This should be considered in patients with<br />reduced body stores or risk factors for reduced vitamin B12 absorption on long-term therapy or if<br />respective clinical symptoms are observed.<br />Long term treatment<br />In long-term treatment, especially when exceeding a treatment period of 1 year, patients should be kept<br />under regular surveillance.</p><p>Gastrointestinal infections caused by bacteria<br />Treatment with Pantozol 40 mg may lead to a slightly increased risk of gastrointestinal infections caused<br />by bacteria such as Salmonella and Campylobacter or C. difficile.<br />Hypomagnesaemia<br />Severe hypomagnesaemia has been reported in patients treated with PPIs like pantoprazole for at least<br />three months, and in most cases for a year. Serious manifestations of hypomagnesaemia such as fatigue,<br />tetany, delirium, convulsions, dizziness and ventricular arrhythmia can occur but they may begin<br />insidiously and be overlooked. In most affected patients, hypomagnesaemia improved after magnesium<br />replacement and discontinuation of the PPI.<br />For patients expected to be on prolonged treatment or who take PPIs with digoxin or medicinal products<br />that may cause hypomagnesaemia (e.g. diuretics), health care professionals should consider measuring<br />magnesium levels before starting PPI treatment and periodically during treatment.<br />Bone fractures<br />Proton pump inhibitors, especially if used in high doses and over long durations (&gt;1 year), may modestly<br />increase the risk of hip, wrist and spine fracture, predominantly in older people or in the presence of other<br />recognised risk factors. Observational studies suggest that proton pump inhibitors may increase the overall<br />risk of fracture by 10&ndash;40%. Some of this increase may be due to other risk factors. Patients at risk of<br />osteoporosis should receive care according to current clinical guidelines and they should have an adequate<br />intake of vitamin D and calcium.<br />Subacute cutaneous lupus erythematosus (SCLE)<br />Proton pump inhibitors are associated with very infrequent cases of SCLE. If lesions occur, especially in<br />sun exposed areas of the skin, and if accompanied by arthralgia, the patient should seek medical help<br />promptly and the healthcare professional should consider stopping Pantozol 40 mg. SCLE after previous<br />treatment with a proton pump inhibitor may increase the risk of SCLE with other proton pump inhibitors.<br />Interference with Laboratory Tests<br />Increased Chromogranin A (CgA) level may interfere with investigations for neuroendocrine tumours. To<br />avoid this interference, Pantozol 40 mg treatment should be stopped for at least 5 days before CgA<br />measurements (see section 5.1). If CgA and gastrin levels have not returned to reference range after initial<br />measurement, measurements should be repeated 14 days after cessation of proton pump inhibitor<br />treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Medicinal products with pH-Dependent Absorption Pharmacokinetics<br />Because of profound and long lasting inhibition of gastric acid secretion, pantoprazole may interfere with<br />the absorption of other medicinal products where gastric pH is an important determinant of oral<br />availability, e.g. some azole antifungals such as ketoconazole, itraconazole, posaconazole and other<br />medicine such as erlotinib.<br />HIV protease inhibtiors<br />Co-administration of pantoprazole is not recommended with HIV protease inhibitors for which absorption<br />is dependent on acidic intragastric pH such as atazanavir due to significant reduction in their<br />bioavailability (see section 4.4).<br />If the combination of HIV protease inhibitors with a proton pump inhibitor is judged unavoidable, close<br />clinical monitoring (e.g virus load) is recommended. . A pantoprazole dose of 20 mg per day should not be<br />exceeded. Dosage of the HIV protease inhibitors may need to be adjusted.</p><p>Coumarin anticoagulants (phenprocoumon or warfarin)<br />Co-administration of pantoprazole with warfarin or phenprocoumon did not affect the pharmacokinetics of<br />warfarin, phenprocoumon or INR. However, there have been reports of increased INR and prothrombin<br />time in patients receiving PPIs and warfarin or phenprocoumon concomitantly. Increases in INR and<br />prothrombin time may lead to abnormal bleeding, and even death. Patients treated with pantoprazole and<br />warfarin or phenprocoumon may need to be monitored for increase in INR and prothrombin time..<br />Methotrexate<br />Concomitant use of high dose methotrexate (e.g. 300 mg) and proton-pump inhibitors has been reported to<br />increase methotrexate levels in some patients. Therefore in settings where high-dose methotrexate is used,<br />for example cancer and psoriasis, a temporary withdrawal of pantoprazole may need to be considered.<br />Other interactions studies<br />Pantoprazole is extensively metabolized in the liver via the cytochrome P450 enzyme system. The main<br />metabolic pathway is demethylation by CYP2C19 and other metabolic pathways include oxidation by<br />CYP3A4.<br />Interaction studies with medicinal products also metabolized with these pathways, like carbamazepine,<br />diazepam, glibenclamide, nifedipine, and an oral contraceptive containing levonorgestrel and ethinyl<br />oestradiol, did not reveal clinically significant interactions.<br />An interaction of pantoprazole with other medicinal products or compounds, which are metabolized using<br />the same enzyme system, cannot be excluded.<br />Results from a range of interaction studies demonstrate that pantoprazole does not affect the metabolism<br />of active substances metabolised by CYP1A2 (such as caffeine, theophylline), CYP2C9 (such as<br />piroxicam, diclofenac, naproxen), CYP2D6 (such as metoprolol), CYP2E1 (such as ethanol), or does not<br />interfere with p-glycoprotein related absorption of digoxin.<br />There were no interactions with concomitantly administered antacids.<br />Interaction studies have also been performed by concomitantly administering pantoprazole with the<br />respective antibiotics (clarithromycin, metronidazole, amoxicillin). No clinically relevant interactions<br />were found.<br />Medicinal products that inhibit or induce CYP2C19:<br />Inhibitors of CYP2C19 such as fluvoxamine could increase the systemic exposure of pantoprazole. A dose<br />reduction may be considered for patients treated long-term with high doses of pantoprazole, or those with<br />hepatic impairment.<br />Enzyme inducers affecting CYP2C19 and CYP3A4 such as rifampicin and St John&acute;s wort (Hypericum<br />perforatum) may reduce the plasma concentrations of PPIs that are metabolized through these enzyme<br />systems.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy<br />A moderate amount of data on pregnant women (between 300-1000 pregnancy outcomes) indicate no<br />malformative or feto/ neonatal toxicity of Pantozol 40 mg.<br />Animal studies have shown reproductive toxicity (see section 5.3).<br />As a precautionary measure, it is preferable to avoid the use of Pantozol 40 mg during pregnancy.</p><p>Breast-feeding<br />Animal studies have shown excretion of pantoprazole in breast milk. There is insufficient information on<br />the excretion of pantoprazole in human milk but excretion into human milk has been reported. A risk to<br />the newborns/infants cannot be excluded. Therefore, a decision on whether to discontinue breast-feeding<br />or to discontinue/abstain from Pantozol 40 mg therapy taking into account the benefit of breast-feeding<br />for the child, and the benefit of Pantozol 40 mg therapy for the woman.<br />Fertility<br />There was no evidence of impaired fertility following the administration of pantoprazole in animal studies<br />(see section 5.3).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pantoprazole has no or negligible influence on the ability to drive and use machines.<br />Adverse drug reactions, such as dizziness and visual disturbances may occur (see section 4.8). If affected,<br />patients should not drive or operate machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Approximately 5 % of patients can be expected to experience adverse drug reactions (ADRs). The most<br />commonly reported ADRs are diarrhoea and headache, both occurring in approximately 1 % of patients.<br />The table below lists adverse reactions reported with pantoprazole, ranked under the following frequency<br />classification:<br />Very common (&ge;1/10); common (&ge;1/100 to &lt;1/10); uncommon (&ge;1/1,000 to &lt;1/100); rare (&ge;1/10,000 to<br />&lt;1/1,000); very rare (&lt;1/10,000), not known (cannot be estimated from the available data).<br />For all adverse reactions reported from post-marketing experience, it is not possible to apply any Adverse<br />Reaction frequency and therefore they are mentioned with a &ldquo;not known&rdquo; frequency.<br />Within each frequency grouping, adverse reactions are presented in order of decreasing seriousness.</p><p>Reporting of suspected adverse reactions<br />Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows<br />continued monitoring of the benefit/risk balance of the medical product. Healthcare professionals are<br />asked to report any suspected adverse reactions via Bundesinstitut f&uuml;r Arzneimittel und Medizinprodukte<br />Abt. Pharmakovigilanz<br />Kurt-Georg-Kiesinger-Allee 3<br />53175 Bonn<br />Website: www.bfarm.de.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There are no known symptoms of overdose in man.<br />Systemic exposure with up to 240 mg administered intravenously over 2 minutes, were well tolerated.<br />As pantoprazole is extensively protein bound, it is not readily dialysable.<br />In the case of an overdose with clinical signs of intoxication, apart from symptomatic and supportive<br />treatment, no specific therapeutic recommendations can be made.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Proton pump inhibitors, ATC code: A02BC02<br />Mechanism of action<br />Pantoprazole is a substituted benzimidazole which inhibits the secretion of hydrochloric acid in the<br />stomach by specific blockade of the proton pumps of the parietal cells.<br />Pantoprazole is converted to its active form in the acidic environment in the parietal cells where it inhibits<br />the H+, K+-ATPase enzyme, i.e. the final stage in the production of hydrochloric acid in the stomach. The<br />inhibition is dose-dependent and affects both basal and stimulated acid secretion. In most patients,<br />freedom from symptoms is achieved within 2 weeks. As with other proton pump inhibitors and<br />H2 receptor inhibitors, treatment with pantoprazole reduces acidity in the stomach and thereby increases<br />gastrin in proportion to the reduction in acidity. The increase in gastrin is reversible. Since pantoprazole<br />binds to the enzyme distal to the cell receptor level, it can inhibit hydrochloric acid secretion<br />independently of stimulation by other substances (acetylcholine, histamine, gastrin). The effect is the same<br />whether the product is given orally or intravenously.<br />Pharmacodynamic effects</p><p>The fasting gastrin values increase under pantoprazole. On short-term use, in most cases they do not<br />exceed the upper limit of normal. During long-term treatment, gastrin levels double in most cases. An<br />excessive increase, however, occurs only in isolated cases. As a result, a mild to moderate increase in the<br />number of specific endocrine (ECL) cells in the stomach is observed in a minority of cases during longterm<br />treatment (simple to adenomatoid hyperplasia). However, according to the studies conducted so far,<br />the formation of carcinoid precursors (atypical hyperplasia) or gastric carcinoids as were found in animal<br />experiments (see section 5.3) have not been observed in humans.<br />An influence of a long term treatment with pantoprazole exceeding one year cannot be completely ruled<br />out on endocrine parameters of the thyroid according to results in animal studies.<br />During treatment with antisecretory medicinal products, serum gastrin increases in response to the<br />decreased acid secretion. Also CgA increases due to decreased gastric acidity. The increased CgA level<br />may interfere with investigations for neuroendocrine tumours.<br />Available published evidence suggests that proton pump inhibitors should be discontinued between 5 days<br />and 2 weeks prior to CgA measurements. This is to allow CgA levels that might be spuriously elevated<br />following PPI treatment to return to reference range.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Absorption<br />Pantoprazole is rapidly absorbed and the maximal plasma concentration is achieved even after one single<br />40 mg oral dose. On average at about 2.5 h p.a. the maximum serum concentrations of about 2 - 3 &mu;g/ml<br />are achieved, and these values remain constant after multiple administration.<br />Pharmacokinetics does not vary after single or repeated administration. In the dose range of 10 to 80 mg,<br />the plasma kinetics of pantoprazole are linear after both oral and intravenous administration.<br />The absolute bioavailability from the tablet was found to be about 77 %. Concomitant intake of food had<br />no influence on AUC, maximum serum concentration and thus bioavailability. Only the variability of the<br />lag-time will be increased by concomitant food intake.<br />Distribution<br />Pantoprazole&#39;s serum protein binding is about 98 %. Volume of distribution is about 0.15 l/kg.<br />Biotransformation<br />The substance is almost exclusively metabolized in the liver. The main metabolic pathway is<br />demethylation by CYP2C19 with subsequent sulphate conjugation, other metabolic pathway includes<br />oxidation by CYP3A4.<br />Elimination<br />Terminal half-life is about 1 hour and clearance is about 0.1 l/h/kg. There were a few cases of subjects<br />with delayed elimination. Because of the specific binding of pantoprazole to the proton pumps of the<br />parietal cell the elimination half-life does not correlate with the much longer duration of action (inhibition<br />of acid secretion).<br />Renal elimination represents the major route of excretion (about 80 %) for the metabolites of<br />pantoprazole, the rest is excreted with the faeces. The main metabolite in both the serum and urine is<br />desmethylpantoprazole which is conjugated with sulphate. The half-life of the main metabolite (about<br />1.5 hours) is not much longer than that of pantoprazole.<br />Special populations</p><p>Poor metabolisers<br />Approximately 3 % of the European population lack a functional CYP2C19 enzyme and are called poor<br />metabolisers. In these individuals the metabolism of pantoprazole is probably mainly catalysed by<br />CYP3A4. After a single-dose administration of 40 mg pantoprazole, the mean area under the plasma<br />concentration-time curve was approximately 6 times higher in poor metabolisers than in subjects having a<br />functional CYP2C19 enzyme (extensive metabolisers). Mean peak plasma concentrations were increased<br />by about 60 %. These findings have no implications for the posology of pantoprazole.<br />Renal impairment<br />No dose reduction is recommended when pantoprazole is administered to patients with impaired renal<br />function (including dialysis patients). As with healthy subjects, pantoprazole&#39;s half-life is short. Only very<br />small amounts of pantoprazole are dialyzed. Although the main metabolite has a moderately delayed halflife<br />(2 - 3 h), excretion is still rapid and thus accumulation does not occur.<br />Hepatic impairment<br />Although for patients with liver cirrhosis (classes A and B according to Child) the half-life values<br />increased to between 7 and 9 h and the AUC values increased by a factor of 5 - 7, the maximum serum<br />concentration only increased slightly by a factor of 1.5 compared with healthy subjects.<br />Older people<br />A slight increase in AUC and Cmax in elderly volunteers compared with younger counterparts is also not<br />clinically relevant.<br />Paediatric population<br />Following administration of single oral doses of 20 or 40 mg pantoprazole to children aged 5 - 16 years<br />AUC and Cmax were in the range of corresponding values in adults.<br />Following administration of single i.v. doses of 0.8 or 1.6 mg/kg pantoprazole to children aged<br />2 - 16 years there was no significant association between pantoprazole clearance and age or weight. AUC<br />and volume of distribution were in accordance with data from adults.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-clinical data reveal no special hazard to humans based on conventional studies of safety<br />pharmacology, repeated dose toxicity and genotoxicity.<br />In the two-year carcinogenicity studies in rats neuroendocrine neoplasms were found. In addition,<br />squamous cell papillomas were found in the forestomach of rats. The mechanism leading to the formation<br />of gastric carcinoids by substituted benzimidazoles has been carefully investigated and allows the<br />conclusion that it is a secondary reaction to the massively elevated serum gastrin levels occurring in the rat<br />during chronic high-dose treatment. In the two-year rodent studies an increased number of liver tumors<br />was observed in rats and in female mice and was interpreted as being due to pantoprazole&#39;s high metabolic<br />rate in the liver.<br />A slight increase of neoplastic changes of the thyroid was observed in the group of rats receiving the<br />highest dose (200 mg/kg). The occurrence of these neoplasms is associated with the pantoprazole-induced<br />changes in the breakdown of thyroxine in the rat liver. As the therapeutic dose in man is low, no harmful<br />effects on the thyroid glands are expected.<br />In a peri-postnatal rat reproduction study designed to assess bone development, signs of offspring toxicity<br />(mortality, lower mean body weight, lower mean body weight gain and changes in bone parameters) were<br />observed at exposures (Cmax) approximately 2x the human clinical exposure. Changes in bone parameters</p><p>were considered secondary to overall growth suppression and not direct effects on bone development. By<br />the end of the recovery phase, bone parameters were similar across groups and body weights were also<br />trending toward reversibility after a drug-free recovery period. A previous peri-postnatal study in rats at<br />slightly lower doses found no adverse effects at 3 mg/kg compared with a low dose of 5 mg/kg in this<br />study.<br />Investigations revealed no evidence of impaired fertility or teratogenic effects.<br />Penetration of the placenta was investigated in the rat and was found to increase with advanced gestation.<br />As a result, concentration of pantoprazole in the foetus is increased shortly before birth.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>6.1 List of excipients<br />Core:<br />Sodium carbonate, anhydrous<br />Mannitol (E421)<br />Crospovidone<br />Povidone K90<br />Calcium stearate<br />Coating:<br />Hypromellose<br />Povidone K25<br />Titanium dioxide (E171)<br />Yellow iron oxide (E172)<br />Propylene glycol<br />Methacrylic acid-ethyl acrylate copolymer (1:1)<br />Polysorbate 80<br />Sodium laurilsulfate<br />Triethyl citrate<br />Printing ink:<br />Shellac<br />Red iron oxide (E172)<br />Black iron oxide (E172)<br />Yellow iron oxide (E172)<br />Ammonia solution, concentrated</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Blister packs
+3 years.
+Bottles
+Unopened: 3 years.
+After first opening: [to be completed nationally]
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>This medicinal product does not require any special storage conditions.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>HDPE bottles with LDPE screw cap closure.<br />7 gastro-resistant tablets<br />10 gastro-resistant tablets<br />14 gastro-resistant tablets<br />15 gastro-resistant tablets<br />24 gastro-resistant tablets<br />28 gastro-resistant tablets<br />30 gastro-resistant tablets<br />48 gastro-resistant tablets<br />49gastro-resistant tablets<br />56 gastro-resistant tablets<br />60 gastro-resistant tablets<br />84 gastro-resistant tablets<br />90 gastro-resistant tablets<br />98 gastro-resistant tablets<br />98 (2x49) gastro-resistant tablets<br />100 gastro-resistant tablets<br />Hospital pack with 50 gastro-resistant tablets<br />90 gastro-resistant tablets<br />100 gastro-resistant tablets<br />140 gastro-resistant tablets<br />140 (10x14) gastro-resistant tablets<br />150 (10x15) gastro-resistant tablets<br />700 (5x140) gastro-resistant tablets<br />Blister (ALU/ALU blister) without cardboard reinforcement.<br />Blister (ALU/ALU blister) with cardboard reinforcement (blister wallet).<br />7 gastro-resistant tablets<br />10 gastro-resistant tablets<br />14 gastro-resistant tablets<br />15 gastro-resistant tablets<br />28 gastro-resistant tablets<br />30 gastro-resistant tablets<br />49gastro-resistant tablets<br />56 gastro-resistant tablets<br />60 gastro-resistant tablets<br />84 gastro-resistant tablets<br />90 gastro-resistant tablets<br />98 gastro-resistant tablets<br />98 (2x49) gastro-resistant tablets<br />100 gastro-resistant tablets</p><p>112 gastro-resistant tablets<br />168 gastro-resistant tablets<br />Hospital pack with 50 gastro-resistant tablets<br />90 gastro-resistant tablets<br />100 gastro-resistant tablets<br />140 gastro-resistant tablets<br />140 (10x14) gastro-resistant tablets<br />150 (10x15) gastro-resistant tablets<br />700 (5x140) gastro-resistant tablets<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.<br />Any unused medicinal product or waste material should be disposed of in accordance with local<br />requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Acino Pharma AG
+Birsweg 2, 4253 Liesberg
+Switzerland
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                September 2019
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

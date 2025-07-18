@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        266-24-08
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2008
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        HERCEPTIN 150MG VIAL
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        Trastuzumab
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        150
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder for concentrate for solution for infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        48
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1949.55
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="ROCHE" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            ROCHE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 718]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ARAC HEALTHCARE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            ROCHE
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L01XC03
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Herceptin contains the active substance trastuzumab, which is a monoclonal antibody. Monoclonal<br />antibodies attach to specific proteins or antigens. Trastuzumab is designed to bind selectively to an<br />antigen called human epidermal growth factor receptor 2 (HER2). HER2 is found in large amounts on the<br />surface of some cancer cells where it stimulates their growth. When Herceptin binds to HER2 it stops the<br />growth of such cells and causes them to die.</strong></p><p><br /><strong>Your doctor may prescribe Herceptin for the treatment of breast and gastric cancer when:<br /> You have early breast cancer, with high levels of a protein called HER2.<br /> You have metastatic breast cancer (breast cancer that has spread beyond the original tumour) with<br />high levels of HER2. Herceptin may be prescribed in combination with the chemotherapy<br />medicine paclitaxel or docetaxel as first treatment for metastatic breast cancer or it may be<br />prescribed alone if other treatments have proved unsuccessful. It is also used in combination with<br />medicines called aromatase inhibitors with patients with high levels of HER2 and hormone<br />receptor-positive metastatic breast cancer (cancer that is sensitive to the presence of female sex<br />hormones).<br /> You have metastatic gastric cancer with high levels of HER2, when it is in combination with the<br />other cancer medicines capecitabine or 5-flououracil and cisplatin.</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Do not use Herceptin if:<br /> you are allergic to trastuzumab, to murine (mouse) proteins, or to any of the other ingredients of<br />this medicine (listed in section 6).<br /> you have severe breathing problems at rest due to your cancer or if you need oxygen treatment.</strong></p><p><strong>&nbsp;Warnings and precautions</strong></p><p><br /><strong>Your doctor will closely supervise your therapy.</strong><br />&nbsp;</p><p><strong>Heart checks<br />Treatment with Herceptin alone or with a taxane may affect the heart, especially if you have ever used an<br />anthracycline (taxanes and anthracyclines are two other kinds of medicine used to treat cancer). The<br />effects may be moderate to severe and could cause death. Therefore, your heart function will be checked<br />before, during (every three months) and after (up to two to five years) treatment with Herceptin. If you<br />develop any signs of heart failure (inadequate pumping of blood by the heart), your heart function may be<br />checked more frequently (every six to eight weeks), you may receive treatment for heart failure or you<br />may have to stop Herceptin treatment.</strong><br />&nbsp;</p><p><strong>Talk to your doctor, pharmacist or nurse before you are given Herceptin if:<br /> you have had heart failure, coronary artery disease, heart valve disease (heart murmurs), high blood<br />pressure, taken any high blood pressure medicine or are currently taking any high blood pressure<br />medicine.<br /> you have ever had or are currently using a medicine called doxorubicin or epirubicin (medicines<br />used to treat cancer). These medicines (or any other anthracyclines) can damage heart muscle<br />and increase the risk of heart problems with Herceptin.<br /> you suffer from breathlessness., especially if you are currently using a taxane. Herceptin can cause<br />breathing difficulties, especially when it is first given. This could be more serious if you are already<br />breathless. Very rarely, patients with severe breathing difficulties before treatment have died when<br />they were given Herceptin.<br /> you have ever had any other treatment for cancer.</strong><br />&nbsp;</p><p><strong>If you receive Herceptin with any other medicine to treat cancer, such as paclitaxel, docetaxel, an<br />aromatase inhibitor, capecitabine, 5-fluorouracil, or cisplatin you should also read the patient information<br />leaflets for these products.</strong></p><p><br /><strong>Children and adolescents<br />Herceptin is not recommended for anyone under the age of 18 years.</strong><br />&nbsp;</p><p><strong>Other medicines and Herceptin<br />Tell your doctor, pharmacist or nurse if you are taking, have recently taken or may take any other<br />medicines.</strong><br />&nbsp;</p><p><strong>It may take up to 7 months for Herceptin to be removed from the body. Therefore you should tell your<br />doctor, pharmacist or nurse that you have had Herceptin if you start any new medicine in the 7 months<br />after stopping treatment.</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Pregnancy<br /> If you are pregnant, think you may be pregnant or are planning to have a baby, ask your doctor,<br />pharmacist or nurse for advice before taking this medicine.</strong></p><p><br /><strong> You should use effective contraception during treatment with Herceptin and for at least 7 months<br />after treatment has ended.<br /> Your doctor will advise you of the risks and benefits of taking Herceptin during pregnancy. In<br />rare cases, a reduction in the amount of (amniotic) fluid that surrounds the developing baby<br />within the womb has been observed in pregnant women receiving Herceptin. This condition may<br />be harmful to your baby in the womb and has been associated with the lungs not developing fully<br />resulting in foetal death.</strong><br />&nbsp;</p><p><strong>Breast-feeding<br />Do not breast-feed your baby during Herceptin therapy and for 7 months after the last dose of Herceptin<br />as Herceptin may pass to your baby through your breast milk.<br />Ask your doctor or pharmacist for advice before taking any medicine.</strong><br />&nbsp;</p><p><strong>Driving and using machines<br />Herceptin may affect your ability to drive a car or operate machines.If during treatment you experience<br />symptoms, such as dizziness, sleepiness, chills or fever, you should not drive or use machines until these<br />symptoms disappear.</strong><br />&nbsp;</p><p><strong>3. How Herceptin is given<br />Before starting the treatment your doctor will determine the amount of HER2 in your tumour. Only<br />patients with a large amount of HER2 will be treated with Herceptin. Herceptin should only be given by a<br />doctor or nurse. Your doctor will prescribe a dose and treatment regimen that is right for you. The dose of<br />Herceptin depends on your body weight.</strong><br />&nbsp;</p><p><strong>Two different types (formulations) of Herceptin exist:<br />&bull; one is given as an infusion into a vein (intravenous infusion).<br />&bull; the other is given as an injection under the skin (subcutaneous injection).<br />It is important to check the product labels to ensure that the correct formulation is being given as<br />prescribed. Herceptin intravenous formulation is not for subcutaneous use and should be given as an<br />intravenous infusion only.</strong></p><p><br /><strong>Your doctor may consider switching your Herceptin intravenous treatment to Herceptin subcutaneous<br />treatment (and vice versa) if considered appropriate for you.</strong></p><p><br /><strong>Herceptin intravenous formulation is given as an intravenous infusion (&ldquo;drip&rdquo;) directly into your veins.<br />The first dose of your treatment is given over 90 minutes and you will be observed by a health<br />professional while it is being given in case you have any side effects. If the first dose is well tolerated the<br />next doses may be given over 30 minutes (see section 2 under &ldquo;Warnings and precautions&rdquo;). The number<br />of infusions you receive will depend on how you respond to the treatment. Your doctor will discuss this<br />with you.</strong><br />&nbsp;</p><p><strong>In order to prevent medication errors it is important to check the vial labels to ensure that the medicine<br />being prepared and given is Herceptin (trastuzumab) and not another trastuzumab-containing product (e.g.<br />trastuzumab emtansine or trastuzumab deruxtecan).</strong></p><p><strong>For early breast cancer, metastatic breast cancer and metastatic gastric cancer, Herceptin is given every 3<br />weeks. Herceptin may also be given once a week for metastatic breast cancer.</strong></p><p><br /><strong>If you stop using Herceptin<br />Do not stop using this medicine without talking to your doctor first. All doses should be taken at the right<br />time every week or every three weeks (depending on your dosing schedule). This helps your medicine<br />work as well as it can.</strong></p><p><br /><strong>It may take up to 7 months for Herceptin to be removed from your body. Therefore your doctor may<br />decide to continue to check your heart functions, even after you finish treatment.</strong><br />&nbsp;</p><p><strong>If you have any further questions on the use of this medicine, ask your doctor, pharmacist or nurse.</strong><br />&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Like all medicines, Herceptin can cause side effects, although not everybody gets them. Some of these<br />side effects may be serious and may lead to hospitalisation.</strong></p><p><strong>During a Herceptin infusion, chills, fever and other flu like symptoms may occur. These are very common<br />(may affect more than 1 in 10 people). Other infusion-related symptoms are: feeling sick (nausea),<br />vomiting, pain, increased muscle tension and shaking, headache, dizziness, breathing difficulties, high or<br />low blood pressure, heart rhythm disturbances (palpitations, heart fluttering or irregular heart beat),<br />swelling of the face and lips, rash and feeling tired. Some of these symptoms can be serious and some<br />patients have died (see section 2 under &ldquo;Warnings and precautions&rdquo;).</strong></p><p><strong>These effects mainly occur with the first intravenous infusion (&ldquo;drip&rdquo; into your vein) and during the first<br />few hours after the start of the infusion. They are usually temporary. You will be observed by a health<br />care professional during the infusion and for at least six hours after the start of the first infusion and for<br />two hours after the start of other infusions. If you develop a reaction, they will slow down or stop the<br />infusion and may give you treatment to counteract the side effects. The infusion may be continued after<br />the symptoms improve.</strong></p><p><strong>Occasionally, symptoms start later than six hours after the infusion begins. If this happens to you, contact<br />your doctor immediately. Sometimes, symptoms may improve and then get worse later.</strong></p><p>&nbsp;</p><p><strong>Serious side effects<br />Other side effects can occur at any time during treatment with Herceptin, not just related to an infusion.<br />Tell a doctor or nurse straight away, if you notice any of the following side effects:</strong></p><p><br /><strong> Heart problems can sometimes occur during treatment and occasionally after treatment has stopped<br />and can be serious. They include weakening of the heart muscle possibly leading to heart failure,<br />inflammation of the lining around the heart and heart rhythm disturbances. This can lead to symptoms<br />such as breathlessness (including breathlessness at night), cough, fluid retention (swelling) in the legs<br />or arms, palpitations (heart fluttering or irregular heart beat) (see section 2. Heart checks).</strong></p><p><strong>Your doctor will monitor your heart regularly during and after treatment but you should tell your<br />doctor immediately if you notice any of the above symptoms.</strong></p><p><strong>Tumour lysis syndrome (a group of metabolic complications occurring after cancer treatment<br />characterized by high blood levels of potassium and phosphate, and low blood levels of calcium).</strong></p><p><br /><strong>Symptoms may include kidney problems (weakness, shortness of breath, fatigue and confusion), heart<br />problems (fluttering of the heart or a faster or slower heartbeat), seizures, vomiting or diarrhoea and<br />tingling in the mouth, hands or feet</strong><br />&nbsp;</p><p><strong>If you experience any of the above symptoms when your treatment with Herceptin has finished, you<br />should see your doctor and tell them that you have previously been treated with Herceptin.</strong></p><p><br /><strong>Very common side effects of Herceptin: may affect more than 1 in 10 people<br /> infections<br /> diarrhoea<br /> constipation<br /> heartburn (dyspepsia)<br /> fatigue<br /> skin rashes<br /> chest pain<br /> abdominal pain<br /> joint pain<br /> low counts of red blood cells and white blood cells (which help fight infection) sometimes with<br />fever<br /> muscle pain<br /> conjunctivitis<br /> watery eyes<br /> nose bleeds<br /> runny nose<br /> hair loss<br /> tremor<br /> hot flush<br /> dizziness<br /> nail disorders<br /> weight loss<br /> loss of appetite<br /> inability to sleep (insomnia)<br /> altered taste<br /> low platelet count<br /> bruising<br /> numbness or tingling of the fingers and toes, which occasionally may extend to the rest of the limb<br /> redness, swelling or sores in your mouth and/or throat<br /> pain, swelling, redness or tingling of hands and/or feet<br /> breathlessness<br /> headache<br /> cough<br /> vomiting<br /> nausea</strong></p><p>&nbsp;</p><p><strong>Common side effects of Herceptin: may affect up to 1 in 10 people<br /> allergic reactions  dry mouth and skin<br /> throat infections  dry eyes<br /> bladder and skin infections  sweating<br /> inflammation of the breast  feeling weak and unwell<br /> inflammation of the liver  anxiety<br /> kidney disorders  depression<br /> increased muscle tone or tension<br />(hypertonia)<br /> asthma<br /> infection of lungs<br /> pain in the arms and/or legs  lung disorders<br /> itchy rash  back pain<br /> sleepiness (somnolence)  neck pain<br /> haemorrhoids  bone pain<br /> itchiness  acne<br /> leg cramps<br />Uncommon side effects of Herceptin: may affect up to 1 in 100 people:<br /> deafness<br /> bumpy rash<br /> wheezing<br /> inflammation or scarring of the lungs<br />Rare side effects of Herceptin: may affect up to 1 in 1000 people<br /> jaundice<br /> anaphylactic reactions<br />Other side effects that have been reported with Herceptin use: frequency cannot be estimated from<br />the available data<br /> abnormal or impaired blood clotting<br /> high potassium levels<br /> swelling or bleeding at the back of the eyes<br /> shock<br /> abnormal heart rhythm<br /> respiratory distress<br /> respiratory failure<br /> acute accumulation of fluid in the lungs<br /> acute narrowing of the airways<br /> abnormally low oxygen levels in the blood<br /> difficulty in breathing when lying flat<br /> liver damage<br /> swelling of the face, lips and throat<br /> kidney failure<br /> abnormally low levels of fluid around baby in womb</strong></p><p><strong> failure of the lungs of the baby to develop in the womb<br /> abnormal development of the kidneys of the baby in the womb</strong><br />&nbsp;</p><p><strong>Some of the side-effects you experience may be due to your underlying cancer. If you receive Herceptin<br />in combination with chemotherapy, some of them may also be due to the chemotherapy.</strong><br />&nbsp;</p><p><strong>If you get any side effects, talk to your doctor, pharmacist or nurse.</strong><br />&nbsp;</p><p><strong>Reporting of side effects<br />If you get any side effects, talk to your doctor, pharmacist or nurse. This includes any possible side effects<br />not listed in this leaflet. By reporting side effects you can help provide more information on the safety of<br />this medicine.</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Herceptin will be stored by the health professionals at the hospital or clinic.</strong></p><p><br /><strong> Keep this medicine out of the sight and reach of children.<br /> Do not use this medicine after the expiry date which is stated on the outer carton and on the vial<br />label after EXP. The expiry date refers to the last day of that month.<br /> The unopened vial should be stored in a refrigerator (2&deg;C &ndash; 8&deg;C).<br /> Do not freeze the reconstituted solution.<br /> Infusion solutions should be used immediately after dilution. If not used immediately, in-use<br />storage times and conditions prior to use are the responsibility of the user, and would not<br />normally be longer than 24 hours at 2&deg;C &ndash; 8&deg;C.<br /> Do not use Herceptin if you notice any particulate matter or discoloration prior to administration.<br /> Medicines should not be disposed of via wastewater or household waste. Ask your pharmacist how<br />to dispose of medicines no longer required. These measures will help to protect the environment.</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong> The active substance is trastuzumab. Each vial contains 150 mg trastuzumab that has to be<br />dissolved in 7.2 mL of water for injection. The resulting solution contains approximately<br />21 mg/mL trastuzumab.<br /> The other ingredient(s) are L-histidine hydrochloride monohydrate, L-histidine, &alpha;,&alpha;-trehalose<br />dihydrate, polysorbate 20.</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                	Herceptin is a powder for concentrate for solution for intravenous infusion, which is supplied in a glass
+vial with a rubber stopper containing 150 mg of trastuzumab. The powder is a white to pale yellow pellet.
+Each carton contains 1 vial of powder.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr">F. Hoffmann-La Roche Ltd,&nbsp;</p><p dir="ltr">Grenzacherstrasse 124</p><p dir="ltr">CH-4070 Basel</p><p dir="ltr">Switzerland</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                This leaflet was last revised in January 2022.
+
+To report any side effect(s):
+Saudi Arabia:
+ The National Pharmacovigilance and Drug Safety Centre (NPC)
+o Fax: +966-11-205-7662
+o Call NPC at +966-11-2038222, Exts: 2317-2356-2340.
+o SFDA call center: 19999
+o E-mail: npc.drug@sfda.gov.sa
+o Website: https://ade.sfda.gov.sa
+Other GCC States:
+ Please contact the relevant competent authority.
+Council of Arab Health Ministers
+This is a Medicament
+ Medicament is a product which affects your health and its consumption contrary to
+instructions is dangerous for you.
+ Follow strictly the doctor’s prescription, the method of use and the instructions of the
+pharmacist who sold the medicament.
+ The doctor and the pharmacist are the experts in medicines, their benefits and risks.
+ Do not by yourself interrupt the period of treatment prescribed for you.
+ Do not repeat the same prescription without consulting your doctor.
+ Keep all medicaments out of reach of children.
+Council of Arab Health Ministers
+Union of Arab Pharmacists
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">هيرسيبتين يحتوي على المادة الفعالة تراستوزماب, وهي جسم مضاد احادي المنشأ. الاجسام</p><p dir="RTL">المضادة احادية المنشأ تلتصق ببروتينات معينة او مستضدات. تراستوزوماب مصمم للالتحام</p><p dir="RTL">اختياريا لمستضد يسمى مستقبل عامل نمو البشرة البشري 2. وهو موجود بكميات كبيرة على سطح بعض الاورام ما يحفز نموها. عندما يرتبط هيرسيبتين بها, يوقف نمو تلك الخلايا و</p><p dir="RTL">&nbsp;يسبب موتها.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يصف لك الطبيب هيرسيبتين لعلاج سرطان الثدي و المعدة في الحالات الآتية:</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنت تعاني من سرطان الثدي في مرحلة مبكرة, مع مستوى عالي من مستقبل عامل</p><p dir="RTL">نمو البشرة البشري 2.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنت تعاني من سرطان الثدي النقيلي (سرطان في الثدي ينتشر متعديا المكان الاصلي</p><p dir="RTL">للورم), مع مستويات عالية من مستقبلات عامل نمو البشرة البشري2. قد يتم وصف</p><p dir="RTL">هيرسيبتين بالادماج مع العلاج الكيميائي باكليتاكسيل او دوسيتاكسيل كخط اول لسرطان</p><p dir="RTL">الثدي النقيلي, او قد يتم وصفه وحيدا اذا ثبت فشل العلاجات الاخرى. و يستخدم ايضا</p><p dir="RTL">بالإضافة إلى ادوية تسمى مثبطات الاروماتيز مع المرضى الذين توجد عندهم مستويات</p><p dir="RTL">عالية من مستقبلات عامل نمو البشرة البشري 2 و سرطان الثدي النقيلي إيجابي مستقبلات الهرمون (نوع من السرطان يكون حساس لوجود الهورمونات الانثوية)</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنت تعاني من سرطان المعدة النقيلي مع مستويات عالية من مستقبلات عامل نمو</p><p dir="RTL">البشرة البشري 2, عندما يدمج مع ادوية الاورام الاخرى كابيسيتابين او 5-فلورويوراسيل و سيسبلاتين.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>لا تستخدم هيرسيبتين في الحالات التالية:</strong></p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كانت لديك حساسية من تراستوزوماب, بروتينات الفئران, او لأي مكون اخر للدواء</p><p dir="RTL">(مذكورة في القسم 6)</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنت تعاني من مشاكل في التنفس اثناء الراحة بسبب السرطان, او اذا كنت تحتاج</p><p dir="RTL">لعلاج بالاكسجين.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تحذيرات و احتياطات</strong></p><p dir="RTL">سوف يتابع طبيبك علاجك عن كثب.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>فحوصات القلب</strong></p><p dir="RTL">العلاج بهيرسيبتين لوحده او مع تاكسان قد يؤثر على القلب, خصوصا اذا كنت قد استخدمت</p><p dir="RTL">دواء انثراسيكلين ( تاكسان و انثراسيكيلين هما نوعين من الدواء لعلاج السرطان). قد يكون</p><p dir="RTL">التأثير معتدل او شديد و قد يؤدي للموت. لذلك سوف تجري فحوصات القلب قبل, و خلال فترة العلاج (كل 3 شهور), و بعد فترة العلاج (حتى من سنتين الى خمسة) بهيرسيبتين. اذا قد بدأت اعراض قلبية بالظهور (ضخ دم غير كفء من القلب)و سوف يتم فحص وظائف القلب بشكل &nbsp;&nbsp;متكرر اكثر (كل ست الى ثمان اسابيع), و قد تتلقى علاج لتحسين وظائف القلب, او توقف&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;العلاج بهيرسيبتين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تحدث الى طبيبك, الصيدلي او الممرض قبل تناول هيرسيبتين في الحالات الآتية:</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنت قد عانيت من فشل القلب, امراض الشريان التاجي, امراض صمام القلب</p><p dir="RTL">(الخفقان), ضغط الدم المرتفع, او اذا كنت قد تناولت اي ادوية لارتفاع ضغط الدم.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنت قد استخدمت او تستخدم دواء يسمى دوكسوروبيسين او ابيروبيسين (ادوية لعلاج</p><p dir="RTL">السرطان). تلك الادوية ( او اي ادوية انثراسيكلين اخرى) قد تضر بعضلة القلب و تزيد&nbsp; &nbsp;من مخاطر الاصابة بمشاكل القلب مع استخدام هيرسيبتين.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنت تعاني من ضيق التنفس, خصوصا اذا كنت تستخدم تاكسان. هيرسيبتين قد يسبب صعوبات بالتنفس, خاصة اذا كان ذلك اول استخدام, و قد يكون الامر اكثر جدية اذا كنت</p><p dir="RTL">تعاني من ضيق بالتنفس بالفعل. نادرا جدا ما توفى اشخاص كانوا يعانون من صعوبات</p><p dir="RTL">بالتنفس بعد استخدام هيرسيبتين.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا&nbsp; كنت قد استخدمت اي ادوية اخرى للسرطان.</p><p dir="RTL">&nbsp;</p><p dir="RTL">اذا كنت تتناول هيرسيبتين مع اي ادوية اخرى للاورام, مثل باكليتاكسيل, دوسيتاكسيل, مثبطات الاروماتيز, كابيسيتابين, 5-فلورويوراسيلو او سيسبلاتين, فيجب عليك ايضا قراءة المعلومات &nbsp;الواردة في نشرات تلك الادوية.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الاطفال و المراهقين</strong></p><p dir="RTL">لا ينصح بهيرسيبتين للاشخاص تحت سن 18 سنة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الادوية الاخرى و هيرسيبتين</strong></p><p dir="RTL">اخبر طبيبك, الصيدلي, او الممرض اذا كنت قد تناولت سابقاً, او تتناول حالياً, او قد تتناول&nbsp;&nbsp;&nbsp;&nbsp; مستقبلاً اي ادوية اخرى.</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يأخذ هيرسيبتين 7 شهور او اكثر ليتم التخلص منه بشكل كامل من الجسم. لذلك يجب عليك</p><p dir="RTL">اخبار طبيبك, الصيدلي, او الممرض بتناولك لهيرسيبتين اذا بدأت بالعلاج بأدوية جديدة في</p><p dir="RTL">خلال 7 شهور من ايقاف هيرسيبتين.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الحمل</strong></p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اذا كنتِ حاملا, تعتقدين انك حامل, او تخخطين للحمل, فاستشيري طبيبك, الصيدلي, او</p><p dir="RTL">الممرض قبل تناول ذلك الدواء.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يجب عليكِ استخدام موانع حمل فعالة خلال استخدام هيرسيبتين, و لمدة 7 شهور على</p><p dir="RTL">الاقل عند ايقاف العلاج.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سوف ينصحك الطبيبك بمخاطر و فوائد تناول هيرسيبتين خلال الحمل. في بعض الحالات</p><p dir="RTL">النادرة, تم ملاحظة تقلص السائل الامنيوني المحيط بالجنين في رحم الام التي تتناول</p><p dir="RTL">هيرسيبتين. وهو ما قد يكون خطرا على الجنين, و يرتبط بتأخر تكوين الرئة, ما قد يؤدي</p><p dir="RTL">&nbsp;لوفاة الجنين.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الرضاعة</strong></p><p dir="RTL">لا ترضعي طفلك أثناء العلاج بالهرسبتين ولمدة 7 أشهر بعد آخر جرعة من هرسبتين حيث قد ينتقل هرسبتين لطفلك من خلال حليب الثدي.</p><p dir="RTL">&nbsp;</p><p dir="RTL">اسألي طبيبك, او الصيدلي قبل تناول اي ادوية.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>القيادة و تشغيل المعدات</strong></p><p dir="RTL">قد يؤثر هيرسيبتين على قدرتك على قيادة السيارة أو تشغيل الآلات ، فإذا شعرت أثناء العلاج بأعراض مثل الدوخة أو النعاس أو القشعريرة أو الحمى ، فلا يجب عليك القيادة أو استخدام الآلات حتى تختفي هذه الأعراض.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">قبل بدء العلاج ، سيحدد طبيبك كمية مستقبلات هورمون نمو البشرة البشري2 في الورم. فقط المرضى الذين يعانون من كمية كبيرة من مستقبلات هورمون نمو البشرة البشري 2 سيتم علاجهم بالهيرسيبتين. يجب إعطاء الهيرسيبتين بواسطة طبيب أو ممرضة فقط. سيصف لك طبيبك الجرعة ونظام العلاج المناسب لك. تعتمد جرعة هيرسيبتين على وزن جسمك.</p><p dir="RTL">هناك شكلين (تكوينين) مختلفين من الهيرسيبتين:</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; شكل يؤخذ عن طريق المحلول للحقن بالوريد (محلول وريدي)</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; و الآخر يحقن تحت الجلد (حقن تحت الجلد)</p><p dir="RTL">من المهم التحقق من ملصقات المنتج للتأكد من اعطاء الشكل الصيدلاني الصحيح على ما وصفه الطبيب. إن تركيبة هيرسيبتين الوريدية ليست للاستخدام تحت الجلد ويجب أن تُعطى للتسريب في الوريد فقط.</p><p dir="RTL">قد يفكر طبيبك في تحويل علاج هيرسيبتين عن طريق الوريد إلى علاج هيرسيبتين تحت الجلد (والعكس صحيح) إذا كان مناسبًا لك.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تُعطى تركيبة هيرسيبتين في الوريد على شكل تسريب في الوريد (&quot;بالتنقيط&quot;) مباشرة في مجرى الدم. يتم إعطاء الجرعة الأولى من علاجك على مدى 90 دقيقة ، وسوف يتم ملاحظتك من قبل أخصائي صحي أثناء الحقن في حال كان لديك أي آثار جانبية. إذا كانت الجرعة الأولى جيدة التحمل ، يمكن إعطاء الجرعات التالية على مدى 30 دقيقة (انظر القسم 2 تحت عنوان &quot;التحذيرات والاحتياطات&quot;). يعتمد عدد الحقن التي تتلقاها على كيفية استجابتك للعلاج. سيناقش طبيبك هذا الأمر معك.</p><p dir="RTL">&nbsp;</p><p dir="RTL">للاحتياط من الاخطاء الدوائية ، من المهم التحقق من ملصقات القارورة للتأكد من أن الدواء الذي يتم تحضيره وإعطاؤه هو هيرسيبتين (تراستوزوماب) وليس منتجًا آخر يحتوي على تراستوزوماب (مثل تراستوزوماب امتانسين او تراستوزوماب ديروكستيكان).</p><p dir="RTL">&nbsp;</p><p dir="RTL">للمراحل المبكرة من سرطان الثدي, سرطان الثدي النقيلي, و سرطان المعدة النقيلي. يؤخذ</p><p dir="RTL">هيرسيبتين كل 3 اسابيع. و قد يؤخذ هيرسيبتين مرة اسبوعيا في حالات سرطان الثدي النقيلي.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>اذا توقفت عن تناول هيرسيبتين</strong></p><p dir="RTL">لا توقف استخدام الدواء بدون الرجوع الى طبيبك اولا. يجب ان تؤخذ كل الجرعات في</p><p dir="RTL">المواعيد الصحيحة اسبوعيا او كل ثلاثة اسابيع (طبقا لجدول الجرعات). هذا يساعد على</p><p dir="RTL">الابقاء على فعالية الدواء.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يتطلب الجسم 7 شهور للتخلص من هيرسيبتين بشكل نهائي. لذا قد يستمر طبيبك في مراقبة وظائف القلب حتى بعد انتهاء العلاج.</p><p dir="RTL">&nbsp;</p><p dir="RTL">اذا كانت لديك اي اسئلة اخرى بخصوص استخدام الدواء, اسأل طبيبك, الصيدلي, او الممرض.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثل كل الادوية, قد يسبب هيرسيبتين اعراضاً جانبية, حتى و ان كانت لا تصيب الجميع. بعض من تلك الاعراض الجانبية قد تكون خطيرة و تؤدي الى العناية السريرية.</p><p dir="RTL">&nbsp;</p><p dir="RTL">أثناء تنقيط هيرسيبتين، قد تحدث قشعريرة وحمى وأعراض أخرى شبيهة بالأنفلونزا. هذه شائعة جدًا (قد تؤثر على أكثر من شخص من كل 10 أشخاص). الأعراض الأخرى المرتبطة بالتنقيط هي: الشعور بالغثيان، القيء ، الألم ، زيادة توتر العضلات والرجفة ، الصداع ، الدوخة ، صعوبات التنفس ، ارتفاع أو انخفاض ضغط الدم ، اضطراب ضربات القلب (خفقان القلب أو عدم انتظام ضربات القلب). انتفاخ الوجه والشفتين ، طفح جلدي والشعور بالتعب. يمكن أن تكون بعض هذه الأعراض خطيرة و قد أدت الى الوفاة في بعض الحالات (انظر القسم 2 تحت عنوان &quot;التحذيرات والاحتياطات&quot;).</p><p dir="RTL">&nbsp;</p><p dir="RTL">تحدث هذه التأثيرات بشكل رئيسي مع التنقيط الوريدي لاول مرة, وخلال الساعات القليلة الأولى بعد بدء التنقيط. عادة ما تكون مؤقتة. ستتم ملاحظتك من قبل أخصائي الرعاية الصحية أثناء التنقيط ولمدة ست ساعات على الأقل بعد بدء التنقيط الأول ولمدة ساعتين بعد بدء الحقن الأخرى. إذا حدث لديك رد فعل ، فسوف يبطئون أو يوقفون التنقيط وقد يعطيك علاجًا لمواجهة الآثار الجانبية. قد يستمر تنقيط الجرعة بعد تحسن الأعراض.</p><p dir="RTL">&nbsp;</p><p dir="RTL">من حين لآخر ، تبدأ الأعراض بعد ست ساعات من بدء التنقيط. إذا حدث هذا لك ، اتصل بطبيبك على الفور. في بعض الأحيان ، قد تتحسن الأعراض ثم تزداد سوءًا لاحقًا.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الاعراض الجانبية الخطيرة</strong></p><p dir="RTL">قد تحدث بعض الاعراض الجانبية الاخرى اثناء العلاج بهيرسيبتين, وهي غير مرتبطة بالتنقيط فقط.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>اخبر طبيبك او الممرضة فورا, اذا لاحظت ايا من تلك الاعراض الجانبية:</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يمكن أن تحدث مشاكل القلب أحيانًا أثناء العلاج وأحيانًا بعد توقف العلاج ويمكن أن تكون خطيرة. وهي تشمل ضعف عضلة القلب مما قد يؤدي إلى قصور القلب والتهاب البطانة المحيطة بالقلب واضطرابات في نظم القلب. هذا يمكن أن يؤدي إلى أعراض مثل ضيق التنفس (بما في ذلك ضيق التنفس في الليل) ، والسعال ، واحتباس السوائل (تورم) في الساقين أو الذراعين ، والخفقان (خفقان القلب أو عدم انتظام ضربات القلب) (انظر القسم 2. فحوصات القلب).</p><p dir="RTL">&nbsp;</p><p dir="RTL">سوف يراقب طبيبك وظائف القلب خلال و بعد العلاج, و لكن يجب عليك اخبار طبيبك فورا اذا لاحظت ايا من الاعراض اعلاه.</p><p dir="RTL">&nbsp;</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; متلازمة تحلل الورم (مجموعة من المضاعفات الأيضية التي تحدث بعد علاج السرطان وتتميز بارتفاع مستويات البوتاسيوم والفوسفات في الدم وانخفاض مستويات الكالسيوم في الدم). قد تشمل الأعراض مشاكل في الكلى (ضعف وضيق في التنفس والتعب والارتباك) ومشاكل في القلب (خفقان القلب أو تسارع أو تباطؤ ضربات القلب) والنوبات والقيء أو الإسهال والوخز في الفم أو اليدين أو القدمين</p><p dir="RTL">&nbsp;</p><p dir="RTL">اذا لاحظت ايا من الاعراض اعلاه عند انتهاء علاجك بهيرسيبتين, يجب عليك زيارة الطبيب و اخباره انك تناولت هيرسيبتين.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>اعراض جانبية شائعة جدا للهيرسيبتين: </strong>قد تصيب اكثر من شخص في كل 10 اشخاص</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; العدوى</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الاسهال</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الامساك</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتجاع المريء</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التعب</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام في الصدر</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام في البطن</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام في المفاصل</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نقص في عدد كريات الدم البيضاء و الحمراء, مصحوب بالحمى في بعض الاوقات</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام في العضلات</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب الملتحمة</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة في الادماع</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نزيف في الانف</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سيلان في الانف</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فقدان الشعر</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; رعشة</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لفحات ساخنة</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; دوار</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مشاكل بالاظافر</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فقدان بالوزن</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فقدان شهية</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارق</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تغير في المذاق</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض عدد الصفائح الدموية</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ظهور الكدمات</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تنميل في الاصابع و الاطراف, ما قد يمتد لباقي العضو</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; احمرار, و تورم في الفم و/او الحلق</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام, تورم, احمرار, او تنميل في الايدي و الاقدام</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ضيق تنفس</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صداع</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سعال</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قيء</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اعياء</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الاعراض الجانبية الشائعة لهيرسيبتين: </strong>قد تصيب حتى 1 من كل 10 اشخاص</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعل حساسية</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>جفاف الفم و الجلد</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>عدوى الحلق</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>جفاف العين</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>عدوى الجلد و المثانة</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>التعرق</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>التهاب الثدي</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>الشعور بالضعف و التعب</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>التهاب الكبد</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>القلق</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>اضطرابات الكلى</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>الاكتئاب</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>زيادة النغمة العضلية او الشد العضلي</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>الربو</p><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>عدوى الرئتين</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>آلام في الايدي و/او الارجل</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>اضطراب الرئتين</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>طفح و حكة</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>آلام الظهر</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>نوم و نعاس</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>آلام الرقبة</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>البواسير</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>آلام العظام</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp; </strong>الحكة</p></td><td style="vertical-align:top"><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>الحبوب</p><p dir="RTL"><strong>&middot;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp; </strong>تشنجات الارجل</p></td></tr></tbody></table><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>اعراض جانبية غير شائعة لهيرسيبتين: </strong>قد تصيب حتى 1 من كل 100 شخص:</p><p dir="RTL">&nbsp;</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الصمم</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح مصحوب بزوائد جلدية</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ضيق تنفس</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب و ندوب الرئة</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>اعراض جانبية نادرة لهيرسيبتين: </strong>قد تصيب شخص من كل 1000 شخص</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اليرقان</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; رد فعل تحسسي</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الاعراض الجانبية الاخرى التي ارتبطت باستخدام هيرسيبتين: </strong>لا يمكن استنباط الشيوع من</p><p dir="RTL">البيانات المتوفرة</p><p dir="RTL">&nbsp;</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة او خلل في تجلط الدم</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة مستويات البوتاسيوم</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورم او نزيف في العينين</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صدمة</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نبضات قلب غير منتظمة</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضطراب في التنفس</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فشل في التنفس</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تراكم السوائل بالرئة</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ضيق حاد في مجرى التنفس</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نقصان حاد في مستويات الاكسجين بالدم</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبات بالتنفس عند الاستلقاء</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضرار بالكبد</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورم الوجه, الشفايف, والحلق</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فشل كلوي</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نقصان السوائل حول الجنين في الرحم</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تأخر نمو الرئتين عند الجنين و الوفاة</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة في نمو الكلى في الجنين</p><p dir="RTL">&nbsp;</p><p dir="RTL">بعض من الاعراض الجانبية التي تحدث قد تكون نتيجة للورم المتواجد, و اذا تناولت</p><p dir="RTL">هيرسيبتين بالاضافة للعلاج الكيميائي, قد ترتبط الاعراض الجانبية بالعلاج الكيميائي ايضا.</p><p dir="RTL">&nbsp;</p><p dir="RTL">اذا عانيت من اي عرض جانبي, تحدث الى طبيبك, الصيدلي, او الممرض.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الابلاغ عن الاعراض الجانبية</strong></p><p dir="RTL">إذا ظهرت لديك أي آثار جانبية ، تحدث إلى طبيبك أو الصيدلي أو الممرض. يتضمن ذلك أي آثار جانبية محتملة غير مذكورة في هذه النشرة. من خلال الإبلاغ عن الآثار الجانبية ، يمكنك المساعدة في توفير مزيد من المعلومات حول سلامة هذا الدواء.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">سوف يتم تخزين هيرسيبتين بواسطة مختصي الصحة بالمستشفى او العيادة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; احفظ هذا الدواء بعيدا عن متناول و مرأى الاطفال</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تستخدم هذا الدواء بعد انتهاء تاريخ الصلاحية المذكور على العبوة الخارجية, و على</p><p dir="RTL">القارورة الداخلية, تاريخ انتهاء الصلاحية يشير الى اليوم الاخير بالشهر.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; القارورة غير المفتوحة يجب ان تخزن مبردة (2* - 8* درجة مئوية).</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تجمد المحلول المجهز</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يجب استخدام محاليل التنقيط مباشرة بعد التخفيف. إذا لم يتم استخدامه على الفور ، فإن أوقات التخزين أثناء الاستخدام وشروطه قبل الاستخدام تقع على عاتق المستخدم ، ولن تزيد في العادة عن 24 ساعة عند 2 درجة مئوية - 8 درجات مئوية.</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تستخدم هيرسيبتين اذا لاحظت اي تغير في اللون او التكوين قبل التنقيط</p><p dir="RTL">l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا ينبغي التخلص من الأدوية في مياه الصرف الصحي أو النفايات المنزلية. إسأل الصيدلي عن كيفية التخلص من الأدوية التي لم تعد مطلوبة. ومن شأن هذه التدابير أن تساعد على حماية البيئة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <ul dir="rtl"><li><p dir="RTL">&nbsp; المادة الفعالة هي تراستوزوماب. تحتوي كل قنينة على 150 مجم تراستوزوماب يجب إذابتها في 7.2 مل من الماء للحقن. يحتوي المحلول الناتج على حوالي 21 مجم / مل من تراستوزوماب.</p></li><li>المكونات الأخرى هي ال- هيستيدين هيدروكلوريد أحادي الهيدرات ، ال- هيستيدين ، &alpha; ، الفا-تريهالوز دايهيدرات ، بوليسوربات 20</li></ul>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">هيرسيبتين عبارة عن مسحوق للتركيز لمحلول التسريب في الوريد ، والذي يتم توفيره في قنينة زجاجية بسدادة مطاطية تحتوي على 150 مجم من تراستوزوماب. المسحوق أبيض إلى أصفر شاحب. تحتوي كل كرتونة على 1 قنينة مسحوق.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="rtl">شركة ف. هوفمان لا روش المحدودة،</p><p dir="rtl">142 جرينزاهاشتراس</p><p dir="rtl">سي إتش &ndash; 4070 بازل</p><p dir="rtl">&nbsp;سويسرا.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            تمت اخر مراجعة لتلك النشرة في يناير 2022
+
+للإبلاغ عن الآثار الجانبية
+
+المملكة العربية السعودية:
+-	المركز الوطني للتيقظ والسلامة الدوائية
+o	فاكس: 7662-205-11-966+
+o	مركز اتصالات الهيئة العامة للغذاء والدواء: 19999
+o	بريد الكتروني: npc.drug@sfda.gov.sa
+o	الموقع الإلكتروني: www.sfda.gov.sa/npc
+
+دول مجلس التعاون الخليجي الأخرى:
+-	يرجى التواصل مع الهيئة المعنية ذات الصلة
+
+مجلس وزارات الصحة العربية
+هذا المنتج دوائي
+-	قد تؤثر المنتجات الدوائية على صحتك، ويعد استهلاكه بخلاف الطريقة المحددة أمرًا خطيرًا.
+-	اتبع وصفة الطبيب وطريقة الاستخدام وتعليمات الصيدلي الذي باع لك هذا الدواء بدقة.
+-	الطبيب والصيدلي خبراء في المنتجات الدوائية وفوائدها ومخاطرها.
+-	لا تقطع فترة العلاج المحددة لك من تلقاء نفسك.
+-	لا تكرر استخدام نفس الوصفة الطبية دون استشارة طبيبك.
+-	احتفظ بجميع المنتجات الدوائية بعيدًا عن متناول الأطفال.
+
+
+مجلس وزارات الصحة العربية
+اتحاد الصيادلة العرب
+
+
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

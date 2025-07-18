@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        19-5362-20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2021
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        DABITRAN
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        DABIGATRAN ETEXILATE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        150
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Capsule, hard
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        60
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        250.25
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Hetero Labs Limited Unit &#x2013; III" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Hetero Labs Limited Unit – III
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2950]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Saudi Amarox
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Saudi Amarox
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        B01AE07
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Dabigatran Etexilate Capsules contains the active substance Dabigatran etexilate and belongs to a group of medicines called anticoagulants. It works by blocking a substance in the body which is involved in blood clot Formation.</p><p>Dabigatran Etexilate Capsules is used in adults to:</p><p>-&nbsp; prevent blood clots in the brain (stroke) and other blood vessels in the body if you have a form</p><p>of irregular heart rhythm called nonvalvular atrial fibrillation and at least one additional risk factor.</p><p>-&nbsp; treat blood clots in the veins of your legs and lungs and to prevent blood clots from reoccuring In the vein of your legs and lungs.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>-&nbsp;&nbsp;&nbsp;&nbsp; if you are allergic to Dabigatran etexilate or any of the other ingredients of this medicine (listed in section 6).</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you have severely reduced kidney function.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you are currently bleeding.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you have a disease in an organ of the body that increases the risk of serious bleeding (e.g. Stomach ulcer, injury or bleeding in the brain, recent surgery of the brain or eyes).</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you have an increased tendency to bleed. This may be inborn, of unknown cause or due to other medicines.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you are taking medicines to prevent blood clotting (e.g. warfarin, rivaroxaban, apixaban or heparin), except when changing anticoagulant treatment or while having a venous or arterial line and you get heparin through this line to keep it open.</p><p>-&nbsp;&nbsp;&nbsp; if you have a severely reduced liver function or liver&nbsp; disease which could possibly cause&nbsp; death.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are taking oral ketoconazole or itraconazole, medicines to treat fungal infections.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you are taking cyclosporine, a medicine to prevent organ rejection after transplantation.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you are taking dronedarone, a medicine used to treat abnormal heart beat.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you have received an artificial heart valve which requires permanent blood thinning.</p><p>Warnings and precautions</p><p>Talk to your doctor before taking Dabigatran Etexilate Capsules. You may also need to talk to your doctor during treatment with Dabigatran Etexilate Capsules if you experience symptoms or if you have to undergo surgery. Tell your doctor if you have or have had any medical conditions or illnesses, in particular any of those included in the following list:</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you have an increased bleeding risk, such as</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you have been recently bleeding.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you have had a surgical tissue removal (biopsy) in the past month.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you have had a serious injury (e.g. a bone fracture, head injury or any injury requiring surgical&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; treatment).</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are suffering from an inflammation of the gullet or stomach.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you have problems with reflux of gastric juice into the gullet.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are receiving medicines which could increase the risk of bleeding. See &#39;Other medicines and Dabigatran Etexilate Capsules &#39; below.</p><p>&nbsp;</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are taking anti-inflammatory medicines such as diclofenac, ibuprofen, piroxicam.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are suffering from an infection of the heart (bacterial endocarditis).</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you know you have impaired kidney function, or you are suffering from dehydration (symptoms include feeling thirsty and passing reduced amounts of dark- coloured (concentrated) urine).</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are older than 75 years.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you weigh 50 kg or less.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; If you have had a heart attack or if you have been diagnosed with conditions that increase the risk to develop a heart attack.</p><p>-&nbsp;&nbsp; if you have a liver disease that is associated with changes in the blood tests. The use of Dabigatran Etexilate Capsules is not recommended in this case.</p><p>Take special care with Dabigatran Etexilate Capsules</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you need to have an operation:</p><p>In this case Dabigatran Etexilate Capsules will need to be stopped temporarily due to an Increased bleeding risk during and shortly after an operation. It is very important to take Dabigatran Etexilate Capsules before and after the operation exactly at the times you have been told by your doctor.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if an operation involves a catheter or injection into your spinal column (e.g. for epidural or spinal anaesthesia or pain reduction):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; it is very important to take Dabigatran Etexilate Capsules before and after the operation exactly at the times you have been told by your doctor.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tell your doctor immediately if you get numbness or weakness of your legs or problems with your bowel or bladder after the end of anaesthesia, because urgent care is necessary.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you fall or injure yourself during treatment, especially if you hit your head. Please seek urgent medical attention. You may need to be checked by a doctor, as you may be at increased risk of bleeding.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp; if you fall or injure yourself during treatment, especially if you hit your head, please seek urgent medical attention. You may need to be checked by a doctor, as you may be at increased risk of bleeding.</p><p>&nbsp;</p><p>-&nbsp; if you know that you have a disease called antiphospholipid syndrome (a disorder of the immune system that causes an increased risk of blood clots), tell your doctor who will decide if the treatment may need to be changed.</p><p>Children and adolescents</p><p>Dabigatran Etexilate Capsules is not recommended in children and adolescents below 18 years old.</p><p>Other medicines and Dabigatran Etexilate Capsules</p><p>Tell your doctor or pharmacist if you are taking, have recently taken or might take any other medicines. In particular you should tell your doctor before taking Dabigatran Etexilate Capsules, if you are taking one of the medicines listed below:</p><p>-&nbsp;&nbsp; Medicines to reduce blood clotting (e.g. warfarin, phenprocoumon, acenocoumarol, heparin, clopidogrel, prasugrel, ticagrelor, rivaroxaban, acetylsalicylic acid).</p><p>- Medicines to treat fungal infections (e.g. ketoconazole, itraconazole), unless they are only applied to the skin</p><p>- Medicines to treat abnormal heart beats (e.g. amiodarone, dronedarone, quinidine, verapamil). If you are taking verapamil containing medicines, your doctor will tell you to use a reduced dose of Dabigatran Etexilate Capsules. See section 3.</p><p>- Medicines to prevent organ rejection after transplantation (e.g. tacrolimus, cyclosporine)</p><p>- Anti-inflammatory and pain reliever medicines (e.g. acetylsalicylic acid, ibuprofen, diclofenac)</p><p>- St. John&acute;s wort, a herbal medicine for depression</p><p>- Antidepressant medicines called selective serotonin re-uptake inhibitors or serotoninnorepinephrine Re-uptake inhibitors</p><p>- Rifampicin or clarithromycin (two antibiotics)</p><p>-&nbsp; Anti-viral medicines for AIDS (e.g. ritonavir)</p><p>-&nbsp; Certain medicines for treatment of epilepsy (e.g. carbamazepine, phenytoin)</p><p>Pregnancy and breast-feeding</p><p>The effects of Dabigatran Etexilate Capsules on pregnancy and the unborn child are not known. You should not take Dabigatran Etexilate Capsules if you are pregnant unless your doctor advises you that it is safe to do so. If you are a woman of child-bearing age, you should avoid becoming pregnant while you are taking Dabigatran Etexilate Capsules.</p><p>You should not breast-feed while you are taking Dabigatran Etexilate Capsules.</p><p>Driving and using machines</p><p>&nbsp;</p><p>Dabigatran Etexilate Capsules has no known effects on the ability to drive or use machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Always take this medicine exactly as your doctor has told you. Check with your doctor if you are not sure.</p><p>The recommended dose is 300 mg taken as one 150 mg capsule twice a day.</p><p>If you are 80 years or older, the recommended dose of Dabigatran Etexilate Capsules is 220 mg taken as one 110 mg capsule twice daily.</p><p>If you are taking verapamil-containing medicines, you should be treated with a reduced Dabigatran Etexilate Capsules dose of 220 mg taken as one 110 mg capsule twice a day, because your bleeding risk may be increased.</p><p>If you have a potentially higher risk for bleeding, your doctor may decide to prescribe a dose of Dabigatran Etexilate Capsules 220 mg taken as one 110 mg capsule twice a day.</p><p>You can continue to take Dabigatran Capsules if your heart beat needs to be restored to normal by a procedure Called cardio version or by a procedure called catheter ablation for atrial fibrillation. Take Dabigatran Capsules as your physician has told you.</p><p>If a medical device (stent) has been deployed in a blood vessel to keep it open in a procedure called percutaneous coronary intervention with stenting, you can be treated with Dabigatran Capsules after your physician has decided that normal control of blood coagulation is achieved. Take Dabigatran Capsules as your physician has told you.</p><p>How to take Dabigatran Etexilate Capsules</p><p>Dabigatran Etexilate Capsules can be taken with or without food. The capsule should be swallowed whole with a glass of water, to ensure delivery to the stomach. Do not break, chew, or empty the pellets from the capsule since this may increase the risk of bleeding.</p><p>Instructions for opening the blisters</p><p>The following pictogram illustrates how to take Dabigatran Etexilate Capsules out of the blister</p><p>Tear off one individual blister from the blister card along the perforated line</p><p>Peel off the backing foil and remove the capsule.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not push the capsules through the blister foil.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not peel off the blister foil until a capsule is required.</p><p>Instructions for the bottle</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Push and turn for opening.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; After removing the capsule, place the cap back on the bottle and tightly close the bottle right away after you take your dose.</p><p>Change of anticoagulant treatment</p><p>Without specific guidance from your doctor do not change your anticoagulant treatment.</p><p>If you take more Dabigatran Etexilate Capsules than you should</p><p>Taking too much Dabigatran Etexilate Capsules increases the risk of bleeding. Contact your doctor immediately if you have taken too many Dabigatran Etexilate Capsules. Specific treatment options are available.</p><p>If you forget to take Dabigatran Etexilate Capsules</p><p>A forgotten dose can still be taken up to 6 hours prior to the next due dose.</p><p>A missed dose should be omitted if the remaining time is below 6 hours prior to the next due dose. Do not take a double dose to make up for a forgotten dose.</p><p>If you stop taking Dabigatran Etexilate Capsules</p><p>Take Dabigatran Etexilate Capsules exactly as prescribed. Do not stop taking Dabigatran Etexilate Capsules without talking to your doctor first, because the risk of developing a blood clot could be higher if you stop treatment too early. Contact your doctor if you experience indigestion after taking Dabigatran Etexilate Capsules.</p><p>If you have any further questions on the use of this medicine, ask your doctor or pharmacist.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them. Dabigatran Etexilate Capsules affects blood clotting, so most side effects are related to signs such as bruising or bleeding. Major or severe bleeding may occur, these constitute the most serious side effects and, regardless of location, may become disabling, life-threatening or even lead to death. In some cases these bleedings may not be obvious.</p><p>If you experience any bleeding event that does not stop by itself or if you experience signs of excessive bleeding (exceptional weakness, tiredness, paleness, dizziness, headache or unexplained swelling) consult your doctor immediately. Your doctor may decide to keep you under closer observation or change your medicine.</p><p>Tell your doctor immediately, if you experience a serious allergic reaction which causes difficulty in breathing or dizziness.</p><p>Possible side effects are listed below, grouped by how likely they are to happen.</p><p>Prevention of brain or body vessel obstruction by blood clot formation developing after abnormal heart beats</p><p>Common (may affect up to 1 in 10 people):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding may happen from the nose, into the stomach or bowel, from penis/vagina or urinary tract (incl. blood in the urine that stains the urine pink or red), or under the skin</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A fall in the number of red cells in the blood</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Belly ache or stomach ache</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indigestion</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Frequent loose or liquid bowel movements</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feeling sick</p><p>Uncommon (may affect up to 1 in 100 people):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding may happen from piles, into the rectum, or in the brain.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Haematoma formation</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coughing of blood or blood stained sputum</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A fall in the number of platelets in the blood</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A fall in the amount of haemoglobin in the blood (the substance in the red blood cells)</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Allergic reaction</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sudden change of the skin which affects its colour or appearance</p><p>&nbsp;</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Itching</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ulcer in the stomach or bowel (incl. ulcer in the gullet)</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation of the gullet and stomach</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reflux of gastric juice into the gullet</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vomiting</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Difficulty in swallowing</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unusual laboratory test results on liver function Rare (may affect up to 1 in 1,000 people):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding may happen into a joint, from a surgical incision, from an injury, from the site of entry of an injection or from the site of entry of a catheter into a vein</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serious allergic reaction which causes difficulty in breathing or dizziness</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serious allergic reaction which causes swelling of the face or throat</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Skin rash notable for dark red, raised, itchy bumps caused by an allergic reaction</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A decrease in the proportion of red cells in the blood</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Liver enzymes increased</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yellowing of the skin or whites of the eyes, caused by liver or blood problems Not known (frequency cannot be estimated from the available data):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Difficulty in breathing or wheezing</p><p>In a clinical trial the rate of heart attacks with Dabigatran Etexilate Capsules was numerically higher than with warfarin. The overall occurrence was low.</p><p>Treatment of blood clots in the veins of your legs and lungs including prevention of blood clots from re-occurring in the veins of your legs and/or lungs</p><p>Common (may affect up to 1 in 10 people):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding may happen from the nose, into the stomach or bowel, into the rectum, from penis/vagina or urinary tract (incl. blood in the urine that stains the urine pink or red), or under the skin</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indigestion</p><p>Uncommon (may affect up to 1 in 100 people):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding may happen into a joint or from an injury</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding may happen from piles</p><p>&nbsp;</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A fall in the number of red cells in the blood</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Haematoma formation</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coughing of blood or blood stained sputum</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Allergic reaction</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sudden change of the skin which affects its colour and appearance</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Itching</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ulcer in the stomach or bowel</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation of the gullet and stomach</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reflux of gastric juice into the gullet</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feeling sick</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vomiting</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Belly ache or stomach ache</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Frequent loose or liquid bowel movements</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unusual laboratory test results on liver function</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Liver enzymes increased</p><p>Rare (may affect up to 1 in 1,000 people):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bleeding may happen, from a surgical incision, or from the site of entry of an injection or from the site of entry of a catheter into a vein or from the brain</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A fall in the number of platelets in the blood</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serious allergic reaction which causes difficulty in breathing or dizziness</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serious allergic reaction which causes swelling of the face or throat</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Skin rash notable for dark red, raised, itchy bumps caused by an allergic reaction</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Difficulty in swallowing</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A decrease in the proportion of red cells in the blood</p><p>Not known (frequency cannot be estimated from the available data):</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Difficulty in breathing or wheezing</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A fall in the amount of haemoglobin in the blood (the substance in the red blood cells)</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A fall in the number of red cells in the blood</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yellowing of the skin or whites of the eyes, caused by liver or blood problems</p><p>&nbsp;</p><p>In the trial program the rate of heart attacks with Dabigatran Etexilate Capsules was higher than with warfarin. The overall occurrence was low. No imbalance in the rate of heart attacks was observed in patients treated with Dabigatran versus patients treated with placebo.</p><p>Reporting of side effects</p><p>If you get any side effects, talk to your doctor or pharmacist. This includes any possible side effects not listed in this leaflet. You can also report side effects directly (see details below). By reporting side effects you can help provide more information on the safety of this medicine.</p><p>,</p><p>&bull;&nbsp; <strong><em>Saudi Arabia:</em></strong></p><p>The National Pharmacovigilance and Drug Safety Centre (NPC) o Fax: +966-11-205-7662</p><p>o Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.</p><p>o&nbsp; Toll free phone: 8002490000</p><p>o&nbsp; E-mail: npc.drug@sfda.gov.sa</p><p>o&nbsp; Website: www.sfda.gov.sa/npc</p><p><strong><em>Other GCC States:</em></strong></p><p>Please contact the relevant competent authority.</p><table cellpadding="0" cellspacing="0" style="width:100%"><tbody><tr><td><p><strong><em>&nbsp;</em></strong></p></td></tr></tbody></table><p><!--[if mso & !supportInlineShapes & supportFields]><span
+style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:EN-US'><v:shape id="_x0000_i1025" type="#_x0000_t75"
+ style='width:476.25pt;height:190.75pt'>
+ <v:imagedata croptop="-65520f" cropbottom="65520f"/>
+</v:shape><span style='mso-element:field-end'></span></span><![endif]--></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&bull;&nbsp; Store below 30&deg;C.</p><p>&bull;&nbsp; Store in the original package in order to protect from moisture.</p><p>&bull;&nbsp; Keep this medicine out of the sight and reach of children.</p><p>&bull;&nbsp; Do not use this medicine after the expiry date which is stated on the pack after EXP. The expiry date refers to the last day of the month.</p><p>&bull;&nbsp; Do not throw away any medicines via wastewater or household waste. Ask your pharmacist how to throw away medicines you no longer use. These measures will help protect the environment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>What Dabigatran Etexilate Capsules 150mg contains</strong></p><p>The active substance is Dabigatran etexilate mesylate.</p><p>Each capsule contains Dabigatran etexilate mesylate equivalent to 150mg of Dabigatran etexilate.</p><p>&nbsp;</p><p>The other ingredients are: Hydroxy Propyl cellulose, Hypromellose, Sugar Spheres, Talc and Tartaric Acid.</p><p>The capsule shell is composed of iron oxide red , iron oxide yellow, Hypromellose and titanium dioxide, FD&amp;C Blue#1, FD&amp;C Red#40.</p><p>The capsules are printed with black ink containing iron oxide black, potassium hydroxide, propylene glycol, shellac and strong ammonia solution.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Light blue opaque cap / Cream opaque body size ‘0’ HPMC capsules imprinted with ‘H’ on cap and ‘D11’ on body with black ink, filled with mixture of off white to yellowish white pellets.
+How supplied:
+Dabigatran Etexilate Capsules 150mg are supplied in 3 X 10s & 6 X 10s blister pack.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Aljameah Street, Malaz quarter, Riyadh 11441 Saudi Arabia</p><p>Tel: +966 11 477 2215</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                08/2019
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">1-&nbsp;&nbsp;&nbsp;&nbsp; يحتوي دابيتران كبسول على المادة الفعالة دابيجاتران&nbsp;إتيكسيلات . وهو يعمل عن طريق منع مادة في الجسم التي تشارك في تكون الجلطة دموية .</p><p dir="RTL">2-&nbsp;&nbsp;&nbsp;&nbsp; دابيتران كبسول هو دواء يستخدم لتقليل مخاطر عرقلة أو انسداد الأوعية الدموية بالجسم عن طريق تكون جلطة دموية في المرضى البالغين الذين يعانون من ضربات قلب غير طبيعية (الرجفان الأذيني) وعوامل خطورة أخرى . دابيتران كبسول هو دواء مخفف للدم يقلل من خطر تكون جلطة دموية .</p><p dir="RTL">3-&nbsp;&nbsp;&nbsp;&nbsp; دابيتران كبسول هو دواء يستخدم لعلاج جلطات الدم في عروق الساقين والرئتين ولمنع حدوث الجلطات الدموية في الوريد في الساقين والرئتين.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>لا تقم باستعمال دابيتران كبسول </strong><strong>&nbsp;:</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك حساسية من دابيجاتران أو أي من المكونات الأخرى لهذا الدواء (المذكورة في القسم 6) .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من انخفاض شديد في وظائف الكلى .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من النزف في الوقت الحالي .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك مرض في أحد أعضاء جسمك والذي يزيد من خطر حدوث نزيف خطير .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك ميل متزايد للنزيف . قد يكون هذا وراثيًا أو غير معروف السبب أو بسبب تناول أدوية أخرى .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من نقص حاد في وظائف الكبد أو أمراض الكبد التي قد تسبب الموت .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تتناول عقار الكيتوكونازول عن طريق الفم أو الأيتراكونازول ، لعلاج الالتهابات الفطرية .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تتناول السيكلوسبورين ، دواء لمنع رفض الجسم لزراعة الأعضاء .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تتناول دوونيدارون ، دواء يستخدم لمنع تكرار حدوث مشاكل عدم الإنتظام في ضربات القلب .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تتناول أدوية لمنع تجلط الدم (على سبيل المثال ، الوارفارين ، أو ريفاروكابان ، أو أبيكسابان أو الهيبارين) ، إلا عند تغيير علاج مضاد التخثر أو أثناء وجود أنبوب وريدي أو شرياني ، وتتناول الهيبارين عبر هذا الأنبوب لإبقائه مفتوحًا .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت قد قمت بتركيب صمام قلبي اصطناعي .</p><p dir="RTL"><strong>التحذيرات والاحتياطات</strong><strong> </strong></p><p dir="RTL">تحدث إلى طبيبك قبل تناول دابيتران كبسول . قد تحتاج أيضًا إلى التحدث مع طبيبك أثناء العلاج باستخدام دابيتران كبسول إذا واجهت أعراضًا أو إذا كان عليك الخضوع لإجراء عملية جراحية . أخبر طبيبك إذا كنت تعاني حاليا أو مسبقا من أي أمراض ، خاصة أي من تلك المدرجة في القائمة التالية:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك مرض كبدي مرتبط بحدوث تغيرات في نتائج اختبارات الدم ، فلا ينصح باستخدام دابيتران كبسول .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك خطر متزايد من حدوث نزيف ، كما هو الحال في الحالات التالية:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت قد تعرضت مؤخراً لحالة نزفت</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت قد قمت باستئصال&nbsp;نسيج&nbsp;حى جراحيا ودراستة مجهريا (خزعة) في الشهر الماضي .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من إصابة خطيرة (مثل كسر في العظام أو إصابة في الرأس أو أي إصابة تتطلب علاجًا جراحيًا) .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من التهاب في المريء أو المعدة .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك مشاكل تؤدي إلى ارتجاع عصارة المعدة في المريء .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تتناول الأدوية التي يمكن أن تزيد من خطر النزيف مثل الأسبرين (حمض أسيتيل الساليسيليك) ، كلوبيدوجريل ، تيكاجريلور .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تتناول أدوية مضادة للالتهابات مثل ديكلوفيناك ، ايبوبروفين ، بيروكسيكام .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من عدوى في القلب (التهاب الشغاف البكتيري) .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعرف أنك تعاني من ضعف في وظائف الكلى أو كنت تعاني من الجفاف (تشمل الأعراض على الشعور بالعطش وتمرير كميات أقل من البول (المركز) الغامق) .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت أكبر من 75 عامًا .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تزن 50 كجم أو أقل .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت قد تعرضت لنوبة قلبية أو إذا تم تشخيصك بأنك أكثر عرضة من تزايد خطر الإصابة بنوبة قلبية .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا خضعت لجراحة مخطط لها مسبقا . سوف تحتاج إلى التوقف مؤقتًا عن تناول دابيتران كبسول بسبب زيادة خطر حدوث النزيف أثناء وبعد العملية بوقت قصير . إذا أمكن ، يجب إيقاف تناول دابيتران كبسول قبل 24 ساعة على الأقل من إجراء العملية . في المرضى الذين يعانون من خطورة عالية لحدوث نزيف قد يقرر الطبيب التوقف عن العلاج مسبقا .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت بحاجة إلى إجراء جراحة عاجلة وغير مخطط لها . إذا أمكن ، يجب تأخير الجراحة لمدة 12 ساعة على الأقل بعد آخر جرعة تم تناولها . إذا لم يمكن تأخير الجراحة ، فقد يكون هناك خطر متزايد لحدوث النزيف . سوف يقيم طبيبك المخاطر من حدوث النزيف مقارنة بالحاجة الملحة لإجراء الجراحة .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك أنبوب (قسطرة) مثبته في الجزء الخلفي: يمكن إدخال أنبوب في ظهرك على سبيل المثال ، بغرض التخدير أو تخفيف الألم أثناء أو بعد الجراحة . إذا كنت تتناول دابيتران كبسول وبعد إزالة القسطرة ، سيقوم الطبيب بفحصك بانتظام .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا وقعت أو أصبت نفسك أثناء العلاج بتناول دابيتران كبسول ، خاصة إذا أصبت في رأسك ، يرجى طلب العناية الطبية العاجلة . قد تحتاج إلى أن يتم فحصك من قبل الطبيب ، لأنك قد تكون في خطر متزايد من حدوث النزيف.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعرف أن لديك مر ًضا يسمى متلازمة الفوسفوليبيد (اضطراب في الجهاز المناعي الذي يسبب زيادة خطر جلطات الدم) ، أخبر طبيبك الذي سيقرر ما إذا كان العلاج قد يحتاج إلى تغيير.س</p><p dir="RTL"><strong>الأطفال والمراهقون</strong></p><p dir="RTL">لا ينبغي استخدام دابيتران كبسول للأطفال والمراهقين الذين تقل أعمارهم عن 18 عامًا .</p><p dir="RTL"><strong>أدوية أخرى و دابيتران كبسول</strong></p><p dir="RTL">أخبر طبيبك أو الصيدلي إذا كنت تتناول ، أو تناولت مؤخرا أو قد تتناول أي أدوية أخرى . على سبيل المثال:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية للحد من تخثر الدم (على سبيل المثال ، الوارفارين ، فينبروكومون ، الهيبارين ، كلوبيدوجرل ، براسوجريل ، تيكاجريلار ، ريفاروكسابان)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأدوية المضادة للالتهابات والألم المخفف (على سبيل المثال الأسبرين)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نبتة سانت جون ، وهو دواء عشبي لعلاج الاكتئاب</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأدوية المضادة للاكتئاب تسمى مثبطات إعادة امتصاص السيروتونين الانتقائية أو مثبطات إعادة امتصاص السيروتونين غير العضلية .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ريفامبيسين أو كلاريثرومايسين ، مضادات حيوية</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية لعلاج عدم انتظام ضربات القلب (مثل أميودارون ، درونيدارون ، الكينيدين ، فيراباميل) . إذا كنت تتناول أدوية تحتوي على فيراباميل ، فيجب أن تعالج بجرعة دابيتران كبسول أقل من 220 مجم يتم تناولها كبسولة واحدة 110 مجم مرتين في اليوم ، لأن خطر حدوث النزيف قد يزداد . يجب أن تتناول دابيتران كبسول والأدوية المحتوية على فيراباميل في نفس الوقت .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;أدوية لعلاج الالتهابات الفطرية (على سبيل المثال ، الكيتوكونازول ، والإيتراكونازول ، وبوساكونازول) ، ما لم يتم استخدامها خارجيا على الجلد فقط .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية لمنع رفض زراعة العضو (مثل تاكروليمس ، سيكلوسبورين)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأدوية المضادة للفيروسات للإيدز (مثل ريتونافير)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية لعلاج الصرع (مثل الكاربامازبين والفينيتوين) .</p><p dir="RTL"><strong>الحمل والرضاعة الطبيعية</strong></p><p dir="RTL">آثار دابيتران كبسول على الحمل والجنين الذي لم يولد بعد غير معروفة . يجب عدم تناول دابيتران كبسول إذا كنت حاملاً ما لم ينصحك طبيبك بأنه آمن للقيام بذلك . إذا كنت امرأة في سن الإنجاب ، يجب أن تتجنب الحمل أثناء تناول دابيتران كبسول .</p><p dir="RTL">يجب عليك عدم الرضاعة الطبيعية أثناء تناول دابيتران كبسول .</p><p dir="RTL"><strong>القيادة واستخدام الآلات</strong></p><p dir="RTL">دابيتران كبسول ليس لها تأثيرات معروفة على القدرة على القيادة أو استخدام الآلات .</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">ينبغي تناول الدواء دائما وتماما كما أخبرك طبيبك . استشر طبيبك إذا كنت غير متأكد .</p><p dir="RTL">الجرعة الموصى بها هي 300 ملغم (يتم تناولها على شكل كبسولة من 150 ملغم مرتين في اليوم) .</p><p dir="RTL">إذا كنت تبلغ من العمر 80 عامًا أو أكثر ، فإن الجرعة الموصى بها من دابيتران كبسول هي 220 مجم يتم تناولها على هيئة كبسولة واحدة 110 ملجم مرتين يوميًا.</p><p dir="RTL">إذا كنت تتناول أدوية تحتوي على فيراباميل فإن الجرعة ستصبح 220 ملغم مرة في اليوم (يتم تناولها على شكل كبسولة من 110 ملغم مرتين يوميا) لأنه قد يزداد خطر حدوث نزيف .</p><p dir="RTL">إذا كان لديك خطر محتمل لحدوث النزيف بشكل كبير ، فقد يقرر طبيبك أن يصف جرعة من دابيتران كبسول 220 ملغم يتم تناولها على شكل كبسولة من 110 ملغم مرتين يوميا .</p><p dir="RTL">يمكن أن يتم تناول دابيتران كبسول مع أو بدون الطعام . يجب ابتلاع الكبسولة كاملة مع كوب من الماء ، لضمان الوصول إلى المعدة . لا تقم بقطع أو مضغ أو إفراغ الكريات من الكبسولة لأن هذا قد يزيد من خطر النزيف .</p><p dir="RTL"><strong>تغيير العلاج المضاد للتخثر</strong></p><p dir="RTL"><em>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em><em>التغيير من العلاج باستخدام دابيتران كبسول إلى العلاج بتناول مضاد للتخثر يعطى عن طريق الحقن:</em></p><p dir="RTL">لا تبدأ العلاج بالأدوية المضادة للتخثر عن طريق الحقن (على سبيل المثال ، الهيبارين) لمدة 12 ساعة بعد الجرعة النهائية من دابيتران كبسول .</p><p dir="RTL"><em>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em><em>التغيير من العلاج باستخدام الأدوية المضادة للتخثر التي تستخدم عن طريق الحقن إلى العلاج بتناول دابيتران كبسول:</em></p><p dir="RTL">ينبغي البدء في تناول دابيتران كبسول 0-2 ساعات قبل موعد الحقنة التالية .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>التغير من دابيتران كبسول إلى مخففات الدم التي تحتوي على مضادات فيتامين ك (على سبيل المثال فينوبروكومون):</em></p><p dir="RTL">يحتاج طبيبك إلى إجراء إختبارات للدم وإرشادك عند بدء العلاج بمضادات الفيتامين ك .</p><p dir="RTL"><strong>تناول جرعة زائدة من دابيتران كبسول </strong></p><p dir="RTL">إذا تناولت جرعة زائدة من دابيتران كبسول أكثر من الموصى بها ، قد يكون لديك خطر متزايد من حدوث النزيف . يمكن لطبيبك إجراء فحص دم لتقييم خطر النزيف .</p><p dir="RTL">أخبر طبيبك على الفور ، إذا كنت تناولت أكثر من الجرعة الموصوفة من دابيتران كبسول . في حالة حدوث نزيف ، قد يلزم العلاج الجراحي أو العلاج مع عمليات نقل الدم .</p><p dir="RTL"><strong>إذا نسيت أن تتناول دابيتران كبسول</strong></p><p dir="RTL">يمكن تناول الجرعة المنسية حتى 6 ساعات قبل الجرعة التالية . ويجب تجاوزها إذا كان الوقت المتبقي على الجرعة التالية أقل من 6 ساعات .</p><p dir="RTL">تناول الجرعات اليومية المتبقية من دابيتران كبسول في نفس الوقت من اليوم التالي . لا تتناول جرعة مضاعفة لتعويض الجرعة المنسية .</p><p dir="RTL"><strong>إذا توقفت عن تناول دابيتران كبسول</strong></p><p dir="RTL">تناول دابيتران كبسول بالضبط كما هو مقرر . لا تتوقف عن تناول دابيتران كبسول دون استشارة الطبيب . قد يؤدي وقف تناول دابيتران كبسول إلى زيادة خطر حدوث جلطة دموية في المرضى الذين يعانون من عدم انتظام في ضربات القلب .</p><p dir="RTL">إذا كان لديك أي أسئلة أخرى حول استخدام هذا الدواء ، اسأل طبيبك أو الصيدلي .</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثل جميع الأدوية ، من الممكن أن يسبب تناول دابيتران كبسول بعض الآثار الجانبية ، على الرغم من عدم حدوثها عند الجميع .</p><p dir="RTL">يؤثر دابيتران كبسول على تخثر الدم ، لذلك معظم الآثار الجانبية ترتبط بأعراض مثل الكدمات أو النزيف . قد يحدث نزيف حاد أو أكثر حدة ، وهذه تشكل أخطر الآثار الجانبية ، وبغض النظر عن الموقع ، قد تصبح مهددة للحياة أو حتى تؤدي إلى الوفاة .</p><p dir="RTL">في بعض الحالات قد لا يكون هذا النزيف واضحا.</p><p dir="RTL">إذا واجهت أي حالة نزيف والتي لا تتوقف تلقائيا أو إذا كنت تعاني من أعراض نزف مفرط (ضعف استثنائي ، تعب ، شحوب ، دوار ، صداع أو تورم غير مبرر) استشر طبيبك على الفور . قد يقرر طبيبك أن يتابعك عن كثب أو يغيّر الدواء .</p><p dir="RTL">أخبر طبيبك فورا ، إذا كنت تعاني من رد فعل تحسسي خطير الذي قد يسبب صعوبة في التنفس أو الدوخة .</p><p dir="RTL">يتم سرد الآثار الجانبية أدناه ، مجمعة حسب مدى احتمالية حدوثها :</p><p dir="RTL">شائعة (قد تؤثر على شخص واحد من كل 10 أشخاص) :</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد يحدث النزف من الأنف أو المعدة أو الأمعاء ، من القضيب / المهبل أو المسالك البولية (بما في ذلك الدم في البول الذي يلوث البول ويحوله إلى اللون الوردي أو الأحمر) ، أوتحت الجلد .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في خلايا الدم الحمراء .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم في البطن أو المعدة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عسر الهضم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تكرار لحركات الأمعاء اللينة أو السائلة</p><p dir="RTL">غير شائعة (قد تؤثر على شخص واحد من كل 100 شخص):</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; النزيف قد يحدث من البواسير ، في المستقيم ، أو في الدماغ.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تكون ورم دموي</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سعال دموي أو البلغم المختلط بالدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في عدد الصفائح الدموية في الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في كمية الهيموجلوبين في الدم (المادة الموجودة في خلايا الدم الحمراء)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; رد فعل تحسسي (حساسية)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تغير مفاجئ في الجلد الذي يؤثر على لونه أو مظهره</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حكة الجلد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قرحة في المعدة أو الأمعاء (بما في ذلك القرحة في المريء)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب الحلق والمعدة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتجاع عصارة المعدة في المريء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; القيء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة في البلع</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نتائج غير طبيعية للاختبارات المعملية على وظائف الكبد</p><p dir="RTL">نادرة (قد تصل إلى 1 من كل 1000 شخص):</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد يحدث النزيف في المفصل ، من شق جراحي ، من إصابة ، من موضع الحقن أو من موضع دخول القسطرة إلى الوريد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعل حساسية خطير يسبب صعوبة في التنفس أو الدوخة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعل حساسية خطير يسبب تورم الوجه أو الحلق</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي ملحوظ للون الأحمر الداكن ، وتورمات ، والحكة الناجمة عن حساسية</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في نسبة الخلايا الحمراء في الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة انزيمات الكبد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اصفرار الجلد أو بياض العين ، بسبب مشاكل في الكبد أو الدم</p><p dir="RTL">غير معروف (لا يمكن تقدير معدلاتها من البيانات المتاحة)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة في التنفس</p><p dir="RTL">في تجربة سريرية كان معدل حدوث النوبات القلبية مع تناول دابيتران كبسول أعلى عدديا من وارفارين . وكان معدل الحدوث بشكل عام منخفض .</p><p dir="RTL">علاج جلطات الدم في عروق ساقيك ورئتيك بما في ذلك الوقاية من الجلطات الدموية من التكون في عروق الساقين و / أو الرئتين</p><p dir="RTL">شائعة (قد تؤثر على شخص واحد من كل 10 أشخاص):</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; النزيف والذي قد يحدث من الأنف أو المعدة أو الأمعاء ، في المستقيم ، من القضيب / المهبل أو المسالك البولية (بما في ذلك الدم في البول الذي يلوث البول ويحوله إلى اللون الوردي أو الأحمر) ، أو تحت الجلد.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عسر الهضم</p><p dir="RTL">غير شائعة (قد تؤثر على شخص واحد من كل 100 شخص):</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نزيف</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد يحدث النزيف في المفصل أو بسبب الإصابة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد يحدث النزف وبواسطة البواسير</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض عدد الخلايا الحمراء في الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تكوين ورم دموي</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سعال دموي أو البلغم الملطخ بالدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; رد فعل تحسسي</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تغير مفاجئ في الجلد الذي يؤثر على لونه ومظهره</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حكة الجلد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قرحة في المعدة أو الأمعاء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب الحلق والمعدة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتجاع عصارة المعدة في المريء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الشعور بالمرض</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; القيء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم البطن أو آلام المعدة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تكرار لحركات الأمعاء اللينة أو السائلة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نتائج غير طبيعية للاختبارات المعملية على وظائف الكبد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة انزيمات الكبد</p><p dir="RTL">نادرة (قد تصل إلى 1 من كل 1000 شخص):</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد يحدث النزيف ، من شق جراحي ، أو من موضع إدخال حقنة أو من موضع دخول قسطرة إلى الوريد أو من الدماغ .</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في عدد الصفائح الدموية في الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعل حساسية خطير يسبب صعوبة في التنفس أو الدوخة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعل حساسية خطير يسبب تورم الوجه أو الحلق</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي ملحوظ للون الأحمر الداكن ، والتورمات ، والحكة الناجمة عن رد فعل تحسسي</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة في البلع</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في نسبة الخلايا الحمراء في الدم</p><p dir="RTL">غير معروف (لا يمكن تقدير معدلاتها من البيانات المتاحة):</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبة في التنفس</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض في كمية الهيموجلوبين في الدم (المادة الموجودة في خلايا الدم الحمراء)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض عدد الخلايا الحمراء في الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اصفرار الجلد أو بياض العين ، بسبب مشاكل في الكبد أو الدم</p><p dir="RTL">في تجربة سريرية كان معدل حدوث النوبات القلبية مع تناول دابيتران كبسول أعلى عدديا من وارفارين . وكان معدل الحدوث بشكل عام منخفض . وقد لوحظ عدم وجود إختلاف في معدل النوبات القلبية في المرضى الذين عولجوا بتناول دابيتران كبسول مقابل المرضى الذين عولجوا مع الدواء الوهمي .</p><p dir="RTL"><strong>الإبلاغ عن الآثار الجانبية: </strong></p><p dir="RTL">إذا زادت حدة أي من هذه الأعراض الجانبية ، أو لاحظت ظهور أعراض جانبية غير ما تم ذكره في هذه النشرة ، يرجى إبلاغ الطبيب المعالج أو الصيدلي . وهذا يشمل أي آثار جانبية محتملة غير مدرجة في هذه النشرة . يمكنك أيضا الإبلاغ عن الآثار الجانبية مباشرة (انظر التفاصيل أدناه) . بالإبلاغ عن الآثار الجانبية يمكنك المساعدة في توفير مزيد من المعلومات حول أمان هذا الدواء .</p><p dir="RTL">&nbsp;</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0" style="width:558px"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><!--[if mso & !supportInlineShapes & supportFields]><span
+  style='mso-element:field-begin;mso-field-lock:yes'></span><span dir=LTR></span><span
+  dir=LTR></span><span dir=LTR><span dir=LTR></span><span dir=LTR></span><span
+  style='mso-spacerun:yes'> </span>SHAPE <span
+  style='mso-spacerun:yes'> </span>\* MERGEFORMAT <span style='mso-element:
+  field-separator'></span></span><![endif]--><!--[if gte vml 1]><v:shapetype
+   id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+   <v:stroke joinstyle="miter"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+  </v:shapetype><v:shape id="Text_x0020_Box_x0020_3" o:spid="_x0000_s1026"
+   type="#_x0000_t202" style='width:453.6pt;height:90.7pt;visibility:visible;
+   mso-wrap-style:square;mso-left-percent:-10001;mso-top-percent:-10001;
+   mso-position-horizontal:absolute;mso-position-horizontal-relative:char;
+   mso-position-vertical:absolute;mso-position-vertical-relative:line;
+   mso-left-percent:-10001;mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="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
+cmVsc1BLBQYAAAAABQAFAGcBAAAYEQAAAAA=
+" fillcolor="#e4e4e4" strokeweight=".5pt">
+   <v:fill opacity="16962f"/>
+   <v:textbox inset="7.45pt,3.85pt,7.45pt,3.85pt">
+    <![if !mso]>
+    <table cellpadding=0 cellspacing=0 width="100%">
+     <tr>
+      <td><![endif]>
+      <div>
+      <p class=MsoNormal align=center dir=RTL style='text-align:center'><b><span
+      lang=AR-SA style='font-size:9.0pt;line-height:115%;font-family:"Arial",sans-serif'>للإبلاغ
+      عن الأعراض الجانبية<o:p></o:p></span></b></p>
+      <p class=MsoNormal dir=RTL style='margin-top:0in;margin-right:.5in;
+      margin-bottom:0in;margin-left:0in;text-indent:-.25in;line-height:normal;
+      mso-list:l1 level1 lfo1'><![if !supportLists]><b style='mso-ansi-font-weight:
+      normal'><span style='font-size:9.0pt;font-family:"Times New Roman",serif;
+      mso-fareast-font-family:"Times New Roman"'><span style='mso-list:Ignore'>-<span
+      style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span></b><![endif]><span dir=RTL></span><b><span
+      lang=AR-SA style='font-size:9.0pt;font-family:"Arial",sans-serif'>المركز
+      الوطني للتيقظ والسلامة الدوائية</span></b><b><span dir=LTR
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'><o:p></o:p></span></b></p>
+      <p class=MsoNormal dir=RTL style='margin-top:0in;margin-right:32.35pt;
+      margin-bottom:0in;margin-left:0in;text-align:justify;text-indent:-14.2pt;
+      line-height:normal;mso-list:l0 level1 lfo2;tab-stops:list 0in'><![if !supportLists]><span
+      style='font-size:9.0pt;font-family:"Courier New";mso-fareast-font-family:
+      "Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><![endif]><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'>فاكس </span><span
+      dir=LTR></span><span dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'><span
+      dir=LTR></span>7662</span><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'><span dir=RTL></span>-</span><span
+      dir=LTR></span><span dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'><span
+      dir=LTR></span>205</span><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'><span dir=RTL></span>-</span><span
+      dir=LTR></span><span dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'><span
+      dir=LTR></span>1</span><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'><span dir=RTL></span>-</span><span
+      dir=LTR></span><span dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'><span
+      dir=LTR></span>966</span><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'><span dir=RTL></span>+</span><span
+      dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
+      <p class=MsoNormal dir=RTL style='margin-top:0in;margin-right:32.35pt;
+      margin-bottom:0in;margin-left:0in;text-align:justify;text-indent:-14.2pt;
+      line-height:normal;mso-list:l0 level1 lfo2;tab-stops:list 0in'><![if !supportLists]><span
+      style='font-size:9.0pt;font-family:"Courier New";mso-fareast-font-family:
+      "Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><![endif]><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'>الاتصال على المركز
+      الوطني للتيقظ والسلامة الدوائية </span><span dir=LTR></span><span
+      dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'><span
+      dir=LTR></span>+966-11-2038222</span><span dir=RTL></span><span
+      lang=AR-SA style='font-size:9.0pt;font-family:"Arial",sans-serif'><span
+      dir=RTL></span> ، تحويلة: 2317-2356-2353-2354-2334-2340<o:p></o:p></span></p>
+      <p class=MsoNormal dir=RTL style='margin-top:0in;margin-right:32.35pt;
+      margin-bottom:0in;margin-left:0in;text-align:justify;text-indent:-14.2pt;
+      line-height:normal;mso-list:l0 level1 lfo2;tab-stops:list 0in'><![if !supportLists]><span
+      style='font-size:9.0pt;font-family:"Courier New";mso-fareast-font-family:
+      "Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><![endif]><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'>الهاتف المجاني:
+      8002490000</span><span dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
+      <p class=MsoNormal dir=RTL style='margin-top:0in;margin-right:32.35pt;
+      margin-bottom:0in;margin-left:0in;text-align:justify;text-indent:-14.2pt;
+      line-height:normal;mso-list:l0 level1 lfo2;tab-stops:list 0in'><![if !supportLists]><span
+      style='font-size:9.0pt;font-family:"Courier New";mso-fareast-font-family:
+      "Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><![endif]><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'>البريد الإلكتروني
+      : </span><a href="mailto:npc.drug@sfda.gov.sa"><span dir=LTR
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'>npc.drug@sfda.gov.sa</span></a><span
+      lang=AR-SA style='font-size:9.0pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
+      <p class=MsoNormal dir=RTL style='margin-top:0in;margin-right:32.35pt;
+      margin-bottom:0in;margin-left:0in;text-align:justify;text-indent:-14.2pt;
+      line-height:normal;mso-list:l0 level1 lfo2;tab-stops:list 0in'><![if !supportLists]><span
+      style='font-size:9.0pt;font-family:"Courier New";mso-fareast-font-family:
+      "Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></span></span><![endif]><span dir=RTL></span><span lang=AR-SA
+      style='font-size:9.0pt;font-family:"Arial",sans-serif'>الموقع الإلكتروني:
+      </span><span dir=LTR style='font-size:9.0pt;font-family:"Arial",sans-serif'>www.sfda.gov.sa/npc</span><span
+      lang=AR-SA style='font-size:9.0pt;font-family:"Arial",sans-serif'><o:p></o:p></span></p>
+      </div>
+      <![if !mso]></td>
+     </tr>
+    </table>
+    <![endif]></v:textbox>
+   <w:wrap type="none"/>
+   <w:anchorlock/>
+  </v:shape><![endif]--><img width="609" height="125" alt="Text Box: للإبلاغ عن الأعراض الجانبية
+-	المركز الوطني للتيقظ والسلامة الدوائية
+o	فاكس 7662-205-1-966+
+o	الاتصال على المركز الوطني للتيقظ والسلامة الدوائية +966-11-2038222 ، تحويلة: 2317-2356-2353-2354-2334-2340
+o	الهاتف المجاني: 8002490000
+o	البريد الإلكتروني : npc.drug@sfda.gov.sa
+o	الموقع الإلكتروني: www.sfda.gov.sa/npc
+" src="file:///C:/Users/Razan/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" /><!--[if gte vml 1]><v:shapetype
+   id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+   path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><![endif]--><!--[if mso & !supportInlineShapes & supportFields]><span
+  dir=LTR><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:453.6pt;
+   height:90.7pt'>
+   <v:imagedata croptop="-65520f" cropbottom="65520f"/>
+  </v:shape><span style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL"><strong>دول مجلس التعاون الخليجي الأخرى:</strong></p><p dir="RTL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يرجى الاتصال بالسلطة الصحية المختصة .</p></td></tr></tbody></table>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&nbsp;&nbsp;&nbsp; يجب حفظ الكبسولات في درجة حرارة أقل من 30 &deg; مئوية .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يجب حفظ الكبسولات في عبوتها الأصلية بعيدا عن الرطوبة .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يحفظ بعيدا عن متناول أيدي الأطفال أو على مرأى منهم .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تستخدم دابيتران كبسول بعد تاريخ انتهاء الصلاحية الموجود على العبوة . تاريخ انتهاء الصلاحية يشير إلى اليوم الأخير من ذلك الشهر .</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا ينبغي التخلص من الأدوية عن طريق مياه الصرف الصحي أو النفايات المنزلية . استشرالصيدلي في كيفية التخلص من الأدوية التي لم تعد مطلوبة . حيث أنه من شأن هذه التدابيرالمساعدة على حماية البيئة .</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>ما تحتويه دابيتران كبسول 150 ملغم</strong></p><p dir="RTL">المادة الفعالة هي دابيجاتران&nbsp;إتيكسيلات ميسيلات .</p><p dir="RTL">تحتوي كل كبسوله من دابيتران كبسول على دابيجاتران&nbsp;إتيكسيلات ميسيلات ما يكافئ 150 ملغم من دابيجاتران&nbsp;إتيكسيلات .</p><p dir="RTL">الصواغات الأخرى هي: هيدروكسي بروبيل السيليلوز ، هيبروميلوز ، كرات السكر ، تالك ، و حمض الطرطريك .</p><p dir="RTL">يتكون غلاف الكبسولة من أكسيد الحديد الأحمر وأصفر أكسيد الحديد و هيبروميلوز وثاني أكسيد التيتانيوم ، وصبغة زرقاء كود FD&amp;C #1 ، وصبغة حمراء كود FD&amp;C #40</p><p dir="RTL">تتم طباعة الكبسولات بحبر أسود يحتوي على أكسيد الحديد الأسود وهيدروكسيد البوتاسيوم والبروبيلين جليكول والشيلاك ومحلول الأمونيا القوي</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">كبسولات جيلاتينية صلبة ذات مقاس 0 ملونة مطبوع عليها &nbsp;باللون الأسود &quot;H&quot; على الغطاء و&quot; D11 &quot;على الجسم مملوءة بحبيبات ذات اللون الأبيض القاتم إلى اللون الأصفر الباهت ولون غطاء الكبسولة أزرق فاتح ولون جسم الكبسولة كريمي معتم .</p><p dir="RTL"><strong>توافر دابيتران كبسول:</strong></p><p dir="RTL">يتوافر دابيتران كبسول 150 ملغم في عبوة حاوية .</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>صاحب حق التسويق:</strong></p><p dir="RTL"><strong>شركة أماروكس السعودية للصناعة</strong></p><p dir="RTL">شارع الجامعة &ndash; الملز &ndash; الرياض 11441</p><p dir="RTL">المملكة العربية السعودية&nbsp;.&nbsp;&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            04/2018
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2311211353
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2016
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        AVONEX 30 mcg/0.5 ml pre-filled pen
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        INTERFERON BETA-1A
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        µg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intramuscular use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        0
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        4
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Pre-filled pen
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        3329.40
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="VETTER PHARMA-FERTIGUNG, GMBH &amp; CO. KG" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            VETTER PHARMA-FERTIGUNG, GMBH & CO. KG
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 530]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Salehiya Trading Co.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Biogen Idec B.V-Natherland
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L03AB07
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                AVONEX 30 micrograms/0.5ml solution for injection in pre-filled pen.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each single-use pre-filled pen contains 30 micrograms (6 million IU) of interferon beta-1a in 0.5ml of
+solution.
+The concentration is 30 micrograms per 0.5 ml.
+Using the World Health Organisation (WHO) International Standard for Interferon, 30 micrograms of
+AVONEX contains 6 million IU of antiviral activity. The activity against other standards is not known.
+Excipient(s) with known effect
+For a full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Solution for injection in pre-filled pen.
+Clear and colourless solution.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>AVONEX is indicated for the treatment of<br />- Patients diagnosed with relapsing multiple sclerosis (MS). In clinical trials, this was characterised by two<br />or more acute exacerbations (relapses) in the previous three-years without evidence of continuous<br />progression between relapses; AVONEX slows the progression of disability and decreases the frequency<br />of relapses.<br />- Patients with a single demyelinating event with an active inflammatory process, if it is severe enough to<br />warrant treatment with intravenous corticosteroids, if alternative diagnoses have been excluded, and if<br />they are determined to be at high risk of developing clinically definite multiple sclerosis (see section 5.1).<br />AVONEX should be discontinued in patients who develop progressive MS.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment should be initiated under supervision of a physician experienced in the treatment of the disease.<br /><u>Posology</u><br />Adults: The recommended dosage for the treatment of relapsing MS is 30 micrograms (0.5 ml solution),<br />administered by intramuscular (IM) injection once a week (see section 6.6). No additional benefit has been<br />shown by administering a higher dose (60 micrograms) once a week.</p><p>Titration: To help patients reduce the incidence and severity of flu-like symptoms (see section 4.8), titration<br />can be performed at the initiation of treatment. Titration using the pre-filled syringe can be achieved by<br />initiating therapy on &frac14; dose increments per week reaching the full dose (30 micrograms/week) by the fourth<br />week.<br />An alternative titration schedule can be achieved by initiating therapy on approximately a &frac12; dose of<br />AVONEX once a week before increasing to the full dose. In order to obtain adequate efficacy, a dose of 30<br />micrograms once a week should be reached and maintained after the initial titration period.<br />Once a full dose is achieved patients may begin using AVONEX PEN.<br />Prior to injection and for an additional 24 hours after each injection, an antipyretic analgesic is advised to<br />decrease flu-like symptoms associated with AVONEX administration. These symptoms are usually present<br />during the first few months of treatment.<br />Paediatric population: The safety and efficacy of AVONEX in adolescents aged 12 to 16 years have not yet<br />been established. Currently available data are described in section 4.8 and 5.1 but no recommendation on a<br />posology can be made.<br />The safety and efficacy of AVONEX in children below 12 years of age have not yet been established. No data<br />are available.<br />Elderly: Clinical studies did not include a sufficient number of patients aged 65 and over to determine<br />whether they respond differently than younger patients. However, based on the mode of clearance of the<br />active substance there are no theoretical reasons for any requirement for dose adjustments in the elderly.</p><p><u>Method of administration</u><br />At the present time, it is not known for how long patients should be treated. Patients should be clinically<br />evaluated after two years of treatment and longer-term treatment should be decided on an individual basis by<br />the treating physician. Treatment should be discontinued if the patient develops chronic progressive MS.<br />AVONEX PEN is a pre-filled pen, intended for single use, and should only be used following adequate<br />training.<br />The recommended intramuscular injection site using the AVONEX PEN is the upper, outer thigh muscle. The<br />injection site should be varied each week.<br />For administration of AVONEX via the AVONEX PEN, the instructions in the package leaflet should be<br />followed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                - Patients with a history of hypersensitivity to natural or recombinant interferon beta or to any excipients
+listed in section 6.1.
+- Patients with current severe depression and/or suicidal ideation (see sections 4.4 and 4.8).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Traceability</u></p><p>In order to improve the traceability of biological medicinal products, the name and the batch number<br />of the administered product should be clearly recorded.<br />AVONEX should be administered with caution to patients with previous or current depressive disorders, in<br />particular to those with antecedents of suicidal ideation (see section 4.3). Depression and suicidal ideation are<br />known to occur in increased frequency in the multiple sclerosis population and in association with interferon<br />use. Patients should be advised to immediately report any symptoms of depression and/or suicidal ideation to<br />their prescribing physician.<br />Patients exhibiting depression should be monitored closely during therapy and treated appropriately.<br />Cessation of therapy with AVONEX should be considered (see also sections 4.3 and 4.8).<br />AVONEX should be administered with caution to patients with a history of seizures, to those receiving<br />treatment with anti-epileptics, particularly if their epilepsy is not adequately controlled with anti-epileptics<br />(see sections 4.5 and 4.8).<br />Caution should be used and close monitoring considered when administering AVONEX to patients with<br />severe renal and hepatic failure and to patients with severe myelosuppression.</p><p>Thrombotic microangiopathy (TMA): Cases of thrombotic microangiopathy, manifested as thrombotic<br />thrombocytopenic purpura (TTP) or haemolytic uraemic syndrome (HUS), including fatal cases, have been<br />reported with interferon beta products. Events were reported at various time points during treatment and may<br />occur several weeks to several years after starting treatment with interferon beta. Early clinical features<br />include thrombocytopenia, new onset hypertension, fever, central nervous system symptoms (e.g. confusion,<br />paresis) and impaired renal function. Laboratory findings suggestive of TMA include decreased platelet<br />counts, increased serum lactate dehydrogenase (LDH) due to haemolysis and schistocytes (erythrocyte<br />fragmentation) on a blood film. Therefore, if clinical features of TMA are observed, further testing of blood<br />platelet levels, serum LDH, blood films and renal function is recommended. If TMA is diagnosed, prompt<br />treatment is required (considering plasma exchange) and immediate discontinuation of AVONEX is<br />recommended.<br />Nephrotic Syndrome: Cases of nephrotic syndrome with different underlying nephropathies including<br />collapsing focal segmental glomerulosclerosis (FSGS), minimal change disease (MCD),<br />membranoproliferative glomerulonephritis (MPGN) and membranous glomerulopathy (MGN) have been<br />reported during treatment with interferon-beta products. Events were reported at various time points during<br />treatment and may occur after several years of treatment with interferon beta. Periodic monitoring of early<br />signs or symptoms, e.g. oedema, proteinuria and impaired renal function is recommended, especially in<br />patients at higher risk of renal disease. Prompt treatment of nephrotic syndrome is required and<br />discontinuation of treatment with AVONEX should be considered.</p><p>Hepatic injury including elevated serum hepatic enzyme levels, hepatitis, autoimmune hepatitis and hepatic<br />failure has been reported with interferon beta in post-marketing (see section 4.8). In some cases, these<br />reactions have occurred in the presence of other medicinal products that have been associated with hepatic<br />injury. The potential of additive effects from multiple medicinal products or other hepatotoxic agents (e.g.<br />alcohol) has not been determined. Patients should be monitored for signs of hepatic injury and caution<br />exercised when interferons are used concomitantly with other medicinal products associated with hepatic<br />injury.<br />Patients with cardiac disease, such as angina, congestive heart failure or arrhythmia, should be closely<br />monitored for worsening of their clinical condition during treatment with AVONEX. Flu-like symptoms<br />associated with AVONEX therapy may prove stressful to patients with underlying cardiac conditions.</p><p>Laboratory abnormalities are associated with the use of interferons. Therefore, in addition to those laboratory<br />tests normally required for monitoring patients with MS, complete and differential white blood cell counts,<br />platelet counts, and blood chemistry, including liver function tests, are recommended during AVONEX<br />therapy. Patients with myelosuppression may require more intensive monitoring of complete blood cell<br />counts, with differential and platelet counts.<br />Patients may develop antibodies to AVONEX. The antibodies of some of those patients reduce the activity of<br />interferon beta-1a in vitro (neutralising antibodies). Neutralising antibodies are associated with a reduction in<br />the in vivo biological effects of AVONEX and may potentially be associated with a reduction of clinical<br />efficacy. It is estimated that the plateau for the incidence of neutralising antibody formation is reached after<br />12 months of treatment. Recent clinical studies with patients treated up to three years with AVONEX suggest<br />that approximately 5% to 8% develop neutralising antibodies.<br />The use of various assays to detect serum antibodies to interferons limits the ability to compare antigenicity<br />among different products.<br />In post marketing experience, decreased peripheral blood counts in all cell lines, including very rare<br />pancytopenia and profound thrombocytopenia have been reported.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No formal interaction studies have been performed in humans.<br />The interaction of AVONEX with corticosteroids or adrenocorticotropic hormone (ACTH) has not been<br />studied systematically. The clinical studies indicate that MS patients can receive AVONEX and<br />corticosteroids or ACTH during relapses.<br />Interferons have been reported to reduce the activity of hepatic cytochrome P450-dependent enzymes in<br />humans and animals. The effect of high-dose AVONEX administration on P450-dependent metabolism in<br />monkeys was evaluated and no changes in liver metabolising capabilities were observed. Caution should be<br />exercised when AVONEX is administered in combination with medicinal products that have a narrow<br />therapeutic index and are largely dependent on the hepatic cytochrome P450 system for clearance, e.g. some<br />classes of antiepileptics and antidepressants.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u><br />Pregnancy Category C.<br />A large amount of data (more than 1000 pregnancy outcomes) from registries and post-marketing experience<br />indicates no increased risk of major congenital anomalies after pre-conception exposure to interferon beta or<br />such exposure during the first trimester of pregnancy. However, the duration of exposure during the first<br />trimester is uncertain, because data were collected when interferon beta use was contraindicated during<br />pregnancy, and treatment likely interrupted when pregnancy was detected and/or confirmed. Experience with<br />exposure during the second and third trimester is very limited.<br />Based on animal data (see section 5.3), there is a possibly increased risk for spontaneous abortion. The risk of<br />spontaneous abortions in pregnant women exposed to interferon beta cannot adequately be evaluated based on<br />the currently available data, but the data do not suggest an increased risk so far.</p><p>If clinically needed, the use of Avonex may be considered during pregnancy.</p><p><u>Breast-feeding</u><br />Limited information available on the transfer of interferon beta-1a into breast milk, together with the chemical<br />/ physiological characteristics of interferon beta, suggests that levels of interferon beta-1a excreted in human<br />milk are negligible. No harmful effects on the breastfed newborn/infant are anticipated.<br />Avonex can be used during breast-feeding.<br /><u>Fertility</u><br />Fertility and developmental studies in rhesus monkeys have been carried out with a related form of interferon<br />beta-1a. At very high doses, anovulatory and abortifacient effects in test animals were observed (see section<br />5.3).<br />No information is available on the effects of interferon beta-1a on male fertility.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects of AVONEX on the ability to drive and use machines have been performed. Central<br />nervous system-related adverse reactions may have a minor influence on the ability to drive and use machines<br />in susceptible patients (see section 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The highest incidence of adverse reactions associated with AVONEX therapy is related to flu-like symptoms.<br />The most commonly reported flu-like symptoms are myalgia, fever, chills, sweating, asthenia, headache and<br />nausea. Titrating AVONEX at the initiation of therapy has demonstrated a reduction in the severity and<br />incidence of flu-like symptoms. Flu-like symptoms tend to be most prominent at the initiation of therapy and<br />decrease in frequency with continued treatment.<br />Transient neurological symptoms that may mimic MS exacerbations may occur following injections.<br />Transient episodes of hypertonia and/or severe muscular weakness that prevent voluntary movements may<br />occur at any time during treatment. These episodes are of limited duration, temporally related to the injections<br />and may recur after subsequent injections. In some cases, these symptoms are associated with flu-like<br />symptoms.<br />The frequencies of adverse reactions are expressed in patient-years, according to the following categories:<br />Very common (&ge;1/10 patient-years);<br />Common (&ge;1/100 to &lt;1/10 patient-years);<br />Uncommon (&ge;1/1, 000 to &lt;1/100 patient-years);<br />Rare (&ge;1/10, 000 to &lt;1/1,000 patient-years);<br />Very rare (&lt;1/10,000 patient-years);<br />Not known (cannot be estimated from the available data).</p><p>Patient-time is the sum of individual units of time that the patient in the study has been exposed to AVONEX<br />before experiencing the adverse reaction. For example, 100 person-years could be observed in 100 patients<br />who were on treatment for one year or in 200 patients who were on treatment for half a year.<br />Adverse reactions identified from studies (clinical trials and observational studies, with a period of follow-up<br />ranging from two years to six years) and other adverse reactions identified through spontaneous reporting<br />from the market, with unknown frequency, are provided in the table below.<br />Within each frequency grouping, undesirable effects are presented in order of decreasing seriousness.</p><p>&nbsp;</p><table border="1" cellspacing="1" cellpadding="1" style="width:750px"><tbody><tr><td style="width:181px"><p><strong>Investigations</strong></p><p><em>common</em></p><p>&nbsp;</p><p><em>uncommon</em></p><p>&nbsp;</p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>lymphocyte count decreased, white blood cell count decreased, neutrophil count decreased, hematocrit decreased, blood potassium increased, blood urea nitrogen increased</p><p>&nbsp;</p><p>platelet count decreased</p><p>&nbsp;</p><p>weight decreased, weight increased, liver function tests abnormal</p></td></tr><tr><td style="width:181px"><p><strong>Cardiac disorders</strong></p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>cardiomyopathy, congestive heart failure (see section 4.4), palpitations, arrhythmia, tachycardia</p></td></tr><tr><td style="width:181px"><p><strong>Blood and lymphatic system</strong><strong> </strong><strong>disorders</strong></p><p>&nbsp;</p><p><em>not known </em></p><p>&nbsp;</p><p><em>rare</em></p></td><td style="width:567px"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>pancytopenia and profound thrombocytopenia</p><p>&nbsp;</p>thrombotic microangiopathy including thrombotic thrombocytopenic purpura/haemolytic uraemic syndrome*</td></tr><tr><td style="width:181px"><p><strong>Nervous system disorders</strong></p><p><em>very common</em><em> </em></p><p>&nbsp;</p><p><em>common</em></p><p>&nbsp;</p><p><em>not known</em></p></td><td style="width:567px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>headache<sup>2</sup></p><p>&nbsp;</p><p>muscle spasticity, hypoesthesia</p><p>&nbsp;</p><p>neurological symptoms, syncope<sup>3</sup>, hypertonia, dizziness, paraesthesia, seizures, migraine</p></td></tr></tbody></table></td></tr><tr><td style="width:181px"><p><strong>Respiratory, thoracic and mediastinal disorders</strong></p><p><em>common</em></p><p><em>rare</em></p><p>&nbsp;</p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>&nbsp;</p><p>rhinorrhoea</p><p>dyspnoea</p><p>&nbsp;</p><p>pulmonary arterial hypertension<sup>┼</sup></p></td></tr><tr><td style="width:181px"><p><strong>Gastrointestinal disorders</strong></p><p><em>common</em></p></td><td style="width:567px"><p>&nbsp;</p><p>vomiting, diarrhoea, nausea<sup>2</sup></p></td></tr><tr><td style="width:181px"><p><strong>Skin and subcutaneous tissue disorders</strong></p><p><em>common</em></p><p><em>uncommon </em></p><p>&nbsp;</p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>&nbsp;</p><p>rash, sweating increased, contusion</p><p>alopecia</p><p>&nbsp;</p><p>angioneurotic oedema, pruritus, rash vesicular, urticaria, aggravation of psoriasis</p></td></tr><tr><td style="width:181px"><p><strong>Musculoskeletal and connective tissue disorders</strong></p><p>&nbsp;</p><p><em>common</em></p><p>&nbsp;</p><p>&nbsp;</p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>&nbsp;</p><p>muscle cramp, neck pain, myalgia<sup>2</sup>, arthralgia, pain in extremity, back pain,</p><p>muscle stiffness, musculoskeletal stiffness</p><p>&nbsp;</p>systemic lupus erythematosus, muscle weakness, arthritis</td></tr><tr><td style="width:181px"><p><strong>Renal and urinary disorders</strong></p><p><em>rare</em></p></td><td style="width:567px"><p>&nbsp;</p><p>nephrotic syndrome, glomerulosclerosis (see section 4.4 &lsquo;special warnings and precautions&rsquo;)</p></td></tr><tr><td style="width:181px"><p><strong>Endocrine disorders</strong></p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>hypothyroidism, hyperthyroidism</p></td></tr><tr><td style="width:181px"><p><strong>Metabolism and nutrition disorders</strong></p><p><em>common</em></p></td><td style="width:567px"><p>&nbsp;</p><p>anorexia</p></td></tr><tr><td style="width:181px"><p><strong>Infections and infestations</strong></p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>injection site abscess<sup>1</sup></p></td></tr><tr><td style="width:181px"><p><strong>Vascular disorders</strong></p><p><em>common </em></p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>flushing</p><p>vasodilatation</p></td></tr><tr><td style="width:181px"><p><strong>General disorders and administration site conditions</strong></p><p><em>very common</em></p><p>&nbsp;</p><p>&nbsp;</p><p><em>common</em></p><p>&nbsp;</p><p><em>uncommon </em></p><p>&nbsp;</p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>flu-like symptoms, pyrexia<sup>2</sup>, chills<sup>2</sup>, sweating<sup>2</sup></p><p>&nbsp;</p><p>injection site pain, injection site erythema, injection site bruising, asthenia<sup>2</sup>, pain, fatigue<sup>2</sup>, malaise, night sweats</p><p>&nbsp;</p><p>injection site burning</p><p>&nbsp;</p>injection site reaction, injection site inflammation, injection site cellulitis1, injection site necrosis, injection site bleeding, chest pain</td></tr><tr><td style="width:181px"><p><strong>Immune system disorders</strong></p><p><em>not known</em></p></td><td style="width:567px"><p>&nbsp;</p>anaphylactic reaction, anaphylactic shock, hypersensitivity reactions (angioedema, dyspnoea, urticaria, rash, pruritic rash)</td></tr><tr><td style="width:181px"><p><strong>Hepatobiliary disorders</strong></p><p><em>not known</em></p></td><td style="width:567px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p><p>hepatic failure (see section 4.4), hepatitis, autoimmune hepatitis</p></td></tr></tbody></table></td></tr><tr><td style="width:181px"><p><strong>Reproductive system and breast disorders</strong></p><p><em>uncommon</em></p></td><td style="width:567px"><p>&nbsp;</p><p>metrorrhagia, menorrhagia</p></td></tr><tr><td style="width:181px"><p><strong>Psychiatric disorders</strong></p><p><em>common </em></p><p>&nbsp;</p><p><em>not known</em></p></td><td style="width:567px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p><p>depression (see section 4.4), insomnia</p><p>&nbsp;</p><p>suicide, psychosis, anxiety, confusion, emotional lability</p></td></tr></tbody></table></td></tr></tbody></table><p>* Class label for interferon beta products (see section 4.4).</p><p><sup>┼</sup> Class label for interferon products, see below <em>Pulmonary arterial hypertension</em>.</p><p><sup>1&nbsp;</sup>Injection site reactions including pain, inflammation and very rare cases of abscess or cellulitis that may require surgical intervention have been reported.</p><p><sup>2&nbsp;</sup>The frequency of occurrence is higher at the beginning of treatment.</p><p><sup>3&nbsp;</sup>A syncope episode may occur after AVONEX injection, it is normally a single episode that usually appears&nbsp;at the beginning of the treatment and does not recur with subsequent injections.</p><p>&nbsp;</p><p>Pulmonary arterial hypertension<br />Cases of pulmonary arterial hypertension (PAH) have been reported with interferon beta products. Events<br />were reported at various time points including up to several years after starting treatment with interferon beta.</p><p><br /><u>Paediatric population</u><br />Limited published data suggest that the safety profile in adolescents from 12 to 16 years of age receiving&nbsp;AVONEX 30 micrograms IM once per week is similar to that seen in adults.</p><p><br /><u>Reporting of suspected adverse reactions</u><br />Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows&nbsp;continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked&nbsp;to report any suspected adverse reactions via the national reporting system.</p><p><br />To report any side effect (s):<br />&bull; Saudi Arabia National Pharmacovigilance Centre (NPC)<br />- Fax: +966-11-205-7662<br />- Call NPC at +966-11-2038222, Exts: 2317-2356-2340.<br />- SFDA Call Center: 19999<br />- E-mail: npc.drug@sfda.gov.sa<br />- Website: https://ade.sfda.gov.sa</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No case of overdose has been reported. However, in case of overdose, patients should be hospitalised for<br />observation and appropriate supportive treatment given.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic Group: Interferons, ATC code: L03 AB07.<br />Interferons are a family of naturally occurring proteins that are produced by eukaryotic cells in response to<br />viral infection and other biological inducers. Interferons are cytokines that mediate antiviral, antiproliferative,<br />and immunomodulatory activities. Three major forms of interferons have been distinguished: alpha, beta, and<br />gamma. Interferons alpha and beta are classified as Type I interferons, and interferon gamma is a Type II<br />interferon. These interferons have overlapping but clearly distinguishable biological activities. They can also<br />differ with respect to their cellular sites of synthesis.<br />Interferon beta is produced by various cell types including fibroblasts and macrophages. Natural interferon<br />beta and AVONEX (interferon beta-1a) are glycosylated and have a single N-linked complex carbohydrate<br />moiety. Glycosylation of other proteins is known to affect their stability, activity, biodistribution, and half-life<br />in blood. However, the effects of interferon beta that are dependent on glycosylation are not fully defined.</p><p><u>Mechanism of action</u><br />AVONEX exerts its biological effects by binding to specific receptors on the surface of human cells. This<br />binding initiates a complex cascade of intracellular events that leads to the expression of numerous interferoninduced<br />gene products and markers. These include MHC Class I, Mx protein, 2&rsquo; / 5&rsquo;-oligoadenylate<br />synthetase, 2-microglobulin, and neopterin. Some of these products have been measured in the serum and<br />cellular fractions of blood collected from patients treated with AVONEX. After a single intramuscular dose of<br />AVONEX, serum levels of these products remain elevated for at least four days and up to one week.<br />Whether the mechanism of action of AVONEX in MS is mediated by the same pathway as the biological<br />effects described above is not known because the pathophysiology of MS is not well established.</p><p><br /><u>Clinical efficacy and safety</u><br />The effects of lyophilised AVONEX in the treatment of MS were demonstrated in a placebo-controlled study<br />of 301 patients (AVONEX n=158, placebo n=143) with relapsing MS characterised by at least 2<br />exacerbations in the previous 3 years or at least one exacerbation per year prior to entry when the duration of<br />the disease was less than 3 years. Patients with an EDSS of 1.0 to 3.5 at entry were included in the clinical<br />trial. Due to the design of the study, patients were followed for variable lengths of time. 150<br />AVONEX-treated patients completed one year on study and 85 completed two years on study. In the study,<br />the cumulative percentage of patients who developed disability progression (by Kaplan-Meier life table<br />analysis) by the end of two years was 35% for placebo-treated patients and 22% for AVONEX-treated<br />patients. Disability progression was measured as an increase in the Expanded Disability Status Scale (EDSS)<br />of 1.0 point, sustained for at least six months. It was also shown that there was a one-third reduction in annual<br />relapse rate. This latter clinical effect was observed after more than one year of treatment.<br />A double-blind randomised dose comparison study of 802 relapsing MS patients (AVONEX 30 micrograms<br />n=402, AVONEX 60 micrograms n=400) has shown no statistically significant differences or trends between<br />the 30 micrograms and the 60 micrograms doses of AVONEX in clinical and general MRI parameters.<br />The effects of AVONEX in the treatment of MS were also demonstrated in a randomised double-blind study<br />performed with 383 patients (AVONEX n=193, placebo n=190) with a single demyelinating event associated<br />with at least two compatible brain MRI lesions. A reduction of the risk of experiencing a second event was<br />noted in the AVONEX treatment group. An effect on MRI parameters was also seen. The estimated risk of a<br />second event was 50% in three years and 39% in two years in the placebo group and 35% (three years) and<br />21% (two years) in the AVONEX group. In a post-hoc analysis, those patients with a baseline MRI with at<br />least one Gd-enhancing lesion and nine T2 lesions had a two-year risk of suffering a second event of 56% in<br />the placebo group and 21% in the AVONEX treatment group. However, the impact of early treatment with<br />AVONEX is unknown even in this high-risk subgroup as the study was mainly designed to assess the time to<br />the second event rather than the long-term evolution of the disease. Furthermore, for the time-being there is no<br />well established definition of a high risk patient although a more conservative approach is to accept at least<br />nine T2 hyperintense lesions on the initial scan and at least one new T2 or one new Gd-enhancing lesion on a<br />follow-up scan taken at least three months after the initial scan. In any case, treatment should only be<br />considered for patients classified at high risk.</p><p><u>Paediatric population</u><br />Limited data of the efficacy/safety of AVONEX 15 micrograms IM once per week (n=8) as compared to no<br />treatment (n=8) with follow up for 4 years showed results in line to those seen in adults, although the EDSS<br />scores increased in the treated group over the 4 year follow-up thus indicating disease progression.</p><p>No direct&nbsp;comparison with the dose currently recommended in adults is available.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The pharmacokinetic profile of AVONEX has been investigated indirectly with an assay that measures<br />interferon antiviral activity. This assay is limited in that it is sensitive for interferon but lacks specificity for<br />interferon beta. Alternative assay techniques are not sufficiently sensitive.<br />Following intramuscular administration of AVONEX, serum antiviral activity levels peak between 5 and 15<br />hours post-dose and decline with a half-life of approximately 10 hours. With appropriate adjustment for the<br />rate of absorption from the injection site, the calculated bioavailability is approximately 40%. The calculated<br />bioavailability is greater without such adjustments. Subcutaneous administration cannot be substituted for<br />intramuscular administration.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Carcinogenesis: No carcinogenicity data for interferon beta-1a are available in animals or humans.<br />Chronic Toxicity: In a 26-week repeated dose toxicity study in rhesus monkeys by intramuscular route once<br />per week, administered in combination with another immunomodulating agent, an anti CD40 ligand<br />monoclonal antibody, no immune response toward interferon beta-1a and no signs of toxicity were<br />demonstrated.<br />Local Tolerance: Intramuscular irritation has not been evaluated in animals following repeated administration<br />to the same injection site.<br />Mutagenesis: Limited but relevant mutagenesis tests have been carried out. The results have been negative.<br />Impairment of Fertility: Fertility and developmental studies in rhesus monkeys have been carried out with a<br />related form of interferon beta-1a. At very high doses, anovulatory and abortifacient effects in test animals<br />were observed. Similar reproductive dose-related effects have also been observed with other forms of alpha<br />and beta interferons. No teratogenic effects or effects on foetal development have been observed, but the<br />available information on the effects of Iinterferon beta-1a in the peri- and postnatal periods is limited.<br />No information is available on the effects of interferon beta-1a on male fertility.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Sodium acetate trihydrate,<br />Acetic acid, glacial,<br />Arginine hydrochloride,<br />Polysorbate 20,<br />Water for injections.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store in a refrigerator (2&deg;C - 8&deg;C).<br />DO NOT FREEZE.<br />The AVONEX PEN contains a pre-filled syringe of AVONEX and must be stored in the refrigerator.<br />Should refrigeration be unavailable, AVONEX PEN can be stored at room temperature (between 15&deg;C and<br />30&deg;C) for up to one week.<br />Store the AVONEX PEN in the inner carton in order to protect from light (see section 6.5).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>A pre-filled syringe of AVONEX is contained within a single-use, disposable, spring-powered pen injector<br />called AVONEX PEN. The syringe inside the pen is a 1 ml pre-filled syringe made of glass (Type I) with a<br />tamper evident cap and plunger stopper (bromobutyl) containing 0.5 ml of solution.<br />Pack size: Each single-use AVONEX PEN is packed in an individual carton, with one injection needle and a<br />pen cover. AVONEX PEN is available in pack sizes of four or twelve.<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>For single-use only: The solution for injection in a pre-filled syringe is contained within the AVONEX PEN.<br />Once removed from the refrigerator, the AVONEX PEN should be allowed to warm to room temperature<br />(15&deg;C to 30&deg;C) for about 30 minutes.<br />Do not use external heat sources such as hot water to warm AVONEX 30 micrograms solution for injection.<br />Each single-use, disposable, pre-filled pen contains a single dose of AVONEX. The solution for injection can<br />be observed through an oval medication display window on the AVONEX PEN. If the solution for injection<br />contains particulate matter or if it is any colour other than clear colourless, the pre-filled pen must not be used.<br />The injection needle is provided. The formulation does not contain a preservative.<br />Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                BIOGEN IDEC LIMITED
+Innovation House
+70 Norden Road
+Maidenhead
+Berkshire
+SL6 4AY
+United Kingdom
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                SEP/2019
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

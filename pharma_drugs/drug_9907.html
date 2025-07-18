@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        4-5299-19
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2019
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        BACLOFEN INTRATHECAL SINTETICA 2MG/ML INJECTION
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        BACLOFEN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intrathecal use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Ampoule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1099.55
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Sintetica SA " />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Sintetica SA 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 359]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Cigalah Group
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Sintetica SA 
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        M03BX01 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>1.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>What Baclofen </strong><strong>Sintetica is and what it is used for</strong></p><p>&nbsp;</p><p>Your doctor has decided that you or your child needs this medicine to help treat your condition.</p><p>Baclofen Intrathecal is intended for adults and children of 4 years and above and is used to reduce and relieve the excessive tension in your muscles (spasms) occurring in various illnesses such as cerebral palsy, multiple sclerosis, spinal cord diseases, cerebrovascular accidents, and other nervous system disorders.</p><p>This injection is used in people who haven&#39;t responded to oral medicines or who get unacceptable side effects when they take baclofen by mouth.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>2.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>What you need to know before </strong><strong>Baclofen </strong><strong>Sintetica is given to you</strong></p><p><strong>&nbsp;</strong></p><p><strong>Children and adolescents: </strong></p><p>Baclofen intrathecal formulation is intended for children of 4 years and above.</p><p>&nbsp;</p><p><strong>You must not be given &nbsp;Baclofen </strong><strong>Sintetica</strong></p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are allergic to baclofen or any of the other ingredients of this medicine (listed in section 6).</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you suffer from epilepsy refractory to therapy.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Baclofen Sintetica should not be administered by any route other than intrathecal (into the spinal canal).</p><p>&nbsp;</p><p><strong>Warnings and precautions</strong></p><p><strong>Talk to your doctor or pharmacist before using Baclofen </strong><strong>Sintetica</strong></p><p>&bull; if you are having any other injections into the spine</p><p>&bull; if you are suffering from any infection</p><p>&bull; if you had a head injury within the last year</p><p>&bull; if you ever had a crisis caused by a condition called autonomic dysreflexia (Your doctor will be able to explain this to you.)</p><p>&bull; if you have had a stroke</p><p>&bull; if you have epilepsy</p><p>&bull; if you have a stomach ulcer or any other problem with your digestion</p><p>&bull; if you suffer from any mental illness</p><p>&bull; if you are being treated for high blood pressure</p><p>&bull; if you have Parkinson&#39;s disease</p><p>&bull; if you suffer from any liver, kidney or lung disease</p><p>&bull; if you have diabetes</p><p>&bull; if you have difficulties in urinating</p><p>If the answer to any of this list of questions is YES, tell your doctor or nurse because Baclofen Sintetica may not be the right medicine for you.</p><p>&bull; If you are going to have an operation of any kind, make sure that the doctor knows that you are being treated with Baclofen Sintetica.</p><p>&bull; The presence of a PEG tube increases the incidence of infections in children.</p><p>&bull; If you have a slowed cerebrospinal fluid circulation the effect of Baclofen Intrathecal may be reduced.</p><p>&bull; Contact your doctor immediately if you think that Baclofen Sintetica is not working as well as usual. It is important to make sure that there are no problems with the pump.</p><p>&bull; Treatment with Baclofen Sintetica must not stop suddenly because of the risk of withdrawal effects. You must make sure that you do not miss those hospital visits when the pump reservoir is being refilled.</p><p>&bull; Your doctor may want to give you a check up from time to time while you are being treated with Baclofen Sintetica.</p><p>&nbsp;</p><p><strong>Precautions in paediatric patients: </strong></p><p>Children should be of sufficient body mass to accommodate the implantable pump for chronic infusion. There is very limited clinical data regarding the safety and efficacy of the use of Baclofen Sintetica in children under the age of four year.</p><p>&nbsp;</p><p><strong>Other medicines and Baclofen </strong><strong>Sintetica</strong></p><p><strong>Tell your doctor or pharmacist if you are taking, have recently taken or might take any other medicines.</strong></p><p>&nbsp;</p><p>Some medicines can interfere with your treatment. Remind your doctor or nurse if you are taking any of the following:</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Other medicines for your spastic condition</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Antidepressants</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Medicines for high blood pressure</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Other drugs which also affect the kidney, e.g. ibuprofen</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Medicines for Parkinson&#39;s disease</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Medicines for epilepsy</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Opiates for pain relief</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp; Medicines which slow down the nervous system, e.g. anti-histamines and sedatives. (Some of these can be bought over-the-counter.)</p><p>&nbsp;</p><p><strong>Baclofen </strong><strong>Sintetica with food and drink</strong></p><p>&bull;&nbsp; Be careful when drinking alcohol - it may affect you more than usual.</p><p>&nbsp;</p><p><strong>Pregnancy, breast-feeding and fertility</strong></p><p>Ask your doctor or nurse for advice before taking any medicine.</p><p>There are no adequate and sufficiently controlled studies in pregnant women. Baclofen crosses the placental barrier. Baclofen Sintetica must not be used during pregnancy, unless the potential benefits outweigh the possible risks to the foetus.</p><p><strong>&nbsp;</strong></p><p><strong>Breast-feeding</strong></p><p>It is not known whether measurable levels of the product can be detected in the maternal milk of lactating mothers treated with Baclofen Sintetica. At oral therapeutic doses, the active substance passes into breast milk, but in amounts so small that the infant will probably not experience any undesirable effects.</p><p>&nbsp;</p><p><strong>Driving and using machines</strong></p><p>Some people may feel drowsy and/or dizzy or have problems with their eyes while they are being treated with Baclofen Sintetica. If this happens, you should not drive or do anything that requires you to be alert (such as operate tools or machinery) until these effects have worn off.</p><p>&nbsp;</p><p><strong>Important information about some of the ingredients of Baclofen </strong><strong>Sintetica</strong></p><p>This medicinal product contains less than 1 mmol sodium (23 mg) per maximum daily dose, so it is essentially &ldquo;sodium-free&rdquo;.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p><strong>3.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>&nbsp;How to use Baclofen </strong><strong>Sintetica</strong></p><p>Baclofen Sintetica is administered by intrathecal injection. This means that the medicine is injected directly into the spinal fluid. The dose needed varies from person to person depending on their condition, and the doctor will decide what dose you need after he/she has tested your response to the drug.</p><p>First of all the doctor will find out, by giving you single doses of Baclofen Sintetica, whether it is suitable for you. Usually, this test dose is administered via lumbar puncture or an intrathecal (spinal) catheter, in order to provoke a response. During this period your heart and lung functions will be closely monitored. If your symptoms improve, a special pump which can deliver the drug continuously will be implanted into your chest or abdominal wall. The doctor will give you all of the information you need to use the pump and to get the correct dosage. Make sure that you understand everything.</p><p>&nbsp;</p><p>The final dose of Baclofen Sintetica depends on how each person responds to the drug. You will be started on a low dose, and this will be increased gradually over a few days, under the supervision of the doctor, until you are having the dose which is right for you. If the starting dose is too high, or if the dose is increased too quickly, you are more likely to experience side effects.</p><p>&nbsp;</p><p>To avoid unpleasant side effects which may be serious and even life-threatening, it is important that your pump does not run out. The pump must always be filled by a doctor or nurse, and you must make sure that you do not miss your clinic appointments.</p><p>&nbsp;</p><p>During long-term treatment some patients find that Baclofen Sintetica becomes less effective. You may require occasional breaks in treatment. Your doctor will advise you what to do.</p><p>Baclofen Sintetica is not suitable for all children. The doctor will decide.</p><p>&nbsp;</p><p>Efficacy of baclofen intrathecal has been demonstrated in controlled randomized studies with infusion systems. EU certified pumps can be used as implantable administration system: a refillable reservoir is implanted beneath the skin, mostly into the abdominal wall. This system is connected to an intrathecal (spinal) catheter that passes subcutaneously into the subarachnoid space. Other pumps, known to be suitable for intrathecal baclofen administration based on experience, may be used.</p><p>&nbsp;</p><p><strong>If you have been given too much Baclofen </strong><strong>Sintetica </strong></p><p>It is very important that you, and anyone caring for you, can recognize the signs of overdose. These may appear if the pump is not working properly, and you must tell the doctor straight away.</p><p>Signs of overdose are:</p><p>Unusual muscle weakness (too little muscle tone)</p><p>Sleepiness</p><p>Dizziness or light-headedness</p><p>Excessive salivation</p><p>Nausea or vomiting</p><p>Difficulty in breathing</p><p>Convulsions</p><p>Loss of consciousness</p><p>Abnormally low body temperature</p><p>&nbsp;</p><p><strong>If you stop using Baclofen </strong><strong>Sintetica</strong></p><p>You should not stop treatment suddenly. If the doctor decides to stop your treatment, the dose will be reduced gradually to prevent withdrawal symptoms such as muscle spasms and increased muscle rigidity, fast heart rate, fever, confusion, hallucinations, changes in mood and emotion, mental disorders, feeling persecuted or convulsions (fits). On rare occasions these symptoms could be life-threatening. If you or your caregivers notice any of these symptoms, contact your doctor immediately just in case something has gone wrong with the pump or delivery system.</p><p>&nbsp;</p><p>If you have any further questions on the use of this product, ask your doctor or pharmacist.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p><strong>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Possible side effects</strong></p><p>Like all medicines, Baclofen Sintetica can cause side effects, although not everybody gets them.</p><p>&nbsp;</p><p><u>The side effects listed below have been reported:</u></p><p><strong>&nbsp;</strong></p><p><strong>Very common: may affect more than 1 in 10 people</strong></p><p>Feeling tired, drowsy or weak.</p><p><strong>&nbsp;</strong></p><p><strong>Common: may affect up to 1 in 10 people</strong></p><p>Feeling lethargic (having no energy)</p><p>Headache, dizziness or light-headedness</p><p>Pain, fever or chills</p><p>Seizures</p><p>Tingling hands or feet</p><p>Problems with eyesight</p><p>Slurred speech Insomnia</p><p>Breathing difficulties, pneumonia</p><p>Feeling confused, anxious, agitated or depressed</p><p>Low blood pressure (fainting)</p><p>Feeling or being sick, constipation and diarrhoea</p><p>Loss of appetite, dry mouth or excessive saliva</p><p>Rash and itching, swelling of the face or hands and feet</p><p>Urinary incontinence, or problems when urinating</p><p>Cramps</p><p>Sexual problems in men, e.g. impotence.</p><p><strong>&nbsp;</strong></p><p><strong>Uncommon: may affect up to 1 in 100 people</strong></p><p>Feeling abnormally cold</p><p>Memory loss</p><p>Mood swings and hallucinations, feeling suicidal</p><p>Stomach ache, difficulty in swallowing, loss of taste, dehydration</p><p>Loss of muscle control</p><p>Raised blood pressure</p><p>Slow heart beat</p><p>Deep vein thrombosis</p><p>Flushed or pale skin, excessive sweating</p><p>Hair loss.</p><p>&nbsp;</p><p><strong>Other side effects (how often they happen is not known)</strong></p><p>Restlessness</p><p>Abnormally slow breathing rate.</p><p>&nbsp;</p><p>There have been rare reports of problems associated with the pump and delivery system. There are sometimes adverse events associated with the delivery system e.g. infections, a collection of immune cells at the tip of delivery tube or meningitis, in particular the presence of a PEG tube increased the incidence of deep infections in children.</p><p><strong>&nbsp;</strong></p><p><strong>Reporting of side effects</strong></p><p>If you get any side effects, talk to your doctor or nurse. This includes any possible side effects not listed in this leaflet.</p><p>You can also report side effects directly via the national reporting system.&nbsp;</p><p>&nbsp;</p><p>To Report any side effect(s):</p><ul><li><strong><em>Saudi Arabia:</em></strong></li></ul><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The National Pharmacovigilance and Drug Safety Centre (NPC)</p><p>o&nbsp;&nbsp; Fax:+966-11-205-7662</p><p>o&nbsp;&nbsp; Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.</p><p>o&nbsp;&nbsp; Toll free phone:8002490000</p><p>o&nbsp;&nbsp; E-mail:npc.drug@sfda.gov.sa</p><p>o&nbsp;&nbsp; Website:www.sfda.gov.sa/npc</p></td></tr></tbody></table><p><strong><em>&nbsp;</em></strong></p><ul><li><strong><em>Other GCC States</em></strong></li></ul><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please contact the relevant competent authority.</p></td></tr></tbody></table><p><strong><em>&nbsp;</em></strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>This is a Medicament</strong></p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medicament is a product which affects your health and its consumption contrary to instructions is dangerous for you.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Follow strictly the doctor&rsquo;s prescription, the method of use and the instructions of the pharmacist who sold the medicament.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The doctor and the pharmacist are the experts in medicines, their benefits and risks.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not by yourself interrupt the period of treatment prescribed for you.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not repeat the same prescription without consulting your doctor.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Keep all medicaments out of reach of children.</p></td></tr></tbody></table><p>&nbsp;</p><p>By reporting side effects you can help provide more information on the safety of this medicine.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p><strong>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; How to store Baclofen </strong><strong>Sintetica</strong></p><p>Keep this medicine out of the sight and reach of children.</p><p>Do not use Baclofen Sintetica after the expiry date {month/year} which is stated on the outer carton and on the ampoule.The expiry date refers to the last day of that month.</p><p>Do not refrigerate or freeze.</p><p>Store in the original package in order to protect from light.</p><p>From a microbiological point of view, unless the method of opening and dilution precludes the risk of microbial contamination, the product should be used immediately. If not used immediately, in-use storage times and conditions are the responsibility of the user.</p><p>&nbsp;</p><p>Do not use Baclofen Sintetica if you notice that the solution is not clear and free from particles.</p><p>As it is limited to hospital use the waste drug elimination is carried out directly by the hospital. These measures will help to protect the environment.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p><strong>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contents of the pack and other information</strong></p><p><strong>&nbsp;</strong></p><p><strong>What </strong><strong>Baclofen </strong><strong>Sintetica contains</strong></p><p>&nbsp;</p><p>The active substance is baclofen.</p><p><em>&nbsp;</em></p><p><em>Baclofen </em><em>Sintetica 10mg/5ml solution for infusion</em></p><p>1 ampoule with 5 ml of solution contains 10 mg of baclofen.</p><p>1 ml of solution for infusion contains 2.0 mg of baclofen.</p><p>&nbsp;</p><p><em>Baclofen Sintetica 40mg/20ml solution for infusion</em></p><p>1 ampoule with 20 ml of solution contains 40 mg of baclofen.</p><p>1 ml of solution for infusion contains 2.0 mg of baclofen</p><p><em>&nbsp;</em></p><p><em>Baclofen Sintetica 10mg/20ml solution for infusion</em></p><p>1 ampoule with 20 ml of solution contains 10 mg of baclofen.</p><p>1 ml of solution for infusion contains 0.5 mg of baclofen.</p><p>&nbsp;</p><p><em>Baclofen Sintetica 0.05mg/1ml solution for injection</em></p><p>1 ampoule with 1 ml of solution contains 0.05 mg of baclofen.</p><p>1 ml of solution for injection contains 0.05 mg of baclofen.</p><p>&nbsp;</p><p>The other ingredients are sodium chloride (3.5 mg/ml sodium) and water for injections.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                	What Baclofen Sintetica looks like and contents of the pack
+
+Solution for infusion
+Clear and colorless solution in ampoules.
+
+Baclofen Sintetica 10mg/5ml
+Type I clear colorless glass 5 mL ampoules with score-break and violet colored ring marker. 
+Box of 5 and 10 ampoules containing 5 ml of solution.
+
+Baclofen Sintetica 40mg/20ml
+Type I clear colorless glass 20 mL ampoules with score-break and green colored ring marker. 
+Box of 1 ampoule containing 20 ml of solution.
+
+Baclofen Sintetica 10mg/20ml
+Type I clear colorless glass 20 mL ampoules with score-break and red colored ring marker. 
+Box of 1 ampoule containing 20 ml of solution.
+
+Solution for injection
+Clear and colorless solution in ampoules.
+
+Baclofen Sintetica 0.05mg/1ml
+Type I clear colorless glass 2 mL ampoules with score-break and blue colored ring marker.
+Box of 5 and 10 ampoules containing 1 ml of solution.
+
+	Not all pack sizes may be marketed
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Sintetica SA, via Penate 5, 6850 Mendrisio, Switzerland</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                12/2019
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>1.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>ما هو باكلوفين سينتيتيكا وفيم يستخدم</strong></p><p dir="RTL">لقد قرر الطبيب أنك (أو طفلك) بحاجة إلى هذا الدواء لعلاج حالتك.</p><p dir="RTL">ويعد باكلوفين سينتيتيكا مناسبًا للبالغين وللأطفال فوق 4 سنوات ويستخدم الدواء لتخفيف التوتر العضلي المفرط (التشنج) وإرخاء العضلات الذي يحدث نتيجة لبعض الأمراض مثل الشلل الدماغي والتصلب المتعدد وأمراض الحبل الشوكي والجلطات الوعائية الدماغية واضطرابات الجهاز العصبي الأخرى.</p><p>ويستخدم هذا الدواء للمرضى الذين لم يستجيبوا للعلاج الفموي &nbsp;أو الذين تظهر عليه أعراض جانبية خطرة عند تناول باكلوفين عن طريق الفم</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&nbsp;</p><p dir="RTL"><strong>2.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>ما يجب معرفته قبل تناول باكلوفين سينتيتيكا </strong></p><p dir="RTL">للأطفال والبالغين:</p><p dir="RTL">يعد باكلوفين سينتيتيكا مناسبًا للبالغين وللأطفال فوق 4 سنوات</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>يجب عدم تناول باكلوفين</strong> <strong>&nbsp;سينتيتيكا في الحالات التالية:</strong></p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من حساسية ضد مادة الباكلوفين &nbsp;أو ضد أي مكونات أخرى في هذا الدواء (انظر القسم 6)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا عانيت من&nbsp; نوبات&nbsp; الصرع&nbsp; كرد&nbsp; فعل&nbsp; بعد تناولك&nbsp; هذا&nbsp; الدواء</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا يجوز تناول باكلوفين سينتيتيكا بأي طريقة أخرى بخلاف الحقن (في القناة الشوكية)</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>التحذيرات والاحتياطات </strong></p><p dir="RTL"><strong>يجب استشارة طبيبك أو الصيدلي قبل تناول </strong><strong>باكلوفين سينتيتيكا في الحالات التالية:</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تتناول أي حقن أخرى عن طريق العمود الفقري</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من أي التهابات &nbsp;</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا أصبت &nbsp;في رأسك خلال السنة الماضية.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا &nbsp;تعرضت&nbsp; في&nbsp; الماضي &nbsp;بحالة&nbsp;&nbsp; من التشنج العصبي&nbsp; اللاارادى المفرط&nbsp; (يمكن أن يوضح لك طبيبك &nbsp;هذه الحالة )</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا أصبت بسكتة &nbsp;او جلطة دماغية من قبل</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من الصرع</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من قرحة المعدة أو أي مشكلة هضمية أخرى</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من أي أمراض عقلية</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعالج من ضغط الدم العالي</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من مرض الشلل الرعاش</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من أي أمراض بالكلى أو الكبد أو الرئتين</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من مرض السكري</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من صعوبة في التبول</p><p dir="RTL">في حالة كنت تعاني من أي مما سبق يجب إبلاغ طبيبك أو ممرضك حيث إن باكلوفين سينتيتيكا قد لا يناسب حالتك.</p><p dir="RTL">&middot;&nbsp; إذا كنت ستخضع لأي عملية من أي نوع يجب إبلاغ طبيبك بأنك تتناول دواء باكلوفين إنتراثيكال سينتيتيكا.</p><p dir="RTL">&middot;&nbsp; يزيد وجود الأنبوب المعدي (PEG) من احتمالية إصابة الأطفال بالالتهابات.</p><p dir="RTL">&middot;&nbsp; إذا كان لديك انخفاض في دوران السائل النخاعي، فقد يخفف ذلك من تأثير باكلوفين سينتيتيكا</p><p dir="RTL">&middot;&nbsp; في حالة ملاحظتك تغير تأثير باكلوفين سينتيتيكا إنتراثيكال عن المعتاد، يجب التواصل مع طبيبك فورًا. &nbsp;من&nbsp; الضرورى &nbsp;التأكد من عدم وجود مشكلة في مضخة الباكلوفين.</p><p dir="RTL">&middot;&nbsp; يجب عدم التوقف عن تناول باكلوفين سينتيتيكا بشكل مفاجئ لتجنب مخاطر اثر الانسحاب ، ويجب التأكد &nbsp;ألا يفوتك زيارات المستشفى التي يتم فيها إعادة &nbsp;ملء&nbsp; المضخة.</p><p dir="RTL">&middot;&nbsp; قد يحتاج طبيبك إلى إجراء فحص لك من وقت لآخر أثناء علاجك بدواء باكلوفين سينتيتيكا</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الاحتياطات اللازمة للأطفال:</strong></p><p dir="RTL">يجب أن يكون وزن الأطفال مناسبًا لزرع مضخة الحقن المزمن.</p><p dir="RTL">وحتى الآن تعد المعلومات التي تم التوصل إليها فيما يتعلق بسلامة استخدام باكلوفين سينتيتيكا وفاعليته على الأطفال دون 4 سنوات محدودة للغاية</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تناول الأدوية الأخرى مع باكلوفين سينتيتيكا </strong></p><p dir="RTL"><strong>يجب إبلاغ طبيبك في حالة تناولك لأي أدوية أخرى سواء مؤخرًا أم في الوقت الحالي أو احتمالية تناولك لأي أدوية أخرى</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">قد يتعارض تأثير بعض الأدوية مع تأثير باكلوفين سينتيتيكا إنتراثيكال،&nbsp; يجب إبلاغ الطبيب أو الممرض في حالة تناولك أي من الأدوية التالية:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أي أدوية أخرى لعلاج &nbsp;نفس حالة التشنج.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مضادات الاكتئاب</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية لعلاج ارتفاع ضغط الدم</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أي أدوية أخرى تؤثر على الكلى، مثل: أيبوبروفين</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية لعلاج الشلل الرعاش</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية لعلاج الصرع</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;كل&nbsp; مشتقات &nbsp;الافيون</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأدوية التي تبطئ الجهاز العصبي، مثال: مضادات الحساسية والمهدئات (بعض هذه الأدوية يمكن شراءها دون وصفة طبية).</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تناول باكلوفين سينتيتيكا مع الأطعمة والمشروبات</strong><strong> </strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; احذر عند تناول المشروبات الكحولية- فقد يزيد تأثيرها عن المعتاد.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الحمل والرضاعة والخصوبة</strong></p><p dir="RTL">استشر طبيبك قبل تناول الدواء</p><p dir="RTL">لا يوجد دراسات كافية على النساء الحوامل حتى الآن، إلا أن الباكلوفين يخترق حاجز المشيمة .لذا يجب عدم &nbsp;تناول&nbsp; باكلوفين سينتيتيكا أثناء الحمل إلا في حال كانت فوائد تناوله أعلى من مخاطره على الجنين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الرضاعة</strong></p><p dir="RTL">لم يتم حتى الآن معرفة إذا ما كان يمكن قياس مستوى المنتج في حليب الأم المرضعة التي تتناول دواء باكلوفين سينتيتيكا ، إلا أنه عند تناول الدواء عن طريق الفم، تصل نسبة ضئيلة جدًا من المادة الفعالة إلى حليب الأم بما لا يتسسب في آثار جانبية على الطفل.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>القيادة واستخدام الآلات</strong></p><p dir="RTL">قد يشعر البعض الدوار ومشكلات في الرؤية عند تناول باكلوفين سينتيتيكا ، في حالة حدوث ذلك، يجب عدم القيادة أو القيام بأي مهام تتطلب التركيز أو الانتباه (مثل تشغيل الآلات أو الماكينات) حتى زوال تلك الأثار.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>معلومات مهمة عن بعض مكونات باكلوفين سينتيتيكا </strong></p><p dir="RTL">يحتوى هذا الدواء على أقل من 1 مليمول من الصوديوم (23 مجم) في الجرعة القصوى اليومية، لذا فهو يعد خالي من الصوديوم.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&nbsp;</p><p dir="RTL"><strong>3.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>كيفية تناول باكلوفين سينتيتيكا </strong></p><p dir="RTL">يتم تناول باكلوفين سينتيتيكا عن طريق الحقن داخل القراب (في العمود الفقري)، أي أن الدواء يتم حقنه إلى السائل النخاعي مباشرة، وتختلف الجرعة التي يحتاجها المريض من حالة لأخرى، ويقرر الطبيب ذلك بعد اختبار مدى استجابتك للدواء.</p><p dir="RTL">سيقوم الطبيب أولًا بتحديد ما إذا كان الدواء مناسبًا لك وذلك عن طريق إعطائك جرعة واحدة من باكلوفين سينتيتيكا إما عن طريق البزل القطني أو &nbsp;عن طريق قسطرة داخل القراب (في العمود الفقري) وذلك لتحفيز رد فعل الجسم تجاه الدواء.</p><p dir="RTL">وخلال هذه الفترة، سيتم مراقبة أداء القلب والرئتين عن كثب، في حالة تحسن الأعراض، سيتم زرع مضخة خاصة في منطقة الصدر أو جدار البطن لضخ الدواء إلى جسدك بصفة مستمرة، كما سيقوم الطبيب بتزويدك بكافة المعلومات التي تحتاج إليها فيما يعلق بكيفية استخدام المضخة وتناول الجرعة المناسبة، تأكد من استيعابك لكافة المعلومات، ويتم تحديد الجرعة النهائية وفقًا لرد فعل كل مريض على الدواء بعد الاختبار، وسيتم البدء بجرعة منخفضة وستزداد الجرعة بالتدريج خلال أيام قليلة، وذلك تحت إشراف الطبيب حتى يتم تحديد الجرعة المناسبة لك.</p><p dir="RTL">في حال كانت الجرعة الأولية عالية، أو في حال زادت الجرعة بسرعة شديدة، قد تعاني من بعض الأعراض الجانبية، ولتجنب تلك الأعراض التي قد تشكل خطرًا على حياتك، من الضروري ألا تنفذ المضخة أبدًا، لذا يجب أن يقوم الطبيب أو الممرض بملئها، كما يجب ألا يفوتك أي موعد بالعيادة.</p><p dir="RTL">أثناء العلاج طويل المدى، قد يجد المرضى أن تأثير باكلوفين سينتيتيكا قد انخفض، لذا قد تحتاج إلى فترات راحة أثناء فترة العلاج، وسوف يرشدك الطبيب إلى ما يجب عليك القيام به.</p><p dir="RTL">لا يعد باكلوفين سينتيتيكا مناسبًا لكافة الأطفال، ويتوقف ذلك على قرار الطبيب.</p><p dir="RTL">وقد أثبتت الدراسات العشوائية أن الباكلوفين يكون له تأثير قوي إذا تم تناوله داخل القراب من خلال جهاز حقن، ويمكن استخدام المضخات المعتمدة من الاتحاد الأوروبي كجهاز يمكن زرعه بالجسم &nbsp;حيث يتكون من خزان يمكن إعادة ملأه ويتم زرعه تحت الجلد، وعادة يتم ذلك في منطقة جدار البطن، ويتم توصيل هذا الجهاز بقسطرة داخل القراب (في العمود الفقري) تمر تحت الجلد في المنطقة تحت العنكبوتية.</p><p dir="RTL">ويمكن استخدام أنواع أخرى من المضخات لحقن الباكلوفين داخل القراب (في العمود الفقري) وذلك حسب التجارب.</p><p dir="RTL"><strong>في حالة تناول جرعة زائدة من باكلوفين سينتيتيكا </strong></p><p dir="RTL">من الضروري ملاحظة أعراض الجرعة الزائدة، وقد يحدث ذلك عندما لا تعمل المضخة بالشكل الصحيح، ويجب عندئذ إبلاغ الطبيب فورًا.</p><p dir="RTL">أعراض<strong> </strong>تناول جرعة زائدة:</p><p dir="RTL">ضعف شديد في العضلات</p><p dir="RTL">الشعور بالنعاس</p><p dir="RTL">الشعور بالدوار</p><p dir="RTL">الشعور بالغثيان والقيء</p><p dir="RTL">صعوبة في التنفس</p><p dir="RTL">التشنجات</p><p dir="RTL">فقدان الوعي</p><p dir="RTL">انخفاض شديد في درجة حرارة الجسم</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إذا توقفت عن استخدام باكلوفين سينتيتيكا </strong></p><p dir="RTL">يجب عدم وقف العلاج بشكل مفاجئ؛ إذا قرر الطبيب وقف العلاج الخاص بك سيقوم بتقليل الجرعة تدريجيًا لمنع ظهور أعراض الانسحاب مثل تشنجات العضلات، وزيادة تصلب العضلات، وزيادة معدلات ضربات القلب، والحمى، والارتباك، والهلوسة، وتغيرات في الحالة المزاجية والعاطفية، والاضطرابات النفسية، والشعور بالاضطهاد أو التشنجات(نوبات)؛ وفي بعض الحالات النادرة يمكن أن تشكل هذه الأعراض خطورة على حياة الفرد. إذا لاحظت ظهور أي من هذه الأعراض عليك يرجى استشارة طبيبك على الفور في حال ظهور مشكلة في المضخة أثناء تناولك للدواء.</p><p dir="RTL">في حال لديك أي تساؤلات أخرى حول استخدام هذا المنتج استشر الطبيب أو الصيدلي.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&nbsp;</p><p dir="RTL">4.&nbsp;&nbsp;&nbsp;&nbsp; <strong>الأعراض الجانبية المحتملة</strong></p><p dir="RTL">مثل باقي الأدوية؛ يمكن أن يسبب باكلوفين سينتيتيكا أعراض جانبية ولكنها تصيب البعض فقط.</p><p dir="RTL"><u>تم الإبلاغ عن الأعراض الجانبية المذكورة أدناه:</u></p><p dir="RTL"><strong>أعراض جانبية شائعة جدًا: قد تصيب أكثر من فرد واحد بين كل عشر أفراد</strong></p><p dir="RTL">الإحساس بالتعب، النعاس والوهن.</p><p dir="RTL"><strong>أعراض جانبية شائعة: يمكن أن تصيب فرد واحد كل عشر أفراد</strong></p><p dir="RTL">الإحساس بالخمول (عدم وجود طاقة)</p><p dir="RTL">الصداع، والدوار أو الدوار الخفيف</p><p dir="RTL">الألم، والحمى، والارتجاف</p><p dir="RTL">نوبات صرع</p><p dir="RTL">وخز خفيف في اليدين والقدمين</p><p dir="RTL">مشاكل في الرؤية</p><p dir="RTL">اللعثمة في الحديث الناجمة عن الأرق</p><p dir="RTL">صعوبات في التنفس، والالتهاب الرئوي</p><p dir="RTL">الإحساس بالقلق والاضطراب والاكتئاب</p><p dir="RTL">انخفاض ضغط الدم (الإغماء)</p><p dir="RTL">المرض أو الشعور بالمرض، الإمساك والإسهال</p><p dir="RTL">فقدان الشهية وجفاف الفم وزيادة إفراط اللعاب</p><p dir="RTL">حكة أو طفح جلدي، تورم في الوجه أو اليدين أو القدمين</p><p dir="RTL">سلس البول أو مشاكل عند التبول</p><p dir="RTL">تقلصات</p><p dir="RTL">مشاكل جنسية لدى الرجال؛ على سبيل المثال: الضعف الجنسي.</p><p dir="RTL"><strong>أعراض جانبية غير شائعة: قد تصيب فرد واحد من كل مائة فرد</strong></p><p dir="RTL">الشعور المفرط بالبرد</p><p dir="RTL">فقدان الذاكرة</p><p dir="RTL">تقلبات في الحالة المزاجية والهلوسة والميول الانتحارية</p><p dir="RTL">ألم في المعدة وصعوبة في البلع وفقدان حاسة التذوق والجفاف</p><p dir="RTL">فقدان القدرة على التحكم في العضلات</p><p dir="RTL">ارتفاع ضغط الدم</p><p dir="RTL">انخفاض في معدل ضربات القلب</p><p dir="RTL">تخثر الأوردة العميق (جلطة)</p><p dir="RTL">شحوب الجلد، والتعرق المفرط</p><p dir="RTL">تساقط الشعر</p><p dir="RTL"><strong>أعراض جانبية أخرى (غير معروف معدل حدوثها)</strong></p><p dir="RTL">الأرق</p><p dir="RTL">شدة بطء معدل التنفس</p><p dir="RTL">نادرًا ما تم الإبلاغ عن مشاكل مرتبطة بتناول الدواء عن طريق المضخة، ففي بعض الأحيان يوجد آثار ضارة ناتجة عن طريقة تناول الدواء مثل العدوى، ووجود مجموعة من الخلايا المناعية على طرف أنبوبة توصيل الدواء أو الالتهاب السحائي؛ بصفة خاصة وجود واستخدام الأنبوب المعدي ((PEG يزيد من معدل حالات الإصابة بالعدوى العميقة عند الأطفال.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إخطار الطبيب عن الآثار الجانبية</strong></p><p dir="RTL">في حال إصابتك بأي من الأعراض الجانبية، استشر الطبيب أو الممرضة. يتضمن ذلك أي أعراض جانبية غير مذكورة في هذه النشرة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">يمكنك أيضًا الإبلاغ عن الآثار الجانبية مباشرة عن طريق نظام الإبلاغ الوطني عن الحوادث الضارة للأدوية.</p><p dir="RTL">للابلاغ عن الاعراض الجانبية:</p><p dir="RTL">&middot;&nbsp; المملكة العربية السعودية:</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0" style="width:613px"><tbody><tr><td style="vertical-align:top"><p dir="RTL">-المركز الوطني للتيقظ و السلامة الدوائية</p><p dir="RTL">o فاكس: +966-11-205-7662</p><p dir="RTL">o للاتصال بالادارة التنفيذية للتيقظ و ادارة الازمات. هاتف: +966-11-20382222&nbsp; تحويلة: 2353-2340-2334-2354-2317-2356</p><p dir="RTL">o الهاتف المجاني: 8002490000</p><p dir="RTL">o البريد الالكتروني: npc.drug@sfda.gov.sa</p><p dir="RTL">o الموقع الالكتروني: www.sfda.gov.sa/npc</p></td></tr></tbody></table><p dir="RTL">&middot;&nbsp; دول الخليج الاخرى:</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0" style="width:613px"><tbody><tr><td style="vertical-align:top"><p dir="RTL">-&nbsp;&nbsp; الرجاء الاتصال بالمؤسسات و الهيئات الوطنية في كل دولة.</p></td></tr></tbody></table><p dir="RTL">&nbsp;</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0" style="width:612px"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><strong>ان هذا الدواء </strong></p><p dir="RTL">-&nbsp;&nbsp; الدواء مستحضر يؤثر على صحتك و استهلاكه خلافا للتعليمات يعرضك للخطر.</p><p dir="RTL">-&nbsp;&nbsp; اتبع بدقة وصفة الطبيب و طريقة الاستعمال المنصوص عليها و تعليمات الصيدلي الذي صرفها لك.</p><p dir="RTL">-&nbsp;&nbsp; &nbsp;ان الطبيب و الصيدلي هما الخبيران في الدواء و بنفعه و ضرره.</p><p dir="RTL">-&nbsp;&nbsp; لا تقطع مدة العلاج المحددة لك من تلقاء نفسك.</p><p dir="RTL">-&nbsp;&nbsp; لا تكرر صرف الدواء بدون استشارة الطبيب.</p><p dir="RTL">-&nbsp;&nbsp; لا تترك الادوية في متناول أيدي الأطفال.&nbsp;</p></td></tr></tbody></table><p dir="RTL">&nbsp;</p><p dir="RTL">يمكنك أن تساعد على توفير المزيد من المعلومات حول سلامة هذا الدواء من خلال الإبلاغ عن الآثار الجانبية.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&nbsp;</p><p dir="RTL"><strong>5.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>كيفية تخزين باكلوفين سينتيتيكا </strong></p><p dir="RTL">يحفظ هذا الدواء بعيدًا عن متناول الأطفال.</p><p dir="RTL">لا يُنصح باستخدام باكلوفين سينتيتيكا بعد تاريخ الانتهاء} الشهر\العام {والمدون على العلبة الخارجية للأمبول. يشير تاريخ الانتهاء إلى اليوم الأخير من ذلك الشهر.</p><p dir="RTL">لا يحفظ الدواء في الثلاجة أو الفريزر</p><p dir="RTL">يحفظ الدواء في العلبة الأصلية لحمايته بعيدًا عن الضوء.</p><p dir="RTL">من وجهه نظر بيولوجية، يجب استخدام الدواء في الحال مالم يتسبب الفتح والتخفيف في ظهور خطر التلوث الميكروبي. إن لم يتم استخدامه على الفور يتحمل المستخدم مسؤولية ظروف وأوقات التخزين.</p><p dir="RTL">لا يُنصح باستخدام باكلوفين سينتيتيكا إذا لاحظت تعكر المحلول وخلوه من الجزيئات. يقتصر على المستشفى القضاء على مخلفات العقار والتي تتم مباشرة من قبل المستشفى. سوف تساعدك هذه الإجراءات في حماية البيئة.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&nbsp;</p><p dir="RTL"><strong>6.&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>محتويات العبوة ومعلومات أخرى</strong></p><p dir="RTL"><strong>ما هي محتويات باكلوفين سينتيتيكا </strong></p><p dir="RTL">المادة الفعالة للعقار هي مادة الباكلوفين.</p><p dir="RTL"><em>باكلوفين سينتيتيكا 10 مج/5 مل، محلول للحقن</em></p><p dir="RTL">1 أمبول مع 5 مل من المحلول يحتوي على 10 مج من مادة الباكلوفين.</p><p dir="RTL">1 مل من المحلول للحقن يحتوي على 2.0 مج من مادة الباكلوفين</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>باكلوفين</em><em> </em><em>إنتراثيكال </em><em>&nbsp;</em><em>سينتيتيكا 40 مج/20 مل، محلول للحقن</em></p><p dir="RTL">1 أمبول مع 20 مل من المحلول يحتوي على 40 مج من مادة الباكلوفين.</p><p dir="RTL">1 مل من المحلول للحقن يحتوي على 2.0 مج من مادة الباكلوفين</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>باكلوفين سينتيتيكا &nbsp;10 مج/20 مل، محلول للحقن</em></p><p dir="RTL">1 أمبول مع 20 مل من المحلول يحتوي على 10 مج من مادة الباكلوفين.</p><p dir="RTL">1 مل من المحلول للحقن يحتوي على 0.5 مج من مادة الباكلوفين</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>باكلوفين سينتيتيكا &nbsp;0.05 مج/1 مل، محلول للحقن</em></p><p dir="RTL">1 أمبول مع 1 مل من المحلول يحتوي على 0.05 مج من مادة الباكلوفين.</p><p dir="RTL">1 مل من المحلول للحقن يحتوي على 0.05 مج من مادة الباكلوفين</p><p dir="RTL">&nbsp;</p><p dir="RTL">المكونات الأخرى هي كلوريد الصوديوم (3.5 مج/ مل صوديوم) ومياه للحقن.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&nbsp;</p><p dir="RTL"><strong>كيف يبدو باكلوفين سينتيتيكا وما هي محتويات العلبة</strong></p><p dir="RTL">محلول للحقن</p><p dir="RTL">محلول عديم اللون، ورائق في الأمبولات.</p><p dir="RTL"><em>باكلوفين سينتيتيكا 10 مج/5 مل</em></p><p dir="RTL">النوع I أمبولات من الزجاج عديم اللون 5 مل، وبها علامة دائرية بنفسجية&nbsp; اللون &nbsp;لتحديد المكان المخصص للكسر في عنق الأمبولة.</p><p dir="RTL">علبة من 5 &amp; 10 أمبولات تحتوي على 5 مل من المحلول.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>باكلوفين سينتيتيكا 40 مج/20 مل</em></p><p dir="RTL">النوع I أمبولات من الزجاج عديم اللون 20 مل، وبها علامة دائرية خضراء لتحديد المكان المخصص للكسر في عنق الأمبولة.</p><p dir="RTL">علبة من 1 أمبولة تحتوي على 20 مل من المحلول.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>باكلوفين سينتيتيكا &nbsp;10 مج/20 مل</em></p><p dir="RTL">النوع I أمبولات من الزجاج عديم اللون 20 مل، وبها علامة دائرية حمراء اللون لتحديد المكان المخصص للكسر في عنق الأمبولة.</p><p dir="RTL">علبة من 1 أمبولة تحتوي على 20 مل من المحلول.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>باكلوفين سينتيتيكا &nbsp;0.05 مج/1 مل</em></p><p dir="RTL">النوع I أمبولات من الزجاج عديم اللون 2 مل، وبها علامة دائرية زرقاء اللون لتحديد المكان المخصص للكسر في عنق الأمبولة.</p><p dir="RTL">علبة من 5 &amp; 10 أمبولات تحتوي على 1 مل من المحلول.</p><p dir="RTL"><u>لا يمكن تسويق جميع أحجام العبوات</u></p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">Sintetica SA، عبر Penate 5، 6850 ميندريسيو، سويسرا</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            12/2019
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        44-887-19
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2019
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        NIMBEX 5MG\ML INJ
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        CISATRACURIUM
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        245.85
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="GLAXOSMITHKLINE (GSK)" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            GLAXOSMITHKLINE (GSK)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 354]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            SAUDI INTERNATIONAL TRADING COMPANY LTD (SITCO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Aspen Pharma Trading Limited
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        M03AC13
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Nimbex Forte 5mg/ml solution for injection/infusion.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Cisatracurium 5mg as cisatracurium besilate 6.70mg per 1ml
+One vial of 30ml contains 150mg of cisatracurium 
+For the full list of excipients, see Section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Solution for injection/infusion.
+Colourless to pale yellow or greenish yellow solution. Practically free from visible particulate matter.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Nimbex is indicated for use during surgical and other procedures in adults and children aged 1 month and over. Nimbex is also indicated for use in adults requiring intensive care. Nimbex can be used as an adjunct to general anaesthesia, or sedation in the Intensive Care Unit (ICU) to relax skeletal muscles, and to facilitate tracheal intubation and mechanical ventilation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Nimbex should only be administered by or under the supervision of anaesthetists or other clinicians who are familiar with the use and action of neuromuscular blocking agents. Facilities for tracheal intubation, and maintenance of pulmonary ventilation and adequate arterial oxygenation have to be available.</p><p>Please note that Nimbex should not be mixed in the same syringe or administered simultaneously through the same needle as propofol injectable emulsion or with alkaline solutions such as sodium thiopentone. (see section 6.2).</p><p>Nimbex contains no antimicrobial preservative and is intended for single patient use.</p><p><strong>Monitoring advice</strong></p><p>As with other neuromuscular blocking agents, monitoring of neuromuscular function is recommended during the use of Nimbex in order to individualise dosage requirements.</p><p><strong>Use by intravenous bolus injection</strong></p><p><strong>Dosage in adults </strong></p><p><strong>Tracheal Intubation.</strong> The recommended intubation dose of Nimbex for adults is 0.15mg/kg (body weight). This dose produced good to excellent conditions for tracheal intubation 120 seconds after administration of Nimbex, following induction of anaesthesia with propofol.</p><p>Higher doses will shorten the time to onset of neuromuscular block.</p><p>Table 1 summarises mean pharmacodynamic data when Nimbex was administered at doses of 0.1 to 0.4mg/kg (body weight) to healthy adult patients during opioid (thiopentone/fentanyl/midazolam) or propofol anaesthesia.</p><p><strong>Table 1: Mean Pharmacodynamic Data Following a Range of Cisatracurium Doses</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:643px"><tbody><tr><td>Initial Nimbex Dose mg/kg (body weight)</td><td>Anaesthetic Background</td><td>Time to 90% T1* Suppression (minutes)</td><td style="width:127px">Time to Maximum T1* Suppression (minutes)</td><td style="width:151px">Time to 25% Spontaneous T1*Recovery (minutes)</td></tr><tr><td>0.1</td><td>Opioid</td><td>3.4</td><td style="width:127px">4.8</td><td style="width:151px">45</td></tr><tr><td>0.15</td><td>Propofol</td><td>2.6</td><td style="width:127px">3.5</td><td style="width:151px">55</td></tr><tr><td>0.2</td><td>Opioid</td><td>2.4</td><td style="width:127px">2.9</td><td style="width:151px">65</td></tr><tr><td>0.4</td><td>Opioid</td><td>1.5</td><td style="width:127px">1.9</td><td style="width:151px">91</td></tr></tbody></table><p>* T<sub>1</sub> Single twitch response as well as the first component of the Train-of-four response of the adductor pollicis muscle following supramaximal electrical stimulation of the ulnar nerve.</p><p>Enflurane or isoflurane anaesthesia may extend the clinically effective duration of an initial dose of Nimbex by as much as 15%.</p><p><strong>Maintenance.</strong> Neuromuscular block can be extended with maintenance doses of Nimbex. A dose of 0.03 mg/kg (body weight) provides approximately 20 minutes of additional clinically effective neuromuscular block during opioid or propofol anaesthesia.</p><p>Consecutive maintenance doses do not result in progressive prolongation of effect.</p><p><strong>Spontaneous Recovery.</strong> Once spontaneous recovery from neuromuscular block is underway, the rate is independent of the Nimbex dose administered. During opioid or propofol anaesthesia, the median times from 25 to 75% and from 5 to 95% recovery are approximately 13 and 30 minutes, respectively.</p><p><strong>Reversal.</strong> Neuromuscular block following Nimbex administration is readily reversible with standard doses of anticholinesterase agents. The mean times from 25 to 75% recovery and to full clinical recovery (T<sub>4</sub>:T<sub>1 </sub>ratio &ge; 0.7) are approximately 4 and 9 minutes respectively, following administration of the reversal agent at an average of 10% T<sub>1</sub> recovery.</p><p><strong>Dosage in paediatric patients</strong></p><p><strong>Tracheal Intubation (paediatric patients aged 1 month to 12 years):</strong> As in adults, the recommended intubation dose of Nimbex is 0.15 mg/kg (body weight) administered rapidly over 5 to 10 seconds. This dose produces good to excellent conditions for tracheal intubation 120 seconds following injection of Nimbex. Pharmacodynamic data for this dose are presented in the tables 2, 3 and 4.</p><p>Nimbex has not been studied for intubation in ASA Class III-IV paediatric patients. There are limited data on the use of Nimbex in paediatric patients under 2 years of age undergoing prolonged or major surgery.</p><p>In paediatric patients aged 1 month to 12 years, Nimbex has a shorter clinically effective duration and a faster spontaneous recovery profile than those observed in adults under similar anaesthetic conditions. Small differences in the pharmacodynamic profile were observed between the age ranges 1 to 11 months and 1 to 12 years which are summarised in the tables 2 and 3:</p><p><strong>Table 2: Paediatric Patients aged 1 to 11 months</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:619px"><tbody><tr><td style="width:123px">Nimbex Dose mg/kg (body weight)</td><td style="width:82px">Anaesthetic Background</td><td style="width:103px">Time to 90% Suppression (minutes)</td><td style="width:141px">Time to Maximum Suppression (minutes)</td><td style="width:169px">Time to 25% Spontaneous T1 Recovery (minutes)</td></tr><tr><td style="width:123px">0.15</td><td style="width:82px">Halothane</td><td style="width:103px">1.4</td><td style="width:141px">2.0</td><td style="width:169px">52</td></tr><tr><td style="width:123px">0.15</td><td style="width:82px">Opioid</td><td style="width:103px">1.4</td><td style="width:141px">1.9</td><td style="width:169px">47</td></tr></tbody></table><p><strong>Table 3: Paediatric Patients aged 1 to 12 years</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:622px"><tbody><tr><td style="width:131px">Nimbex Dose mg/kg (body weight)</td><td style="width:75px">Anaesthetic Background</td><td style="width:106px">Time to 90% Suppression (minutes)</td><td style="width:136px">Time to Maximum Suppression (minutes)</td><td style="width:171px">Time to 25% Spontaneous T1 Recovery (minutes)</td></tr><tr><td style="width:131px">0.15</td><td style="width:75px">Halothane</td><td style="width:106px">2.3</td><td style="width:136px">3.0</td><td style="width:171px">43</td></tr><tr><td style="width:131px">0.15</td><td style="width:75px">Opioid</td><td style="width:106px">2.6</td><td style="width:136px">3.6</td><td style="width:171px">38</td></tr></tbody></table><p><strong>When Nimbex is not required for intubation:</strong> A dose of less than 0.15mg/kg can be used. Pharmacodynamic data for doses of 0.08 and 0.1 mg/kg for paediatric patients aged 2 to 12 years are presented in the table 4:</p><p><strong>Table 4: Paediatric patients aged 2 to 12 years</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:630px"><tbody><tr><td style="width:134px">Nimbex Dose mg/kg (body weight)</td><td style="width:80px">Anaesthetic Background</td><td style="width:110px">Time to 90% Suppression (minutes)</td><td style="width:137px">Time to Maximum Suppression (minutes)</td><td style="width:168px">Time to 25% Spontaneous T1 Recovery (minutes)</td></tr><tr><td style="width:134px">0.08</td><td style="width:80px">Halothane</td><td style="width:110px">1.7</td><td style="width:137px">2.5</td><td style="width:168px">31</td></tr><tr><td style="width:134px">0.1</td><td style="width:80px">Opioid</td><td style="width:110px">1.7</td><td style="width:137px">2.8</td><td style="width:168px">28</td></tr></tbody></table><p>Administration of Nimbex following suxamethonium has not been studied in paediatric patients (see section 4.5).</p><p>Halothane may be expected to extend the clinically effective duration of a dose of Nimbex by up to 20%. No information is available on the use of Nimbex in children during anaesthesia with other halogenated fluorocarbon anaesthetic agents, but these agents may also be expected to extend the clinically effective duration of a dose of Nimbex.</p><p><strong>Maintenance (paediatric patients aged 2-12 years).</strong> Neuromuscular block can be extended with maintenance doses of Nimbex. In paediatric patients aged 2 to 12 years, a dose of 0.02 mg/kg (body weight) provides approximately 9 minutes of additional clinically effective neuromuscular block during halothane anaesthesia. Consecutive maintenance doses do not result in progressive prolongation of effect.</p><p>There are insufficient data to make a specific recommendation for maintenance dosing in paediatric patients under 2 years of age. However, very limited data from clinical studies in paediatric patients under 2 years of age suggest that a maintenance dose of 0.03mg/kg may extend clinically effective neuromuscular block for a period of up to 25 minutes during opioid anaesthesia.</p><p><strong>Spontaneous Recovery.</strong> Once recovery from neuromuscular block is underway, the rate is independent of the Nimbex dose administered. During opioid or halothane anaesthesia, the median times from 25 to 75% and from 5 to 95% recovery are approximately 11 and 28 minutes, respectively.</p><p><strong>Reversal.</strong> Neuromuscular block following Nimbex administration is readily reversible with standard doses of anti-cholinesterase agents. The mean times from 25 to 75% recovery and to full clinical recovery (T<sub>4</sub>:T<sub>1</sub> ratio &ge; 0.7) are approximately 2 and 5 minutes respectively, following administration of the reversal agent at an average of 13% T<sub>1</sub> recovery.</p><p><strong>Use by intravenous infusion</strong></p><p><strong>Dosage in adults and children aged 2 to 12 years </strong></p><p>Maintenance of neuromuscular block may be achieved by infusion of Nimbex. An initial infusion rate of 3 &mu;g/kg (body weight)/min (0.18 mg/kg/hr) is recommended to restore 89 to 99% T<sub>1</sub> suppression following evidence of spontaneous recovery. After an initial period of stabilisation of neuromuscular block, a rate of 1 to 2 &mu;g/kg (body weight)/min (0.06 to 0.12 mg/kg/hr) should be adequate to maintain block in this range in most patients.</p><p>Reduction of the infusion rate by up to 40% may be required when Nimbex is administered during isoflurane or enflurane anaesthesia.(see section 4.5).</p><p>The infusion rate will depend upon the concentration of cisatracurium in the infusion solution, the desired degree of neuromuscular block, and the patient&#39;s weight. Table 5 provides guidelines for delivery of undiluted Nimbex.</p><p><strong>Table 5: Infusion Delivery Rate of Nimbex injection 2mg/ml</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>Patient (body weight) (kg)</strong></p></td><td colspan="4" style="vertical-align:top"><p><strong>Dose (&micro;g/kg/min)</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Infusion Rat</strong>e</p></td></tr><tr><td style="vertical-align:top"><p>1.0</p></td><td style="vertical-align:top"><p>1.5</p></td><td style="vertical-align:top"><p>2.0</p></td><td style="vertical-align:top"><p>3.0</p></td></tr><tr><td style="vertical-align:top"><p>20</p></td><td style="vertical-align:top"><p>0.6</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>0.9</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>1.2</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>1.8</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>mL/hr</p><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>70</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>2.1</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>3.2</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>4.2</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>6.3</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>mL/hr</p><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>100</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>3.0</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>4.5</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>6.0</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>9.0</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>mL/hr</p><p>&nbsp;</p></td></tr></tbody></table><p>Steady rate continuous infusion of Nimbex is not associated with a progressive increase or decrease in neuromuscular blocking effect.</p><p>Following discontinuation of infusion of Nimbex, spontaneous recovery from neuromuscular block proceeds at a rate comparable to that following administration of a single bolus.</p><p><strong>Dosage in neonates (aged less than 1 month)</strong></p><p>The use of Nimbex in neonates is not recommended as it has not been studied in this patient population.</p><p><strong>Dosage in elderly patients </strong></p><p>No dosing alterations are required in elderly patients. In these patients Nimbex has a similar pharmacodynamic profile to that observed in young adult patients but, as with other neuromuscular blocking agents, it may have a slightly slower onset.</p><p><strong>Dosage in patients with renal impairment</strong></p><p>No dosing alterations are required in patients with renal failure.</p><p>In these patients Nimbex has a similar pharmacodynamic profile to that observed in patients with normal renal function but it may have a slightly slower onset.</p><p><strong>Dosage in patients with hepatic impairment</strong></p><p>No dosing alterations are required in patients with end-stage liver disease. In these patients Nimbex has a similar pharmacodynamic profile to that observed in patients with normal hepatic function but it may have a slightly faster onset.</p><p>Dosage in patients with cardiovascular disease</p><p>When administered by rapid bolus injection (over 5 to 10 seconds) to adult patients with serious cardiovascular disease (New York Heart Association Class I-III) undergoing coronary artery bypass graft (CABG) surgery, Nimbex has not been associated with clinically significant cardiovascular effects at any dose studied (up to and including 0.4 mg/kg (8x ED<sub>95</sub>)). However, there are limited data for doses above 0.3 mg/kg in this patient population).</p><p>Nimbex has not been studied in children undergoing cardiac surgery.</p><p><strong>Dosage in Intensive Care Unit (ICU) patients</strong></p><p>Nimbex may be administered by bolus dose and/or infusion to adult patients in the ICU.</p><p>An initial infusion rate of Nimbex of 3 &mu;g/kg (body weight)/min (0.18 mg/kg/hr) is recommended for adult ICU patients. There may be wide interpatient variation in dosage requirements and these may increase or decrease with time. In clinical studies the average infusion rate was 3 &mu;g/kg/min [range 0.5 to 10.2 &mu;g/kg (body weight)/min (0.03 to 0.6mg/kg/hr )]. Table 6 provides guidelines for delivery of undiluted Nimbex Forte (5mg/ml) injection.</p><p>The median time to full spontaneous recovery following long-term (up to 6 days) infusion of Nimbex in ICU patients was approximately 50 minutes.</p><p><strong>Table 6: Infusion Delivery Rate of Nimbex Forte injection 5mg/ml</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>Patient (body weight) (kg)</strong></p></td><td colspan="4" style="vertical-align:top"><p><strong>Dose (&micro;g/kg/min)</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Infusion Rat</strong>e</p></td></tr><tr><td style="vertical-align:top"><p>1.0</p></td><td style="vertical-align:top"><p>1.5</p></td><td style="vertical-align:top"><p>2.0</p></td><td style="vertical-align:top"><p>3.0</p></td></tr><tr><td style="vertical-align:top"><p>70</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>0.8</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>1.2</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>1.7</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>2.5</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>mL/hr</p><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>100</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>1.2</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>1.8</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>2.4</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>3.6</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>mL/hr</p><p>&nbsp;</p></td></tr></tbody></table><p>The recovery profile after infusions of Nimbex to ICU patients is independent of duration of infusion.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Nimbex is contra-indicated in patients known to be hypersensitive to cisatracurium, atracurium, or benzenesulfonic acid.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Product specific topics</strong></p><p>Cisatracurium paralyses the respiratory muscles as well as other skeletal muscles but has no known effect on consciousness or pain threshold. Nimbex should be only administered by or under the supervision of anaesthetists or other clinicians who are familiar with the use and action of neuromuscular blocking agents. Facilities for tracheal intubation, and maintenance of pulmonary ventilation and adequate arterial oxygenation have to be available.</p><p>Caution should be exercised when administering Nimbex to patients who have shown hypersensitivity to other neuromuscular blocking agents since a high rate of cross-sensitivity (greater than 50%) between neuromuscular blocking agents has been reported (see section 4.3).</p><p>Cisatracurium does not have significant vagolytic or ganglion- blocking properties. Consequently, Nimbex has no clinically significant effect on heart rate and will not counteract the bradycardia produced by many anaesthetic agents or by vagal stimulation during surgery.</p><p>Patients with myasthenia gravis and other forms of neuromuscular disease have shown greatly increased sensitivity to non-depolarising blocking agents. An initial dose of not more than 0.02 mg/kg Nimbex is recommended in these patients.</p><p>Severe acid-base and/or serum electrolyte abnormalities may increase or decrease the sensitivity of patients to neuromuscular blocking agents.</p><p>There is no information on the use of Nimbex in neonates aged less than one month since it has not been studied in this patient population.</p><p>Cisatracurium has not been studied in patients with a history of malignant hyperthermia. Studies in malignant hyperthermia- susceptible pigs indicated that cisatracurium does not trigger this syndrome.</p><p>There have been no studies of cisatracurium in patients undergoing surgery with induced hypothermia (25 to 28&deg;C). As with other neuromuscular blocking agents the rate of infusion required to maintain adequate surgical relaxation under these conditions may be expected to be significantly reduced.</p><p>Cisatracurium has not been studied in patients with burns; however, as with other non-depolarising neuromuscular blocking agents, the possibility of increased dosing requirements and shortened duration of action must be considered if Nimbex injection is administered to these patients.</p><p>Nimbex is hypotonic and must not be applied into the infusion line of a blood transfusion.</p><p><strong>Intensive Care Unit (ICU) Patients: - </strong></p><p>When administered to laboratory animals in high doses, laudanosine, a metabolite of cisatracurium and atracurium, has been associated with transient hypotension and in some species, cerebral excitatory effects. In the most sensitive animal species, these effects occurred at laudanosine plasma concentrations similar to those that have been observed in some ICU patients following prolonged infusion of atracurium.</p><p>Consistent with the decreased infusion rate requirements of cisatracurium, plasma laudanosine concentrations are approximately one third those following atracurium infusion.</p><p>There have been rare reports of seizures in ICU patients who have received atracurium and other agents. These patients usually had one or more medical conditions predisposing to seizures (eg. cranial trauma, hypoxic encephalopathy, cerebral oedema, viral encephalitis, uraemia). A causal relationship to laudanosine has not been established.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Many drugs have been shown to influence the magnitude and/or duration of action of non-depolarising neuromuscular blocking agents, including the following:-</p><p>Increased Effect:</p><p>By anaesthetic agents such as enflurane, isoflurane, halothane (see section 4.2) and ketamine, by other non- depolarising neuromuscular blocking agents or by other drugs such as antibiotics (including the aminoglycosides, polymyxins, spectinomycin, tetracyclines, lincomycin and clindamycin), anti- arrhythmic drugs (including propranolol, calcium channel blockers, lidocaine, procainamide and quinidine), diuretics, (including furosemide and possibly thiazides, mannitol and acetazolamide), magnesium and lithium salts and ganglion blocking drugs (trimetaphan, hexamethonium).</p><p>Rarely, certain drugs may aggravate or unmask latent myasthenia gravis or actually induce a myasthenic syndrome; increased sensitivity to non-depolarising neuromuscular blocking agents might result. Such drugs include various antibiotics, b-blockers (propranolol, oxprenolol), anti-arrhythmic drugs (procainamide, quinidine), anti-rheumatic drugs (chloroquine, D-penicillamine), trimetaphan, chlorpromazine, steroids, phenytoin and lithium.</p><p>Administration of suxamethonium to prolong the effects of non- depolarising neuromuscular blocking agents may result in a prolonged and complex block which can be difficult to reverse with anticholinesterases.</p><p>Decreased effect:</p><p>A decreased effect is seen after prior chronic administration of phenytoin or carbamazepine.</p><p>Treatment with anticholinesterases, commonly used in the treatment of Alzheimer&#39;s disease e.g. donepezil, may shorten the duration and diminish the magnitude of neuromuscular blockade with cisatracurium.</p><p>No effect:</p><p>Prior administration of suxamethonium has no effect on the duration of neuromuscular block following bolus doses of Nimbex or on infusion rate requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u></p><p>There are no adequate data from the use of Nimbex in pregnant women. Animal studies are insufficient with respect to effects on pregnancy, embryonal/foetal development, parturition and postnatal development (see section 5.3). The potential risk for humans is unknown.</p><p>Nimbex should not be used during pregnancy.</p><p><u>Breastfeeding</u></p><p>It is not known whether cisatracurium or its metabolites are excreted in human milk.</p><p><u>Fertility</u></p><p>Fertility studies have not been performed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>This precaution is not relevant to the use of Nimbex. Nimbex will always be used in combination with a general anaesthetic and therefore the usual precautions relating to performance of tasks following general anaesthesia apply.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Data from pooled internal clinical trials were used to determine the frequency of very common to uncommon adverse reactions.</p><p>The following convention has been used for the classification of frequency:- very common (&ge; 1/10), common( &ge; 1/100 to &lt;1/10), uncommon (&ge; 1/1000 to &lt;1/100), rare (&ge; 1/10,000 to &lt;1/1000), very rare (&lt; 1/10,000).</p><p><strong>Clinical Trial Data</strong></p><p>Cardiac disorders</p><p>Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bradycardia</p><p>Vascular disorders<br />Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Hypotension</p><p>Uncommon&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Cutaneous flushing</p><p>Respiratory, thoracic and mediastinal disorders</p><p>Uncommon&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bronchospasm</p><p>Skin and subcutaneous tissue disorders</p><p>Uncommon&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Rash</p><p>Postmarketing Data</p><p>Immune system disorders<br />Very rare&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Anaphylactic reaction</p><p>Anaphylactic reactions of varying degrees of severity have been observed after the administration of neuromuscular blocking agents. Very rarely, severe anaphylactic reactions have been reported in patients receiving Nimbex in conjunction with one or more anaesthetic agents.</p><p>Musculoskeletal and connective tissue disorders</p><p>Very rare&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Myopathy, muscle weakness</p><p>There have been some reports of muscle/weakness and/or myopathy following prolonged use of muscle relaxants in severely ill patients in the ICU. Most patients were receiving concomitant corticosteroids. These events have been reported infrequently in association with Nimbex and a causal relationship has not been established.</p><p><strong>To report any side effect(s):<br />- In Saudi Arabia:</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>- The National Pharmacovigilance and Drug Safety Centre (NPC):<br />- Fax: 00966112057662<br />- Call NPC at 00966112038222, Exts: 2317-2356-2353-2354-2334-2340.<br />- Toll free phone: 8002490000<br />- E-mail: npc.drug@sfda.gov.sa<br />- Website: www.sfda.gov.sa/npc</td></tr></tbody></table><p>- Other GCC States:</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>-&nbsp;Please contact the relevant competent authority.</td></tr></tbody></table><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Symptoms and signs </strong></p><p>Prolonged muscle paralysis and its consequences are expected to be the main signs of overdosage with Nimbex.</p><p><strong>Management</strong></p><p>It is essential to maintain pulmonary ventilation and arterial oxygenation until adequate spontaneous respiration returns. Full sedation will be required since consciousness is not impaired by Nimbex. Recovery may be accelerated by the administration of anti- cholinesterase agents once evidence of spontaneous recovery is present.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Mechanism of action</strong></p><p>Cisatracurium is a neuromuscular blocking agent, ATC code: M03A C11.</p><p>Cisatracurium is an intermediate-duration, non-depolarising benzylisoquinolinium skeletal muscle relaxant.</p><p><strong>Pharmacodynamic effects</strong></p><p>Clinical studies in man indicated that Nimbex is not associated with dose dependent histamine release even at doses up to and including 8 x ED<sub>95</sub>.</p><p>Cisatracurium binds to cholinergic receptors on the motor end-plate to antagonise the action of acetylcholine, resulting in a competitive block of neuromuscular transmission. This action is readily reversed by anti-cholinesterase agents such as neostigmine or edrophonium.</p><p>The ED<sub>95</sub> (dose required to produce 95% depression of the twitch response of the adductor pollicis muscle to stimulation of the ulnar nerve) of cisatracurium is estimated to be 0.05 mg/kg bodyweight during opioid anaesthesia (thiopentone/fentanyl/midazolam).</p><p>The ED<sub>95</sub> of cisatracurium in children during halothane anaesthesia is 0.04 mg/kg.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Biotransformation/Elimination</strong></p><p>Cisatracurium undergoes degradation in the body at physiological pH and temperature by Hofmann elimination (a chemical process) to form laudanosine and the monoquaternary acrylate metabolite. The monoquaternary acrylate undergoes hydrolysis by non-specific plasma esterases to form the monoquaternary alcohol metabolite. Elimination of cisatracurium is largely organ independent but the liver and kidneys are primary pathways for the clearance of its metabolites.</p><p>These metabolites do not possess neuromuscular blocking activity.</p><p><strong>Pharmacokinetics in adult patients</strong></p><p>Non-compartmental pharmacokinetics of cisatracurium are independent of dose in the range studied (0.1 to 0.2 mg/kg, i.e. 2 to 4 x ED<sub>95</sub>).</p><p>Population pharmacokinetic modelling confirms and extends these findings up to 0.4 mg/kg (8 x ED<sub>95</sub>). Pharmacokinetic parameters after doses of 0.1 and 0.2 mg/kg Nimbex administered to healthy adult surgical patients are summarised in the table below:</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td style="width:240px"><strong>Parameter</strong></td><td style="width:259px"><strong>Range of Mean Values</strong></td></tr><tr><td style="width:240px">Clearance</td><td style="width:259px">4.7 to 5.7 mL/min/kg</td></tr><tr><td style="width:240px">Volume of distribution at steady state</td><td style="width:259px">121 to 161 mL/kg</td></tr><tr><td style="width:240px">Elimination half-life</td><td style="width:259px">22 to 29 min</td></tr></tbody></table><p><strong>Pharmacokinetics in elderly patients</strong></p><p>There are no clinically important differences in the pharmacokinetics of cisatracurium in elderly and young adult patients. The recovery profile is also unchanged.</p><p><strong>Pharmacokinetics in patients with renal/hepatic impairment</strong></p><p>There are no clinically important differences in the pharmacokinetics of cisatracurium in patients with end-stage renal failure or end stage liver disease and in healthy adult patients. Their recovery profiles are also unchanged.</p><p><strong>Pharmacokinetics during infusions </strong></p><p>The pharmacokinetics of cisatracurium after infusions of Nimbex are similar to those after single bolus injection. The recovery profile after infusion of Nimbex is independent of duration of infusion and is similar to that after single bolus injection.</p><p><strong>Pharmacokinetics in Intensive Care Unit (ICU) patients</strong></p><p>The pharmacokinetics of cisatracurium in ICU patients receiving prolonged infusions are similar to those in healthy surgical adults receiving infusions or single bolus injections. The recovery profile after infusions of Nimbex in ICU patients is independent of duration of infusion.</p><p>Concentrations of metabolites are higher in ICU patients with abnormal renal and/or hepatic function (see section 4.4). These metabolites do not contribute to neuromuscular block.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Acute toxicity </strong></p><p>Meaningful acute studies with cisatracurium could not be performed.</p><p>For symptoms of toxicity see section 4.9.</p><p>Subacute Toxicity:</p><p>Studies with repeated administration for three weeks in dogs and monkeys showed no compound specific toxic signs.</p><p><strong>Mutagenicity</strong></p><p>Cisatracurium was not mutagenic in an in vitro microbial mutagenicity test at concentrations up to 5000&mu;g/plate.</p><p>In an in vivo cytogenetic study in rats, no significant chromosomal abnormalities were seen at s.c doses up to 4mg/kg.</p><p>Cisatracurium was mutagenic in an in vitro mouse lymphoma cell mutagenicity assay, at concentrations of 40&mu;g/ml and higher.</p><p>A single positive mutagenic response for a drug used infrequently and/or briefly is of questionable clinical relevance.</p><p><strong>Carcinogenicity</strong></p><p>Carcinogenicity studies have not been performed.</p><p><strong>Reproductive toxicology</strong></p><p>Fertility studies have not been performed. Reproductive studies in rats have not revealed any adverse effects of cisatracurium on foetal development.</p><p><strong>Local tolerance</strong></p><p>The result of an intra-arterial study in rabbits showed that Nimbex injection is well tolerated and no drug related changes were seen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Benzene sulfonic acid solution 32% w/v, water for injections.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Degradation of cisatracurium besilate has been demonstrated to occur more rapidly in lactated Ringer&#39;s Injection and 5% Dextrose and lactated Ringer&#39;s Injection than in the infusion fluids listed under Section 6.6.</p><p>Therefore it is recommended that lactated Ringer&#39;s Injection and 5% Dextrose and lactated Ringer&#39;s Injection are not used as the diluent in preparing solutions of Nimbex for infusion.</p><p>Since Nimbex is stable only in acidic solutions it should not be mixed in the same syringe or administered simultaneously through the same needle with alkaline solutions, e.g., sodium thiopentone. It is not compatible with ketorolac trometamol or propofol injectable emulsion.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Shelf-life before dilution: 2 years.
+
+Chemical and physical in-use stability has been demonstrated for at least 24 hours at 5°C and 25°C (see section 6.6). 
+
+From a microbiological point of view, the product should be used immediately. If not used immediately, in-use storage times and conditions prior to use are the responsibility of the user and would normally not be longer than 24 hours at 2 to 8°C, unless reconstitution has taken place in controlled and validated aseptic conditions.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store in a refrigerator (2&deg;C to 8&deg;C). Do not freeze.</p><p>Store in the original package in order to protect from light.</p><p>For storage conditions of the diluted medicinal product see section 6.3.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Nimbex 5mg/ml solution for injection/infusion</p><p>30ml in vial (glass): box of 1</p><p>Type I, clear, neutral glass vial with a polymeric coated synthetic bromobutyl rubber stopper and aluminium collar with plastic flip-top cover.</p><p>NOT ALL PACK SIZES MAY BE MARKETED</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>This product is for single use only. Use only clear and almost colourless up to slightly yellow/greenish yellow coloured solutions. The product should be visually inspected before use, and if the visual appearance has changed or if the container is damaged, the product must be discarded.</p><p>Diluted Nimbex is physically and chemically stable for at least 24 hours at 5&deg;C and 25&deg;C at concentrations between 0.1 and 2 mg/mL in the following infusion fluids, in either polyvinyl chloride or polypropylene containers.</p><p>Sodium Chloride (0.9% w/v) Intravenous Infusion.</p><p>Glucose (5% w/v) Intravenous Infusion.</p><p>Sodium Chloride (0.18% w/v) and Glucose (4% w/v) Intravenous Infusion.</p><p>Sodium Chloride (0.45% w/v) and Glucose (2.5% w/v) Intravenous Infusion.</p><p>Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p><p>However, since the product contains no antimicrobial preservative, dilution should be carried out immediately prior to use, or failing this be stored as directed under section 6.3.</p><p>Nimbex has been shown to be compatible with the following commonly used peri-operative drugs, when mixed in conditions simulating administration into a running intravenous infusion via a Y-site injection port: alfentanil hydrochloride, droperidol, fentanyl citrate, midazolam hydrochloride and sufentanil citrate. Where other drugs are administered through the same indwelling needle or cannula as Nimbex, it is recommended that each drug be flushed through with an adequate volume of a suitable intravenous fluid, e.g., Sodium Chloride Intravenous Infusion (0.9% w/v).</p><p>As with other drugs administered intravenously, when a small vein is selected as the injection site, Nimbex should be flushed through the vein with a suitable intravenous fluid, e.g., sodium chloride intravenous infusion (0.9% w/v).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Aspen Pharma Trading Limited,
+3016 Lake Drive,
+City West Business Campus,
+Dublin 24,Ireland
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                April 2018
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

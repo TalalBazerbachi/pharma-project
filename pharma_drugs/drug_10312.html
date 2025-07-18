@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        50-887-19
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2019
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        DIPRIVAN VIAL 10MG-ML
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PROPOFOL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Emulsion for injection/infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        68.35
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="OCTAPHARMA" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            OCTAPHARMA
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 583]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ALNAGHI COMPANY
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            ASPEN PHARMA TRADING LIMITED (APTL)
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        N01AX10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Diprivan 10 mg/ml (1%) emulsion for injection or infusion
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Propofol 10 mg/ml
+ Excipient(s) with known effect:
+ Soya-bean Oil, Refined Ph Eur
+ For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Emulsion for injection or infusion. 
+White aqueous isotonic oil-in-water emulsion.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Diprivan 1% is a short-acting intravenous general anaesthetic for:</p><ul><li>&nbsp;Induction and maintenance of general anaesthesia in adults and children &gt;1 month.</li><li>Sedation for diagnostic and surgical procedures, alone or in combination with local or regional anaesthesia in adults and children &gt;1 month.</li><li>Sedation of ventilated patients &gt;16 years of age in the intensive care unit.</li></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Posology</u></p><p>For specific guidance relating to the administration of Diprivan 1% with a target controlled infusion (TCI) device, which incorporates &#39;Diprifusor&#39; TCI Software, see Section 4.2.5. Such use is restricted to induction and maintenance of anaesthesia in adults. The &#39;Diprifusor&#39; TCI system is not recommended for use in ICU sedation or sedation for surgical and diagnostic procedures, or in children.</p><p><em><u>Induction of General Anaesthesia</u></em></p><p><em>Adults</em></p><p>In unpremedicated and premedicated patients, it is recommended that Diprivan 1% should be titrated (approximately 4 ml [40 mg] every 10 seconds in an average healthy adult by bolus injection or infusion) against the response of the patient until the clinical signs show the onset of anaesthesia. Most adult patients aged less than 55 years are likely to require 1.5&ndash;2.5 mg/kg of Diprivan 1%. The total dose required can be reduced by lower rates of administration (2&ndash;5 ml/min [20&ndash;50 mg/min]). Over this age, the requirement will generally be less. In patients of ASA Grades 3 and 4, lower rates of administration should be used (approximately 2 ml [20 mg] every 10 seconds).</p><p><em>Elderly</em></p><p>In older people the dose requirement for induction of anaesthesia with Diprivan 1% is reduced. The reduction should take into account of the physical status and age of the patient. The reduced dose should be given at a slower rate and titrated against the response.</p><p><em>Paediatric population</em></p><p>Diprivan 1% is not recommended for induction of anaesthesia in children aged less than 1 month.</p><p>For induction of anaesthesia in children over 1 month of age, Diprivan 1% should be titrated slowly until clinical signs show the onset of anaesthesia. The dose should be adjusted according to age and/or body weight. Most patients over 8 years of age require approximately 2.5 mg/kg body weight of Diprivan 1% for induction of</p><p>&nbsp;</p><p>anaesthesia. In younger children, especially between the age of 1 month and 3 years, dose requirements may be higher (2.5&ndash;4 mg/kg body weight).</p><p>For ASA 3 and 4 patients lower doses are recommended (see also Section 4.4).</p><p>Administration of Diprivan 1% by a &#39;Diprifusor&#39; TCI system is not recommended for induction of general anaesthesia in children.</p><p><em><u>Maintenance of General Anaesthesia</u></em><em> </em></p><p><em>Adults</em></p><p>Anaesthesia can be maintained by administering Diprivan 1% either by continuous infusion or by repeat bolus injections to prevent the clinical signs of light anaesthesia. Recovery from anaesthesia is typically rapid and it is therefore important to maintain Diprivan 1% administration until the end of the procedure.</p><ul><li>&nbsp; Continuous Infusion</li></ul><p>The required rate of administration varies considerably between patients, but rates in the region of 4&ndash;12 mg/kg/h usually maintain satisfactory anaesthesia.</p><ul><li>&nbsp;Repeat Bolus Injections</li></ul><p>If a technique involving repeat bolus injections is used, increments of 25 mg (2.5 ml) to 50 mg (5.0 ml) may be given according to clinical need.</p><p><em>Elderly</em></p><p>When Diprivan 1% is used for maintenance of anaesthesia the rate of infusion or &#39;target concentration&#39; should also be reduced. Patients of ASA grades 3 and 4 will require further reductions in dose and dose rate. Rapid bolus administration (single or repeated) should not be used in older people as this may lead to cardiorespiratory depression.</p><p><em>Paediatric population</em></p><p>Diprivan 1% is not recommended for maintenance of anaesthesia in children aged less than 1 month.</p><p>Anaesthesia can be maintained in children over 1 month of age by administering Diprivan 1% by infusion or repeated bolus injection to maintain the depth of anaesthesia required. The required rate of administration varies considerably between patients, but rates in the region of 9&ndash;15 mg/kg/h usually achieve satisfactory anaesthesia. In younger children, especially between the age of 1 month and 3 years, dose requirements may be higher.</p><p>For ASA 3 and 4 patients lower doses are recommended (see also Section 4.4).</p><p>Administration of Diprivan 1% by a &#39;Diprifusor&#39; TCI system is not recommended for maintenance of general anaesthesia in children.</p><p><em><u>Sedation During Intensive Care</u></em><em> </em></p><p><em>Adults</em></p><p>For sedation during intensive care it is advised that Diprivan 1% should be administered by continuous infusion. The infusion rate should be determined by the desired depth of sedation. In most patients sufficient sedation can be obtained with a dosage of 0.3&ndash;4 mg/kg/h of Diprivan 1% (See 4.4 Special warnings and precautions for use). Diprivan 1% is not indicated for sedation in intensive care of patients of 16 years of age or younger (see&nbsp;4.3&nbsp;<strong> </strong>Contraindications). Administration of Diprivan 1% by Diprifusor TCI system is not advised for sedation in the intensive care unit.</p><p>Diprivan 1% may be diluted with 5% Dextrose (see &quot;Dilution and Co-administration&quot; table below).</p><p>It is recommended that blood lipid levels be monitored should Diprivan 1% be administered to patients thought to be at particular risk of fat overload. Administration of Diprivan 1% should be adjusted appropriately if the monitoring indicates that fat is being inadequately cleared from the body. If the patient is receiving other intravenous lipid concurrently, a reduction in quantity should be made in order to take account of the amount of lipid infused as part of the Diprivan 1% formulation; 1.0 ml of Diprivan 1% contains approximately 0.1g of fat.</p><p>&nbsp;</p><p>If the duration of sedation is in excess of 3 days, lipids should be monitored in all patients.</p><p><em>Elderly</em></p><p>When Diprivan 1% is used for sedation the rate of infusion should also be reduced. Patients of ASA grades 3 and 4 will require further reductions in dose and dose rate. Rapid bolus administration (single or repeated) should not be used in older people as this may lead to cardiorespiratory depression.</p><p><em>Paediatric population</em></p><p>Diprivan 1% is contraindicated for the sedation of ventilated children aged 16 years or younger receiving intensive care.</p><p><em><u>Sedation For Surgical And Diagnostic Procedures</u></em></p><p><em>Adults</em></p><p>To provide sedation for surgical and diagnostic procedures, rates of administration should be individualised and titrated to clinical response.</p><p>Most patients will require 0.5&ndash;1 mg/kg over 1&ndash; 5 minutes for onset of sedation.</p><p>Maintenance of sedation may be accomplished by titrating Diprivan 1% infusion to the desired level of sedation</p><p>- most patients will require 1.5&ndash;4.5 mg/kg/h. In addition to the infusion, bolus administration of 10&ndash;20 mg may be used if a rapid increase in the depth of sedation is required. In patients of ASA Grades 3 and 4 the rate of administration and dosage may need to be reduced.</p><p>Administration of Diprivan 1% by a &#39;Diprifusor&#39; TCI system is not recommended for sedation for surgical and diagnostic procedures.</p><p><em>Elderly</em></p><p>When Diprivan 1% is used for sedation the rate of infusion or &#39;target concentration&#39; should also be reduced. Patients of ASA grades 3 and 4 will require further reductions in dose and dose rate. Rapid bolus administration (single or repeated) should not be used in older people as this may lead to cardiorespiratory depression.</p><p><em>Paediatric population</em></p><p>Diprivan 1% is not recommended for surgical and diagnostic procedures in children aged less than 1 month.</p><p>In children over 1 month of age, doses and administration rates should be adjusted according to the required depth of sedation and the clinical response. Most paediatric patients require 1&ndash;2 mg/kg body weight of Diprivan 1% for onset of sedation. Maintenance of sedation may be accomplished by titrating Diprivan 1% infusion to the desired level of sedation. Most patients require 1.5&ndash;9 mg/kg/h Diprivan 1%. The infusion may be supplemented by bolus administration of up to 1 mg/kg body weight if a rapid increase of depth of sedation is required.</p><p>In ASA 3 and 4 patients lower doses may be required.</p><p><u>Method of administration</u></p><p>Diprivan 1% has no analgesic properties and therefore supplementary analgesic agents are generally required in addition to Diprivan 1%.</p><p>Diprivan 1% can be used for infusion undiluted from glass containers, plastic syringes or Diprivan 1% pre-filled syringes or diluted with 5% Dextrose (Intravenous Infusion BP) only, in PVC infusion bags or glass infusion bottles. Dilutions, which must not exceed 1 in 5 (2 mg propofol per ml) should be prepared aseptically immediately before administration and must be used within 6 hours of preparation.</p><p>It is recommended that, when using diluted Diprivan 1%, the volume of 5% Dextrose removed from the infusion bag during the dilution process is totally replaced in volume by Diprivan 1% emulsion. (see &quot;Dilution and Co- administration&quot; table below).</p><p>The dilution may be used with a variety of infusion control techniques, but a giving set used alone will not avoid the risk of accidental uncontrolled infusion of large volumes of diluted Diprivan 1%. A burette, drop counter or</p><p>&nbsp;</p><p>volumetric pump must be included in the infusion line. The risk of uncontrolled infusion must be taken into account when deciding the maximum amount of Diprivan 1% in the burette.</p><p>When Diprivan 1% is used undiluted to maintain anaesthesia, it is recommended that equipment such as syringe pumps or volumetric infusion pumps should always be used to control infusion rates.</p><p>Diprivan 1% may be administered via a Y-piece close to the injection site into infusions of the following:</p><ul><li>&nbsp; Dextrose 5% Intravenous Infusion B.P.</li><li>&nbsp; Sodium Chloride 0.9% Intravenous Infusion B.P.</li><li>&nbsp;Dextrose 4% with Sodium Chloride 0.18% Intravenous Infusion B.P.</li></ul><p>The glass pre-filled syringe (PFS) has a lower frictional resistance than plastic disposable syringes and operates more easily. Therefore, if Diprivan 1% is administered using a hand held pre-filled syringe, the line between the syringe and the patient must not be left open if unattended.</p><p>When the pre-filled syringe presentation is used in a syringe pump appropriate compatibility should be ensured. In particular, the pump should be designed to prevent syphoning and should have an occlusion alarm set no greater than 1000 mm Hg. If using a programmable or equivalent pump that offers options for use of different syringes then choose only the &#39;B-D&#39; 50/60 ml &#39;PLASTIPAK&#39; setting when using the Diprivan 1% pre-filled syringe.</p><p>Diprivan 1% may be premixed with alfentanil injection containing 500 micrograms/ml alfentanil in the ratio of 20:1 to 50:1 v/v. Mixtures should be prepared using sterile technique and used within 6 hours of preparation.</p><p>In order to reduce pain on initial injection, Diprivan 1% may be mixed with preservative-free Lidocaine Injection 0.5% or 1%; (see &quot;Dilution and Co-administration&quot; table below).</p><p><em><u>Target Controlled Infusion - Administration of Diprivan 1% by a &#39;Diprifusor&#39; TCI System in Adults</u></em></p><p>Administration of Diprivan 1% by a &#39;Diprifusor&#39; TCI system is restricted to induction and maintenance of general anaesthesia in adults. It is not recommended for use in ICU sedation or sedation for surgical and diagnostic procedures, or in children.</p><p>Diprivan 1% may be administered by TCI only with a &#39;Diprifusor&#39; TCI system incorporating &#39;Diprifusor&#39; TCI software. Such systems will operate only on recognition of electronically tagged pre-filled syringes containing Diprivan 1% or 2% Injection. The &#39;Diprifusor&#39; TCI system will automatically adjust the infusion rate for the concentration of Diprivan recognised. Users must be familiar with the infusion pump users&#39; manual, and with the administration of Diprivan 1% by TCI and with the correct use of the syringe identification system.</p><p>The Diprifusor allows the anaesthetist to achieve and control a desired speed of induction and depth of anaesthesia by setting and adjusting target (predicted) blood concentrations of propofol. An alternative effect- site mode of administration may be accessible on some Diprifusors, but its safety and efficacy have not yet been established.</p><p>The &#39;Diprifusor&#39; TCI system assumes that the initial blood propofol concentration in the patient is zero. Therefore, in patients who have received prior propofol, there may be a need to select a lower initial target concentration when commencing &#39;Diprifusor&#39; TCI. Similarly, the immediate recommencement of &#39;Diprifusor&#39; TCI is not recommended if the pump has been switched off.</p><p>Guidance on propofol target concentrations is given below. In view of interpatient variability in propofol pharmacokinetics and pharmacodynamics, in both premedicated and unpremedicated patients the target propofol concentration should be titrated against the response of the patient in order to achieve the depth of anaesthesia required.</p><p><u>Induction and Maintenance of General Anaesthesia</u></p><p>In adult patients under 55 years of age anaesthesia can usually be induced with target propofol concentrations in the region of 4&ndash;8 microgram/ml. An initial target of 4 microgram/ml is recommended in premedicated patients and in unpremedicated patients an initial target of 6 microgram/ml is advised. Induction time with these targets is generally within the range of 60&ndash;120 seconds. Higher targets will allow more rapid induction of anaesthesia but may be associated with more pronounced haemodynamic and respiratory depression.</p><p>&nbsp;</p><p>A lower initial target concentration should be used in patients over the age of about 55 years and in patients of ASA grades 3 and 4. The target concentration can then be increased in steps of 0.5&ndash;1.0 microgram/ml at intervals of 1 minute to achieve a gradual induction of anaesthesia.</p><p>Supplementary analgesia will generally be required and the extent to which target concentrations for maintenance of anaesthesia can be reduced will be influenced by the amount of concomitant analgesia administered. Target propofol concentrations in the region of 3&ndash;6 microgram/ml usually maintain satisfactory anaesthesia.</p><p>The predicted propofol concentration on waking is generally in the region of 1.0&ndash;2.0 microgram/ml and will be influenced by the amount of analgesia given during maintenance.</p><p><u>Dilution and Co-Administration of Diprivan 1% with Other Drugs or Infusion Fluids</u> (see also &#39;Additional Precautions&#39; Section)</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td><p><strong>Co-administration Technique</strong></p></td><td><p><strong>Additive or Diluent</strong></p></td><td><p><strong>Preparation</strong></p></td><td><p><strong>Precautions</strong></p></td></tr><tr><td><p>Pre-mixing.</p></td><td><p>Dextrose 5% Intravenous Infusion</p></td><td><p>Mix 1 part of Diprivan 1% with up to 4 parts of Dextrose 5% Intravenous Infusion B.P in either PVC infusion bags or glass infusion bottles. When diluted in PVC bags it is recommended that the bag should be full and that the dilution be prepared by withdrawing a volume of infusion fluid and replacing it with an equal volume of Diprivan 1%.</p></td><td><p>Prepare aseptically immediately before administration. The mixture is stable for up to 6 hours.</p></td></tr><tr><td rowspan="2"><p>&nbsp;</p></td><td><p>Lidocaine hydrochloride injection (0.5% or</p><p>1% without preservatives).</p></td><td><p>Mix 20 parts of Diprivan 1% with up to 1 part of either 0.5% or 1% lidocaine hydrochloride injection.</p></td><td><p>Prepare mixture aseptically immediately prior to administration. Use for Induction only.</p></td></tr><tr><td><p>Alfentanil injection (500 microgram/ml).</p></td><td><p>Mix Diprivan 1% with alfentanil injection in a ratio of 20:1 to 50:1 v/v.</p></td><td><p>Prepare mixture aseptically; use within 6 hours of preparation.</p></td></tr><tr><td rowspan="3"><p>Co-administration via a Y-piece connector.</p></td><td><p>Dextrose 5% intravenous infusion</p></td><td><p>Co-administer via a Y-piece connector.</p></td><td><p>Place the Y-piece connector close to the injection site.</p></td></tr><tr><td><p>Sodium chloride 0.9% intravenous infusion</p></td><td><p>As above</p></td><td><p>As above</p></td></tr><tr><td><p>Dextrose 4% with sodium chloride 0.18%</p><p>intravenous infusion</p></td><td><p>As above</p></td><td><p>As above</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+ Diprivan 1% contains soya oil and should not be used in patients who are hypersensitive to peanut or soya.
+ Diprivan 1% must not be used in patients of 16 years of age or younger for sedation in intensive care (see section 4.4).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Diprivan 1% should be given by those trained in anaesthesia (or, where appropriate, doctors trained in the care of patients in Intensive Care).</p><p>Patients should be constantly monitored and facilities for maintenance of a patient airway, artificial ventilation, oxygen enrichment and other resuscitative facilities should be readily available at all times. Diprivan 1% should not be administered by the person conducting the diagnostic or surgical procedure.</p><p>Abuse of, and dependence on Diprivan 1%, predominantly by health care professionals, have been reported. As with other general anaesthetics, the administration of Diprivan 1% without airway care may result in fatal respiratory complications.</p><p>When Diprivan 1% is administered for conscious sedation, for surgical and diagnostic procedures, patients should be continually monitored for early signs of hypotension, airway obstruction and oxygen desaturation.</p><p>As with other sedative agents, when Diprivan 1% is used for sedation during operative procedures, involuntary patient movements may occur. During procedures requiring immobility these movements may be hazardous to the operative site.</p><p>An adequate period is needed prior to discharge of the patient to ensure full recovery after use of Diprivan 1%. Very rarely the use of Diprivan 1% may be associated with the development of a period of postoperative unconsciousness, which may be accompanied by an increase in muscle tone. This may or may not be preceded by a period of wakefulness. Although recovery is spontaneous, appropriate care of an unconscious patient should be administered.</p><p>Diprivan 1% induced impairment is not generally detectable beyond 12 hours. The effects of Diprivan 1%, the procedure, concomitant medications, the age and the condition of the patient should be considered when advising patients on:</p><ul><li>&nbsp;The advisability of being accompanied on leaving the place of administration</li><li>The timing of recommencement of skilled or hazardous tasks such as driving</li><li>The use of other agents that may sedate (Eg, benzodiazepines, opiates, alcohol.)</li></ul><p>As with other intravenous anaesthetic agents, caution should be applied in patients with cardiac, respiratory, renal or hepatic impairment or in hypovolaemic or debilitated patients. Diprivan 1% clearance is blood flow dependent, therefore, concomitant medication that reduces cardiac output will also reduce Diprivan 1% clearance.</p><p>Diprivan 1% lacks vagolytic activity and has been associated with reports of bradycardia (occasionally profound) and also asystole. The intravenous administration of an anticholinergic agent before induction, or during maintenance of anaesthesia should be considered, especially in situations where vagal tone is likely to predominate, or when Diprivan 1% is used in conjunction with other agents likely to cause a bradycardia.</p><p>As with other intravenous anaesthetic and sedative agents, patients should be instructed to avoid alcohol before and for at least 8 hours after administration of Diprivan 1%.</p><p>During bolus administration for operative procedures, extreme caution should be exercised in patients with acute pulmonary insufficiency or respiratory depression.</p><p>Concomitant use of central nervous system depressants e.g., alcohol, general anaesthetics, narcotic analgesics will result in accentuation of their sedative effects. When Diprivan 1% is combined with centrally depressant drugs administered parenterally, severe respiratory and cardiovascular depression may occur. It is recommended that Diprivan 1% is administered following the analgesic and the dose should be carefully titrated to the patient&#39;s response (see Section 4.5).</p><p>During induction of anaesthesia, hypotension and transient apnoea may occur depending on the dose and use of premedicants and other agents.</p><p>Occasionally, hypotension may require use of intravenous fluids and reduction of the rate of administration of Diprivan 1% during the period of anaesthetic maintenance.</p><p>When Diprivan 1% is administered to an epileptic patient, there may be a risk of convulsion.</p><p>Appropriate care should be applied in patients with disorders of fat metabolism and in other conditions where lipid emulsions must be used cautiously (see section 4.2).</p><p>Use is not recommended with electroconvulsive treatment.</p><p>As with other anaesthetics, sexual disinhibition may occur during recovery.</p><p>The benefits and risks of the proposed procedure should be considered prior to proceeding with repeated or prolonged use (&gt;3 hours) of propofol in young children (&lt; 3 years) and in pregnant women as there have been reports of neurotoxicity in preclinical studies, see Section 5.3.</p><p><u>Paediatric population </u></p><p>The use of Diprivan is not recommended in newborn infants as this patient population has not been fully investigated. Pharmacokinetic data (see section 5.2) indicate that clearance is considerably reduced in neonates and has a very high inter-individual variability. Relative overdose could occur on administering doses recommended for older children and result in severe cardiovascular depression.</p><p>Diprivan 2% is not recommended for use in children &lt; 3 years of age due to difficulty in titrating small volumes.</p><p>Propofol must not be used in patients of 16 years of age or younger for sedation for intensive care as the safety and efficacy of propofol for sedation in this age group have not been demonstrated (see section 4.3).</p><p><u>Advisory statements concerning Intensive Care Unit management </u></p><p>Use of propofol emulsion infusions for ICU sedation has been associated with a constellation of metabolic derangements and organ system failures that may result in death. Reports have been received of combinations of the following: Metabolic acidosis, Rhabdomyolysis, Hyperkalaemia, Hepatomegaly, Renal failure, Hyperlipidaemia, Cardiac arrhythmia, Brugada-type ECG (elevated ST-segment and coved T-wave) and rapidly progressive Cardiac failure usually unresponsive to inotropic supportive treatment. Combinations of these events have been referred to as the Propofol Infusion Syndrome. These events were mostly seen in patients with serious head injuries and children with respiratory tract infections who received dosages in excess of those advised in adults for sedation in the intensive care unit.</p><p>The following appear to be the major risk factors for the development of these events: decreased oxygen delivery to tissues; serious neurological injury and/or sepsis; high dosages of one or more of the following pharmacological agents - vasoconstrictors, steroids, inotropes and/or Diprivan 1% (usually at dose rates greater than 4mg/kg/h for more than 48 hours).</p><p>Prescribers should be alert to these events in patients with the above risk factors and promptly consider decreasing or stopping the Diprivan 1% dosage when the above signs develop. All sedative and therapeutic agents used in the intensive care unit (ICU), should be titrated to maintain optimal oxygen delivery and haemodynamic parameters. Patients with raised intra-cranial pressure (ICP) should be given appropriate treatment to support the cerebral perfusion pressure during these treatment modifications.</p><p>Treating physicians are reminded if possible not to exceed the dosage of 4 mg/kg/h.</p><p>Appropriate care should be applied in patients with disorders of fat metabolism and in other conditions where lipid emulsions must be used cautiously.</p><p>It is recommended that blood lipid levels should be monitored if propofol is administered to patients thought to be at particular risk of fat overload. Administration of propofol should be adjusted appropriately if the monitoring indicates that fat is being inadequately cleared from the body. If the patient is receiving other intravenous lipid concurrently, a reduction in quantity should be made in order to take account of the amount of lipid infused as part of the propofol formulation; 1.0 mL of Diprivan contains approximately 0.1 g of fat.</p><p>Diprivan 1% contains 0.0018 mmol sodium per ml. To be taken into consideration by patients on a controlled sodium diet.</p><p><u>Additional Precautions </u></p><p>Caution should be taken when treating patients with mitochondrial disease. These patients may be susceptible to exacerbations of their disorder when undergoing anaesthesia, surgery and ICU care. Maintenance of normothermia, provision of carbohydrates and good hydration are recommended for such patients. The early presentations of mitochondrial disease exacerbation and of the &#39;propofol infusion syndrome&#39; may be similar.</p><p>Diprivan 1% contains no antimicrobial preservatives and supports growth of micro-organisms.</p><p>EDTA chelates metal ions, including zinc, and reduces microbial growth rates. The need for supplemental zinc should be considered during prolonged administration of Diprivan 1%, particularly in patients who are predisposed to zinc deficiency, such as those with burns, diarrhoea and/or major sepsis.</p><p>When Diprivan 1% is to be aspirated, it must be drawn aseptically into a sterile syringe or giving set immediately after opening the ampoule or breaking the vial seal. Administration must commence without delay. Asepsis must be maintained for both Diprivan 1% and infusion equipment throughout the infusion period. Any infusion fluids added to the Diprivan 1% line must be administered close to the cannula site. Diprivan 1% must not be administered via a microbiological filter.</p><p>Diprivan 1% and any syringe containing Diprivan 1% are for single use in an individual patient. In accordance with established guidelines for other lipid emulsions, a single infusion of propofol must not exceed 12 hours. At the end of the procedure or at 12 hours, whichever is the sooner, both the reservoir of propofol and the infusion line must be discarded and replaced as appropriate.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Diprivan 1% has been used in association with spinal and epidural anaesthesia and with commonly used premedicants, neuromuscular blocking drugs, inhalational agents and analgesic agents; no pharmacological incompatibility has been encountered. Lower doses of Diprivan 1% may be required where general anaesthesia is used as an adjunct to regional anaesthetic techniques. Profound hypertension has been reported following anaesthetic with propofol in patients treated with rifampicin.</p><p>The concurrent administration of other CNS depressants such as pre-medication drugs, inhalation agents, analgesic agents may add to the sedative, anaesthetic and cardiorespiratory depressant effects of Diprivan 1% (see Section 4.4).</p><p>A need for lower propofol doses has been observed in patients taking valproate. When used concomitantly, a dose reduction of propofol may be considered.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy </u></p><p>The safety of Diprivan 1% during pregnancy has not been established. Diprivan 1% should not be given to pregnant women except when absolutely necessary. Diprivan 1% can, however, be used during an induced abortion.</p><p><u>Obstetrics</u></p><p>Diprivan 1% crosses the placenta and can cause neonatal depression. It should not be used for obstetric anaesthesia unless clearly necessary.</p><p><u>Breast-feeding</u></p><p>Studies of breastfeeding mothers showed that small quantities of Diprivan 1% are excreted in human milk. Women should therefore not breast-feed for 24 hours after administration of Diprivan 1%. Milk produced during this period should be discarded.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Diprivan 1% has moderate influence on the ability to drive and use machines. Patients should be advised that performance at skilled tasks, such as driving and operating machinery, may be impaired for some time after general anaesthesia.</p><p>Diprivan 1% induced impairment is not generally detectable beyond 12 hours (Section 4.4).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>General</u></p><p>Induction and maintenance of anaesthesia or sedation is generally smooth with minimal evidence of excitation. The most commonly reported ADRs are pharmacologically predictable side effects of an anaesthetic/sedative agent, such as hypotension. The nature, severity and incidence of adverse events observed in patients receiving Diprivan 1% may be related to the condition of the recipients and the operative or therapeutic procedures being undertaken.</p><p>&nbsp;</p><p>The following definitions of frequencies are used:</p><p>Very common (&ge;1/10), common (&ge;1/100 to &lt;1/10), uncommon ((&ge;1/1,000 to &lt;1/100), rare (&ge;1/10,000 to</p><p>&lt;1/1,000), very rare (&lt;1/10,000) and not known (cannot be estimated from the available data).</p><p><u>Table of Adverse Drug Reactions</u></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td><p><strong>System Organ Class</strong></p></td><td><p><strong>Frequency</strong></p></td><td><p><strong>Undesirable Effects</strong></p></td></tr><tr><td><p>Immune system disorders</p></td><td><p>Very rare</p></td><td><p>Anaphylaxis &ndash; may include angioedema, bronchospasm, erythema and hypotension</p></td></tr><tr><td><p>Metabolism and nutrition disorders</p></td><td><p>Not known (9)</p></td><td><p>Metabolic acidosis (5),</p><p>hyperkalaemia (5),</p><p>hyperlipidaemia (5)</p></td></tr><tr><td><p>Psychiatric disorders</p></td><td><p>Not known (9)</p></td><td><p>Euphoric mood. Drug abuse and drug dependence (8)</p></td></tr><tr><td rowspan="4"><p>Nervous system disorders</p></td><td><p>Common</p></td><td><p>Headache during recovery phase</p></td></tr><tr><td><p>Rare</p></td><td><p>Epileptiform movements, including convulsions and opisthotonus during induction, maintenance and recovery</p></td></tr><tr><td><p>Very rare</p></td><td><p>Postoperative unconsciousness</p></td></tr><tr><td><p>Not known (9)</p></td><td><p>Involuntary movements</p></td></tr><tr><td rowspan="3"><p>Cardiac disorders</p></td><td><p>Common</p></td><td><p>Bradycardia (1)</p></td></tr><tr><td><p>Very rare</p></td><td><p>Pulmonary oedema</p></td></tr><tr><td><p>Not known (9)</p></td><td><p>Cardiac arrhythmia (5), cardiac failure (5), (7)</p></td></tr><tr><td rowspan="2"><p>Vascular disorders</p></td><td><p>Common</p></td><td><p>Hypotension (2)</p></td></tr><tr><td><p>Uncommon</p></td><td><p>Thrombosis and phlebitis</p></td></tr><tr><td rowspan="2"><p>Respiratory, thoracic and mediastinal disorders</p></td><td><p>Common</p></td><td><p>Transient apnoea during induction</p></td></tr><tr><td><p>Not known (9)</p></td><td><p>Respiratory depression (dose dependent)</p></td></tr><tr><td rowspan="2"><p>Gastrointestinal disorders</p></td><td><p>Common</p></td><td><p>Nausea and vomiting during recovery phase</p></td></tr><tr><td><p>Very rare</p></td><td><p>Pancreatitis</p></td></tr><tr><td><p>Hepatobiliary disorders</p></td><td><p>Not known (9)</p></td><td><p>Hepatomegaly (5)</p></td></tr><tr><td><p>Musculoskeletal and connective tissue disorders</p></td><td><p>Not known (9)</p></td><td><p>Rhabdomyolysis (3), (5)</p></td></tr><tr><td rowspan="2"><p>Renal and urinary disorders</p></td><td><p>Very rare</p></td><td><p>Discolouration of urine following prolonged administration</p></td></tr><tr><td><p>Not known (9)</p></td><td><p>Renal failure (5)</p></td></tr><tr><td><p>Reproductive system and breast disorders</p></td><td><p>Very rare</p></td><td><p>Sexual disinhibition</p></td></tr><tr><td rowspan="3"><p>General disorders and administration site conditions</p></td><td><p>Very common</p></td><td><p>Local pain on induction (4)</p></td></tr><tr><td><p>Very rare</p></td><td><p>Tissue necrosis (10) following accidental extravascular administration</p></td></tr><tr><td><p>Not known (9)</p></td><td><p>Local pain, swelling, following</p></td></tr></tbody></table><table border="1" cellspacing="0" cellpadding="0" style="width:1052px"><tbody><tr><td style="width:315px"><p>&nbsp;</p></td><td style="width:100px"><p>&nbsp;</p></td><td style="width:635px"><p>accidental extravascular administration</p></td></tr><tr><td style="width:315px"><p>Investigations</p></td><td style="width:100px"><p>Not known (9)</p></td><td style="width:635px"><p>Brugada type ECG (5), (6)</p></td></tr><tr><td style="width:315px"><p>Injury, poisoning and procedural complications</p></td><td style="width:100px"><p>Very rare</p></td><td style="width:635px"><p>Postoperative fever</p></td></tr></tbody></table><p>&nbsp;</p><p><sup>(1)</sup> Serious bradycardias are rare. There have been isolated reports of progression to asystole.</p><p><sup>(2)</sup> Occasionally, hypotension may require use of intravenous fluids and reduction of the administration rate of Diprivan.</p><p><sup>(3)</sup> Very rare reports of rhabdomyolysis have been received where Diprivan has been given at doses greater than 4 mg/kg/hr for ICU sedation.</p><p><sup>(4)</sup> May be minimised by using the larger veins of the forearm and antecubital fossa. With Diprivan 1% local pain can also be minimised by the co-administration of lidocaine.</p><p><sup>(5)</sup> Combinations of these events, reported as &ldquo;Propofol infusion syndrome&rdquo;, may be seen in seriously ill patients who often have multiple risk factors for the development of the events, see section 4.4.</p><p><sup>(6)</sup> Brugada-type ECG - elevated ST-segment and coved T-wave in ECG.</p><p><sup>(7) </sup>Rapidly progressive cardiac failure (in some cases with fatal outcome) in adults. The cardiac failure in such cases was usually unresponsive to inotropic supportive treatment.</p><p><sup>(8)</sup> Abuse of and drug dependence on propofol, predominantly by health care professionals.</p><p><sup>(9)</sup> Not known as it cannot be estimated from the available clinical trial data.</p><p><sup>(10)</sup> Necrosis has been reported where tissue viability has been impaired.</p><p>Dystonia/dyskinesia have been reported.</p><p><u>Local </u></p><p>The local pain which may occur during the induction phase of Diprivan 1% anaesthesia can be minimised by the co-administration of lidocaine (see &quot;Dosage and Administration&quot;) and by the use of the larger veins of the forearm and antecubital fossa. Thrombosis and phlebitis are rare. Accidental clinical extravasation and animal studies showed minimal tissue reaction. Intra-arterial injection in animals did not induce local tissue effects.</p><p>To report any side effect(s):</p><ul><li>Saudi Arabia:</li></ul><table border="1" cellspacing="1" cellpadding="1" style="width:454px"><tbody><tr><td style="width:450px">- The National Pharmacovigilance and Drug Safety Centre (NPC):<br />- Fax: 00966112057662<br />- SFDA call center 19999<br />- Toll free phone: 8002490000<br />- E-mail: npc.drug@sfda.gov.sa<br />- Website: www.sfda.gov.sa/npc</td></tr></tbody></table><p>- Other GCC States:</p><table border="1" cellspacing="1" cellpadding="1" style="width:455px"><tbody><tr><td style="width:452px">- Please contact the relevant competent authority.</td></tr></tbody></table><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Accidental overdosage is likely to cause cardiorespiratory depression. Respiratory depression should be treated by artificial ventilation with oxygen. Cardiovascular depression would require lowering of the patient&#39;s head and, if severe, use of plasma expanders and pressor agents.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Other general anaesthetics</p><p>ATC code: N01AX10</p><p><u>Mechanism of action</u></p><p>Propofol (2, 6-diisopropylphenol) is a short-acting general anaesthetic agent with a rapid onset of action of approximately 30 seconds. Recovery from anaesthesia is usually rapid. The mechanism of action, like all general anaesthetics, is poorly understood. However, propofol is thought to produce its sedative/anaesthetic effects by the positive modulation of the inhibitory function of the neurotransmitter GABA through the ligand-gated GABAA receptors.</p><p><u>Pharmacodynamic properties </u></p><p>In general, falls in mean arterial blood pressure and slight changes in heart rate are observed when Diprivan 1% is administered for induction and maintenance of anaesthesia. However, the haemodynamic parameters normally remain relatively stable during maintenance and the incidence of untoward haemodynamic changes is low.</p><p>Although ventilatory depression can occur following administration of Diprivan 1%, any effects are qualitatively similar to those of other intravenous anaesthetic agents and are readily manageable in clinical practice.</p><p>Diprivan 1% reduces cerebral blood flow, intracranial pressure and cerebral metabolism. The reduction in intracranial pressure is greater in patients with an elevated baseline intracranial pressure.</p><p><u>Clinical efficacy and safety</u></p><p>Recovery from anaesthesia is usually rapid and clear headed with a low incidence of headache and post-operative nausea and vomiting.</p><p>In general, there is less post-operative nausea and vomiting following anaesthesia with Diprivan 1% than following anaesthesia with inhalational agents. There is evidence that this may be related to a reduced emetic potential of propofol.</p><p>Diprivan 1%, at the concentrations likely to occur clinically, does not inhibit the synthesis of adrenocortical hormones.</p><p><u>Paediatric population</u></p><p>Limited studies on the duration of propofol based anaesthesia in children indicate safety and efficacy is unchanged up to duration of 4 hours. Literature evidence of use in children documents use for prolonged procedures without changes in safety or efficacy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Absorption</u></p><p>When Diprivan 1% is used to maintain anaesthesia, blood concentrations asymptotically approach the steady-state value for the given administration rate.</p><p><u>Distribution</u></p><p>Propofol is extensively distributed and rapidly cleared from the body (total body clearance 1.5&ndash;2 litres/minute).</p><p><u>Elimination</u></p><p>The decline in propofol concentrations following a bolus dose or following the termination of an infusion can be described by a three compartment open model with very rapid distribution (half-life 2 &ndash;4 minutes), rapid elimination (half-life 30 &ndash; 60 minutes), and a slower final phase, representative of redistribution of propofol from poorly perfused tissue.</p><p>Clearance occurs by metabolic processes, mainly in the liver where it is blood flow dependent, to form inactive conjugates of propofol and its corresponding quinol, which are excreted in urine.</p><p>After a single dose of 3 mg/kg intravenously, propofol clearance/kg body weight increased with age as follows: Median clearance was considerably lower in neonates &lt;1 month old (n=25) (20 ml/kg/min) compared to older children (n= 36, age range 4 months&ndash;7 years). Additionally inter-individual variability was considerable in neonates (range 3.7&ndash;78 ml/kg/min). Due to this limited trial data that indicates a large variability, no dose recommendations can be given for this age group.</p><p>Median propofol clearance in older aged children after a single 3 mg/kg bolus was 37.5 ml/min/kg (4-24 months) (n=8), 38.7 ml/min/kg (11&ndash;43 months) (n=6), 48 ml/min/kg (1&ndash;3 years)(n=12), 28.2 ml/min/kg (4&ndash;7 years)(n=10) as compared with 23.6 ml/min/kg in adults (n=6).</p><p><u>Linearity</u></p><p>The pharmacokinetics are linear over the recommended range of infusion rates of Diprivan 1%.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Published studies in animals demonstrate that the use of anaesthetic agents during the period of rapid brain growth or synaptogenesis results in widespread neuronal and oligodendrocyte cell loss in the developing brain and alterations in synaptic morphology and neurogenesis. Based on comparisons across species, the window of vulnerability to these changes is believed to correlate with exposures in the third trimester through the first several months of life, but may extend out to approximately 3 years of age in humans.</p><p>In neonatal primates, exposure to 3 hours of an anaesthetic regimen that produced a light surgical plane of anaesthesia did not increase neuronal cell loss, however, treatment regimens of 5 hours or longer increased neuronal cell loss. Data in foetal and neonatal rodents and primates suggest that the neuronal and oligodendrocyte cell losses are associated with subtle but prolonged cognitive deficits in learning and memory. The clinical significance of these preclinical findings is not known, and healthcare providers should balance the benefits of appropriate anaesthesia in young children less than 3 years of age and pregnant women who require procedures against the potential risks suggested by the preclinical data.</p><p>Propofol is a drug on which extensive clinical experience has been obtained. All relevant information for the prescriber is provided elsewhere in the Summary of Product Characteristics.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Glycerol Ph Eur&nbsp;<br />Purified Egg Phosphatide<br />Sodium Hydroxide Ph Eur&nbsp;<br />Soya-bean Oil, Refined Ph Eur&nbsp;<br />Water for Injections Ph Eur&nbsp;<br />Nitrogen Ph Eur&nbsp;<br />Disodium Edetate Ph Eur</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The neuromuscular blocking agents, atracurium and mivacurium should not be given through the same intravenous line as Diprivan 1% without prior flushing.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Shelf life of the product as packaged for sale
+
+Ampoules -3 years
+Vials-3 years
+Pre-filled syringe-2 years
+Shelf life after dilution 
+Use of diluted Diprivan must begin immediately following dilution.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store between 2&deg;C and 25&deg;C.</p><p>Do not freeze.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>a) Clear neutral glass vials of 20 ml in boxes of 5</p><p>b) Clear neutral glass vials of 50 ml and 100 ml</p><p>c) Type 1 glass pre-filled syringe of 50 ml</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>In-use precautions</u></p><p>Containers should be shaken before use.</p><p>Any portion of the contents remaining after use should be discarded.</p><p>Diprivan 1% should not be mixed prior to administration with injections or infusion fluids other than 5% Dextrose or Lidocaine Injection (see Section 4.2.5).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Aspen Pharma Trading Limited, 
+3016 Lake Drive,
+Citywest Business Campus,
+ Dublin 24, Ireland
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                11/09/2018
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

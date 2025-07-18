@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2606245436
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Sogroya 15 mg / 1.5 ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SOMAPACITAN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Subcutaneous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection in pre-filled pen
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Pre-filled pen
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Restricted
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        Store in a refrigerator (2°C – 8°C), do not freeze
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        3072
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="NOVO NORDISK" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            NOVO NORDISK
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 4691]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Novo nordisk Saudi trading
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            NOVO NORDISK
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Sogroya<sup>&reg;</sup> contains the active substance somapacitan: a long acting version of the natural growth hormone produced by the body with a single amino acid substitution. Growth hormone regulates the composition of fat, muscle and bone in adults.</p><p>&nbsp;</p><p>The active substance in Sogroya<sup>&reg;</sup> is made by &#39;recombinant DNA technology&#39;, meaning from cells that have received a gene (DNA) that makes them produce growth hormone. In Sogroya<sup>&reg;</sup>, a small side-chain has been attached to the growth hormone which links Sogroya<sup>&reg;</sup> to the protein (albumin) naturally found in the blood to slow down its removal from the body, allowing the medicine to be given less often.</p><p>&nbsp;</p><p>Sogroya<sup>&reg;</sup> is used to treat growth failure in children and adolescents aged 2.5 years and above if they have no or very low production of growth hormone (growth hormone deficiency) and adults who have growth hormone deficiency.</p><p>&nbsp;</p><p>Your doctor will evaluate based on your response to Sogroya<sup>&reg;</sup>, if you should continue your treatment with Sogroya<sup>&reg;</sup> a year after starting with this medicine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p><strong>Do not use Sogroya<sup>&reg;</sup></strong><!--[if supportFields]><b><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_62fb9a45-dbe4-4c4f-b609-a9aadb80ff99 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span></b><![endif]--></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you or the child in your care are allergic to somapacitan or any of the other ingredients of this medicine (listed in section&nbsp;6).</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you or the child in your care have a benign or malignant tumour which is growing. You must have completed your anti-tumour treatment before you start your Sogroya<sup>&reg;</sup> treatment. Sogroya<sup>&reg;</sup> must be stopped if the tumour grows.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you or the child in your care have recently had open heart surgery or abdominal surgery or multiple accidental injury, severe breathing problems or similar condition.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for children and adolescents who have stopped growing because of closure of the growth plates (closed epiphyses) meaning that you or the child in your care have been told by your doctor that your bones have stopped growing.</p><p>&nbsp;</p><p>If you are not sure talk to your doctor, pharmacist or nurse.<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_d834dced-4db4-4bb0-9487-c2bb5a1a4b53 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>&nbsp;</p><p><strong>Warnings and precautions</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-ansi-language:
+EN-GB'><span style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_0f887bdb-07eb-49e2-be65-4af698a44bdd \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-ansi-language:
+EN-GB'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>Talk to your doctor, pharmacist or nurse before using Sogroya<sup>&reg;</sup> if:</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you or the child in your care have ever had any kind of tumour</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you or the child in your care have high blood sugar (hyperglycaemia) as your blood sugar may need to be checked regularly and the dose of your diabetes medicine may need to be adjusted</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you or the child in your care have a replacement therapy with corticosteroids, because you have been told your body does not produce enough (adrenocortical insufficiency). Speak to your doctor, as your dose may need regular adjustment</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you or the child in your care have severe headaches, eyesight problems, nausea, or vomiting as these could be symptoms of increased pressure in the brain (benign intracranial hypertension) as your treatment may need to be stopped</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you or the child in your care have thyroid problems, your thyroid hormones need to be checked regularly and your dose of thyroid hormone may need to be adjusted</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you are a female taking oral contraception or hormonal replacement therapy with oestrogen, your dose of Sogroya<sup>&reg;</sup> may need to be higher. If you stop using oral oestrogen, your dose of somapacitan may need to be reduced. Your doctor may recommend you to change the route of oestrogen administration (e.g transdermal, vaginal) or use another form of contraception</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you or the child in your care are seriously ill (for example, complications following open heart surgery, abdominal surgery, accidental trauma, acute respiratory failure, or similar conditions). If you are about to have, or have had, a major operation, or go into hospital for the above reasons, tell your doctor and remind the other doctors you are seeing that you use growth hormone</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you or the child in your care develop a severe stomach ache during treatment with Sogroya<sup>&reg;</sup> as this could be a symptom of inflammation of the pancreas seen in treatments with other growth hormone products.</p><p>&nbsp;</p><p>Skin changes at the injection site</p><p dir="RTL">The injection site of Sogroya<sup>&reg;</sup> should be rotated to prevent changes to the fatty tissue under the skin, such as skin thickening, skin shrinking or lumps under the skin. Change the place of injection on your body from one week to the next.</p><p dir="RTL">&nbsp;</p><p>Antibodies</p><p>You are not expected to get antibodies against somapacitan. However, only very rarely your child may get antibodies. If your Sogroya<sup>&reg;</sup> treatment does not work, your doctor may test you for antibodies to somapacitan.</p><p>&nbsp;</p><p><strong>Other medicines and </strong><strong>Sogroya<sup>&reg;</sup></strong><!--[if supportFields]><b><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_7de7cfdc-157d-40b2-8b78-d938a7d31d30 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span></b><![endif]--></p><p>Tell your doctor or pharmacist if you or the child in your care are using, have recently used or might use any other medicines.</p><p>In particular, tell your doctor if you or the child in your care are taking or have recently taken any of the following medicines.</p><p>This is because your doctor may have to adjust the doses of your medicines:</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Corticosteroids such as hydrocortisone, dexamethasone and prednisolone</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Oestrogen as part of oral contraception or hormonal replacement therapy with oestrogen</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Male sex hormones (androgen medicines) such as testosterone</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gonadotropin medicines (gonad stimulating hormones such as luteinising hormone and follicle-stimulating hormone) which stimulate the production of sex hormones</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Insulin or other diabetes medicines</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thyroid hormone medicines such as levothyroxine</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medicines to treat epilepsy or fits (seizures) &ndash; such as carbamazepine</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cyclosporine (immunosuppressive drug) &ndash; a medicine to suppress your immune system.</p><p>&nbsp;</p><p><strong>Pregnancy</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_8c999c1a-85bd-4da5-a64e-c6b077175f74 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you are able to get pregnant, you should not use Sogroya<sup>&reg;</sup> unless you are also using reliable contraception. This is because it is not known if it could harm your unborn child. If you become pregnant while you are using Sogroya<sup>&reg;</sup>, speak to your doctor immediately. If you wish to become pregnant, discuss it with your doctor, as you may need to stop using the medicine.</p><p>&nbsp;</p><p><strong>Breast-feeding</strong></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is not known whether Sogroya<sup>&reg;</sup> can pass into breast milk. Tell your doctor if you are breast-feeding or plan to do so. Your doctor will then help you decide whether to stop breast-feeding, or whether to stop taking Sogroya<sup>&reg;</sup>, considering the benefit of breast-feeding to the baby and the benefit of Sogroya<sup>&reg;</sup> to the mother.</p><p>&nbsp;</p><p><strong>Driving and using machines</strong></p><p>Sogroya<sup>&reg;</sup> does not affect your ability to drive and use machines.</p><p>&nbsp;</p><p><strong>Sodium content</strong></p><p>This medicine contains less than 1&nbsp;mmol sodium (23&nbsp;mg) per dose that is to say essentially &lsquo;sodium‑free&rsquo;.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Always use this medicine exactly as your doctor or pharmacist has told you. Check with your doctor or pharmacist if you are not sure.</p><p>Sogroya<sup>&reg;</sup> is given as an injection under the skin (subcutaneous injection) from a pre-filled pen. You can give the injection yourself. Your doctor or nurse will tell you the right dose and show you how to give the injection when you or the child in your care start treatment.</p><p>&nbsp;</p><p><strong>When to use Sogroya<sup>&reg;</sup></strong></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You or the child in your care should use Sogroya<sup>&reg;</sup> once a week on the same day each week if possible.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You can give yourself the injection at any time of the day.</p><p>&nbsp;</p><p>If you or the child in your care are changing from another weekly growth hormone therapy to Sogroya<sup>&reg;</sup>, you are advised to continue injecting on the same week day.<!--[if supportFields]><span lang=EN-GB
+style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_7513b68f-7c9a-4e0d-bc21-7a1160cab036 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>If you or the child in your care are changing from daily growth hormone therapy to Sogroya<sup>&reg;</sup> choose the preferred day for the weekly dose and inject the last dose of daily treatment the day before (or at least 8 hours before) injecting the first dose of Sogroya<sup>&reg;</sup>.<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_3391728a-7a44-4c50-b3fb-8b99ec959325 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>Changing from another type or brand of growth hormone should be done by your doctor.</p><p>&nbsp;</p><p>If it is not possible for you or the child in your care to inject Sogroya<sup>&reg;</sup> on your usual week day, you can inject Sogroya<sup>&reg;</sup> up to 2 days before or 3 days after your scheduled dosing day. The next dose you can inject as usual the following week.<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_be69361d-b8af-41ab-9671-0015f5cd4fc6 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>&nbsp;</p><p>If necessary you can change the day of your weekly injection of Sogroya<sup>&reg;</sup> as long as it has been at least 4 days since you had your last injection of it. After selecting a new dosing day, continue giving yourself the injection on that day each week.<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_10be858d-ec7b-47ee-9481-e8a80744c8f0 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p><strong>&nbsp;</strong></p><p><strong>How long you will need treatment for</strong><!--[if supportFields]><b><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_12d5b445-8757-4671-b67a-02845bfa5a1b \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span></b><![endif]--></p><p>You may need Sogroya<sup>&reg;</sup> for as long as your body does not produce enough growth hormone.<!--[if supportFields]><span lang=EN-GB
+style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_6ca8ae0c-0152-4b96-bc26-7cc653ca5ab4 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you or the child in your care are using Sogroya<sup>&reg;</sup> for growth failure you will continue using Sogroya<sup>&reg;</sup> until you stop growing.<!--[if supportFields]><span lang=EN-GB
+style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_a55af149-c2dc-40e2-a056-f28b8aceaf15 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you or the child in your care still lack growth hormone after you stop growing, you may need to continue using Sogroya<sup>&reg;</sup> into adulthood.<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_8ebde6d8-c773-4ca0-8c6c-938d2dd5aeb7 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>&nbsp;</p><p>Do not stop using Sogroya<sup>&reg;</sup> without discussing this with your doctor first.<!--[if supportFields]><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_11cc7fcb-44bd-4d07-a4f4-27d7fcd2d1fd \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>&nbsp;</p><p><strong>How much to use</strong></p><p><u>Children and adolescents</u></p><p>The dose for children and adolescents depends on the body weight.</p><p>The recommended dose of Sogroya<sup>&reg;</sup> is 0.16 mg per kg body weight given once a week.</p><p>&nbsp;</p><p><u>Adults</u></p><p>The usual starting dose is 1.5&nbsp;mg once a week if you are having growth hormone treatment for the first time. If you have been previously treated with daily growth hormone medicine (somatropin) the usual starting dose is 2&nbsp;mg once a week.</p><p>If you are a woman taking oral oestrogen (contraception or hormonal replacement therapy) you may need a higher dose of somapacitan. If you are above 60&nbsp;years, you may need a lower dose. See Table 1 below.</p><p>Your doctor may increase or decrease your dose step by step and regularly until you are on the right dose based on your individual needs and your experience of side effects.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not use more than a maximum of 8&nbsp;mg once a week.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not change your dose unless your doctor has told you to.</p><p>&nbsp;</p><p>Table 1 Dose recommendation</p><table border="1" cellspacing="0" cellpadding="0" style="width:633px"><tbody><tr><td style="vertical-align:top"><p><strong>Adult growth hormone deficiency</strong></p></td><td style="vertical-align:top"><p><strong>Recommended starting dose</strong></p></td></tr><tr><td style="vertical-align:top"><p>You have not received daily growth hormone medicine before</p><p>You are &ge;18 to &lt;60&nbsp;years</p><p>You are woman on oral oestrogen therapy regardless of age</p><p>&nbsp;</p><p>You are 60&nbsp;years or above</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>1.5&nbsp;mg/week</p><p>2&nbsp;mg/week</p><p>&nbsp;</p><p>&nbsp;</p><p>1&nbsp;mg/week</p></td></tr><tr><td style="vertical-align:top"><p>You have previously received daily growth hormone medicine</p><p>You are &ge;18 to &lt;60&nbsp;years</p><p>You are woman on oral oestrogen therapy regardless of age</p><p>&nbsp;</p><p>You are 60&nbsp;years or above</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>&nbsp;</p><p>2&nbsp;mg/week</p><p>4&nbsp;mg/week</p><p>&nbsp;</p><p>&nbsp;</p><p>1.5&nbsp;mg/week</p></td></tr></tbody></table><p>&nbsp;</p><p>After you have reached your right dose, your doctor will evaluate your treatment every 6 to 12 months. You may need to have your body mass index checked and blood samples taken.</p><p>&nbsp;</p><p><strong>How Sogroya<sup>&reg;</sup></strong><strong> </strong><strong>is used</strong></p><p>Your doctor or nurse will show you how to inject Sogroya<sup>&reg;</sup> under your skin.</p><p>The best places to give the injection are:</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the front of your thighs</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the front of your waist (abdomen)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the buttocks</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the upper arms.</p><p>&nbsp;</p><p>Change the place of injection on your body from one week to the next.</p><p>Detailed instructions on how to inject Sogroya<sup>&reg;</sup>, the instructions for use, are included at the end of this booklet.</p><p><strong>&nbsp;</strong></p><p><strong>If you use more Sogroya<sup>&reg;</sup> </strong><strong>than you should</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_667e47a1-6afc-4bb6-bb0e-29020230d661 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>If you or the child in your care accidentally use more Sogroya<sup>&reg;</sup> than you should, talk to your doctor as your blood sugar levels may need to be checked.<!--[if supportFields]><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_47d30845-3d8e-497c-86d2-87e5952e17d6 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p><em>&nbsp;</em></p><p><strong>If you forget to use Sogroya<sup>&reg;</sup></strong><!--[if supportFields]><b><sup><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_fc32d961-0eb9-4d9b-a1df-3cc24b665452 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></sup></b><![endif]--><strong><sup>&nbsp;</sup></strong><!--[if supportFields]><b><sup><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span></sup></b><![endif]--></p><p>If you or the child in your care forget to inject a dose:<!--[if supportFields]><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB;mso-no-proof:no'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_496cb4e9-0032-48f2-b96f-4f76e38d6add \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB;mso-no-proof:
+no'><span style='mso-element:field-end'></span></span><![endif]--></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and it is 3&nbsp;days or less after you should have used Sogroya<sup>&reg;</sup>, use it as soon as you remember. Then inject your next dose on your usual injection day.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and it is more than 3&nbsp;days since you should have used Sogroya<sup>&reg;</sup>, skip the missed dose. Then inject your next dose as usual on your next scheduled day.</p><p>&nbsp;</p><p>Do not inject an extra dose or increase the dose to make up for a missed dose.</p><p><strong>&nbsp;</strong></p><p><strong>If you stop using Sogroya<sup>&reg;</sup></strong><!--[if supportFields]><b><sup><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_a0657efc-00f7-4493-9958-612769662238 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></sup></b><![endif]--><strong><sup>&nbsp;</sup></strong><!--[if supportFields]><b><sup><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB'><span
+style='mso-element:field-end'></span></span></sup></b><![endif]--></p><p>Do not stop using Sogroya<sup>&reg;</sup> without talking to your doctor.</p><p>&nbsp;</p><p>If you have any further questions on the use of this medicine, ask your doctor, pharmacist or nurse.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p>&nbsp;</p><p><strong>Side effects seen in children and adolescents</strong></p><p>Very common (may affect more than 1&nbsp;in 10&nbsp;people)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Headache.</p><p>&nbsp;</p><p>Common (may affect up to 1&nbsp;in 10&nbsp;people)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Swollen hands and feet due to a build-up of fluid under the skin (peripheral oedema)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The adrenal glands do not make enough steroid hormones (adrenocortical insufficiency).</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Decreased thyroid hormone (hypothyroidism)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Redness and pain in the area of injection (injection site reactions)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Joint pain (arthralgia)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pain in arms or legs (pain in extremity)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; High blood sugar (hyperglycaemia)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feeling very tired (fatigue).</p><p>&nbsp;</p><p><strong>Side effects seen in adults</strong></p><p>Very common (may affect more than 1&nbsp;in&nbsp;10 people)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Headache.</p><p>&nbsp;</p><p>Common (may affect up to 1&nbsp;in&nbsp;10 people)<!--[if supportFields]><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB;mso-no-proof:no'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_50f1bd9a-014d-42cc-97d7-12c69b1aa719 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB;mso-no-proof:
+no'><span style='mso-element:field-end'></span></span><![endif]--></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The adrenal glands do not make enough steroid hormones (adrenocortical insufficiency)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Decreased thyroid hormone (hypothyroidism)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; High blood sugar (hyperglycaemia)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feeling of &lsquo;pins and needles&rsquo; mainly in fingers (paraesthesia)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rash</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hives (urticaria)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Joint pain (arthralgia), muscle pain (myalgia), muscle stiffness</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Swollen hands and feet due to a build-up of fluid under the skin (peripheral oedema)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feeling very tired or weak (fatigue or asthenia)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Redness and pain in the area of injection (injection site reactions).</p><p>&nbsp;</p><p>Uncommon (may affect up to 1&nbsp;in&nbsp;100 people)<!--[if supportFields]><span lang=EN-GB
+style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB;mso-bidi-font-weight:
+bold'><span style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_a7dbf4cb-e4fd-4dd8-8ef4-528b44e6acf4 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-ansi-language:EN-GB;mso-bidi-font-weight:
+bold'><span style='mso-element:field-end'></span></span><![endif]--></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thickening of skin where you inject your medicine (lipohypertrophy)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Numb feeling and tingling in your hand(s) (carpal tunnel syndrome)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Itching (pruritus)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Joint stiffness.</p><p><strong>&nbsp;Reporting of side effects</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_5fd1a301-b2f7-4adc-8ff2-54dec4eafa69 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-ansi-language:EN-GB'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>&nbsp;</p><p><u>Please report adverse drug events to: </u></p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td><p>The National Pharmacovigilance Centre (NPC):</p><p>Fax: +966-11-205-7662</p><p>SFDA Call Center: 19999</p><p>E-mail: npc.drug@sfda.gov.sa</p><p>Website: https://ade.sfda.gov.sa</p></td></tr></tbody></table><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Keep this medicine out of the sight and reach of children.</p><p>&nbsp;</p><p>Do not use this medicine after the expiry date which is stated on the pen label and carton after &lsquo;Expiry&rsquo;. The expiry date refers to the last day of that month.</p><p>&nbsp;</p><p>Store in a refrigerator (2&deg;C - 8&deg;C). Do not freeze. Keep away from the freezing element.</p><p><em>&nbsp;</em></p><p><em>After first opening</em></p><p>Use within 6&nbsp;weeks after first use. Store in a refrigerator (2&deg;C - 8&deg;C).</p><p>&nbsp;</p><p><em>Before and after first opening</em></p><p>If you cannot refrigerate (for example during travelling), Sogroya<sup>&reg;</sup> may be kept temporarily at temperatures up to 30&deg;C for up to a total of 72&nbsp;hours (3&nbsp;days). Return Sogroya<sup>&reg;</sup> to the refrigerator again after storage at this temperature. If you store out of the refrigerator and then return to the refrigerator, the total combined time out of the refrigerator is 3&nbsp;days, monitor this carefully. Discard the Sogroya<sup>&reg;</sup> pen, if you have kept it at 30&deg;C for more than 72 hours, or for any period of time above 30&deg;C.</p><p>Record the time outside the refrigerator:________________</p><p>&nbsp;</p><p>Keep Sogroya<sup>&reg;</sup> in the outer carton with the pen cap on to protect from light.</p><p>Always remove the injection needle after each injection and store the pen without a needle attached.</p><p>&nbsp;</p><p>Do not use this medicine if the solution does not appear clear to slightly opalescent, colourless to slightly yellow and free from visible particles.</p><p>&nbsp;</p><p>Do not throw away any medicines via wastewater or household waste. Ask your pharmacist how to throw away medicines you no longer use. These measures will help protect the environment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>What Sogroya<sup>&reg;</sup></strong><strong> </strong><strong>contains </strong></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The active substance is somapacitan. One mL of solution contains 10&nbsp;mg of somapacitan. Each pre‑filled pen contains 15&nbsp;mg of somapacitan in 1.5&nbsp;mL solution.</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The other ingredients are: histidine, mannitol, poloxamer&nbsp;188, phenol, water for injections, hydrochloric acid (for pH adjustment), sodium hydroxide (for pH adjustment). See also section&nbsp;2 &lsquo;What you need to know before you use Sogroya<sup>&reg;</sup>&rsquo; for information on sodium.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                What Sogroya® looks like and contents of the pack
+Sogroya® is a clear to slightly opalescent, colourless to slightly yellow liquid and free from visible particles for injection in a pre filled pen.
+	
+	Sogroya® 15 mg/1.5 mL solution for injection in pre filled pen with a rubine red dose button is available in the following pack size: a pack containing 1 pre-filled pen.
+	
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Novo Nordisk A/S</p><p>Novo All&eacute;</p><p>DK-2880 Bagsv&aelig;rd</p><p>Denmark</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                July-2023
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">يحتوي سوجرويا&trade;<strong> </strong><sup>&lrm;&lrm;</sup>على المادة الفعالة سوماباسيتان: وهي عبارة عن نسخة ممتدة المفعول من هرمون النمو الطبيعي الذي ينتجه الجسم مع استبدال حمض أميني واحد. ينظم هرمون النمو تكوين الدهون والعضلات والعظام لدى البالغين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تعد المادة الفعالة في سوجرويا&trade; &lrm;&lrm; مصنوعة من &quot;تقنية الحمض النووي المأشوب&quot;، أي من الخلايا التي تلقت جينًا (DNA) يجعلها تُنتج هرمون النمو. في سوجرويا&trade; &lrm;&lrm;، رُبطت سلسلة جانبية صغيرة بهرمون النمو الذي يربط سوجرويا&trade; بالبروتين (الألبومين) الموجود طبيعيًا في الدم لإبطاء عملية إزالته من الجسم، ممّا يسمح بإعطاء الدواء بمعدل أقل.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يُستخدم سوجرويا&trade; &lrm;&lrm;لعلاج فشل النمو لدى الأطفال والمراهقين الذين تبلغ أعمارهم 2.5 سنوات فأكثر إذا لم يكن لديهم إنتاج هرمون النمو أو إذا كان منخفضًا للغاية (نقص هرمون النمو) والبالغين الذين يُعانون من نقص هرمون النمو.</p><p dir="RTL">&nbsp;</p><p dir="RTL">بناءً على استجابتك لدواء سوجرويا&trade; &lrm;&lrm;، سيقيّم الطبيب المتابع لك ما إذا كان ينبغي عليك مواصلة علاجك بعقار سوجرويا&trade;&nbsp; بعد عام من بدء هذا الدواء.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>لا تستخدم </strong><strong>سوجرويا&trade; </strong><strong><sup>&lrm;&lrm;</sup></strong><!--[if supportFields]><b><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_62fb9a45-dbe4-4c4f-b609-a9aadb80ff99 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span></b><![endif]--></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنت تعاني من حساسية تجاه سوماباسيتان أو أي من المكونات الأخرى لهذا الدواء (مدرجة في القسم 6).</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني أنت أو الطفل الخاضع لرعايتك من نمو ورم حميد أو خبيث. يجب أن تكون قد أكملت علاجك المضاد للورم قبل أن تبدأ علاجك بدواء سوجرويا&trade; &lrm;&lrm;. يجب إيقاف سوجرويا&trade; &lrm;&lrm; في حالة نمو الورم.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا خضعت أنت أو الطفل الخاضع لرعايتك مؤخرًا لجراحة قلب مفتوح أو جراحة بطنية أو إصابات عرضية متعددة أو مشكلات شديدة في التنفس أو حالة مشابهة.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; للأطفال والمراهقين الذين توقفوا عن النمو بسبب إغلاق صفائح النمو مما يعني أن طبيبك قد أخبرك أنت أو الطفل الخاضع لرعايتك أن عظامك قد توقفت عن النمو.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا لم تكن متأكدًا، فتحدث مع طبيبك أو الصيدلي أو الممرضة.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_d834dced-4db4-4bb0-9487-c2bb5a1a4b53 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تحذيرات واحتياطات</strong><!--[if supportFields]><span
+lang=AR-SA style='font-size:12.0pt;mso-ansi-font-size:11.0pt;font-family:"Arial",sans-serif;
+mso-ansi-font-weight:bold'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_0f887bdb-07eb-49e2-be65-4af698a44bdd \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><span
+lang=AR-SA style='font-size:12.0pt;mso-ansi-font-size:11.0pt;font-family:"Arial",sans-serif;
+mso-ansi-font-weight:bold'><span style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">تحدث إلى طبيبك أو الصيدلي أو الممرضة قبل استخدام سوجرويا&trade; إذا:</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أصِبت أنت أو الطفل الخاضع لرعايتك في أي وقت سابق بأي نوع من الأورام</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنت تعاني أنت أو الطفل الخاضع لرعايتك من ارتفاع سكر الدم (فرط سكر الدم) حيث قد يلزم فحص مستوى سكر الدم لديك بانتظام وقد تكون هناك حاجة لتعديل جرعتك من دواء السكري</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنت تعاني أنت أو الطفل الخاضع لرعايتك لعلاج بديل بالكورتيكوستيرويدات، لأنه تم إبلاغك بأنّ جسمك لا ينتج ما يكفي منها (قصور قشرة الكُظر). تحدث مع طبيبك، لأن جرعتك قد تحتاج إلى تعديل على فترات منتظمة</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنت تعاني أنت أو الطفل الخاضع لرعايتك من صداع شديد، أو مشاكل في الإبصار، أو غثيان، أو تقيؤ، فقد تكون هذه أعراضًا لزيادة ضغط الدماغ (فرط ضغط الدَّم الحميد داخل القِحْف) حيث قد تحتاج إلى إيقاف علاجك</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنت تعاني أنت أو الطفل الخاضع لرعايتك من مشاكل في الغدة الدرقية، فيتعين فحص هرمونات الغدة الدرقية بانتظام وقد تحتاج إلى تعديل جرعتك من هرمون الغدة الدرقية</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنتِ امرأة تتناولين وسيلة منع حمل عن طريق الفم أو تتلقين علاج بالهرمونات البديلة باستخدام هرمون الإستروجين، فقد تحتاجين إلى زيادة جرعتك من سوجرويا&trade; &lrm;&lrm;. إذا توقفتِ عن تناول الإستروجين الفموي، فقد تحتاجين إلى تقليل جرعتك من سوماباسيتان. قد يوصيكِ طبيبكِ بتغيير طريقة إعطاء الإستروجين (على سبيل المثال، عبر الجلد، أو المهبل) أو استخدام وسيلة أخرى من وسائل منع الحمل</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنت مريضًا أنت أو الطفل الخاضع لرعايتك وحالتك/حالته خطرة (على سبيل المثال، المضاعفات التي تحدث بعد جراحة القلب المفتوح، أو جراحة بطنية، أو الصدمات العرضية، أو فشل الجهاز التنفسي الحاد، أو حالات مشابهة). إذا كنت على وشك الخضوع لعملية جراحية كبيرة أو خضعت لها سابقًا، أو ستذهب إلى المستشفى للأسباب المذكورة أعلاه، فأخبر طبيبك وذكّر الأطباء الآخرين ممن تتردد عليهم باستخدامك لهرمون النمو</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كنت تعاني أنت أو الطفل الخاضع لرعايتك من آلام شديدة في المعدة أثناء العلاج باستخدام سوجرويا&trade; &lrm;&lrm;&nbsp;لأن هذا قد يكون أحد أعراض التهاب البنكرياس الذي لوحظ مع علاجات منتجات هرمون النمو الأخرى.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تغيرات جلدية في موضع الحقن</p><p>يجب التبديل بين مواضع حقن سوجرويا&trade; &lrm;&lrm;&nbsp;لمنع حدوث التغيرات التي تطرأ على الأنسجة الدهنية تحت الجلد، مثل سماكة الجلد أو انكماش الجلد أو وجود كتل تحت الجلد. غيّر مكان الحقن في جسمك من أسبوع إلى آخر.</p><p>&nbsp;</p><p dir="RTL">الأجسام المضادة</p><p dir="RTL">من غير المتوقع أن تتكون لديك أجسام مضادة لسوماباسيتان. ومع ذلك، نادرًا جدًا ما تتكون&nbsp;الأجسام المضادة لدى طفلك. إذا لم يكن علاجك بـ سوجرويا&trade; &lrm;&lrm; فعالًا، فقد يجري لك طبيبك اختبارًا للتحقق من وجود أجسام مضادة لسوماتاباسيتان.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الأدوية الأخرى و </strong><strong>سوجرويا&trade; </strong><strong><sup>&lrm;&lrm;</sup></strong></p><p dir="RTL">يُرجى إخبار طبيبك أو الصيدلي ما إذا كنت أنت أو&nbsp;الطفل الخاضع لرعايتك&nbsp;تستخدم أدوية أخرى أو استخدمتها مؤخرًا أو قد تستخدمها في المستقبل.</p><p dir="RTL">على وجه الخصوص، أخبر طبيبك إذا كنت أنت أو الطفل الخاضع لرعايتك تتلقى أيًا من الأدوية التالية أو تلقيتها مؤخرًا.</p><p dir="RTL">وذلك لأن طبيبك قد يضطر إلى تعديل جرعات أدويتك:</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الكورتيكوستيرويدات مثل الهيدروكورتيزون والديكساميثازون والبريدنيزولون</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الإستروجين باعتباره أحد موانع الحمل التي تؤخذ عن طريق الفم أو علاج الهرمونات البديلة باستخدام هرمون الإستروجين</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الهرمونات الجنسية للذكور (أدوية الأندروجين) مثل التستوستيرون</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية الغونادوتروبين (هرمونات تحفيز الغدد التناسلية مثل الهرمون المُلَوتِن والهرمون المنبه للجريب) التي تحفز إنتاج الهرمونات الجنسية</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأنسولين أو أدوية السكري الأخرى</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية هرمون الغدة الدرقية مثل ليفوثيروكسين</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أدوية لعلاج الصرع أو النوبات (التشنجات) - مثل كاربامازيبين</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; السيكلوسبورين (عقار كابت للمناعة) - دواء لتثبيط جهازك المناعي.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الحمل</strong></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنتِ قادرة على الحمل، فيجب ألا تستخدمي سوجرويا&trade;<sup>&lrm;&lrm;</sup> إلا إذا كنتِ تستخدمين أيضًا وسيلة منع حمل موثوقة. وذلك لأنّه من غير المعروف ما إذا كان قد يُلحق الضرر بجنينك. إذا أصبحتِ حاملًا أثناء استخدامكِ لدواء سوجرويا&trade;<sup>&lrm;</sup>، فتحدثي مع طبيبكِ على الفور. إذا كنتِ ترغبين في الحمل، فناقشي الأمر مع طبيبكِ، فقد تحتاجين إلى التوقف عن استخدام الدواء.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الرضاعة الطبيعية</strong></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; من غير المعروف ما إذا كان من الممكن أن ينتقل سوجرويا&trade;<sup>&lrm;</sup> إلى حليب الثدي. أخبري طبيبكِ إذا كنتِ ترضعين رضاعة طبيعية أو تخططين لذلك. سيساعدكِ طبيبكِ حينها على اتخاذ قرار بشأن التوقف عن الرضاعة الطبيعية، أو التوقف عن تناول سوجرويا&trade;<sup>&lrm;</sup>، مع الأخذ بعين الاعتبار فائدة الرضاعة الطبيعية للطفل، وفائدة سوجرويا&trade;<sup>&lrm;</sup> للأم.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>القيادة واستخدام الآلات</strong></p><p dir="RTL">لا يؤثر سوجرويا&trade;<sup>&lrm;</sup> على قدرتك على القيادة واستخدام الآلات.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>محتوى الصوديوم</strong></p><p>يحتوي هذا الدواء على أقل من 1 مليمول صوديوم (23 مجم) لكل جرعة، &rlm;‫وهذا يعني أنه تقريبًا &quot;خالٍ من الصوديوم&quot;. &nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">استخدم هذا الدواء دائمًا بدقة وفقًا لتعليمات طبيبك أو الصيدلي. استشر طبيبك أو الصيدلي إذا لم تكن متأكدًا.</p><p dir="RTL">يُعطى سوجرويا&trade;<sup>&lrm;</sup> كحقنة تحت الجلد من قلم معبأ مسبقًا. يمكنك أخذ الحقنة بنفسك. سيخبرك طبيبك أو ممرضتك بالجرعة المناسبة&nbsp;وسيوضّحان لك كيفية إعطاء الحقنة عندما تبدأ أنت أو الطفل الخاضع لرعايتك العلاج.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>متى تستخدم سوجرويا&trade;<sup>&lrm;</sup></strong></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يجب عليك أو على الطفل الخاضع لرعايتك استخدام سوجرويا&trade;<sup>&lrm;</sup> مرة واحدة أسبوعيًا في نفس اليوم من كل أسبوع&nbsp;إن&nbsp;أمكن.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يمكنك إعطاء نفسك الحقنة في أي وقت من اليوم.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا كنت&nbsp;تقوم&nbsp;أنت أو الطفل الخاضع لرعايتك بالتغيير من علاج آخر أسبوعي بهرمون النمو إلى سوجرويا&trade;<sup>&lrm;</sup>، فيُنصح بمواصلة الحقن في نفس يوم الأسبوع.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_7513b68f-7c9a-4e0d-bc21-7a1160cab036 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">إذا كنت تقوم أنت أو الطفل الخاضع لرعايتك بالتغيير من علاج يومي بهرمون النمو إلى سوجرويا&trade;<sup>&lrm;</sup>، فاختر اليوم المفضل للجرعة الأسبوعية واحقن الجرعة الأخيرة من العلاج اليومي في اليوم السابق (أو قبل 8 ساعات على الأقل) من حقن الجرعة الأولى من سوجرويا&trade;<sup>&lrm;</sup>.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_3391728a-7a44-4c50-b3fb-8b99ec959325 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">يجب إجراء التغيير من نوع أو علامة تجارية أخرى لهرمون النمو من قِبل طبيبك.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا لم يكن من الممكن لك أو للطفل الخاضع لرعايتك حقن سوجرويا&trade;<sup>&lrm;</sup> في يوم الأسبوع المعتاد لك، فيمكنك حقن سوجرويا&trade;<sup>&lrm;</sup> حتى يومين قبل أو 3 أيام بعد يوم الجرعات المقرر. يمكنك تناول الجرعة التالية كالمعتاد في الأسبوع التالي.<!--[if supportFields]><span lang=AR-SA
+style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_be69361d-b8af-41ab-9671-0015f5cd4fc6 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا لزم الأمر، يمكنك تغيير يوم الحقن الأسبوعي بدواء سوجرويا&trade;<sup>&lrm;</sup>&nbsp;طالما قد مر 4 أيام على الأقل منذ آخر حقنة لك من الدواء. بعد اختيار يوم جديد لتلقي الجرعة، استمر في إعطاء الحقنة لنفسك في ذلك اليوم كل أسبوع.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_10be858d-ec7b-47ee-9481-e8a80744c8f0 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>ما المدة التي ستحتاج لتناول العلاج خلالها</strong></p><p dir="RTL">قد تحتاج إلى الاستمرار في أخذ سوجرويا&trade;<sup>&lrm;</sup>&nbsp;طالما أن جسمك لا ينتج هرمون النمو الكافي.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_6ca8ae0c-0152-4b96-bc26-7cc653ca5ab4 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تستخدم أنت أو الطفل الخاضع لرعايتك سوجرويا&trade;<sup>&lrm;</sup> لعلاج فشل النمو، فستستمر في استخدام سوجرويا&trade;<sup>&lrm;</sup> حتى تتوقف عن النمو.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت لا تزال تفتقر أنت أو الطفل الخاضع لرعايتك إلى هرمون النمو بعد توقفك عن النمو، فقد تحتاج إلى الاستمرار في استخدام سوجرويا&trade;<sup>&lrm;</sup>&nbsp;حتى مرحلة البلوغ.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_8ebde6d8-c773-4ca0-8c6c-938d2dd5aeb7 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&nbsp;</p><p dir="RTL">لا تتوقف عن استخدام سوجرويا&trade;<sup>&lrm;</sup>&nbsp;دون مناقشة هذا الأمر مع طبيبك أولًا.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_11cc7fcb-44bd-4d07-a4f4-27d7fcd2d1fd \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>جرعة الاستخدام</strong></p><p dir="RTL"><u>الأطفال والمراهقون</u></p><p dir="RTL">تعتمد جرعة الأطفال والمراهقين على وزن الجسم.</p><p dir="RTL">الجرعة الموصى بها من سوجرويا&trade;<sup>&lrm;</sup>&nbsp;هي 0.16 ملغ لكل كلغ من وزن الجسم تعطى مرة واحدة في الأسبوع.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>البالغون</u></p><p dir="RTL">تبلغ جرعة البدء المعتادة 1.5 مجم مرة واحدة أسبوعيًا إذا كنت تتلقى علاج هرمون النمو لأول مرة. إذا سبق وعولجت بدواء هرمون النمو اليومي (سوماتروبين)، فإنّ جرعة البداية المعتادة 2 مجم مرة واحدة أسبوعيًا.</p><p dir="RTL">إذا كنتِ امرأة وتتناولين الإستروجين عن طريق الفم (موانع الحمل أو العلاج البديل بالهرمونات)، فقد تحتاجين إلى جرعة أعلى من سوماباسيتان. إذا كان عمرك يزيد عن 60 عامًا، فقد تحتاج إلى جرعة أقل. انظر الجدول 1 أدناه.</p><p dir="RTL">قد يزيد طبيبك الجرعة أو يقللها تدريجيًا بصورة منتظمة حتى تحصل على الجرعة المناسبة بناءً على احتياجاتك الفردية وتعرّضك للآثار الجانبية.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تستخدم أكثر من 8 مجم كحد أقصى مرة واحدة أسبوعيًا.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تغير جرعتك إلا إذا طلب منك طبيبك ذلك.</p><p dir="RTL">&nbsp;</p><p dir="RTL">الجدول 1 توصية الجرعة</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0" style="width:633px"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><strong>نقص هرمون النمو لدى البالغين</strong></p></td><td style="vertical-align:top"><p dir="RTL"><strong>جرعة البدء الموصى بها</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">لم تتلق دواء هرمون النمو اليومي من قبل</p><p dir="RTL">&nbsp;</p><p dir="RTL">كان عمرك &ge;18 إلى &lt;60 عامًا</p><p dir="RTL">أنتِ امرأة وتتناولين علاج الإستروجين عن طريق الفم بغض النظر عن العمر</p><p dir="RTL">&nbsp;</p><p dir="RTL">عمرك 60 عامًا أو أكبر</p></td><td style="vertical-align:top"><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">1.5 مجم/أسبوعيًا</p><p dir="RTL">2 مجم/أسبوعيًا</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">1 مجم/أسبوعيًا</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">سبق لك تلقّي دواء هرمون النمو اليومي</p><p dir="RTL">&nbsp;</p><p dir="RTL">كان عمرك &ge;18 إلى &lt;60 عامًا</p><p dir="RTL">أنتِ امرأة وتتناولين علاج الإستروجين عن طريق الفم بغض النظر عن العمر</p><p dir="RTL">&nbsp;</p><p dir="RTL">عمرك 60 عامًا أو أكبر</p></td><td style="vertical-align:top"><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">2 مجم/أسبوعيًا</p><p dir="RTL">4 مجم/أسبوعيًا</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">1.5 مجم/أسبوعيًا</p></td></tr></tbody></table><p dir="RTL">&nbsp;</p><p dir="RTL">بعد أن تصل إلى الجرعة المناسبة لك، سيقيّم طبيبك علاجك كل 6 إلى 12 شهرًا. قد تحتاج للخضوع لفحص مؤشر كتلة جسمك وأخذ عينات دم.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>كيفية استخدام سوجرويا&trade;&lrm;</strong></p><p dir="RTL">سيوضح لك طبيبك أو الممرضة كيفية حقن سوجرويا&trade;<sup>&lrm;</sup> تحت جلدك.</p><p dir="RTL">&rlm;‫وتعد أفضل الأماكن للحقن:</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الجزء الأمامي من فخذيك</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الجزء الأمامي من خصرك (البطن).</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأرداف</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الجزء العلوي من الذراعين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">غيّر مكان الحقن في جسمك من أسبوع إلى آخر.</p><p dir="RTL">التعليمات المفصلة حول كيفية حقن سوجرويا&trade;<sup>&lrm;</sup>، وتعليمات الاستخدام، مذكورة في نهاية هذا الكتيب.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>إذا استخدمت كمية أكبر مما ينبغي من سوجرويا&trade;<sup>&lrm;</sup></strong></p><p dir="RTL">إذا استخدمت أنت أو الطفل الخاضع لرعايتك سوجرويا&trade;<sup>&lrm;</sup> أكثر مما ينبغي عن طريق الخطأ، فتحدث مع طبيبك حيث قد تحتاج إلى فحص مستويات السكر في دمك.<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_47d30845-3d8e-497c-86d2-87e5952e17d6 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL"><em>&nbsp;</em></p><p dir="RTL"><strong>في حال نسيت استخدام سوجرويا&trade;<sup>&lrm;</sup></strong><!--[if supportFields]><b><sup><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_fc32d961-0eb9-4d9b-a1df-3cc24b665452 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></sup></b><![endif]--><strong><sup>&nbsp;</sup></strong><!--[if supportFields]><b><sup><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span></sup></b><![endif]--></p><p dir="RTL">إذا نسيت أنت أو الطفل الخاضع لرعايتك حقن جرعة:<!--[if supportFields]><span lang=AR-SA style='mso-bidi-font-size:
+11.0pt;font-family:"Arial",sans-serif;mso-no-proof:no'><span style='mso-element:
+field-begin'></span> DOCVARIABLE vault_nd_496cb4e9-0032-48f2-b96f-4f76e38d6add
+\* MERGEFORMAT <span style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif;
+mso-no-proof:no'><span style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; وكان مر 3 أيام أو أقل على الموعد المحدد لاستخدام سوجرويا&trade;<sup>&lrm;</sup>، فاستخدمه بمجرد أن تتذكر. ثم احقن جرعتك التالية في يوم الحقن المعتاد.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; وكان مر أكثر من 3 أيام على الموعد المحدد لاستخدام سوجرويا&trade;<sup>&lrm;</sup>، فتخطى الجرعة الفائتة. ثم احقن جرعتك التالية كالمعتاد في اليوم التالي المقرر لذلك.</p><p dir="RTL">&nbsp;</p><p dir="RTL">لا تحقن جرعة إضافية أو تزيد الجرعة لتعويض جرعة فائتة.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>إذا توقفت عن استخدام سوجرويا&trade;<sup>&lrm;</sup></strong><!--[if supportFields]><b><sup><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_a0657efc-00f7-4493-9958-612769662238 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></sup></b><![endif]--><strong><sup>&nbsp;</sup></strong><!--[if supportFields]><b><sup><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-end'></span></span></sup></b><![endif]--></p><p dir="RTL">لا تتوقف عن استخدام سوجرويا&trade;<sup>&lrm;</sup> دون التحدث مع طبيبك.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا كانت لديك أي أسئلة أخرى بشأن استخدام هذا الدواء، فاستشر طبيبك أو الممرضة أو الصيدلي.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثل كل الأدوية، يمكن أن يسبب هذا الدواء آثارًا جانبية، على الرغم من ذلك لا يُصاب جميع المستخدمين بها.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الآثار الجانبية التي لوحظت لدى الأطفال والمراهقين</strong></p><p dir="RTL">شائعة جداً (قد تصيب أكثر من شخص واحد من كل 10 أشخاص)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الصداع.</p><p dir="RTL">&nbsp;</p><p dir="RTL">شائعة (قد تصيب ما يصل إلى شخص واحد من بين كل 10 أشخاص)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورم اليدين والقدمين بسبب تراكم السوائل تحت الجلد (وَذَمَة محيطية)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تنتج الغدد الكظرية ما يكفي من هرمونات الستيرويد (قصور القشرة الكظرية).</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض هرمون الغدة الدرقية (قصور الدرقية)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; احمرار وألم في منطقة الحقن (ردود فعل موضع الحقن)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم المفاصل (ألم مفصلي)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم في الذراعين أو الساقين (ألم في الأطراف)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتفاع سكر الدم (فرط سكر الدم)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الشعور بإجهاد الشديد.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الآثار الجانبية التي لوحظت لدى البالغين</strong></p><p dir="RTL">شائعة جدًا (قد تصيب أكثر من شخص واحد من كل&nbsp;10 أشخاص)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الصداع.</p><p dir="RTL">&nbsp;</p><p dir="RTL">شائعة (قد تصيب ما يصل إلى شخص واحد من بين كل 10 أشخاص)<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif;
+mso-no-proof:no'><span style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_50f1bd9a-014d-42cc-97d7-12c69b1aa719 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif;
+mso-no-proof:no'><span style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تنتج الغدد الكظرية ما يكفي من هرمونات الستيرويد (قصور القشرة الكظرية)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض هرمون الغدة الدرقية (قصور الدرقية)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتفاع سكر الدم (فرط سكر الدم)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الشعور &quot;بوخز وإبر&quot; بصورة أساسية في الأصابع (التنميل)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الطفح الجلدي</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الشرى (حساسية الجلد)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم المفاصل (ألم مفصلي)، ألم العضلات (ألم عضلي)، تصلب العضلات</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورم اليدين والقدمين بسبب تراكم السوائل تحت الجلد (وذَمة محيطية)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الشعور بالتعب أو الضعف الشديد (الإعياء أو الوهن)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; احمرار وألم في منطقة الحقن (ردود فعل موضع الحقن).</p><p dir="RTL">&nbsp;</p><p dir="RTL">غير شائعة (قد تصيب ما يصل إلى شخص واحد من كل 100 شخص)<!--[if supportFields]><b style='mso-ansi-font-weight:
+normal'><span lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_a7dbf4cb-e4fd-4dd8-8ef4-528b44e6acf4 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]-->&nbsp;<!--[if supportFields]><b
+style='mso-ansi-font-weight:normal'><span lang=AR-SA style='mso-bidi-font-size:
+11.0pt;font-family:"Arial",sans-serif'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سماكة الجلد في موضع حقن الدواء (التضخم الشحمي)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الشعور بالخدر والوخز في يدك (يديك) (متلازمة النفق الرسغي)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الحكة (الهراش)</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تصلب المفاصل.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الإبلاغ عن الآثار الجانبية</strong><!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif;
+mso-ansi-font-weight:bold'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_5fd1a301-b2f7-4adc-8ff2-54dec4eafa69 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><span
+lang=AR-SA style='mso-bidi-font-size:11.0pt;font-family:"Arial",sans-serif;
+mso-ansi-font-weight:bold'><span style='mso-element:field-end'></span></span><![endif]--></p><p dir="RTL">&nbsp;</p><p dir="RTL">يرجى الإبلاغ عن الأعراض الجانبية إلى:</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td><p>المركز الوطني للتيقظ والسلامة الدوائية:</p><p>+966-11- فاكس: 2057662</p><p>للاتصال بالمركز الموحد للهيئة العامة للغذاء والدواء: 19999</p><p>npc.drug@sfda.gov.sa بريد الالكتروني:</p><p>https://ade.sfda.gov.sa الموقع الالكتروني:</p></td></tr></tbody></table><p>&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">احفظ هذا الدواء بعيدًا عن رؤية ومتناول أيدي الأطفال.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تجنب استخدام هذا الدواء بعد تاريخ انتهاء الصلاحية المكتوب على ملصق قلم الحقن والعلبة الكرتونية بعد كلمة &quot;Expiry&quot;. يشير&nbsp;تاريخ انتهاء الصلاحية إلى آخر يوم من ذلك الشهر.</p><p dir="RTL">&nbsp;</p><p dir="RTL">خزِّن الدواء في الثلاجة (في درجة حرارة بين 2 إلى 8 درجات مئوية). لا تجمده. اجعل الدواء بعيدًا عن مكان التجميد.</p><p dir="RTL"><em>&nbsp;</em></p><p dir="RTL"><em>بعد فتحه لأول مرة</em></p><p dir="RTL">استخدمه في غضون 6 أسابيع بعد أول استخدام. خزِّن الدواء في الثلاجة (في درجة حرارة بين 2 إلى 8 درجات مئوية).</p><p dir="RTL">&nbsp;</p><p dir="RTL"><em>قبل وبعد فتحه لأول مرة</em></p><p dir="RTL">إذا لم تتمكن من تبريده (على سبيل المثال أثناء السفر)، فيجوز حفظ دواء سوجرويا&trade;<sup>&lrm;</sup> مؤقتًا في درجات حرارة تصل إلى 30&nbsp;درجة مئوية لمدة تصل إلى 72 ساعة (3 أيام) كحد أقصى. أعد سوجرويا&trade;<sup>&lrm;</sup> إلى الثلاجة مرة أخرى بعد تخزينه في درجة&nbsp;الحرارة هذه. إذا خزنته خارج الثلاجة ثم أعدته إلى الثلاجة، فإن إجمالي حساب الوقت خارج الثلاجة هو 3 أيام، فراقب ذلك بعناية. تخلص من قلم سوجرويا&trade;<sup>&lrm;</sup>، إذا احتفظت به عند درجة حرارة 30 درجة مئوية لأكثر من 72 ساعة، أو لأي فترة زمنية أعلى من 30 درجة مئوية.</p><p dir="RTL">سَجِّل الوقت خارج الثلاجة:__________________</p><p dir="RTL">&nbsp;</p><p dir="RTL">احتفظ بقلم سوجرويا&trade;<sup>&lrm; </sup>مع غطائه في العبوة الكرتونية الخارجية لحمايته من الضوء.</p><p dir="RTL">أزل الإبرة دائمًا بعد كل حقن، وخزن قلمك بدون إبرة مركبة به.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تجنب استخدام هذا الدواء إذا كان المحلول لا يبدو صافيًا إلى متلألئ قليلًا، وعديم اللون مائل إلى الأصفر قليلًا وخالٍ من جزيئات مرئية.</p><p dir="RTL">&nbsp;</p><p dir="RTL">لا تتخلص من أيّة أدوية عبر مياه الصرف الصحي أو النفايات المنزلية. اسأل الصيدلي المتابع لك عن كيفية التخلص من الأدوية التي لم تعد تستعملها. ستساعد هذه التدابير على حماية البيئة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>تركيبة دواء سوجرويا&trade;&lrm;</strong></p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المادة الفعالة هي سوماباسيتان. يحتوي الملليلتر الواحد من المحلول على 10 مجم من السوماتروبين. يحتوي كل قلم معبأ مسبقًا على 15 مجم من سوماباسيتان في 1.5 مل من المحلول.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المكونات الأخرى: الهيستيدين، المانيتول، بولوكسامير 188، الفينول، ماء للحقن، حمض الهيدروكلوريك (لتعديل درجة الحموضة)، وهيدروكسيد الصوديوم (لتعديل درجة الحموضة). انظر أيضًا القسم 2 &quot;ما تحتاج إلى معرفته قبل استخدامك سوجرويا&trade;<sup>&lrm;</sup>&quot; للحصول على معلومات بشأن الصوديوم.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>شكل</strong> <strong>سوجرويا&trade;<sup>&lrm; </sup>ومحتويات العبوة</strong></p><p dir="RTL">سوجرويا&trade;<sup>&lrm;</sup> عبارة عن سائل شفاف إلى غميم قليلًا، عديم اللون إلى أصفر قليلًا وخالٍ من الجسيمات المرئية للحقن في قلم معبأ&nbsp;مسبقًا.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يتوفر سوجرويا&trade;<sup>&lrm;</sup> في صورة محلول 15 مجم/1.5 مل للحقن في قلم معبأ مسبقًا مع زر جرعة ذو لون وردي غامق في حجم&nbsp;العبوة التالي: عبوة تحتوي على قلم واحد معبأ مسبقًا.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">Novo Nordisk A/S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p dir="RTL">Novo All&eacute;</p><p dir="RTL">DK-2880 Bagsv&aelig;rd</p><p dir="RTL">Denmark</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            يوليو/2023
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

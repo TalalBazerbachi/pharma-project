@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        134-172-02
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2002
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        AMOCLAN 1 GM TAB
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        AMOXICILLIN, CLAVULANIC ACID
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        875,125
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        14
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        22.35
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Hikma Pharmaceuticals PLC" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Hikma Pharmaceuticals PLC
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 612]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Abdulrehman Algosaibi G.T.C.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Hikma Pharmaceuticals PLC
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J01CR02
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Amoclan® 875/125 mg Tablet
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each tablet contains 875 mg amoxicillin trihydrate and 125 mg clavulanic acid.
+
+For a full list of excipients (See Section 6.1. List of excipients).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                White to off-white film coated capsule shape tablets engraved with "H8" on one side. The color of the tablet core is dark off white to yellowish. The color of the core may darken upon storage; this however does not affect the potency of the product.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>To reduce the development of drug-resistant bacteria and maintain the effectiveness of Amoclan (amoxicillin/clavulanate potassium) and other antibacterial drugs, Amoclan should be used only to treat infections that are proven or strongly suspected to be caused by usceptible bacteria. When culture and susceptibility information are available, they should be considered in selecting or modifying antibacterial therapy. In the absence of &nbsp;such &nbsp;data, &nbsp;local &nbsp;epidemiology&nbsp; and &nbsp;susceptibility &nbsp;patterns&nbsp; may &nbsp;contribute &nbsp;to &nbsp;the empiric selection of therapy.</p><p>Amoclan &nbsp;is &nbsp;a &nbsp;combination &nbsp;penicillin-class &nbsp;antibacterial &nbsp;and &nbsp;beta-lactamase &nbsp;inhibitor&nbsp;indicated in the treatment of infections due to susceptible isolates of the designated bacteria in the conditions listed below:</p><p>&nbsp;</p><ul><li>Lower Respiratory Tract Infections &ndash; caused by beta-lactamase&ndash;producing isolates of&nbsp;<em>Ha</em><em>emophilus influenzae </em>and <em>Moraxella catarrhalis</em>.</li></ul><p>&nbsp;</p><ul><li>Acute Bacterial Otitis Media &ndash; caused by beta-lactamase&ndash;producing isolates of <em>H. influenzae </em>and <em>M. catarrhalis</em>.</li></ul><p>&nbsp;</p><ul><li>Sinusitis &ndash; caused by beta-lactamase&ndash;producing isolates of <em>H. influenzae </em>and&nbsp;<em>M</em><em>. catarrhalis</em>.</li></ul><p>&nbsp;</p><ul><li>Skin and Skin Structure Infections &ndash; caused by beta-lactamase&ndash;producing isolates of&nbsp;<em>Staphylococcus aureus</em>, <em>Escherichia coli</em>, and <em>Klebsiella </em>species.</li></ul><p>&nbsp;</p><ul><li>Urinary Tract Infections &ndash; caused by beta-lactamase&ndash;producing isolates of <em>E. coli</em>,&nbsp;<em>Klebsiella </em>species, and <em>Enterobacter </em>species.</li></ul><p>&nbsp;</p><ul><li>Limitations of Use</li></ul><p>When susceptibility test results show susceptibility to amoxicillin, indicating no beta- lactamase production, Amoclan should not be used</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>(See Section 5.2 Pharmacokinetic properties-special patient population)</p><p>&nbsp;</p><p>Amoclan may be taken without regard to meals; however, absorption of clavulanate potassium is enhanced when Amoclan is administered at the start of a meal. To minimize the potential for gastrointestinal intolerance, Amoclan should be taken at the start of a meal.</p><p>&nbsp;</p><ul><li>Adults</li></ul><p>The usual adult dose is one 500-mg tablet of Amoclan every 12 hours or one 250 mg tablet of Amoclan every 8 hours. For more severe infections and infections of the respiratory tract, the dose should be one 875-mg tablet of Amoclan every 12 hours or one 500-mg tablet of Amoclan every 8 hours. Adults who have difficulty swallowing may be given the 125 mg/5 mL or 250 mg/5 mL suspension in place of the 500-mg tablet. The 200 mg/5 mL suspension or the 400 mg/5 mL suspension may be used in place of the 875-mg tablet.</p><p>Two 250-mg tablets of Amoclan should <em>not </em>be substituted for one 500-mg tablet of Amoclan. Since both the 250-mg and 500-mg tablets of Amoclan contain the same amount of clavulanic acid (125 mg, as the potassium salt), two 250-mg tablets are not equivalent to one 500-mg tablet of Amoclan.</p><p>&nbsp;</p><ul><li>Pediatric Patients</li></ul><p>Based on the amoxicillin component, Amoclan should be dosed as follows:</p><p>- Neonates and Infants Aged &lt;12 weeks (&lt;3 months):</p><p>The recommended dose of Amoclan is 30 mg/kg/day divided every 12 hours, based on the amoxicillin component. Experience with the 200 mg/5 mL formulation in this age group is limited, and thus, use of the 125 mg/5 mL oral suspension is recommended.</p><p>&nbsp;</p><p>- Patients Aged 12 weeks (3 months) and Older:</p><p>See dosing regimens provided in Table 1. The every 12 hour regimen is recommended as it is associated with significantly less diarrhea.</p><p>&nbsp;</p><p><strong>Table 1: Dosing in Patients Aged 12 weeks (3 months) and Older</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:100%"><tbody><tr><td rowspan="3" colspan="1"><p><strong>Infection</strong></p><p>&nbsp;</p><br /><br />&nbsp;</td><td rowspan="1" colspan="2"><p><strong>Dosing regimen</strong></p><p>&nbsp;</p></td></tr><tr><td><p><strong>Every 12 hours</strong></p><p>&nbsp;</p></td><td><p><strong>Every 8 hours</strong></p><p>&nbsp;</p></td></tr><tr><td><p><strong>200 mg/5 mL or 400 mg/5 mL oral suspension</strong></p><p>&nbsp;</p></td><td><p><strong>125 mg/5 mL or 250 mg/5 mL oral suspension</strong></p><p>&nbsp;</p></td></tr><tr><td><p>Otitis media<sup>a</sup>, sinusitis, lower respiratory tract infections, and more severe infections</p><p>&nbsp;</p></td><td><p>45 mg/kg/day every 12 hours</p><p>&nbsp;</p></td><td><p>40 mg/kg/day every 8 hours</p><p>&nbsp;</p></td></tr><tr><td><p>Less severe infections</p><p>&nbsp;</p></td><td><p>25 mg/kg/day every 12 hours</p><p>&nbsp;</p></td><td><p>20 mg/kg/day every 8 hours</p><p>&nbsp;</p></td></tr></tbody></table><p><sup>a</sup>Duration of therapy studied and recommended for acute otitis media is 10 days.</p><p>&nbsp;</p><p>- Patients Weighing 40 kg or More:<br />Pediatric patients weighing 40 kg or more should be dosed according to adult recommendations.<br />The 250-mg tablet of Amoclan should not be used until the child weighs at least 40 kg, due to the different amoxicillin to clavulanic acid ratios in the 250-mg tablet of Amoclan (250/125) versus the 250-mg chewable tablet of Amoclan (250/62.5).</p><p>&nbsp;</p><ul><li>Patients with Renal Impairment</li></ul><p>Patients with impaired renal function do not generally require a reduction in dose unless the impairment is severe. Renal impairment patients with a glomerular filtration rate of &lt;30 mL/min should not receive the 875-mg dose. Patients with a glomerular filtration rate of 10 to 30 mL/min should receive 500 mg or 250 mg every 12 hours, depending on the severity of the infection. Patients with a glomerular filtration rate less than 10 mL/min should receive 500 mg or 250 mg every 24 hours, depending on severity of the infection.<br />Hemodialysis patients should receive 500 mg or 250 mg every 24 hours, depending on severity of the infection. They should receive an additional dose both during and at the end of dialysis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                • Serious Hypersensitivity Reactions
+Amoclan is contraindicated in patients with a history of serious hypersensitivity reactions (e.g., anaphylaxis or Stevens-Johnson syndrome) to amoxicillin, clavulanate or to other beta-lactam antibacterial drugs (e.g., penicillins and cephalosporins).
+
+• Cholestatic Jaundice/Hepatic Dysfunction
+Amoclan is contraindicated in patients with a previous history of cholestatic jaundice/hepatic dysfunction associated with Amoclan.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <ul><li>Hypersensitivity Reactions</li></ul><p>Serious and occasionally fatal hypersensitivity (anaphylactic) reactions have been reported in patients receiving beta-lactam antibacterials, including amoxicillin, clavulanate. These reactions are more likely to occur in individuals with a history of penicillin hypersensitivity and/or a history of sensitivity to multiple allergens. Before initiating therapy with Amoclan, careful inquiry should be made regarding previous hypersensitivity reactions to penicillins, cephalosporins, or other allergens. If an allergic reaction occurs, Amoclan should be discontinued and appropriate therapy instituted.</p><p>&nbsp;</p><ul><li>Hepatic Dysfunction</li></ul><p>Hepatic dysfunction, including hepatitis and cholestatic jaundice has been associated with the use of amoxicillin, clavulanate. Hepatic toxicity is usually reversible; however, deaths have been reported. Hepatic function should be monitored at regular intervals in patients with hepatic impairment.</p><p>&nbsp;</p><ul><li>Clostridium difficile Associated Diarrhea (CDAD)</li></ul><p>Clostridium difficile associated diarrhea (CDAD) has been reported with use of nearly all antibacterial agents, including amoxicillin, clavulanate, and may range in severity from mild diarrhea to fatal colitis. Treatment with antibacterial agents alters the normal flora of the colon leading to overgrowth of C. difficile.&nbsp;</p><p>C. difficile produces toxins A and B which contribute to the development of CDAD. Hypertoxin-producing strains of C. difficile cause increased morbidity and mortality, as these infections can be refractory to antimicrobial therapy and may require colectomy. CDAD must be considered in all patients who present with diarrhea following antibacterial use. Careful medical history is necessary since CDAD has been reported to occur over 2 months after the administration of antibacterial agents.<br />If CDAD is suspected or confirmed, ongoing antibacterial use not directed against C. difficile may need to be discontinued. Appropriate fluid and electrolyte management, protein supplementation, antibacterial treatment of C. difficile, and surgical evaluation should be instituted as clinically indicated.</p><p>&nbsp;</p><ul><li>Skin Rash in Patients with Mononucleosis</li></ul><p>A high percentage of patients with mononucleosis who receive amoxicillin develop an erythematous skin rash. Thus, Amoclan should not be administered to patients with mononucleosis.</p><p>&nbsp;</p><ul><li>Potential for Microbial Overgrowth</li></ul><p>The possibility of superinfections with fungal or bacterial pathogens should be considered during therapy. If superinfection occurs, amoxicillin/clavulanate potassium should be discontinued and appropriate therapy instituted.</p><p>&nbsp;</p><ul><li>Development of Drug-Resistant Bacteria</li></ul><p>Prescribing Amoclan in the absence of a proven or strongly suspected bacterial infection is unlikely to provide benefit to the patient, and increases the risk of the development of drug-resistant bacteria.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <ul><li>Probenecid</li></ul><p>Probenecid decreases the renal tubular secretion of amoxicillin but does not delay renal excretion of clavulanic acid. Concurrent use with Amoclan may result in increased and prolonged blood concentrations of amoxicillin. Coadministration of probenecid is not recommended.</p><p>&nbsp;</p><ul><li>Oral Anticoagulants</li></ul><p>Abnormal prolongation of prothrombin time (increased international normalized ratio [INR]) has been reported in patients receiving amoxicillin and oral anticoagulants. Appropriate monitoring should be undertaken when anticoagulants are prescribed concurrently with Amoclan. Adjustments in the dose of oral anticoagulants may be necessary to maintain the desired level of anticoagulation.</p><p>&nbsp;</p><ul><li>Allopurinol</li></ul><p>The concurrent administration of allopurinol and amoxicillin increases the incidence of rashes in patients receiving both drugs as compared to patients receiving amoxicillin alone. It is not known whether this potentiation of amoxicillin rashes is due to allopurinol or the hyperuricemia present in these patients.</p><p>&nbsp;</p><ul><li>Oral Contraceptives</li></ul><p>Amoclan may affect intestinal flora, leading to lower estrogen reabsorption and reduced efficacy of combined oral estrogen/progesterone contraceptives.</p><p>&nbsp;</p><ul><li>Effects on Laboratory Tests</li></ul><p>High urine concentrations of amoxicillin may result in false-positive reactions when testing for the presence of glucose in urine using CLINITEST&reg;, Benedict&rsquo;s Solution, or Fehling&rsquo;s Solution. Since this effect may also occur with Amoclan, it is recommended that glucose tests based on enzymatic glucose oxidase reactions be used.Following administration of amoxicillin to pregnant women, a transient decrease in plasma concentration of total conjugated estriol, estriol-glucuronide, conjugated estrone, and estradiol has been noted.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <ul><li>&nbsp;Pregnancy</li></ul><p>Teratogenic Effects: Pregnancy Category B.<br />Reproduction studies performed in pregnant rats and mice given amoxicillin clavulanate (2:1 ratio formulation of amoxicillin:clavulanate) at oral doses up to 1200 mg/kg/day revealed no evidence of harm to the fetus due to amoxicillin clavulanate. The amoxicillin doses in rats and mice (based on body surface area) were approximately 4 and 2 times the maximum recommended adult human oral dose (875 mg every 12 hours). For clavulanate, these dose multiples were approximately 9 and 4 times the maximum recommended adult human oral dose (125 mg every 8 hours). There are, however, no adequate and well-controlled studies in pregnant women. Because animal reproduction studies are not always predictive of human response, this drug should be used during pregnancy only if clearly needed.</p><p>&nbsp;</p><ul><li>Labor and Delivery</li></ul><p>Oral ampicillin-class antibiotics are poorly absorbed during labor. It is not known whether use of amoxicillin/clavulanate potassium in humans during labor or delivery has immediate or delayed adverse effects on the fetus, prolongs the duration of labor, or increases the likelihood of the necessity for an obstetrical intervention.</p><p>&nbsp;</p><ul><li>Nursing Mothers</li></ul><p>Amoxicillin has been shown to be excreted in human milk. Amoxicillin/clavulanate potassium use by nursing mothers may lead to sensitization of infants. Caution should be exercised when amoxicillin/clavulanate potassium is administered to a nursing woman.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects on the ability to drive and use machines have been performed. However, undesirable effects may occur (e.g. allergic reactions, dizziness, convulsions), which may influence the ability to drive and use machines (see section 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <ul><li>Clinical Trials Experience</li></ul><p>Because clinical trials are conducted under widely varying conditions, adverse reaction rates observed in the clinical trials of a drug cannot be directly compared to rates in the clinical trials of another drug and may not reflect the rates observed in practice.</p><p>The most frequently reported adverse reactions were diarrhea/loose stools (9%), nausea&nbsp;(3%), skin rashes and urticaria (3%), vomiting (1%) and vaginitis (1%). Less than 3% of patients discontinued therapy because of drug-related adverse reactions. The overall incidence of adverse reactions, and in particular diarrhea, increased with the higher recommended dose. Other less frequently reported adverse reactions (&lt;1%) include: Abdominal discomfort, flatulence, and headache.</p><p>&nbsp;</p><p>In pediatric patients (aged 2 months to 12 years), 1 US/Canadian clinical trial was conducted which compared 45/6.4 mg/kg/day (divided every 12 hours) of Amoxicillin clavulanate for 10 days versus 40/10 mg/kg/day (divided every 8 hours) of Amoxicillin clavulanate for 10 days in the treatment of acute otitis media. A total of 575 patients were enrolled, and only the suspension formulations were used in this trial. Overall, the adverse reactions seen were comparable to that noted above; however, there were differences in the rates of diarrhea, skin rashes/urticaria, and diaper area rashes.</p><p>&nbsp;</p><ul><li>Postmarketing Experience</li></ul><p>In addition to adverse reactions reported from clinical trials, the following have been identified during postmarketing use of Amoxicillin clavulanate. Because they are reported &nbsp;voluntarily &nbsp;from &nbsp;a &nbsp;population &nbsp;of &nbsp;unknown &nbsp;size, &nbsp;estimates&nbsp; of &nbsp;frequency cannot be made. These events have been chosen for inclusion due to a combination of their seriousness, frequency of reporting, or potential causal connection to Amoxicillin clavulanate.</p><p>&nbsp;</p><p><strong>Gastrointestinal</strong></p><p>Indigestion, gastritis, stomatitis, glossitis, black &ldquo;hairy&rdquo; tongue, mucocutaneous candidiasis, enterocolitis, and hemorrhagic/pseudomembranous colitis. Onset of pseudomembranous colitis symptoms may occur during or after antibiotic treatment.</p><p>&nbsp;</p><p><strong>Hypersensitivity Reactions</strong></p><p>Pruritus, angioedema, serum sickness&ndash;like reactions (urticaria or skin rash accompanied by arthritis, arthralgia, myalgia, and frequently fever), erythema multiforme, Stevens- Johnson syndrome, acute generalized exanthematous pustulosis, hypersensitivity vasculitis, and cases of exfoliative dermatitis (including toxic epidermal necrolysis) have been reported.</p><p>&nbsp;</p><p><strong>L</strong><strong>i</strong><strong>ver</strong></p><p>Hepatic dysfunction, including hepatitis and cholestatic jaundice, increases in serum transaminases (AST and/or ALT), serum bilirubin, and/or alkaline phosphatase, has been reported&nbsp; with &nbsp;amoxicillin &nbsp;clavulanate. &nbsp;It &nbsp;has &nbsp;been &nbsp;reported&nbsp; more &nbsp;commonly &nbsp;in &nbsp;the elderly, in males, or in patients on prolonged treatment. The histologic findings on liver biopsy have consisted of predominantly cholestatic, hepatocellular, or mixed cholestatic- hepatocellular changes. The onset of signs/symptoms of hepatic dysfunction may occur during or several weeks after therapy has been discontinued. The hepatic dysfunction, which may be severe, is usually reversible. Deaths have been reported.</p><p>&nbsp;</p><p><strong>Re</strong><strong>n</strong><strong>a</strong><strong>l</strong></p><p>Interstitial nephritis, hematuria, and crystalluria have been reported.</p><p>&nbsp;</p><p><strong>Hemic and Lymphatic Systems</strong></p><p>Anemia, including hemolytic anemia, thrombocytopenia, thrombocytopenic purpura, eosinophilia, leukopenia, and agranulocytosis have been reported. These reactions are usually reversible on discontinuation of therapy and are believed to be hypersensitivity phenomena. Thrombocytosis was noted in less than 1% of the patients treated with Amoxicillin clavulanate. There have been reports of increased prothrombin time in patients receiving Amoxicillin clavulanate and anticoagulant therapy concomitantly.</p><p>&nbsp;</p><p><strong>Central Nervous System</strong></p><p>Agitation, anxiety, behavioral changes, confusion, convulsions, dizziness, insomnia, and reversible hyperactivity have been reported.</p><p>&nbsp;</p><p><strong>M</strong><strong>i</strong><strong>scellaneous</strong></p><p>Tooth discoloration (brown, yellow, or gray staining) has been reported. Most reports occurred in pediatric patients. Discoloration was reduced or eliminated with brushing or dental cleaning in most cases.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In case of overdosage, discontinue medication, treat symptomatically, and institute supportive &nbsp;measures &nbsp;as &nbsp;required. &nbsp;A &nbsp;prospective &nbsp;study &nbsp;of &nbsp;51 &nbsp;pediatric&nbsp; patients&nbsp; at &nbsp;a poison-control center suggested that overdosages of less than 250 mg/kg of amoxicillin are not associated with significant clinical symptoms .</p><p>&nbsp;</p><p>Interstitial nephritis resulting in oliguric renal failure has been reported in patients after overdosage with amoxicillin/clavulanate potassium.</p><p>&nbsp;</p><p>Crystalluria, in some cases leading to renal failure, has also been reported after amoxicillin/clavulanate potassium overdosage in adult and pediatric patients. In case of overdosage, adequate fluid intake and diuresis should be maintained to reduce the risk of amoxicillin/clavulanate potassium crystalluria.</p><p>&nbsp;</p><p>Renal impairment appears to be reversible with cessation of drug administration. High blood levels may occur more readily in patients with impaired renal function because of decreased renal clearance of amoxicillin/clavulanate potassium. Amoxicillin/clavulanate potassium may be removed from circulation by hemodialysis.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <ul><li>Mechanism of Action</li></ul><p>Amoclan is an antibacterial drug.</p><p>&nbsp;</p><ul><li>ATC code: J01CR02</li></ul><p>&nbsp;</p><ul><li>Microbiology</li></ul><p>Amoxicillin is a semisynthetic antibiotic with in vitro bactericidal activity against Gram- positive and Gram-negative bacteria. Amoxicillin is, however, susceptible to degradation by beta-lactamases, and therefore, the spectrum of activity does not include organisms which produce these enzymes. Clavulanic acid is a beta-lactam, structurally related to the penicillins, which possesses the ability to inactivate some beta-lactamase enzymes commonly found in microorganisms resistant to penicillins and cephalosporins. In particular, it has good activity against the clinically important plasmid-mediated beta- lactamases frequently responsible for transferred drug resistance.</p><p>The formulation of amoxicillin and clavulanic acid in Amoclan protects amoxicillin from degradation by some beta-lactamase enzymes and extends the antibiotic spectrum of amoxicillin to include many bacteria normally resistant to amoxicillin.</p><p>&nbsp;</p><p>Amoxicillin/clavulanic acid has been shown to be active against most isolates of the following bacteria, both in vitro and in clinical infections as described in the indications and usage section.</p><p>&nbsp;</p><p>- Gram-positive bacteria</p><p><em>Staphylococcus aureus</em></p><p>&nbsp;</p><p>- Gram-negative bacteria</p><p><em>Enterobacter </em>species</p><p><em>Escherichia coli </em></p><p><em>Haemophilus influenzae </em></p><p><em>Klebsiella </em>species</p><p><em>Moraxella catarrhalis</em></p><p>&nbsp;</p><p>The following in vitro data are available, but their clinical significance is unknown. At least 90 percent of the following bacteria exhibit an in vitro minimum inhibitory concentration (MIC) less than or equal to the susceptible breakpoint for amoxicillin/clavulanic acid. However, the efficacy of amoxicillin/clavulanic acid in treating clinical infections due to these bacteria has not been established in adequate and well- controlled clinical trials.</p><p>&nbsp;</p><p>- Gram-positive bacteria</p><p><em>Enterococcus faecalis </em></p><p><em>Staphylococcus epidermidis </em></p><p><em>Staphylococcus saprophyticus</em></p><p><em>Streptococcus pneumoniae </em></p><p><em>Streptococcus pyogenes </em></p><p>Viridans group <em>Streptococcus</em></p><p>&nbsp;</p><p>- Gram-negative Bacteria</p><p><em>Eikenella corrodens </em></p><p><em>Proteus mirabilis</em></p><p>&nbsp;</p><p>- Anaerobic Bacteria</p><p><em>Ba</em><em>ct</em><em>eroides </em>species including <em>Bacteroides fragilis</em></p><p><em>Fusobacterium </em>species</p><p><em>Peptostreptococcus </em>species</p><p>&nbsp;</p><ul><li>Susceptibility Test Methods</li></ul><p>When available, the clinical microbiology laboratory should provide the results of in vitro susceptibility test results for antimicrobial drug products used in resident hospitals to the physician as periodic reports that describe the susceptibility profile of nosocomial and community-acquired pathogens. These reports should aid the physician in selecting an antibacterial drug product for treatment</p><p>&nbsp;</p><ul><li>Dilution techniques</li></ul><p>Quantitative methods are used to determine antimicrobial minimum inhibitory concentrations (MICs). These MICs provide estimates of the susceptibility of bacteria to antimicrobial compounds. The MICs should be determined using a standardized test&nbsp; method&nbsp;(broth and/or agar). The MIC values should be interpreted according to criteria provided in the table.</p><p>&nbsp;</p><ul><li>Diffusion techniques</li></ul><p>Quantitative methods that require measurement of zone diameters can also provide reproducible estimates of the susceptibility of bacteria to antimicrobial compounds. The zone size provides an estimate of the susceptibility of bacteria to antimicrobial compounds. The zone size should be determined using a standardized test method. This procedure uses paper disks impregnated with 30 mcg amoxicillin/clavulanic acid (20 mcg amoxicillin plus 10 mcg clavulanic acid) to test the susceptibility of bacteria to amoxicillin/clavulanic acid. The disc diffusion interpretive criteria are provided in Table 2.</p><p>&nbsp;</p><p><strong>T</strong><strong>a</strong><strong>bl</strong><strong>e 2: Susceptibility Test Interpretive Criteria for Amoxicillin Clavulanic Acid</strong></p><table border="1" cellspacing="0" cellpadding="0" style="width:100%"><tbody><tr><td colspan="2" style="vertical-align:top"><p><strong>M</strong><strong>ini</strong><strong>m</strong><strong>u</strong><strong>m Inhibitory Concentrations (mcg/mL)</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Disk Diffusion (zone diameters in mm)</strong></p></td></tr><tr><td style="vertical-align:top; width:353px"><p><strong>Pathogen&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></p></td><td style="vertical-align:top; width:223px"><p><strong>&nbsp; &nbsp; &nbsp; &nbsp; S I R&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strong></p><p>&nbsp;</p></td><td style="vertical-align:top; width:116px"><p><strong>&nbsp; &nbsp;S I&nbsp; &nbsp; </strong></p><p><strong>&nbsp; &nbsp; &nbsp;</strong></p></td><td style="vertical-align:top; width:102px"><p><strong>R</strong></p><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><em>&nbsp; Enterobacteriaceae &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td><td style="vertical-align:top"><em>&nbsp;&nbsp;&nbsp;&nbsp; </em>8/4 16/8 32/16&nbsp; &nbsp;</td><td style="vertical-align:top">&nbsp; &nbsp; &nbsp; &nbsp; &gt;18 14-17&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td><td style="vertical-align:top"><p>&lt;13</p><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p><em>Ha</em><em>emophilus influenzae </em>and&nbsp;&nbsp;<em>Staphylococcus aureus</em></p></td><td style="vertical-align:top"><p>&nbsp; 4/2 -8/4&nbsp; &nbsp;</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp; &nbsp; &nbsp;&gt;20 -&nbsp; &nbsp; &nbsp;</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>&lt;19</p><p>&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p><ul><li>Quality Control</li></ul><p>Standardized susceptibility test procedures require the use of laboratory controls to monitor and ensure the accuracy and precision of supplies and reagents used in the assay, and the techniques of the individuals performing the test. Standard amoxicillin/clavulanic acid powder should provide the following range of MIC values noted in Table 6 for the diffusion technique using the 30 mcg amoxicillin/clavulanic acid (20 mcg amoxicillin plus 10 mcg clavulanic acid) disk, the criteria in Table 3 should be achieved.</p><p>&nbsp;</p><p><strong>Table 3: Acceptable Quality Control Ranges for Amoxicillin/Clavulanic Acid</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:100%"><tbody><tr><td><p><strong>QC Strain</strong></p><p>&nbsp;</p></td><td><p><strong>M</strong><strong>ini</strong><strong>m</strong><strong>u</strong><strong>m Inhibitory Concentration (mcg/mL)</strong></p><p>&nbsp;</p></td><td><p><strong>Disk Diffusion (zone diameter in mm)</strong></p><p>&nbsp;</p></td></tr><tr><td><p><em>Escherichia coli </em>ATCC 25922</p><p>&nbsp;</p></td><td><p>2/1 to 8/4</p><p>&nbsp;</p></td><td><p>18 to 24</p><p>&nbsp;</p></td></tr><tr><td><p><em>Escherichia coli </em>ATCC 35218</p><p>&nbsp;</p></td><td><p>4/2 to 16/8</p><p>&nbsp;</p></td><td><p>17 to 22</p><p>&nbsp;</p></td></tr><tr><td><p><em>Haemophilus influenzae </em>ATCC 49247</p><p>&nbsp;</p></td><td><p>2/1 to 16/8</p><p>&nbsp;</p></td><td><p>15 to 23</p><p>&nbsp;</p></td></tr><tr><td><p><em>Staphylococcus aureus </em>ATCC 29213</p><p>&nbsp;</p></td><td><p>0.12/0.06 to 0.5/0.25</p><p>&nbsp;</p></td><td><p>-</p><p>&nbsp;</p></td></tr><tr><td><p><em>Staphylococcus aureus </em>ATCC 29523</p><p>&nbsp;</p></td><td><p>-</p><p>&nbsp;</p></td><td><p>28 to 36</p><p>&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Mean &nbsp;amoxicillin &nbsp;and &nbsp;clavulanate &nbsp;potassium &nbsp;pharmacokinetic&nbsp; parameters&nbsp; in &nbsp;normal adults following administration tablets are shown in Table 4 and following administration of Powder for Oral Suspension and Chewable Tablets are shown in Table 5.</p><p>&nbsp;</p><p><strong>T</strong><strong>able&nbsp; &nbsp;4:&nbsp; &nbsp;Mean&nbsp; &nbsp;(&plusmn;S.D.)&nbsp; &nbsp;Amoxicillin&nbsp; &nbsp;and&nbsp; &nbsp;Clavulanate&nbsp; &nbsp;Potassium&nbsp; &nbsp;Pharmacokinetic&nbsp;</strong><strong>Parameters</strong><sup>a,b</sup></p><table border="1" cellspacing="1" cellpadding="1" style="width:100%"><tbody><tr><td style="width:210px"><p><strong>Dose and Regimen</strong></p><p>&nbsp;</p></td><td rowspan="1" colspan="2" style="width:102px"><p><strong>Cmax (mcg/mL)</strong></p><p>&nbsp;</p></td><td rowspan="1" colspan="2" style="width:108px"><p><strong>AUC0-24 (mcg*h/mL)</strong></p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><p><strong>Amoxicillin/Clavulanate potassium</strong></p><p>&nbsp;</p></td><td style="width:102px"><p><strong>Amoxicillin</strong></p><p>&nbsp;</p></td><td style="width:129px"><p><strong>Clavulanate </strong></p><p><strong>potassium</strong></p></td><td style="width:108px"><p><strong>Amoxicillin</strong></p><p>&nbsp;</p></td><td style="width:148px"><p><strong>Clavulanate potassium</strong></p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><p>&nbsp; 250/125 mg every 8 hours</p><p>&nbsp;</p></td><td style="width:102px"><p>3.3 &plusmn; 1.12&nbsp;</p><p>&nbsp;</p></td><td style="width:129px"><p>1.5 &plusmn; 0.70</p><p>&nbsp;</p></td><td style="width:108px"><p>26.7 &plusmn; 4.56</p><p>&nbsp;</p></td><td style="width:148px"><p>12.6 &plusmn; 3.25</p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><p>500/125 mg every 12 hours</p><p>&nbsp;</p></td><td style="width:102px"><p>6.5 &plusmn; 1.41</p><p>&nbsp;</p></td><td style="width:129px"><p>1.8 &plusmn; 0.61</p><p>&nbsp;</p></td><td style="width:108px"><p>33.4 &plusmn; 6.76</p><p>&nbsp;</p></td><td style="width:148px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>8.6 &plusmn; 1.95</p></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><p>500 125 mg every 8 hours</p><p>&nbsp;</p></td><td style="width:102px"><p>7.2 &plusmn; 2.26</p><p>&nbsp;</p></td><td style="width:129px"><p>2.4 &plusmn; 0.83</p><p>&nbsp;</p></td><td style="width:108px"><p>53.4 &plusmn; 8.87</p><p>&nbsp;</p></td><td style="width:148px"><p>15.7 &plusmn; 3.86</p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>875/125 mg every 12 hours</p></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p></td><td style="width:102px"><p>11.6 &plusmn; 2.78</p><p>&nbsp;</p></td><td style="width:129px"><p>2.2 &plusmn; 0.99</p><p>&nbsp;</p></td><td style="width:108px"><p>53.5 &plusmn; 12.31</p><p>&nbsp;</p></td><td style="width:148px"><p>10.2 &plusmn; 3.04</p><p>&nbsp;</p></td></tr></tbody></table><p><sup>a </sup>Mean (&plusmn; standard deviation) values of 14 normal adults (N=15 for clavulanate potassium in the low-dose regimens). Peak concentrations occurred approximately 1.5 hours after the dose.<br /><sup>b</sup> Amoxicillin/clavulanate potassium administered at the start of a light meal.</p><p>&nbsp;</p><p><strong>Table 5: Mean (&plusmn;S.D.) Amoxicillin and Clavulanate Potassium Pharmacokinetic Parameters</strong><sup>a,b</sup><strong> with Oral Suspension and Chewable Tablets</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:100%"><tbody><tr><td style="width:210px"><p><strong>Dose&nbsp;</strong></p><p>&nbsp;</p></td><td rowspan="1" colspan="2" style="width:102px"><p><strong>Cmax (mcg/mL)</strong></p><p>&nbsp;</p></td><td rowspan="1" colspan="2" style="width:108px"><p><strong>AUC0-24 (mcg*h/mL)</strong></p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><p><strong>Amoxicillin/Clavulanate potassium</strong></p><p>&nbsp;</p></td><td style="width:102px"><p><strong>Amoxicillin</strong></p><p>&nbsp;</p></td><td style="width:129px"><p><strong>Clavulanate </strong></p><p><strong>potassium</strong></p></td><td style="width:108px"><p><strong>Amoxicillin</strong></p><p>&nbsp;</p></td><td style="width:148px"><p><strong>Clavulanate potassium</strong></p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><p>&nbsp;400/57 mg (5 mL of suspension)</p><p>&nbsp;</p></td><td style="width:102px"><p>6.94 &plusmn; 1.24</p><p>&nbsp;</p></td><td style="width:129px"><p>1.10 &plusmn; 0.42</p></td><td style="width:108px"><p>17.29 &plusmn; 2.28</p></td><td style="width:148px"><p>2.34 &plusmn; 0.94</p><p>&nbsp;</p></td></tr><tr><td style="width:210px"><p>400/57 mg (1 chewable tablet)</p><p>&nbsp;</p></td><td style="width:102px"><p>6.67 &plusmn; 1.37</p><p>&nbsp;</p></td><td style="width:129px"><p>1.03 &plusmn; 0.33</p><p>&nbsp;</p></td><td style="width:108px"><p>817.24 &plusmn; 2.64</p><p>&nbsp;</p></td><td style="width:148px"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>2.17 &plusmn; 0.73</p></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p></td></tr></tbody></table><p><sup>a </sup>Mean (&plusmn; standard deviation) values of 28 normal adults. Peak concentrations occurred approximately 1 hour after the dose.<br /><sup>b </sup>Amoxicillin/clavulanate potassium administered at the start of a light meal.</p><p><br />Oral administration of 5 mL of 250 mg/5 mL suspension of amoxicillin clavulanate or the equivalent dose of 10 mL of 125 mg/5 mL suspension of amoxicillin clavulanate provides average peak serum concentrations approximately 1 hour after dosing of 6.9 mcg/mL for amoxicillin and 1.6 mcg/mL for clavulanic acid. The areas under the serum concentration curves obtained during the first 4 hours after dosing were 12.6 mcg*h/mL for amoxicillin and 2.9 mcg*h/mL for clavulanic acid when 5 mL of 250 mg/5 mL suspension of amoxicillin clavulanate or equivalent dose of 10 mL of 125 mg/5 mL suspension of amoxicillin clavulanate were administered to normal adults. One 250-mg chewable tablet of amoxicillin clavulanate or two 125-mg chewable tablets of amoxicillin clavulanate are equivalent to 5 mL of 250 mg/5 mL suspension of amoxicillin clavulanate and provide similar serum concentrations of amoxicillin and clavulanic acid.</p><p><br />Amoxicillin serum concentrations achieved with amoxicillin clavulanate are similar to those produced by the oral administration of equivalent doses of amoxicillin alone. Time above the minimum inhibitory concentration of 1 mcg/mL for amoxicillin has been shown&nbsp;<br />to be similar after corresponding every 12 hour and every 8 hour dosing regimens of amoxicillin clavulanate in adults and children.</p><p>&nbsp;</p><p>&nbsp;</p><ul><li>Absorption</li></ul><p>Dosing in the fasted or fed state has minimal effect on the pharmacokinetics of amoxicillin. While amoxicillin clavulanate can be given without regard to meals, absorption of clavulanate potassium when taken with food is greater relative to the fasted state. In one study, the relative bioavailability of clavulanate was reduced when amoxicillin clavulanate was dosed at 30 and 150 minutes after the start of a high-fat breakfast.</p><p>&nbsp;</p><p>&nbsp;</p><ul><li>Distribution</li></ul><p>Neither component in amoxicillin clavulanate is highly protein-bound; clavulanic acid is approximately 25% bound to human serum and amoxicillin approximately 18% bound.</p><p>Amoxicillin diffuses readily into most body tissues and fluids with the exception of the brain and spinal fluid.<br />Two hours after oral administration of a single 35 mg/kg dose of suspension of amoxicillin clavulanate to fasting children, average concentrations of 3 mcg/mL of amoxicillin and 0.5 mcg/mL of clavulanic acid were detected in middle ear effusions.</p><p>&nbsp;</p><p>&nbsp;</p><ul><li>Metabolism and Excretion</li></ul><p>The half-life of amoxicillin after the oral administration of amoxicillin clavulanate is 1.3 hours and that of clavulanic acid is 1 hour.<br />Approximately 50% to 70% of the amoxicillin and approximately 25% to 40% of the clavulanic acid are excreted unchanged in urine during the first 6 hours after administration of a single 250-mg or 500-mg tablet of amoxicillin clavulanate.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Nonclinical data reveal no special hazard for humans based on studies of safety pharmacology, genotoxicity and toxicity to reproduction.</p><p><br />Repeat dose toxicity studies performed in dogs with amoxicillin/clavulanic acid demonstrate gastric irritancy and vomiting, and discoloured tongue.</p><p><br />Carcinogenicity studies have not been conducted with Amoclan or its components.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>- Sodium starch glycolate<br />- Colloidal silicon dioxide<br />- Magnesium sterate<br />- Hydroxypropyl methyl cellulose<br />- Titanium dioxide<br />- Propylene glycol<br />- Ethyl cellulose<br />- Microcrystalline cellulose</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None stated.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                24 months.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 25&deg;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Tablet Container. Pack size: 14 tablets.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirement.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hikma Pharmaceuticals
+Bayader Wadi El Seer
+Industrial Area
+P.O Box 182400
+Amman 11118, Jordan
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                23 July 2013
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

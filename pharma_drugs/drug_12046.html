@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1005233625
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2023
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Adtralza
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        TRALOKINUMAB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        150
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Subcutaneous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        4
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Pre-filled syringe
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        4413.45
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Catalent Indiana LLC formerly Cook Pharmica LLC" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Catalent Indiana LLC formerly Cook Pharmica LLC
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 583]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ALNAGHI COMPANY
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Pharmaceutical Products
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Adtralza 150 mg solution for injection in pre-filled syringe
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each pre-filled syringe contains 150 mg of tralokinumab in 1 mL solution (150 mg/mL).
+Tralokinumab is produced in mouse myeloma cells by recombinant DNA technology.
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Solution for injection (injection)
+Clear to opalescent, colourless to pale yellow solution, pH 5.5 and osmolarity approximately 280 mOsm/L
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adtralza is indicated for the treatment of moderate-to-severe atopic dermatitis in adult patients who are candidates for systemic therapy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment should be initiated by healthcare professionals experienced in the diagnosis and treatment of atopic dermatitis.<br />Posology<br />The recommended dose of tralokinumab for adult patients is an initial dose of 600 mg (four 150 mg injections) followed by 300 mg (two 150 mg injections) administered every other week as subcutaneous injection.<br />At prescriber&rsquo;s discretion, every fourth week dosing may be considered for patients who achieve clear or almost clear skin after 16 weeks of treatment. The probability of maintaining clear or almost clear skin may be lower with every fourth week dosing (see section 5.1).<br />Consideration should be given to discontinuing treatment in patients who have shown no response after 16 weeks of treatment. Some patients with initial partial response may subsequently improve further with continued treatment every other week beyond 16 weeks.<br />Tralokinumab can be used with or without topical corticosteroids. The use of topical corticosteroids, when appropriate, may provide an additional effect to the overall efficacy of tralokinumab (see&nbsp;section 5.1)<br />. Topical calcineurin inhibitors may be used, but should be reserved for problem areas only, such as the face, neck, intertriginous and genital areas.<br />Missed dose<br />If a dose is missed, the dose should be administered as soon as possible. Thereafter, dosing should be resumed at the regular scheduled time.<br />Special populations<br />Elderly (&ge; 65 years)<br />No dose adjustment is recommended for elderly patients (see section 5.2). Limited data is available in patients &gt; 75 years of age.<br />Renal impairment<br />No dose adjustment is needed in patients with renal impairment. Very limited data are available in patients with severe renal impairment (see section 5.2).<br />Hepatic impairment<br />No dose adjustment is needed in patients with hepatic impairment. Very limited data are available in patients with moderate or severe hepatic impairment (see section 5.2).<br />High body weight<br />For patients with high body weight (&gt;100 kg), who achieve clear or almost clear skin after 16 weeks of treatment, reducing the dosage to every fourth week might not be appropriate (see section 5.2).<br />Paediatric population<br />The safety and efficacy of tralokinumab in children below the age of 18 years have not yet been established. No data are available.<br />Method of administration<br />Subcutaneous use.<br />The pre-filled syringe should be not shaken. After removing the pre-filled syringes from the refrigerator, they should be allowed to reach room temperature by waiting for 30 minutes before injecting.<br />Tralokinumab is administered by subcutaneous injection into the thigh or abdomen, except the 5 cm around the navel. If somebody else administers the injection, the upper arm can also be used.<br />For the initial 600 mg dose, four 150 mg tralokinumab injections should be administered consecutively in different injection sites.<br />It is recommended to rotate the injection site with each dose. Tralokinumab should not be injected into skin that is tender, damaged or has bruises or scars.<br />A patient may self-inject tralokinumab or the patient&#39;s caregiver may administer tralokinumab if their healthcare professional determines that this is appropriate. Proper training should be provided to patients and/or caregivers on the administration of tralokinumab prior to use. Detailed instructions for use are included at the end of the package leaflet.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Traceability<br />In order to improve the traceability of biological medicinal products, the name and the batch number of the administered product should be clearly recorded.<br />Hypersensitivity<br />If a systemic hypersensitivity reaction (immediate or delayed) occurs, administration of tralokinumab should be discontinued and appropriate therapy initiated.<br />Conjunctivitis<br />Patients treated with tralokinumab who develop conjunctivitis that does not resolve following standard treatment should undergo ophthalmological examination (see section 4.8).<br />Helminth infection<br />Patients with known helminth infections were excluded from participation in clinical studies. It is unknown if tralokinumab will influence the immune response against helminth infections by inhibiting IL-13 signalling.<br />Patients with pre-existing helminth infections should be treated before initiating treatment with tralokinumab. If patients become infected while receiving tralokinumab and do not respond to antihelminth treatment, treatment with tralokinumab should be discontinued until infection resolves.<br />Vaccinations<br />Live and live attenuated vaccines should not be given concurrently with tralokinumab as clinical safety and efficacy have not been established. Immune responses to the non-live tetanus and meningococcal vaccines were assessed (see section 4.5). It is recommended that patients should be brought up to date with live and live attenuated immunisations in agreement with current immunisation guidelines prior to treatment with tralokinumab.<br />Sodium content<br />This medicine contains less than 1 mmol sodium (23 mg) per 150 mg dose, that is to say essentially &ldquo;sodium-free&rdquo;.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The safety and efficacy of concurrent use of tralokinumab with live and live attenuated vaccines has not been studied.<br />Immune responses to non-live vaccines were assessed in a study in which adult patients with atopic dermatitis were treated with an initial dose of 600 mg (four 150 mg injections) followed by 300 mg every second (other) week administered as subcutaneous injection. After 12 weeks of tralokinumab administration, patients were vaccinated with a combined tetanus, diphtheria, and acellular pertussis vaccine, and a meningococcal vaccine and immune responses were assessed 4 weeks later. Antibody responses to both tetanus vaccine and meningococcal vaccine were similar in tralokinumab-treated and placebo-treated patients. No adverse interactions between either of the non-live vaccines or tralokinumab were noted in the study. Therefore, patients receiving tralokinumab may receive concurrent inactivated or non-live vaccinations.<br />For information on live and live attenuated vaccines, see section 4.4.&nbsp;</p><p>Interactions with cytochrome P450<br />Tralokinumab is not expected to undergo metabolism by hepatic enzymes or renal elimination. Drug interactions between tralokinumab and inhibitors, inducers, or substrates of drug metabolising enzymes are not expected, and no dose adjustment is needed (see section 5.2).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy<br />There is limited amount of data from the use of tralokinumab in pregnant women.<br />Animal studies do not indicate direct or indirect harmful effects with respect to reproductive toxicity (see section 5.3).<br />As a precautionary measure, it is preferable to avoid the use of tralokinumab during pregnancy.<br />Breast-feeding<br />It is unknown whether tralokinumab is excreted in human milk or absorbed systemically after ingestion. A decision must be made whether to discontinue breast-feeding or to discontinue tralokinumab therapy taking into account the benefit of breast-feeding for the child and the benefit of therapy for the woman.<br />Fertility<br />Animal studies did not show any effects on male and female reproductive organs and on sperm count, motility and morphology (see section 5.3).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Tralokinumab has no or negligible influence on the ability to drive and use machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Summary of the safety profile<br />The most common adverse reactions are upper respiratory tract infections (23.4%; mainly reported as common cold), injection site reactions (7.2%), conjunctivitis (5.4%) and conjunctivitis allergic (2.0%).<br />Tabulated list of adverse reactions<br />In a pool of 5 randomised, double-blind, placebo-controlled studies in patients with moderate to severe atopic dermatitis (ECZTRA 1, ECZTRA 2, and ECZTRA 3, a dose ranging trial and a vaccine-response study), 1 991 subjects were treated with subcutaneous injections of tralokinumab, with or without concomitant topical corticosteroids. A total of 807 patients were treated with tralokinumab for at least 1 year.<br />Listed in Table 1 are adverse reactions observed from clinical trials presented by system organ class and frequency, using the following categories: very common (&ge; 1/10); common (&ge; 1/100 to &lt; 1/10); uncommon (&ge; 1/1 000 to &lt; 1/100); rare (&ge; 1/10 000 to &lt; 1/1 000); very rare (&lt; 1/10 000). Within each frequency grouping, undesirable effects are presented in order of decreasing seriousness. The frequencies are based on the initial treatment period of up to 16 weeks in the pool of 5 studies in the atopic dermatitis population.</p><p>Table 1: List of adverse reactions<br />MedDRA System Organ Class<br />Frequency<br />Adverse reaction<br />Infections and infestations<br />Very common Common<br />Upper respiratory tract infections<br />Conjunctivitis<br />Blood and lymphatic system disorders<br />Common<br />Eosinophilia<br />Eye disorders<br />Common<br />Uncommon<br />Conjunctivitis allergic<br />Keratitis<br />General disorders and administration site conditions<br />Common<br />Injection site reactions<br />The long-term safety of tralokinumab was assessed in the 2 monotherapy studies up to 52 weeks and in 1 combination study with topical corticosteroids up to 32 weeks. The safety profile of tralokinumab through week 52 and week 32 respectively was consistent with the safety profile observed up to week 16.</p><p>of selected adverse reactions<br />Conjunctivitis and related events<br />Conjunctivitis occurred more frequently in atopic dermatitis patients who received tralokinumab (5.4%) compared to placebo (1.9%) in the initial treatment period of up to 16 weeks in the pool of 5 studies. Conjunctivitis was reported at a higher frequency in patients with severe atopic dermatitis compared to subjects with moderate atopic dermatitis in both the tralokinumab group (6.0 vs 3.3%; initial treatment period) and placebo group (2.2 vs 0.8%; initial treatment period). Most patients recovered or were recovering during the treatment period.<br />Keratitis was reported in 0.5% of subjects treated with tralokinumab during the initial treatment period. Of these, half were classified as keratoconjunctivitis, all were non-serious and mild or moderate in severity, and none led to treatment discontinuation.<br />Eosinophilia<br />Adverse reactions of eosinophilia were reported in 1.3% of patients treated with tralokinumab and 0.3% of patients treated with placebo during the initial treatment period of up to 16 weeks in the pool of 5 studies. Tralokinumab-treated patients had a greater mean initial increase from baseline in eosinophil count compared to patients treated with placebo. Eosinophilia (&ge; 5 000 cells/mcL) was measured in 1.2% of tralokinumab-treated patients and 0.3% of placebo-treated patients in the initial treatment period. However, the increase in the tralokinumab-treated patients was transient, and mean eosinophil counts returned to baseline during continued treatment. The safety profile for subjects with eosinophilia was comparable to the safety profile for all subjects.<br />Eczema Herpeticum<br />Eczema herpeticum was reported in 0.3% of the subjects treated with tralokinumab and in 1.5% of subjects in the placebo group, in the initial treatment period of up to 16 weeks in the pool of 5 studies in atopic dermatitis. Across all treatment periods in the pool of 5 studies, all eczema herpeticum events reported in the tralokinumab group were non-serious, none were severe, and a single event in one subject led to permanent discontinuation of treatment.<br />Immunogenicity<br />As with all therapeutic proteins, there is a potential for immunogenicity with tralokinumab.<br />Anti-drug-antibody (ADA) responses were not associated with any impact on tralokinumab exposure, safety, or efficacy.<br />In ECZTRA 1, ECZTRA 2, ECZTRA 3, and the vaccine-response study, the incidence of ADA up to 16 weeks was 1.4% for patients treated with tralokinumab and 1.3% for patients treated with placebo;</p><p>neutralising antibodies were seen in 0.1% of patients treated with tralokinumab and 0.2% of patients treated with placebo.<br />Across all trial periods, the ADA incidence for subjects who received tralokinumab was 4.6%; 0.9% had persistent ADA and 1.0% had neutralising antibodies.<br />Injection site reactions<br />Injection site reactions (including pain and redness) occurred more frequently in patients who received tralokinumab (7.2%) compared to placebo (3.0%) in the initial treatment period of up to 16 weeks in the pool of 5 studies. Across all treatment periods in the 5 studies in atopic dermatitis, the vast majority (99%) of injection site reactions were mild or moderate in severity, and few patients (&lt; 1%) discontinued tralokinumab treatment. Most injections site reactions reported had a short duration with approximately 76% of the events resolving within 1 to 5 days.<br />Reporting of suspected adverse reactions<br />Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions.</p><p>- To reports any side effect(s):<br />&bull; Saudi Arabia:<br />&bull; The National Pharmacovigilance Centre (NPC):<br />&bull; SFDA Call Center: 19999<br />&bull; E-mail: npc.drug@sdfa.gov.sa<br />&bull; Website: https://ade.sfda.gov.sa<br />&bull; Other GCC States:<br />- Please contact the relevant competent authority.<br />&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There is no specific treatment for tralokinumab overdose. In clinical studies with tralokinumab, single intravenous doses of up to 30 mg/kg and multiple subcutaneous doses of 600 mg every 2 weeks for 12 weeks were found to be well tolerated.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>5.1 Pharmacodynamic properties<br />Pharmacotherapeutic group: Agents for dermatitis, excluding corticosteroids, ATC code: D11AH07.<br />Mechanism of action<br />Tralokinumab is a fully human IgG4 monoclonal antibody that specifically binds to the type 2 cytokine interleukin-13 (IL-13) and inhibits its interaction with the IL-13 receptors. Tralokinumab neutralises the biological activity of IL-13 by blocking its interaction with the IL-13R&alpha;1/IL-4R&alpha;&nbsp;receptor complex. IL-13 is a major driver of human type 2 inflammatory disease, such as atopic dermatitis and inhibiting the IL-13 pathway with tralokinumab in patients decreases many of the mediators of type 2 inflammation.<br />Pharmacodynamic effects<br />In clinical trials, treatment with tralokinumab resulted in reduced levels of type 2 inflammation biomarkers in both lesional skin (CCL17, CCL18 and CCL26) and in blood (CCL17, periostin and IgE). In lesional skin, treatment with tralokinumab led also to reductions in epidermal thickness and to increase in marker of epithelial barrier integrity (loricrin). Skin colonization with Staphylococcus aureus was reduced more than 10-fold in patients treated with tralokinumab.&nbsp;</p><p>Clinical efficacy and safety<br />The efficacy and safety of tralokinumab as monotherapy and with concomitant topical corticosteroids were evaluated in three pivotal randomised, double-blind, placebo-controlled studies (ECZTRA 1, ECZTRA 2 and ECZTRA 3) in 1 976 patients 18 years of age and older with moderate to severe atopic dermatitis defined by Investigator&rsquo;s Global Assessment (IGA) score of 3 or 4 (moderate or severe), an Eczema Area and Severity Index (EASI) score of &ge; 16 at baseline, and a minimum body surface area (BSA) involvement of &ge; 10%. Eligible patients enrolled into the three studies had previous inadequate response to topical medication.<br />In all three studies, patients received 1) an initial dose of 600 mg tralokinumab (four 150 mg injections) on day 1, followed by 300 mg every two weeks (Q2W) up to week 16 or 2) matching placebo. In ECZTRA 3, patients received concomitant topical corticosteroids on active lesions as needed. Tralokinumab was administered by subcutaneous (SC) injection in all studies.</p><p>In ECZTRA 1 and ECZTRA 2, to evaluate the maintenance of response, patients responding to the initial 16-week treatment with tralokinumab (i.e. achieved IGA 0 or 1, or EASI-75) were re-randomised to 1) tralokinumab 300 mg Q2W or 2) tralokinumab 300 mg Q4W (alternating tralokinumab 300 mg and placebo Q2W) or 3) placebo Q2W up to 52 weeks. The main endpoints for evaluating maintenance of response were IGA 0 or 1 and EASI-75 at week 52. Patients responding to the initial 16-week treatment with placebo continued on placebo. Subjects not achieving IGA 0 or 1 or EASI-75 at week 16 and subjects who did not maintain the response during the maintenance period were transferred to open-label treatment with tralokinumab 300 mg Q2W with optional use of topical corticosteroids. The studies had a treatment period of 52 weeks.<br />In ECZTRA 3, patients responding to the initial 16-week treatment with tralokinumab + TCS (i.e. achieved IGA 0 or 1, or EASI-75) were re-randomised to 1) tralokinumab 300 mg Q2W + TCS or 2) tralokinumab 300 mg Q4W + TCS (alternating tralokinumab 300 mg and placebo Q2W) up to 32 weeks. The main endpoints for evaluating maintenance of response were IGA 0 or 1 and EASI-75 at week 32. Patients responding to the initial 16-week treatment with placebo + TCS continued on placebo + TCS. Patients who at week 16 did not achieve IGA 0 or 1 or EASI-75 continued on tralokinumab 300 mg Q2W + TCS treatment, irrespectively of their initial treatment. The study had a treatment period of 32 weeks.&nbsp;</p><p>In ECZTRA 1, 802 patients were enrolled (199 to placebo, 603 to tralokinumab 300 mg Q2W).<br />In ECZTRA 2, 794 patients were enrolled (201 to placebo, 593 to tralokinumab 300 mg Q2W).<br />In ECZTRA 3, 380 patients were enrolled (127 to placebo + TCS, 253 to tralokinumab 300 mg Q2W + TCS).<br />Endpoints<br />In all three pivotal studies, the primary endpoints were achievement of IGA 0 or 1 (&ldquo;clear&rdquo; or &ldquo;almost clear&rdquo;) and a reduction of at least 75% in EASI (EASI-75) from baseline to week 16. Secondary&nbsp;endpoints included the reduction of itch as defined by at least a 4-point improvement in the Worst Daily Pruritus Numeric Rating Scale (NRS) from baseline to week 16, reduction in the SCORing Atopic Dermatitis (SCORAD) scale from baseline to week 16, and change from baseline to week 16 in the Dermatology Life Quality Index (DLQI). Additional secondary endpoints included reduction of at least 50% and 90% in EASI (EASI-50 and EASI-90, respectively) and reduction in Worst Daily Pruritus NRS (weekly average) from baseline to week 16. Other endpoints included change from baseline to week 16 in the Patient Oriented Eczema Measure (POEM), at least 4-point improvement in POEM, and Eczema-related Sleep NRS.&nbsp;</p><p>Baseline characteristics<br />In the monotherapy studies (ECZTRA 1 and ECZTRA 2), across all treatment groups, the mean age was 37.8 years, 5.0% of the patients were 65 years of age or older, the mean weight was 76.0 kg, 40.7% were female, 66.5% were white, 22.9% were Asian, and 7.5% were black. In these studies, 49.9% of patients had a baseline IGA score of 3 (moderate atopic dermatitis, 49.7% of patients had a baseline IGA of 4 (severe atopic dermatitis), and 42.5% of patients had received prior systemic immunosuppressants (cyclosporine, methotrexate, azathioprine and mycophenolate). The mean baseline EASI score was 32.3, mean baseline Worst Daily Pruritus NRS was 7.8, mean baseline DLQI was 17.3, the baseline mean SCORAD score was 70.4, the baseline mean POEM score was 22.8, and the baseline mean physical and mental components of SF-36 were 43.4 and 44.3, respectively.<br />In the concomitant topical corticosteroids study (ECZTRA 3), across both treatment groups, the mean age was 39.1 years, 6.3% of the patients were 65 years of age or older, the mean weight was 79.4 kg, 45.0% were female, 75.8% were white, 10.8% were Asian, and 9.2% were black. In this study, 53.2% of patients had a baseline IGA score of 3, 46.3% of patients had a baseline IGA of 4, and 39.2 % of patients received prior systemic immunosuppressants. The baseline mean EASI score was 29.4, the baseline Worst Daily Pruritus NRS was 7.7, the baseline mean DLQI was 17.5, the baseline mean SCORAD score was 67.6, the baseline mean POEM score was 22.3.</p><p>Clinical response<br />Monotherapy studies (ECZTRA 1 and ECZTRA 2) &ndash; initial treatment period 0-16 weeks<br />In ECZTRA 1 and ECZTRA 2, from baseline to week 16, a significantly greater proportion of patients randomised and dosed to tralokinumab achieved IGA 0 or 1, EASI-75, and/or an improvement of &ge; 4 points on the Worst Daily Pruritus NRS compared to placebo (see Table 2).</p><p>Table 2: Efficacy results of tralokinumab monotherapy at week 16 in ECZTRA 1 and ECZTRA 2 (FAS)<br />Monotherapy<br />ECZTRA 1<br />ECZTRA 2<br />Week 16<br />Week 16<br />Placebo<br />Tralokinumab 300 mg Q2W<br />Placebo<br />Tralokinumab 300 mg Q2W<br />Number of patients randomised and dosed (FAS)<br />197<br />601<br />201<br />591<br />IGA 0 or 1, % respondersa,b)<br />7.1<br />15.8#<br />10.9<br />22.2&sect;<br />EASI-50, % respondersa)<br />21.3<br />41.6&sect;,e)<br />20.4<br />49.9&sect;,e)<br />EASI-75, % respondersa)<br />12.7<br />25.0&sect;<br />11.4<br />33.2&sect;<br />SCORAD, LS mean change from baseline (&plusmn; SE)c)<br />-17.2<br />(&plusmn; 1.98)<br />-24.9&sect;<br />(&plusmn; 1.23)<br />-13.8<br />(&plusmn; 2.00)<br />-26.9&sect;<br />(&plusmn; 1.06)<br />Pruritus NRS (&ge; 4-point improvement, % responders)a,d)<br />10.3<br />(20/194)<br />20.0#<br />(119/594)<br />9.5<br />(19/200)<br />25.0&sect;<br />(144/575)<br />DLQI, LS mean change from baseline (&plusmn; SE)c)<br />-5.7<br />(&plusmn; 0.63)<br />-7.5#<br />(&plusmn; 0.41)<br />-5.2<br />(&plusmn; 0.68)<br />-8.6&sect;<br />(&plusmn; 0.36)<br />LS=least squares; SE=standard error, FAS: Full Analysis Set - includes all patients randomised and dosed<br />If needed to control intolerable symptoms of atopic dermatitis, patients were permitted to receive rescue treatment at the discretion of the investigator.<br />a) Patients who received rescue treatment or had missing data were considered non-responders.<br />b) Responder was defined as a patient with IGA 0 or 1 (&ldquo;clear&ldquo; or &ldquo;almost clear&rdquo; on a 0-4 IGA scale).<br />c) Data after initiation of rescue medication or permanent discontinuation of treatment were considered missing. Placebo based multiple imputation of missing data.<br />d) The percentage is calculated relative to the number of subjects with a baseline value &gt; 4.<br />e) Not adjusted for multiplicity.<br />*p&lt;0.05, #p&lt;0.01, &sect;p&lt;0.001</p><p>In both monotherapy studies (ECZTRA 1 and ECZTRA 2), tralokinumab reduced itch, as measured by the percent change from baseline in Worst Daily Pruritus NRS, already at Week 1 compared to placebo. The reduction in itch was observed in parallel with improvements in objective signs and symptoms of atopic dermatitis and quality of life.<br />In the two studies, fewer patients randomised to Adtralza 300 mg Q2W needed rescue treatment (topical corticosteroids, systemic corticosteroids, non-steroidal immunosuppressants) as compared to patients randomised to placebo (29.3% versus 45.3%, respectively, across both studies). Use of rescue treatment was higher if patients had severe atopic dermatitis at baseline (39.3% if under tralokinumab 300 mg Q2W treatment versus 56.7% in placebo group).<br />Monotherapy Studies (ECZTRA 1 and ECZTRA 2) &ndash; maintenance period (week 16-52)<br />To evaluate maintenance of response, 185 subjects from ECZTRA 1 and 227 subjects from ECZTRA 2 treated with tralokinumab 300 mg Q2W for 16 weeks who achieved IGA 0 or 1 or EASI-75 at week 16 were re-randomised to an additional 36-week treatment of 1) 300 mg tralokinumab every two weeks (Q2W) or 2) alternating tralokinumab 300 mg and placebo Q2W (tralokinumab Q4W) or 3) placebo Q2W, for a cumulative 52-week study treatment. Response rates (IGA 0/1 or EASI-75) at week 52 in the monotherapy pool were 56.2% and 50% for tralokinumab 300 mg Q2W and tralokinumab 300 mg Q4W among subjects achieving clinical response at week 16, respectively.</p><p>Table 3: Efficacy results (IGA 0 or 1 or EASI-75) at week 52 of subjects responding to tralokinumab 300 mg Q2W at week 16<br />ECZTRA 1<br />ECZTRA 2<br />Treatment regimen Week 16-52e)<br />Treatment regimen Week 16-52e)<br />Assessment<br />at Week 52<br />Tralokinumab 300 mg<br />Q2W<br />Tralokinumab<br />300 mg<br />Q4W<br />Placebo<br />Tralokinumab 300 mg<br />Q2W<br />Tralokinumab 300 mg<br />Q4W<br />Placebo<br />IGA 0/1a) % responders f)<br />51.3d)<br />(20/39)<br />38.9d)<br />(14/36)<br />47.4<br />(9/19)<br />59.3c)<br />(32/54)<br />44.9d)<br />(22/49)<br />25.0<br />(7/28)<br />EASI-75a) % responders g)<br />59.6d)<br />(28/47)<br />49.1d)<br />(28/57)<br />33.3<br />(10/30)<br />55.8b)<br />(43/77)<br />51.4c)<br />(38/74)<br />21.4<br />(9/42)<br />If needed to control intolerable symptoms of atopic dermatitis, patients were permitted to receive rescue treatment at the discretion of the investigator.<br />a) Subjects who received rescue treatment or had missing data were treated as non-responders. The percentage is calculated relative to the number of subjects with response at week 16.<br />b) p&lt;0.001 compared to placebo<br />c) p&lt;0.05 compared to placebo<br />d) p&gt;0.05 compared to placebo<br />e) All patients were initially treated with tralokinumab 300 mg Q2W week 0 to week 16.<br />f) IGA 0/1 at week 52 was evaluated in those subjects that had IGA 0/1 at week 16.<br />g) EASI-75 at week 52 was evaluated in those subjects that had EASI-75 at week 16.</p><p>Of the subjects randomised to tralokinumab, who did not achieve IGA 0 or 1 or EASI-75 at week 16 and were transferred to open-label tralokinumab 300 mg Q2W + optional TCS, 20.8% in ECZTRA 1 and 19.3% in ECZTRA 2 achieved IGA 0 or 1 at week 52, and 46.1% in ECZTRA 1 and 39.3% in ECZTRA 2 achieved EASI-75 at week 52. The clinical response was mainly driven by continued tralokinumab treatment rather than optional topical corticosteroids treatment.<br />32-Week concomitant TCS study (ECZTRA 3) &ndash; initial treatment period 0-16 weeks<br />In ECZTRA 3 from baseline to week 16, a significantly greater proportion of patients randomised to tralokinumab 300 mg Q2W + TCS achieved IGA 0 or 1, EASI-75, and/or an improvement of &ge; 4 points on the Worst Daily Pruritus NRS compared to placebo + TCS (see Table 4).</p><p>Table 4: Efficacy results of tralokinumab combination therapy with TCS at week 16 in ECZTRA 3 (FAS)<br />Combination therapy<br />ECZTRA 3<br />Week 16<br />Placebo + TCS<br />Tralokinumab 300 mg Q2W + TCS<br />Number of patients randomised and dosed (FAS)<br />126<br />252<br />IGA 0 or 1, % respondersa,b)<br />26.2<br />38.9*<br />EASI-50, % respondersa)<br />57.9<br />79.4&sect;, e)<br />EASI-75, % respondersa)<br />35.7<br />56.0&sect;<br />SCORAD, LS mean change from baseline (&plusmn; SE)c)<br />-26.7<br />(&plusmn; 1.83)<br />-37.5&sect;<br />(&plusmn; 1.27)<br />Pruritus NRS (&ge; 4-point improvement, % responders)a,d)<br />34.1<br />(43/126)<br />45.4*<br />(113/249)<br />DLQI, LS mean change from baseline (&plusmn; SE)c)<br />-8.8<br />(&plusmn; 0.57)<br />-11.6&sect;<br />(&plusmn; 0.40)<br />LS=least squares; SE=standard error, FAS: Full Analysis Set - includes all patients randomised and dosed<br />If needed to control intolerable symptoms of atopic dermatitis, patients were permitted to receive rescue treatment at the discretion of the investigator. The supplied TCS did not constitute rescue medication.<br />a) Subjects who received rescue treatment or had missing data were treated as non-responders.<br />b) Responder was defined as a patient with IGA 0 or 1 (&ldquo;clear&ldquo; or &ldquo;almost clear&rdquo; on a 0-4 IGA scale).<br />c) Data after initiation of rescue medication or permanent discontinuation of treatment were considered missing. Placebo based multiple imputation of missing data.<br />d) The percentage is calculated relative to the number of subjects with a baseline value &ge; 4.<br />e) Not adjusted for multiplicity.<br />*p&lt;0.05, #p&lt;0.01, &sect;p&lt;0.001.<br />In ECZTRA 3, subjects who received tralokinumab 300 mg Q2W from Week 0 to 16 used 50% less of the supplied topical corticosteroids at Week 16 as compared to subjects who received placebo.<br />In the concomitant TCS study (ECZTRA 3), tralokinumab + TCS reduced itch, as measured by the percent change from baseline in Worst Daily Pruritus NRS, already at Week 2 compared to placebo + TCS. The reduction in itch was observed in parallel with improvements in objective signs and symptoms of atopic dermatitis and quality of life.<br />32-Week concomitant TCS study (ECZTRA 3) &ndash; maintenance period 16-32 weeks<br />To evaluate maintenance of response, subjects treated with tralokinumab 300 mg + TCS for 16 weeks in the ECZTRA 3 study and who achieved IGA 0 or 1 or EASI-75 at week 16 were re-randomised to an additional 16-week treatment of 1) tralokinumab 300 mg every two weeks (Q2W) + TCS or 2) alternating tralokinumab 300 mg + TCS and placebo every two weeks (tralokinumab Q4W) for a cumulative 32-week study treatment. High maintenance of clinical efficacy at week 32 were seen across tralokinumab 300 mg Q2W + TCS and tralokinumab 300 mg Q4W + TCS among subjects achieving clinical response at week 16 (see Table 5).</p><p>300 mg + TCS Q2W at week 16<br />Tralokinumab 300 mg Q2W + TCS<br />Tralokinumab 300 mg Q4W + TCS<br />IGA 0/1 at week 32a)<br />% respondersb)<br />89.6<br />(43/48)<br />77.6<br />(38/49)<br />EASI-75 at week 32a)<br />% respondersc)<br />92.5<br />(62/67)<br />90.8<br />(59/65)<br />If needed to control intolerable symptoms of atopic dermatitis, patients were permitted to receive rescue treatment at the discretion of the investigator.<br />a) Subjects who received rescue treatment or had missing data were treated as non-responders. The percentage is calculated relative to the number of subjects with response at week 16.<br />b) IGA 0/1 at week 32 was evaluated in those subjects that had IGA 0/1 at week 16.<br />c) EASI-75 at week 32 was evaluated in those subjects that had EASI-75 at week 16.<br />Among all the subjects who achieved either IGA 0 or 1 or EASI-75 at week 16, the mean percentage improvement in EASI score from baseline was 93.5% at week 32 when maintained on tralokinumab 300 mg Q2W + TCS and 91.5% at week 32 for subjects on tralokinumab 300 mg Q4W + TCS.<br />Of the subjects randomised to tralokinumab 300 mg Q2W + TCS who did not achieve IGA 0 or 1 or EASI-75 at week 16, 30.5 % achieved IGA 0/1 and 55.8 % achieved EASI-75 at week 32 when treated continuously with tralokinumab 300 mg Q2W + TCS for additional 16 weeks.<br />The continued improvement among the subjects who did not achieve IGA 0 or 1 or EASI-75 at week 16 occurred in conjunction with the improvement of Worst Daily Pruritus NRS and objective signs of atopic dermatitis including SCORAD.<br />Table 6: Efficacy results of tralokinumab with concomitant TCS at weeks 16 and 32 in ECZTRA 3 in patients initially treated with tralokinumab Q2W + TCS<br />Treatment regimen Week 16-32d)<br />Responders at Week 16e)<br />Non-responders at Week 16<br />Patients randomised<br />Q2W + TCS<br />Q4W + TCS<br />Q2W + TCS<br />N=69<br />N=69<br />N=95<br />Week number<br />W16<br />W32<br />W16<br />W32<br />W16<br />W32<br />EASI-50, % respondersa)<br />100.0<br />98.6<br />97.1<br />91.3<br />63.2<br />76.8<br />EASI-90, % respondersa)<br />58.0<br />72.5<br />60.9<br />63.8<br />1.1<br />34.7<br />EASI, LS % mean change from baseline (SE)b)<br />-90.5<br />(2.7)<br />-93.2<br />(2.3)<br />-89.3<br />(2.7)<br />-91.5<br />(2.3)<br />-46.9<br />(2.4)<br />-73.5<br />(2.0)<br />Pruritus NRS (&ge; 4-point improvement, % responders)a,c)<br />63.2<br />70.6<br />64.2<br />61.2<br />27.4<br />38.9<br />LS: Least squares, SE: Standard error<br />If needed to control intolerable symptoms of atopic dermatitis, patients were permitted to receive rescue treatment at the discretion of the investigator.<br />a) Patients who received rescue treatment or had missing data were considered non-responders in the analyses.<br />b) Data after initiation of rescue medication or permanent discontinuation of treatment was excluded from the analyses.<br />c) The percentage is calculated relative to the number of subjects with a baseline value &ge; 4.<br />d) All patients were initially treated with tralokinumab 300 mg Q2W + TCS from week 0 to week 16. They were subsequently treated with tralokinumab 300 mg Q2W + TCS or Q4W + TCS.<br />e) Responders at week 16 are identified as patients achieving either IGA 0/1 and/or EASI-75.</p><p>Patient-reported outcomes<br />In both monotherapy studies (ECZTRA 1 and ECZTRA 2) and in the concomitant TCS study (ECZTRA 3) tralokinumab improved patient-reported symptoms of atopic dermatitis, as measured by POEM, and the impact of atopic dermatitis on sleep, as measured by Eczema-related sleep NRS, at week 16 compared to placebo. A higher proportion of patients treated with tralokinumab had clinically meaningful reductions in POEM, (defined as at least 4 point improvement) from baseline to week 16 compared to placebo.<br />Paediatric population<br />The European Medicines Agency has deferred the obligation to submit the results of studies with tralokinumab in one or more subset of the paediatric population in atopic dermatitis (see section 4.2 for information on paediatric use).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Absorption<br />After subcutaneous (SC) dose of tralokinumab median time to maximum concentration in serum (tmax) were 5-8 days. The absolute bioavailability of tralokinumab following SC dosing was estimated by population PK analysis to be 76%. In a phase 1 trial (10 subjects per arm), bioavailability was estimated to be 62% for the 150 mg dose and 60% for the 300 mg dose.<br />Steady-state concentrations were achieved by week 16 following a 600 mg starting dose and 300 mg every other week. Across clinical studies (ECZTRA 1, ECZTRA 2 and ECZTRA 3), the mean &plusmn;SD steady-state trough concentration ranged from 98.0&plusmn;41.1 mcg/mL to 101.4&plusmn;42.7 mcg/mL for 300 mg dose administered every other week.<br />Distribution<br />A volume of distribution for tralokinumab of approximately 4.2 L was estimated by population PK analysis.<br />Biotransformation<br />Specific metabolism studies were not conducted because tralokinumab is a protein. Tralokinumab is expected to degrade to small peptides and individual amino acids.<br />Elimination<br />Tralokinumab is eliminated through a non-saturable proteolytic pathway. Half-life is 22 days, consistent with the typical estimate for human IgG4 monoclonal antibodies targeting soluble cytokines. In ECZTRA 1, ECZTRA 2, and ECZTRA 3, clearance was estimated by population PK analysis to be 0.149 L/day. In phase 1 trials with IV dosing, clearance was estimated to be between 0.179 and 0.211 L/day<br />Linearity/non-linearity<br />Exposure of tralokinumab increases proportionally to the dose of tralokinumab between 150-600 mg.<br />Drug interactions<br />The effects of tralokinumab on the pharmacokinetics (PK) of CYP substrates were evaluated in AD patients after repeated administration. The results did not indicate clinically relevant effects of tralokinumab on caffeine (CYP1A2 substrate), warfarin (CYP2C9 substrate), omeprazole&nbsp;(CYP2C19 substrate), metoprolol (CYP2D6 substrate) and midazolam (CYP3A substrate). Therefore, tralokinumab is not expected to impact the pharmacokinetics of concomitant medicines metabolised by the cytochrome P450 (CYP) enzymes (see section 4.5).<br />Special populations<br />Gender<br />Gender was not found to be associated with any clinically meaningful impact on the systemic exposure of tralokinumab determined by population PK analysis.<br />Age<br />Age was not found to be associated with clinically relevant impact of systemic exposure of tralokinumab determined by population PK analysis. 109 subjects above 65 years were included in the analysis.<br />Race<br />Race was not found to be associated with any clinically meaningful impact on the systemic exposure of tralokinumab by population PK analysis.<br />Hepatic impairment<br />Tralokinumab, as a monoclonal antibody, is not expected to undergo significant hepatic elimination. No clinical studies have been conducted to evaluate the effect of hepatic impairment on the pharmacokinetics of tralokinumab. Mild hepatic impairment was not found to affect the PK of tralokinumab determined by population PK analysis. Very limited data are available in patients with moderate or severe hepatic impairment.<br />Renal impairment<br />Tralokinumab, as a monoclonal antibody, is not expected to undergo significant renal elimination. No clinical studies have been conducted to evaluate the effect of renal impairment on the pharmacokinetics of tralokinumab. Population PK analysis did not identify mild or moderate renal impairment as having a clinically meaningful influence on the systemic exposure of tralokinumab. Very limited data are available in patients with severe renal impairment.<br />High body weight<br />Tralokinumab trough concentrations were lower in subjects with higher body weight (see section 4.2).<br />Table 7: Area under the curve (AUC) by weight&nbsp;</p><p>Weight (kg)<br />75<br />100<br />120<br />140<br />AUC (mcg*day/mL)<br />1 532<br />1 192<br />1 017<br />889<br />Ratio AUC 75 kg<br />1<br />0.78<br />0.66<br />0.57</p><p>Calculated AUC at steady-state for the dosing interval for 300 mg Q2W for a subject of a certain weight based on the relation between Clearance and weight. Clearance = 0.149 &times; (W/75)˄0.873. AUC = F &times; Dose Clearance, where F = 0.761.</p><p>Paediatric population<br />The pharmacokinetics of tralokinumab in paediatric patients has not yet been studied.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-clinical data reveal no special hazard for humans based on conventional studies of repeated dose toxicity (including safety pharmacology endpoints) and toxicity to reproduction and development.<br />The mutagenic potential of tralokinumab has not been evaluated; however monoclonal antibodies are not expected to alter DNA or chromosomes.</p><p>Carcinogenicity studies have not been conducted with tralokinumab. An evaluation of the available evidence related to IL-13 inhibition and animal toxicology data with tralokinumab does not suggest an increased carcinogenic potential for tralokinumab.<br />Enhanced pre- and postnatal studies with tralokinumab in monkeys did not identify adverse effects in maternal animals or their offspring up to 6 months post-partum.<br />No effects on fertility parameters such as reproductive organs, menstrual cycle and sperm analysis were observed in sexually mature monkeys treated subcutaneously with tralokinumab up to 350 mg/animal (females) or 600 mg/animal (males) (AUC exposure up to 15-fold higher than in human patients receiving tralokinumab 300 mg every 2 weeks).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Sodium acetate trihydrate (E262)<br />Acetic acid (E260)<br />Sodium chloride<br />Polysorbate 80 (E433)<br />Water for injections</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the absence of compatibility studies, this medicinal product must not be mixed with other medicinal products.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years.
+If necessary, Adtralza may be kept at room temperature up to 30 °C in the original package for a maximum of 14 days. Do not store above 30 °C. Throw away Adtralza if it is not used within 14 days of storage at room temperature.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store in a refrigerator (2 &deg;C-8 &deg;C).<br />Do not freeze.<br />Store in the original package in order to protect from light.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>1 mL solution in a siliconised type-1 clear glass pre-filled syringe with 27 gauge &frac12; inch thin wall stainless steel staked needle, elastomer plunger stopper extended finger flange and needle guard.<br />Pack size:<br />- 2 pre-filled syringes<br />- Multipack containing 4 (2 packs of 2) pre-filled syringes<br />- Multipack containing 12 (6 packs of 2) pre-filled syringes.<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The solution should be clear to opalescent, colourless to pale yellow. If the solution is cloudy, discoloured or contains visible particulate matter, the solution should not be used. Do not use if the pre-filled syringe is damaged or has been dropped on a hard surface.<br />After removing the pre-filled syringes from the refrigerator, they should be allowed to reach room temperature by waiting for 30 minutes before injecting Adtralza.<br />Adtralza is sterile. Discard any unused product remaining in the pre-filled syringe.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                LEO Pharma A/S
+Industriparken 55
+DK-2750 Ballerup
+Denmark
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                This leaflet was last revised in June 2021.
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

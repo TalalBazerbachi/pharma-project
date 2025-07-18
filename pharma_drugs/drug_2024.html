@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        7-363-12
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2012
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        SAIZEN 8MG CLICK EASY
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SOMATROPIN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        8
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder and solvent for solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        833.15
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="SERONO" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            SERONO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 359]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Cigalah Group
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            SERONO
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        H01AC01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Saizen 8 mg click.easy powder and solvent for solution for injection
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each vial of Saizen 8 mg click.easy contains 8 mg somatropin* (recombinant human growth hormone).
+*produced by recombinant DNA technology in mammalian cells
+Reconstitution with the contents of the bacteriostatic solvent cartridge gives a concentration of 5.83 mg/ml.
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder and solvent for solution for injection.
+Appearance of the powder: white lyophilised powder.
+Appearance of the solvent: clear colourless solution.
+The pH of the reconstituted solution is 6.5-8.5.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Saizen is indicated in the treatment of:<br />Children and adolescents:<br />&minus; Growth failure in children caused by decreased or absent secretion of endogenous growth hormone.<br />&minus; Growth failure in girls with gonadal dysgenesis (Turner syndrome), confirmed by chromosomal analysis.<br />&minus; Growth failure in prepubertal children due to chronic renal failure (CRF).<br />&minus; Growth disturbance (current height SDS &lt;-2.5 and parental adjusted height SDS &lt;-1) in short children born small for gestational age (SGA) with a birth weight and/or length below -2 SD, who failed to show catch-up growth (HV SDS &lt;0 during the last year) by 4 years of age or later.<br />Adults:<br />&minus; Replacement therapy in adults with pronounced growth hormone deficiency as diagnosed by a single dynamic test for growth hormone deficiency. Patients must also fulfil the following criteria:<br />&minus; Childhood onset:<br />Patients who were diagnosed as growth hormone deficient during childhood, must be retested and their growth hormone deficiency confirmed before replacement therapy with Saizen is started.<br />&minus; Adult onset:<br />Patients must have growth hormone deficiency as a result of hypothalamic or pituitary disease and at least one other hormone deficiency diagnosed (except for prolactin) and adequate replacement therapy instituted, before replacement therapy using growth hormone may begin.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Saizen 8 mg click.easy is intended for multiple dose use.<br />Saizen dosage should be individualised for each patient based on body surface area or on body weight.<br />Posology<br />It is recommended that Saizen be administered at bedtime according to the following dosage:<br />Children and adolescents:<br />&minus; Growth failure due to inadequate endogenous growth hormone secretion:<br />0.7-1.0 mg/m2 body surface area per day or 0.025-0.035 mg/kg body weight per day by subcutaneous administration.<br />&minus; Growth failure in girls due to gonadal dysgenesis (Turner syndrome):<br />1.4 mg/m2 body surface area per day or 0.045-0.050 mg/kg body weight per day by subcutaneous administration.<br />Concomitant therapy with non-androgenic anabolic steroids in patients with Turner syndrome can enhance the growth response.<br />&minus; Growth failure in prepubertal children due to chronic renal failure (CRF):<br />1.4 mg/m2 body surface area per day, approximately equal to 0.045-0.050 mg/kg body weight per day by subcutaneous administration.<br />&minus; Growth failure in short children born small for gestational age (SGA):<br />The recommended daily dose is 0.035 mg/kg body weight (or 1 mg/m2/day, equal to<br />0.1 IU kg/day or 3 IU m2/day) per day, by subcutaneous administration.<br />Treatment should be discontinued when the patient has reached a satisfactory adult height, or the epiphyses are fused.<br />For growth disturbance in short children born SGA, treatment is usually recommended until final height is reached. Treatment should be discontinued after the first year if height velocity SDS is below +1. Treatment should be discontinued when final height is reached (defined as height velocity &lt;2 cm/year), and if confirmation is required if bone age is &gt;14 years (girls) or &gt;16 years (boys), corresponding to closure of the epiphyseal growth plates.<br />Adults:<br />Growth hormone deficiency in adults<br />At the start of somatropin therapy, low doses of 0.15-0.3 mg are recommended, given as a daily subcutaneous injection. The dose should be adjusted stepwise, controlled by Insulin-like Growth Factor 1 (IGF-1) values. The recommended final growth hormone dose seldom exceeds 1.0 mg/day. In general the lowest efficacious dose should be administered.<br />Women may require higher doses than men, with men showing an increasing IGF-1 sensitivity over time. This means that there is a risk that women, especially those on oral oestrogen therapy are under-treated while men are over-treated.<br />In older or overweight patients, lower doses may be necessary.<br />Patients with renal or hepatic impairment<br />Currently available data are described in section 5.2 but no recommendation on a posology can be made.<br />Method of administration<br />For administration of the reconstituted solution for injection of Saizen 8 mg click.easy follow the instructions given in the package leaflet and in the instruction manual provided with the selected auto-injector: one.click auto-injector, cool.click needle-free auto-injectors or easypod auto-injector.<br />Intended users of easypod are primarily children starting from the age of 7 up to adults. Use of the devices by children should always be made under adult&rsquo;s supervision.</p><p>&nbsp;</p><p>The powder for solution for injection must be reconstituted with the enclosed bacteriostatic solvent (0.3% (w/v) metacresol solution in water for injections) for parenteral use, using the click.easy reconstitution device. For instructions for preparation please see section 6.6.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+Somatropin should not be used for growth promotion in children with closed epiphyses.
+Somatropin must not be used when there is any evidence of activity of a tumour. Intracranial tumours must be inactive and antitumour therapy must be completed prior to starting growth hormone therapy. Treatment should be discontinued if there is evidence of tumour growth.
+Somatropin must not be used in case of proliferative or preproliferative diabetic retinopathy.
+Patients with acute critical illness suffering complications following open heart surgery, abdominal surgery, multiple accidental trauma, acute respiratory failure or similar conditions should not be treated with somatropin.
+In children with chronic renal disease, treatment with somatropin should be discontinued at renal transplantation
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment should be carried out under the regular guidance of a physician who is experienced in the diagnosis and management of patients with growth hormone deficiency.<br />The maximum recommended daily dose should not be exceeded (see section 4.2).<br />Neoplasm<br />Patients with an intra- or extracranial neoplasia in remission who are receiving treatment with growth hormone should be examined carefully and at regular intervals by the physician.<br />Patients with growth hormone deficiency secondary to an intracranial tumour should be examined frequently for progression or recurrence of the underlying disease process.<br />In childhood cancer survivors, an increased risk of a second neoplasm has been reported in patients treated with somatropin after their first neoplasm. Intracranial tumours, in particular meningiomas, in patients treated with radiation to the head for their first neoplasm, were the most common of these second neoplasms.<br />Prader-Willi syndrome<br />Saizen is not indicated for the long-term treatment of paediatric patients who have growth failure due to genetically confirmed Prader-Willi syndrome, unless they also have a diagnosis of growth hormone deficiency. There have been reports of sleep apnoea and sudden death after initiating therapy with growth hormone in paediatric patients with Prader-Willi syndrome who had one or more of the following risk factors: severe obesity, history of upper airway obstruction or sleep apnoea, or unidentified respiratory infection.<br />Leukaemia<br />Leukaemia has been reported in a small number of growth hormone deficiency patients, some of whom have been treated with somatropin. However, there is no evidence that leukaemia incidence is increased in growth hormone recipients without predisposing factors.<br />Insulin sensitivity</p><p>Because somatropin may reduce insulin sensitivity, patients should be monitored for evidence of glucose intolerance. For patients with diabetes mellitus, the insulin dose may require adjustment after somatropin containing product therapy is instituted. Patients with diabetes or glucose intolerance should be monitored closely during somatropin therapy.<br />Retinopathy<br />Stable background retinopathy should not lead to discontinuation of somatropin replacement therapy.<br />Thyroid function<br />Growth hormone increases the extra thyroid conversion of T4 to T3 and may, as such, unmask incipient hypothyroidism. Monitoring of thyroid function should therefore be conducted in all patients. In patients with hypopituitarism, standard replacement therapy must be closely monitored when somatropin therapy is administered.<br />Benign intracranial hypertension<br />In case of severe or recurrent headache, visual problems, nausea and/or vomiting, funduscopy for papilloedema is recommended. If papilloedema is confirmed a diagnosis of benign intracranial hypertension (or pseudotumor cerebri) should be considered and if appropriate, Saizen treatment should be discontinued. At present there is insufficient evidence to guide clinical decision-making in patients with resolved intracranial hypertension. If growth hormone treatment is restarted, careful monitoring for symptoms of intracranial hypertension is necessary.<br />Pancreatitis<br />Although rare, pancreatitis should be considered in somatropin-treated patients, especially children who develop abdominal pain.<br />Scoliosis<br />Scoliosis is known to be more frequent in some of the patient groups treated with somatropin for example Turner syndrome. In addition, rapid growth in any child can cause progression of scoliosis. Somatropin has not been shown to increase the incidence or severity of scoliosis. Signs of scoliosis should be monitored during treatment.<br />Antibodies<br />As with all somatropin containing products, a small percentage of patients may develop antibodies to somatropin. The binding capacity of these antibodies is low and there is no effect on growth rate. Testing for antibodies to somatropin should be carried out in any patient who fails to respond to therapy.<br />Slipped capital femoral epiphysis<br />Slipped capital femoral epiphysis is often associated with endocrine disorders such as growth hormone deficiency and hypothyroidism, and with growth spurts. In children treated with growth hormone, slipped capital femoral epiphysis may either be due to underlying endocrine disorders or to the increased growth velocity caused by the treatment. Growth spurts may increase the risk of joint-related problems, the hip joint being under particular strain during the prepubertal growth spurt. Physicians and parents should be alert to the development of a limp or complaints of hip or knee pain in children treated with Saizen.<br />Growth failure due to chronic renal failure<br />Patients with growth failure due to chronic renal failure should be examined periodically for evidence of progression of renal osteodystrophy. Slipped capital femoral epiphysis or avascular necrosis of the femoral head may be seen in children with advanced renal osteodystrophy and it is uncertain whether these problems are affected by growth hormone therapy. X-rays of the hip should be obtained prior to initiating therapy.</p><p>In children with chronic renal failure, renal function should have decreased to below 50% of normal before therapy is instituted. To verify the growth disturbance, growth should have been followed for a year before institution of therapy. Conservative treatment for renal insufficiency (which includes control of acidosis, hyperparathyroidism and nutritional status for one year prior to the treatment) should have been established and should be maintained during treatment. Treatment should be discontinued at the time of renal transplantation.<br />Children born small for gestational age<br />In short children born SGA other medical reasons or treatments that could explain growth disturbance should be ruled out before starting treatment.<br />For SGA patients it is recommended to measure fasting insulin and blood glucose before start of treatment and annually thereafter. In patients with increased risk for diabetes mellitus (e.g. familial history of diabetes, obesity, increased body mass index, severe insulin resistance, acanthosis nigricans) oral glucose tolerance testing (OGTT) should be performed. If overt diabetes occurs, growth hormone should not be administered.<br />For SGA patients it is recommended to measure IGF-I level before start of treatment and twice a year thereafter. If on repeated measurements IGF-I levels exceed +2 SD compared to references for age and pubertal status, the IGF-I/IGFBP-3 ratio could be taken into account to consider dose adjustment.<br />Experience in initiating treatment in SGA patients near onset of puberty is limited. It is therefore not recommended to initiate treatment near onset of puberty. Experience with SGA patients with Silver-Russell syndrome is limited.<br />Some of the height gain obtained with treating short children born SGA with somatropin may be lost if treatment is stopped before final height is reached.<br />Fluid retention<br />Fluid retention is expected during growth hormone replacement therapy in adults.<br />In case of persistent oedema or severe paraesthesia the dosage should be decreased in order to avoid the development of carpal tunnel syndrome.<br />Acute critical illness<br />In all patients developing acute critical illness, the possible benefit of treatment with somatropin must be weighed against the potential risk involved.<br />Interaction with glucocorticoids<br />Initiation of growth hormone replacement may unmask secondary adrenal insufficiency in some patients by reducing the activity of 11&beta;-hydroxysteroid dehydrogenase, type 1 (11&beta;-HSD1), an enzyme converting inactive cortisone to cortisol and glucocorticoid replacement may be required. Initiation of somatropin in patients receiving glucocorticoid replacement therapy may lead to manifestation of cortisol deficiency. Adjustment of glucocorticoid dose may be required (see section 4.5).<br />Use with oral oestrogen therapy<br />If a woman taking somatropin begins oral oestrogen therapy, the dose of somatropin may need to be increased to maintain the serum IGF-1 levels within the normal age-appropriate range. Conversely, if a woman on somatropin discontinues oral oestrogen therapy, the dose of somatropin may need to be reduced to avoid excess of growth hormone and/or side effects (see section 4.5).<br />General<br />The injection site should be varied to prevent lipoatrophy.<br />Growth hormone deficiency in the adult is a lifelong condition and should be treated accordingly, however experience with patients over sixty years and experience with prolonged treatment is limited.</p><p>Excipients<br />This medicinal product contains less than 1 mmol sodium (23 mg) per reconstituted solution, i.e. essentially &lsquo;sodium-free&rsquo;.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Concomitant treatment with glucocorticoids inhibits the growth-promoting effects of somatropin containing products. Patients with ACTH deficiency should have their glucocorticoid replacement therapy carefully adjusted to avoid any inhibitory effect on growth hormone.<br />Growth hormone decreases the conversion of cortisone to cortisol and may unmask previously undiscovered central hypoadrenalism or render low glucocorticoid replacement doses ineffective (see section 4.4).<br />In women on oral oestrogen replacement, a higher dose of growth hormone may be required to achieve the treatment goal (see section 4.4).<br />Data from an interaction study performed in growth hormone deficient adults, suggests that somatropin administration may increase the clearance of compounds known to be metabolised by cytochrome P450 isoenzymes. The clearance of compounds metabolised by cytochrome P450 3A4 (e.g. sex steroids, corticosteroids, anticonvulsants and cyclosporine) may be especially increased resulting in lower plasma levels of these compounds. The clinical significance of this is unknown.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy<br />No clinical data on exposed pregnancies are available. From the reproductive studies performed in animals with somatropin containing products, there is no evidence of an increased risk of adverse reactions for the embryo or foetus (see section 5.3). However, somatropin containing products are not recommended during pregnancy and in woman of childbearing potential not using contraception.<br />Breastfeeding<br />There have been no clinical studies conducted with somatropin in breast-feeding women. It is not known whether somatropin is excreted in human milk. Therefore caution should be exercised when somatropin is administered to breast-feeding women.<br />Fertility<br />Non-clinical toxicity studies showed that recombinant human growth hormone did not induce adverse effects on male and female fertility (see section 5.3).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Somatropin-containing products have no influence on the ability to drive and use machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Up to 10% of patients may experience redness and itching at the site of injection.<br />Fluid retention is expected during growth hormone replacement therapy in adults. Oedema, joint swelling, arthralgias, myalgias and paraesthesias may be clinical manifestations of fluid retention. However, these symptoms / signs are usually transient and dose dependent.<br />Adult patients with growth hormone deficiency, following diagnosis of growth hormone deficiency in childhood, reported side-effects less frequently than those with adult onset growth hormone deficiency.</p><p>Antibodies to somatropin can form in a small percentage of patients; to date the antibodies have been of low binding capacity and have not been associated with growth attenuation except in patients with gene deletions. In very rare instances, where short stature is due to deletion of the growth hormone gene complex, treatment with growth hormone may induce growth attenuating antibodies.<br />Leukaemia has been reported in a small number of growth hormone deficiency patients, some of whom have been treated with somatropin. However, there is no evidence that leukaemia incidence is increased in growth hormone recipients without predisposing factors.<br />The following definitions apply to the frequency terminology used hereafter: very common (&ge;1/10), common (&ge;1/100 to &lt;1/10), uncommon (&ge;1/1,000 to &lt;1/100), rare (&ge;1/10,000 to &lt;1/1,000), very rare (&lt;1/10,000), frequency not known (cannot be estimated from the available data).<br />Within each frequency grouping, undesirable effects are presented in order of decreasing seriousness.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Exceeding the recommended doses can cause side effects. Overdose can lead to hypoglycaemia and subsequently to hyperglycaemia. Moreover, somatropin overdose is likely to cause manifestations of fluid retention.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Anterior pituitary lobe hormones and analogues, ATC code: H01AC01<br />Saizen contains recombinant human growth hormone produced by genetically engineered mammalian cells.<br />It is a peptide of 191 amino acids identical to human pituitary growth hormone with respect to aminoacid sequence and composition as well as peptide map, isoelectric point, molecular weight, isomeric structure and bioactivity.<br />Growth hormone is synthesised in a transformed murine cell line that has been modified by the addition of the gene for pituitary growth hormone.<br />Saizen is an anabolic and anticatabolic agent which exerts effects not only on growth but also on body composition and metabolism. It interacts with specific receptors on a variety of cell types including myocytes, hepatocytes, adipocytes, lymphocytes and hematopoietic cells. Some, but not all of its effects are mediated through another class of hormones known as somatomedins (IGF-1 and IGF-2).</p><p>Depending on the dose, the administration of Saizen elicits a rise in IGF-1, IGFBP-3, non-esterified fatty acids and glycerol, a decrease in blood urea, and decreases in urinary nitrogen, sodium and potassium excretion. The duration of the increase in growth hormone levels may play a role in determining the magnitude of the effects. A relative saturation of the effects of Saizen at high doses is probable. This is not the case for glycaemia and urinary C-peptide excretion, which are significantly elevated only after high doses (20 mg).<br />In a randomised clinical trial, three years treatment of pre-pubertal short children born SGA with a dose of 0.067 mg/kg/day resulted in a mean gain of +1.8 height-SDS. In those children who did not receive treatment beyond 3 years, part of the treatment benefit was lost, but the patients retained a significant gain of +0.7 height-SDS at final height (p&lt;0.01 compared to baseline). Patients who received a second treatment course after a variable period of observation experienced a total gain of +1.3 height-SDS (p&lt;0.001 compared to baseline) at final height. (The mean cumulative treatment duration in the latter group was 6.1 years). The gain in height-SDS (+1.3&plusmn;1.1) at final height in this group was significantly (p&lt;0.05) different from the gain in height-SDS obtained in the first group (+0.7&plusmn;0.8) that received only 3.0 years of treatment on average.<br />A second clinical trial investigated two different dose regimens over four years. One group was treated with 0.067 mg/kg/day for 2 years and then observed without treatment for 2 years. The second group received 0.067 mg/kg/day in the first and third year and no treatment in the second and fourth year. Either treatment regimen resulted in a cumulative administered dose of 0.033 mg/kg/day over the four- year study period. Both groups showed a comparable acceleration of growth and a significant improvement of +1.55 (p&lt;0.0001) and + 1.43 (p&lt;0.0001) height-SDS respectively at the end of the four year study period. Long-term safety data are still limited.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The pharmacokinetics of Saizen are linear at least up to doses of 8 IU (2.67 mg). At higher doses (60 IU/20 mg) some degree of non-linearity cannot be ruled out, however with no clinical relevance.<br />Following intravenous administration in healthy volunteers the volume of distribution at steady-state is around 7 L, total metabolic clearance is around 15 L/h while the renal clearance is negligible, and the drug exhibits an elimination half-life of 20 to 35 min.<br />Following single-dose subcutaneous and intramuscular administration of Saizen, the apparent terminal half-life is much longer, around 2 to 4 hours. This is due to a rate limiting absorption process.<br />Maximum serum growth hormone concentrations are reached after approximately 4 hours and serum growth hormone levels return to baseline within 24 hours, indicating that no accumulation of growth hormone will occur during repeated administrations.<br />The absolute bioavailability of both routes is 70-90%.<br />Renal impairment<br />Somatropin clearance is known to be reduced in patients with renal impairment. However, the clinical significance of this finding is unknown.<br />For prepubertal children with growth failure due to chronic renal failure a specific posology is recommended (see section 4.2).<br />Hepatic impairment<br />Somatropin clearance is known to be reduced in patients with hepatic impairment. However, as Saizen has not been studied in patients with hepatic impairment, the clinical significance of this finding is unknown.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The local tolerability of Saizen solutions containing 0.3% metacresol when injected in animals was considered good and found suitable for subcutaneous or intramuscular administration.<br />Non-clinical data reveal no special hazard for humans based on conventional studies of safety pharmacology, repeated dose toxicity and genotoxicity. Formal carcinogenicity bioassays were not performed. This is justified, given the proteinous nature of the drug substance and the negative outcome of the genotoxicity testing. The potential effects of recombinant human growth hormone on the growth of pre-existing tumours have been evaluated through in vitro and in vivo experiments which have shown that recombinant human growth hormone is not expected to cause or stimulate tumours in patients. Reproductive toxicology studies do not indicate harm to the fetus, or impaired fertility, despite administration of doses sufficiently high to produce some pharmacological effects on growth.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>6.1 List of excipients<br />Powder:<br />&minus; Sucrose 54.700 mg<br />&minus; Phosphoric acid (for pH-adjustment) 1.800 mg<br />&minus; Sodium hydroxide (for pH-adjustment)<br />Solvent:<br />&minus; Metacresol (as preservative 0.3% w/v) solution in water for injection</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the absence of compatibility studies, this medicinal product must not be mixed with other medicinal products.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years.
+After reconstitution, the product must be stored for a maximum of 28 days in a refrigerator (2°C-8°C).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above 25&deg;C. Do not freeze. Store in the original package.<br />For storage conditions of the reconstituted medicinal product, see section 6.3.<br />When containing a cartridge of reconstituted Saizen, the easypod and one.click auto-injectors have to be stored in a refrigerator (2&deg;C -8&deg;C). When using the cool.click needle-free auto-injectors, only the cartridge of reconstituted Saizen should be stored in a refrigerator (2&deg;C-8&deg;C).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The DIN 2R 3 ml vials containing 8 mg of powder and the 3 ml cartridges containing 1.37 ml of solvent are of neutral glass (Type I). The vials and cartridges are closed by rubber stoppers.<br />Saizen 8 mg click.easy is available in the following pack sizes:<br />&minus; 1 vial of Saizen 8 mg product and 1 cartridge of bacteriostatic solvent pre-assembled in 1 reconstitution device (click.easy) comprising of 1 device housing and 1 sterile transfer cannula.<br />&minus; 5 vials of Saizen 8 mg product and 5 cartridges of bacteriostatic solvent pre-assembled in<br />5 reconstitution devices (click.easy) comprising each of 1 device housing and 1 sterile transfer cannula.<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The cartridge containing the reconstituted solution of Saizen 8 mg click.easy is for use only with the one.click auto-injector, the cool.click needle-free auto-injectors, or the easypod auto-injector.<br />For storage of the auto-injectors containing the cartridge, see section 6.4.<br />The reconstituted solution for injection should be clear with no particles. If the solution contains particles, it must not be injected.<br />Any unused product or waste material should be disposed of in accordance with local requirements</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Merck Serono S.P.A
+Zona Industriale di Modugno
+70123 Bari
+Bari, Italy
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                May/2019
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

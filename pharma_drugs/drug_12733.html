@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1209245907
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Siromune
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SIROLIMUS
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Oral solution
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        60
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Bottle
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1199.65
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="M/s Annora Pharma Private Limited" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            M/s Annora Pharma Private Limited
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2950]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Saudi Amarox
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Saudi Amarox
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L04AA10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Siromune contains the active substance sirolimus, which belongs to a group of medicines called immunosuppressants. It helps to control your body&rsquo;s immune system after you have received a kidney transplant.</p><p>Siromune is used in adults to prevent your body from rejecting transplanted kidneys and is normally used with other immunosuppressant medicines called corticosteroids and initially (the first 2 to 3 months) with ciclosporin.</p><p>Siromune is also used for the treatment of patients with sporadic lymphangioleiomyomatosis (S-LAM) with moderate lung disease or declining lung function. S-LAM is a rare progressive lung disease that affects predominantly women of childbearing age. The most common symptom of S-LAM is shortness of breath.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Do not take Siromune: </strong></p><p>- if you are allergic to sirolimus or any of the other ingredients of this medicine (listed in section 6).</p><p>- if you are allergic to peanut or soya.</p><p><strong>Warnings and precautions </strong></p><p>Talk to your doctor or pharmacist before taking Siromune</p><p>&minus; &nbsp;If you have any liver problems or have had a disease which may have affected your liver, please tell &nbsp;&nbsp;your doctor as this may affect the dose of Siromune that you receive and may result in your having additional blood tests.</p><p>&minus; Siromune, like other immunosuppressive medicines, may decrease your body&rsquo;s ability to fight infection, and may increase the risk of developing cancer of the lymphoid tissues and skin.</p><p>&minus; If you have a body mass index (BMI) greater than 30 kg/m2, you may be at increased risk of abnormal &nbsp;&nbsp;wound healing.</p><p>&minus; If you are considered to be at high risk for kidney rejection, such as if you had a previous transplant that was lost to rejection.</p><p>&nbsp;</p><p>Your doctor will perform tests to monitor the levels of Siromune in your blood. Your doctor will also perform tests to monitor your kidney function, your blood fat (cholesterol and/or triglycerides) levels and possibly your liver function, during treatment with Siromune.</p><p>Exposure to sunlight and UV light should be limited by covering your skin with clothing and using a sunscreen with a high protection factor because of the increased risk for skin cancer.</p><p><strong>Children and adolescents </strong></p><p>There is limited experience on the use of Siromune in children and adolescents less than 18 years of age. The use of Siromune is not recommended in this population.</p><p><strong>Other medicines and Siromune </strong></p><p>Tell your doctor or pharmacist if you are taking, have recently taken or might take any other medicines.</p><p>Some medicines can interfere with the action of Siromune and, therefore, dose adjustment of Siromune may be required. In particular, you should inform your doctor or pharmacist if you are taking any of the following:</p><p>&nbsp;</p><p>&minus; &nbsp;&nbsp;any other immunosuppressant medicines.</p><p>&minus; &nbsp;antibiotics or antifungal medicines used to treat infection e.g. clarithromycin, erythromycin, &nbsp;telithromycin, troleandomycin, rifabutin, clotrimazole, fluconazole, itraconazole. It is not recommended that Siromune be taken with rifampicin, ketoconazole or voriconazole.</p><p>&minus; &nbsp;&nbsp;&nbsp;any high blood pressure medicines or medicines for heart problems including nicardipine, verapamil &nbsp;&nbsp;and diltiazem.</p><p>&minus; &nbsp;&nbsp;&nbsp;anti-epileptic medicines including carbamazepine, phenobarbital, phenytoin.</p><p>&minus; &nbsp;medicines used to treat ulcers or other gastrointestinal disorders such as cisapride, cimetidine, &nbsp;&nbsp;metoclopramide.</p><p>&minus; &nbsp;bromocriptine (used in the treatment of Parkinson&rsquo;s disease and various hormonal disorders), &nbsp;&nbsp;danazol (used in the treatment of gynaecological disorders), or protease inhibitors (e.g. for HIV and hepatitis C such as ritonavir, indinavir, boceprevir, and telaprevir).</p><p>&minus; &nbsp;&nbsp;&nbsp;&nbsp;St. John&rsquo;s Wort (<em>Hypericum perforatum</em>).</p><p>&minus; &nbsp;&nbsp;&nbsp;&nbsp;letermovir (an antiviral medicine to prevent getting ill from cytomegalovirus).</p><p>The use of live vaccines should be avoided with the use of Siromune. Before vaccinations, please inform your doctor or pharmacist that you are receiving Siromune.</p><p>The use of Siromune may lead to increased levels of cholesterol and triglycerides (blood fats) in your blood that may require treatment. Medicines known as &ldquo;statins&rdquo; and &ldquo;fibrates&rdquo; used to treat elevated cholesterol and triglycerides have been associated with an increased risk of muscle breakdown (rhabdomyolysis). Please inform your doctor if you are taking medicines to lower your blood fats.</p><p>The combined use of Siromune with angiotensin-converting enzyme (ACE) inhibitors (a type of medicine used to lower blood pressure) may result in allergic reactions. Please inform your doctor if you are taking any of these medicines.</p><p>Siromune with food and drink &nbsp;&nbsp;&nbsp;&nbsp;</p><p>Siromune should be taken consistently, either with or without food. If you prefer to take Siromune with food, then you should always take it with food. If you prefer to take Siromune without food, then you should always take it without food. Food can affect the amount of medicine that gets into your bloodstream, and taking your medicine in a consistent way means that the blood levels of Siromune remain more stable.</p><p>Siromune should not be taken with grapefruit juice. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>Pregnancy, breast-feeding and fertility</p><p>Siromune should not be used during pregnancy unless clearly necessary. You must use an effective method of contraception during treatment with Siromune and for 12 weeks after treatment has stopped. If you are pregnant or breast-feeding, think you may be pregnant or are planning to have a baby, ask your doctor or pharmacist for advice before taking this medicine.</p><p>It is not known whether Siromune passes into breast milk. Patients taking Siromune should discontinue breast-feeding.</p><p>Decreased sperm count has been associated with the use of Siromune and usually returns to normal once treatment is stopped.</p><p><strong>Driving and using machines </strong></p><p>Although Siromune treatment is not expected to affect your ability to drive, if you have any concerns please consult your doctor.</p><p><strong>Siromune contains ethanol (alcohol) </strong></p><p>Siromune contains up to 3.17 vol % ethanol (alcohol). An initial dose of 6 mg contains up to 150 mg of alcohol which is equivalent to 3.80 mL beer or 1.58 mL wine. This amount of alcohol may be harmful for those suffering from alcoholism as well as for pregnant or breast-feeding women, children and high-risk groups such as patients with liver disease, or epilepsy. Alcohol may modify or increase the effect of other medicines.</p><p>Maintenance doses of 4 mg or less contain small amounts of ethanol (100 mg or less) that are likely to be too low to be harmful. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Always take this medicine exactly as your doctor has told you. Check with your doctor or pharmacist if you are not sure. &nbsp;</p><p>Your doctor will decide exactly what dose of Siromune you must take and how often to take it. Follow your doctor&rsquo;s instructions exactly, and never change the dose yourself.</p><p>Siromune is for oral use only. Inform your doctor if you have difficulty taking the oral solution.</p><p>Siromune should be taken consistently, either with or without food.</p><p><u>Kidney Transplant </u></p><p>Your doctor will give you an initial dose of 6 mg as soon as possible after the kidney transplant operation. Then you will need to take 2 mg of Siromune each day, until otherwise directed by your doctor. Your dose will be adjusted depending on the level of Siromune in your blood. Your doctor will need to perform blood tests to measure Siromune concentrations.</p><p>If you are also taking ciclosporin, then you must take the two medicines approximately 4 hours apart.</p><p>It is recommended that Siromune be used first in combination with ciclosporin and corticosteroids. After 3 months, your doctor may discontinue either Siromune or ciclosporin, as it is not recommended that these medicines be taken together beyond this period.</p><p><u>Sporadic Lymphangioleiomyomatosis (S-LAM) </u></p><p>Your doctor will give you 2 mg of Siromune each day, until otherwise directed by your doctor. Your dose will be adjusted depending on the level of Siromune in your blood. Your doctor will need to perform blood tests to measure Siromune concentrations.</p><p><strong>Instructions on how to dilute Siromune</strong></p><p>1. Remove the safety cap from the bottle by squeezing the tabs on the cap and twisting. Insert the syringe adapter into the bottle until it is flush with the top of the bottle. Do not attempt to remove the syringe adapter from the bottle once inserted.</p><p><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_2" o:spid="_x0000_i1030" type="#_x0000_t75"
+ style='width:111pt;height:98.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image001.emz"
+  o:title=""/>
+</v:shape><![endif]--><img width="148" height="131" alt="" vspace="0" hspace="0" border="0" style="width:148px;height:131px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" /></p><p>2. With the plunger fully depressed, insert one of the dosing syringes into the opening in the adapter.</p><p><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_3" o:spid="_x0000_i1029" type="#_x0000_t75" style='width:118.5pt;
+ height:120.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image003.emz"
+  o:title=""/>
+</v:shape><![endif]--><img width="158" height="161" alt="" vspace="0" hspace="0" border="0" style="width:158px;height:161px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif" /></p><p>&nbsp;</p><p>3. Withdraw the exact amount of Siromune oral solution as prescribed by your doctor by gently pulling out the plunger of the dosing syringe until the level of the oral solution is even with the appropriate mark on the dosing syringe. The bottle should remain in an upright position when withdrawing the solution. If bubbles form in the oral solution in the dosing syringe during withdrawal, empty the Siromune solution back into the bottle and repeat the withdrawal procedure. You may need to repeat step 3 more than once to deliver your dose.</p><p><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_4" o:spid="_x0000_i1028" type="#_x0000_t75" style='width:143.25pt;
+ height:138.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image005.emz"
+  o:title=""/>
+</v:shape><![endif]--><img width="191" height="185" alt="" vspace="0" hspace="0" border="0" style="width:191px;height:185px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image006.gif" /></p><p>4. You may have been instructed to take your Siromune oral solution at a particular time of day. If it is necessary to carry your medication with you, fill the dosing syringe to the appropriate mark and place a cap securely on it &ndash; the cap should snap into place. Then place the capped dosing syringe in the carrying case provided. Once in the syringe the medication may be kept at room temperature (not exceeding 25C) or refrigerated and should be used within 24 hours.</p><p><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_5" o:spid="_x0000_i1027" type="#_x0000_t75" style='width:131.25pt;
+ height:111pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image007.emz"
+  o:title=""/>
+</v:shape><![endif]--><img width="175" height="148" alt="" vspace="0" hspace="0" border="0" style="width:175px;height:148px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image008.gif" /><!--[if gte vml 1]><v:shape id="Picture_x0020_6"
+ o:spid="_x0000_i1026" type="#_x0000_t75" style='width:171pt;height:98.25pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image009.emz"
+  o:title=""/>
+</v:shape><![endif]--><img width="228" height="131" alt="" vspace="0" hspace="0" border="0" style="width:228px;height:131px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image010.gif" /></p><p>&nbsp;</p><p>5. Empty the contents of the dosing syringe into only a glass or plastic container holding at least 60 mL of water or orange juice. Stir well for one minute and drink immediately at once. Refill the glass with at least 120 mL of water or orange juice, stir well, and drink immediately. No other liquids, including grapefruit juice, should be used for dilution. The dosing syringe and cap are to be used once and then discarded.</p><p><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_7" o:spid="_x0000_i1025" type="#_x0000_t75" style='width:126pt;
+ height:127.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image011.emz"
+  o:title=""/>
+</v:shape><![endif]--><img width="168" height="170" alt="" vspace="0" hspace="0" border="0" style="width:168px;height:170px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/Pc/AppData/Local/Temp/msohtmlclip1/01/clip_image012.gif" /></p><p>When refrigerated the solution in the bottle may develop a slight haze. If this occurs, simply bring your Siromune oral solution to room temperature and shake gently. The presence of this haze does not affect the quality of Siromune.</p><p><strong>If you take more Siromune than you should </strong></p><p>If you have taken more medicine than you were told contact a doctor or go to the nearest hospital emergency department straight away. Always take the labelled medicine bottle with you, even if it is empty.</p><p><strong>If you forget to take Siromune </strong></p><p>If you forget to take Siromune, take it as soon as you remember, but not within 4 hours of the next dose of ciclosporin. After that, continue to take your medicines as usual. Do not take a double dose to make up for a forgotten dose, and always take Siromune and ciclosporin approximately 4 hours apart. If you miss a dose of Siromune completely, you should inform your doctor.</p><p><strong>If you stop taking Siromune </strong></p><p>Do not stop taking Siromune unless your doctor tells you to, as you risk losing your transplant.</p><p>If you have any further questions on the use of this medicine, ask your doctor or pharmacist.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p><strong>Allergic reactions </strong></p><p>You should <strong>see your doctor immediately </strong>if you experience symptoms, such as swollen face, tongue and/or back of the mouth (pharynx) and/or difficulties in breathing (angioedema), or a skin condition whereby the skin can peel off (exfoliative dermatitis). These may be symptoms of a serious allergic reaction.<strong>&nbsp;</strong></p><p><strong>Kidney damage with low blood cell counts (thrombocytopaenic purpura/haemolytic uraemic</strong></p><p><strong>syndrome) </strong></p><p>When taken with medicines called calcineurin inhibitors (ciclosporin or tacrolimus), Siromune may</p><p>increase the risk of kidney damage with low blood platelets and low red blood cell counts, with or</p><p>without rash (thrombocytopaenic purpura/haemolytic uraemic syndrome). If you experience symptoms,</p><p>such as bruising or rash, changes in your urine, or changes in behaviour, or any others that are serious,</p><p>unusual or prolonged, contact your doctor.</p><p><strong>Infections </strong></p><p>Siromune reduces your body&rsquo;s own defence mechanisms. Consequently your body will not be as good</p><p>as normal at fighting infections. So if you are taking Siromune, you may therefore catch more</p><p>infections than usual, such as infections of the skin, mouth, stomach and intestines, lungs and urinary</p><p>tract (see list below). You should contact your doctor if you experience symptoms that are serious,</p><p>unusual, or prolonged.</p><p><strong>Side effect frequencies </strong></p><p>Very common: may affect more than 1 in 10 people</p><p>&minus; &nbsp;Fluid collection around the kidney</p><p>&minus; &nbsp;Swelling of the body including hands and feet</p><p>&minus; &nbsp;Pain</p><p>&minus; &nbsp;Fever</p><p>&minus; &nbsp;Headache</p><p>&minus; &nbsp;Increased blood pressure</p><p>&minus; &nbsp;Stomach pain, diarrhoea, constipation, nausea</p><p>&minus; &nbsp;Low red blood cells, low blood platelets</p><p>&minus; Increased fat in the blood (cholesterol and/or triglycerides), increased blood sugar, low blood &nbsp;&nbsp;potassium, low blood phosphorus, increased lactate dehydrogenase in the blood, increased creatinine in the blood</p><p>&minus; &nbsp;Joint pain</p><p>&minus; &nbsp;Acne</p><p>&minus; &nbsp;Urinary tract infection</p><p>&minus; &nbsp;Pneumonia and other bacterial, viral, and fungal infections</p><p>&minus; &nbsp;A reduced number of infection-fighting cells in the blood (white blood cells)</p><p>&minus; &nbsp;Diabetes</p><p>&minus; &nbsp;Abnormal tests of liver function, elevated AST and/or ALT liver enzymes</p><p>&minus; &nbsp;Rash</p><p>&minus; &nbsp;Elevated protein in the urine</p><p>&minus; &nbsp;Menstrual disorders (including absent, infrequent or heavy periods)</p><p>&minus; &nbsp;Slow healing (this may include separation of the layers of a surgical wound or stitch line)</p><p>&minus; &nbsp;Rapid heart rate</p><p>&minus; &nbsp;There is a general tendency for fluid to collect in various tissues.</p><p>Common: may affect up to 1 in 10 people</p><p>&minus; &nbsp;&nbsp;Infections (including life-threatening infections)</p><p>&minus; &nbsp;&nbsp;Blood clots in the legs</p><p>&minus; &nbsp;&nbsp;Blood clots in the lung</p><p>&minus; &nbsp;&nbsp;Mouth sores</p><p>&minus; &nbsp;&nbsp;Fluid collection in the abdomen</p><p>&minus; &nbsp;Kidney damage with low blood platelets and low red blood cell counts, with or without rash (haemolytic uraemic syndrome)</p><p>&minus; &nbsp;&nbsp;Low levels of a type of white blood cells called neutrophils</p><p>&minus; &nbsp;&nbsp;Deterioration of bone</p><p>&minus; &nbsp;&nbsp;Inflammation&nbsp; that may lead&nbsp; to lung damage, fluid around the lung</p><p>&minus; &nbsp;&nbsp;Nose bleeds</p><p>&minus; &nbsp;&nbsp;Skin cancer</p><p>&minus; &nbsp;&nbsp;Kidney infection</p><p>&minus; &nbsp;&nbsp;Ovarian cysts</p><p>&minus; &nbsp;Fluid collection in the sac around the heart, that in some cases may decrease the heart&#39;s ability to&nbsp; pump blood</p><p>&minus; &nbsp;Inflammation of the pancreas</p><p>&minus; &nbsp;Allergic reactions</p><p>&minus; &nbsp;Shingles</p><p>&minus; &nbsp;Cytomegalovirus infection</p><p>Uncommon: may affect up to 1 in 100 people</p><p>&minus; &nbsp;Cancer of the lymph tissue (lymphoma/post-transplant lympho-proliferative disorder), combined lowering of red blood cells, white blood cells and blood platelets</p><p>&minus; &nbsp;&nbsp;&nbsp;Bleeding from the lung</p><p>&minus; &nbsp;&nbsp;&nbsp;Protein in the urine, occasionally severe and associated with side effects, such as swelling</p><p>&minus; &nbsp;&nbsp;&nbsp;Scarring in the kidney that may reduce kidney function</p><p>&minus; &nbsp;&nbsp;&nbsp;Too much fluid collecting in the tissues due to irregular lymph function</p><p>&minus; &nbsp;&nbsp;&nbsp;Low blood platelets, with or without rash (thrombocytopaenic purpura)</p><p>&minus; &nbsp;&nbsp;&nbsp;Serious allergic reactions that can cause peeling of the skin</p><p>&minus; &nbsp;&nbsp;&nbsp;Tuberculosis</p><p>&minus; &nbsp;&nbsp;&nbsp;Epstein-Barr virus infection</p><p>&minus; &nbsp;&nbsp;&nbsp;Infectious diarrhoea with <em>Clostridium difficile </em></p><p>&minus; &nbsp;&nbsp;&nbsp;Serious liver damage</p><p>Rare: may affect up to 1 in 1,000 people</p><p>&minus; &nbsp;&nbsp;Protein build-up in the air sacs of the lungs that may interfere with breathing</p><p>&minus; &nbsp;&nbsp;Serious allergic reactions that can affect blood vessels (see above paragraph on allergic reactions)</p><p>Not known: frequency cannot be estimated from the available data</p><p>&minus; &nbsp;Posterior reversible encephalopathy syndrome (PRES), a serious nervous system syndrome that has the following symptoms: headache, nausea, vomiting, confusion, seizures, and visual loss. Should any of these occur together, please contact your physician.</p><p>S-LAM patients experienced similar side effects to those of kidney transplant patients, with the addition of weight loss, which may affect up to 1 in 10 people.</p><p><strong>Reporting of side effects</strong></p><p>&bull;&nbsp; If any of the side effects gets serious, or if you notice any side effects not listed in this leaflet, please tell your doctor or pharmacist.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Store below 30&deg;C.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Keep out of reach of children.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not use this medicine after the expiry date which is stated on the pack after EXP. The expiry&nbsp;</p><p>&nbsp; date refers to the last day of the month.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This medicine does not require any special storage conditions.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not throw away any medicines via wastewater or household waste. Ask your pharmacist how&nbsp;</p><p>&nbsp; to throw away medicines you no longer use. These measures will help protect the environment</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>The active substance is Sirolimus.</p><p>&bull;&nbsp; &nbsp;Each ml of Sirolimus oral solution contains 1 mg sirolimus.</p><p><strong>The other ingredients are:</strong> Super refined Polysorbate 80 LQ-(MH), Phosal 50 PG Nitrogen gas 99.999%.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Clear Pale yellow to yellow color viscous solution and free of visible particles.
+How supplied:
+Siromune is Supplied in 60 mL Amber Glass Bottle Pack.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Saudi Amarox Industrial Company</p><p>Al Jamiah Street, Al Malaz District Riyadh 12629, Saudi Arabia</p><p>Tel &amp; Fax: +966 11 226 8850</p><p><strong>Manufacturer </strong></p><p>M/s Annora Pharma Private Limited&ndash; India</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Last revised in October 2023, Version 1
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">سيرومون يحتوي على المادة الفعالة سيروليموس، والتي تنتمي إلى مجموعة من الأدوية تسمى مثبطات المناعة. يساعد في التحكم في جهاز المناعة في الجسم بعد إجراء عملية زرع الكلى.</p><p dir="RTL">يستخدم سيرومون في البالغين لمنع الجسم من رفض الكلى المزروعة ويستخدم عادة مع أدوية أخرى مثبطة للمناعة تسمى الكورتيكوستيرويدات وفي البداية (أول شهرين إلى ثلاثة أشهر) مع سيكلوسبورين.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>&nbsp;</strong><strong>لا تستخدم سيرومون</strong></p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك حساسية من سيروليموس أو أي من المكونات الأخرى لهذا الدواء (المدرجة في البند 6).</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك حساسية من الفول السوداني أو فول الصويا.</p><p dir="RTL"><strong>التحذيرات والاحتياطات</strong></p><p dir="RTL">تحدث إلى طبيبك أو الصيدلي قبل تناول سيرومون</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان لديك أي مشاكل في الكبد أو كان لديك مرض قد يكون قد أثر على الكبد، فيرجى إخبار طبيبك لأن ذلك قد يؤثر على جرعة سيرومون التي تتلقاها وقد يؤدي إلى إجراء فحوصات دم إضافية.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سيرومون مثل الأدوية الأخرى المثبطة للمناعة قد يقلل من قدرة الجسم على مقاومة العدوى وقد يزيد من خطر الإصابة بسرطان الأنسجة اللمفاوية والجلد.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كان مؤشر كتلة الجسم لديك أكبر من 30 كجم / م 2، فقد تكون أكثر عرضة لخطر التئام الجروح غير الطبيعي.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعتبر معرضًا لخطر كبير لرفض الكلى، مثل إذا كنت قد خضعت لعملية زرع سابقة فُقدت بسبب الرفض.</p><p dir="RTL">سيقوم طبيبك بإجراء فحوصات لمراقبة مستويات سيرومون في دمك. سيقوم طبيبك أيضًا بإجراء فحوصات لمراقبة وظائف الكلى، ومستويات الدهون في الدم (الكوليسترول و / أو الدهون الثلاثية) وربما وظائف الكبد، أثناء العلاج باستخدام سيرومونز</p><p dir="RTL">يجب الحد من التعرض لأشعة الشمس والأشعة فوق البنفسجية عن طريق تغطية بشرتك بالملابس واستخدام واقي من الشمس مع عامل حماية عالي بسبب زيادة خطر الإصابة بسرطان الجلد.</p><p dir="RTL"><strong>الأطفال والمراهقون</strong></p><p dir="RTL">هناك خبرة محدودة في استخدام سيرومون لدى الأطفال والمراهقين الذين تقل أعمارهم عن 18 عامًا. لا ينصح باستخدام سيرومون في هذه الفئة من السكان.</p><p dir="RTL"><strong>تناول سيرومون وأدوية أخرى</strong></p><p dir="RTL">أخبر طبيبك أو الصيدلي إذا كنت تتناول أو تناولت مؤخرًا أو قد تتناول أي أدوية أخرى.</p><p dir="RTL">يمكن أن تتداخل بعض الأدوية مع عمل سيرومون، وبالتالي قد يلزم تعديل جرعة سيرومون. على وجه الخصوص، يجب عليك إبلاغ طبيبك أو الصيدلي إذا كنت تتناول أيًا مما يلي:</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أي أدوية أخرى مثبطة للمناعة.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المضادات الحيوية أو الأدوية المضادة للفطريات المستخدمة لعلاج العدوى مثل كلاريثروميسين، إريثروميسين، تيليثروميسين، ترولينوميسين، ريفابوتين، كلوتريمازول، فلوكونازول، إيتراكونازول. لا ينصح بتناول سيرومون مع ريفامبيسين أو كيتوكونازول أو فوريكونازول.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أي أدوية لعلاج ارتفاع ضغط الدم أو أدوية لمشاكل القلب بما في ذلك نيكارديبين، فيراباميل وديلتيازيم.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأدوية المضادة للصرع بما في ذلك كاربامازيبين، الفينوباربيتال، الفينيتوين.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الأدوية المستخدمة لعلاج القرحة أو اضطرابات الجهاز الهضمي الأخرى مثل سيسابريد، سيميتيدين، ميتوكلوبراميد.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بروموكريبتين (يستخدم في علاج مرض باركنسون والاضطرابات الهرمونية المختلفة)، دانازول (يستخدم في علاج الاضطرابات النسائية)، أو مثبطات الأنزيم البروتيني (على سبيل المثال لفيروس نقص المناعة البشرية والتهاب الكبد سي مثل ريتونافير، إندينافير، بوسبريفير، وتيلابريفير).</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نبتة سانت جون (العرن المثقوب).</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ليتيرموفير (دواء مضاد للفيروسات لمنع الإصابة بالفيروس المضخم للخلايا).</p><p dir="RTL">يجب تجنب استخدام اللقاحات الحية باستخدام سيرومون. قبل التطعيمات، يرجى إبلاغ طبيبك أو الصيدلي بأنك تتلقى سيرومون.</p><p dir="RTL">قد يؤدي استخدام سيرومون إلى زيادة مستويات الكوليسترول والدهون الثلاثية (دهون الدم) في الدم والتي قد تتطلب العلاج. ارتبطت الأدوية المعروفة باسم &quot;الستاتين&quot; و &quot;الفايبرات&quot; المستخدمة في علاج ارتفاع الكوليسترول والدهون الثلاثية بزيادة خطر الانهيار العضلي (انحلال الربيدات). يرجى إبلاغ طبيبك إذا كنت تتناول أدوية لخفض نسبة الدهون في الدم.</p><p dir="RTL">قد يؤدي الاستخدام المشترك لسيرومون مع مثبطات الإنزيم المحول للأنجيوتنسين (نوع من الأدوية المستخدمة لخفض ضغط الدم) إلى تفاعلات حساسية. يرجى إبلاغ طبيبك إذا كنت تتناول أيًا من هذه الأدوية.</p><p dir="RTL"><strong>تناول </strong><strong>سيرومون </strong><strong>مع الطعام والشراب</strong></p><p dir="RTL">يجب تناول سيرومون باستمرار، مع أو بدون طعام. إذا كنت تفضل تناول سيرومون بالطعام، فعليك دائمًا تناوله مع الطعام. إذا كنت تفضل تناول سيرومون بدون طعام، فعليك دائمًا تناوله بدون طعام. يمكن أن يؤثر الطعام على كمية الدواء التي تدخل مجرى الدم، وتناول الدواء بطريقة ثابتة يعني أن مستويات الدم في سيرومون تظل أكثر استقرارًا.</p><p dir="RTL">لا يجب تناول سيرومون مع عصير الجريب فروت.</p><p dir="RTL"><strong>الحمل والرضاعة والخصوبة</strong></p><p dir="RTL">سيرومون لا ينبغي أن يستخدم أثناء الحمل إلا إذا لزم الأمر بشكل واضح. يجب استخدام وسيلة فعالة لمنع الحمل أثناء العلاج سيرومون ولمدة 12 أسبوعًا بعد توقف العلاج. إذا كنت حاملاً أو مرضعة، تعتقدين أنك حامل أو تخططين لإنجاب طفل، اسألي طبيبك أو الصيدلي للحصول على المشورة قبل تناول هذا الدواء.</p><p dir="RTL">لا يعرف فيما إذا كان سيرومون ينتقل إلى حليب الأم. يجب على المرضى الذين يتناولون سيرومون التوقف عن الرضاعة الطبيعية.</p><p dir="RTL">ارتبط انخفاض عدد الحيوانات المنوية باستخدام سيرومون وعادة ما يعود إلى طبيعته بمجرد توقف العلاج.</p><p dir="RTL"><strong>القيادة واستخدام الآلات</strong></p><p dir="RTL">على الرغم من أنه من غير المتوقع أن يؤثر علاج سيرومون على قدرتك على القيادة، إذا كانت لديك أية مخاوف، فيرجى استشارة طبيبك.</p><p dir="RTL"><strong>سيرومون </strong><strong>يحتوي على إيثانول (كحول)</strong></p><p dir="RTL">سيرومون يحتوي على ما يصل إلى 3.17٪ حجم إيثانول (كحول). جرعة أولية من 6 ملجرام تحتوي على ما يصل إلى 150 ملجرام من الكحول أي ما يعادل 3.80 مل من البيرة أو 1.58 مل من النبيذ. قد تكون هذه الكمية من الكحول ضارة لأولئك الذين يعانون من إدمان الكحول وكذلك للنساء الحوامل أو المرضعات والأطفال والمجموعات المعرضة للخطر مثل مرضى الكبد أو الصرع. قد يعدل الكحول أو يزيد من تأثير الأدوية الأخرى.</p><p dir="RTL">تحتوي جرعات الصيانة التي تبلغ 4 ملجرام أو أقل على كميات صغيرة من الإيثانول (100 ملجرام أو أقل) والتي من المحتمل أن تكون منخفضة جدًا بحيث لا تكون ضارة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">احرص دائمًا على تناول هذا الدواء تمامًا كما أخبرك طبيبك. استشر طبيبك أو الصيدلي إذا لم تكن متأكدًا.</p><p dir="RTL">سيقرر طبيبك بالضبط جرعة سيرومون التي يجب أن تتناولها وكم مرة تأخذها. اتبع تعليمات طبيبك بدقة، ولا تغير الجرعة بنفسك أبدًا.</p><p dir="RTL">&nbsp;</p><p dir="RTL">سيرومون للاستخدام الفموي فقط. أخبر طبيبك إذا كنت تجد صعوبة في تناول المحلول الفموي.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب تناول سيرومون باستمرار، مع أو بدون طعام.</p><p dir="RTL"><u>زرع الكلى</u></p><p dir="RTL">سوف يعطيك طبيبك جرعة أولية من 6 ملجرام في أقرب وقت ممكن بعد عملية زرع الكلى. بعد ذلك سوف تحتاج إلى تناول 2 ملجرام من سيرومون كل يوم، حتى يوصيك طبيبك بخلاف ذلك. سيتم تعديل جرعتك حسب مستوى سيرومون في دمك. سيحتاج طبيبك إلى إجراء فحوصات الدم لقياس تركيزات سيرومون.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا كنت تتناول السيكلوسبورين أيضًا، فيجب عليك تناول الدواءين بفارق 4 ساعات تقريبًا.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يوصى باستخدام سيرومون أولاً مع السيكلوسبورين والكورتيكوستيرويدات. بعد 3 أشهر، قد يتوقف طبيبك عن تناول سيرومون أو سيكلوسبورين، حيث لا ينصح بتناول هذه الأدوية معًا بعد هذه الفترة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تعليمات حول كيفية تخفيف سيرومون</strong></p><p dir="RTL">&nbsp;</p><p dir="RTL">1. قم بإزالة غطاء الأمان من الزجاجة عن طريق الضغط على الألسنة الموجودة على الغطاء واللف. أدخل محول الحقنة في الزجاجة حتى يتدفق مع الجزء العلوي من الزجاجة. لا تحاول إزالة محول المحقنة من الزجاجة بمجرد إدخاله.</p><p dir="RTL"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAACACAMAAAD6ZS3TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALxUExURf7+/vr6+v39/fv7+5KSkjw8PNvb2/z8/PPz8/Hx8e3t7cPDw/Dw8P///8nJyUFBQZaWlv////n5+S4uLtPT08TExNra2ubm5uHh4fj4+PX19dXV1dDQ0AsLC/f396+vr5CQkPLy8ujo6N3d3c3NzdfX1xUVFe7u7hkZGfT09IGBgerq6n19fUlJSSMjI729vczMzOXl5R4eHrKysjExMePj4/b29sjIyM/Pz4aGhoKCglVVVXR0dNLS0uzs7MfHxysrK9bW1g0NDby8vNTU1Ovr66Kioh8fH2NjY87OzkZGRt/f3ykpKefn54yMjNnZ2XZ2dkJCQsXFxZycnBgYGDo6Otzc3NjY2Hl5eVZWVpOTk5SUlHt7ex0dHXNzcyAgIODg4LGxsQwMDCYmJiIiIhQUFKioqLOzs7m5ucrKyrW1tcDAwHh4eKamphISEhoaGiQkJFtbW6ysrOTk5IeHh19fX4SEhBsbGxwcHDQ0NLq6upmZmU1NTT4+Pp+fn66url5eXr+/v1dXVz09PQYGBr6+vhMTExYWFjk5OQAAAGxsbGlpaZeXlxcXF0xMTMbGxjY2NpubmyEhIaqqqqSkpJiYmK2trUNDQ11dXcHBwaOjo3Jycm1tbY+PjwgICKGhoQcHB39/fzMzM29vb2VlZTIyMuLi4mtra1xcXLS0tCcnJ+/v756enk9PTy0tLVRUVLCwsDc3Nz8/P5WVlba2tigoKJ2dnQICAkBAQLe3twMDA35+fjAwMC8vLwEBAUpKSsLCwnx8fHp6eoCAgLu7uyoqKgQEBDU1Nbi4uAUFBY6Ojg4ODiwsLA8PDxAQEAkJCURERIWFhQoKClNTU4ODg4mJiaenp0hISHFxcU5OTiUlJd7e3mZmZlBQUBEREXd3d2pqaoqKiqmpqTg4OIuLi42NjWBgYGhoaG5ubunp6WRkZKurq5GRkVhYWEdHR8vLy3V1dUVFRdHR0Ts7O3BwcFFRUaWlpWFhYYiIiP////39/YUsRNMAAAD7dFJOU///////////////////////n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////794zCKLYgAAAAlwSFlzAAALEgAACxIB0t1+/AAAEXpJREFUeF7tW3t8VNWdPw/g3JnMSe0RSM4NHL0hcbgMGhKaA7gwCJMxG6NiaTX4QCAiCUmbWKKEjqBNJVSsLj5WaFiNiEsqTn2sRmOwxsiO2UEEhLq6Nbtrdd1H6nbZ6nZ3u3/t706G8pCZuUlG/aff8CH3zr1zv/f8zu/1PfcGZROYEIrGjScTmIE93hwfp7nsa+ew5NGz4OvJ31kBEUwgfO7ESZhOzqP5CEuzYMpURJOHz4Ks0jMkkDrvfIvQwmlFeZQhXMwuKGQkefgsyO7oETL906WNTfiZYWFlBGZeaCGZPHwWZJUeIUkuKpmFsMfGhSpPylK7zCfxlzV6Jvnsb8g8zAPlllZozlw572JMxJdGT8ifoIDU0wLG/EJmqQXB6Ywx/GV5PpILZwYVkVpMNjnFQfOSRabC3EwePQuy63rli0tDlPryWQUS5SR8aaVGlJAvZPQEESLg6nJ4asHBiPzTULlm+V6zSiKMiuzLLAi+tBg9PWOICc0Qx4ldgW1RfTkykLoiwK4MCP8S35yrIAemxxiMr7jgAiMjOUCM6TfJUq6ppN+S+Nv2JHS1YDxNzDsYAz0j7JoaGHvS+Nhedq3HYwlthD2Q/PK8113PDJiDtBjD3GNKb1h+IyXAAAYgWK9YKbxq9kKyClHGK4pqqxlPE/IJjGH0As++afXNlWvyKCYYou28uhxq1q801wYbGklD+Xe+mzwvHcZAj2nliqabm8tu+R4yOcfrmqo1RH7LrSIf505oxLdlcjsHo6fHeH3r8rINzWWtCiMby+9HJGOUeXDL7dOqi+jGBTx5YjqMYe7lpunNZc3LV99BILzpnT8AJ8CImkab746Ccv8PmUqemA6jo5dUSFrXtKJ5RdmGuxglTLK7BGOEM2kQUqHzCjY3Oi6ZEaOj1+Br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" alt="" width="111" height="98" vspace="0" hspace="0" border="0" style="width:111px;height:98px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p dir="RTL">2. مع الضغط على المكبس بالكامل، أدخل أحد محاقن الجرعات في الفتحة الموجودة في المحول.</p><p dir="RTL"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAACACAMAAAD6ZS3TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALxUExURf7+/vr6+v39/fv7+5KSkjw8PNvb2/z8/PPz8/Hx8e3t7cPDw/Dw8P///8nJyUFBQZaWlv////n5+S4uLtPT08TExNra2ubm5uHh4fj4+PX19dXV1dDQ0AsLC/f396+vr5CQkPLy8ujo6N3d3c3NzdfX1xUVFe7u7hkZGfT09IGBgerq6n19fUlJSSMjI729vczMzOXl5R4eHrKysjExMePj4/b29sjIyM/Pz4aGhoKCglVVVXR0dNLS0uzs7MfHxysrK9bW1g0NDby8vNTU1Ovr66Kioh8fH2NjY87OzkZGRt/f3ykpKefn54yMjNnZ2XZ2dkJCQsXFxZycnBgYGDo6Otzc3NjY2Hl5eVZWVpOTk5SUlHt7ex0dHXNzcyAgIODg4LGxsQwMDCYmJiIiIhQUFKioqLOzs7m5ucrKyrW1tcDAwHh4eKamphISEhoaGiQkJFtbW6ysrOTk5IeHh19fX4SEhBsbGxwcHDQ0NLq6upmZmU1NTT4+Pp+fn66url5eXr+/v1dXVz09PQYGBr6+vhMTExYWFjk5OQAAAGxsbGlpaZeXlxcXF0xMTMbGxjY2NpubmyEhIaqqqqSkpJiYmK2trUNDQ11dXcHBwaOjo3Jycm1tbY+PjwgICKGhoQcHB39/fzMzM29vb2VlZTIyMuLi4mtra1xcXLS0tCcnJ+/v756enk9PTy0tLVRUVLCwsDc3Nz8/P5WVlba2tigoKJ2dnQICAkBAQLe3twMDA35+fjAwMC8vLwEBAUpKSsLCwnx8fHp6eoCAgLu7uyoqKgQEBDU1Nbi4uAUFBY6Ojg4ODiwsLA8PDxAQEAkJCURERIWFhQoKClNTU4ODg4mJiaenp0hISHFxcU5OTiUlJd7e3mZmZlBQUBEREXd3d2pqaoqKiqmpqTg4OIuLi42NjWBgYGhoaG5ubunp6WRkZKurq5GRkVhYWEdHR8vLy3V1dUVFRdHR0Ts7O3BwcFFRUaWlpWFhYYiIiP////39/YUsRNMAAAD7dFJOU///////////////////////n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////794zCKLYgAAAAlwSFlzAAALEgAACxIB0t1+/AAAEXpJREFUeF7tW3t8VNWdPw/g3JnMSe0RSM4NHL0hcbgMGhKaA7gwCJMxG6NiaTX4QCAiCUmbWKKEjqBNJVSsLj5WaFiNiEsqTn2sRmOwxsiO2UEEhLq6Nbtrdd1H6nbZ6nZ3u3/t706G8pCZuUlG/aff8CH3zr1zv/f8zu/1PfcGZROYEIrGjScTmIE93hwfp7nsa+ew5NGz4OvJ31kBEUwgfO7ESZhOzqP5CEuzYMpURJOHz4Ks0jMkkDrvfIvQwmlFeZQhXMwuKGQkefgsyO7oETL906WNTfiZYWFlBGZeaCGZPHwWZJUeIUkuKpmFsMfGhSpPylK7zCfxlzV6Jvnsb8g8zAPlllZozlw572JMxJdGT8ifoIDU0wLG/EJmqQXB6Ywx/GV5PpILZwYVkVpMNjnFQfOSRabC3EwePQuy63rli0tDlPryWQUS5SR8aaVGlJAvZPQEESLg6nJ4asHBiPzTULlm+V6zSiKMiuzLLAi+tBg9PWOICc0Qx4ldgW1RfTkykLoiwK4MCP8S35yrIAemxxiMr7jgAiMjOUCM6TfJUq6ppN+S+Nv2JHS1YDxNzDsYAz0j7JoaGHvS+Nhedq3HYwlthD2Q/PK8113PDJiDtBjD3GNKb1h+IyXAAAYgWK9YKbxq9kKyClHGK4pqqxlPE/IJjGH0As++afXNlWvyKCYYou28uhxq1q801wYbGklD+Xe+mzwvHcZAj2nliqabm8tu+R4yOcfrmqo1RH7LrSIf505oxLdlcjsHo6fHeH3r8rINzWWtCiMby+9HJGOUeXDL7dOqi+jGBTx5YjqMYe7lpunNZc3LV99BILzpnT8AJ8CImkab746Ccv8PmUqemA6jo5dUSFrXtKJ5RdmGuxglTLK7BGOEM2kQUqHzCjY3Oi6ZEaOj1+Br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" alt="" width="119" height="121" vspace="0" hspace="0" border="0" style="width:119px;height:121px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p dir="RTL">3. اسحب الكمية الدقيقة من محلول سيرومون الفموي كما هو موصوف من قبل طبيبك عن طريق سحب مكبس حقنة الجرعات برفق حتى يصبح مستوى المحلول الفموي متساويًا مع العلامة المناسبة على حقنة الجرعات. يجب أن تظل الزجاجة في وضع رأسي عند سحب المحلول. إذا تشكلت فقاعات في المحلول الفموي في محقنة الجرعات أثناء الانسحاب، أفرغ محلول سيرومون مرة أخرى في الزجاجة وكرر إجراء السحب. قد تحتاج إلى تكرار الخطوة 3 أكثر من مرة لتوصيل جرعتك.</p><p dir="RTL"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAACACAMAAAD6ZS3TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALxUExURf7+/vr6+v39/fv7+5KSkjw8PNvb2/z8/PPz8/Hx8e3t7cPDw/Dw8P///8nJyUFBQZaWlv////n5+S4uLtPT08TExNra2ubm5uHh4fj4+PX19dXV1dDQ0AsLC/f396+vr5CQkPLy8ujo6N3d3c3NzdfX1xUVFe7u7hkZGfT09IGBgerq6n19fUlJSSMjI729vczMzOXl5R4eHrKysjExMePj4/b29sjIyM/Pz4aGhoKCglVVVXR0dNLS0uzs7MfHxysrK9bW1g0NDby8vNTU1Ovr66Kioh8fH2NjY87OzkZGRt/f3ykpKefn54yMjNnZ2XZ2dkJCQsXFxZycnBgYGDo6Otzc3NjY2Hl5eVZWVpOTk5SUlHt7ex0dHXNzcyAgIODg4LGxsQwMDCYmJiIiIhQUFKioqLOzs7m5ucrKyrW1tcDAwHh4eKamphISEhoaGiQkJFtbW6ysrOTk5IeHh19fX4SEhBsbGxwcHDQ0NLq6upmZmU1NTT4+Pp+fn66url5eXr+/v1dXVz09PQYGBr6+vhMTExYWFjk5OQAAAGxsbGlpaZeXlxcXF0xMTMbGxjY2NpubmyEhIaqqqqSkpJiYmK2trUNDQ11dXcHBwaOjo3Jycm1tbY+PjwgICKGhoQcHB39/fzMzM29vb2VlZTIyMuLi4mtra1xcXLS0tCcnJ+/v756enk9PTy0tLVRUVLCwsDc3Nz8/P5WVlba2tigoKJ2dnQICAkBAQLe3twMDA35+fjAwMC8vLwEBAUpKSsLCwnx8fHp6eoCAgLu7uyoqKgQEBDU1Nbi4uAUFBY6Ojg4ODiwsLA8PDxAQEAkJCURERIWFhQoKClNTU4ODg4mJiaenp0hISHFxcU5OTiUlJd7e3mZmZlBQUBEREXd3d2pqaoqKiqmpqTg4OIuLi42NjWBgYGhoaG5ubunp6WRkZKurq5GRkVhYWEdHR8vLy3V1dUVFRdHR0Ts7O3BwcFFRUaWlpWFhYYiIiP////39/YUsRNMAAAD7dFJOU///////////////////////n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////794zCKLYgAAAAlwSFlzAAALEgAACxIB0t1+/AAAEXpJREFUeF7tW3t8VNWdPw/g3JnMSe0RSM4NHL0hcbgMGhKaA7gwCJMxG6NiaTX4QCAiCUmbWKKEjqBNJVSsLj5WaFiNiEsqTn2sRmOwxsiO2UEEhLq6Nbtrdd1H6nbZ6nZ3u3/t706G8pCZuUlG/aff8CH3zr1zv/f8zu/1PfcGZROYEIrGjScTmIE93hwfp7nsa+ew5NGz4OvJ31kBEUwgfO7ESZhOzqP5CEuzYMpURJOHz4Ks0jMkkDrvfIvQwmlFeZQhXMwuKGQkefgsyO7oETL906WNTfiZYWFlBGZeaCGZPHwWZJUeIUkuKpmFsMfGhSpPylK7zCfxlzV6Jvnsb8g8zAPlllZozlw572JMxJdGT8ifoIDU0wLG/EJmqQXB6Ywx/GV5PpILZwYVkVpMNjnFQfOSRabC3EwePQuy63rli0tDlPryWQUS5SR8aaVGlJAvZPQEESLg6nJ4asHBiPzTULlm+V6zSiKMiuzLLAi+tBg9PWOICc0Qx4ldgW1RfTkykLoiwK4MCP8S35yrIAemxxiMr7jgAiMjOUCM6TfJUq6ppN+S+Nv2JHS1YDxNzDsYAz0j7JoaGHvS+Nhedq3HYwlthD2Q/PK8113PDJiDtBjD3GNKb1h+IyXAAAYgWK9YKbxq9kKyClHGK4pqqxlPE/IJjGH0As++afXNlWvyKCYYou28uhxq1q801wYbGklD+Xe+mzwvHcZAj2nliqabm8tu+R4yOcfrmqo1RH7LrSIf505oxLdlcjsHo6fHeH3r8rINzWWtCiMby+9HJGOUeXDL7dOqi+jGBTx5YjqMYe7lpunNZc3LV99BILzpnT8AJ8CImkab746Ccv8PmUqemA6jo5dUSFrXtKJ5RdmGuxglTLK7BGOEM2kQUqHzCjY3Oi6ZEaOj1+Br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" alt="" width="143" height="139" vspace="0" hspace="0" border="0" style="width:143px;height:139px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p dir="RTL">4. قد تكون قد تلقيت تعليمات بتناول محلول سيرومون الشفوي الخاص بك في وقت معين من اليوم. إذا كان من الضروري حمل الدواء معك، فقم بملء حقنة الجرعات إلى العلامة المناسبة وضع الغطاء عليها بإحكام - يجب أن يثبت الغطاء في مكانه. ثم ضع حقنة الجرعات المغطاة في حقيبة الحمل المتوفرة. بمجرد إدخال المحقنة، يمكن حفظ الدواء في درجة حرارة الغرفة (لا تتجاوز 25 درجة مئوية) أو تبريده ويجب استخدامه في غضون 24 ساعة.</p><p dir="RTL"><img alt="" width="171" height="98" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAACACAMAAAD6ZS3TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALxUExURf7+/vr6+v39/fv7+5KSkjw8PNvb2/z8/PPz8/Hx8e3t7cPDw/Dw8P///8nJyUFBQZaWlv////n5+S4uLtPT08TExNra2ubm5uHh4fj4+PX19dXV1dDQ0AsLC/f396+vr5CQkPLy8ujo6N3d3c3NzdfX1xUVFe7u7hkZGfT09IGBgerq6n19fUlJSSMjI729vczMzOXl5R4eHrKysjExMePj4/b29sjIyM/Pz4aGhoKCglVVVXR0dNLS0uzs7MfHxysrK9bW1g0NDby8vNTU1Ovr66Kioh8fH2NjY87OzkZGRt/f3ykpKefn54yMjNnZ2XZ2dkJCQsXFxZycnBgYGDo6Otzc3NjY2Hl5eVZWVpOTk5SUlHt7ex0dHXNzcyAgIODg4LGxsQwMDCYmJiIiIhQUFKioqLOzs7m5ucrKyrW1tcDAwHh4eKamphISEhoaGiQkJFtbW6ysrOTk5IeHh19fX4SEhBsbGxwcHDQ0NLq6upmZmU1NTT4+Pp+fn66url5eXr+/v1dXVz09PQYGBr6+vhMTExYWFjk5OQAAAGxsbGlpaZeXlxcXF0xMTMbGxjY2NpubmyEhIaqqqqSkpJiYmK2trUNDQ11dXcHBwaOjo3Jycm1tbY+PjwgICKGhoQcHB39/fzMzM29vb2VlZTIyMuLi4mtra1xcXLS0tCcnJ+/v756enk9PTy0tLVRUVLCwsDc3Nz8/P5WVlba2tigoKJ2dnQICAkBAQLe3twMDA35+fjAwMC8vLwEBAUpKSsLCwnx8fHp6eoCAgLu7uyoqKgQEBDU1Nbi4uAUFBY6Ojg4ODiwsLA8PDxAQEAkJCURERIWFhQoKClNTU4ODg4mJiaenp0hISHFxcU5OTiUlJd7e3mZmZlBQUBEREXd3d2pqaoqKiqmpqTg4OIuLi42NjWBgYGhoaG5ubunp6WRkZKurq5GRkVhYWEdHR8vLy3V1dUVFRdHR0Ts7O3BwcFFRUaWlpWFhYYiIiP////39/YUsRNMAAAD7dFJOU///////////////////////n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////794zCKLYgAAAAlwSFlzAAALEgAACxIB0t1+/AAAEXpJREFUeF7tW3t8VNWdPw/g3JnMSe0RSM4NHL0hcbgMGhKaA7gwCJMxG6NiaTX4QCAiCUmbWKKEjqBNJVSsLj5WaFiNiEsqTn2sRmOwxsiO2UEEhLq6Nbtrdd1H6nbZ6nZ3u3/t706G8pCZuUlG/aff8CH3zr1zv/f8zu/1PfcGZROYEIrGjScTmIE93hwfp7nsa+ew5NGz4OvJ31kBEUwgfO7ESZhOzqP5CEuzYMpURJOHz4Ks0jMkkDrvfIvQwmlFeZQhXMwuKGQkefgsyO7oETL906WNTfiZYWFlBGZeaCGZPHwWZJUeIUkuKpmFsMfGhSpPylK7zCfxlzV6Jvnsb8g8zAPlllZozlw572JMxJdGT8ifoIDU0wLG/EJmqQXB6Ywx/GV5PpILZwYVkVpMNjnFQfOSRabC3EwePQuy63rli0tDlPryWQUS5SR8aaVGlJAvZPQEESLg6nJ4asHBiPzTULlm+V6zSiKMiuzLLAi+tBg9PWOICc0Qx4ldgW1RfTkykLoiwK4MCP8S35yrIAemxxiMr7jgAiMjOUCM6TfJUq6ppN+S+Nv2JHS1YDxNzDsYAz0j7JoaGHvS+Nhedq3HYwlthD2Q/PK8113PDJiDtBjD3GNKb1h+IyXAAAYgWK9YKbxq9kKyClHGK4pqqxlPE/IJjGH0As++afXNlWvyKCYYou28uhxq1q801wYbGklD+Xe+mzwvHcZAj2nliqabm8tu+R4yOcfrmqo1RH7LrSIf505oxLdlcjsHo6fHeH3r8rINzWWtCiMby+9HJGOUeXDL7dOqi+jGBTx5YjqMYe7lpunNZc3LV99BILzpnT8AJ8CImkab746Ccv8PmUqemA6jo5dUSFrXtKJ5RdmGuxglTLK7BGOEM2kQUqHzCjY3Oi6ZEaOj1+Br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" /><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAACACAMAAAD6ZS3TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALxUExURf7+/vr6+v39/fv7+5KSkjw8PNvb2/z8/PPz8/Hx8e3t7cPDw/Dw8P///8nJyUFBQZaWlv////n5+S4uLtPT08TExNra2ubm5uHh4fj4+PX19dXV1dDQ0AsLC/f396+vr5CQkPLy8ujo6N3d3c3NzdfX1xUVFe7u7hkZGfT09IGBgerq6n19fUlJSSMjI729vczMzOXl5R4eHrKysjExMePj4/b29sjIyM/Pz4aGhoKCglVVVXR0dNLS0uzs7MfHxysrK9bW1g0NDby8vNTU1Ovr66Kioh8fH2NjY87OzkZGRt/f3ykpKefn54yMjNnZ2XZ2dkJCQsXFxZycnBgYGDo6Otzc3NjY2Hl5eVZWVpOTk5SUlHt7ex0dHXNzcyAgIODg4LGxsQwMDCYmJiIiIhQUFKioqLOzs7m5ucrKyrW1tcDAwHh4eKamphISEhoaGiQkJFtbW6ysrOTk5IeHh19fX4SEhBsbGxwcHDQ0NLq6upmZmU1NTT4+Pp+fn66url5eXr+/v1dXVz09PQYGBr6+vhMTExYWFjk5OQAAAGxsbGlpaZeXlxcXF0xMTMbGxjY2NpubmyEhIaqqqqSkpJiYmK2trUNDQ11dXcHBwaOjo3Jycm1tbY+PjwgICKGhoQcHB39/fzMzM29vb2VlZTIyMuLi4mtra1xcXLS0tCcnJ+/v756enk9PTy0tLVRUVLCwsDc3Nz8/P5WVlba2tigoKJ2dnQICAkBAQLe3twMDA35+fjAwMC8vLwEBAUpKSsLCwnx8fHp6eoCAgLu7uyoqKgQEBDU1Nbi4uAUFBY6Ojg4ODiwsLA8PDxAQEAkJCURERIWFhQoKClNTU4ODg4mJiaenp0hISHFxcU5OTiUlJd7e3mZmZlBQUBEREXd3d2pqaoqKiqmpqTg4OIuLi42NjWBgYGhoaG5ubunp6WRkZKurq5GRkVhYWEdHR8vLy3V1dUVFRdHR0Ts7O3BwcFFRUaWlpWFhYYiIiP////39/YUsRNMAAAD7dFJOU///////////////////////n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////794zCKLYgAAAAlwSFlzAAALEgAACxIB0t1+/AAAEXpJREFUeF7tW3t8VNWdPw/g3JnMSe0RSM4NHL0hcbgMGhKaA7gwCJMxG6NiaTX4QCAiCUmbWKKEjqBNJVSsLj5WaFiNiEsqTn2sRmOwxsiO2UEEhLq6Nbtrdd1H6nbZ6nZ3u3/t706G8pCZuUlG/aff8CH3zr1zv/f8zu/1PfcGZROYEIrGjScTmIE93hwfp7nsa+ew5NGz4OvJ31kBEUwgfO7ESZhOzqP5CEuzYMpURJOHz4Ks0jMkkDrvfIvQwmlFeZQhXMwuKGQkefgsyO7oETL906WNTfiZYWFlBGZeaCGZPHwWZJUeIUkuKpmFsMfGhSpPylK7zCfxlzV6Jvnsb8g8zAPlllZozlw572JMxJdGT8ifoIDU0wLG/EJmqQXB6Ywx/GV5PpILZwYVkVpMNjnFQfOSRabC3EwePQuy63rli0tDlPryWQUS5SR8aaVGlJAvZPQEESLg6nJ4asHBiPzTULlm+V6zSiKMiuzLLAi+tBg9PWOICc0Qx4ldgW1RfTkykLoiwK4MCP8S35yrIAemxxiMr7jgAiMjOUCM6TfJUq6ppN+S+Nv2JHS1YDxNzDsYAz0j7JoaGHvS+Nhedq3HYwlthD2Q/PK8113PDJiDtBjD3GNKb1h+IyXAAAYgWK9YKbxq9kKyClHGK4pqqxlPE/IJjGH0As++afXNlWvyKCYYou28uhxq1q801wYbGklD+Xe+mzwvHcZAj2nliqabm8tu+R4yOcfrmqo1RH7LrSIf505oxLdlcjsHo6fHeH3r8rINzWWtCiMby+9HJGOUeXDL7dOqi+jGBTx5YjqMYe7lpunNZc3LV99BILzpnT8AJ8CImkab746Ccv8PmUqemA6jo5dUSFrXtKJ5RdmGuxglTLK7BGOEM2kQUqHzCjY3Oi6ZEaOj1+Br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" alt="" width="131" height="111" vspace="0" hspace="0" border="0" style="width:131px;height:111px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p dir="RTL">5. أفرغ محتويات حقنة الجرعات في وعاء زجاجي أو بلاستيكي يحتوي على 60 مل على الأقل من الماء أو عصير البرتقال. يقلب جيدًا لمدة دقيقة ويشرب على الفور. أعد ملء الزجاج بما لا يقل عن 120 مل من الماء أو عصير البرتقال، وحركه جيدًا واشربه على الفور. لا ينبغي استخدام سوائل أخرى للتخفيف، بما في ذلك عصير الجريب فروت. يجب استخدام حقنة الجرعات والغطاء مرة واحدة ثم يتم التخلص منها.</p><p dir="RTL"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAACACAMAAAD6ZS3TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALxUExURf7+/vr6+v39/fv7+5KSkjw8PNvb2/z8/PPz8/Hx8e3t7cPDw/Dw8P///8nJyUFBQZaWlv////n5+S4uLtPT08TExNra2ubm5uHh4fj4+PX19dXV1dDQ0AsLC/f396+vr5CQkPLy8ujo6N3d3c3NzdfX1xUVFe7u7hkZGfT09IGBgerq6n19fUlJSSMjI729vczMzOXl5R4eHrKysjExMePj4/b29sjIyM/Pz4aGhoKCglVVVXR0dNLS0uzs7MfHxysrK9bW1g0NDby8vNTU1Ovr66Kioh8fH2NjY87OzkZGRt/f3ykpKefn54yMjNnZ2XZ2dkJCQsXFxZycnBgYGDo6Otzc3NjY2Hl5eVZWVpOTk5SUlHt7ex0dHXNzcyAgIODg4LGxsQwMDCYmJiIiIhQUFKioqLOzs7m5ucrKyrW1tcDAwHh4eKamphISEhoaGiQkJFtbW6ysrOTk5IeHh19fX4SEhBsbGxwcHDQ0NLq6upmZmU1NTT4+Pp+fn66url5eXr+/v1dXVz09PQYGBr6+vhMTExYWFjk5OQAAAGxsbGlpaZeXlxcXF0xMTMbGxjY2NpubmyEhIaqqqqSkpJiYmK2trUNDQ11dXcHBwaOjo3Jycm1tbY+PjwgICKGhoQcHB39/fzMzM29vb2VlZTIyMuLi4mtra1xcXLS0tCcnJ+/v756enk9PTy0tLVRUVLCwsDc3Nz8/P5WVlba2tigoKJ2dnQICAkBAQLe3twMDA35+fjAwMC8vLwEBAUpKSsLCwnx8fHp6eoCAgLu7uyoqKgQEBDU1Nbi4uAUFBY6Ojg4ODiwsLA8PDxAQEAkJCURERIWFhQoKClNTU4ODg4mJiaenp0hISHFxcU5OTiUlJd7e3mZmZlBQUBEREXd3d2pqaoqKiqmpqTg4OIuLi42NjWBgYGhoaG5ubunp6WRkZKurq5GRkVhYWEdHR8vLy3V1dUVFRdHR0Ts7O3BwcFFRUaWlpWFhYYiIiP////39/YUsRNMAAAD7dFJOU///////////////////////n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////794zCKLYgAAAAlwSFlzAAALEgAACxIB0t1+/AAAEXpJREFUeF7tW3t8VNWdPw/g3JnMSe0RSM4NHL0hcbgMGhKaA7gwCJMxG6NiaTX4QCAiCUmbWKKEjqBNJVSsLj5WaFiNiEsqTn2sRmOwxsiO2UEEhLq6Nbtrdd1H6nbZ6nZ3u3/t706G8pCZuUlG/aff8CH3zr1zv/f8zu/1PfcGZROYEIrGjScTmIE93hwfp7nsa+ew5NGz4OvJ31kBEUwgfO7ESZhOzqP5CEuzYMpURJOHz4Ks0jMkkDrvfIvQwmlFeZQhXMwuKGQkefgsyO7oETL906WNTfiZYWFlBGZeaCGZPHwWZJUeIUkuKpmFsMfGhSpPylK7zCfxlzV6Jvnsb8g8zAPlllZozlw572JMxJdGT8ifoIDU0wLG/EJmqQXB6Ywx/GV5PpILZwYVkVpMNjnFQfOSRabC3EwePQuy63rli0tDlPryWQUS5SR8aaVGlJAvZPQEESLg6nJ4asHBiPzTULlm+V6zSiKMiuzLLAi+tBg9PWOICc0Qx4ldgW1RfTkykLoiwK4MCP8S35yrIAemxxiMr7jgAiMjOUCM6TfJUq6ppN+S+Nv2JHS1YDxNzDsYAz0j7JoaGHvS+Nhedq3HYwlthD2Q/PK8113PDJiDtBjD3GNKb1h+IyXAAAYgWK9YKbxq9kKyClHGK4pqqxlPE/IJjGH0As++afXNlWvyKCYYou28uhxq1q801wYbGklD+Xe+mzwvHcZAj2nliqabm8tu+R4yOcfrmqo1RH7LrSIf505oxLdlcjsHo6fHeH3r8rINzWWtCiMby+9HJGOUeXDL7dOqi+jGBTx5YjqMYe7lpunNZc3LV99BILzpnT8AJ8CImkab746Ccv8PmUqemA6jo5dUSFrXtKJ5RdmGuxglTLK7BGOEM2kQUqHzCjY3Oi6ZEaOj1+Br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" alt="" width="126" height="128" vspace="0" hspace="0" border="0" style="width:126px;height:128px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p dir="RTL">عند تبريد المحلول الموجود في الزجاجة قد يتطور إلى ضباب خفيف. في حالة حدوث ذلك، ما عليك سوى إحضار محلول سيرومون عن طريق الفم إلى درجة حرارة الغرفة ورجه برفق. لا يؤثر وجود هذا الضباب على جودة سيرومون</p><p dir="RTL"><strong>تناول جرعة زائدة من</strong> <strong>سيرومون محلول فموي</strong></p><p dir="RTL">إذا تناولت أدوية أكثر مما قيل لك، فاتصل بالطبيب أو اذهب إلى أقرب قسم طوارئ في المستشفى على الفور. خذ دائمًا زجاجة الدواء الموصوفة معك، حتى لو كانت فارغة.</p><p dir="RTL"><strong>إذا نسيت أن تتناول سيرومون</strong></p><p dir="RTL">إذا نسيت تناول سيرومون، فتناوله حالما تتذكره، ولكن ليس في غضون 4 ساعات من الجرعة التالية من سيكلوسبورين. بعد ذلك، استمر في تناول أدويتك كالمعتاد. لا تأخذ جرعة مضاعفة لتعويض الجرعة المنسية، ويجب دائمًا تناول سيرومون وسيكلوسبورين بفارق 4 ساعات تقريبًا. إذا نسيت جرعة من سيرومون تمامًا، يجب عليك إبلاغ طبيبك.</p><p dir="RTL"><strong>التوقف عن تناول سيرومون</strong></p><p dir="RTL">لا تتوقف عن تناول سيرومون إلا إذا أخبرك طبيبك بذلك، لأنك تخاطر بفقدان عملية الزرع.</p><p dir="RTL">إذا كان لديك أي أسئلة أخرى حول استخدام هذا الدواء، اسأل طبيبك أو الصيدلي.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثل جميع الأدوية، يمكن أن يسبب هذا الدواء آثارًا جانبية، على الرغم من عدم حدوثها لدى الجميع.</p><p dir="RTL"><strong>ردود الفعل التحسسية</strong></p><p dir="RTL">يجب أن ترى طبيبك على الفور إذا كنت تعاني من أعراض، مثل تورم الوجه واللسان و / أو الجزء الخلفي من الفم (البلعوم) و / أو صعوبات في التنفس (الوذمة الوعائية)، أو حالة جلدية يمكن أن يتقشر الجلد بسببها (التهاب الجلد التقشري.). قد تكون هذه أعراض لرد فعل تحسسي خطير.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تلف الكلى مع انخفاض عدد خلايا الدم (فرفرية نقص الصفيحات / متلازمة انحلال الدم اليوريمية)</strong></p><p dir="RTL">عند تناوله مع أدوية تسمى مثبطات الكالسينيورين (سيكلوسبورين أو تاكروليموس)، قد يزيد سيرومون من خطر تلف الكلى مع انخفاض عدد الصفائح الدموية وانخفاض عدد خلايا الدم الحمراء، مع أو بدون طفح جلدي (فرفرية نقص الصفيحات / متلازمة انحلال الدم). إذا كنت تعاني من أعراض، مثل كدمات أو طفح جلدي، أو تغيرات في البول، أو تغيرات في السلوك، أو أي أعراض أخرى خطيرة،</p><p dir="RTL">بشكل غير عادي أو لفترات طويلة، اتصل بطبيبك.</p><p dir="RTL"><strong>الالتهابات</strong></p><p dir="RTL">سيرومون يقلل من آليات دفاع الجسم. وبالتالي، لن يكون جسمك جيدًا كالمعتاد في مكافحة العدوى. لذلك إذا كنت تتناول سيرومون، فقد تصاب بالتهابات أكثر من المعتاد، مثل التهابات الجلد والفم والمعدة والأمعاء والرئتين والمسالك البولية (انظر القائمة أدناه). يجب عليك الاتصال بطبيبك إذا كنت تعاني من أعراض خطيرة أو غير عادية أو طويلة الأمد.</p><p dir="RTL"><strong>ترددات الآثار الجانبية</strong></p><p dir="RTL">شائعة جدًا: قد تظهر لدى أكثر من 1 من كل 10 أشخاص</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تجمع السوائل حول الكلى</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انتفاخ الجسم بما في ذلك اليدين والقدمين</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حمى</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صداع</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتفاع ضغط الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام في المعدة، إسهال، إمساك، غثيان</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض خلايا الدم الحمراء، انخفاض عدد الصفائح الدموية</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة الدهون في الدم (الكولسترول و / أو الدهون الثلاثية)، زيادة السكر في الدم، انخفاض بوتاسيوم الدم، انخفاض نسبة الفوسفور في الدم، زيادة نازعة هيدروجين اللاكتات في الدم، زيادة الكرياتينين في الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; آلام المفاصل</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حب الشباب</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب المسالك البولية</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الالتهاب الرئوي والالتهابات البكتيرية والفيروسية والفطرية الأخرى</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض عدد خلايا مكافحة العدوى في الدم (خلايا الدم البيضاء)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مرض السكري</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اختبارات غير طبيعية لوظائف الكبد، ارتفاع في إنزيمات الكبد AST و / أو ALT</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتفاع نسبة البروتين في البول</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضطرابات الدورة الشهرية (بما في ذلك الدورة الشهرية الغائبة أو النادرة أو الغزيرة)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بطء الالتئام (قد يشمل ذلك فصل طبقات الجرح الجراحي أو خط الغرز)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سرعة دقات القلب</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; هناك ميل عام لتجمع السوائل في الأنسجة المختلفة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">شائعة: قد تظهر لدى حتى 1 من كل 10 أشخاص</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الالتهابات (بما في ذلك الالتهابات التي تهدد الحياة)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جلطات دموية في الساقين</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جلطات دموية في الرئة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تقرحات الفم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تجمع السوائل في البطن</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تلف الكلى مع انخفاض عدد الصفائح الدموية وانخفاض عدد خلايا الدم الحمراء، مع أو بدون طفح جلدي (متلازمة انحلال الدم اليوريمية)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض مستويات نوع من خلايا الدم البيضاء يسمى العدلات</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تدهور العظام</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الالتهابات التي قد تؤدي إلى تلف الرئة، وجود سوائل حول الرئة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نزيف بالأنف</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سرطان الجلد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عدوى الكلى</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; كيسات المبيض</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تجمع السوائل في الكيس المحيط بالقلب والذي قد يقلل في بعض الحالات من قدرة القلب على ضخ الدم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب البنكرياس</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الحساسية</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; القوباء المنطقية</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عدوى الفيروس المضخم للخلايا</p><p dir="RTL">غير شائعة: قد تظهر لدى حتى 1 من كل 100 شخص</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; سرطان الأنسجة الليمفاوية (سرطان الغدد الليمفاوية / اضطراب تكاثر الغدد الليمفاوية بعد الزرع)، وانخفاض خلايا الدم الحمراء وخلايا الدم البيضاء والصفائح الدموية معًا</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نزيف من الرئة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; وجود بروتين في البول، ويكون شديد أحيانًا ويترافق مع أعراض جانبية، مثل التورم</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تندب في الكلى قد تقلل من وظائف الكلى</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تجمع الكثير من السوائل في الأنسجة بسبب عدم انتظام الوظيفة الليمفاوية</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض عدد الصفائح الدموية، مع أو بدون طفح جلدي (فرفرية نقص الصفيحات الدموية)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعلات حساسية خطيرة يمكن أن تسبب تقشر الجلد</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مرض السل</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عدوى فيروس ابشتاين بار</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الإسهال المعدي مع المطثية العسيرة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تلف الكبد الخطير</p><p dir="RTL">نادرة: قد تظهر لدى حتى 1 من كل 1000 شخص</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تراكم البروتين في الحويصلات الهوائية في الرئتين مما قد يعيق التنفس</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ردود الفعل التحسسية الخطيرة التي يمكن أن تؤثر على الأوعية الدموية (انظر الفقرة أعلاه حول ردود الفعل التحسسية)</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; غير معروف: لا يمكن تقدير التردد من البيانات المتاحة</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; متلازمة اعتلال الدماغ العكسي الخلفي (PRES)، وهي متلازمة عصبية خطيرة لها الأعراض التالية: الصداع، والغثيان، والقيء، والارتباك، والنوبات، وفقدان البصر. في حالة حدوث أي من هذه الأعراض معًا، يرجى الاتصال بطبيبك.</p><p><strong>الإبلاغ عن الآثار الجانبية: </strong></p><p dir="RTL">إن كان لديك أعراض جانبية أو لاحظت أعراض جانبية غير مذكورة في هذه النشرة، فضلًا ابلغ الطبيب أوالصيدل</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يتم التخزين في الثلاجة ما بين (8-2) درجة مئوية.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; احفظ هذا الدواء بعيدًا عن رؤية ومتناول أيدي الأطفال.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تستخدم سيرومون بعد تاريخ انتهاء الصلاحية الموجود على الملصق. يشير تاريخ انتهاء الصلاحية إلى اليوم الأخير من نفس الشهر.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;احتفظ بهذا المنتج الطبي في زجاجته الأصلية لحمايته من الضوء.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بمجرد فتح الزجاجة ، يجب حفظ المحتويات في الثلاجة واستخدامها في غضون 30 يوما. في حالات الضرورة ، يمكنك تخزين الزجاجة في درجة حرارة الغرفة تصل إلى 25 درجة مئوية لفترة قصيرة من الزمن ، ولكن ليس أطول من 24 ساعة.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بمجرد ملء حقنة الجرعات بمحلول سيرومون الفموي ، يجب حفظها في درجة حرارة الغرفة ، ولكن ليس فوق 25 درجة مئوية ، لمدة أقصاها 24 ساعة.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بمجرد تخفيف محتويات حقنة الجرعات بالماء أو عصير البرتقال ، فإنه يجب شرب المستحضر على الفور.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لا تتخلص من الأدوية في مياه الصرف الصحي. اسأل الصيدلي عن كيفية التخلص من الأدوية التي لم تعد تستخدمها. هذه التدابير سوف تساعد البيئة</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">المادة الفعالة هي سيروليموس.</p><p dir="RTL">&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يحتوي كل مل من سيرومون محلول فموي على 1 ملجرام سيروليموس.</p><p dir="RTL"><strong>السواغات الأخرى هي:</strong> بولي سوربات فائق المكرر 80 LQ- (MH)، فوسال 50 PG غاز النيتروجين 99.999٪.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">محلول نقي لزج لونه أصفر باهت إلى أصفر وخالي من الجزيئات المرئية.</p><p dir="RTL"><strong>كيفية توفير </strong><strong>سيرومون </strong><strong>محلول فموي؟</strong>:</p><p dir="RTL">يتم توفير سيرومون في عبوة زجاجية معتمة سعة 60 مل.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>شركة اماروكس السعودية الصناعية</strong></p><p>شارع الجامعة، حي الملز</p><p>الرياض 12629 ، المملكة العربية السعودية</p><p dir="RTL">تليفون: +966 11 226 8850</p><p dir="RTL"><strong>الشركة المصنعة: </strong></p><p dir="RTL">شركة أنورا فارما المحدودة، الهند</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            تمت مراجعة هذه النشرة في أكتوبر 2023 ، نسخة 1 
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

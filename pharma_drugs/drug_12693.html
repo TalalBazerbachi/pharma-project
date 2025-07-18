@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2108245801
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Tugatev
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        TIGECYCLINE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder for solution for infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        18
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        102.85
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Sofarimex Ind&#xFA;stria Qu&#xED;mica e Farmac&#xEA;utica, S.A.. " />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Sofarimex Indústria Química e Farmacêutica, S.A.. 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 540]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ZIMMO TRADING ESTABLISHMENT
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Med City Pharma
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J01AA12
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Tugatev® 50 mg Powder for Solution for Infusion.
+Tigecycline 50 mg Powder for Solution for Infusion.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Tugatev® 50 mg Powder for Solution for Infusion: Each vial contains 50 mg tigecycline. 
+
+After reconstitution, 1 ml contains 10 mg of tigecycline.
+
+For a full list of excipients, see section 6.1.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder for Solution for Infusion.
+
+Tugatev® Powder for solution for infusion is Orange lyophilised cake or powder, presented in 10 ml Type I clear glass vial with 20 mm bromobutyl grey stopper and aluminium/plastic flip-off cap, intended for infusion use.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Tigecycline is indicated in adults and in children from the age of eight years for the treatment of the following infections (see sections 4.4 and 5.1):</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Complicated skin and soft tissue infections (cSSTI), excluding diabetic foot infections (see section 4.4).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Complicated intra-abdominal infections (cIAI).</p><p>Tigecycline should be used only in situations where other alternative antibiotics are not suitable (see sections 4.4, 4.8 and 5.1).</p><p>Consideration should be given to official guidance on the appropriate use of antibacterial agents</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Posology</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Adults</strong></p><p>The recommended dose for adults is an initial dose of 100 mg followed by 50 mg every 12 hours for 5 to 14 days.</p><p>The duration of therapy should be guided by the severity, site of the infection, and the patient&#39;s clinical response.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Children and adolescents (8 to 17 years of age)</strong></p><p>Tigecycline is only to be used to treat patients aged 8 years and older after consultation with a physician with appropriate experience in the management of infectious diseases.</p><p>Children aged 8 to &lt;12 years: 1.2 mg/kg of tigecycline every 12 hours intravenously to a maximum dose of 50 mg every 12 hours for 5 to 14 days.</p><p>Adolescents aged 12 to &lt;18 years: 50 mg of tigecycline every 12 hours for 5 to 14 days.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Elderly</strong></p><p>No dosage adjustment is necessary in elderly patients (see section 5.2).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Hepatic impairment</strong></p><p>No dosage adjustment is warranted in patients with mild to moderate hepatic impairment (Child Pugh A and Child Pugh B).</p><p>In patients (including paediatrics) with severe hepatic impairment (Child Pugh C), the dose of tigecycline should be reduced by 50%. Adult dose should be reduced to 25 mg every 12 hours following the 100 mg loading dose. Patients with severe hepatic impairment (Child Pugh C) should be treated with caution and monitored for treatment response (see sections 4.4 and 5.2).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Renal impairment</strong></p><p>No dosage adjustment is necessary in patients with renal impairment or in patients undergoing haemodialysis (see section 5.2).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Paediatric population</strong></p><p>The safety and efficacy of tigecycline in children under 8 years of age have not been established. No data are available. Tigecycline should not be used in children aged under 8 years because of teeth discolouration (see sections 4.4 and 5.1)</p><p><strong><u>Method of administration:</u></strong></p><p>Tigecycline is administered only by intravenous infusion over 30 to 60 minutes (see sections 4.4 and 6.6). Tigecycline should be preferably administered over a 60-minute length of infusion in paediatric patients (see section 4.4).</p><p>For instructions on reconstitution &amp; dilution of the medicinal product before administration, see section 6.6.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+Patients hypersensitive to tetracycline class antibiotics may be hypersensitive to tigecycline.
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In clinical studies in complicated skin and soft tissue infections (cSSTI), complicated intra-abdominal infections (cIAI), diabetic foot infections, nosocomial pneumonia and studies in resistant pathogens, a numerically higher mortality rate among tigecycline treated patients has been observed as compared to the comparator treatment. The causes of these findings remain unknown, but poorer efficacy and safety than the study comparators cannot be ruled out.</p><p><strong>Superinfection</strong></p><p>In clinical trials in cIAI patients, impaired healing of the surgical wound has been associated with superinfection. A patient developing impaired healing should be monitored for the detection of superinfection (see section 4.8).</p><p>Patients who develop superinfections, in particular nosocomial pneumonia, appear to be associated with poorer outcomes. Patients should be closely monitored for the development of superinfection. If a focus of infection other than cSSTI or cIAI is identified after initiation of tigecycline therapy consideration should be given to instituting alternative antibacterial therapy that has been demonstrated to be efficacious in the treatment of the specific type of infection(s) present.</p><p><strong>Anaphylaxis</strong></p><p>Anaphylaxis/anaphylactoid reactions, potentially life-threatening, have been reported with tigecycline (see sections 4.3 and 4.8).</p><p><strong>Hepatic failure</strong></p><p>Cases of liver injury with a predominantly cholestatic pattern have been reported in patients receiving tigecycline treatment, including some cases of hepatic failure with a fatal outcome. Although hepatic failure may occur in patients treated with tigecycline due to the underlying conditions or concomitant medicinal products, a possible contribution of tigecycline should be considered (see section 4.8).</p><p><strong>Tetracycline class antibiotics</strong></p><p>Glycylcycline class antibiotics are structurally similar to tetracycline class antibiotics. Tigecycline may have adverse reactions similar to tetracycline class antibiotics. Such reactions may include photosensitivity, pseudotumor cerebri, pancreatitis, and anti-anabolic action which has led to increased BUN, azotaemia, acidosis, and hyperphosphataemia (see section 4.8).</p><p><strong>Pancreatitis</strong></p><p>Acute pancreatitis, which can be serious, has occurred (frequency: uncommon) in association with tigecycline treatment (see section 4.8). The diagnosis of acute pancreatitis should be considered in patients taking tigecycline who develop clinical symptoms, signs, or laboratory abnormalities suggestive of acute pancreatitis. Most of the reported cases developed after at least one week of treatment. Cases have been reported in patients without known risk factors for pancreatitis. Patients usually improve after tigecycline discontinuation. Consideration should be given to the cessation of the treatment with tigecycline in cases suspected of having developed pancreatitis.</p><p><strong>Coagulopathy</strong></p><p>Tigecycline may prolong both prothrombin time (PT) and activated partial thromboplastin time (aPTT). Additionally, hypofibrinogenaemia has been reported with the use of tigecycline. Therefore, blood coagulation parameters such as PT or other suitable anticoagulation test, including blood fibrinogen, should be monitored prior to treatment initiation with tigecycline and regularly while on treatment. Special care is recommended in seriously ill patients and in patients also using anticoagulants (see section 4.5).</p><p><strong>Underlying diseases</strong></p><p>Experience in the use of tigecycline for treatment of infections in patients with severe underlying diseases is limited.</p><p>In clinical trials in cSSTI, the most common type of infection in tigecycline treated-patients was cellulitis (58.6 %), followed by major abscesses (24.9 %). Patients with severe underlying disease, such as those that were immunocompromised, patients with decubitus ulcer infections, or patients that had infections requiring longer than 14 days of treatment (for example, necrotizing fasciitis), were not enrolled. A limited number of patients were enrolled with co-morbid factors such as diabetes (25.8 %), peripheral vascular disease (10.4 %), intravenous substance abuse (4.0 %), and HIV-positive infection (1.2 %). Limited experience is also available in treating patients with concurrent bacteraemia (3.4 %). Therefore, caution is advised when treating such patients. The results in a large study in patients with diabetic foot infection, showed that tigecycline was less effective than comparator, therefore, tigecycline is not recommended for use in these patients (see section 4.1).</p><p>In clinical trials in cIAI, the most common type of infection in tigecycline treated-patients was complicated appendicitis (50.3 %), followed by other diagnoses less commonly reported such as complicated cholecystitis (9.6 %), perforation of intestine (9.6 %), intra-abdominal abscess (8.7 %), gastric or duodenal ulcer perforation (8.3 %), peritonitis (6.2 %) and complicated diverticulitis (6.0 %). Of these patients, 77.8 % had surgically-apparent peritonitis. There were a limited number of patients with severe underlying disease such as immunocompromised patients, patients with APACHE II scores &gt; 15 (3.3 %), or with surgically apparent multiple intra-abdominal abscesses (11.4 %). Limited experience is also available in treating patients with concurrent bacteraemia (5.6 %). Therefore, caution is advised when treating such patients.</p><p>Consideration should be given to the use of combination antibacterial therapy whenever tigecycline is to be administered to severely ill patients with cIAI secondary to clinically apparent intestinal perforation or patients with incipient sepsis or septic shock (see section 4.8).</p><p>The effect of cholestasis in the pharmacokinetics of tigecycline has not been properly established. Biliary excretion accounts for approximately 50 % of the total tigecycline excretion. Therefore, patients presenting with cholestasis should be closely monitored.</p><p>Pseudomembranous colitis has been reported with nearly all antibacterial agents and may range in severity from mild to life threatening. Therefore, it is important to consider this diagnosis in patients who present with diarrhoea during or subsequent to the administration of any antibacterial agent (see section 4.8).</p><p>The use of tigecycline may result in overgrowth of non-susceptible organisms, including fungi. Patients should be carefully monitored during therapy (see section 4.8).</p><p>Results of studies in rats with tigecycline have shown bone discolouration. Tigecycline may be associated with permanent tooth discolouration in humans if used during tooth development (see section 4.8).</p><p><strong>Paediatric population</strong></p><p>Clinical experience in the use of tigecycline for the treatment of infections in paediatric patients aged 8 years and older is very limited (see sections 4.8 and 5.1). Consequently, use in children should be restricted to those clinical situations where no alternative antibacterial therapy is available.</p><p>Nausea and vomiting are very common adverse reactions in children and adolescents (see section 4.8). Attention should be paid to possible dehydration. Tigecycline should be preferably administered over a 60-minute length of infusion in paediatric patients.</p><p>Abdominal pain is commonly reported in children as it is in adults. Abdominal pain may be indicative of pancreatitis. If pancreatitis develops, treatment with tigecycline should be discontinued.</p><p>Liver function tests, coagulation parameters, haematology parameters, amylase and lipase should be monitored prior to treatment initiation with tigecycline and regularly while on treatment.</p><p>Tigecycline should not be used in children under 8 years of age due to the lack of safety and efficacy data in this age group and because tigecycline may be associated with permanent teeth discolouration (see sections 4.2 and 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Interaction studies have only been performed in adults.</p><p>Concomitant administration of tigecycline and warfarin (25 mg single-dose) to healthy subjects resulted in a decrease in clearance of R-warfarin and S-warfarin by 40 % and 23 %, and an increase in AUC by 68 % and 29 %, respectively. The mechanism of this interaction is still not elucidated. Available data does not suggest that this interaction may result in significant INR changes. However, since tigecycline may prolong both prothrombin time (PT) and activated partial thromboplastin time (aPTT), the relevant coagulation tests should be closely monitored when tigecycline is co-administered with anticoagulants (see section 4.4). Warfarin did not affect the pharmacokinetic profile of tigecycline.</p><p>Tigecycline is not extensively metabolised. Therefore, clearance of tigecycline is not expected to be affected by active substances that inhibit or induce the activity of the CYP450 isoforms.&nbsp;In vitro, tigecycline is neither a competitive inhibitor nor an irreversible inhibitor of CYP450 enzymes (see section 5.2).</p><p>Tigecycline in recommended dosage did not affect the rate or extent of absorption, or clearance of digoxin (0.5 mg followed by 0.25 mg daily) when administered in healthy adults. Digoxin did not affect the pharmacokinetic profile of tigecycline. Therefore, no dosage adjustment is necessary when tigecycline is administered with digoxin.</p><p>In&nbsp;in vitro&nbsp;studies, no antagonism has been observed between tigecycline and other commonly used antibiotic classes.</p><p>Concurrent use of antibiotics with oral contraceptives may render oral contraceptives less effective.</p><p>Concomitant use of tigecycline and calcineurin inhibitors such as tacrolimus or cyclosporine may lead to an increase in serum trough concentrations of the calcineurin inhibitors. Therefore, serum concentrations of the calcineurin inhibitor should be monitored during treatment with tigecycline to avoid drug toxicity.</p><p>Based on an&nbsp;in vitro&nbsp;study tigecycline is a P-gp substrate. Co-administration of P-gp inhibitors (e.g., ketoconazole or cyclosporine) or P-gp inducers (e.g., rifampicin) could affect the pharmacokinetics of tigecycline (see section 5.2).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Pregnancy</strong></p><p>There are no or limited amount of data from the use of tigecycline in pregnant women. Studies in animals have shown reproductive toxicity (see section 5.3). The potential risk for humans is unknown. As it is known for tetracycline class antibiotics, tigecycline may also induce permanent dental defects (discolouration and enamel defects) and a delay in ossification processes in foetuses, exposed&nbsp;in utero&nbsp;during the last half of gestation, and in children under eight years of age due to the enrichment in tissues with a high calcium turnover and formation of calcium chelate complexes (see section 4.4). Tigecycline should not be used during pregnancy unless the clinical condition of the woman requires treatment with tigecycline.</p><p><strong>Breast feeding</strong></p><p>It is unknown whether tigecycline/metabolites are excreted in human milk. Available pharmacodynamic/toxicological data in animals have shown excretion of tigecycline/metabolites in milk (see section 5.3). A risk to the newborns/infants cannot be excluded. A decision must be made whether to discontinue breast-feeding or to discontinue/abstain from tigecycline therapy taking into account the benefit of breast-feeding for the child and the benefit of therapy for the woman.</p><p><strong>Fertility</strong></p><p>The effects of tigecycline on fertility in humans have not been studied. Nonclinical studies conducted with tigecycline in rats do not indicate harmful effects with respect to fertility or reproductive performance. In female rats, there were no compound-related effects on ovaries or oestrus cycles at exposures up to 4.7 times the human daily dose based on AUC.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Dizziness may occur and this may have an effect on driving and use of machines (see section 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><u>Summary of safety profile</u></strong></p><p>The total number of cSSTI and cIAI patients treated with tigecycline in Phase 3 and 4 clinical studies was 2,393.</p><p>In clinical trials, the most common medicinal product-related treatment emergent adverse reactions were reversible nausea (21 %) and vomiting (13 %), which usually occurred early (on treatment days 1-2) and were generally mild or moderate in severity.</p><p>Adverse reactions reported with tigecycline, including clinical trials and post-marketing experience, are tabulated below.</p><p><strong>Tabulated list of adverse reactions</strong></p><table border="0" cellspacing="0" cellpadding="0" style="width:0px"><tbody><tr><td style="vertical-align:top"><p><strong>System Organ Class</strong></p></td><td style="vertical-align:top"><p><strong>Very Common</strong></p><p><strong>&ge; 1/10</strong></p></td><td style="vertical-align:top"><p><strong>Common</strong></p><p><strong>&ge; 1/100 to &lt; 1/10</strong></p></td><td style="vertical-align:top"><p><strong>Uncommon</strong></p><p><strong>&ge; 1/1,000 to &lt; 1/100</strong></p></td><td style="vertical-align:top"><p><strong>Rare</strong></p><p><strong>&ge;1/10,000 to &lt;1/1,000</strong></p></td><td style="vertical-align:top"><p><strong>Frequency not known (cannot be estimated from the available data)</strong></p></td></tr><tr><td style="vertical-align:top"><p>Infections and infestations</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>sepsis/septic shock, pneumonia, abscess, infections</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top"><p>Blood and lymphatic system disorders</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>prolonged activated partial thromboplastin time (aPTT), prolonged prothrombin time (PT)</p></td><td style="vertical-align:top"><p>thrombocytopenia, increased international normalised ratio (INR)</p></td><td style="vertical-align:top"><p>hypofibrinogenaemia</p></td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top"><p>Immune system disorders</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>anaphylaxis/ anaphylactoid reactions* (see sections 4.3 and 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>Metabolism and nutrition disorders</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>hypoglycaemia, hypoproteinaemia</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top"><p>Nervous system disorders</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>dizziness</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top"><p>Vascular disorders</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>phlebitis</p></td><td style="vertical-align:top"><p>thrombophlebitis</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top"><p>Gastrointestinal disorders</p></td><td style="vertical-align:top"><p>nausea, vomiting, diarrhoea</p></td><td style="vertical-align:top"><p>abdominal pain, dyspepsia, anorexia</p></td><td style="vertical-align:top"><p>acute pancreatitis (see section 4.4)</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top"><p>Hepatobiliary disorders</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>elevated aspartate aminotransferase (AST) in serum, and elevated alanine aminotransferase (ALT) in serum, hyperbilirubinaemia</p></td><td style="vertical-align:top"><p>jaundice, liver injury, mostly cholestatic</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>hepatic failure* (see section 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>Skin and subcutaneous tissue disorders</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>pruritus, rash</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>severe skin reactions, including Stevens-Johnson Syndrome*</p></td></tr><tr><td style="vertical-align:top"><p>General disorders and administration site conditions</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>impaired healing, injection site reaction, headache</p></td><td style="vertical-align:top"><p>injection site inflammation, injection site pain, injection site oedema, injection site phlebitis</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td style="vertical-align:top"><p>Investigations</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p>elevated amylase in serum, increased blood urea nitrogen (BUN)</p></td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top">&nbsp;</td></tr><tr><td colspan="6" style="vertical-align:top"><p>*ADR identified post-marketing</p></td></tr></tbody></table><p>Description of selected adverse reactions</p><p><em>Antibiotic class effects</em></p><p>Pseudomembranous colitis which may range in severity from mild to life threatening (see section 4.4)</p><p>Overgrowth of non-susceptible organisms, including fungi (see section 4.4)</p><p><em>Tetracycline class effects</em></p><p>Glycylcycline class antibiotics are structurally similar to tetracycline class antibiotics. Tetracycline class adverse reactions may include photosensitivity, pseudotumour cerebri, pancreatitis, and antianabolic action which has led to increased BUN, azotaemia, acidosis, and hyperphosphataemia (see section 4.4).</p><p>Tigecycline may be associated with permanent tooth discolouration if used during tooth development (see section 4.4).</p><p>In Phase 3 and 4 cSSTI and cIAI clinical studies, infection-related serious adverse reactions were more frequently reported for subjects treated with tigecycline (7.1 %) vs comparators (5.3 %). Significant differences in sepsis/septic shock with tigecycline (2.2 %) vs comparators (1.1 %) were observed.</p><p>AST and ALT abnormalities in tigecycline-treated patients were reported more frequently in the post therapy period than in those in comparator-treated patients, which occurred more often on therapy.</p><p>In all Phase 3 and 4 (cSSTI and cIAI) studies, death occurred in 2.4 % (54/2216) of patients receiving tigecycline and 1.7% (37/2206) of patients receiving active comparators.</p><p><strong>Paediatric population</strong></p><p>Very limited safety data were available from two PK studies (see section 5.2). No new or unexpected safety concerns were observed with tigecycline in these studies.</p><p>In an open-label, single ascending dose PK study, the safety of tigecycline was investigated in 25 children aged 8 to 16 years who recently recovered from infections. The adverse reaction profile of tigecycline in these 25 subjects was generally consistent with that in adults.</p><p>The safety of tigecycline was also investigated in an open-label, ascending multi-dose PK study in 58 children aged 8 to 11 years with cSSTI (n=15), cIAI (n=24) or community-acquired pneumonia (n=19). The adverse reaction profile of tigecycline in these 58 subjects was generally consistent with that in adults, with the exception of nausea (48.3 %), vomiting (46.6 %) and elevated lipase in serum (6.9 %) which were seen at greater frequencies in children than in adults.</p><p>&nbsp;</p><p><strong>To report any side effect (s):</strong></p><p><strong>&bull; Saudi Arabia:</strong></p><p>The National Pharmacovigilance Center (NPC):</p><p>SFDA Call Center: 19999</p><p>E-mail: npc.drug@sfda.gov.sa</p><p>Website: https://ade.sfda.gov.sa</p><p><strong>&bull; Other GCC States:</strong></p><p>Please contact the relevant competent authority.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No specific information is available on the treatment of overdosage. Intravenous administration of tigecycline at a single dose of 300 mg over 60 minutes in healthy volunteers resulted in an increased incidence of nausea and vomiting. Tigecycline is not removed in significant quantities by haemodialysis.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Antibacterials for systemic use, tetracyclines, ATC code: J01AA12.</p><p><strong>Mechanism of action</strong></p><p>Tigecycline, a glycylcycline antibiotic, inhibits protein translation in bacteria by binding to the 30S ribosomal subunit and blocking entry of amino-acyl tRNA molecules into the A site of the ribosome. This prevents incorporation of amino acid residues into elongating peptide chains.</p><p>In general, tigecycline is considered bacteriostatic. At 4 times the minimum inhibitory concentration (MIC), a 2-log reduction in colony counts was observed with tigecycline against&nbsp;Enterococcus&nbsp;spp.,&nbsp;Staphylococcus aureus, and&nbsp;Escherichia coli.</p><p><strong>Mechanism of resistance</strong></p><p>Tigecycline is able to overcome the two major tetracycline resistance mechanisms, ribosomal protection and efflux. Cross-resistance between tigecycline and minocycline-resistant isolates among the&nbsp;Enterobacteriaceae&nbsp;due to multi-drug resistance (MDR) efflux pumps has been shown. There is no target-based cross-resistance between tigecycline and most classes of antibiotics.</p><p>Tigecycline is vulnerable to chromosomally-encoded multidrug efflux pumps of&nbsp;Proteeae&nbsp;and&nbsp;Pseudomonas aeruginosa.&nbsp;Pathogens of the family&nbsp;Proteeae&nbsp;(Proteus&nbsp;spp.,&nbsp;Providencia&nbsp;spp., and&nbsp;Morganella&nbsp;spp.) are generally less susceptible to tigecycline than other members of the&nbsp;Enterobacteriaceae.&nbsp;Decreased susceptibility in both groups has been attributed to the overexpression of the non-specific AcrAB multi-drug efflux pump. Decreased susceptibility in&nbsp;Acinetobacter&nbsp;baumannii&nbsp;has been attributed to the overexpression of the AdeABC efflux pump.</p><p><strong>Breakpoints</strong></p><p>Minimum inhibitory concentration (MIC) breakpoints established by the European Committee on Antimicrobial Susceptibility Testing (EUCAST) are as follows:</p><p>Staphylococcus&nbsp;spp. S &le; 0.5 mg/L and R &gt; 0.5 mg/L.</p><p>Streptococcus&nbsp;spp. other than&nbsp;S. pneumoniae&nbsp;S &le; 0.25 mg/L and R &gt; 0.5 mg/L.</p><p>Enterococcus&nbsp;spp. S &le; 0.25 mg/L and R &gt; 0.5 mg/L.</p><p>Enterobacteriaceae S &le; 1(^) mg/L and R &gt; 2 mg/L.</p><p>(^)Tigecycline has decreased&nbsp;in vitro&nbsp;activity against&nbsp;Proteus, Providencia, and&nbsp;Morganella&nbsp;spp.</p><p>For anaerobic bacteria there is clinical evidence of efficacy in polymicrobial intra-abdominal infections, but no correlation between MIC values, PK/PD data and clinical outcome. Therefore, no breakpoint for susceptibility is given. It should be noted that the MIC distributions for organisms of the genera Bacteroides and Clostridium are wide and may include values in excess of 2 mg/L tigecycline.</p><p>There is limited evidence of the clinical efficacy of tigecycline against enterococci. However, polymicrobial intra-abdominal infections have shown to respond to treatment with tigecycline in clinical trials.</p><p><strong>Susceptibility</strong></p><p>The prevalence of acquired resistance may vary geographically and with time for selected species, and local information on resistance is desirable, particularly when treating severe infections. As necessary, expert advice should be sought when the local prevalence of resistance is such that the utility of the agent in at least some types of infections is questionable.</p><table border="0" cellspacing="0" cellpadding="0" style="width:0px"><tbody><tr><td style="vertical-align:top"><p><strong>Pathogen</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Commonly Susceptible Species</strong></p></td></tr><tr><td style="vertical-align:top"><p><u>Gram-positive Aerobes</u></p><p>Enterococcus&nbsp;spp.&dagger;</p><p>Staphylococcus aureus*</p><p>Staphylococcus epidermidis</p><p>Staphylococcus haemolyticus</p><p>Streptococcus agalactiae*</p><p>Streptococcus anginosus&nbsp;group*&nbsp;(includes&nbsp;S. anginosus, S. intermedius and S. constellatus)</p><p>Streptococcus pyogenes*</p><p>Viridans group streptococci</p><p><u>Gram-negative Aerobes</u></p><p>Citrobacter freundii*</p><p>Citrobacter koseri</p><p>Escherichia coli*</p><p>Klebsiella oxytoca*</p><p><u>Anaerobes</u></p><p>Clostridium perfringens&nbsp;&dagger;</p><p>Peptostreptococcus&nbsp;spp.&dagger;</p><p>Prevotella&nbsp;spp.</p></td></tr><tr><td style="vertical-align:top"><p><strong>Species for which acquired resistance may be a problem</strong></p></td></tr><tr><td style="vertical-align:top"><p><u>Gram-negative Aerobes</u></p><p>Acinetobacter baumannii</p><p>Burkholderia cepacia</p><p>Enterobacter aerogenes</p><p>Enterobacter cloacae*</p><p>Klebsiella pneumoniae*</p><p>Morganella morganii</p><p>Proteus&nbsp;spp.</p><p>Providencia&nbsp;spp.</p><p>Serratia marcescens</p><p>Stenotrophomonas maltophilia</p><p><u>Anaerobes</u></p><p>Bacteroides fragilis group&dagger;</p></td></tr><tr><td style="vertical-align:top"><p><strong>Inherently resistant organisms</strong></p></td></tr><tr><td style="vertical-align:top"><p><u>Gram-negative Aerobes</u></p><p>Pseudomonas aeruginosa</p></td></tr></tbody></table><p>*denotes species against which it is considered that activity has been satisfactorily demonstrated in clinical studies.</p><p>&dagger; see section 5.1,&nbsp;Breakpoints&nbsp;above.</p><p><strong>Cardiac Electrophysiology</strong></p><p>No significant effect of a single intravenous dose of tigecycline 50 mg or 200 mg on QTc interval was detected in a randomized, placebo- and active-controlled four-arm crossover thorough QTc study of 46 healthy subjects.</p><p><strong>Paediatric population</strong></p><p>In an open-label, ascending multiple-dose study, 39 children aged 8 to 11 years with cIAI or cSSTI were administered tigecycline (0.75, 1, or 1.25 mg/kg). All patients received IV tigecycline for a minimum of 3 consecutive days to a maximum of 14 consecutive days, with the option to be switched to an oral antibiotic on or after day 4.</p><p>Clinical cure was assessed between 10 and 21 days after the administration of the last dose of treatment. The summary of clinical response in the modified intent-to-treat (mITT) population results is shown in the following table.</p><table border="1" cellspacing="0" cellpadding="0" style="width:0px"><tbody><tr><td colspan="4" style="vertical-align:top"><p><strong>Clinical Cure, mITT Population</strong></p></td></tr><tr><td style="vertical-align:top">&nbsp;</td><td style="vertical-align:top"><p><strong>0.75 mg/kg</strong></p></td><td style="vertical-align:top"><p><strong>1 mg/kg</strong></p></td><td style="vertical-align:top"><p><strong>1.25 mg/kg</strong></p></td></tr><tr><td style="vertical-align:top"><p>Indication</p></td><td style="vertical-align:top"><p>n/N (%)</p></td><td style="vertical-align:top"><p>n/N (%)</p></td><td style="vertical-align:top"><p>n/N (%)</p></td></tr><tr><td style="vertical-align:top"><p>cIAI</p></td><td style="vertical-align:top"><p>6/6 (100.0)</p></td><td style="vertical-align:top"><p>3/6 (50.0)</p></td><td style="vertical-align:top"><p>10/12 (83.3)</p></td></tr><tr><td style="vertical-align:top"><p>cSSTI</p></td><td style="vertical-align:top"><p>3/4 (75.0)</p></td><td style="vertical-align:top"><p>5/7 (71.4)</p></td><td style="vertical-align:top"><p>2/4 (50.0)</p></td></tr><tr><td style="vertical-align:top"><p>Overall</p></td><td style="vertical-align:top"><p>9/10 (90.0)</p></td><td style="vertical-align:top"><p>8/13 (62.0 %)</p></td><td style="vertical-align:top"><p>12/16 (75.0)</p></td></tr></tbody></table><p>Efficacy data above shown should be viewed with caution as concomitant antibiotics were allowed in this study. In addition, the small number of patients should also be taken into consideration.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Absorption</strong></p><p>Tigecycline is administered intravenously and therefore has 100 % bioavailability.</p><p><strong>Distribution</strong></p><p>The&nbsp;in vitro&nbsp;plasma protein binding of tigecycline ranges from approximately 71 % to 89 % at concentrations observed in clinical studies (0.1 to 1.0 mcg/ml). Animal and human pharmacokinetic studies have demonstrated that tigecycline readily distributes to tissues.</p><p>In rats receiving single or multiple doses of&nbsp;14C-tigecycline, radioactivity was well distributed to most tissues, with the highest overall exposure observed in bone marrow, salivary glands, thyroid gland, spleen, and kidney. In humans, the steady-state volume of distribution of tigecycline averaged 500 to 700 L (7 to 9 L/kg), indicating that tigecycline is extensively distributed beyond the plasma volumen and concentrates into tissues.</p><p>No data are available on whether tigecycline can cross the blood-brain barrier in humans.</p><p>In clinical pharmacology studies using the therapeutic dosage regimen of 100 mg followed by 50 mg q12h, serum tigecycline steady-state Cmax was 866&plusmn;233 ng/ml for 30-minute infusions and 634&plusmn;97 ng/ml for 60-minute infusions. The steady-state AUC0-12h&nbsp;was 2349&plusmn;850 ng&bull;h/ml.</p><p><strong>Biotransformation</strong></p><p>On average, it is estimated that less than 20 % of tigecycline is metabolised before excretion. In healthy male volunteers, following the administration of&nbsp;14C-tigecycline, unchanged tigecycline was the primary&nbsp;14C-labelled material recovered in urine and faeces, but a glucuronide, an N-acetyl metabolite and a tigecycline epimer were also present.</p><p>In vitro&nbsp;studies in human liver microsomes indicate that tigecycline does not inhibit metabolism mediated by any of the following 6 cytochrome P450 (CYP) isoforms: 1A2, 2C8, 2C9, 2C19, 2D6, and 3A4 by competitive inhibition. In addition, tigecycline did not show NADPH-dependency in the inhibition of CYP2C9, CYP2C19, CYP2D6 and CYP3A, suggesting the absence of mechanism-based inhibition of these CYP enzymes.</p><p><strong>Elimination</strong></p><p>The recovery of the total radioactivity in faeces and urine following administration of 14C-tigecycline indicates that 59 % of the dose is eliminated by biliary/faecal excretion, and 33 % is excreted in urine.</p><p>Overall, the primary route of elimination for tigecycline is biliary excretion of unchanged tigecycline.</p><p>Glucuronidation and renal excretion of unchanged tigecycline are secondary routes.</p><p>The total clearance of tigecycline is 24 L/h after intravenous infusion. Renal clearance is approximately 13 % of total clearance. Tigecycline shows a polyexponential elimination from serum with a mean terminal elimination half-life after multiple doses of 42 hours although high interindividual variability exists.</p><p>In vitro&nbsp;studies using Caco-2 cells indicate that tigecycline does not inhibit digoxin flux, suggesting that tigecycline is not a P-glycoprotein (P-gp) inhibitor. This in vitro information is consistent with the lack of effect of tigecycline on digoxin clearance noted in the in vivo drug interaction study described above (see section 4.5).</p><p>Tigecycline is a substrate of P-gp based on an in vitro study using a cell line overexpressing P-gp. The potential contribution of P-gp-mediated transport to the in vivo disposition of tigecycline is not known. Co-administration of P-gp inhibitors (e.g., ketoconazole or cyclosporine) or P-gp inducers (e.g., rifampicin) could affect the pharmacokinetics of tigecycline.</p><p><strong>Special populations</strong></p><p><strong>Hepatic impairment</strong></p><p>The single-dose pharmacokinetic disposition of tigecycline was not altered in patients with mild hepatic impairment. However, systemic clearance of tigecycline was reduced by 25 % and 55 % and the half-life of tigecycline was prolonged by 23 % and 43 % in patients with moderate or severe hepatic impairment (Child Pugh B and C), respectively (see section 4.2).</p><p><strong>Renal impairment</strong></p><p>The single dose pharmacokinetic disposition of tigecycline was not altered in patients with renal insufficiency (creatinine clearance &lt;30 ml/min, n=6). In severe renal impairment, AUC was 30 % higher than in subjects with normal renal function (see section 4.2).</p><p><strong>Elderly</strong></p><p>No overall differences in pharmacokinetics were observed between healthy elderly subjects and younger subjects (see section 4.2).</p><p><strong>Paediatric population</strong></p><p>Tigecycline pharmacokinetics was investigated in two studies. The first study enrolled children aged 8-16 years (n=24) who received single doses of tigecycline (0.5, 1, or 2 mg/kg, up to a maximum dose of 50 mg, 100 mg, and 150 mg, respectively) administered intravenously over 30 minutes. The second study was performed in children aged 8 to 11 years (n=47) who received multiple doses of tigecycline (0.75, 1, or 1.25 mg/kg up to a maximum dose of 50 mg) every 12 hours administered intravenously over 30 minutes. No loading dose was administered in these studies. The Pharmacokinetic parameters are summarised in the table below.</p><table border="0" cellspacing="0" cellpadding="0" style="width:0px"><tbody><tr><td colspan="4" style="vertical-align:top"><p><strong>Dose Normalized to 1 mg/kg Mean &plusmn; SD Tigecycline Cmax and AUC in Children</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Age (yr)</strong></p></td><td style="vertical-align:top"><p><strong>N</strong></p></td><td style="vertical-align:top"><p><strong>Cmax (ng/mL)</strong></p></td><td style="vertical-align:top"><p><strong>AUC (ng&bull;h/mL)*</strong></p></td></tr><tr><td colspan="4" style="vertical-align:top"><p><strong>Single dose</strong></p></td></tr><tr><td style="vertical-align:top"><p>8 &ndash; 11</p></td><td style="vertical-align:top"><p>8</p></td><td style="vertical-align:top"><p>3881 &plusmn; 6637</p></td><td style="vertical-align:top"><p>4034 &plusmn; 2874</p></td></tr><tr><td style="vertical-align:top"><p>12 - 16</p></td><td style="vertical-align:top"><p>16</p></td><td style="vertical-align:top"><p>8508 &plusmn; 11433</p></td><td style="vertical-align:top"><p>7026 &plusmn; 4088</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p><strong>Multiple dose</strong></p></td></tr><tr><td style="vertical-align:top"><p>8 - 11</p></td><td style="vertical-align:top"><p>42</p></td><td style="vertical-align:top"><p>1911 &plusmn; 3032</p></td><td style="vertical-align:top"><p>2404 &plusmn; 1000</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p>* single dose AUC0-&infin;, multiple dose AUC0-12h</p></td></tr></tbody></table><p>The target AUC0-12h&nbsp;in adults after the recommended dose of 100 mg loading and 50 mg every 12 hours, was approximately 2500 ng&bull;h/mL.</p><p>Population PK analysis of both studies identified body weight as a covariate of tigecycline clearance in children aged 8 years and older. A dosing regimen of 1.2 mg/kg of tigecycline every 12 hours (to a maximum dose of 50 mg every 12 hours) for children aged 8 to &lt;12 years and of 50 mg every 12 hours for adolescents aged 12 to &lt;18 years would likely result in exposures comparable to those observed in adults treated with the approved dosing regimen.</p><p>Higher Cmax values than in adult patients were observed in several children in these studies. As a consequence, care should be paid to the rate of infusion of tigecycline in children and adolescents.</p><p><strong>Gender</strong></p><p>There were no clinically relevant differences in the clearance of tigecycline between men and women. AUC was estimated to be 20 % higher in females than in males.</p><p><strong>Race</strong></p><p>There were no differences in the clearance of tigecycline based on race.</p><p><strong>Weight</strong></p><p>Clearance, weight-normalised clearance, and AUC were not appreciably different among patients with different body weights, including those weighing &ge; 125 kg. AUC was 24 % lower in patients weighing &ge; 125 kg. No data is available for patients weighing 140 kg and more.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In repeated dose toxicity studies in rats and dogs, lymphoid depletion/atrophy of lymph nodes, spleen and thymus, decreased erythrocytes, reticulocytes, leukocytes, and platelets, in association with bone marrow hypocellularity, and adverse renal and gastrointestinal effects have been seen with tigecycline at exposures of 8 and 10 times the human daily dose based on AUC in rats and dogs, respectively.</p><p>These alterations were shown to be reversible after two weeks of dosing.</p><p>Bone discolouring was observed in rats which was not reversible after two weeks of dosing.</p><p>Results of animal studies indicate that tigecycline crosses the placenta and is found in foetal tissues. In reproduction toxicity studies, decreased foetal weights in rats and rabbits (with associated delays in ossification) and foetal loss in rabbits have been observed with tigecycline. Tigecycline was not teratogenic in the rat or rabbit. Tigecycline did not affect mating or fertility in rats at exposures up to 4.7 times the human daily dose based on AUC. In female rats, there were no compound-related effects on ovaries or oestrus cycles at exposures up to 4.7 times the human daily dose based on AUC.</p><p>Results from animal studies using&nbsp;14C-labelled tigecycline indicate that tigecycline is excreted readily via the milk of lactating rats. Consistent with the limited oral bioavailability of tigecycline, there is little or no systemic exposure to tigecycline in the nursing pups as a result of exposure via maternal milk.</p><p>Lifetime studies in animals to evaluate the carcinogenic potential of tigecycline have not been performed, but short-term genotoxicity studies of tigecycline were negative.</p><p>Bolus intravenous administration of tigecycline has been associated with a histamine response in animal studies. These effects were observed at exposures of 14 and 3 times the human daily dose based on the AUC in rats and dogs respectively.</p><p>No evidence of photosensitivity was observed in rats following administration of tigecycline.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Trehalose dehydrate, hydrochloric acid, sodium hydroxide, water for injection, nitrogen, low-oxygen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The following active substances should not be administered simultaneously through the same Y-site as tigecycline: Amphotericin B, amphotericin B lipid complex, diazepam, esomeprazole, omeprazole.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                18 months
+After reconstitution: 
+The reconstituted solution may be stored at room temperature for 24 hours (up to 6 hours in the vial and the remaining time in the intravenous bag). Alternatively, maybe stored in the refrigerator (2-8 °C) for 48 hours following immediate transfer of the reconstituted solution into the intravenous bag.
+From a microbiological point of view, the product should be used immediately.
+If not used immediately, in-use storage times and conditions are the responsibility of the user.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 30&deg;C.</p><p><strong>After reconstitution:</strong></p><p>The reconstituted solution may be stored at room temperature for 24 hours (up to 6 hours in the vial and the remaining time in the intravenous bag). Alternatively, maybe stored in the refrigerator (2-8 &deg;C) for 48 hours following immediate transfer of the reconstituted solution into the intravenous bag.</p><p>Do not use this medicine if you notice that the solution is not clear, greenish-yellow solution and/or has particles in it.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Tigecycline<sup>&reg; </sup>Powder for</strong> <strong>solution for infusion </strong>is Orange lyophilised cake or powder, presented in 10 ml Type I clear glass vial with 20 mm bromobutyl grey stopper and aluminium/plastic flip-off cap, intended for infusion use.</p><p><strong><u>Pack size:</u></strong></p><p>Pack of 1 vial.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The lyophilised powder should be reconstituted with 5.3 ml of sodium chloride 9 mg/ml (0.9 %) solution for injection, dextrose 50 mg/ml (5 %) solution for injection, or Lactated Ringer&#39;s solution for injection to achieve a concentration of 10 mg/ml of tigecycline. The vial should be gently swirled until the medicinal product is dissolved. Thereafter, 5 ml of the reconstituted solution should be immediately withdrawn from the vial and added to a 100 ml intravenous bag for infusion or other suitable infusion container (e.g., glass bottle).</p><p>For a 100 mg dose, reconstitute using two vials into a 100 ml intravenous bag or other suitable infusion container (e.g., glass bottle). Note: The vial contains a 6 % overage. Thus, 5 ml of reconstituted solution is equivalent to 50 mg of the active substance. The reconstituted solution should be yellow to orange in colour; if not, the solution should be discarded. Parenteral products should be inspected visually for particulate matter and discolouration (e.g., green or black) prior to administration.</p><p>Tigecycline should be administered intravenously through a dedicated line or through a Y-site. If the same intravenous line is used for sequential infusion of several active substances, the line should be flushed before and after infusion of tigecycline with either sodium chloride 9 mg/ml (0.9 %) solution for injection or dextrose 50 mg/ml (5 %) solution for injection. Injection should be made with an infusion solution compatible with tigecycline and any other medicinal product(s) via this common line (see section 6.2)</p><p>This medicinal product is for single use only; any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p><p>Compatible intravenous solutions include: sodium chloride 9 mg/ml (0.9 %) solution for injection, dextrose 50 mg/ml (5 %) solution for injection, and Lactated Ringer&#39;s solution for injection.</p><p>When administered through a Y-site, compatibility of tigecycline diluted in sodium chloride 0.9 % for injection is demonstrated with the following medicinal products or diluents: amikacin, dobutamine, dopamine HCl, gentamicin, haloperidol, Lactated Ringer&#39;s, lidocaine HCl, metoclopramide, morphine, norepinephrine, piperacillin/tazobactam (EDTA formulation), potassium chloride, propofol, ranitidine HCl, theophylline, and tobramycin.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Marketing Authorization Holder:
+Med City Pharma-KSA.
+Tel: 00966920003288
+Fax: 00966126358138
+Mobile: 00966555786968
+P.O .Box: 42512 - Jeddah 21551
+E-mail: MD.admin@Axantia.com
+
+Manufactured by:
+Sofarimex – Indústria Química e Farmacêutica, S.A.- Portugal.
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                03/2024
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

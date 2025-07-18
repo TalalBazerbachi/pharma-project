@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1303257056
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2006
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        OMACE 20MG TABLETS
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        LISINOPRIL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        28
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        44.35
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="NATIONAL PHARMACEUTICAL INDUSTRIES CO" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            NATIONAL PHARMACEUTICAL INDUSTRIES CO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 587]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            EBRAHIM M. ALMANA & BROS. CO.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            National Pharmaceutical Industries Co. (SAOG)
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        C09AA03
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Omace 5/10/20 tablets
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Omace 5-
+Each tablet contains Lisinopril dehydrate equivalent to anhydrous Lisinopril 5 mg
+Omace 10 -
+Each tablet contains Lisinopril dehydrate equivalent to anhydrous Lisinopril 10 mg
+Omace 20 –
+Each tablet contains Lisinopril dehydrate equivalent to anhydrous Lisinopril 20 mg
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Omace 5 - Slightly mottled, light pink coloured, round, biconvex tablets with breakline on one side and embossing ‘405’ on other side.
+Omace 10 - Slightly mottled, light pink coloured, round, biconvex tablets with breakline on one side and embossing ‘406’ on other side.
+Omace 20 - Slightly mottled, light pink coloured, round, biconvex tablets plain on one side and embossing ‘407’ on other side.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Hypertension</strong></p><p>Treatment of <strong>hypertension</strong>.</p><p><strong>Heart failure</strong></p><p>Treatment of symptomatic heart failure.</p><p><strong>Acute myocardial infarction</strong></p><p>Short-term (6 weeks) treatment of haemodynamically stable patients within 24 hours of an acute myocardial infarction.</p><p><strong>Renal complications of diabetes mellitus</strong></p><p>Treatment of renal disease in hypertensive patients with Type 2 <strong>diabetes mellitus </strong>and incipient nephropathy (see section 5.1).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Omace should be administered orally in a <strong>single </strong>daily dose. As with all other medication taken once daily, Omace should be taken at approximately the same time each day. The absorption of Omace tablets is not affected by food.</p><p>The dose should be individualised according to patient profile and <strong>blood pressure </strong>response (see section 4.4).</p><p><strong>Hypertension</strong></p><p>Omace may be used as monotherapy or in combination with other classes of antihypertensive therapy.</p><p><u>Starting dose</u></p><p>In patients with hypertension the usual recommended starting dose is 10 mg. Patients with a strongly activated renin-angiotensin-aldosterone system (in particular, renovascular hypertension, salt and /or volume depletion, cardiac decompensation, or severe hypertension) may experience an excessive blood pressure fall following the initial dose. A starting dose of 2.5-5 mg is recommended in such patients and the initiation of treatment should take place under medical supervision. A lower starting dose is required in the presence of renal impairment (see Table 1 below).</p><p><u>Maintenance dose</u></p><p>The usual effective maintenance dosage is 20 mg administered in a single daily dose. In general, if the desired therapeutic effect cannot be achieved in a period of 2 to 4 weeks on a certain dose level, the dose can be further increased. The maximum dose used in long-term, controlled clinical trials was 80 mg/day.</p><p><u>Diuretic-treated patients</u></p><p>Symptomatic hypotension may &nbsp;occur &nbsp;following &nbsp;initiation &nbsp;of &nbsp;therapy &nbsp;with &nbsp;Omace. &nbsp;This is <strong>more </strong>likely in patients who are being treated currently with diuretics. Caution &nbsp;is recommended therefore, since these patients may be volume and/or salt depleted. If possible, the diuretic should be discontinued 2 to 3 days before beginning therapy with Omace. In hypertensive patients in whom the diuretic cannot be discontinued, therapy with Omace should be initiated with a 5 mg dose. Renal function and serum potassium should be monitored. The subsequent dosage of Omace should be adjusted according to blood pressure response. If required, diuretic therapy may be resumed (see section 4.4 and section 4.5).</p><p><u>Dosage adjustment in renal impairment</u></p><p>Dosage in patients with renal impairment should be based on creatinine clearance as outlined in Table 1 below.</p><p><strong>Table 1 Dosage adjustment in renal impairment&nbsp;</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:540px"><tbody><tr><td style="width:302px"><strong>Creatinine Clearance (ml/min)</strong></td><td style="width:234px"><strong>Starting Dose (mg/day)</strong></td></tr><tr><td style="width:302px">Less than 10 ml/min (including patients on dialysis)</td><td style="width:234px">2.5 mg*</td></tr><tr><td style="width:302px">10-30 ml/min</td><td style="width:234px">2.5-5 mg</td></tr><tr><td style="width:302px">31-80 ml/min</td><td style="width:234px">5-10 mg</td></tr></tbody></table><p><br />* Dosage and/or frequency of administration should be adjusted depending on the blood pressure response.</p><p>The dosage may be titrated upward until blood pressure is controlled or to a maximum of 40 mg daily.</p><p><u>Use in hypertensive </u><strong><u>paediatric</u></strong><strong><u> </u></strong><u>patients aged 6</u><u>&ndash;16 years</u></p><p>The recommended initial dose is 2.5 mg once daily in patients 20 to &lt;50 kg, and 5 mg once daily in patients &ge;50 kg. The dosage should be individually adjusted to a maximum of 20 mg daily in patients weighing 20 to &lt;50 kg, and 40 mg in patients &ge;50 kg. Doses above 0.61 mg/kg (or in excess of 40 mg) have not been studied in paediatric patients (see section 5.1).</p><p>In children with decreased renal function, a lower starting dose or increased dosing interval should be considered.</p><p>&nbsp;</p><p><strong>Heart failure</strong></p><p>In patients with symptomatic heart failure, Omace should be used as adjunctive therapy to diuretics and, where appropriate, digitalis or beta-blockers. Omace may be initiated at a starting dose of 2.5 mg once a day, which should be administered under medical supervision to determine the initial effect on the blood pressure. The dose of Omace should be increased:</p><ul><li>By increments of no greater than 10 mg</li><li>At intervals of no less than 2 weeks</li><li>To the highest dose tolerated by the patient up to a maximum of 35 mg once daily.</li></ul><p>&nbsp;</p><p>Dose adjustment should be based on the clinical response of individual patients.</p><p>Patients at high risk of symptomatic hypotension, e.g. patients with salt depletion with or without hyponatraemia, patients with hypovolaemia or patients who have been receiving vigorous diuretic therapy should have these conditions corrected, if possible, prior to therapy with Omace. Renal function and serum potassium should be monitored (see section 4.4).</p><p>&nbsp;</p><p><strong>Posology in Acute myocardial infarction</strong></p><p>Patients should receive, as appropriate, the standard recommended treatments such as thrombolytics, aspirin, and beta-blockers. Intravenous or transdermal glyceryl trinitrate may be used together with Omace.</p><p>&nbsp;</p><p><u>Starting dose (first 3 days after infarction)</u></p><p>Treatment with Omace may be started within 24 hours of the onset of symptoms. Treatment should not be started if systolic blood pressure is lower than 100 mm Hg. The first dose of Omace is 5 mg given orally, followed by 5 mg after 24 hours, 10 mg after 48 hours and then 10 mg once daily. Patients with a low systolic blood pressure (120 mm Hg or less) when treatment is started or during the first 3 days after the infarction should be given a lower dose - 2.5 mg orally (see section 4.4).</p><p>In cases of renal impairment (creatinine clearance &lt;80 ml/min), the initial Omace dosage should be adjusted according to the patient&#39;s creatinine clearance (see Table 1).</p><p><u>Maintenance dose</u></p><p>The maintenance dose is 10 mg once daily. If hypotension occurs (systolic blood pressure less than or equal to 100 mm Hg) a daily maintenance dose of 5 mg may be given with temporary reductions to 2.5 mg if needed. If prolonged hypotension occurs (systolic blood pressure less than 90 mm Hg for more than 1 hour) Omace should be withdrawn.</p><p>Treatment should continue for 6 weeks and then the patient should be re-evaluated. Patients who develop symptoms of heart failure should continue with Omace (see section 4.2).</p><p><strong>Renal complications of diabetes mellitus</strong></p><p>In hypertensive patients with type 2 diabetes mellitus and incipient nephropathy, the dose is 10 mg Omace once daily which can be increased to 20 mg once daily, if necessary, to achieve a sitting diastolic blood pressure below 90 mm Hg.</p><p>In cases of renal impairment (creatinine clearance &lt;80 ml/min), the initial Omace dosage should be adjusted according to the patient&#39;s creatinine clearance (see Table 1).</p><p><strong>Paediatric population</strong></p><p>There is limited efficacy and safety experience in hypertensive children &gt;6 years old, but no experience in other indications (see section 5.1). Omace is not recommended in children in other indications than hypertension.</p><p>Omace is not recommended in children below the age of 6, or in children with severe renal impairment (GFR &lt; 30ml/min/1.73m2) (see section 5.2).</p><p><strong>Older people</strong></p><p>In clinical studies, there was no age-related change in the efficacy or safety profile of the drug. When <strong>advanced </strong>age is associated with decrease in renal function, however, the guidelines set out in Table 1 should be used to determine the starting dose of Omace. Thereafter, the dosage should be adjusted according to the blood pressure response.</p><p><strong>Use in kidney transplant patients</strong></p><p>There is no experience regarding the administration of Omace in patients with recent kidney transplantation. Treatment with Omace is therefore not recommended</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                •	Hypersensitivity to Omace, to any of the excipients listed in section 6.1 or any other angiotensin converting enzyme (ACE) inhibitor
+•	History of angioedema associated with previous ACE inhibitor therapy
+•	Hereditary or idiopathic angioedema
+•	Second and third trimesters of pregnancy (see sections 4.4 and 4.6).
+•	In combination with aliskiren-containing medicines in patients with diabetes mellitus (type I or
+II) or with moderate to severe renal impairment (GFR < 60 ml/min/1.73 m2).
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Symptomatic hypotension</strong></p><p>Symptomatic hypotension is seen rarely in uncomplicated hypertensive patients. In hypertensive patients receiving Omace, hypotension is more likely to occur if the patient has been volume- depleted, e.g. by diuretic therapy, dietary salt restriction, dialysis, diarrhoea or vomiting, or has severe renin-dependent hypertension (see section 4.5 and section 4.8). In patients with heart failure, with or without associated renal insufficiency, symptomatic hypotension has been observed.</p><p>This is most likely to occur in those patients with more severe degrees of heart failure, as reflected by the use of high doses of loop diuretics, hyponatraemia or functional renal impairment. In patients at increased risk of symptomatic hypotension, initiation of therapy and dose adjustment should be closely monitored. Similar considerations apply to patients with ischaemic heart or cerebrovascular disease in whom an excessive fall in blood pressure could result in a myocardial infarction or cerebrovascular accident.</p><p>If hypotension occurs, the patient should be placed in the supine position and, if necessary, should receive an intravenous infusion of normal saline. A transient hypotensive response is not a contraindication to further doses, which can be given usually without difficulty once the blood pressure has increased after volume expansion.</p><p>In some patients with heart failure who have normal or low blood pressure, additional lowering of systemic blood pressure may occur with Omace. This effect is anticipated and is not usually a reason to discontinue treatment. If hypotension becomes symptomatic, a reduction of dose or discontinuation of Omace may be necessary.</p><p>&nbsp;</p><p><strong>Hypotension in acute myocardial infarction</strong></p><p>Treatment with Omace must not be initiated in acute myocardial infarction patients who are at risk of further serious haemodynamic deterioration after treatment with a vasodilator. These are patients with systolic blood pressure of 100 mm Hg or lower, or those in cardiogenic shock. During the first 3 days following the infarction, the dose should be reduced if the systolic blood pressure is 120 mm Hg or lower. Maintenance doses should be reduced to 5 mg or temporarily to</p><p>2.5 mg if systolic blood pressure is 100 mm Hg or lower. If hypotension persists (systolic blood pressure less than 90 mm Hg for more than 1 hour) then Omace should be withdrawn.</p><p><strong>Aortic and mitral valve stenosis / hypertrophic cardiomyopathy</strong></p><p>As with other ACE inhibitors, Omace should be given with caution to patients with mitral valve stenosis and obstruction in the outflow of the left ventricle such as aortic stenosis or hypertrophic cardiomyopathy.</p><p><strong>Renal function impairment</strong></p><p>In cases of renal impairment (creatinine clearance &lt;80 ml/min), the initial Omace dosage should be adjusted according to the patient&#39;s creatinine clearance (see Table 1 in section 4.2), and then as a function of the patient&#39;s response to treatment. Routine monitoring of potassium and creatinine is part of normal medical practice for these patients.</p><p>In patients with <u>heart failure</u>, hypotension following the initiation of therapy with ACE inhibitors may lead to some further impairment in renal function. Acute renal failure, usually reversible, has been reported in this situation.</p><p>In some patients with <u>bilateral renal artery stenosis or with a stenosis of the artery to a solitary</u> <u>kidney</u>, who have been treated with angiotensin-converting enzyme inhibitors, increases in blood urea and serum creatinine, usually reversible upon discontinuation of therapy, have been seen. This is especially likely in patients with renal insufficiency. If renovascular hypertension is also present there is an increased risk of severe hypotension and renal insufficiency. In these patients, treatment should be started under close medical supervision with low doses and careful dose titration. Since treatment with diuretics may be a contributory factor to the above, they should be discontinued and renal function should be monitored during the first weeks of Omace therapy.</p><p>Some <u>hypertensive</u><u> patients </u>with no apparent pre-existing renal vascular disease have developed increases in blood urea and serum creatinine, usually minor and transient, especially when Omace has been given concomitantly with a diuretic. This is more likely to occur in patients with pre-existing renal impairment. Dosage reduction and/or discontinuation of the diuretic and/or Omace may be required.</p><p>In <u>acute myocardial infarction</u>, treatment with Omace should not be initiated in patients with evidence of renal dysfunction, defined as serum creatinine concentration exceeding 177 micromol/l and/or proteinuria exceeding 500 mg/24 h. If renal dysfunction develops during treatment with Omace (serum creatinine concentration exceeding 265 micromol/l or a doubling from the pre-treatment value) then the physician should consider withdrawal of Omace.</p><p><strong>Hypersensitivity/Angioedema</strong></p><p>Angioedema of the face, extremities, lips, tongue, glottis and/or larynx has been reported rarely in patients treated with angiotensin-converting enzyme inhibitors, including Omace. This may occur at any time during therapy. In such cases, Omace should be discontinued promptly and appropriate treatment and monitoring should be instituted to ensure complete resolution of symptoms prior to dismissing the patients. Even in those instances where swelling of only the tongue is involved, without respiratory distress, patients may require prolonged observation since treatment with antihistamines and corticosteroids may not be sufficient.</p><p>Very rarely, fatalities have been reported due to angioedema associated with laryngeal oedema or tongue oedema. Patients with involvement of the tongue, glottis or larynx, are likely to experience airway obstruction, especially those with a history of airway surgery. In such cases emergency therapy should be administered promptly. This may include the administration of adrenaline and/or the maintenance of a patent airway. The patient should be under close medical supervision until complete and sustained resolution of symptoms has occurred.</p><p>&nbsp;</p><p>Angiotensin-converting enzyme inhibitors cause a higher rate of angioedema in black patients than in non-black patients.</p><p>Patients with a history of angioedema unrelated to ACE inhibitor therapy may be at increased risk of angioedema while receiving an ACE inhibitor (see section 4.3).</p><p>&nbsp;</p><p><strong>Anaphylactoid reactions in haemodialysis patients</strong></p><p>Anaphylactoid reactions have been reported in patients dialysed with high flux membranes (e.g. AN 69) and treated concomitantly with an ACE inhibitor. In these patients, consideration should be given to using a different type of dialysis membrane or different class of antihypertensive agent.</p><p><strong>Anaphylactoid reactions during low-density lipoproteins (LDL) apheresis</strong></p><p>Rarely, patients receiving ACE inhibitors during low-density lipoproteins (LDL) apheresis with dextran sulphate have experienced life-threatening anaphylactoid reactions. These reactions were avoided by temporarily withholding ACE inhibitor therapy prior to each apheresis.</p><p><strong>Desensitisation</strong></p><p>Patients receiving ACE inhibitors during desensitisation treatment (e.g. hymenoptera venom) have sustained anaphylactoid reactions. In the same patients, these reactions have been avoided when ACE inhibitors were temporarily withheld but they have reappeared upon inadvertent re- administration of the medicinal product.</p><p><strong>Hepatic failure</strong></p><p>Very rarely, ACE inhibitors have been associated with a syndrome that starts with cholestatic jaundice and progresses to fulminant necrosis and (sometimes) death. The mechanism of this syndrome is not</p><p>should discontinue Omace and receive appropriate medical follow-up.</p><p><strong>Neutropenia/Agranulocytosis</strong></p><p>Neutropenia/agranulocytosis, thrombocytopenia and anaemia have been reported in patients receiving ACE inhibitors. In patients with normal renal function and no other complicating factors, neutropenia occurs rarely. Neutropenia and agranulocytosis are reversible after discontinuation of the ACE inhibitor. Omace should be used with extreme caution in patients with collagen vascular disease, immunosuppressant therapy, treatment with allopurinol or procainamide, or a combination of these complicating factors, especially if there is pre-existing impaired renal function. Some of these patients developed serious infections, which in a few instances did not respond to intensive antibiotic therapy. If Omace is used in such patients, periodic monitoring of white blood cell counts is advised and patients should be instructed to report any sign of infection.</p><p>&nbsp;</p><p><strong>Dual blockade of the renin-angiotensin-aldosterone system (RAAS) with aliskiren- containing medicines</strong></p><p>Dual blockade of the renin-angiotensin-aldosterone system by combining lisinopril with aliskiren is not recommended since there is an increased risk of hypotension, hyperkalaemia and changes in renal function (see section 4.5).</p><p><strong>Race</strong></p><p>Angiotensin-converting enzyme inhibitors cause a higher rate of angioedema in black patients than in non-black patients.</p><p>As with other ACE inhibitors, Omace may be less effective in lowering blood pressure in black patients than in non-blacks, possibly because of a higher prevalence of low-renin states in the black hypertensive population.</p><p><strong>Cough</strong></p><p>Cough has been reported with the use of ACE inhibitors. Characteristically, the cough is non- productive, persistent and resolves after discontinuation of therapy. ACE &nbsp;inhibitor-induced cough should be considered as part of the differential diagnosis of cough.</p><p><strong>Surgery/Anaesthesia</strong></p><p>In patients undergoing major surgery or during anaesthesia with agents that produce hypotension, Omace may block angiotensin II formation secondary to compensatory renin release. If hypotension occurs and is considered to be due to this mechanism, it can be corrected by volume expansion.</p><p><strong>Hyperkalaemia</strong></p><p>Elevations in serum potassium have been observed in some patients treated with ACE inhibitors, including Omace. Patients at risk for the development of hyperkalaemia include those with renal insufficiency, diabetes mellitus, or those using concomitant potassium-sparing diuretics, potassium supplements or potassium-containing salt substitutes, or those patients taking other drugs associated with increases in serum potassium (e.g. heparin). If concomitant use of the above-mentioned agents is deemed appropriate, regular monitoring of serum potassium is recommended (see section 4.5).</p><p><strong>Diabetic patients</strong></p><p>In diabetic patients treated with oral antidiabetic agents or insulin, glycaemic control should be closely monitored during the first month of treatment with an ACE inhibitor (see 4.5 Interaction with other medicinal products and other forms of interaction).</p><p><strong>Lithium</strong></p><p>The combination of lithium and Omace is generally not recommended (see section 4.5).</p><p><strong>Pregnancy</strong></p><p>ACE inhibitors should not be initiated during pregnancy. Unless continued ACE inhibitor therapy is considered essential, patients planning pregnancy should be changed to alternative anti-hypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with ACE inhibitors should be stopped immediately, and, if appropriate, alternative therapy should be started (see sections 4.3 and 4.6).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Antihypertensive agents</strong></p><p>When Omace is combined with other antihypertensive agents (e.g. glyceryl trinitrate and other</p><p>nitrates, or other vasodilators), additive falls in blood pressure may occur.</p><p>The combination of lisinopril with aliskiren-containing medicines should be avoided (see sections 4.3 and 4.4).</p><p><strong>Diuretics</strong></p><p>When a diuretic is added to the therapy of a patient receiving Omace the antihypertensive effect is usually additive.</p><p>Patients already on diuretics and especially those in whom diuretic therapy was recently instituted, may occasionally experience an excessive reduction of blood pressure when Omace is added. The possibility of symptomatic hypotension with Omace can be minimised by discontinuing the diuretic prior to initiation of treatment with Omace (see section 4.4 and section 4.2).</p><p><strong>Potassium supplements, potassium-sparing diuretics or potassium-containing salt substitutes</strong></p><p>Although in clinical trials, serum potassium usually remained within normal limits, hyperkalaemia did occur in some patients. Risk factors for the development of hyperkalaemia include renal insufficiency, diabetes mellitus, and concomitant use of potassium-sparing diuretics (e.g. spironolactone, triamterene or amiloride), potassium supplements or potassium-containing salt substitutes.</p><p>The use of potassium supplements, potassium-sparing diuretics or potassium-containing salt substitutes, particularly in patients with impaired renal function, may lead to a significant increase in serum potassium. If Omace is given with a potassium-losing diuretic, diuretic- induced hypokalaemia may be ameliorated.</p><p><strong>Lithium</strong></p><p>Reversible increases in serum lithium concentrations and toxicity have been reported during concomitant administration of lithium with ACE inhibitors. Concomitant use of thiazide diuretics may increase the risk of lithium toxicity and enhance the already increased lithium toxicity with ACE inhibitors. Use of Omace with lithium is not recommended, but if the combination proves necessary, careful monitoring of serum lithium levels should be performed (see section 4.4).</p><p><strong>Non-steroidal anti-inflammatory medicinal products (NSAIDs) including &nbsp;acetylsalicylic acid &ge; 3 g/day</strong></p><p>When ACE-inhibitors are administered simultaneously with non-steroidal anti-inflammatory drugs (i.e. acetylsalicylic acid at anti-inflammatory dosage regimens, COX-2 inhibitors and non- selective NSAIDs), attenuation of the antihypertensive effect may occur. Concomitant use of ACE-inhibitors and NSAIDs may lead to an increased risk of worsening of renal function, including possible acute renal failure, and an increase in serum potassium, especially in patients with poor pre-existing renal function. These effects are usually reversible. The combination should be administered with caution, especially in the elderly. Patients should be adequately hydrated and consideration should be given to monitoring renal function after initiation of concomitant therapy, and periodically thereafter.</p><p><strong>Gold</strong></p><p>Nitritoid reactions (symptoms of vasodilatation including flushing, nausea, dizziness and hypotension, which can be very severe) following injectable gold (for example, sodium aurothiomalate) have been reported more frequently in patients receiving ACE inhibitor therapy.</p><p><strong>Tricyclic antidepressants / Antipsychotics / Anaesthetics</strong></p><p>Concomitant use of certain anaesthetic medicinal products, tricyclic antidepressants and antipsychotics with ACE inhibitors may result in further reduction of blood pressure (see section 4.4).</p><p><strong>Sympathomimetics</strong></p><p>Sympathomimetics may reduce the antihypertensive effects of ACE inhibitors.</p><p><strong>Antidiabetics</strong></p><p>Epidemiological studies have suggested that concomitant administration of ACE inhibitors and antidiabetic medicines (insulins, oral hypoglycaemic agents) may cause an increased blood glucose-lowering effect with risk of hypoglycaemia. This phenomenon appeared to be more likely to occur during the first weeks of combined treatment and in patients with renal impairment.</p><p><strong>Acetylsalicylic acid, thrombolytics, beta-blockers, nitrates</strong></p><p>Omace may be used concomitantly with acetylsalicylic acid (at cardiologic doses), thrombolytics, beta-blockers and/or nitrates.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Pregnancy</strong></p><p>The use of ACE inhibitors is not recommended during the first trimester of pregnancy (see section 4.4). The use of ACE inhibitors is contra-indicated during the second and third trimester of pregnancy (see sections 4.3 and 4.4).</p><p>Epidemiological evidence regarding the risk of teratogenicity following exposure to ACE inhibitors during the first trimester of pregnancy has not been conclusive; however a small increase in risk cannot be excluded. Unless continued ACE inhibitors therapy is considered essential, patients planning pregnancy should be changed to alternative anti-hypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with ACE inhibitors should be stopped immediately, and, if appropriate, alternative therapy should be started.</p><p>Exposure to ACE inhibitor therapy during the second and third trimesters is known to induce human foetotoxicity (decreased renal function, oligohydramnios, skull ossification retardation) and neonatal toxicity (renal failure, hypotension, hyperkalaemia). (See section 5.3).</p><p>Should exposure to ACE inhibitors have occurred from the second trimester of pregnancy, ultrasound check of renal function and skull is recommended.</p><p>Infants whose mothers have taken ACE inhibitors should be closely observed for hypotension (see sections 4.3 and 4.4).</p><p><strong>Breastfeeding</strong></p><p>Because no information is available regarding the use of Omace during breast-feeding, Omace is not recommended and alternative treatments with better established safety profiles during breast- feeding are preferable, especially while nursing a newborn or preterm infant.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>When driving vehicles or operating machines it should be taken into account that occasionally dizziness or tiredness may occur.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The following undesirable effects have been observed and reported during treatment with Omace and other ACE inhibitors with the following frequencies: Very common (&ge; 1/10), common (&ge; 1/100 to &lt; 1/10), uncommon (&ge; 1/1,000 to &lt; 1/100), rare (&ge; 1/10,000 to &lt; 1/1,000), very rare (&lt; 1/10,000), not known (cannot be estimated from the available data).</p><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2" style="vertical-align:top"><p><strong>Blood and the lymphatic system disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>decreases in haemoglobin, decreases in haematocrit</p></td></tr><tr><td style="vertical-align:top"><p>very rare:</p></td><td style="vertical-align:top"><p>bone marrow depression, anaemia, thrombocytopenia, leucopenia, neutropenia, agranulocytosis (see section 4.4), haemolytic anaemia, lymphadenopathy, autoimmune disease.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Metabolism and nutrition disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>very rare:</p></td><td style="vertical-align:top"><p>hypoglycaemia.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Nervous</strong><strong> system and psychiatric disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>common:</p></td><td style="vertical-align:top"><p>dizziness, headache</p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>mood alterations, paraesthesia, vertigo, taste disturbance, sleep disturbances, hallucinations.</p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>mental confusion, olfactory disturbance</p></td></tr><tr><td style="vertical-align:top"><p>frequency not known:</p></td><td style="vertical-align:top"><p>depressive symptoms, syncope.</p></td></tr></tbody></table><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2" style="vertical-align:top"><p><strong>Cardiac</strong><strong> and vascular disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>common:</p></td><td style="vertical-align:top"><p>orthostatic effects (including hypotension)</p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>myocardial infarction or cerebrovascular accident, possibly secondary to excessive hypotension in high risk patients (see section 4.4), palpitations, tachycardia, Raynaud&#39;s phenomenon.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Respiratory,</strong><strong> thoracic and mediastinal disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>common:</p></td><td style="vertical-align:top"><p>cough</p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>rhinitis</p></td></tr><tr><td style="vertical-align:top"><p>very rare:</p></td><td style="vertical-align:top"><p>bronchospasm, sinusitis, allergic alveolitis/eosinophilic pneumonia.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Gastrointestinal</strong><strong> disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>common:</p></td><td style="vertical-align:top"><p>diarrhoea, vomiting</p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>nausea, abdominal pain and indigestion</p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>dry mouth</p></td></tr><tr><td style="vertical-align:top"><p>very rare:</p></td><td style="vertical-align:top"><p>pancreatitis, &nbsp;intestinal &nbsp;angioedema, &nbsp;hepatitis &nbsp;- &nbsp;either &nbsp;hepatocellular &nbsp;or cholestatic, jaundice and hepatic failure (see section 4.4).</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Skin and subcutaneous tissue disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>rash, pruritus</p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>urticaria, alopecia, psoriasis, hypersensitivity/angioneurotic oedema: angioneurotic oedema of the face, extremities, lips, tongue, glottis, and/or larynx (see section 4.4)</p></td></tr><tr><td style="vertical-align:top"><p>very rare</p></td><td style="vertical-align:top"><p>sweating,&nbsp;&nbsp;&nbsp; pemphigus,&nbsp;&nbsp;&nbsp; toxic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; epidermal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; necrolysis,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stevens-Johnson Syndrome, erythema multiforme, cutaneous pseudolymphoma.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p>A symptom complex has been reported which may include one or more of the following: fever, vasculitis, myalgia, arthralgia/arthritis, positive antinuclear antibodies (ANA), elevated red blood cell sedimentation rate (ESR), eosinophilia and leucocytosis, rash, photosensitivity or other dermatological manifestations may occur.</p><p>&nbsp;</p></td></tr></tbody></table><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2" style="vertical-align:top"><p><strong>Renal</strong><strong> and urinary disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>common:</p></td><td style="vertical-align:top"><p>renal dysfunction</p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>uraemia, acute renal failure</p></td></tr><tr><td style="vertical-align:top"><p>very rare:</p></td><td style="vertical-align:top"><p>oliguria/anuria.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Endocrine disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>syndrome of inappropriate antidiuretic hormone secretion (SIADH).</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Reproductive</strong><strong> </strong><strong>system and breast disorders</strong></p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>impotence</p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>gynaecomastia.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>General</strong><strong> disorders and administration site conditions</strong></p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>fatigue, asthenia.</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Investigations</strong></p></td></tr><tr><td style="vertical-align:top"><p>uncommon:</p></td><td style="vertical-align:top"><p>increases in blood urea, increases in serum creatinine, increases in liver enzymes, hyperkalaemia</p></td></tr><tr><td style="vertical-align:top"><p>rare:</p></td><td style="vertical-align:top"><p>increases in serum bilirubin, hyponatraemia.</p></td></tr></tbody></table><p>Safety data from clinical studies suggest that lisinopril is generally well tolerated in hypertensive paediatric patients, and that the safety profile in this age group is comparable to that seen in adults.</p><p><u>Reporting of suspected adverse reactions</u></p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Limited data are available for overdose in humans. Symptoms associated with overdosage of ACE inhibitors may include hypotension, circulatory shock, electrolyte disturbances, renal failure, hyperventilation, tachycardia, palpitations, bradycardia, dizziness, anxiety and cough.</p><p>The recommended treatment of overdose is intravenous infusion of normal saline solution. If hypotension occurs, the patient should be placed in the shock position. If available, treatment with angiotensin II infusion and/or intravenous catecholamines may also be considered. If ingestion is recent, take measures aimed at eliminating Omace (e.g. emesis, gastric lavage, administration of absorbents and sodium sulphate). Omace may be removed from the general circulation by haemodialysis (see section 4.4). Pacemaker therapy is indicated for therapy- resistant bradycardia. Vital signs, serum electrolytes and creatinine concentrations should be monitored frequently.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Angiotensin-converting enzyme inhibitors, ATC code: C09A A03.</p><p><u>Mechanism of Action</u></p><p>Omace is a peptidyl dipeptidase inhibitor. It inhibits the angiotensin-converting enzyme (ACE) that catalyses the conversion of angiotensin I to the vasoconstrictor peptide, angiotensin II. Angiotensin II also stimulates aldosterone secretion by the adrenal cortex. Inhibition of ACE results in decreased concentrations of angiotensin II which results in decreased vasopressor activity and reduced aldosterone secretion. The latter decrease may result in an increase in serum potassium concentration.</p><p>Whilst the mechanism through which lisinopril lowers blood pressure is believed to be primarily suppression of the renin-angiotensin-aldosterone system, lisinopril is antihypertensive even in patients with low renin hypertension. ACE is identical to kininase II, an enzyme that degrades bradykinin. Whether increased levels of bradykinin, a potent vasodilatory peptide, play a role in the therapeutic effects of lisinopril remains to be elucidated.</p><p>&nbsp;</p><p><u>Clinical efficacy and safety</u></p><p>The effect of Omace on mortality and morbidity in heart failure has been studied by comparing a high dose (32.5 mg or 35 mg once daily) with a low dose (2.5 mg or 5 mg once daily). In a study of 3164 patients, with a median follow-up period of 46 months for surviving patients, high dose Omace produced a 12% risk reduction in the combined endpoint of all-cause mortality and all- cause hospitalisation (p = 0.002) and an 8% risk reduction in all-cause mortality and cardiovascular hospitalisation (p = 0.036) compared with low dose.</p><p>Risk reductions for all-cause mortality (8%; p = 0.128) and cardiovascular mortality (10%; p = 0.073) were observed. In a post-hoc analysis, the number of hospitalisations for heart failure was reduced by 24% (p=0.002) in patients treated with high-dose Omace compared with low dose. Symptomatic benefits were similar in patients treated with high and low doses of Omace.</p><p>The results of the study showed that the overall adverse event profiles for patients treated with high or low dose Omace were similar in both nature and number. Predictable events resulting from ACE inhibition, such as hypotension or altered renal function, were manageable and rarely led to treatment withdrawal. Cough was less frequent in patients treated with high dose Omace compared with low dose.</p><p>In the GISSI-3 trial, which used a 2x2 factorial design to compare the effects of Omace and glyceryl trinitrate given alone or in combination for 6 weeks versus control in 19,394 patients who were administered the treatment within 24 hours of an acute myocardial infarction, Omace produced a statistically significant risk reduction in mortality of 11% versus control (2p=0.03). The risk reduction with glyceryl trinitrate was not significant but the combination of Omace and glyceryl trinitrate produced a significant risk reduction in mortality of 17% versus control (2p=0.02). In the sub-groups of elderly (age &gt; 70 years) and females, pre-defined as patients at high risk of mortality, significant benefit was observed for a combined endpoint of mortality and cardiac function. The combined endpoint for all patients, as well as the high-risk sub-groups at 6 months, also showed significant benefit for those treated with Omace or Omace plus glyceryl trinitrate for 6 weeks, indicating a prevention effect for Omace. As would be expected from any vasodilator treatment, increased incidences of hypotension and renal dysfunction were associated with Omace treatment but these were not associated with a proportional increase in mortality.</p><p>In a double-blind, randomised, multicentre trial which compared Omace with a calcium channel blocker in 335 hypertensive Type 2 diabetes mellitus subjects with incipient nephropathy characterised by microalbuminuria, Omace 10 mg to 20 mg administered once daily for 12 months, reduced systolic/diastolic blood pressure by 13/10 mmHg and urinary albumin excretion rate by 40%. When compared with the calcium channel blocker, which produced a similar reduction in blood pressure, those treated with Omace showed a significantly greater reduction in urinary albumin excretion rate, providing evidence that the ACE inhibitory action of Omace reduced microalbuminuria by a direct mechanism on renal tissues in addition to its blood pressure-lowering effect.</p><p>&nbsp;</p><p>Lisinopril treatment does not affect glycaemic control as shown by a lack of significant effect on levels of glycated haemoglobin (HbA1c).</p><p>&nbsp;</p><p><u>Paediatric population</u></p><p>In a clinical study involving 115 paediatric patients with hypertension, aged 6&ndash;16 years, patients who weighed less than 50 kg received either 0.625 mg, 2.5 mg or 20 mg of Omace once a day, and patients who weighed 50 kg or more received either 1.25 mg, 5 mg or 40 mg of Omace once a day. At the end of 2 weeks, Omace administered once daily lowered trough blood pressure in a dose-dependent manner with a consistent antihypertensive efficacy demonstrated at doses greater than 1.25 mg.</p><p>This effect was confirmed in a withdrawal phase, where the diastolic pressure rose by about 9 mm Hg more in patients randomised to placebo than it did in patients who were randomised to remain on the middle and high doses of Omace. The dose-dependent antihypertensive effect of Omace was consistent across several demographic subgroups: age, Tanner stage, gender, and race.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Lisinopril is an orally active non-sulphydryl-containing ACE inhibitor.</p><p><strong>Absorption</strong></p><p>Following oral administration of lisinopril, peak serum concentrations occur within about 7 hours, although there was a trend to a small delay in time taken to reach peak serum concentrations in acute myocardial infarction patients. Based on urinary recovery, the mean extent of absorption of lisinopril is approximately 25% with interpatient variability of 6-60% over the dose range studied (5-80 mg). The absolute bioavailability is reduced approximately 16% in patients with heart failure. Lisinopril absorption is not affected by the presence of food.</p><p><strong>Distribution</strong></p><p>Lisinopril does not appear to be bound to serum proteins other than to circulating angiotensin- converting enzyme (ACE). Studies in rats indicate that lisinopril crosses the blood-brain barrier poorly.</p><p><strong>Elimination</strong></p><p>Lisinopril does not undergo metabolism and is excreted entirely unchanged into the urine. On multiple dosing, lisinopril has an effective half-life of accumulation of 12.6 hours. The clearance of lisinopril in healthy subjects is approximately 50 ml/min. Declining serum concentrations exhibit a prolonged terminal phase, which does not contribute to drug accumulation. This terminal phase probably represents saturable binding to ACE and is not proportional to dose.</p><p><strong>Hepatic impairment</strong></p><p>Impairment of hepatic function in cirrhotic patients resulted in a decrease in lisinopril absorption (about 30% as determined by urinary recovery), but an increase in exposure (approximately 50%) compared to healthy subjects due to decreased clearance.</p><p><strong>Renal impairment</strong></p><p>Impaired renal function decreases elimination of lisinopril, which is excreted via the kidneys, but this decrease becomes clinically important only when the glomerular filtration rate is below 30 ml/min. In mild to moderate renal impairment (creatinine clearance 30-80 ml/min), mean AUC was increased by 13% only, while a 4.5- fold increase in mean AUC was observed in severe renal impairment (creatinine clearance 5-30 ml/min).</p><p>Lisinopril can be removed by dialysis. During 4 hours of haemodialysis, plasma lisinopril concentrations decreased on average by 60%, with a dialysis clearance between 40 and 55 ml/min.</p><p><strong>Heart failure</strong></p><p>Patients with heart failure have a greater exposure of lisinopril when compared to healthy subjects (an increase in AUC on average of 125%), but based on the urinary recovery of lisinopril, there is reduced absorption of approximately 16% compared to healthy subjects.</p><p><strong>Paediatric population</strong></p><p>The pharmacokinetic profile of lisinopril was studied in 29 paediatric hypertensive patients, aged between 6 and 16 years, with a GFR above 30 ml/min/1.73m2. After doses of 0.1 to 0.2 mg/kg, steady state peak plasma concentrations of lisinopril occurred within 6 hours, and the extent of absorption based on urinary recovery was about 28%. These values are similar to those obtained previously in adults.</p><p>AUC and Cmax values in children in this study were consistent with those observed in adults.</p><p><strong>Older people</strong></p><p>Older &nbsp;patients &nbsp;have &nbsp;higher &nbsp;blood &nbsp;levels &nbsp;and &nbsp;higher &nbsp;values &nbsp;for &nbsp;the &nbsp;area &nbsp;under &nbsp;the &nbsp;plasma concentration-time curve (increased approximately 60%) compared with younger subjects.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Preclinical data reveal no special hazard for humans based on conventional studies of general pharmacology, repeated dose toxicity, genotoxicity, and carcinogenic potential. Angiotensin- converting enzyme inhibitors, as a class, have been shown to induce adverse effects on the late foetal development, resulting in foetal death and congenital effects, in particular affecting the skull. Foetotoxicity, intrauterine growth retardation and patent ductus arteriosus have also been reported. These developmental anomalies are thought to be partly due to a direct action of ACE inhibitors on the foetal renin-angiotensin system and partly due to ischaemia resulting from maternal hypotension and decreases in foetal-placental blood flow and oxygen/nutrients delivery to the foetus.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Dibasic calcium phosphate</p><p>Colloidal silicon dioxide</p><p>Maize starch</p><p>Mannitol</p><p>Croscarmellose Sodium</p><p>Colour Iron oxide Red</p><p>Magnesium stearate</p><p>Purified water</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None stated.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 25&deg;C. Protect from light and moisture.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>PVDC/PE coated PVC blisters, backed up with aluminum foil</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements for storage.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                National Pharmaceutical Industries Co. (SAOG)
+P.O Box 120, Road No.15 Postal Code 124
+Rusayl, Sultanate of Oman
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                .
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

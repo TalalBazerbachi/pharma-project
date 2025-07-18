@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        25-5083-20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2019
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        DEXILANT 30 mg
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        DEXLANSOPRAZOLE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Prolonged-release capsule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        28
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        do not store above 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        72.15
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="TAKEDA GMBH" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            TAKEDA GMBH
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 359]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Cigalah Group
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            ACINO PHARMA AG
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        A02BC06
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                DEXILANT 30 mg delayed-release capsules, hard
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each capsule contains 30 mg of dexlansoprazole.
+Excipients with known effect:
+Each 30 mg delayed-release capsule contains 68 mg of sucrose.
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Delayed-release capsules, hard
+Each 30 mg capsule (size 3) is opaque with a blue cap and a grey body with “TAP” imprinted on the
+cap and “30” on the body.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>DEXILANT is indicated in adults and in adolescents aged 12 to 17 years for the following:<br />- Treatment of erosive reflux oesophagitis<br />- Maintenance of healed erosive reflux oesophagitis and maintenance of relief of heartburn<br />- Short-term treatment of heartburn and acid regurgitation associated with symptomatic nonerosive<br />gastro-oesophageal reflux disease (GORD)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Posology<br />- Treatment of erosive reflux oesophagitis<br />Adults and adolescents aged 12 to 17 years - The recommended dose is 60 mg once daily for<br />4 weeks. In patients not fully healed within this time, the treatment may be continued at the<br />same dose for another 4 weeks.<br />- Maintenance of healed erosive reflux oesophagitis and maintenance of relief of heartburn<br />Adults - The recommended dose is 30 mg once daily for up to 6 months in patients where<br />prolonged acid suppression is needed.<br />Adolescents aged 12 to 17 years - The recommended dose is 30 mg once daily. Current<br />evidence does not support a specific treatment period time. A decision should be taken by the<br />clinician on a case by case basis.<br />- Symptomatic non-erosive gastro-oesophageal reflux disease (GORD)<br />Adults and adolescents aged 12 to 17 years - The recommended dose is 30 mg once daily for up<br />to 4 weeks.<br />Special populations<br />Elderly<br />Due to reduced clearance of dexlansoprazole in the elderly an adjustment of dose may be necessary<br />based on individual requirements. A daily dose of 60 mg should not be exceeded in the elderly unless<br />there are compelling clinical indications (see section 5.2).<br />Renal impairment<br />No dosage adjustment is necessary for patients with renal impairment (see section 5.2).<br />Hepatic impairment<br />No dosage adjustment is necessary for patients with mild hepatic impairment. Patients with moderate<br />hepatic impairment should be kept under regular supervision and a maximum daily dose of 30 mg<br />should be considered. No studies have been conducted in patients with severe hepatic impairment (see<br />sections 4.4 and 5.2), the use of dexlansoprazole is not recommended for these patients.<br />Paediatric population<br />Adolescents aged 12 to 17 years<br />Treatment of erosive reflux oesophagitis<br />The posology of DEXILANT in adolescents aged 12 to 17 years is the same as in adults.<br />Maintenance of healed erosive reflux oesophagitis and maintenance of relief of heartburn<br />The dose of DEXILANT in adolescents aged 12 to 17 years is the same as in adults.<br />Symptomatic non-erosive gastro-oesophageal reflux disease (GORD)<br />The posology of DEXILANT in adolescents aged 12 to 17 years is the same as in adults.<br />Children under 12 years of age<br />The safety and efficacy of DEXILANT in children under 12 years of age have not been established.<br />No data are available.<br />Method of administration<br />Oral use.<br />Capsules should be swallowed whole with liquid. They can be taken with or without food (see section<br />5.2).<br />Capsules may also be opened and granules mixed with one tablespoon apple sauce for administration.<br />After preparing the mixture, the medicinal product should be administered immediately.<br />Granules should not be chewed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The possibility of malignant gastric tumour should be excluded when using DEXILANT because<br />dexlansoprazole can mask the symptoms and delay the diagnosis.<br />Co-administration of dexlansoprazole is not recommended with HIV protease inhibitors for which<br />absorption is dependent on acidic intragastric pH, such as atazanavir or nelfinavir, due to significant<br />reduction in their bioavailability (see section 4.5).<br />Dexlansoprazole should be used with caution in patients with moderate hepatic dysfunction.<br />Dexlansoprazole is not recommended for patients with severe hepatic impairment (see sections 4.2<br />and 5.2).<br />Decreased gastric acidity due to any means, including proton pump inhibitors (PPIs) such as<br />dexlansoprazole, increases gastric counts of bacteria normally present in the gastrointestinal tract.<br />Treatment with PPIs may lead to slightly increased risk of gastrointestinal infections such as<br />Salmonella, Campylobacter and Clostridium difficile.<br />Because of limited safety data for patients on treatment for longer than 1 year, regular review of the<br />treatment and a thorough risk/benefit assessment should regularly be performed in these patients.<br />Severe hypomagnesaemia has been reported in patients treated with PPIs like dexlansoprazole for at<br />least three months, in most cases for a year. Serious manifestations of hypomagnesaemia such as<br />fatigue, delirium, convulsions, dizziness and ventricular arrhythmia can occur but they may begin<br />insidiously and be overlooked. In most affected patients, hypomagnesaemia improved after<br />magnesium replacement and discontinuation of the PPI. For patients expected to be on prolonged<br />treatment or who take PPIs with digoxin or medicinal products that may cause hypomagnesaemia (e.g.<br />diuretics), health care professionals should consider measuring magnesium levels before starting PPI<br />treatment and periodically during treatment.<br />Influence on Vitamin B-12 Absorption<br />Dexlansoprazole, as all acid-blocking medicines, may reduce the absorption of vitamin B-12<br />(cyanocobalamin) due to hypo- or achlorhydria. This should be considered in patients with reduced<br />body stores or risk factors for reduced vitamin B-12 absorption on long-term therapy or if respective<br />clinical symptoms are observed.<br />Very rarely cases of colitis have been reported in patients taking lansoprazole. Similar effects could<br />be expected with dexlansoprazole. Therefore, in the case of severe and/or persistent diarrhoea,<br />discontinuation of therapy should be considered.<br />Proton pump inhibitors, especially if used in high doses and over long durations (&gt;1 year), may<br />modestly increase the risk of hip, wrist and spine fracture, predominantly in the elderly or in the<br />presence of other recognised risk factors. Observational studies suggest that proton pump inhibitors<br />may increase the overall risk of fracture by 10&ndash;40%. Some of this increase may be due to other risk<br />factors. Patients at risk of osteoporosis should receive care according to current clinical guidelines<br />and they should have an adequate intake of vitamin D and calcium.<br />When given together with PPIs, methotrexate levels have been reported to increase in some patients.<br />In high dose methotrexate administration a temporary withdrawal of dexlansoprazole may need to be<br />considered.<br />As DEXILANT contains sucrose, patients with rare hereditary problems of fructose intolerance,<br />glucose-galactose malabsorption or sucrase-isomaltase insufficiency should not take this medicinal<br />product.<br />Subacute cutaneous lupus erythematosus (SCLE)<br />Proton pump inhibitors are associated with very infrequent cases of SCLE. If lesions occur, especially<br />in sun-exposed areas of the skin, and if accompanied by arthralgia, the patient should seek medical<br />help promptly and the health care professional should consider stopping DEXILANT. SCLE after<br />previous treatment with a proton pump inhibitor may increase the risk of SCLE with other proton<br />pump inhibitors.<br />Interference with laboratory tests<br />Increased Chromogranin A (CgA) level may interfere with investigations for neuroendocrine tumours.<br />To avoid this interference, DEXILANT treatment should be stopped for at least 5 days before CgA<br />measurements (see section 5.1). If CgA and gastrin levels have not returned to reference range after<br />initial measurement, measurements should be repeated 14 days after cessation of proton pump<br />inhibitor treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Interaction studies have only been performed in adults.<br />Effects of other medicinal products on dexlansoprazole<br />CYP2C19 and CYP3A4 have been shown to be involved in the metabolism of dexlansoprazole.<br />Medicinal products which inhibit CYP2C19<br />Inhibitors of CYP2C19 (such as fluvoxamine) would likely increase the systemic exposure of<br />dexlansoprazole.<br />Medicinal products which induce CYP2C19 and CYP3A4<br />Enzyme inducers affecting CYP2C19 and CYP3A4 such as rifampicin, and St John&rsquo;s wort<br />(Hypericum perforatum) may reduce the plasma concentrations of dexlansoprazole.<br />Others<br />Sucralfate/Antacids<br />Sucralfate/Antacids may decrease the bioavailability of dexlansoprazole. Therefore dexlansoprazole<br />should be taken at least 1 hour after taking these drugs.<br />Effects of dexlansoprazole on other medicinal products<br />Medicinal products with pH dependent absorption<br />Dexlansoprazole may interfere with the absorption of medicinal products where gastric pH is critical<br />to bioavailability.<br />HIV protease inhibitors<br />Co-administration of dexlansoprazole is not recommended with HIV protease inhibitors for which<br />absorption is dependent on acidic intragastric pH, such as atazanavir or nelfinavir; due to significant<br />reduction in their bioavailability (see section 4.4).<br />Ketoconazole, itraconazole and erlotinib<br />The absorption of ketoconazole, itraconazole and erlotinib from the gastrointestinal tract is enhanced<br />by the presence of gastric acid. Administration of dexlansoprazole may result in sub-therapeutic<br />concentrations of ketoconazole, itraconazole and erlotinib, and the combination should be avoided.<br />Digoxin<br />Co-administration of dexlansoprazole and digoxin may lead to increased digoxin plasma levels. The<br />plasma levels of digoxin should therefore be monitored and the dose of digoxin adjusted if necessary<br />when initiating and ending dexlansoprazole treatment.<br />Medicinal products metabolised by P450 enzymes<br />In vitro studies have shown that DEXILANT is not likely to inhibit CYP isoforms 1A1, 1A2, 2A6,<br />2B6, 2C8, 2C9, 2D6, 2E1 or 3A4. As such, no clinically relevant interactions with medicinal products<br />metabolised by these CYP enzymes would be expected. Furthermore, in vivo studies showed that<br />DEXILANT did not have an impact on the pharmacokinetics of coadministered phenytoin (CYP2C9<br />substrate) or theophylline (CYP1A2 substrate). The subjects&rsquo; CYP1A2 genotypes in the drug-drug<br />interaction study with theophylline were not determined. Although in vitro studies demonstrated that<br />DEXILANT has the potential to inhibit CYP2C19, an in vivo drug-drug interaction study in mainly<br />CYP2C19 extensive and intermediate metabolisers has shown that DEXILANT does not affect the<br />pharmacokinetics of diazepam (CYP2C19 substrate).<br />Tacrolimus<br />Co-administration of dexlansoprazole may increase the plasma concentrations of tacrolimus (a<br />CYP3A and P-glycoprotein [P-gp] substrate), especially in transplant patients who are intermediate or<br />poor metabolisers of CYP2C19. Monitoring of tacrolimus plasma concentrations is advised when<br />concomitant treatment with dexlansoprazole is initiated or ended.<br />Warfarin<br />In a study, co-administration of DEXILANT and warfarin did not result in any significant differences<br />in the pharmacokinetics of warfarin or International Normalised Ratio (INR) compared to<br />administration of warfarin with placebo. However, there have been reports of increased INR and<br />prothrombin time in patients receiving PPIs and warfarin concomitantly. Patients treated with PPIs<br />and warfarin concomitantly may need to be monitored for increases in INR and prothrombin time,<br />especially when initiating or ending concomitant treatment.<br />Clopidogrel<br />A study has shown that concomitant administration of dexlansoprazole (60 mg once daily) and<br />clopidogrel 75 mg to healthy volunteers resulted in a reduction in the exposure to the active<br />metabolite of clopidogrel (approximately 9% decrease in AUC and 27% decrease in Cmax).<br />Co-administration of dexlansoprazole had no clinically meaningful effect on pharmacodynamics of<br />clopidogrel. No dose adjustment of clopidogrel is necessary when administered with an approved<br />dose of DEXILANT.<br />Methotrexate<br />Case reports, published population pharmacokinetic studies, and retrospective analyses suggest that<br />concomitant administration of PPIs and methotrexate (primarily at high dose; see methotrexate<br />prescribing information) may elevate and prolong serum levels of methotrexate and/or its metabolite<br />hydroxymethotrexate possibly leading to methotrexate toxicities. Therefore, in settings where highdose<br />methotrexate is used a temporary withdrawal of dexlansoprazole may need to be considered.<br />However, no formal drug interaction studies of high-dose methotrexate with PPIs have been<br />conducted.<br />Medicinal products transported by P-glycoprotein<br />Lansoprazole has been observed to inhibit the transport protein, P-gp in vitro. Similar effects could be<br />expected with dexlansoprazole. The clinical relevance of this is unknown.<br />Others<br />No clinically significant interactions of dexlansoprazole with nonsteroidal anti-inflammatory drugs<br />have been demonstrated, although no formal interactions studies have been performed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy<br />There are no or limited amount of data from the use of dexlansoprazole in pregnant women. Animal<br />studies do not indicate direct or indirect harmful effects with respect to reproductive toxicity (see<br />section 5.3). As a precautionary measure, it is preferable to avoid the use of DEXILANT during<br />pregnancy.<br />Breastfeeding<br />It is not known whether dexlansoprazole is excreted in human breast milk. Animal studies have shown<br />excretion of lansoprazole in milk.<br />A risk to the newborns/infants cannot be excluded. A decision must be made whether to discontinue<br />breast-feeding or to discontinue/abstain therapy taking into account the benefit of breast-feeding for<br />the child and the benefit of therapy for the woman.<br />Fertility<br />There was no evidence of impaired fertility following the administration of lansoprazole in animal<br />studies (see section 5.3). Similar results could be expected with dexlansoprazole.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adverse drug reactions such as dizziness, vertigo, visual disturbances and somnolence may occur (see<br />section 4.8). Under these conditions the ability to react may be decreased.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Summary of the safety profile<br />Adults<br />DEXILANT at doses of 30, 60, or 90 mg has been evaluated for safety in clinical studies in patients<br />treated for up to 1 year. In these clinical studies, adverse reactions associated with treatment with<br />DEXILANT were mostly mild or moderate, with an overall incidence similar to placebo and<br />lansoprazole. The most commonly reported adverse reactions were diarrhoea, abdominal pain,<br />headache, nausea, abdominal discomfort, flatulence and constipation. The incidence of these adverse<br />reactions was not affected by gender, age, or race.<br />Tabulated list of adverse reactions<br />Adverse reactions reported for DEXILANT (30 mg, 60 mg or 90 mg) in clinical studies and postmarketing<br />experience are listed below as MedDRA preferred term by system organ class and absolute<br />frequency. Frequencies are defined as: very common (&ge; 1/10); common (&ge; 1/100 to &lt; 1/10);<br />uncommon (&ge; 1/1,000 to &lt; 1/100); rare (&ge; 1/10,000 to &lt; 1/1,000); very rare (&lt; 1/10,000); not known<br />(cannot be estimated from the available data). Within each frequency grouping, adverse reactions are<br />presented in order of decreasing seriousness.</p><p>Description of selected adverse reactions<br />Diarrhoea and abdominal pain<br />In the Phase 3 clinical studies, the most commonly reported adverse reaction was diarrhoea (excluding<br />infective diarrhoea), the majority of which were non serious. Overall, few subjects (2.4%)<br />prematurely discontinued due to an adverse reaction while receiving dexlansoprazole therapy. The<br />most common (&ge; 0.5%) adverse reactions leading to premature discontinuation were diarrhoea,<br />gastrointestinal and abdominal pains. Initial onset of diarrhoea and abdominal pain was independent<br />of the duration of exposure, and the majority of these events were mild to moderate in severity. There<br />were no apparent dose-related trends observed across dexlansoprazole doses for the incidence of these<br />events.<br />Hypersensitivity<br />There have been post-marketing cases reporting serious hypersensitivity reactions. Hypersensitivity<br />reactions were more frequently reported in females (74%). The majority of the serious cases were<br />managed with steroids and/or antihistamines and withdrawal of the medicinal product. Severe<br />reactions of Stevens-Johnson syndrome (SJS) and toxic epidermal necrolysis (TEN) were reported in<br />few patients.<br />Haemolytic anaemia<br />There have been few serious post-marketing reports of haemolytic anaemia after approximately four<br />to seven months on dexlansoprazole 60 mg therapy.<br />Paediatric population<br />The safety profile for adolescents aged 12 to 17 years is similar to adults. In clinical studies of 166<br />adolescent patients, the only adverse reaction that occurred in more than one patient was abdominal<br />pain. Additional adverse reactions, which occurred in one patient each, included diarrhoea, urticaria,<br />dry mouth and headache.<br />Reporting of suspected adverse reactions<br />Reporting suspected adverse reactions after authorisation of the medicinal product is important. It<br />allows continued monitoring of the&nbsp;benefit/risk balance of the medicinal product. Healthcare<br />professionals are asked to report any suspected adverse reactions via the national pharmacovigilance<br />and drug safety centre (NPC)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The effects of overdose of dexlansoprazole in humans are not known (although the acute toxicity is<br />likely to be low) and, consequently, instruction for treatment cannot be given.<br />There have been no reports of significant overdose of DEXILANT. Multiple doses of DEXILANT<br />120 mg and a single dose of DEXILANT 300 mg did not result in death or other severe adverse<br />events. Serious adverse reactions of hypertension have been reported in association with twice daily<br />doses of DEXILANT 60 mg. Non-serious adverse reactions observed with twice daily doses of<br />DEXILANT 60 mg include hot flushes, contusion, oropharyngeal pain, and weight loss.<br />In the case of suspected overdose the patient should be monitored. Dexlansoprazole is not<br />significantly eliminated by haemodialysis. If necessary, gastric emptying, charcoal and symptomatic<br />therapy is recommended.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Proton pump inhibitors, ATC code: A02BC06<br />Mechanism of action<br />Dexlansoprazole is the R-enantiomer of lansoprazole. It is a gastric PPI. It inhibits the final stage of<br />gastric acid formation by inhibiting the activity of H+/K+ ATPase of the parietal cells in the stomach.<br />The inhibition is dose-dependent and reversible, and the effect applies to both basal and stimulated<br />secretion of gastric acid. Dexlansoprazole is concentrated in the parietal cells and becomes active in<br />their acidic environment, whereupon it reacts with the sulphydryl group of H+/K+ATPase causing<br />inhibition of the enzyme activity.<br />Pharmacodynamic effects<br />Antisecretory activity<br />The antisecretory activity of DEXILANT has been studied in healthy subjects taking dexlansoprazole<br />60 mg or lansoprazole 30 mg once daily for five days. The average intragastric pH was 4.55 for<br />DEXILANT and 4.13 for lansoprazole. The average percentage of time throughout the day in which<br />the intragastric pH is maintained above 4 was 71% (17 hours) with DEXILANT and 60% (14 hours)<br />with lansoprazole.<br />Serum gastrin effect<br />The effect of DEXILANT on serum gastrin concentrations was evaluated in patients in clinical trials<br />up to 12 months. The mean fasting gastrin concentrations increased from baseline during treatment<br />with DEXILANT 30 mg and 60 mg doses. In patients treated for more than 6 months, mean serum<br />gastrin levels increased during approximately the first 3 months of treatment and were stable for the<br />remainder of treatment. Mean serum gastrin levels returned to pre-treatment levels within one month<br />of discontinuation of treatment.<br />Please contact the relevant competent authority.<br />During treatment with antisecretory medicinal products, serum gastrin increases in response to the<br />decreased acid secretion. Also CgA increases due to decreased gastric acidity. The increased CgA<br />level may interfere with investigations for neuroendocrine tumours.<br />Available published evidence suggests that proton pump inhibitors should be discontinued between 5<br />days and 2 weeks prior to CgA measurements. This is to allow CgA levels that might be spuriously<br />elevated following PPI treatment to return to reference range.<br />Enterochromaffin-Like Cell (ECL) Effects<br />There were no reports of ECL cell hyperplasia in gastric biopsy specimens obtained from patients<br />treated with DEXILANT 30 mg, 60 mg or 90 mg for up to 12 months.<br />Effect on Cardiac Repolarisation<br />A study was conducted to assess the potential of DEXILANT to prolong the QT/QTc interval in<br />healthy adult subjects. DEXILANT doses of 90 mg or 300 mg did not delay cardiac repolarisation<br />compared to placebo. The positive control (moxifloxacin) produced statistically significantly greater<br />mean maximum and time-averaged QT/QTc intervals compared to placebo.<br />Clinical efficacy and safety<br />Treatment of erosive reflux oesophagitis<br />Two multi-center, double-blind, active-controlled, randomised, 8-week studies were conducted in<br />patients with endoscopically confirmed erosive reflux oesophagitis. Severity of the disease was<br />classified based on the Los Angeles Classification Grading System (Grades A-D). Patients were<br />randomised to one of the following three treatment groups: DEXILANT 60 mg daily, DEXILANT<br />90 mg daily or lansoprazole 30 mg daily. A total of 4092 patients were enrolled and ranged in age<br />from 18 to 90 years (median age 48 years) with 54% male. Based on the Los Angeles Classification,<br />71% of patients had Grades A and B erosive reflux oesophagitis (mild) and 29% of patients had<br />Grades C and D erosive reflux oesophagitis (moderate to severe) before treatment.<br />By the life-table method of analysis DEXILANT 60 mg healed 92.3% to 93.1% of patients versus<br />86.1% to 91.5% for lansoprazole 30 mg after 8 weeks of treatment (primary). Non-inferiority was<br />demonstrated in both studies. Statistical superiority was not established using log-rank tests.<br />After 4 weeks of treatment (secondary), the healing rates by the life-table method were 77.0% to<br />80.1% versus 76.5% to 77.0% for lansoprazole 30 mg.<br />The life-table healing rates at Week 8 for patients with moderate to severe erosive reflux oesophagitis<br />(secondary) were 88.9% and 74.5% for DEXILANT 60 mg and lansoprazole 30 mg, respectively, in<br />the first study. The difference was statistically significant (p=0.011). In the second study, the Week 8<br />life-table healing rates were 87.6% and 87.7% for DEXILANT 60 mg and lansoprazole 30 mg,<br />respectively, and were not statistically significantly different.<br />DEXILANT 90 mg was studied and did not provide additional clinical benefit over DEXILANT<br />60 mg.<br />Maintenance of healed erosive reflux oesophagitis<br />A multi-center, double-blind, placebo-controlled, randomised study was conducted in patients who<br />successfully completed an erosive reflux oesophagitis study and showed endoscopically confirmed<br />healed erosive reflux oesophagitis. Maintenance of healing and symptom relief over a six-month<br />period were evaluated with DEXILANT 30 mg or 60 mg once daily compared to placebo. A total of<br />445 patients were enrolled and ranged in age from 18 to 85 years (median age 49 years), with 52%<br />female.<br />By the life-table method, DEXILANT 30 mg and 60 mg demonstrated statistically significantly higher<br />rates of maintenance of healed erosive reflux oesophagitis (74.9% and 82.5%, respectively) than<br />placebo (27.2%) at Month 6 (p&lt;0.00001).<br />For patients with more severe grades of erosive reflux oesophagitis (Grades C or D) before healing,<br />DEXILANT 30 mg and 60 mg also achieved statistically significantly higher 6-month maintenance<br />rates than placebo by the life-table method.<br />DEXILANT 30 mg and 60 mg achieved statistically significantly (p&lt;0.00001) greater percentages of<br />heartburn relief during the study treatment period. The median percentages of 24-hour heartburn-free<br />days were 96.1%, 90.9% and 28.6% for DEXILANT 30 mg, 60 mg and placebo, respectively. The<br />median percentages of nights without heartburn were 98.9%, 96.2% and 71.7% for DEXILANT<br />30 mg, 60 mg and placebo, respectively.<br />In a second study (N=451) of DEXILANT 60 mg and 90 mg versus placebo, DEXILANT 60 mg<br />showed similar results to the first study in the maintenance of healed erosive reflux oesophagitis and<br />heartburn relief. DEXILANT 90 mg did not provide additional clinical benefit over DEXILANT<br />60 mg.<br />Symptomatic non-erosive GORD<br />A multi-center, double-blind, placebo-controlled, randomised, 4-week study was conducted in patients<br />with a diagnosis of symptomatic GORD made primarily by presentation of symptoms. These patients<br />who identified heartburn as their primary symptom, had a history of heartburn for 6 months or longer,<br />had heartburn on at least 4 of 7 days immediately prior to randomisation and had no esophageal<br />erosions as confirmed by endoscopy. However, patients with symptoms which were not acid-related<br />may not have been excluded using these inclusion criteria. Patients were randomised to one of the<br />following treatment groups: DEXILANT 30 mg daily, 60 mg daily, or placebo. A total of 947 patients<br />were enrolled and ranged in age from 18 to 86 years (median age 48 years) with 71% female.<br />DEXILANT 30 mg provided statistically significantly greater percent of days with heartburn-free<br />24-hour periods and percent of nights without heartburn (respectively 54.9% and 80.8%) over placebo<br />(respectively 18.5% and 51.7%) as assessed by daily diary over 4 weeks. A higher percentage of<br />patients on DEXILANT 30 mg had heartburn-free 24-hour periods compared to placebo through<br />4 weeks of treatment. DEXILANT 60 mg was studied and provided no additional clinical benefit over<br />DEXILANT 30 mg.<br />A second multi-center, double blind, placebo-controlled, randomised, 4-week study was conducted in<br />patients with a history of nocturnal heartburn and GORD associated sleep disturbances on at least 3 of<br />7 nights immediately prior to randomisation. Patients were randomised to receive DEXILANT 30 mg<br />or placebo daily. A total of 305 patients were enrolled and ranged in age from 18 to 66 years (median<br />age 45 years) with 63.9% female. DEXILANT 30 mg provided statistically significantly greater<br />percent of nights without heartburn (73.1%) over placebo (35.7%) as assessed by daily diary over<br />4 weeks.<br />A third multi-center, single blind study enrolled 178 patients with a history of symptomatic GORD.<br />Patients whose symptoms were well-controlled during a run-in period while taking a PPI other than<br />DEXILANT twice a day subsequently received blinded DEXILANT 30 mg (morning) and placebo<br />(evening) for 6 weeks. Well-controlled was defined as having a weekly average of &le;1 episode of<br />heartburn during the last 4 weeks of both the 6 week run-in and treatment periods. A total of<br />142 patients were included in the analysis. Ages ranged from 22 to 90 years (median age 53 years)<br />with 56% female. After switching from twice daily PPI therapy to once daily DEXILANT 30 mg,<br />88% of patients&rsquo; heartburn remained well-controlled.<br />Paediatric population<br />Treatment of erosive reflux oesophagitis, maintenance of healed erosive reflux oesophagitis and relief<br />of heartburn<br />In a multi-center, 24-week study, 62 adolescents with a documented history of GORD for at least 3<br />months and endoscopically-proven erosive reflux oesophagitis were treated with DEXILANT 60 mg<br />once daily, for 8 weeks to evaluate safety and effectiveness. Patients ranged in age from 12 to 17<br />years (median age 15 years) with 61% being male. Based on the Los Angeles Classification Grading<br />Scale, 96.8% of the erosive reflux oesophagitis patients had mild erosive reflux oesophagitis (Grades<br />A and B), and 3.2% of patients had moderate to severe erosive reflux oesophagitis (Grades C and D)<br />before treatment. The erosive reflux oesophagitis healing rate in adolescents was 87.9%, which is<br />similar to adults, for up to 8 weeks of treatment.<br />After the initial 8 weeks of treatment, patients with endoscopically confirmed healed erosive reflux<br />oesophagitis were randomised to receive treatment with DEXILANT 30 mg or placebo, once daily for<br />an additional 16 weeks. Eighty-two percent of patients treated with 30 mg of DEXILANT remained<br />healed over the four-month treatment period as confirmed by endoscopy versus 58% for placebo.<br />During the 16-week maintenance period, the median percentage of 24-hour heartburn-free periods was<br />86.6% for those receiving DEXILANT 30 mg compared to 68.1% for those receiving placebo.<br />The results for maintenance of healing and relief of heartburn were similar to adults.<br />Symptomatic non-erosive GORD<br />In an uncontrolled, open-label, multi-center study, 104 adolescents with symptomatic non-erosive<br />GORD were treated with DEXILANT 30 mg once daily, for 4 weeks to evaluate safety and<br />effectiveness. Patients had a documented history of GORD symptoms for at least 3 months prior to<br />screening, reported heartburn on at least three out of seven days during screening, and had no<br />oesophageal erosions as confirmed by endoscopy. Patients ranged in age from 12 to 17 years (median<br />age 15 years) with 70% being female. During the 4-week treatment period, the median percentage of<br />24-hour heartburn-free periods was 47.3% which was similar to adults.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The formulation of DEXILANT utilising dual delayed release technology results in a dexlansoprazole<br />plasma concentration-time profile with two distinct peaks; the first peak occurs 1 to 2 hours after<br />administration, followed by a second peak within 4 to 5 hours.<br />Absorption<br />After oral administration of DEXILANT 30 mg or 60 mg to healthy subjects, mean Cmax and AUC<br />values of dexlansoprazole increased approximately dose proportionally. Peak plasma levels occur<br />within 4 to 6 hours.<br />Distribution<br />Plasma protein binding of dexlansoprazole ranged from 96.1% to 98.8% in healthy subjects and was<br />independent of concentration from 0.01 to 20 mcg per mL. The apparent volume of distribution after<br />multiple doses in symptomatic GORD patients was 40.3 L.<br />Biotransformation<br />Dexlansoprazole is extensively metabolised in the liver by oxidation, reduction, and subsequent<br />formation of sulfate, glucuronide and glutathione conjugates to inactive metabolites. Oxidative<br />metabolites are formed by the cytochrome P450 (CYP) enzyme system including hydroxylation<br />mainly by CYP2C19, and oxidation to the sulfone by CYP3A4. CYP2C19 is a polymorphic liver<br />enzyme which exhibits three phenotypes in the metabolism of CYP2C19 substrates; extensive<br />metabolisers (*1/*1), intermediate metabolisers (*1/mutant) and poor metabolisers (mutant/mutant).<br />Systemic exposure of dexlansoprazole is generally higher in intermediate and poor metabolisers.<br />Dexlansoprazole is the major circulating component in plasma, regardless of CYP2C19 metaboliser<br />status. In CYP2C19 intermediate and extensive metabolisers, the major plasma metabolites are<br />5-hydroxy dexlansoprazole and its glucuronide conjugate, while in CYP2C19 poor metabolisers<br />dexlansoprazole sulfone is the major plasma metabolite.<br />Elimination<br />Following the administration of DEXILANT, no unchanged dexlansoprazole is excreted in urine.<br />Following the administration of [14C] dexlansoprazole to healthy male subjects, approximately 50.7%<br />of the administered radioactivity was excreted in urine and 47.6% in the feces. Apparent clearance in<br />healthy subjects was 11.4 to 11.6 L/h, respectively, after 5-days of 30 or 60 mg once daily<br />administration.<br />Linearity/non-linearity<br />Following a single and multiple daily dexlansoprazole 30 to 120 mg doses to healthy subjects, mean<br />dexlansoprazole Cmax and AUC values increased approximately dose proportionally over the entire<br />dose range. The pharmacokinetics of dexlansoprazole was both dose- and time-independent, with an<br />estimated terminal elimination half-life of approximately 1 to 2 hours. Therefore, little or no active<br />substance accumulation was observed for dexlansoprazole after once daily doses of dexlansoprazole,<br />as evidenced by similar Cmax and AUC values after a single and multiple once-daily doses at steadystate.<br />Effect of food<br />DEXILANT can be taken without regard to food or the timing of food. In food-effect studies in<br />healthy subjects receiving DEXILANT, increases in Cmax ranged from 12% to 55% and increases in<br />AUC ranged from 9% to 37% under various fed conditions compared to fasting. However, no relevant<br />differences with regard to intragastric pH were observed. An additional study showed that<br />administration of 60 mg DEXILANT prior to consumption of breakfast, lunch, dinner or an evening<br />snack did not have an effect on dexlansoprazole exposure, or a clinically relevant effect on 24-hour<br />intragastric pH control.<br />Special patient populations<br />Elderly<br />In a study of male and female healthy subjects who received a single oral dose of DEXILANT 60 mg,<br />the terminal elimination half-life of dexlansoprazole was statistically significantly longer in elderly<br />subjects compared to younger subjects (2.23 and 1.5 hours, respectively). In addition, dexlansoprazole<br />exhibited higher systemic exposure (AUC) in elderly subjects (34.5% higher) than younger subjects.<br />These differences were not clinically relevant. A daily dose of 60 mg should not be exceeded in the<br />elderly unless there are compelling clinical indications.<br />Renal impairment<br />Dexlansoprazole is extensively metabolised in the liver to inactive metabolites, and no parent active<br />substance is recovered in the urine following an oral dose of dexlansoprazole. Therefore, the<br />pharmacokinetics of dexlansoprazole are not expected to be altered in patients with renal impairment,<br />and no studies were conducted in subjects with renal impairment (see section 4.4).<br />Hepatic impairment<br />In a study of patients with moderately impaired hepatic function who received a single oral dose of<br />DEXILANT 60 mg, plasma exposure (AUC) of bound and unbound dexlansoprazole in the hepatic<br />impairment group was approximately 2 times greater compared to subjects with normal hepatic<br />function. This difference in exposure was not due to a difference in protein binding between the two<br />liver function groups. No adjustment for DEXILANT is necessary for patients with mild hepatic<br />impairment. DEXILANT 30 mg should be considered for patients with moderate hepatic impairment.<br />No studies have been conducted in patients with severe hepatic impairment, the use of<br />dexlansoprazole is not recommended for these patients (see section 4.4).<br />Paediatric population<br />The pharmacokinetics of dexlansoprazole were studied in 36 patients with symptomatic GORD aged<br />12 to 17 years in a multi-center study. Patients were randomised to receive DEXILANT 30 mg or 60<br />mg once daily for 7 days. In adolescents, dexlansoprazole mean Cmax was 81% to 105% of the adult<br />mean Cmax value, mean AUC was 78% to 88% of the adult mean AUC value, and mean CL/F was<br />112% to 132% of the adult mean CL/F value. Overall, dexlansoprazole pharmacokinetics in patients<br />aged 12 to 17 years were similar to those observed in healthy adults.<br />Gender<br />In a study of male and female healthy subjects who received a single oral dose of DEXILANT 60 mg,<br />females had higher (42.8%) systemic exposure (AUC) than males. No dosage adjustment is necessary<br />in patients based on gender.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-clinical data reveal no special hazard for humans based on conventional studies of safety<br />pharmacology, repeated dose toxicity, genotoxicity, toxicity to reproduction and development.<br />Lansoprazole is a racemic mixture of R- and S-enantiomers. Following administration of lansoprazole<br />in humans and animals, the major component circulating in plasma is dexlansoprazole, the Renantiomer<br />of lansoprazole. Therefore, the carcinogenic potential of dexlansoprazole was assessed<br />using existing lansoprazole studies.<br />In rat carcinogenicity studies, lansoprazole produced dose-related gastric ECL cell hyperplasia and<br />ECL cell carcinoids associated with hypergastrinaemia due to inhibition of acid secretion. Intestinal<br />metaplasia was also observed, as were Leydig cell hyperplasia and benign Leydig cell tumours in the<br />testes. After 18 months of treatment retinal atrophy was observed. This was not observed in monkeys,<br />dogs, or mice.<br />In mouse carcinogenicity studies dose-related gastric ECL cell hyperplasia developed as well as liver<br />tumours and adenoma of rete testis.<br />The clinical relevance of these findings is unknown.<br />Lansoprazole was positive in the Ames test and the in vitro human lymphocyte chromosomal<br />aberration assay. Lansoprazole was not genotoxic in the ex vivo rat hepatocyte unscheduled DNA<br />synthesis (UDS) test, the in vivo mouse micronucleus test, or the rat bone marrow cell chromosomal<br />aberration test.<br />Dexlansoprazole was positive in the Ames test and in the in vitro chromosome aberration test using<br />Chinese hamster lung cells. Dexlansoprazole was negative in the in vivo mouse micronucleus test.<br />A reproduction study conducted in rabbits at oral dexlansoprazole doses up to approximately 9 times<br />the maximum recommended human dexlansoprazole dose (60 mg per day), based on body surface<br />area (BSA), revealed no evidence of harm to the fetus due to dexlansoprazole. In addition,<br />reproduction studies performed in pregnant rats with oral lansoprazole at doses up to 40 times the<br />recommended human lansoprazole dose, based on BSA, and in pregnant rabbits at oral lansoprazole<br />doses up to 16 times the recommended human lansoprazole dose, based on BSA, revealed no evidence<br />of impaired fertility or harm to the fetus due to lansoprazole.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Capsule content<br />Silica, colloidal anhydrous<br />Hydroxypropylcellulose<br />Hypromellose<br />Low-substituted hydroxypropyl cellulose<br />Magnesium carbonate, heavy<br />Methacrylic acid-ethyl acrylate copolymer (1:1) dispersion 30 per cent (Methacrylic acid units, Ethyl<br />acrylate units, Sodium laurilsulfate, Polysorbate 80)<br />Methacrylic acid-methyl methacrylate copolymer (1:1)<br />Methacrylic acid-methyl methacrylate copolymer (1:2)<br />Macrogol 8000<br />Polysorbate 80<br />Sucrose<br />Sugar spheres (Sucrose, Corn starch)<br />Talc<br />Titanium dioxide (E171)<br />Triethyl citrate<br />Capsule shell 30 mg<br />Carrageenan (E407)<br />Titanium dioxide (E171)<br />Hypromellose<br />Potassium chloride<br />Water, purified<br />Indigotine (E132)<br />Iron oxide, black (E172)</p><p>Printing ink<br />Iron oxide, red (E172)<br />Iron oxide, yellow (E172)<br />Indigotine (E132)<br />Carnauba wax<br />17<br />Shellac<br />Glycerol mono-oleate</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>NA</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 Years
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above 30&deg;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>DEXILANT 30 mg: PVC/PE/polychlorotrifluoroethylene (PCTFE) - aluminium blister packs<br />containing 14, 28, 56 or 98 capsules.<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Acino Pharma AG,
+Birsweg 2, 4253 Liesberg, Switzerland
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                June 2016
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        268-24-08
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2008
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        MABTHERA 10MG-1ML CONC. FOR I.V INFUSION
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        RITUXIMAB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Concentrate and diluent for solution for infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        4795.95
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Roche Diagnostics GmbH " />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Roche Diagnostics GmbH 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 718]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ARAC HEALTHCARE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            ROCHE
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L01XC02
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                MabThera®
+Rituximab
+Black Box Warning
+WARNING: FATAL INFUSION REACTIONS, SEVERE MUCOCUTANEOUS REACTIONS,
+HEPATITIS B VIRUS REACTIVATION and PROGRESSIVE MUL TIFOCAL
+
+LEUKOENCEPHALOPATHY
+
+- Infusion Reactions : Rituxan administration can result in serious, including fatal
+infusion reactions. Deaths within 24 hours of Rituxan infusion have occurred.
+Approximately 80% of fatal infusion reactions occurred in association with the first
+infusion. Monitor patients closely. Discontinue Rituxan infusion for severe
+reactions and provide medical treatment for Grade 3 or 4 infusion reactions.
+- Severe Mucocutaneous Reactions : Severe, including fatal, mucocutaneous
+reactions can occur in patients receiving Rituxan.
+- Hepatitis B Virus (HBV) Reactivation: HBV reactivation can occur in patients
+treated with Rituxan, in some cases resulting in fulminant hepatitis, hepatic failure,
+and death. Screen all patients for HBV infection before treatment initiation, and
+monitor patients during and after treatment with Rituxan . Discontinue Rituxan and
+concomitant medications in the event of HBV reactivation.
+- Progressive Multifocal Leukoencephalopathy (PML), including fatal PML, can
+occur in patients receiving Rituxan.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Active substance: rituximab
+Excipients: sodium citrate, polysorbate 80 (produced from genetically modified maize),
+sodium chloride, water for injection.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                1 rubber-stoppered vial with 10 ml concentrate for preparation of an infusion solution
+contains 100 mg rituximab.
+1 rubber-stoppered vial with 50 ml concentrate for preparation of an infusion solution
+contains 500 mg rituximab.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-Hodgkin&rsquo;s lymphoma<br />Monotherapy in patients with CD20-positive follicular non-Hodgkin&rsquo;s lymphoma (stage<br />III&ndash;IV) who have relapsed after, or failed to respond to, chemotherapy.</p><p>Treatment of previously untreated patients with CD20-positive follicular non-Hodgkin&rsquo;s<br />lymphoma (stage III&ndash;IV) with high tumour burden in combination with CVP or CHOP.<br />Responders may be administered maintenance therapy with rituximab monotherapy for 2<br />years.</p><p>Maintenance therapy of patients with relapsed or refractory CD20-positive follicular non-<br />Hodgkin&rsquo;s lymphoma (stage III&ndash;IV) who have responded to induction therapy with CHOP</p><p>with or without rituximab.<br />Treatment of patients with CD20-positive diffuse large B-cell non-Hodgkin&rsquo;s lymphoma<br />(DLBCL) in combination with standard CHOP (8 cycles of cyclophosphamide,<br />doxorubicin, vincristine and prednisone).<br />Use in combination with fludarabine and cyclophosphamide (R-FC) for patients requiring<br />treatment for chronic lymphocytic leukemia (CLL). Patients previously treated with<br />fludarabine should have responded for a period of at least 6 months.</p><p>Rheumatoid arthritis<br />MabThera in combination with methotrexate (MTX) is indicated for the treatment of adult<br />patients with moderately severe to severe active rheumatoid arthritis after failure of one or<br />more tumour necrosis factor (TNF) inhibitor therapies.<br />ANCA-associated vasculitis (AAV)<br />MabThera is indicated in combination with corticosteroids for the treatment of patients<br />with severe active ANCA-associated vasculitis (granulomatosis with polyangiitis [also<br />known as Wegener&rsquo;s granulomatosis] and microscopic polyangiitis).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>MabThera infusions should be administered in a medical environment in which the<br />resources for effective resuscitation can be immediately deployed. The infusions should be<br />administered under the direct supervision of a physician experienced in the respective<br />specialty. MabThera can be administered on an ambulant basis. Patients who develop<br />respiratory symptoms or hypotension should be monitored for at least 24 hours.<br />First infusion: The recommended initial infusion rate is 50 mg/h; after the first 60 minutes<br />the rate can be escalated in 50 mg/h increments every 30 minutes to a maximum of<br />400 mg/h.</p><p>Subsequent infusions: Subsequent infusions of MabThera can be started at a rate of<br />100 mg/h and increased by 100 mg/h increments every 30 minutes to a maximum of<br />400 mg/h.<br />Patients should be closely monitored for the onset of cytokine release syndrome (see<br />Warnings and precautions). In patients who develop evidence of severe adverse drug<br />reactions (ADRs), especially severe dyspnea, bronchospasm or hypoxia, the infusion<br />should be interrupted immediately. Patients with follicular non-Hodgkin&rsquo;s lymphoma,<br />DLBCL or CLL should also be evaluated for evidence of tumour lysis syndrome. Patients<br />with pre-existing respiratory failure or pulmonary tumour infiltration must undergo a chest<br />X-ray. In all patients the infusion should not be restarted until all clinical signs and<br />symptoms have fully resolved and laboratory values have returned to normal, at which<br />point the infusion can be resumed at up to half the previous rate. If the same severe adverse<br />drug reactions recur, consideration should be given to stopping the treatment.</p><p>Non-Hodgkin&rsquo;s lymphoma (NHL)<br />Glucocorticoid premedication is not generally required because MabThera is combined in<br />this context with glucocorticoid-containing chemotherapy such as CHOP or CVP.<br />Reducing the dose of MabThera is not recommended (except in CLL).<br />Follicular non-Hodgkin&rsquo;s lymphoma</p><p>Premedication consisting of an analgesic/antipyretic (e.g. paracetamol) and an anti-<br />histaminic drug (e.g. diphenhydramine) should always be administered before each</p><p>infusion of MabThera/Rituxan (30 to 60 minutes before the start of the infusion).<br />Premedication with glucocorticoids should also be considered, particularly if<br />MabThera/Rituxan is not given in combination with steroid-containing chemotherapy.<br />Monotherapy: The recommended dosage is 375 mg/m2</p><p>body surface area weekly for</p><p>4 weeks as an intravenous infusion.<br />Combination therapy: The recommended dosage of MabThera in combination with CVP<br />or CHOP chemotherapy is 375 mg/m2</p><p>body surface area once per cycle for 8 treatment<br />cycles. The dose of MabThera is given on day 1 of each chemotherapy cycle after oral<br />administration of the glucocorticoid component of the chemotherapy.<br />Maintenance therapy<br />In untreated patients MabThera is administered every 2 months (375 mg/m2</p><p>body surface</p><p>area).<br />In the treatment of recurrence MabThera is administered every 3 months (375 mg/m2<br />body</p><p>surface area).<br />The maintenance dose should be given until disease progression or for a maximum<br />duration of two years.</p><p>Diffuse large B-cell non-Hodgkin&rsquo;s lymphoma</p><p>Premedication consisting of an analgesic/antipyretic (e.g. paracetamol) and an anti-<br />histaminic drug (e.g. diphenhydramine) should always be administered before each</p><p>infusion of MabThera/Rituxan (30 to 60 minutes before the start of the infusion).<br />Premedication with glucocorticoids should also be considered, particularly if<br />MabThera/Rituxan is not given in combination with steroid-containing chemotherapy.<br />MabThera should be used in combination with CHOP chemotherapy. The recommended<br />dosage of MabThera is 375 mg/m2</p><p>body surface area once every 3 weeks for 8 treatment<br />cycles. The dose of MabThera is administered on day 1 of each chemotherapy cycle after<br />i.v. administration of the glucocorticoid component of the CHOP chemotherapy.<br />Chronic lymphocytic leukemia (CLL)<br />It is recommended that 48 hours before the start of treatment prophylaxis with adequate<br />fluid intake and administration of urostatic agents be initiated in order to reduce the risk of<br />tumour lysis syndrome.<br />In addition, consideration should be given to premedication with glucocorticoids shortly<br />before the start of the infusion with MabThera in order to reduce the frequency and<br />severity of acute infusion reactions and/or of cytokine release syndrome.<br />The recommended dose of MabThera in previously untreated or relapsed/refractory<br />patients is 375 mg/m2</p><p>body surface area on day 1 of the first treatment cycle, followed by</p><p>500 mg/m2</p><p>body surface area on day 1 of cycles 2&ndash;6 (at four-week intervals). Fludarabine</p><p>25 mg/m2</p><p>and cyclophosphamide 250 mg/m2</p><p>are given on days 2, 3 and 4 in the first cycle</p><p>and days 1&ndash;3 in cycles 2&ndash;6.<br />The following dosage adjustments are recommended if severe infections occur or if grade<br />3 or 4 cytopenia (anemia, neutropenia, thrombocytopenia) that is not indicative of bone<br />marrow involvement occurs on day 28 of a cycle:</p><p>Treatment can be postponed for 2 weeks and the dose of fludarabine and cyclo-<br />phosphamide can be reduced by 25% in the following cycles.</p><p>In the event that after this dose reduction a second episode of grade 3&ndash;4 cytopenia occurs<br />on day 28 of a cycle independently of bone marrow involvement, treatment can once again<br />be postponed by up to 2 weeks and the dose of fludarabine and cyclophosphamide can be<br />reduced by a further 25%. This results in a dose equivalent to 50% of the normal<br />fludarabine/cyclophosphamide dose.</p><p>Rheumatoid arthritis</p><p>Premedication consisting of an analgesic/antipyretic (e.g. paracetamol) and an anti-<br />histaminic drug (e.g. diphenhydramine) should always be administered before each</p><p>infusion of MabThera/Rituxan (30 to 60 minutes before the start of the infusion).<br />Premedication with glucocorticoids should also be administered in order to reduce the<br />frequency and severity of infusion-related reactions. Patients should receive 100 mg i.v.<br />methylprednisolone to be completed 30 minutes prior to each MabThera/Rituxan infusion.</p><p>A treatment cycle with MabThera consists of two i.v. infusions of 1,000 mg given at an<br />interval of 2 weeks. Depending on the course of the disease, additional treatment cycles<br />can be given.<br />After the infusion has been completed, the intravenous line should be left in place for at<br />least one hour so that if necessary drugs can be administered intravenously. If no<br />undesirable effects occur during this period, the intravenous line can then be removed.<br />In a dose-finding study in a less treatment-resistant patient population that had failed to<br />respond to treatment with DMARDs (disease-modifying antirheumatic drugs), treatment<br />with 2 &times; 500 mg per cycle proved similarly effective as 2 &times; 1,000 mg (in terms of the<br />endpoint ACR 20). Doses of less than 2 &times; 500 mg per cycle were not investigated.<br />The requirement for further cycles should be assessed 24 weeks after the previous cycle on<br />the basis of residual or recurrent disease activity. Retreatment should be given if residual<br />disease activity exceeds a DAS28-ESR score of 2.6. If the DAS28-ESR score is less than<br />2.6, retreatment should be given as soon as disease activity increases again (to DAS28-<br />ESR &gt;2.6).<br />Treatment with MabThera should only be continued in patients whose DAS28-ESR score<br />has decreased by at least 1.2 units after two treatment cycles.<br />In patients previously treated with TNF inhibitors, treatment with etanercept must have<br />been discontinued for at least 4 weeks, and with infliximab or adalimumab for at least 8<br />weeks, before starting MabThera treatment.<br />The use of MabThera is not recommended in MTX-naive patients since a favourable<br />benefit-risk ratio has not been demonstrated.</p><p>ANCA-associated vasculitis<br />Treatment should only be conducted by physicians experienced in the treatment of<br />rheumatic and immunological diseases.<br />Before each MabThera infusion (30 to 60 minutes before starting the infusion)<br />premedication must always be administered with an analgesic/antipyretic (e.g.<br />paracetamol) and an antihistamine (e.g. diphenhydramine).<br />The recommended dosage of MabThera for the treatment of ANCA-associated vasculitis is<br />375 mg/m2</p><p>body surface area administered once weekly as an intravenous infusion for</p><p>4 weeks.<br />For the treatment of severe vasculitis symptoms it is recommended that MabThera be<br />combined with intravenous methylprednisolone 1,000 mg daily for 1 to 3 days, followed<br />by oral prednisone 1 mg/kg body weight/day (not to exceed 80 mg/day and to be tapered as<br />rapidly as possible according to clinical need) during and after treatment with MabThera.</p><p>First infusion: The recommended initial infusion rate of MabThera is 50 mg/h; it may<br />subsequently be increased in 50 mg/h increments every 30 minutes to a maximum of<br />400 mg/h.<br />Subsequent infusions: Subsequent MabThera infusions may be started at an infusion rate of<br />100 mg/h and increased in 100 mg/h increments every 30 minutes to a maximum of<br />400 mg/h.<br />The safety and efficacy of treatment with subsequent cycles of MabThera have not been<br />determined.<br />In patients with ANCA-associated vasculitis Pneumocystis jiroveci pneumonia (PCP)<br />prophylaxis is recommended as needed during and after MabThera treatment.</p><p>Special dosage instructions<br />Use in children and adolescents<br />The use and safety of MabThera in children and adolescents have not been investigated.<br />Elderly patients<br />No dosage adjustment is required in elderly patients (&gt;65 years).<br />Patients with hepatic or renal impairment<br />No experience is available in patients with hepatic or renal impairment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active ingredient or to any of the excipients.
+Patients with severe heart failure (NYHA class IV).
+The combination of rituximab with chemotherapeutic agents including methotrexate is
+contraindicated during pregnancy and lactation.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In order to improve traceability of biological medicinal products, the tradename MabThera<br />should be clearly recorded (or stated) in the patient file. Replacement by another biological<br />medicinal product requires the prescriber&rsquo;s consent. The data in this prescribing<br />information apply only to MabThera.<br />Progressive multifocal leukoencephalopathy<br />Cases of progressive multifocal leukoencephalopathy (PML) have been reported during or<br />after the use of MabThera. Two cases of fatal PML in NHL patients were also observed in<br />a clinical phase III study after disease progression and retreatment. The majority of patients<br />had received MabThera in combination with chemotherapy or in a context of</p><p>hematopoietic stem cell transplantation. In the differential diagnosis of patients developing<br />neurological symptoms the possibility of PML must be considered.<br />Patients should be monitored at regular intervals for emergent or worsening symptoms<br />indicative of PML. PML is frequently fatal and resistant to all therapy. PML signs and<br />symptoms are varied, progress over days to weeks and may comprise increasing weakness<br />in one side of the body or clumsiness in the limbs, loss of balance, visual disturbances and<br />impairment of cognition, memory and orientation, leading to confusion and personality<br />changes.<br />If in doubt, further investigations should be considered, including MRI (preferably<br />contrast-enhanced), testing of the cerebrospinal fluid for JC virus DNA and serial<br />neurological assessment. The physician should be alert to signs and symptoms indicative<br />of PML, in particular those unnoticed by the patient (e.g. cognitive, neurological or<br />psychiatric signs). The patient should in addition be advised to inform their partner or<br />carers about their treatment since these may observe signs that escape the patient&rsquo;s notice.<br />If PML is suspected, prompt neurological workup is indicated and treatment should be<br />suspended until PML is excluded. If PML is confirmed, MabThera must be permanently<br />withdrawn.<br />Following reconstitution of the immune system, stabilisation or improvement has been<br />observed in immunosuppressed patients with PML. It is not known whether early detection<br />of PML and suspension of MabThera treatment could lead to similar stabilisation or<br />improvement.</p><p>Patients with hematological malignancies<br />Tumour lysis syndrome: MabThera brings about rapid lysis of benign and malignant<br />CD20-positive cells and can precipitate tumour lysis syndrome with hyperuricemia,<br />hyperkalemia, hypocalcemia, hyperphosphatemia, elevated LDH levels and acute renal<br />failure. Patients with a high number (&gt;25,000/mm3</p><p>) of circulating malignant cells or a high<br />tumour burden (lesions &gt;10 cm) are at higher risk of tumour lysis syndrome and should be<br />treated with extreme caution. In patients at risk for the development of tumour lysis<br />syndrome the need for appropriate prophylaxis should be considered. In these patients the<br />infusion rate should be reduced or infusion spread over 2 days in the first cycle, and in all<br />subsequent cycles if the lymphocyte count remains above 25,000/mm3</p><p>. The patients should</p><p>be monitored particularly closely during administration of the first infusion.<br />Infusion-related reactions</p><p>Treatment with MabThera leads to release of cytokines and is associated with infusion-<br />related reactions, especially after administration of the first dose. The incidence of</p><p>infusion-related reactions decreased from 77% (7% grade 3/4) with the first infusion to<br />approximately 30% (2% grade 3/4) with the fourth infusion and to 14% (no grade 3/4</p><p>events) with the eighth infusion. Severe infusion-related reactions may be clinically<br />indistinguishable from hypersensitivity reactions or cytokine release syndrome. Severe<br />infusion-related reactions with fatal outcome have been reported. Severe infusion-related<br />reactions, which are characterised by pulmonary events, generally commence within<br />30 minutes to two hours after the start of the first MabThera infusion and in some cases<br />have also included rapid tumour lysis and signs of tumour lysis syndrome as well as fever,<br />chills, rigors, hypotension, urticaria, angioedema and other signs and symptoms (see<br />Undesirable effects).<br />It is recommended that infusion-related reactions be treated with diphenhydramine and<br />acetaminophen. Additional treatment with bronchodilators or intravenous saline solution<br />may be indicated. In most cases the infusion can be continued with a 50% reduction of<br />infusion rate (e.g. from 100 mg/h to 50 mg/h) after complete resolution of signs and<br />symptoms. Most patients other than those with life-threatening infusion-related reactions<br />were able to complete the treatment cycle with MabThera. Only rarely have severe<br />infusion-related reactions recurred during subsequent treatment of patients whose signs and<br />symptoms have resolved completely.<br />The occurrence of anaphylactic and other hypersensitivity reactions has been reported after<br />intravenous administration of proteins to patients. Adrenaline, antihistamines and<br />glucocorticoids should be available for immediate use in the event of a hypersensitivity<br />reaction during administration of MabThera.<br />Pulmonary events<br />Pulmonary events including hypoxia, pulmonary infiltrates and acute respiratory failure<br />have occurred. Many of these events were preceded by severe bronchospasm and dyspnea.<br />In some cases the signs and symptoms worsened, while in other cases an initial<br />improvement was followed by a clinical deterioration. Patients with pulmonary events or<br />other severe infusion reactions must therefore be closely monitored until their signs and<br />symptoms have resolved completely. Patients with a history of respiratory failure or with<br />pulmonary tumour infiltration are at greater risk of an unfavourable outcome and should<br />therefore be treated with greater caution. Acute respiratory failure can be accompanied by<br />events such as pulmonary interstitial infiltration visible on a chest radiograph and edema.<br />The syndrome generally appears within one to two hours after the start of the first infusion.<br />In patients with severe pulmonary events the infusion must be stopped immediately and<br />symptomatic therapy initiated.<br />Cardiovascular<br />Since transient hypotension may occur during MabThera infusion, consideration should be<br />given to withholding antihypertensive medications 12 hours prior to and throughout</p><p>MabThera infusion. When MabThera was administered, cases were observed in which pre-<br />existing ischemic heart disease became manifest and caused symptoms such as angina</p><p>pectoris, myocardial infarction, atrial fibrillation and atrial flutter. Patients with a history of<br />heart disease (e.g. angina pectoris, cardiac arrhythmias such as atrial flutter or fibrillation,</p><p>heart failure or myocardial infarction) should be closely monitored during the infusion.<br />Patients with severe heart failure (NYHA class IV) should not be treated.<br />Monitoring of blood counts<br />Caution should be exercised when treating patients with neutrophil counts of &lt;1.5 &times; 109<br />/l</p><p>and/or platelet counts of &lt;75 &times; 109</p><p>/l, as clinical experience with such patients is limited.<br />As with other tumour therapies, regular monitoring of full blood count, including platelet<br />count, is indicated.<br />Immunisation<br />The safety of immunisation with vaccines, especially live vaccines, following MabThera<br />therapy has not been studied, nor whether a primary humoral response to vaccines is<br />possible.<br />Patients treated with MabThera must not receive live vaccines. If necessary, they may be<br />immunised with non-live vaccines, although a reduced response rate must be expected. In a<br />non-randomised study, patients receiving MabThera monotherapy had a lower response<br />rate (when assessed for a &gt;2-fold increase in antibody titre) to testing with tetanus recall<br />antigen (16% vs 81%) and keyhole limpet hemocyanin (KLH; 4% vs 76%), compared to<br />untreated controls.<br />Mean pretherapeutic antibody titres against a panel of antigens (Streptococcus<br />pneumoniae, influenza A, mumps, rubella, varicella) were maintained for at least 6 months<br />after treatment with MabThera.<br />Skin reactions<br />Severe mucocutaneous reactions, some with fatal outcome, have been reported in isolated<br />patients treated with MabThera. These reactions occurred between 1 and 13 weeks after the<br />start of treatment. Affected patients should receive no further infusions and must undergo a<br />medical examination immediately. A skin biopsy is useful for distinguishing between<br />different skin reactions and determining subsequent treatment. The mucocutaneous<br />reactions reported included paraneoplastic pemphigus, lichenoid dermatitis and<br />vesiculobullous dermatitis. Nothing is known regarding the safety of retreatment with<br />MabThera in these cases.<br />Serious skin reactions, such as toxic epidermal necrolysis and Stevens-Johnson syndrome,<br />some of which were fatal, have been reported (see Undesirable effects). In such an event<br />treatment should be discontinued and only reintroduced after careful consideration of the<br />patient&rsquo;s individual benefit-risk profile.<br />Serious viral infections<br />Patients with serious viral infections should not be treated with MabThera. Serious viral<br />infections, both new and reactivated or exacerbated, have been reported on treatment with<br />rituximab and have been fatal in isolated cases. The majority of patients had received<br />rituximab in combination with chemotherapy or in the context of hematopoietic stem cell<br />transplantation. Examples of such serious viral infections include infections with</p><p>herpesviruses (cytomegalovirus, varicella zoster virus, herpes simplex virus), JC virus<br />(progressive multifocal leukoencephalopathy [PML]) and hepatitis B or hepatitis C virus.<br />Cases of hepatitis B reactivation &ndash; including fulminant hepatitis, sometimes with fatal<br />outcome &ndash; have been reported; the majority of affected patients were also receiving<br />cytotoxic chemotherapy. Causality cannot be clearly distinguished.<br />Hepatitis B virus (HBV) screening according to local guidelines should be performed in all<br />patients before initiation of treatment with MabThera. Patients with active hepatitis B disease<br />should not be treated with MabThera. Patients with positive hepatitis B serology should consult a<br />liver disease specialist before the start of treatment and should be monitored and managed<br />according to usual local standard medical practice to prevent hepatitis B reactivation..<br />Gastrointestinal tract<br />Gastrointestinal perforation or obstruction, in a few cases leading to death, has been<br />observed in patients who received rituximab in combination with chemotherapy for the<br />treatment of non-Hodgkin&rsquo;s lymphoma. Complaints of abdominal pain, especially at the<br />start of treatment, should prompt a thorough diagnostic evaluation and appropriate<br />treatment.<br />Nervous system disorders<br />There have been post-marketing reports of cases of posterior reversible encephalopathy<br />syndrome (PRES)/reversible posterior leukoencephalopathy syndrome (RPLS). Signs and<br />symptoms included visual disturbances, headaches, seizures and altered mental state with<br />or without associated hypertension. The diagnosis of PRES/RPLS must be confirmed by<br />brain imaging. In the reported cases there were recognised risk factors for PRES/RPLS<br />including patients&rsquo; underlying disease, hypertension, immunosuppressive therapy and/or<br />chemotherapy.<br />Patients with rheumatoid arthritis and ANCA-associated vasculitis<br />The efficacy and safety of MabThera for the treatment of autoimmune diseases other than<br />rheumatoid arthritis and ANCA-associated vasculitis have not been studied.<br />An electrocardiogram should be performed before starting treatment of ANCA-associated<br />vasculitis.<br />Infusion-related reactions<br />Administration of MabThera can be associated with infusion reactions related to release of<br />cytokines and/or other chemical mediators. Signs and symptoms that indicate an infusion<br />reaction are headache, itch, fever, urticaria/rash, chills, pyrexia, sneezing, angioneurotic<br />edema, throat irritation, cough and bronchospasm &ndash; with or without associated hypotension<br />or hypertension. Premedication consisting of an analgesic/antipyretic drug and an<br />antihistaminic drug should always be administered before each infusion of<br />MabThera/Rituxan. For RA patients, premedication with glucocorticoids should also be<br />administered before each infusion of MabThera/Rituxan, in order to reduce the frequency&nbsp;</p><p>and severity of infusion-related reactions (see Dosage and administration). Higher doses of<br />intravenous glucocorticoids were administered in ANCA-associated vasculitis patients.<br />For RA patients, most infusion-related events reported in clinical trials were mild to<br />moderate in severity. In clinical studies a severe infusion reaction occurred, independently<br />of dose, in 14 of 3,095 patients (&lt;1%) with rheumatoid arthritis who received a first<br />infusion of MabThera. Severe infusion-related reactions with fatal outcome have been<br />reported in the post-marketing setting (in total approx. 150,000 treated RA patients).<br />Patients with pre-existing cardiac conditions and those who experienced prior<br />cardiopulmonary adverse reactions should be closely monitored.<br />In general, the proportion of patients experiencing an infusion reaction was higher after the<br />first infusion of a cycle than after the second infusion. Subsequent MabThera cycles were<br />better tolerated by patients than the first cycle.<br />The reported reactions were generally reversible when the infusion of MabThera was<br />administered more slowly or interrupted and an antipyretic, an antihistamine and &ndash; in<br />isolated cases and if required &ndash; oxygen, i.v. saline solution or bronchodilators and<br />glucocorticoids were administered. Depending on the severity of the infusion-related<br />reaction and the required interventions, temporarily or permanently discontinue<br />MabThera/Rituxan. In most cases the infusion can be continued with a 50% reduction of<br />infusion rate (e.g. from 100 mg/h to 50 mg/h) after complete resolution of signs and<br />symptoms.<br />Anaphylactic and other hypersensitivity reactions have been reported at the start of, during<br />and after i.v. administration of proteins to patients. Drugs for the treatment of<br />hypersensitivity reactions, e.g. adrenaline, antihistamines and glucocorticoids, should be<br />available for immediate use in the event that an allergic reaction occurs during<br />administration of MabThera.<br />Infusion reactions in ANCA-associated vasculitis patients were comparable to those<br />observed in RA patients.<br />No data are available on the safety of MabThera in patients with moderately severe heart<br />failure (NYHA class III). Cases of angina pectoris, cardiac arrhythmias such as atrial<br />flutter and fibrillation, heart failure or myocardial infarction have been observed on<br />treatment with MabThera. Therefore, in patients with a history of heart disease the risk for<br />cardiovascular complications due to infusion-related reactions should be considered before<br />treatment with MabThera is initiated, and such patients should be closely monitored during<br />administration of MabThera. Patients with severe heart failure (NYHA class IV) should<br />not be treated.<br />Since hypotension can occur during infusion of MabThera, consideration should be given<br />to withholding blood-pressure-lowering medications in the 12 hours preceding infusion of<br />MabThera.<br />Infections</p><p>The risk of infection is potentially increased after treatment with MabThera (see Contra-<br />indications). MabThera should not be administered to patients with active infection or&nbsp;severely impaired immune response (e.g. hypogammaglobulinemia, severely reduced CD4<br />or CD8 cell counts). Caution is required when MabThera is prescribed for patients with a<br />history of recurrent or chronic infection or an underlying disease that favours the<br />occurrence of severe infections (see Undesirable effects). Patients who develop an<br />infection after treatment with MabThera should be promptly investigated and appropriately<br />treated.<br />Hepatitis B infections<br />Cases of reactivation of hepatitis B infection, including some with fatal outcome, have<br />been reported in RA and AAV patients receiving MabThera.<br />Hepatitis B virus (HBV) screening according to local guidelines should be performed in all<br />patients before initiation of treatment with MabThera. Patients with active hepatitis B<br />disease should not be treated with MabThera. Patients with positive hepatitis B serology should<br />consult a liver disease specialist before the start of treatment and should be monitored and<br />managed according to usual local standard medical practice to prevent hepatitis B<br />reactivation.<br />Skin reactions<br />Serious skin reactions, such as toxic epidermal necrolysis and Stevens-Johnson syndrome,<br />some of which were fatal, have been reported (see Undesirable effects). In such an event<br />treatment should be discontinued and only reintroduced after careful consideration of the<br />patient&rsquo;s individual benefit-risk profile.<br />Immunisation<br />In RA patients the physician should review vaccination status and follow local/national<br />immunisation guidelines for adults against infectious diseases prior to treatment with<br />MabThera. Vaccination should be completed at least 4 weeks prior to first administration<br />of MabThera.<br />Vaccination with live viral vaccines should not be performed during treatment with<br />MabThera.<br />Response to inactivated vaccines may be reduced during and after treatment with<br />MabThera. Comparison of patients treated with either MabThera and methotrexate or<br />methotrexate alone showed similar response rates to tetanus recall antigen (39% vs 42%)<br />and decreased response rates to pneumococcal polysaccharide vaccine (43% vs 82%)<br />6 months after completing MabThera treatment.<br />In repeat treatment over one year the proportion of patients with positive antibody titres<br />against S. pneumoniae, influenza, mumps, rubella, varicella and tetanus toxoid were<br />generally similar to the proportions at baseline.<br />Further warnings and precautions&nbsp;The efficacy and safety of MabThera in the treatment of autoimmune diseases other than<br />rheumatoid arthritis have not been investigated.<br />No data are available for patients with severe pulmonary disease. Caution should therefore<br />be exercised when MabThera is used in these patients.<br />No data are available for patients with anemia (Hb &lt;8.5 g/dl) or neutropenia (neutrophil<br />count &lt;1,500/&mu;l).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>At present few data are available on possible drug interactions involving MabThera. In<br />particular, interactions of rituximab in combination with chemotherapy (e.g. CHOP, CVP)<br />have not been investigated.<br />Neither coadministration of fludarabine or cyclophosphamide with rituximab nor<br />coadministration of methotrexate with rituximab has any effect on the pharmacokinetics of<br />the individual components.<br />Patients with human antimurine antibody (HAMA) or human antichimeric antibody<br />(HACA) titres may develop allergic or hypersensitivity reactions when treated with other<br />diagnostic or therapeutic monoclonal antibodies.<br />No pharmacokinetic or pharmacodynamic data are available on concomitant use of<br />MabThera and TNF inhibitors. TNF inhibitors should not be administered for at least 8<br />weeks after completion of treatment with MabThera.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy Categore C.<br />IgG immunoglobulins are known to cross the placental barrier. Because of the long<br />retention time of MabThera in patients with B-cell depletion, women of child-bearing age<br />should employ effective contraceptive methods during treatment with MabThera and for<br />up to 12 months thereafter.<br />No fetal damage was found in reproductive toxicology studies in monkeys. B-cell-depleted<br />populations were found in the postnatal phase in neonatal offspring of dams that had been<br />exposed to MabThera during pregnancy. No studies of B-cell populations in human<br />neonates after maternal exposure to MabThera have been performed. There are no</p><p>adequate and well-controlled data from studies in pregnant women, however, transient B-<br />cell depletion and lymphocytopenia have been observed in some infants born to mothers</p><p>exposed to rituximab during pregnancy. For these reasons MabThera must not be<br />administered to pregnant women unless clearly necessary. Women of child-bearing age<br />should employ effective contraceptive methods during treatment with MabThera and for<br />up to 12 months thereafter.<br />Lactation<br />It is not known whether rituximab is excreted in human milk. Given, however, that<br />maternal IgG enters breast milk and that MabThera has been found in the milk of lactating<br />monkeys, women who are being treated with MabThera should not breast-feed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies have been performed on the effects of MabThera on the ability to drive or to<br />operate machines. The pharmacological action and the undesirable effects observed to date<br />do not suggest the likelihood of any such effects. Nevertheless, the influence of<br />premedication with antihistamines should be noted. After infusion reactions the patient&rsquo;s<br />condition should be allowed to stabilise before the patient drives vehicles or operates<br />machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Experience from clinical studies in NHL<br />The frequencies of adverse drug reactions reported with MabThera either as monotherapy<br />or in combination with chemotherapy are summarised below. Within each frequency<br />category adverse drug reactions are listed in decreasing order of severity. Frequencies are<br />defined as very common (1/10), common (1/100 to &lt;1/10), occasional (1/1,000 to<br />&lt;1/100), rare (1/10,000 to &lt;1/1,000) or very rare (&lt;1/10,000).<br />The adverse drug reactions of all degrees of severity listed below are based on data from<br />studies with approximately 2,300 patients in which MabThera was administered either as<br />monotherapy or in combination with chemotherapy.<br />Infections and infestations<br />Very common: bacterial infections, viral infections, bronchitis.<br />Common: sepsis, pneumonia, febrile infection, herpes zoster, respiratory tract infection,<br />fungal infections, infections of unknown etiology, sinusitis, hepatitis B.<br />Isolated cases of infection with cytomegalovirus, herpesvirus, JC virus-associated<br />progressive multifocal leukoencephalopathy (see Warnings and precautions), hepatitis C<br />and fulminant hepatitis.<br />Blood and lymphatic system disorders<br />Very common: neutropenia (which may be prolonged and/or late in onset after completing<br />a treatment cycle), leukopenia, febrile neutropenia, thrombocytopenia.<br />Common: anemia, pancytopenia, granulocytopenia.<br />Occasional: coagulation disorders, aplastic anemia, hemolytic anemia, lymphadenopathy.<br />Immune system disorders<br />Very common: angioedema.<br />Common: hypersensitivity reactions.<br />Very rare: vasculitis.<br />Isolated cases of serum sickness-like reactions.<br />Metabolic and nutritional disorders<br />Common: hyperuricemia, hyperglycemia, weight loss, elevated LDH, hypocalcemia.</p><p>Psychiatric disorders<br />Occasional: depression, nervousness.<br />Nervous system disorders<br />Common: paresthesia, hypoesthesia, restlessness, insomnia, vasodilatation, dizziness,<br />anxiety.<br />Occasional: dysgeusia.<br />Isolated cases of peripheral neuropathy, sensory disturbances, facial nerve palsy.<br />There have been post-marketing reports of cases of posterior reversible encephalopathy<br />syndrome (PRES)/reversible posterior leukoencephalopathy syndrome (RPLS).<br />Eye disorders<br />Common: lacrimation disorders, conjunctivitis.<br />Isolated cases of severe vision loss.<br />Ear and inner ear disorders<br />Common: tinnitus, ear pain.<br />Isolated cases of hearing loss.<br />Cardiac disorders<br />Common: myocardial infarction, arrhythmia, atrial fibrillation, tachycardia, heart failure.<br />Occasional: left ventricular failure, supraventricular tachycardia, ventricular tachycardia,<br />angina pectoris, myocardial ischemia, bradycardia.<br />Vascular disorders<br />Common: hypertension, orthostatic hypotension, hypotension.<br />Respiratory disorders<br />Common: bronchospasm, chest pain, dyspnea, cough, rhinitis.<br />Occasional: asthma, bronchiolitis obliterans, respiratory failure, hypoxia.<br />Rare: pulmonary edema.<br />Very rare: death due to respiratory failure.<br />Frequency unknown: interstitial lung disease, some cases of which may be fatal.<br />Gastrointestinal disorders<br />Very common: nausea.<br />Common: vomiting, diarrhea, abdominal pain, dysphagia, stomatitis, constipation,<br />dyspepsia, anorexia, throat irritation.<br />Occasional: abdominal enlargement.<br />Isolated cases of gastrointestinal perforation or obstruction.<br />Hepatobiliary disorders<br />Very rare: hepatitis.<br />Skin and subcutaneous tissue disorders<br />Very common: pruritus, skin rash, alopecia.</p><p>Common: urticaria, alopecia, sweating, night sweats.<br />Isolated cases of skin diseases such as severe bullous skin reactions, including fatal cases<br />of toxic epidermal necrolysis (TEN) and Stevens-Johnson syndrome (SJS).<br />Musculoskeletal disorders<br />Common: myalgia, arthralgia, back pain, neck pain, pain.<br />Renal disorders<br />Very rare: acute renal failure (in association with tumour lysis syndrome).<br />General disorders and administration site reactions<br />Very common: fever (48.3%), chills (31.3%), asthenia, headache.<br />Common: fatigue, shivering, tumour pain, flushing, malaise, cold syndrome, peripheral<br />edema, facial edema.<br />Occasional: pain at the infusion site.<br />Investigations<br />Very common: decreased IgG levels.</p><p>Experience from clinical studies in rheumatoid arthritis and ANCA-associated<br />vasculitis<br />Frequencies are defined as very common (1/10), common (1/100 to &lt;1/10), occasional<br />(1/1,000 to &lt;1/100), rare (1/10,000 to &lt;1/1,000) or very rare (&lt;1/10,000).<br />Infections and infestations<br />Very common: upper respiratory tract infections, urinary tract infections, infections<br />(61.6%).<br />Common: pneumonia, bronchitis, sinusitis, gastroenteritis, tinea pedis.<br />Isolated cases of progressive multifocal leukoencephalopathy (PML), serum sickness-like<br />reactions and reactivation of hepatitis B infection.<br />Blood and lymphatic system disorders<br />Very common: anemia (16.2%), leukopenia (10.1%).<br />Events of neutropenia were observed with MabThera treatment, the majority of which<br />were transient and mild or moderate in severity. Neutropenia can occur several months<br />after the administration of MabThera.<br />In placebo-controlled clinical trials, 0.94% (13/1,382) of rituximab-treated patients and<br />0.27% (2/731) of placebo patients developed severe neutropenia.<br />Rare: Neutropenic events, including severe late-onset and persistent neutropenia, have<br />been reported in the post-marketing setting, some of which were associated with fatal<br />infections.</p><p>In patients with ANCA-associated vasculitis, 24% of those in the rituximab group and 23%<br />of those in the cyclophosphamide group developed grade 3 or greater neutropenia. The<br />effect of multiple rituximab treatment cycles on the development of neutropenia in patients<br />with ANCA-associated vasculitis has not been studied in clinical trials.<br />The safety and efficacy of MabThera have not been studied in pediatric patients.<br />Hypogammaglobulinemia has been observed in pediatric patients treated with MabThera;<br />some cases were serious, requiring long-term immunoglobulin replacement therapy. The<br />consequences of long-term B lymphocyte deficiency in pediatric patients are unknown.<br />Immune system disorders<br />Very common: infusion reactions (12.1%).<br />Common: hypersensitivity reactions.<br />Occasional: generalised edema, bronchospasm, wheezing, laryngeal edema, angioneurotic<br />edema, generalised pruritus, anaphylaxis, anaphylactoid reaction.<br />Rare: anaphylactic reactions, laryngeal edema, angioedema.<br />Very rare: severe infusion-related reactions with fatal outcome have been reported in the<br />post-marketing setting.<br />Hypogammaglobulinemia (IgM, IgG or IgA below the normal range) has been observed in<br />RA patients and in ANCA-associated vasculitis.<br />Metabolic and nutritional disorders<br />Common: hypercholesterolemia, hot flushes.<br />Psychiatric disorders<br />Very common: insomnia (14.1%).<br />Common: depression, anxiety.<br />Nervous system disorders<br />Very common: headaches (17.2%).<br />Common: migraine, paresthesia, dizziness, sciatica.<br />Vascular disorders<br />Very common: hypertension (12.1%).<br />Common: hypotension.<br />Respiratory disorders<br />Very common: cough (13.1%), epistaxis (11.1%), dyspnea (10.1%).<br />Rare: bronchospasm, wheezing.</p><p>Gastrointestinal disorders<br />Very common: nausea (18.2%), diarrhea (17.2%).<br />Common: dyspepsia, upper abdominal pain, gastroesophageal reflux, mouth ulcers.<br />Skin and subcutaneous tissue disorders<br />Very common: skin rash (10.1%).<br />Common: urticaria, alopecia.<br />Rare: pruritus.<br />Isolated cases of toxic epidermal necrolysis (TEN) and Stevens-Johnson syndrome (SJS),<br />some of which were fatal, have been reported in the post-marketing setting.</p><p>Musculoskeletal system<br />Very common: muscle spasms (17.2%), arthralgia (13.1%).<br />Common: muscle pain, osteoarthritis, bursitis.<br />General disorders and administration site reactions<br />Very common: peripheral edema (16.2%), fatigue (13.1%).<br />Investigations<br />Very common: elevated ALT levels (13.1%).<br />General<br />Common: asthenia, chills.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No experience with overdosage is available from clinical trials in humans. However, single<br />doses higher than 1,000 mg have not been tested in controlled clinical studies.<br />The highest dose tested to date in patients with chronic lymphatic leukemia was 5 g. No<br />additional safety signals were identified. In the event of overdosage the infusion should be<br />stopped or reduced immediately and the patient closely monitored. In patients with B-cell<br />depletion the blood count should be checked regularly and attention paid to the increased<br />risk of infection.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>ATC code: L01XC02<br />Mechanism of action<br />Rituximab is a chimeric mouse/human monoclonal antibody that binds specifically to the</p><p>transmembrane antigen CD20. This antigen is located on pre-B- and mature B-<br />lymphocytes, but not on hemopoietic stem cells, pro-B-cells, normal plasma cells or other</p><p>normal tissue. The antigen is expressed on &gt;95% of all cells of B-cell non-Hodgkin&rsquo;s<br />lymphomas (NHLs). Following antibody binding, CD20 is not internalised or shed from<br />the cell membrane into the environment. CD20 does not circulate in the plasma as a free&nbsp;</p><p>antigen and thus does not compete for antibody binding. Studies conducted to date have<br />shown no connection between the intensity of CD20 expression on malignant cells and<br />therapeutic response.<br />Rituximab binds to the CD20 antigen on B-lymphocytes and causes B-cell lysis. Possible</p><p>mechanisms of cell lysis include complement-dependent cytotoxicity (CDC) and antibody-<br />dependent cellular cytotoxicity (ADCC) and induction of apoptosis.</p><p>Peripheral B-cell counts declined below normal following the first dose of MabThera. In<br />patients treated for hematological malignancies, B-cell recovery began within 6 months of<br />completing therapy and generally returned to normal levels within 12 months after the end<br />of treatment. In rheumatoid arthritis patients, the duration of B-cell depletion was variable.<br />The majority of patients received a further treatment before complete B-cell repletion. In<br />ANCA-associated vasculitis patients, peripheral blood CD19 B-cells declined after the first<br />two infusions of rituximab to below 10 cells/&mu;l and remained at this level in most patients<br />for up to 6 months.<br />Of 67 patients tested for human antimouse antibody (HAMA), none proved positive. Of<br />356 patients with non-Hodgkin&rsquo;s lymphoma tested for human antichimeric antibody<br />(HACA), 4 (1.1%) proved positive.<br />Of 1,039 patients with rheumatoid arthritis tested for human antichimeric antibodies<br />(HACA), 96 (9.2%) proved positive. The occurrence of HACA in these patients was not<br />associated with any clinical deterioration or with an increased risk for reactions to<br />subsequent infusions.<br />Out of 99 ANCA-associated vasculitis patients treated with rituximab, a total of 23 (23%)<br />were HACA-positive after 18 months. The clinical relevance of HACA development in<br />patients treated with rituximab is unclear.<br />Finally, in vitro studies have demonstrated that rituximab sensitises drug-resistant human<br />B-cell lymphoma lines to the cytotoxic effects of some chemotherapeutic agents.</p><p>Clinical efficacy<br />Non-Hodgkin&rsquo;s lymphoma<br />Monotherapy</p><p>In the pivotal study, 166 patients with relapsed or chemoresistant low-grade or follicular B-<br />cell NHL received 375 mg/m2</p><p>of MabThera as an intravenous infusion once weekly for 4<br />weeks. The overall response rate (ORR) in the intent-to-treat (ITT) population was 48%<br />(95% confidence interval [CI95%] 41%&ndash;56%) with a 6% complete response (CR) and a<br />42% partial response (PR) rate. The projected median time to progression (TTP) for<br />responding patients was 13.0 months.<br />In a subgroup analysis, the ORR was higher in patients with international working<br />formulation (IWF) B, C and D histological subtypes compared to the IWF A subtype (58%<br />vs 12%), higher in patients whose largest lesion was &lt;5 cm in diameter than in those with<br />diameters &gt;7 cm (53% vs 38%), and higher in patients with chemosensitive relapse<br />compared to those with chemoresistant relapse (defined as duration of response &lt;3 months;<br />50% vs 22%). The ORR in patients with a previous autologous bone marrow transplant</p><p>(ABMT) was 78% vs 43% in those without. Neither age, sex, lymphoma grade, initial<br />diagnosis, presence or absence of a high tumour burden, normal or elevated LDH nor the<br />presence of extranodal disease had a statistically significant effect on response to<br />MabThera.<br />Combination with CVP<br />In a randomised open study a total of 321 treatment-naive patients with low-grade or<br />follicular B-cell NHL received CVP chemotherapy (cyclophosphamide 750 mg/m2<br />body</p><p>surface area, vincristine 1.4 mg/m2</p><p>body surface area up to a maximum of 2 mg on day 1</p><p>and prednisolone 40 mg/m2</p><p>body surface area/day on days 1&ndash;5) every 3 weeks for 8</p><p>treatment cycles or MabThera 375 mg/m<br />2<br />body surface area in combination with CVP<br />(R-CVP). MabThera was administered on day 1 of each treatment cycle. R-CVP performed<br />significantly better than CVP in terms of the primary endpoint (time to &lsquo;treatment failure&rsquo;,<br />defined as progression, relapse after response, initiation of new lymphoma therapy, no<br />response after 4 cycles, death): 25.9 months versus 6.7 months, p&lt;0.0001).<br />Induction therapy and subsequent maintenance therapy in previously untreated patients<br />In a prospective open international phase III multicentre study 1,193 patients with<br />previously untreated advanced follicular lymphoma received induction therapy with<br />R-CHOP (N=881), R-CVP (N=268) or R-FCM (N=44) according to the investigating<br />physician&rsquo;s choice. In total 1,078 patients responded to the induction therapy (ORR 99%);<br />of these 1,018 were randomised and allocated to MabThera maintenance therapy (N=505)<br />or observation (N=513).<br />The two treatment groups were well balanced in pretreatment demographics and disease<br />status. MabThera maintenance therapy consisted of a single infusion of MabThera<br />375 mg/m2</p><p>body surface area every 2 months until disease progression or for a maximum</p><p>of 2 years.<br />After a median 25 months follow-up from randomisation MabThera maintenance therapy<br />in patients with previously untreated follicular NHL achieved clinically relevant and<br />statistically significant improvement in the primary endpoint &ndash; investigator evaluation of<br />progression-free survival (PFS) &ndash; vs patients without maintenance therapy. The<br />improvement in PFS was confirmed by an independent review committee (IRC).<br />The significant benefit of MabThera maintenance therapy was also observed in the<br />secondary endpoints of event-free survival (EFS) and overall response rate (ORR)<br />(Table 1).<br />Table 1. Maintenance phase (25 months median follow-up)<br />Efficacy parameters Observation<br />(N=513)</p><p>Rituximab<br />(N=505)</p><p>Log-rank<br />p value</p><p>Risk reduction</p><p>Primary efficacy<br />PFS (median) NE NE &lt;0.0001 50%</p><p>Secondary efficacy<br />EFS (median) 37.8 months NE &lt;0.0001 46%<br />OS (median) NE NE 0.7246 11%<br />ORR* 55.0% 74.0% &lt;0.0001 [odds ratio = 2.33]<br />* At end of maintenance therapy/observation<br />PFS = progression-free survival; EFS = event-free survival; OS = overall survival; ORR = overall response rate; NE =<br />not estimable at clinical cut-off<br />The benefit of MabThera maintenance treatment was confirmed across all study subgroups<br />including sex (male, female), age (&lt;60 years, &ge;60 years), FLIPI score (1, 2 or 3) and<br />induction treatment (R-CHOP, R-CVP or R-FCM), regardless of the quality of response to<br />induction treatment (CR or PR).<br />Induction and maintenance treatment in patients with relapsed or refractory disease<br />In an open, international, prospective multicentre phase III study, 465 patients with<br />relapsed/treatment-resistant follicular non-Hodgkin&rsquo;s lymphoma were randomised in a first<br />phase to induction treatment with six cycles of CHOP (cyclophosphamide, doxorubicin,<br />vincristine, prednisone; N=231) or MabThera plus CHOP (R-CHOP, N=234). The two<br />treatment groups were well balanced in pretreatment demographics and disease status. In<br />total, 334 patients who had achieved complete or partial remission after induction therapy</p><p>were randomised in a second phase to MabThera maintenance therapy (N=167) or follow-<br />up (N=167). MabThera maintenance therapy consisted of a single infusion of MabThera</p><p>375 mg/m2</p><p>body surface area every 3 months until disease progression or for a maximum</p><p>of 2 years.<br />Table 2. Induction phase (31 months median follow-up)</p><p>CHOP R-CHOP p value</p><p>Primary efficacy parameters</p><p>ORR 74% 87% 0.0003<br />CR 16% 29% 0.0005<br />PR 58% 58% 0.9449</p><p>Secondary efficacy parameters</p><p>OS (median) NR NR 0.0508<br />PFS (median) 19.4 months 33.2 months 0.0001</p><p>NR = not reached; ORR = overall reponse rate; CR = complete response; PR = partial response; OS = overall survival;<br />PFS = progression-free survivalMedian follow-up for patients randomised in the maintenance<br />phase of the study was 28 months. MabThera maintenance therapy caused a clinically<br />relevant and statistically significant improvement of the primary endpoint, progression-free<br />survival (PFS; time from maintenance phase randomisation to relapse, disease progression<br />or patient death), compared to follow-up alone (p&lt;0.0001, log-rank test). Median PFS in<br />the MabThera group was 42.2 months vs 14.3 months in the follow-up group. Cox<br />regression analysis showed that MabThera maintenance therapy reduced the risk of disease<br />progression or patient death by 61% compared to follow-up (95% Cl: 45%&ndash;72%). Kaplan-</p><p>Meier-estimated PFS rates after 12 months were 78% with MabThera maintenance therapy<br />compared to 57% in the follow-up group. Analysis of overall survival confirmed the<br />significant benefit of MabThera maintenance therapy over follow-up (p=0.0039, log-rank<br />test). MabThera maintenance therapy reduced the risk of death by 56% (95% Cl: 22%&ndash;<br />75%).<br />Median time to new lymphoma therapy was significantly longer with MabThera<br />maintenance therapy than with follow-up alone (38.8 months vs 20.1 months, p&lt;0.0001,<br />log-rank test). The risk of having to institute new treatment was halved (95% Cl: 30%&ndash;<br />64%). In patients with CR or CRu as their best response to induction therapy, MabThera<br />maintenance therapy significantly prolonged median disease-free survival (DFS) compared<br />to follow-up (53.7 months vs 16.5 months, p=0.0003, log-rank test; table 3). The risk of<br />relapse in CR patients was reduced by 67% (95% Cl: 39%&ndash;82%).<br />Table 3. Maintenance phase (28 months median follow-up)<br />Efficacy parameters Kaplan-Meier estimate of median time to event (months)</p><p>Follow-up<br />(N=167)</p><p>MabThera<br />(N=167)</p><p>Log-rank test<br />p value<br />Progression-free survival (PFS) 14.3 42.2 &lt;0.0001<br />Overall survival NR NR 0.0039<br />Time to new lymphoma therapy 20.1 38.8 &lt;0.0001<br />Disease-free survivala</p><p>16.5 53.7 0.0003</p><p>NR = not reached; a</p><p>applies only to patients achieving CR<br />Diffuse large B-cell non-Hodgkin&rsquo;s lymphoma<br />In a randomised open study a total of 399 previously untreated elderly patients (aged 60 to<br />80 years) with diffuse large B-cell lymphoma received standard CHOP chemotherapy<br />(cyclophosphamide 750 mg/m2</p><p>, doxorubicin 50 mg/m2</p><p>, vincristine 1.4 mg/m2<br />up to a</p><p>maximum of 2 mg on day 1, and prednisone 40 mg/m2</p><p>/day on days 1&ndash;5) every 3 weeks for</p><p>eight treatment cycles, or MabThera 375 mg/m2</p><p>plus CHOP (R-CHOP). MabThera was<br />administered on day 1 of the treatment cycle. Efficacy was analysed in all randomised<br />patients (CHOP: N=197; R-CHOP: N=202) over a (median) follow-up of approximately<br />31 months. The two treatment groups were well balanced in pretreatment demographics<br />and disease status. The final analysis confirmed that R-CHOP significantly prolonged<br />(p=0.0001) the duration of the primary efficacy endpoint, event-free survival (events:</p><p>death, relapse, lymphoma progression or institution of new lymphoma treatment). Kaplan-<br />Meier estimates of median event-free survival were 35 months in the R-CHOP treatment</p><p>group compared to 13 months in the CHOP treatment group. This was equivalent to a risk<br />reduction of 41%. At 24 months, estimates for overall survival were 68.2% in the R-CHOP<br />group compared to 57.4% in the CHOP group. Subsequent analysis at 60 months<br />confirmed the benefit of R-CHOP over CHOP: the overall survival rate after R-CHOP was<br />62.4% compared with 50.8% in the CHOP group (p=0.0071), representing a survival risk<br />reduction of 32%.</p><p>Analysis of all secondary endpoints (response rates, PFS, DFS, duration of response)<br />confirmed the benefit of R-CHOP treatment over CHOP. The CR rate after treatment<br />cycle 8 was 76.2% in the R-CHOP group compared to 62.4% in the CHOP group<br />(p=0.0028). The risk of disease progression was reduced by 46% and the risk of relapse by<br />51%.<br />In all patient subgroups (sex, age, age-adjusted international prognostic index [IPI], Ann<br />Arbor stage, Eastern Cooperative Oncology Group [ECOG], &beta;2-microglobulin, LDH,<br />albumin, B-symptoms, high tumour burden, extranodal sites, bone marrow involvement),<br />the risk ratios for event-free survival and overall survival (R-CHOP vs CHOP) were less</p><p>than 0.83 and 0.95. R-CHOP treatment correlated with improved outcome for both high-<br />and low-risk patients according to age-adjusted IPI.</p><p>Chronic lymphocytic leukemia (CLL)<br />In two open-label randomised trials a total of 817 previously untreated patients and 552<br />patients with relapsed/refractory CLL were randomised to receive either FC chemotherapy<br />(fludarabine 25 mg/m2</p><p>, cyclophosphamide 250 mg/m2</p><p>, days 1&ndash;3) every 4 weeks for 6<br />cycles or MabThera in combination with FC (R-FC). MabThera was administered in the<br />first cycle at a dosage of 375 mg/m2</p><p>one day before chemotherapy and at a dosage of</p><p>500mg/m2</p><p>on day 1 of each subsequent treatment cycle.</p><p>In the first-line study, median progression-free survival (primary endpoint) was 42.8<br />months in the R-FC group and 32.5 months in the FC group (p&lt;0.0001). The analysis of<br />overall survival showed a survival advantage in the R-FC arm (p=0.0427).<br />The overall response rate was 86.1% vs 72.7%, with complete response (CR) in 36.0% vs<br />17.2% (p&lt;0.0001).<br />In the relapsed/refractory disease study, median progression-free survival (primary<br />endpoint) was 30.6 months in the R-FC group and 20.6 months in the FC group<br />(p=0.0002). Median overall survival has not yet been reached in the R-FC arm and is 51.9<br />months in the FC arm.<br />The overall response rate was 69.9% vs 58.0%, with complete response (CR) in 24.3% vs<br />13.0% (p&lt;0.0007).<br />Rheumatoid arthritis<br />The efficacy and safety of MabThera in the treatment of rheumatoid arthritis were<br />demonstrated in three randomised, controlled, double-blind, multicentre studies.<br />Study 1 (WA17042) was a phase III double-blind comparative study with 517 patients who<br />had failed to respond adequately to, or had not tolerated, one or more treatments with TNF<br />inhibitors. In order to be included in the study, patients had to suffer from severe active<br />rheumatoid arthritis that had been diagnosed in accordance with the criteria of the<br />American College of Rheumatology (ACR). The primary endpoint was the percentage of<br />patients who had achieved an ACR 20 response after 24 weeks. On two occasions<br />separated by an interval of 15 days the patients received an i.v. infusion of 1,000 mg<br />MabThera, in each case after infusion of 100 mg methylprednisolone. All patients also</p><p>received oral methotrexate (10&ndash;25 mg/week) plus oral prednisone 60 mg from day 2 to day<br />7 and 30 mg from day 8 to day 14 after the first infusion.<br />Patients were followed beyond week 24 for long-term endpoints, including radiographic<br />assessment at 56 weeks. During this time patients may have received further courses of<br />rituximab under an open-label extension study protocol.<br />Study 2 (WA17043) was a randomised, controlled, double-blind, multifactorial (3 &times; 3),<br />double-dummy phase II study comparing two dosage levels of rituximab (2 &times; 1,000 mg<br />and 2 &times; 500 mg). Rituximab was administered with or without infused glucocorticoid<br />therapy (one of two therapeutic schemes) in combination with weekly methotrexate<br />administration to patients who suffered from active rheumatoid arthritis and had failed to<br />respond to treatment with at least 1&ndash;5 DMARDs other than methotrexate.<br />Study 3 (WA16291) was a controlled, double-blind, double-dummy study assessing<br />rituximab as a single agent and in combination with cyclophosphamide or methotrexate in<br />patients with active rheumatoid arthritis who had failed to respond to treatment with one or<br />more DMARDs.<br />Patients given weekly methotrexate (10&ndash;25 mg per week) served as a comparator group in<br />all three studies.<br />Effect on disease activity<br />In all three studies treatment with 2 &times; 1,000 mg rituximab resulted in a significant increase<br />in the proportion of patients who experienced an improvement of at least 20% in their<br />ACR value compared to treatment with methotrexate alone (Table 4). The therapeutic<br />effect was similar in all patients and was independent of rheumatoid factor status, age, sex,<br />body surface area, race, number of previous treatments and disease status.<br />A clinically and statistically significant improvement was also found in all the individual<br />components of the ACR response (tender and swollen joints, global assessment by patient<br />and physician, HAQ disability index score, pain assessment and C-reactive protein<br />[mg/dl]).<br />Table 4. ACR response rates after 24 weeks in the various studies (ITT population)</p><p>ACR response Placebo + MTX Rituximab + MTX<br />2 &times; 1,000 mg</p><p>Rituximab + MTX<br />2 &times; 500 mg</p><p>Study 1<br />(WA17042)1</p><p>N=201<br />RF-positive and<br />-negative patients<br />N=298<br />RF-positive and<br />-negative patients<br />&minus;</p><p>ACR 20 36 (18%) 153 (51%)3</p><p>&minus;</p><p>ACR 50 11 (5%) 80 (27%)3</p><p>ACR 70 3 (1%) 37 (12%)3</p><p>&minus;</p><p>Study 2<br />(WA17043)2</p><p>N=143<br />RF-positive and<br />-negative patients<br />N=185<br />RF-positive and<br />-negative patients<br />N=123<br />RF-positive<br />patients</p><p>ACR 20 45 (31%) 96 (52%)4</p><p>68 (55%)4</p><p>ACR 50 19 (13%) 61 (33%)4</p><p>40 (33%)4</p><p>ACR 70 6 (4%) 28 (15%)4</p><p>16 (13%)5</p><p>Study 3<br />(WA16291)2</p><p>N=40<br />RF-positive<br />patients</p><p>N=40<br />RF-positive<br />patients</p><p>&minus;</p><p>ACR 20 15 (38%) 28 (70%)5</p><p>&minus;</p><p>ACR 50 5 (13%) 17 (43%)5</p><p>&minus;</p><p>ACR 70 2 (5%) 9 (23%)5</p><p>&minus;</p><p>1<br />Inadequate response to TNF inhibitors<br />2<br />Inadequate response to one or more DMARDs<br />3<br />p0.0001; 4<br />p0.001; 5<br />p&lt;0.05<br />RF = rheumatoid factor</p><p>In study 3 (WA16291) the efficacy of rituximab as a single agent was assessed in an<br />additional treatment arm. This showed an ACR 20 response rate of 65% compared to 38%<br />with methotrexate alone (p=0.025).<br />The 28-joint disease activity score (DAS28) fell significantly more in the patients treated<br />with rituximab than in those treated with methotrexate alone. Significantly more patients<br />achieved a moderate to good European league against rheumatism (EULAR) response with<br />rituximab than with methotrexate alone (Table 5).</p><p>Table 5. DAS and EULAR response rates after 24 weeks in the various studies</p><p>(ITT population)</p><p>Placebo + MTX Rituximab + MTX<br />2 &times; 1,000 mg</p><p>Rituximab + MTX<br />2 &times; 500 mg</p><p>Study 1 (WA17042)1 N=201<br />RF-positive and<br />-negative patients</p><p>N=298<br />RF-positive and<br />-negative patients<br />&minus;</p><p>DAS28 change (mean [standard<br />deviation])</p><p>&ndash;0.4 (1.2) &ndash;1.9 (1.6)* &minus;</p><p>EULAR response (%)<br />None<br />Moderate<br />Good</p><p>78%<br />20%<br />2%</p><p>35%<br />50%*<br />15%</p><p>&minus;</p><p>Study 2 (WA17043)2 N=143<br />RF-positive and<br />-negative patients</p><p>N=185<br />RF-positive and<br />-negative patients</p><p>N=123<br />RF-positive patients</p><p>DAS28 change (mean [standard<br />deviation])</p><p>&ndash;0.8 (1.4) &ndash;2.0 (1.6) &ndash;1.9 (1.4)</p><p>EULAR response<br />None<br />Moderate<br />Good</p><p>61%<br />35%<br />4%</p><p>37%<br />40%<br />23%</p><p>28%<br />59%<br />14%</p><p>Study 3 (WA16291)2 N=40</p><p>RF-positive patients<br />N=40<br />RF-positive patients<br />&minus;</p><p>DAS change (mean [standard<br />deviation])</p><p>&ndash;1.3 (1.2) &ndash;2.6 (1.3)</p><p>Placebo + MTX Rituximab + MTX<br />2 &times; 1,000 mg</p><p>Rituximab + MTX<br />2 &times; 500 mg</p><p>EULAR response<br />None<br />Moderate<br />Good</p><p>50%<br />45%<br />5%</p><p>18%<br />63%<br />20%</p><p>&minus;</p><p>1<br />Inadequate response to TNF inhibitors<br />2<br />Inadequate response to one or more DMARDs<br />* p&lt;0.0001; p values for studies 2 and 3 not calculated<br />RF = rheumatoid factor<br />Radiographic response<br />Study WA17042 conducted in TNF-IR patients receiving MabThera in combination with<br />methotrexate demonstrated significantly less radiographic progression at 56 weeks in<br />patients in the MabThera plus MTX group than in patients in the group receiving MTX<br />alone. A higher proportion of patients receiving MabThera also had no erosive progression<br />over 56 weeks (Table 6).<br />Inhibition of the rate of progressive joint damage was also observed in the long term.<br />Radiographic analysis at 2 years in study WA17042 demonstrated significantly reduced<br />progression of structural joint damage in patients receiving MabThera (2 &times; 1,000 mg) plus<br />MTX compared to MTX alone as well as a significantly higher proportion of patients with<br />no progression of joint damage over the 2-year period.<br />Table 6. Radiographic outcomes at 1 year in study WA17042 (MITT population)</p><p>Placebo + MTX</p><p>Rituximab + MTX<br />(2 &times; 1,000 mg)<br />Study WA17042 (TNF-IR) (N=184) (N=273)<br />Mean change from baseline:<br />Modified total Sharp score 2.31 1.00<br />Erosion score 1.32 0.59</p><p>Placebo + MTX</p><p>Rituximab + MTX<br />(2 &times; 1,000 mg)<br />Joint space narrowing score 0.99 0.41<br />Proportion of patients with no<br />radiographic change 46% 53%<br />Proportion of patients with no erosive<br />change 52% 61%</p><p>Effect on quality of life<br />The patients treated with rituximab reported an improvement in all patient-related results<br />(HAQ-DI, FACIT-F and SF-36 questionnaires, Tables 7 and 8). Compared to the patients<br />treated with methotrexate alone, the patients treated with rituximab showed a significant<br />reduction in the disability (HAQ-DI) and fatigue (FACIT-F) indexes and an improvement<br />in the physical-health and mental-health categories of the SF-36 questionnaire.</p><p>Table 7. Short Form Health Survey (SF-36): mean and categorical change from</p><p>baseline to week 24</p><p>Study 1 (WA17042) Study 2 (WA17043)<br />Placebo + MTX</p><p>N=197</p><p>Rituximab<br />+ MTX<br />N=294</p><p>Placebo<br />+ MTX<br />N=141</p><p>Rituximab<br />+ MTX<br />N=178</p><p>Mental health<br />Mean change<br />(standard<br />deviation)</p><p>1.3 (9.4) 4.7 (11.8) 1.8 (8.0) 3.2 (11.2)</p><p>p value* 0.0002<br />Improved 40 (20%) 111 (38%) 29 (21%) 60 (34%)<br />Unchanged 128 (65%) 144 (49%) 99 (70%) 90 (51%)<br />Worsened 29 (15%) 39 (13%) 13 (9%) 28 (16%)<br />p value* 0.0015<br />Physical health<br />Mean change<br />(standard<br />deviation)</p><p>0.9 (5.7) 5.8 (8.5) 1.96 (6.3) 6.1 (8.2)</p><p>p value* &lt;0.0001<br />Improved 25 (13%) 141 (48%) 37 (26%) 88 (49%)<br />Unchanged 158 (80%) 136 (46%) 92 (65%) 81 (46%)<br />Worsened 14 (7%) 17 (6%) 12 (9%) 9 (5%)<br />p value* &lt;0.0001<br />* The data from study 2 (WA17043) were not analysed.<br />Mental health change category: change &gt;6.33 = improved,<br />&ndash;6.33 &le; =change &lt;6.33 = unchanged, change &lt;&ndash;6.33 = worsened.</p><p>Physical health change category: change &gt;5.42 = improved,<br />&ndash;5.42 &le;=change &lt;5.42 = unchanged, change &lt;&ndash;5.42 = worsened.<br />Table 8. HAQ and FACIT-F response at week 24 in study 1 (WA17042)<br />Response at week 24:<br />Change from baseline value</p><p>Placebo + MTX1<br />N=201<br />Mean (standard<br />deviation)</p><p>Rituximab + MTX1<br />N=298<br />Mean (standard<br />deviation)</p><p>p value</p><p>HAQ2</p><p>&ndash;0.1 (0.5) &ndash;0.4 (0.6) &lt;0.0001</p><p>FACIT-F<br />3</p><p>&ndash;0.5 (9.8) &ndash;9.1 (11.3) &lt;0.0001</p><p>1 Methotrexate<br />2 Health assessment questionnaire (HAQ)<br />3 Functional assessment of chronic illness therapy (FACIT-F)<br />At 24 weeks the proportion of patients in all three studies achieving clinically significant<br />improvement in HAQ-DI index (defined as a decrease of &gt;0.25 in individual total score)<br />was greater with rituximab than with methotrexate alone.<br />Laboratory values<br />Approximately 10% of patients with rheumatoid arthritis tested positive for HACA in<br />clinical studies. The emergence of HACA in these patients was not associated with clinical<br />deterioration or with an increased risk of reactions to subsequent infusions. The presence<br />of HACA may be associated with worsening of infusion or allergic reactions after the<br />second infusion of subsequent courses. Failure to deplete B-cells after further treatment<br />courses has been observed rarely.<br />In one of the studies 15 of 308 patients (4.8%) treated with MabThera and 8 of 209 patients<br />(3.8%) treated with methotrexate alone tested negative for antinuclear antibodies (ANA)<br />on day 1 and positive at week 16 and/or week 24. The profile of adverse events in these<br />patients provided no evidence of incident autoimmune disease.<br />In rheumatoid factor (RF) positive patients a marked decrease (range: 45%&ndash;64%) in RF<br />concentrations was observed in all three studies after MabThera treatment.<br />The total plasma immunoglobulin concentration, total lymphocyte count and leukocyte<br />count generally remained within normal limits after treatment with MabThera apart from a</p><p>transient fall in leukocyte count in the first 4 weeks after treatment. Titres of antigen-<br />specific IgG antibodies against mumps, rubella, varicella, tetanus toxoid, influenza and</p><p>Streptococcus pneumoniae remained stable for 24 weeks in patients with rheumatoid<br />arthritis after treatment with MabThera.<br />The effect of rituximab on various biomarkers was studied in patients included in study 3<br />(WA16291). This substudy examined the effect of a single treatment cycle of rituximab on&nbsp;</p><p>biochemical marker concentrations. These included inflammatory markers (interleukin-6,<br />C-reactive protein, serum amyloid A protein and S100 protein isotypes A8 and A9),<br />autoantibodies (RF and anticyclic citrullinated peptide), immunoglobulin production and<br />bone turnover (osteocalcin and type 1 collagen N-terminal propeptide [P1NP]). Treatment<br />with rituximab &ndash; as both monotherapy and combination therapy with methotrexate or<br />cyclophosphamide &ndash; significantly decreased inflammatory marker concentrations in the<br />first 24 weeks of follow-up compared to methotrexate alone. The concentration of bone<br />turnover markers osteocalcin and P1NP increased significantly in the groups taking<br />rituximab compared to those taking methotrexate alone.<br />ANCA-associated vasculitis<br />A total of 197 patients with severe active ANCA-associated vasculitis (AAV) were</p><p>enrolled and treated in an active-controlled, randomised, double-blind, multicentre non-<br />inferiority study. The patients were 15 years of age or older and had been diagnosed with</p><p>either severe active granulomatosis with polyangiitis, also known as Wegener&rsquo;s<br />granulomatosis (75% of patients) or microscopic polyangiitis (24% of patients) according<br />to the criteria of the Chapel Hill consensus conference (in 1% of patients the type of<br />ANCA-associated vasculitis was unknown).<br />Patients were randomised in a 1:1 ratio to receive treatment with either oral<br />cyclophosphamide (2 mg/kg body weight/day) for 3&ndash;6 months followed by azathioprine or<br />MabThera (375 mg/m2</p><p>) once weekly for 4 weeks. In both treatment arms patients received<br />intravenous pulse therapy with methylprednisolone 1,000 mg daily (or another<br />glucocorticoid at an equivalent dose) for 1 to 3 days followed by oral prednisone (1 mg/kg<br />body weight/day, not exceeding 80 mg/day). The prednisone had to have been tapered to<br />zero within 6 months of starting the study treatment.<br />The primary endpoint was the achievement of complete remission after 6 months, defined<br />by a Birmingham Vasculitis Activity Score for Wegener&rsquo;s granulomatosis (BVAS/WG) of<br />0 and the discontinuation of glucocorticoid therapy. The predefined non-inferiority margin<br />for the difference between treatments was 20%. The study showed at least equivalent<br />efficacy (non-inferiority) by MabThera compared to cyclophosphamide with respect to<br />complete remission after 6 months (Table 9). In addition, on the basis of historical control<br />data, the complete remission rate in the MabThera treatment arm was significantly higher<br />than the estimated complete remission rate in patients with severe ANCA-associated<br />vasculitis who were untreated or treated with glucocorticoids only.<br />Efficacy was observed in both patients with newly diagnosed ANCA-associated vasculitis<br />and patients with recurrent disease.</p><p>Table 9. Percentage of patients achieving complete remission after 6 months (ITT</p><p>population)<br />MabThera<br />(N=99)</p><p>Cyclophosphamide<br />(N=98)</p><p>Treatment difference<br />(MabThera &ndash; cyclophosphamide)</p><p>Rate 63.6% 53.1% 10.6%<br />95.1% CI (54.1%, 73.2%) (43.1%, 63.0%) (3.2%, 24.3%)</p><p>In the RAVE study patients in the rituximab treatment group received no maintenance<br />therapy whereas those in the cyclophosphamide group received azathioprine maintenance<br />therapy after the induction of remission. Maintenance of efficacy in the RAVE study was<br />assessed after 12 and 18 months; the most important secondary endpoints of the study were<br />complete remission after 12 and 18 months. In the rituximab group 44% of patients were in<br />complete remission after 6 and 12 months and 38% after 6, 12 and 18 months. Of the<br />patients treated with cyclophosphamide (followed by azathioprine), 38% were in complete<br />remission after 6 and 12 months and 31% after 6, 12 and 18 months.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The mean Cmax following the fourth infusion of 375 mg/m2 was 486 &mu;g/ml (range 77.5 to<br />996.6 &mu;g/ml). Following the intravenous administration of 500 and 1,000 mg doses of<br />rituximab on two occasions two weeks apart, mean Cmax values were 183 &mu;g/ml (range<br />81.8 to 279 &mu;g/ml) and 370 &mu;g/ml (range 212 to 637 &mu;g/ml), respectively.<br />Distribution: The mean steady-state distribution volume was 4.6 l (range 1.7 to 7.51 l).<br />Elimination: Like all proteins, rituximab is broken down in the liver. The estimated mean<br />terminal elimination half-life of rituximab is 20.8 to 24 days (range 6.1 to 52 days).<br />Tumour mass has an influence on specific clearance.<br />Special populations<br />Age, sex, ethnicity and WHO performance status had no influence on the pharmacokinetics<br />of rituximab.<br />No pharmacokinetic data are available in patients with hepatic or renal impairment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Mutagenicity and carcinogenicity have not been studied. There have been no preclinical<br />studies of the combination of MabThera and methotrexate.<br />No evidence of rituximab-induced fetotoxicity was observed in developmental toxicity<br />studies in cynomolgus monkeys treated with doses up to 100 mg/kg body weight (from<br />days 20 to 50 of gestation). However, pharmacological dose-dependent B-cell depletion<br />was observed in the fetal lymphoid tissue. This persisted after birth and was associated<br />with decreased IgG concentrations in the newborns concerned. B-cell counts reverted to&nbsp;normal in these animals within six months after birth and did not impair the response to<br />immunisation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Additional information</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No incompatibilities between MabThera and polyvinylchloride or polyethylene bags or<br />infusion sets have been observed.<br />MabThera may only be mixed with the solutions listed under Instructions for handling and<br />disposal.</p><p>Influence on diagnostic tests<br />Possible effects on response to vaccines and on diagnostic tests based on the demonstration<br />of antibodies have not been investigated.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                This medicinal product must not be used after the expiry date (EXP) shown on the pack.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store vials in a refrigerator (at 2&ndash;8&deg;C). Store the container inside the outer package in order<br />to protect the contents from light.<br />Keep medicines out of reach of children.<br />The prepared infusion solution of MabThera is physically and chemically stable for 24<br />hours at 2&ndash;8&deg;C and for 12 hours at 15&ndash;25&deg;C. From a microbiological point of view, the</p><p>prepared infusion solution should be used immediately. If not used immediately, post-<br />preparation storage times and conditions prior to use are the responsibility of the user and</p><p>should normally not exceed 24 hours at 2&ndash;8&deg;C unless dilution has taken place in controlled<br />and validated aseptic conditions.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Packs</p><p>Vial of 10 ml (10 mg/ml) 2<br />Vial of 50 ml (10 mg/ml)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>MabThera is a clear, colourless liquid presented in sterile, single-use, preservative- and<br />pyrogen-free rubber-stoppered vials.<br />Withdraw the required amount of MabThera under aseptic conditions and dilute in an<br />infusion bag containing sterile, non-pyrogenic, 0.9% aqueous saline solution or 5%<br />aqueous dextrose solution to a calculated rituximab concentration of 1 to 4 mg/ml. To mix<br />the solution, gently invert the bag to avoid foaming. As the product contains no<br />antimicrobial preservative or bacteriostatic agent, aseptic technique must be observed.<br />Parenteral medications should be inspected visually for particulate matter or discoloration<br />prior to administration.<br />Any unused medication remaining after the end of treatment or expiry of the product is to<br />be disposed of in accordance with applicable local regulations.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Made in Switzerland by F. Hoffmann-La Roche Ltd, Basel
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                A medicament is a product which affects your health, and its consumption contrary to
+instructions is dangerous for you.
+Follow strictly the doctor’s prescription, the method of use and the instructions of the
+pharmacist who sold the medicament.
+The doctor and the pharmacist are experts in medicine, its benefits and risks.
+Do not by yourself interrupt the period of treatment prescribed for you.
+Do not repeat the same prescription without consulting your doctor.
+Medicine: keep out of reach of children
+
+Council of Arab Health Ministers
+Union of Arab Pharmacists
+
+Current at September 2013
+To report side effect(s):
+The National Pharmaeovigilanee and Drug Safety Centre (NPC)
+ Fax: +966-11-205-7662
+ Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.
+ Toll free phone: 8002490000
+ Email: npc.drug@sfda.gov.sa
+Website: www.sfda.gov.sa/npc
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

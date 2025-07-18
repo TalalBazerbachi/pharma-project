@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2310246094
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2017
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        THYROGEN 0.9 mg/ml powder for solution For injection
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        THYROTROPIN ALFA
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        0.9
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intramuscular use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        powder for solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        4584.70
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="HOSPIRA INC. MCPHERSON" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            HOSPIRA INC. MCPHERSON
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2218]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Sanofi Arabia Trading Co. Ltd
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Sanofi B.V
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        H01AB01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Thyrogen 0.9 mg powder for solution for injection
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each vial of Thyrogen contains a nominal value of 0.9 mg thyrotropin alfa. Following reconstitution, each vial of Thyrogen contains 0.9 mg of thyrotropin alfa in 1.0 ml.
+For the full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder for solution for injection.
+White to off-white lyophilised powder.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Thyrogen is indicated for use with serum thyroglobulin (Tg) testing with or without radioiodine imaging for the detection of thyroid remnants and well-differentiated thyroid cancer in post-thyroidectomy patients maintained on hormone suppression therapy (THST).<br />Low risk patients with well-differentiated thyroid carcinoma who have undetectable serum Tg levels on THST and no rh (recombinant human) TSH-stimulated increase of Tg levels may be followed-up by assaying rhTSH-stimulated Tg levels.<br />Thyrogen is indicated for pre-therapeutic stimulation in combination with a range of 30 mCi (1.1 GBq) to 100 mCi (3.7 GBq) radioiodine for ablation of thyroid tissue remnants in patients who have undergone a near-total or total thyroidectomy for well-differentiated thyroid cancer and who do not have evidence of distant metastatic thyroid cancer (see section 4.4).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Therapy should be supervised by physicians with expertise in thyroid cancer.<br />Posology<br />The recommended dose regimen is two doses of 0.9 mg thyrotropin alfa administered at a 24-hour interval by intramuscular injection only.<br />Paediatric population<br />Due to a lack of data on the use of Thyrogen in children, Thyrogen should be given to children only in exceptional circumstances.</p><p>Elderly<br />Results from controlled trials indicate no difference in the safety and efficacy of Thyrogen between adult patients less than 65 years and those greater than 65 years of age, when Thyrogen is used for diagnostic purposes.<br />No dose adjustment is necessary in elderly (see section 4.4).<br />Patients with renal/hepatic impairment<br />Information from post marketing surveillance, as well as published information, suggests that elimination of Thyrogen is significantly slower in dialysis-dependent end stage renal disease (ESRD) patients, resulting in prolonged elevation of thyroid stimulating hormone (TSH) levels for several days after treatment. This may lead to increased risk of headache and nausea. There are no studies of alternative dose schedules of Thyrogen in patients with ESRD to guide dose reduction in this population.<br />In patients with significant renal impairment the activity of radioiodine should be carefully selected by the nuclear medicine physician.<br />The use of Thyrogen in patients with reduced liver function does not warrant special considerations.<br />Method of administration<br />After reconstitution with water for injection, 1.0 ml solution (0.9 mg thyrotropin alfa) is administered by intramuscular injection to the buttock. For instructions on reconstitution of the medicinal product before administration, see section 6.6.<br />For radioiodine imaging or ablation, radioiodine administration should be given 24 hours following the final Thyrogen injection. Diagnostic scintigraphy should be performed 48 to 72 hours following radioiodine administration, whereas post-ablation scintigraphy may be delayed additional days to allow background activity to decline.<br />For diagnostic follow-up serum thyroglobulin (Tg) testing, the serum sample should be obtained 72 hours after the final injection of Thyrogen. Use of Thyrogen with Tg testing in follow up of post-thyroidectomy well differentiated thyroid cancer patients should be in accordance with official guidelines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                • Hypersensitivity to bovine or human thyroid stimulating hormone or to any of the excipients listed in section 6.1.
+• Pregnancy (see section 4.6).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Thyrogen should not be administered intravenously.<br />When used as an alternative to thyroid hormone withdrawal, the combination of the whole body scintigraphy (WBS) and Tg testing after Thyrogen administration assures the highest sensitivity for detection of thyroid remnants or cancer. False negative results may occur with Thyrogen. If a high index of suspicion for metastatic disease persists, a confirmatory withdrawal WBS and Tg testing should be considered.<br />The presence of Tg autoantibodies can be expected in 18-40% of patients with differentiated thyroid cancer and may cause false negative serum Tg measurements. Therefore, both TgAb and Tg assays are needed.</p><p>Careful evaluation of benefit-risk relationships should be assessed for Thyrogen administration in high risk elderly patients who have heart disease (e.g. valvular heart disease, cardiomyopathy, coronary artery disease, and prior or current tachyarrhythmia including atrial fibrillation) and have not undergone thyroidectomy.<br />Thyrogen is known to cause a transient but significant rise in serum thyroid hormone concentration when given to patients who have substantial thyroid tissue still in situ. Therefore, careful evaluation of individual risk-benefit is necessary for patients with significant residual thyroid tissue.<br />Long term data in relation to use of the lower dose of radioiodine are not yet available.<br />Effect on tumour growth and/or size<br />In patients with thyroid cancer, several cases of stimulated tumour growth have been reported during withdrawal of thyroid hormones for diagnostic procedures which have been attributed to the associated prolonged elevation of TSH levels.<br />There is a theoretical possibility that Thyrogen, like thyroid hormone withdrawal, may lead to stimulated tumour growth. In clinical trials with thyrotropin alfa, which produces a short-term increase in serum TSH levels, no case of tumour growth has been reported.<br />Due to elevation of TSH levels after Thyrogen administration patients with metastatic thyroid cancer particularly in confined spaces such as the brain, spinal cord and orbit or disease infiltrating the neck, may experience local oedema or focal haemorrhage at the site of these metastases resulting in increased tumour size. This may lead to acute symptoms, which depend on the anatomical location of the tissue e.g. hemiplegia, hemiparesis, loss of vision have occurred in patients with CNS metastases. Laryngeal oedema, respiratory distress requiring tracheotomy, and pain at the site of metastasis have also been reported after Thyrogen administration. It is recommended that pre-treatment with corticosteroids be considered for patients in whom local tumour expansion may compromise vital anatomic structures.<br />Sodium<br />This medicinal product contains less than 1 mmol sodium (23 mg) per injection, i.e. essentially &lsquo;sodium- free&rsquo;.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Formal interaction studies between Thyrogen and other medicinal products have not been performed. In clinical trials, no interactions were observed between Thyrogen and the thyroid hormones triiodothyronine (T3) and thyroxine (T4) when administered concurrently.<br />The use of Thyrogen allows for radioiodine imaging while patients are euthyroid on thyroid hormone suppression treatment. Data on radioiodine kinetics indicate that the clearance of radioiodine is approximately 50% greater while euthyroid than during the hypothyroid state when renal function is decreased, thus resulting in less radioiodine retention in the body at the time of imaging. This factor should be considered when selecting the activity of radioiodine for use in radioiodine imaging.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u><strong>Pregnancy</strong></u><br />Animal reproduction studies have not been conducted with Thyrogen.<br />It is not known whether Thyrogen can cause foetal harm when administered to a pregnant woman or whether Thyrogen can affect reproductive capacity.</p><p>Thyrogen in combination with diagnostic radioiodine whole body scintigraphy is contra-indicated in pregnancy (see section 4.3), because of the consequent exposure of the foetus to a high dose of radioactive material.<br /><u>Breast-feeding</u><br />It is unknown whether thyrotropin alfa /metabolites are excreted in human milk. A risk to the suckling child cannot be excluded. Thyrogen should not be used during breast-feeding.<br /><u>Fertility</u><br />It is not known whether Thyrogen can affect fertility in humans.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Thyrogen may reduce the ability to drive or use machines, since dizziness and headaches have been reported.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Summary of the safety profile</u><br />The most commonly reported adverse reactions are nausea and headache, occurring in approximately 11%, and 6% of patients, respectively.<br /><u>Tabulated list of adverse reactions</u><br />The adverse reactions mentioned in the table, combine adverse reactions in the six prospective clinical trials (N=481) and undesirable effects that have been reported to Genzyme after licensure of Thyrogen.<br />Within each frequency grouping, adverse reactions are presented in order of decreasing seriousness. The reporting rate is classified as very common (&ge;1/10), common (&ge;1/100 to &lt;1/10), uncommon (&ge;1/1,000 to &lt;1/100), rare (&ge;1/10,000 to &lt;1/1,000), very rare (&lt;1/10,000) and not known (cannot be estimated from the available data).</p><p><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4RESRXhpZgAATU0AKgAAAAgABAE7AAIAAAAYAAAISodpAAQAAAABAAAIYpydAAEAAAAwAAAQ2uocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE11aGFtbWVkLCBVc21hbiAvU0EvRVhUAAAFkAMAAgAAABQAABCwkAQAAgAAABQAABDEkpEAAgAAAAM1NgAAkpIAAgAAAAM1NgAA6hwABwAACAwAAAikAAAAABzqAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAyMTowMzowMSAwODoyNjozMwAyMDIxOjAzOjAxIDA4OjI2OjMzAAAATQB1AGgAYQBtAG0AZQBkACwAIABVAHMAbQBhAG4AIAAvAFMAQQAvAEUAWABUAAAA/+ELKmh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4NCjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iPjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iLz48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+PHhtcDpDcmVhdGVEYXRlPjIwMjEtMDMtMDFUMDg6MjY6MzMuNTU4PC94bXA6Q3JlYXRlRGF0ZT48L3JkZjpEZXNjcmlwdGlvbj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyI+PGRjOmNyZWF0b3I+PHJkZjpTZXEgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOmxpPk11aGFtbWVkLCBVc21hbiAvU0EvRVhUPC9yZGY6bGk+PC9yZGY6U2VxPg0KCQkJPC9kYzpjcmVhdG9yPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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" alt="" width="384" height="404" vspace="0" hspace="0" border="0" style="width:384px;height:404px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p><u>Description of selected adverse reactions</u><br />Very rare cases of hyperthyroidism or atrial fibrillation have been observed when Thyrogen 0.9 mg has been administered in patients with presence of either partial or entire thyroid gland.<br />Manifestations of hypersensitivity have been reported uncommonly in both clinical and post-marketing settings. These reactions consisted of urticaria, rash, pruritus, flushing and respiratory signs and symptoms.<br />In clinical trials involving 481 patients, no patients have developed antibodies to thyrotropin alfa either after single or repeated limited (27 patients) use of the product. It is not recommended to perform TSH assays after Thyrogen administration. The occurrence of antibodies which could interfere with endogenous TSH assays performed during regular follow-ups cannot be excluded.<br />Enlargement of residual thyroid tissue or metastases can occur following treatment with Thyrogen. This may lead to acute symptoms, which depend on the anatomical location of the tissue. For example, hemiplegia, hemiparesis or loss of vision have occurred in patients with CNS metastases. Laryngeal oedema, respiratory distress requiring tracheotomy, and pain at the site of metastasis have also been reported after Thyrogen administration. It is recommended that pre-treatment with corticosteroids be considered for patients in whom local tumour expansion may compromise vital anatomic structures.<br />Very rare cases of stroke have been reported from world-wide post marketing experience in female patients. The relationship to Thyrogen administration is unknown.</p><p><u>Reporting of suspected adverse reactions Saudi Arabia:</u></p><p>The National Pharmacovigilance and Drug Safety Centre (NPC)Fax: +966-11-205-7662 Call NPC at +966-11-2038222, Exts: 2317-2356-2340. reporting hotline : 19999E-mail: npc.drug@sfda.gov.sa Website: www.sfda.gov.sa/npc Sanofi- Pharmacovigilance: KSA_Pharmacovigilance@sanofi.com</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Data on exposure above the recommended dose is limited to clinical studies and a special treatment program. Three patients in clinical trials and one patient in the special treatment program experienced symptoms after receiving Thyrogen doses higher than those recommended. Two patients had nausea after 2.7 mg IM dose, and in one of these patients nausea was also accompanied by weakness, dizziness and headache. The third patient experienced nausea, vomiting and hot flushes after 3.6 mg IM dose. In the special treatment program, a 77 year-old patient with metastatic thyroid cancer who had not been thyroidectomised received 4 doses of Thyrogen 0.9 mg over 6 days, developed atrial fibrillation, cardiac decompensation and terminal myocardial infarction 2 days later.<br />One additional patient enrolled in a clinical trial experienced symptoms after receiving Thyrogen intravenously. This patient received 0.3 mg of Thyrogen as a single intravenous (IV) bolus and, 15 minutes later experienced severe nausea, vomiting, diaphoresis, hypotension and tachycardia.</p><p>A suggested treatment in case of overdose would be the reestablishment of fluid balance and administration of an antiemetic may also be considered.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Pituitary and Hypothalamic Hormones and Analogues, Anterior Pituitary Lobe Hormones and Analogues. ATC code for thyrotropin alfa: H01AB01<br />Mechanism of action<br />Thyrotropin alfa (recombinant human thyroid stimulating hormone) is a heterodimeric glycoprotein produced by recombinant DNA technology. It is comprised of two non-covalently linked subunits. The cDNAs encode for an alpha subunit of 92 amino acid residues containing two N-linked glycosylation sites, and a beta subunit of 118 residues containing one N-linked glycosylation site. It has comparable biochemical properties to natural human Thyroid Stimulating Hormone (TSH). Binding of thyrotropin alfa to TSH receptors on thyroid epithelial cells stimulates iodine uptake and organification, and synthesis and release of thyroglobulin, triiodothyronine (T3) and thyroxine (T4).<br />In patients with well-differentiated thyroid cancer, a near total or total thyroidectomy is performed. For optimal diagnosis of thyroid remnants or cancer via either radioiodine imaging or thyroglobulin testing and for radioiodine therapy of thyroid remnants, a high serum level of TSH is needed to stimulate either radioiodine uptake and/or thyroglobulin release. The standard approach to achieve elevated TSH levels has been to withdraw patients from thyroid hormone suppression therapy (THST), which usually causes patients to experience the signs and symptoms of hypothyroidism. With the use of Thyrogen, the TSH stimulation necessary for radioiodine uptake and thyroglobulin release is achieved while patients are maintained euthyroid on THST, thus avoiding the morbidity associated with hypothyroidism.<br />Clinical efficacy and safety<br />Diagnostic use<br />The efficacy and safety of Thyrogen for use with radioiodine imaging together with serum thyroglobulin testing for the diagnosis of thyroid remnants and cancer was demonstrated in two studies. In one of the studies, two dose regimens were examined: 0.9 mg intramuscular every 24 hours for two doses (0.9 mg x 2)and 0.9 mg intramuscular every 72 hours for three doses (0.9 mg x 3). Both dose regimens wereeffective and not statistically different from thyroid hormone withdrawal in stimulating radioiodine uptake for diagnostic imaging. Both dose regimens improved the sensitivity, accuracy and negative predictive value of Thyrogen-stimulated thyroglobulin alone or in combination with radioiodine imaging as compared to testing performed while patients remained on thyroid hormones.<br />In clinical trials, for the detection of thyroid remnants or cancer in ablated patients using a thyroglobulin assay with a lower limit of detection of 0.5 ng/ml, Thyrogen-stimulated thyroglobulin levels of 3 ng/ml, 2 ng/ml and 1 ng/ml corresponded with thyroglobulin levels after withdrawal of thyroid hormone of 10 ng/ml, 5 ng/ml and 2 ng/ml, respectively. In these studies the use of thyroglobulin testing on Thyrogen was found to be more sensitive than thyroglobulin testing on TSHT. Specifically in a Phase III study involving 164 patients the detection rate of tissue of thyroid origin after a Thyrogen thyroglobulin test ranged from 73-87%, whereas, by using thyroglobulin on TSHT it was 42-62% for the same cut-off values and comparable reference standards.<br />Metastatic disease was confirmed by a post-treatment scan or by lymph node biopsy in 35 patients. Thyrogen-stimulated thyroglobulin levels were above 2 ng/ml in all 35 patients, whereas, thyroglobulin on THST was above 2 ng/ml in 79% of these patients.</p><p>Pre-therapeutic stimulation<br />In a comparator study involving 60 evaluable patients, the rates of successful ablation of thyroid remnants with 100 mCi/3.7 GBq (&plusmn; 10%) radioiodine in post-thyroidectomy patients with thyroid cancer, were comparable for patients treated after thyroid hormone withdrawal versus patients treated after Thyrogen administration. Patients studied were adults (&gt;18 years), with newly diagnosed differentiated papillary or follicular thyroid carcinoma, including papillary-follicular variant, characterised, principally (54 of 60), as T1-T2, N0-N1, M0 (TNM classification). Success of remnant ablation was assessed with radioiodine imaging and with serum thyroglobulin testing at 8 &plusmn; 1 months after treatment. All 28 patients (100%) treated after withdrawal of THST and all 32 patients (100%) treated after Thyrogen administration had either no visible uptake of radioiodine in the thyroid bed or, if visible, thyroid bed uptake &lt;0.1% of the administered activity of radioiodine. The success of thyroid remnant ablation also was assessed by the criterion of Thyrogen-stimulated serum Tg level &lt; 2 ng/ml eight months after ablation, but only in patients who were negative for interfering anti-Tg antibodies. Using this Tg criterion, 18/21 patients (86%) and 23/24 patients (96%) had thyroid remnants successfully ablated in the THST withdrawal group and the Thyrogen treatment group, respectively.<br />Quality of life was significantly reduced following thyroid hormone withdrawal, but maintained following either dosage regimen of Thyrogen in both indications.<br />A follow-up study was conducted on patients who previously completed the initial study, and data is available for 51 patients. The main objective of the follow-up study was to confirm the status of thyroid remnant ablation by using Thyrogen-stimulated radioiodine static neck imaging after a median follow-up of 3.7 years (range 3.4 to 4.4 years) following radioiodine ablation. Thyrogen-stimulated thyroglobulin testing was also performed.<br />Patients were still considered to be successfully ablated if there was no visible thyroid bed uptake on the scan, or if visible, uptake was less than 0.1%. All patients considered ablated in the initial study were confirmed to be ablated in the follow-up study. In addition, no patient had a definitive recurrence during the 3.7 years of follow-up. Overall, 48/51 patients (94%) had no evidence of cancer recurrence, 1 patient had possible cancer recurrence (although it was not clear whether this patient had a true recurrence or persistent tumour from the regional disease noted at the start of the original study), and 2 patients could not be assessed.<br />In summary, in the pivotal study and its follow-up study, Thyrogen was non-inferior to thyroid hormone withdrawal for elevation of TSH levels for pre-therapeutic stimulation in combination with radioiodine for post-surgical ablation of remnant thyroid tissue.<br />Two large prospective randomised studies, the HiLo study (Mallick) and the ESTIMABL study (Schlumberger), compared methods of thyroid remnant ablation in patients with differentiated thyroid cancer who had been thyroidectomised. In both studies, patients were randomised to 1 of 4 treatment groups: Thyrogen + 30 mCi 131-I, Thyrogen + 100 mCi 131-I, thyroid hormone withdrawal + 30 mCi 131-I, or thyroid hormone withdrawal + 100 mCi 131-I, and patients were assessed about 8 months later. The HiLo study randomised 438 patients (tumour stages T1-T3, Nx, N0 and N1, M0) at 29 centres. As assessed by radioiodine imaging and stimulated Tg levels (n = 421), ablation success rates were approximately 86% in all four treatment groups. All 95% confidence intervals for the differences were within &plusmn;10 percentage points, indicating in particular non-inferiority of the low to the high radioiodine dose. Analyses of T3 patients and N1 patients showed that these subgroups had equally good ablation success rates as did lower-risk patients. The ESTIMABL study randomised 752 patients with low-risk thyroid cancer (tumour stages pT1 &lt; 1 cm and N1 or Nx, pT1 &gt;1-2 cm and any N stage, or pT2 N0, all patients M0) at 24 centres. Based on 684 evaluable patients, the overall ablation success rate assessed by neck ultrasounds and stimulated Tg levels was 92%, without any statistically significant difference among the four groups. Considering the design of each of these two studies, it should be noted that long term data.</p><p>(beyond approximately 9 months) in relation to use of the lower dose of radioiodine are not yet available. In summary, these studies suggest that low dose radioiodine plus thyrotropin alpha is an effective treatment (with reduced radiation exposure) and Thyrogen was non-inferior to thyroid hormone withdrawal for pre-therapeutic stimulation in combination with radioiodine for post-surgical ablation of thyroid remnant tissue.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The pharmacokinetics of Thyrogen were studied in patients with well-differentiated thyroid cancer following a single 0.9 mg intramuscular injection. After injection, the mean peak (Cmax) level obtained was 116 &plusmn; 38 mU/l and occurred approximately 13 &plusmn; 8 hours after administration. The elimination half-life was 22 &plusmn; 9 hours. The major elimination route of thyrotropin alfa is believed to be renal and to a lesser extent hepatic.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Non-clinical data are limited, but reveal no special hazard for humans from use of Thyrogen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Mannitol<br />Sodium phosphate monobasic, monohydrate<br />Sodium phosphate dibasic, heptahydrate<br />Sodium chloride</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the absence of compatibility studies, this medicinal product must not be administered as a mixture with other medicinal products in the same injection.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Unopened vials
+3 years.
+Shelf-life after reconstitution
+It is recommended that the Thyrogen solution be injected within three hours.
+The reconstituted solution can be stored for up to 24 hours in a refrigerator (2°C - 8°C) under protection from light, while avoiding microbial contamination.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store in a refrigerator (2&deg;C - 8&deg;C).<br />Keep the vial in the outer carton in order to protect from light.<br />For storage conditions after reconstitution of the medicinal product, see section 6.3.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Clear Type I glass 5 ml vials. The closure consists of a siliconised butyl stopper with a tamper proof flip-off cap. Each vial contains 1.1 mg thyrotropin alfa. After reconstitution with 1.2 ml water for injection, 1.0 ml of solution (equal to 0.9 mg Thyrogen) is withdrawn and administered to the patient.<br />To provide sufficient volume to allow accurate dispensing, each vial of Thyrogen is formulated to contain an overfill of 0.2 ml.<br />Package size: one or two vials per carton.<br />Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The powder for solution for injection has to be reconstituted with water for injection. Only one vial of Thyrogen is required per injection. Each vial of Thyrogen is for single use only.<br />Use aseptic technique<br />Add 1.2 ml water for injection to the Thyrogen powder in the vial. Swirl the contents of the vial gently until all material is dissolved. Do not shake the solution. When the powder is dissolved the total volume in the vial is 1.2 ml. The pH of the Thyrogen solution is approximately 7.0.<br />Visually inspect the Thyrogen solution in the vial for foreign particles and discoloration. The Thyrogen solution should be a clear, colourless solution. Do not use vials exhibiting foreign particles, cloudiness or discoloration.<br />Withdraw 1.0 ml of the Thyrogen solution from the product vial. This equals 0.9 mg thyrotropin alfa to be injected.<br />Thyrogen does not contain preservatives. Dispose of any unused solution immediately. No special requirements for disposal.<br />The Thyrogen solution should be injected within three hours, however the Thyrogen solution will stay chemically stable for up to 24 hours, if kept in a refrigerator (between 2&deg;C and 8&deg;C). It is important to note that the microbiological safety depends on the aseptic conditions during the preparation of the solution.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Genzyme Europe B.V.,
+ Gooimeer 10, 1411 DD Naarden, 
+The Netherlands
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Mar. 2016
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

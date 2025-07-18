@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        140-172-03
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2003
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        ALPAX AMP. 2MG-ML
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PANCURONIUM BROMIDE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        6
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Ampoule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        13.4
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Hikma Farmaceutica" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Hikma Farmaceutica
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 612]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Abdulrehman Algosaibi G.T.C.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Hikma Pharmaceuticals PLC
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        M03AC01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Alpax® 2 mg/ml Ampoules
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each ml of the ampoule contains 2 mg pancuronium.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Clear colorless solution.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Alpax is indicated as an adjunct to general anesthesia, to facilitate tracheal intubation and to provide skeletal muscle relaxation during surgery or mechanical ventilation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Alpax (pancuronium bromide) injection is for intravenous use only. This drug should be administered by or under the supervision of experienced clinicians familiar with the use of &nbsp;neuromuscular blocking &nbsp;agents. &nbsp;Dosage must &nbsp;be &nbsp;individualized &nbsp;in &nbsp;each &nbsp;case. &nbsp;The dosage information which follows is derived from studies based upon units of drug per unit of body weight and is intended to serve as a guide only. Since potent inhalational anesthetics or prior use of succinylcholine may enhance the intensity and duration of Alpax, the lower end of the recommended initial dosage range may suffice when Alpax is first &nbsp;used &nbsp;after &nbsp;intubation &nbsp;with &nbsp;succinylcholine&nbsp; and/or &nbsp;after &nbsp;maintenance&nbsp; doses &nbsp;of volatile liquid inhalational anesthetics are started. To obtain maximum clinical benefits of Alpax and to minimize the possibility of overdosage, the monitoring of muscle twitch response to a peripheral nerve stimulator is advised.</p><p>&nbsp;</p><p>In adults under balanced anesthesia the initial intravenous dosage range is 0.04 to 0.1 mg/kg. Later incremental doses starting at 0.01 mg/kg may be used. These increments slightly increase the magnitude of the blockade and significantly increase the duration of blockade, because a significant number of myoneural junctions are still blocked when there is clinical need for more drug.</p><p>&nbsp;</p><p>If Alpax is used to provide skeletal muscle relaxation for endotracheal intubation, a bolus dose of 0.06 to 0.1 mg/kg are recommended. Conditions satisfactory in intubation are usually present within 2 to 3 minutes.</p><p>&nbsp;</p><ul><li>Dosage in Children</li></ul><p>Dose response studies in children indicate that, with the exception of neonates, dosage requirements are the same as for adults.</p><p>&nbsp;</p><ul><li>Cesarean Section</li></ul><p>The dosage to provide relaxation for intubation and operation is the same as for general surgical procedures. The dosage to provide relaxation, following usage of succinylcholine for intubation, is the same as for general surgical procedures.</p><p>&nbsp;</p><ul><li>Compatibility</li></ul><p>- 0.9% sodium chloride injection</p><p>- 5% dextrose injection</p><p>- 5% dextrose and sodium chloride injection</p><p>- Lactated Ringer&#39;s injection</p><p>&nbsp;</p><p>Parenteral drug products should be inspected visually for particulate matter and discoloration prior to administration, whenever solution and container permit. When mixed with the above solutions in glass or plastic containers, Alpax will remain stable in solution for 48 hours with no alteration in potency or pH; no decomposition is observed and there is no absorption to either the glass or plastic container.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Alpax is contraindicated in patients known to be hypersensitive to the drug.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Alpax should be administered in carefully adjusted doses by or under the supervision of experienced clinicians who are familiar with its actions and the possible complications that might occur following its use. The drug should not be administered unless facilities for intubation, artificial respiration, oxygen therapy, and reversal agents are immediately available. The clinician must be prepared to assist or control respiration.</p><p>&nbsp;</p><p>Use of a peripheral nerve stimulator will usually be of value for monitoring of neuromuscular blocking effect, avoiding overdosage and assisting in evaluation of recovery.</p><p>&nbsp;</p><ul><li>General</li></ul><p>Although pancuronium has been used successfully in many patients with pre-existing pulmonary, hepatic, or renal disease, caution should be exercised in these situations.</p><p>&nbsp;</p><ul><li>Anaphylaxis</li></ul><p>Severe anaphylactic reactions to neuromuscular blocking agents, including pancuronium, have been reported. These reactions have, in some cases, been life-threatening and fatal. Due to the potential severity of these reactions, the necessary precautions, such as the immediate&nbsp;availability&nbsp; of&nbsp; appropriate&nbsp;emergency&nbsp;treatment,&nbsp;should&nbsp;be&nbsp;taken.</p><p>&nbsp;</p><p>Precautions &nbsp;should&nbsp;also&nbsp;be&nbsp;taken&nbsp;in&nbsp;those&nbsp;individuals&nbsp;who&nbsp;have&nbsp;had&nbsp;previous anaphylactic reactions to other neuromuscular blocking agents, since cross-reactivity between neuromuscular blocking agents, both depolarizing and non-depolarizing, has been reported.</p><p>&nbsp;</p><p>In patients who are known to have myasthenia gravis or the myasthenic (Eaton-Lambert) syndrome, small doses of Alpax may have profound effects. In such patients, a peripheral nerve stimulator and use of a small test dose may be of value in monitoring the response to administration of muscle relaxants.</p><p>&nbsp;</p><ul><li>Renal Failure</li></ul><p>A major portion of pancuronium, as well as an active metabolite, are recovered in urine. The elimination half-life is doubled and the plasma clearance is reduced in patients with renal &nbsp;failure; &nbsp;at &nbsp;the &nbsp;same &nbsp;time, &nbsp;the &nbsp;rate &nbsp;of &nbsp;recovery of &nbsp;neuromuscular &nbsp;blockade &nbsp;is variable and sometimes very much slower than normal. This information should be taken into consideration if pancuronium is selected, for other reasons, to be used in a patient with renal failure.</p><p>&nbsp;</p><ul><li>Altered Circulation Time</li></ul><p>Conditions associated with slower circulation time in cardiovascular disease, old age, edematous states resulting in increased volume of distribution may contribute to a delay in onset time; therefore, dosage should not be increased.</p><p>&nbsp;</p><ul><li>Hepatic and/or Biliary Tract Disease</li></ul><p>The doubled elimination half-life and reduced plasma clearance determined in patients with hepatic and/or biliary tract disease, as well as limited data showing that recovery time is prolonged an average of 65% in patients with biliary tract obstruction, suggests that prolongation of neuromuscular blockade may occur. At the same time, these conditions are characterized by an approximately 50% increase in volume of distribution of pancuronium, suggesting that the total initial dose to achieve adequate relaxation may in some cases be high. The possibility of slower onset, higher total dosage and prolongation of neuromuscular blockade must be taken into consideration when pancuronium is used in these patients.</p><p>&nbsp;</p><ul><li>Long-term Use in I.C.U.</li></ul><p>In the intensive care unit, in rare cases, long-term use of neuromuscular blocking drugs to facilitate mechanical ventilation may be associated with prolonged paralysis and/or skeletal muscle weakness, that may be first noted during attempts to wean such patients from the ventilator. Typically, such patients receive other drugs such as broad spectrum antibiotics, narcotics and/or steroids and may have electrolyte imbalance and diseases which lead to electrolyte imbalance, hypoxic episodes of varying duration, acid-base imbalance and extreme debilitation, any of which may enhance the actions of a neuromuscular blocking agent. Additionally, patients immobilized for extended periods frequently develop symptoms consistent with disuse muscle atrophy. Therefore, when there is a need for long-term mechanical ventilation, the benefits to-risk ratio of neuromuscular blockade must be considered.</p><p>&nbsp;</p><p>Continuous infusion or intermittent bolus dosing to support mechanical ventilation, has not been studied sufficiently to support dosage recommendations.</p><p>&nbsp;</p><p>Under the above conditions, appropriate monitoring, such as use of a peripheral nerve stimulator, to assess the degree of neuromuscular blockade, may preclude inadvertant excess dosing.</p><p>&nbsp;</p><ul><li>Severe Obesity or Neuromuscular Disease</li></ul><p>Patients with severe obesity or neuromuscular disease may pose airway and/or ventilatory problems requiring special care before, during and after the use of neuromuscular blocking agents such as Alpax.</p><p>&nbsp;</p><ul><li>Central nervous system</li></ul><p>Alpax has no known effect on consciousness, the pain threshold or cerebration. Administration should be accompanied by adequate anesthesia or sedation.</p><p>&nbsp;</p><ul><li>Pediatric Use</li></ul><p>Dose response studies in children indicate that, with the exception of neonates, dosage requirements are the same as for adults.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Prior administration of succinylcholine may enhance the neuromuscular blocking effect of Alpax and increase its duration of action. If succinylcholine is used before Alpax the administration of Alpax should be delayed until the patient starts recovering from succinylcholine-induced neuromuscular blockade.</p><p>If a small dose of Alpax is given at least 3 minutes prior to the administration of succinylcholine, in order to reduce the incidence and intensity of succinylcholine-induced fasciculations, this dose may induce a degree of neuromuscular block sufficient to cause respiratory depression in some patients.</p><p>Other nondepolarizing neuromuscular blocking agents (vecuronium, atracurium, d- tubocurarine, metocurine, and gallamine) behave in a clinically similar fashion to Alpax. The combinations of pancuronium -metocurine and pancuronium -d-tubocurarine are significantly more potent than the additive effects of each of the individual drugs given alone; however, the duration of blockade of these combinations is not prolonged. There are insufficient data to support concomitant use of pancuronium and the other three above mentioned muscle relaxants in the same patients.</p><p>&nbsp;</p><ul><li>Inhalational Anesthetics</li></ul><p>Use of volatile inhalational anesthetics such as enflurane, isoflurane, and halothane with Alpax will enhance neuromuscular blockade. Potentiation is most prominent with use of enflurane and isoflurane.</p><p>With the above agents, the intubating dose of Alpax may be the same as with balanced anesthesia unless the inhalational anesthetic has been administered for a sufficient time at a sufficient dose to have reached clinical equilibrium. The relatively long duration of action of pancuronium should be taken into consideration when the drug is selected for intubation in these circumstances.</p><p>Clinical experience and animal experiments suggest that pancuronium should be given with caution to patients receiving chronic tricyclic antidepressant therapy who are anesthetized with halothane because severe ventricular arrhythmias may result from this combination. The severity of the arrhythmias appears in part related to the dose of pancuronium.</p><p>&nbsp;</p><ul><li>Antibiotics</li></ul><p>Parenteral/intraperitoneal &nbsp;administration &nbsp;of &nbsp;high &nbsp;doses &nbsp;of &nbsp;certain &nbsp;antibiotics &nbsp;may intensify or produce neuromuscular block on their own. The following antibiotics have been associated with various degrees of paralysis: aminoglycosides (such as neomycin, streptomycin, &nbsp;kanamycin, &nbsp;gentamicin, &nbsp;and &nbsp;dihydrostreptomycin);&nbsp; tetracyclines; bacitracin; polymyxin B; colistin; and sodium colistimethate. If these or other newly introduced antibiotics are used preoperatively or in conjunction with Alpax, unexpected prolongation of neuromuscular block should be considered a possibility.</p><p>&nbsp;</p><ul><li>Other</li></ul><p>Experience concerning injection of quinidine during recovery from use of other muscle relaxants suggests that recurrent paralysis may occur. This possibility must also be considered for Alpax injection.</p><p>Electrolyte imbalance and diseases which lead to electrolyte imbalance, such as adrenal cortical insufficiency, have been shown to alter neuromuscular blockade. Depending on the nature of the imbalance, either enhancement or inhibition may be expected. Magnesium salts, administered for the management of toxemia of pregnancy, may enhance the neuromuscular blockade.</p><p>&nbsp;</p><ul><li>Drug/laboratory test interactions</li></ul><p>None known.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <ul><li>Pregnancy</li></ul><p>Pregnancy Category C.</p><p>Animal reproduction studies have not been performed. It is not known whether Alpax can&nbsp;cause fetal&nbsp;harm &nbsp;when &nbsp;administered &nbsp;to&nbsp; a&nbsp; pregnant&nbsp; &nbsp;woman &nbsp;or&nbsp; &nbsp;can &nbsp;affect reproduction capacity. Alpax should be given to a pregnant woman only if the administering clinician decides that the benefits outweigh the risks. Alpax may be used in operative obstetrics (Cesarean section), but reversal of pancuronium may be unsatisfactory &nbsp;in &nbsp;patients &nbsp;receiving &nbsp;magnesium &nbsp;sulfate &nbsp;for &nbsp;toxemia &nbsp;of &nbsp;pregnancy, because magnesium salts enhance neuromuscular blockade. Dosage should usually be reduced, as indicated, in such cases. It is also recommended that the interval between use of pancuronium and delivery be reasonably short to avoid clinically significant placental transfer.</p><p>&nbsp;</p><ul><li>Breastfeeding</li></ul><p>It is not known whether neuromuscular blocking agents are distributed into breast milk. However, problems in humans have not been documented.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>It is not recommended to use potentially dangerous machinery or drive a car within 24 hours after full recovery from the neuromuscular blocking action of pancuronium.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Neuromuscular</strong></p><p>The most frequent adverse reaction to nondepolarizing blocking agents as a class consists of an extension of drug&#39;s pharmacological action beyond the time period needed. This may vary from skeletal muscle weakness to profound and prolonged skeletal muscle paralysis resulting in respiratory insufficiency or apnea.</p><p>Inadequate reversal of the neuromuscular blockade is possible with Alpax as with all curariform drugs. These adverse experiences are managed by manual or mechanical ventilation until recovery is judged adequate.</p><p>Prolonged paralysis and/or skeletal muscle weakness have been reported after long-term use to support mechanical ventilation in the intensive care unit.</p><p>&nbsp;</p><p><strong>Cardiovascular</strong></p><p>See section 5.1 .</p><p>&nbsp;</p><p><strong>Gastrointestinal</strong></p><p>Salivation is sometimes noted during very light anesthesia, especially if no anticholinergic premedication is used.</p><p>&nbsp;</p><p><strong>Skin</strong></p><p>An occasional transient rash is noted accompanying the use of pancuronium.</p><p>&nbsp;</p><p><strong>O</strong><strong>ther</strong></p><p>Although histamine release is not a characteristic action of pancuronium, rare hypersensitivity reactions such as bronchospasm, flushing, redness, hypotension, tachycardia, and other reactions possibly mediated by histamine release have been reported.</p><p>&nbsp;</p><p><strong>Post-Marketing</strong></p><p>There have been post-marketing reports of severe allergic reactions (anaphylactic and anaphylactoid reactions) associated with the use of neuromuscular blocking agents, including pancuronium. These reactions, in some cases, have been life-threatening and fatal. Because these reactions were reported voluntarily from a population of uncertain size, it is not possible to reliably estimate their frequency.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The possibility of iatrogenic overdosage can be minimized by carefully monitoring the muscle twitch response to peripheral nerve stimulation.</p><p>&nbsp;</p><p>Excessive doses of pancuronium produce enhanced pharmacological effects. Residual neuromuscular blockade beyond the time period needed may occur with pancuronium as with &nbsp;other &nbsp;neuromuscular &nbsp;blockers. &nbsp;This &nbsp;may &nbsp;be &nbsp;manifested &nbsp;by &nbsp;skeletal &nbsp;muscle weakness, decreased respiratory reserve, low tidal volume, or apnea. A peripheral nerve stimulator may be used to assess the degree of residual neuromuscular blockade and help to differentiate residual neuromuscular blockade from other causes of decreased respiratory reserve.</p><p>&nbsp;</p><p>Pyridostigmine injection, neostigmine, or edrophonium, in conjunction with atropine or glycopyrrolate,&nbsp; will &nbsp;usually &nbsp;antagonize &nbsp;the &nbsp;skeletal &nbsp;muscle relaxant &nbsp;action &nbsp;of pancuronium. Satisfactory reversal can be judged by adequacy of skeletal muscle tone and by adequacy of respiration. A peripheral nerve stimulator may also be used to monitor restoration of twitch response.</p><p>&nbsp;</p><p>Failure of prompt reversal (within 30 minutes) may occur in the presence of extreme debilitation, carcinomatosis, and with concomitant use of certain broad spectrum antibiotics, or anesthetic agents and other drugs which enhance neuromuscular blockade or&nbsp; cause&nbsp; respiratory&nbsp; depression&nbsp; of&nbsp; their&nbsp; own.&nbsp; Under&nbsp; such&nbsp; circumstances,&nbsp;&nbsp;the management is the same as that of prolonged neuromuscular blockade. Ventilation must be supported by artificial means until the patient has resumed control of his respiration. Prior to the use of reversal agents, reference should be made to the specific package insert of the reversal agent.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Alpax is a nondepolarizing neuromuscular blocking agent possessing all of the characteristic pharmacological actions of this class of drugs (curariform). It acts by competing for cholinergic receptors at the motor end-plate. The antagonism to acetylcholine is inhibited and neuromuscular block is reversed by anticholinesterase agents such as pyridostigmine, neostigmine, and edrophonium. Pancuronium is approximately 1/3 less potent than vecuronium and approximately 5 times as potent as d-tubocurarine; the duration of neuromuscular blockade produced by pancuronium bromide is longer than that of vecuronium at initially equipotent doses. The ED<sub>95</sub>&nbsp; (dose required to produce 95% suppression of muscle twitch response) is approximately 0.05 mg/kg under balanced anesthesia and 0.03 mg/kg under halothane anesthesia. These doses produce effective skeletal muscle relaxation (as judged by time from maximum effect to 25% recovery of control twitch height) for approximately 22 minutes; the duration from injection to 90% recovery of control twitch height is approximately 65 minutes. The intubating dose of 0.1 mg/kg (balanced anesthesia) will effectively abolish twitch response within approximately 4 minutes; time from injection to 25% recovery from this dose is approximately 100 minutes. Supplemental doses to maintain muscle relaxation slightly increase the magnitude of block and significantly increase the duration of block. The use of a peripheral nerve stimulator is of benefit in assessing the degree of neuromuscular blockade.</p><p>&nbsp;</p><p>The most characteristic circulatory effects of pancuronium, studied under halothane anesthesia, are a moderate rise in heart rate, mean arterial pressure and cardiac output; systemic vascular resistance is not changed significantly and central venous pressure may fall slightly. The heart rate rise is inversely related to the rate immediately before administration of pancuronium, is blocked by prior administration of atropine, and appears unrelated to the concentration of halothane or dose of pancuronium.</p><p>&nbsp;</p><p>Data on histamine assays and vailable clinical experience indicate that hypersensitivity reactions such as bronchospasm, flushing, redness, hypotension, tachycardia, and other reactions commonly associated with histamine release are rare.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The elimination half-life of pancuronium has been reported to range between 89&ndash;161 minutes. The volume of distribution ranges from 241&ndash;280 mL/kg and plasma clearance is approximately 1.1&ndash;1.9 mL/minute/kg. Approximately 40% of the total dose of pancuronium&nbsp; &nbsp;has&nbsp; &nbsp;been&nbsp; &nbsp;recovered&nbsp;&nbsp; in&nbsp; &nbsp;urine&nbsp; as&nbsp;unchanged&nbsp; &nbsp;pancuronium&nbsp; &nbsp;and&nbsp; &nbsp;its metabolites while approximately 11% has been recovered in bile. As much as 25% of an injected dose may be recovered as 3-hydroxy metabolite, which is half as potent a blocking agent as pancuronium. Less than 5% of the injected dose is recovered as 17- hydroxy metabolite and 3.17-dihydroxy metabolite, which have been judged to be approximately 50 times less potent than pancuronium. Pancuronium exhibits strong binding to gamma globulin and moderate binding to&nbsp; albumin. Approximately 13% is unbound &nbsp;to &nbsp;plasma &nbsp;protein. &nbsp;In &nbsp;patients &nbsp;with &nbsp;cirrhosis &nbsp;the &nbsp;volume &nbsp;of &nbsp;distribution &nbsp;is increased by approximately 50%, the plasma clearance is decreased by approximately 22% and the elimination half-life is doubled. Similar results were noted in patients with biliary obstruction, except that plasma clearance was less than half the normal rate. The initial total dose to achieve adequate relaxation may thus be high in patients with hepatic and/or biliary tract dysfunction, while the duration of action is greater than usual.</p><p>&nbsp;</p><p>The&nbsp; &nbsp;elimination&nbsp; half-life&nbsp; is&nbsp; doubled&nbsp; and&nbsp;&nbsp;the&nbsp;&nbsp;plasma&nbsp; clearance&nbsp;&nbsp;is&nbsp;reduced&nbsp; by approximately 60% in patients with renal failure. The volume of distribution is variable, and in some cases elevated. The rate of recovery of neuromuscular blockade, as determined by peripheral nerve stimulation is variable and sometimes very much slower than normal.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Long-term &nbsp;studies &nbsp;in &nbsp;animals &nbsp;have &nbsp;not &nbsp;been &nbsp;performed to &nbsp;evaluate &nbsp;carcinogenic&nbsp;or mutagenic potential or impairment of fertility.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>- Sodium chloride</p><p>- Sodium acetate</p><p>- Glacial acetic acid</p><p>- Sodium hydroxide</p><p>- Water for injection</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None known.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                24 months
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store between 2-8&deg;C, away from light. Do not freeze.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Clear 2ml Ampoules with green dot. Pack size: 6 Ampoules</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hikma Pharmaceuticals 
+Bayader Wadi El Seer
+Industrial Area
+P.O Box 182400
+Amman 11118, Jordan
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                25 August 2013
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

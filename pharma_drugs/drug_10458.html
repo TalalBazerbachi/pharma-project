@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        5-5193-19
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2019
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        COSYREL 5MG/5MG F.C.TABLET
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PERINDOPRIL ARGININE,BISOPROLOL FUMARATE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        5,5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Bottle
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        41.15
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="LES LABORATOIRES SERVIER INDUSTRIE" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            LES LABORATOIRES SERVIER INDUSTRIE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 354]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            SAUDI INTERNATIONAL TRADING COMPANY LTD (SITCO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            LES LABORATOIRES SERVIER 
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        C07AB07 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        C09AA04 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Cosyrel 5 mg/5 mg film-coated tablets
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                One film-coated tablet contains 5 mg of bisoprolol fumarate (equivalent to 4.24 mg bisoprolol) and 5 mg of perindopril arginine (equivalent to 3.395 mg perindopril).
+
+For the full list of excipients, see section 6.1.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film-coated tablet
+
+Pink beige, oblong, bilayer scored film-coated tablet of 8.3 mm length and 4.5 mm width, engraved with ‘   ’ on one face and ‘5/5’ on the other face.
+
+Cosyrel 5 mg/5 mg scored tablet can be divided into equal doses.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Cosyrel is indicated as substitution therapy for treatment of hypertension and/or stable coronary artery disease (in patients with a history of myocardial infarction and/or revascularisation) and/or stable chronic heart failure with reduced systolic left ventricular function in adult patients adequately controlled with bisoprolol and perindopril given concurrently at the same dose level.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Posology</u></p><p>&nbsp;</p><p>The usual posology is one tablet once daily.</p><p>Patients should be stabilized with bisoprolol and perindopril at the same dose level for at least 4 weeks. The fixed dose combination is not suitable for initial therapy.</p><p>&nbsp;</p><p>For patients stabilized with bisoprolol 2.5 mg and perindopril 2.5 mg: one half 5 mg/5 mg tablet once daily.</p><p>&nbsp;</p><p>If a change of posology is required, titration should be done with the individual components.</p><p>&nbsp;</p><p><u>Special population</u></p><p>&nbsp;</p><p><em>Renal impairment (see section 4.4 and 5.2)</em></p><p>In patients with renal impairment, the recommended dose of Cosyrel 5 mg/5 mg should be based on creatinine clearance as outlined in table 1 below:</p><p>&nbsp;</p><p>Table 1: dosage adjustment in renal impairment</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>Creatinine clearance (mL/min)</strong></p></td><td style="vertical-align:top"><p><strong>Recommended daily dose </strong></p></td></tr><tr><td style="vertical-align:top"><p>Cl<sub>CR</sub> &ge; 60</p></td><td style="vertical-align:top"><p>One tablet of Cosyrel 5 mg/5 mg</p></td></tr><tr><td style="vertical-align:top"><p>30 &lt; Cl<sub>CR</sub> &lt; 60</p></td><td style="vertical-align:top"><p>One half tablet of Cosyrel 5 mg/5 mg</p></td></tr><tr><td style="vertical-align:top"><p>Cl<sub>CR</sub> &lt; 30</p></td><td style="vertical-align:top"><p>Not suitable. Individual dose titration with the monocomponents is recommended</p></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p><em>Hepatic impairment (see section 4.4 and 5.2)</em></p><p>No dosage adjustment is necessary in patients with hepatic impairment.</p><p>&nbsp;</p><p><em>Elderly</em></p><p>Cosyrel should be administered according to the renal function.</p><p>&nbsp;</p><p><em>Paediatric population</em></p><p>The safety and efficacy of Cosyrel in children and adolescents have not been established. No data are available. Therefore, use in children and adolescents is not recommended.</p><p><u>&nbsp;</u></p><p><u>Method of administration</u></p><p>&nbsp;</p><p>Cosyrel tablet should be taken as a single dose once daily in the morning before a meal.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                •	Hypersensitivity to the active substances, or to any of the excipients listed in section 6.1, or to any other angiotensin converting enzyme (ACE) inhibitor
+•	Acute heart failure or during episodes of heart failure decompensation requiring i.v. inotropic therapy
+•	Cardiogenic shock
+•	Second or third degree AV block (without pacemaker)
+•	Sick sinus syndrome
+•	Sinoatrial block
+•	Symptomatic bradycardia
+•	Symptomatic hypotension
+•	Severe bronchial asthma or severe chronic obstructive pulmonary disease
+•	Severe forms of peripheral arterial occlusive disease or severe forms of Raynaud's syndrome
+•	Untreated phaeochromocytoma (see section 4.4)
+•	Metabolic acidosis
+•	History of angioedema associated with previous ACE inhibitor therapy (see section 4.4)
+•	Hereditary or idiopathic angioedema
+•	Second and third trimesters of pregnancy (see sections 4.4 and 4.6)
+•	Concomitant use of Cosyrel with aliskiren-containing products in patients with diabetes mellitus or renal impairment (GFR < 60 ml/min/1.73m²) (see sections 4.4, 4.5 and 5.1),
+•	Concomitant use with sacubitril/valsartan therapy. Cosyrel must not be initiated earlier than 36 hours after the last dose of sacubitril/valsartan (see sections 4.4 and 4.5),
+•	Extracorporeal treatments leading to contact of blood with negatively charged surfaces (see section 4.5),
+•	Significant bilateral renal artery stenosis or stenosis of the artery to a single functioning kidney (see section 4.4).
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><em>All warnings and precautions for use related to each component are applicable to Cosyrel.</em></strong></p><p>&nbsp;</p><p><u>Hypotension</u>:</p><p>ACE inhibitors may cause a fall in blood pressure. Symptomatic hypotension is seen rarely in uncomplicated hypertensive patients and is more likely to occur in patients who have been volume-depleted e.g. by diuretic therapy, dietary salt restriction, dialysis, diarrhoea or vomiting, or who have severe renin-dependent hypertension (see sections 4.5 and 4.8). In patients with symptomatic heart failure, with or without associated renal insufficiency, symptomatic hypotension has been observed. This is most likely to occur in those patients with more severe degrees of heart failure, as reflected by the use of high doses of loop diuretics, hyponatraemia or functional renal impairment. In patients at increased risk of symptomatic hypotension, initiation of therapy and dose adjustment should be closely monitored. Similar considerations apply to patients with ischaemic heart or cerebrovascular disease in whom an excessive fall in blood pressure could result in a myocardial infarction or cerebrovascular accident.</p><p>If hypotension occurs, the patient should be placed in the supine position and, if necessary, should receive an intravenous infusion of sodium chloride 9 mg/ml (0.9%) solution. A transient hypotensive response is not a contraindication to further doses, which can be given usually without difficulty once the blood pressure has increased after volume expansion.</p><p>In some patients with congestive heart failure who have normal or low blood pressure, additional lowering of systemic blood pressure may occur with perindopril. This effect is anticipated and is usually not a reason to discontinue treatment. If hypotension becomes symptomatic, a reduction of dose or gradual discontinuation of treatment, using the individual components, may be necessary.</p><p>&nbsp;</p><p><u>Hypersensitivity/Angioedema</u>:</p><p>Angioedema of the face, extremities, lips, mucous membranes, tongue, glottis and/or larynx has been reported rarely in patients treated with ACE inhibitors, including perindopril (see section 4.8). This may occur at any time during therapy. In such cases, Cosyrel should promptly be discontinued. Therapy with beta-blocker must be continued. Appropriate monitoring should be initiated and continued until complete resolution of symptoms has occurred. In those instances where swelling was confined to the face and lips the condition generally resolved without treatment, although antihistamines have been useful in relieving symptoms.</p><p>Angioedema associated with laryngeal oedema may be fatal. Where there is involvement of the tongue, glottis or larynx, likely to cause airway obstruction, emergency therapy should be administered promptly. This may include the administration of adrenaline and/or the maintenance of a patent airway. The patient should be under close medical supervision until complete and sustained resolution of symptoms has occurred.</p><p>Patients with a history of angioedema unrelated to ACE inhibitor therapy may be at increased risk of angioedema while receiving an ACE inhibitor (see section 4.3).</p><p>Intestinal angioedema has been reported rarely in patients treated with ACE inhibitors. These patients presented with abdominal pain (with or without nausea or vomiting); in some cases there was no prior facial angioedema and C-1 esterase levels were normal. The angioedema was diagnosed by procedures including abdominal CT scan, or ultrasound or at surgery and symptoms resolved after stopping the ACE inhibitor. Intestinal angioedema should be included in the differential diagnosis of patients on ACE inhibitors presenting with abdominal pain.</p><p>&nbsp;</p><p>The combination of perindopril with sacubitril/valsartan is contraindicated due to the increased risk of angioedema (see section 4.3). Sacubitril/valsartan must not be initiated until 36 hours after taking the last dose of perindopril therapy. If treatment with sacubitril/valsartan is stopped, perindopril therapy must not be initiated until 36 hours after the last dose of sacubitril/valsartan (see sections 4.3 and 4.5). Concomitant use of ACE inhibitors with NEP inhibitors (e.g. racecadotril), mTOR inhibitors (e.g. sirolimus, everolimus, temsirolimus) and gliptins (e.g. linagliptin, saxagliptin, sitagliptin, vildagliptin) may lead to an increased risk of angioedema (e.g. swelling of the airways or tongue, with or without respiratory impairment) (see section 4.5). Caution should be used when starting racecadotril, mTOR inhibitors (e.g. sirolimus, everolimus, temsirolimus) and gliptins (e.g. linagliptin, saxagliptin, sitagliptin, vildagliptin) in a patient already taking an ACE inhibitor.</p><p>&nbsp;</p><p>&nbsp;</p><p><u>Hepatic failure</u>:</p><p>Rarely, ACE inhibitors have been associated with a syndrome that starts with cholestatic jaundice and progresses to fulminant hepatic necrosis and (sometimes) death. The mechanism of this syndrome is not understood. Patients receiving ACE inhibitors who develop jaundice or marked elevations of hepatic enzymes should discontinue the ACE inhibitor and receive appropriate medical follow-up (see section 4.8).</p><p>&nbsp;</p><p><u>Race</u>:</p><p>ACE inhibitors cause a higher rate of angioedema in black patients than in non-black patients.</p><p>As with other ACE inhibitors, perindopril may be less effective in lowering blood pressure in black people than in non-blacks, possibly because of a higher prevalence of low-renin states in the black hypertensive population.</p><p>&nbsp;</p><p><u>Cough</u>:</p><p>Cough has been reported with the use of ACE inhibitors. Characteristically, the cough is non-productive, persistent and resolves after discontinuation of therapy. ACE inhibitor induced cough should be considered as part of the differential diagnosis of cough.</p><p><u>&nbsp;</u></p><p><u>Hyperkalaemia</u>:</p><p>Elevations in serum potassium have been observed in some patients treated with ACE inhibitors, including perindopril, ACE inhibitors can cause hyperkalaemia because they inhibit the release of aldosterone. The effect is usually not significant in patients with normal renal function. Risk factors for the development of hyperkalemia include those with renal insufficiency, worsening of renal function, age (&gt; 70 years), diabetes mellitus, intercurrent events, in particular dehydration, acute cardiac decompensation, metabolic acidosis and concomitant use of potassium-sparing diuretics (e.g. spironolactone, eplerenone, triamterene, or amiloride), potassium supplements or potassium-containing salt substitutes; or those patients taking other drugs associated with increases in serum potassium (e.g. heparin, co-trimoxazole also known as trimethoprim/sulfamethoxazole) and especially aldosterone antagonists or angiotensin-receptor blockers. The use of potassium supplements, potassium-sparing diuretics, or potassium-containing salt substitutes particularly in patients with impaired renal function may lead to a significant increase in serum potassium. Hyperkalemia can cause serious, sometimes fatal arrhythmias. Potassium-sparing diuretics and angiotensin-receptor blockers should be used with caution in patients receiving ACE inhibitors, and serum potassium and renal function should be monitored. If concomitant use of the above-mentioned agents is deemed appropriate, they should be used with caution and with frequent monitoring of serum potassium (see section 4.5).</p><p>&nbsp;</p><p><u>Combination with lithium</u>:</p><p>The combination of lithium and perindopril is generally not recommended (see section 4.5).</p><p>&nbsp;</p><p><u>Combination with potassium sparingdrugs, potassium supplements or potassium-containing salt substitutes</u>:</p><p>The combination of perindopril and potassium sparing drugs, potassium supplements or potassium-containing salt substitutes is generally not recommended (see section 4.5).</p><p>&nbsp;</p><p><u>Dual blockade of the renin-angiotensin-aldosterone system (RAAS)</u>:</p><p>There is evidence that the concomitant use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren increases the risk of hypotension, hyperkalaemia and decreased renal function (including acute renal failure). Dual blockade of RAAS through the combined use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren is therefore not recommended (see sections 4.5 and 5.1).</p><p>If dual blockade therapy is considered absolutely necessary, this should only occur under specialist supervision and subject to frequent close monitoring of renal function, electrolytes and blood pressure.</p><p>ACE-inhibitors and angiotensin II receptor blockers should not be used concomitantly in patients with diabetic nephropathy.</p><p>&nbsp;</p><p><u>Combination with calcium antagonists, Class I antiarrhytmic drugs and centrally acting antihypertensive drugs</u>:</p><p>Combination of bisoprolol with calcium antagonists of the verapamil or diltiazem type, with Class I antiarrhytmic drugs and with centrally acting antihypertensive drugs is generally not recommended see section 4.5)</p><p>&nbsp;</p><p><u>Stopping treatment</u>:</p><p>Abrupt cessation of therapy with a beta-blocker should be avoided, especially in patients with ischaemic heart disease, because this may lead to transitional worsening of heart condition. The posology should be decreased gradually, using the individual components, ideally over a period of two weeks while at the same time starting the replacement therapy if necessary.</p><p>&nbsp;</p><p><u>Bradycardia</u>:</p><p>If, during treatment, resting heart rate drops below 50-55 beats per minute and the patient experiences symptoms related to bradycardia, Cosyrel dose should be downtitrated using the individual components with an appropriate dose of bisoprolol.</p><p>&nbsp;</p><p><u>First degree AV block</u>:</p><p>Given their negative dromotropic effect, beta-blockers should be administered with caution to patients with first degree AV block.</p><p>&nbsp;</p><p><u>Aortic and mitral valve stenosis / hypertrophic cardiomyopathy</u>:</p><p>As with other ACE inhibitors, perindopril should be given with caution to patients with mitral valve stenosis and obstruction in the outflow of the left ventricle such as aortic stenosis or hypertrophic cardiomyopathy.</p><p>&nbsp;</p><p><u>Prinzmetal&rsquo;s angina</u>:</p><p>Cases of coronary vasospam have been observed. Despite its high beta 1-selectivity, angina attacks cannot be completely excluded when bisoprolol is administered to patients with Printzmetal&rsquo;s angina.</p><p><u>&nbsp;</u></p><p><u>Renal impairment</u>:</p><p>In case of renal impairment, the daily dose of Cosyrel should be adjusted according to creatinine clearance (see section 4.2). &nbsp;Routine monitoring of potassium and creatinine are part of normal medical practice for these patients (see section 4.8).</p><p>In patients with symptomatic heart failure, hypotension following the initiation of therapy with ACE inhibitors may lead to some further impairment in renal function. Acute renal failure, usually reversible, has been reported in this situation.</p><p>In some patients with bilateral renal artery stenosis or stenosis of the artery to a solitary kidney, who have been treated with ACE inhibitors, increases in blood urea and serum creatinine, usually reversible upon discontinuation of therapy, have been seen. This is especially likely in patients with renal insufficiency. If renovascular hypertension is also present there is an increased risk of severe hypotension and renal insufficiency. In these patients, treatment should be started under close medical supervision with low doses and careful dose titration. Since treatment with diuretics may be a contributory factor to the above, they should be discontinued and renal function should be monitored during the first weeks of treatment therapy.</p><p>Some hypertensive patients with no apparent pre-existing renal vascular disease have developed increases in blood urea and serum creatinine, usually minor and transient, especially when perindopril has been given concomitantly with a diuretic. This is more likely to occur in patients with pre-existing renal impairment. Dosage reduction and/or discontinuation of the diuretic and/or perindopril may be required.</p><p><u>&nbsp;</u></p><p><u>Renovascular hypertension:</u></p><p>There is an increased risk of hypotension and renal insufficiency when patient with bilateral renal artery stenosis or stenosis of the artery to a single functioning kidney are treated with ACE inhibitors (see section 4.3). Treatment with diuretics may be a contributory factor. Loss of renal function may occur with only minor changes in serum creatinine even in patients with unilateral renal artery stenosis.</p><p>&nbsp;</p><p><u>Kidney transplantation:</u></p><p>There is no experience regarding the administration of perindopril arginine in patients with recent kidney transplantation.</p><p><u>&nbsp;</u></p><p><u>Haemodialysis patients</u>:</p><p>Anaphylactoid reactions have been reported in patients dialysed with high flux membranes, and treated concomitantly with an ACE inhibitor. In these patients consideration should be given to using a different type of dialysis membrane or different class of antihypertensive agent.</p><p>&nbsp;</p><p><u>Anaphylactoid reactions during low-density lipoproteins (LDL) apheresis</u>:</p><p>Rarely, patients receiving ACE inhibitors during LDL apheresis with dextran sulphate have experienced life-threatening anaphylactoid reactions. These reactions were avoided by temporarily withholding ACE inhibitor therapy prior to each apheresis.</p><p>&nbsp;</p><p><u>Anaphylactic reactions during desensitisation</u>:</p><p>Patients receiving ACE inhibitors during desensitisation treatment (e.g. hymenoptera venom) have experienced anaphylactoid reactions. In the same patients, these reactions have been avoided when the ACE inhibitors were temporarily withheld, but they reappeared upon inadvertent rechallenge.</p><p>As with other beta-blockers, bisoprolol may increase both the sensitivity towards allergens and the severity of anaphylactic reactions. Epinephrine treatment does not always yield the expected therapeutic effect.</p><p>&nbsp;</p><p><u>Neutropenia/Agranulocytosis/Thrombocytopenia/Anaemia</u>:</p><p>Neutropenia/agranulocytosis, thrombocytopenia and anaemia have been reported in patients receiving ACE inhibitors. In patients with normal renal function and no other complicating factors, neutropenia occurs rarely. Perindopril should be used with extreme caution in patients with collagen vascular disease, immunosuppressant therapy, treatment with allopurinol or procainamide, or a combination of these complicating factors, especially if there is pre-existing impaired renal function. Some of these patients developed serious infections, which in a few instances did not respond to intensive antibiotic therapy. If perindopril is used in such patients, periodic monitoring of white blood cell counts is advised and patients should be instructed to report any sign of infection (e.g. sore throat, fever).</p><p>&nbsp;</p><p><u>Bronchospasm (Bronchial asthma,obstructive airways diseases)</u>:</p><p>In bronchial asthma or other chronic obstructive lung diseases, which may cause symptoms, bronchodilating therapy should be given concomitantly. Occasionally an increase of the airway resistance may occur when beta-blockers are used in patients with asthma, therefore the dose of beta2-stimulants may have to be increased.</p><p>&nbsp;</p><p><u>Diabetic patients</u>:</p><p>Caution is advised when Cosyrel is used in patients with diabetes mellitus with large fluctuations in blood glucose values. Symptoms of hypoglycaemia can be masked by beta-blockers.</p><p>&nbsp;</p><p><u>Strict fasting</u>:</p><p>Caution is advised in patients with strict fasting.</p><p>&nbsp;</p><p><u>Peripheral arterial occlusive disease</u>:</p><p>Aggravation of symptoms may occur with beta-blockers, especially when starting therapy.</p><p>&nbsp;</p><p><u>Anaesthesia</u>:</p><p>In patients undergoing general anaesthesia beta-blockade reduces the incidence of arrhythmias and myocardial ischemia during induction and intubation, and the post-operative period. It is currently recommended that maintenance beta-blockade be continued peri-operatively. The anaesthesist must be aware of beta-blockade because of the potential for interactions with other drugs, resulting in bradyarrhythmias, attenuation of the reflex tachycardia and the decreased reflex ability to compensate for blood loss. If it is thought necessary to withdraw beta-blocker therapy before surgery, this should be done gradually and completed about 48 hours before anaesthesia.</p><p>In patients undergoing major surgery or during anaesthesia with agents that produce hypotension, perindopril may block angiotensin II formation secondary to compensatory renin release. The treatment should be discontinued one day prior to the surgery. If hypotension occurs and is considered to be due to this mechanism, it can be corrected by volume expansion.</p><p>&nbsp;</p><p><u>Psoriasis</u>:</p><p>Patients with psoriasis or with a history of psoriasis should only be given beta-blockers after carefully balancing the benefits against the risks.</p><p>&nbsp;</p><p><u>Phaeochromocytoma</u>:</p><p>In patients with known or suspected to have phaeochromocytoma bisoprolol should always be given in combination with an alpha-receptor blocker.</p><p>&nbsp;</p><p><u>Thyreotoxicosis</u>:</p><p>Under treatment with bisoprolol the symptoms of a thyreotoxicosis may be masked.</p><p><em>&nbsp;</em></p><p><u>Primary aldosteronism:</u></p><p>Patients with primary hyperaldosteronism generally will not respond to anti-hypertensive drugs acting through inhibition of the renin-angiotensin system. Therefore, the use of this product is not recommended.</p><p>&nbsp;</p><p><u>Pregnancy</u>:</p><p>Unless continued ACE inhibitor therapy is considered essential, patients planning pregnancy should be changed to alternative anti-hypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with ACE inhibitors should be stopped immediately, and, if appropriate, alternative therapy should be started (see sections 4.3 and 4.6).</p><p>&nbsp;</p><p><u>Heart failure</u>:</p><p>There is no therapeutic experience of bisoprolol treatment of heart failure in patients with the following diseases and conditions:</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; insulin dependent diabetes mellitus (type I),</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; severely impaired renal function,</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; severely impaired hepatic function,</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; restrictive cardiomyopathy,</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; congenital heart disease,</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; haemodynamically significant organic valvular disease,</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; myocardial infarction within the last 3 months.</p><p>&nbsp;</p><p>&nbsp;</p><p><u>Excipients:</u></p><p>Level of sodium</p><p>Cosyrel contains less than 1 mmol sodium (23 mg) per tablet, i.e. essentially &lsquo;sodium-free&rsquo;.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No interactions between bisoprolol and perindopril have been observed in an interaction study conducted in healthy volunteers. Only information on interactions with other products that are known for the individual active substances is provided below.</p><p>&nbsp;</p><p><em>Drugs increasing the risk of angioedema: </em></p><p>Concomitant use of ACE inhibitors with sacubitril/valsartan is contraindicated as this increases the risk of angioedema (see section 4.3 and 4.4). Sacubitril/valsartan must not be started until 36 hours after taking the last dose of perindopril therapy. Perindopril therapy must not be started until 36 hours after the last dose of sacubitril/valsartan (see sections 4.3 and 4.4).</p><p>Concomitant use of ACE inhibitors with racecadotril, mTOR inhibitors (e.g. sirolimus, everolimus, temsirolimus) and gliptins (e.g. linagliptin, saxagliptin, sitagliptin, vildagliptin) may lead to an increased risk for angioedema (see section 4.4).</p><p>&nbsp;</p><p><em>Drugs inducing hyperkalaemia:</em></p><p>Although serum potassium usually remains within normal limits, hyperkalaemia may occur in some patients treated with Cosyrel. Some drugs or therapeutic classes may increase the occurrence of hyperkalaemia: aliskiren, potassium salts, potassium-sparing diuretics (e.g. spironolactone, triamterene or amiloride), ACE inhibitors, angiotensin-II receptors antagonists, NSAIDs, heparins, immunosuppressant agents such as ciclosporin or tacrolimus, trimethoprim and cotrimoxazole (trimethoprim/sulfamethoxazole), as trimethoprim is known to act as a potassium-sparing diuretic like amiloride. The combination of these drugs increases the risk of hyperkalaemia. Therefore, the combination of Cosyrel with the above-mentioned drugs is not recommended. If concomitant use is indicated, they should be used with caution and with frequent monitoring of serum potassium.</p><p>&nbsp;</p><p>&nbsp;</p><p><strong><em><u>Concomitant use contraindicated (see section 4.3)</u></em></strong></p><p>&nbsp;</p><p><em>Aliskiren:</em></p><p>The concomitant therapy with Cosyrel and aliskiren is contra-indicated in diabetic or impaired renal patients, due to the risk of hyperkalaemia, worsening of renal function and cardiovascular morbidity and mortality increase.</p><p>&nbsp;</p><p><em>Extracorporeal treatments:</em></p><p>Extracorporeal treatments leading to contact of blood with negatively charged surfaces such as dialysis or haemofiltration with certain high-flux membranes (e.g. polyacrylonitril membranes) and low density lipoprotein apheresis with dextran sulphate due to increased risk of severe anaphylactoid reactions (see section 4.3). If such treatment is required, consideration should be given to using a different type of dialysis membrane or a different class of antihypertensive agent.</p><p>&nbsp;</p><p><strong><em><u>Concomitant use not recommended</u></em></strong></p><p>&nbsp;</p><p><strong>Linked to bisoprolol</strong></p><p>&nbsp;</p><p><em>Centrally acting antihypertensives such as clonidine and others (e.g. methyldopa, moxonidine, rilmenidine):</em></p><p>Concomitant use of centrally acting antihypertensives may worsen heart failure by lowering the central sympathetic tonus (reduced heart rate and cardiac output, vasodilation). Abrupt termination, particularly before down-titration of beta-blocker therapy, may increase the risk of rebound hypertension.</p><p>&nbsp;</p><p><em>Class I antiarrhythmic drugs (e.g. quinidine, disopyramide; lidocaine, phenytoin; flecainide, propafenone):</em></p><p>Effect on atrio-ventricular conduction time may be potentiated and negative inotropic effect increased.</p><p>&nbsp;</p><p><em>Calcium antagonists of the verapamil type and to a lesser extent of the diltiazem type:</em></p><p>Negative influence on contractility and atrio-ventricular conduction. Intravenous administration of verapamil in patients on beta-blocker treatment may lead to profound hypotension and atrio-ventricular block.</p><p>&nbsp;</p><p><strong>Linked to perindopril</strong></p><p>&nbsp;</p><p><em>Aliskiren:</em></p><p>In patients other than diabetic or impaired renal patients, risk of hyperkalaemia, worsening of renal function and cardiovascular morbidity and mortality increase.</p><p>&nbsp;</p><p><em>Concomitant therapy with ACE inhibitor and angiotensin-receptor blocker:</em></p><p>Clinical trial data has shown that dual blockade of the renin-angiotensin-aldosterone-system (RAAS) through the combined use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren is associated with a higher frequency of adverse events such as hypotension, hyperkalaemia and decreased renal function (including acute renal failure) compared to the use of a single RAAS-acting agent (see sections 4.3, 4.4 and 5.1).</p><p>It has been reported in the literature that in patients with established atherosclerotic disease, heart failure, or with diabetes with end organ damage, concomitant therapy with ACE inhibitor and angiotensin-receptor blocker is associated with a higher frequency of hypotension, syncope, hyperkalaemia, and worsening renal function (including acute renal failure) as compared to use of a single renin-angiotensin-aldosterone system agent. Dual blockade (e.g, by combining an ACE inhibitor with an angiotensin II receptor antagonist) should be limited to individually defined cases with close monitoring of renal function, potassium levels, and blood pressure.</p><p>&nbsp;</p><p><em>Estramustine:</em></p><p>Risk of increased adverse effects such as angioneurotic oedema (angioedema).</p><p>&nbsp;</p><p>&nbsp;</p><p><em>Potassium sparing diuretics (e.g. triamterene, amiloride...), potassium (salts):</em></p><p>Hyperkalaemia (potentially lethal), especially in conjunction with renal impairment (additive hyperkalaemic effects).</p><p>&nbsp;</p><p>The combination of perindopril with the above-mentioned drugs is not recommended (see section 4.4). If concomitant use is nonetheless indicated they should be used with caution and with frequent monitoring of serum potassium. For use of spironolactone in heart failure, see below.</p><p>&nbsp;</p><p><em>Lithium:</em></p><p>Reversible increases in serum lithium concentrations and toxicity have been reported during concomitant administration of lithium with ACE inhibitors. Use of perindopril with lithium is not recommended, but if the combination proves necessary, careful monitoring of serum lithium levels should be performed (see section 4.4).</p><p>&nbsp;</p><p><strong><em><u>Concomitant use which require special care</u></em></strong></p><p>&nbsp;</p><p><strong>Linked to bisoprolol and perindopril</strong></p><p>&nbsp;</p><p><em>Antidiabetic agents (insulins, oral hypoglycaemic agents):</em></p><p>Epidemiological studies have suggested that concomitant administration of ACE inhibitors and antidiabetic medicines (insulins, oral hypoglycaemic agents) may cause an increased blood-glucose lowering effect with risk of hypoglycaemia. This phenomenon appeared to be more likely to occur during the first weeks of combined treatment and in patients with renal impairment.</p><p>Concomitant administration of bisoprolol with insulin and oral antidiabetic drugs may increase blood sugar lowering effect. Blockade of beta-adrenoreceptors may mask symptoms of hypoglycaemia.</p><p><em>&nbsp;</em></p><p><em>Non-steroidal anti-inflammatory medicinal products (NSAIDs) (including acetylsalicylic acid &ge; 3 g/day):</em></p><p>The administration of Cosyrel simultaneously with non-steroidal anti-inflammatory drugs (i.e. acetylsalicylic acid at anti-inflammatory dosage regimens, COX-2 inhibitors and non-selective NSAIDs) may attenuate the antihypertensive effect of bisoprolol and perindopril.</p><p>In addition, concomitant use of ACE inhibitors and NSAIDs may lead to an increased risk of worsening of renal function, including possible acute renal failure, and an increase in serum potassium, especially in patients with poor pre-existing renal function. The combination should be administered with caution, especially in the elderly. Patients should be adequately hydrated and consideration should be given to monitoring renal function after initiation of concomitant therapy, and periodically thereafter.</p><p>&nbsp;</p><p><em>Antihypertensive agents and vasodilators:</em></p><p>Concomitant use with antihypertensive agents, vasodilators (such as nitroglycerin, other nitrates or other vasodilators) or with other medications which have a blood-pressure-reducing potential (e.g. tricyclic antidepressants, barbiturates, phenothiazines) may increase the risk of hypotensive effects of perindopril and bisoprolol.</p><p>&nbsp;</p><p><em>Tricyclic antidepressants/Antipsychotics/Anesthetics:</em></p><p>Concomitant use of ACE inhibitors with certain anaesthetic medicinal products, tricyclic antidepressants and antipsychotics may result in further reduction of blood pressure.</p><p>Concomitant use of bisoprolol with anaesthesics may lead to reduced reflex tachycardia and increased risk of hypotension.</p><p>&nbsp;</p><p><em>Sympathomimetics:</em></p><p>Beta-sympathomimetics (e.g. isoprenaline, dobutamine): combination with bisoprolol may reduce the effects of both agents.</p><p>Sympathomimetics that activate both beta- and alpha-adrenoceptors (e.g. norepinephrine, epinephrine): combination with bisoprolol may unmask the alpha-adrenoceptor-mediated vasoconstrictor effects of these agents, leading to blood pressure increase and exacerbated intermittent claudication. Such interactions are considered to be more likely with nonselective beta-blockers.</p><p>Sympathomimetics may reduce the antihypertensive effects of ACE inhibitors.</p><p>&nbsp;</p><p><strong>Linked to bisoprolol</strong></p><p>&nbsp;</p><p><em>Calcium antagonists of the dihydropyridine type such as felodipine and amlodipine:</em></p><p>Concomitant use may increase the risk of hypotension, and an increase in the risk of a further deterioration of the ventricular pump function in patients with heart failure cannot be excluded.</p><p>&nbsp;</p><p><em>Class-III antiarrhythmic drugs (e.g. amiodarone):</em></p><p>Effect on atrio-ventricular conduction time may be potentiated.</p><p>&nbsp;</p><p><em>Parasympathomimetic drugs:</em></p><p>Concomitant use may increase atrio-ventricular conduction time and the risk of bradycardia.</p><p>&nbsp;</p><p><em>Topical beta-blockers (e.g. eye drops for glaucoma treatment):</em></p><p>Concomitant use may add to the systemic effects of bisoprolol.</p><p><em>&nbsp;</em></p><p><em>Digitalis glycosides:</em></p><p>Reduction of heart rate, increase of atrio-ventricular conduction time.</p><p>&nbsp;</p><p><strong>Linked to perindopril</strong></p><p>&nbsp;</p><p><em>Baclofen:</em></p><p>Increased antihypertensive effect. Monitor blood pressure and adapt antihypertensive dosage if necessary.</p><p>&nbsp;</p><p><em>Non-potassium-sparing diuretics:</em></p><p>Patients on diuretics, and especially those who are volume and/or salt depleted, may experience excessive reduction in blood pressure after initiation of therapy with an ACE inhibitor. The possibility of hypotensive effects can be reduced by discontinuation of the diuretic, by increasing volume or salt intake prior to initiating therapy with low and progressive doses of perindopril.</p><p>In arterial hypertension, when prior diuretic therapy can have caused salt/volume depletion, either the diuretic must be discontinued before initiating the ACE inhibitor, in which case a non-potassium-sparing diuretic can be thereafter reintroduced or the ACE inhibitor must be initiated with a low dosage and progressively increased.</p><p>In diuretic-treated congestive heart failure, the ACE inhibitor should be initiated at a very low dosage, possibly after reducing the dosage of the associated non-potassium-sparing diuretic.</p><p>In all cases, renal function (creatinine levels) must be monitored during the first few weeks of ACE inhibitor therapy.</p><p>&nbsp;</p><p><em>Potassium-sparing diuretics (eplerenone, spironolactone):</em></p><p>With eplerenone or spironolactone at doses between 12,5 mg to 50 mg by day and with low doses of ACE inhibitors:</p><p>In the treatment of class II-IV heart failure (NYHA) with an ejection fraction &lt; 40%, and previously treated with ACE inhibitors and loop diuretics, risk of hyperkalaemia, potentially lethal, especially in case of non-observance of the prescription recommendations on this combination.</p><p>Before initiating the combination, check the absence of hyperkalaemia and renal impairment.</p><p>A close monitoring of the kalaemia and creatininemia is recommended in the first month of the treatment once a week at the beginning and, monthly thereafter.</p><p>&nbsp;</p><p>&nbsp;</p><p><strong><em><u>Combination use to be taken into consideration</u></em></strong></p><p>&nbsp;</p><p><strong>Linked to bisoprolol</strong></p><p><em>&nbsp;</em></p><p><em>Mefloquine:</em></p><p>Increased risk of bradycardia.</p><p>&nbsp;</p><p><em>Monoamine oxidase inhibitors (except MAO-B inhibitors):</em></p><p>Enhanced hypotensive effect of the beta-blockers but also risk for hypertensive crisis.</p><p>&nbsp;</p><p><strong>Linked to perindopril</strong></p><p>&nbsp;</p><p>&nbsp;</p><p><em>Gold:</em></p><p>Nitritoid reactions (symptoms include facial flushing, nausea, vomiting and hypotension) have been reported rarely in patients on therapy with injectable gold (sodium aurothiomalate) and concomitant ACE inhibitor therapy including perindopril.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u>:</p><p>Based on existing data on monocomponents, Cosyrel is not recommended during the first trimester of pregnancy and is contraindicated during the second and third trimesters of pregnancy.</p><p>&nbsp;</p><p><strong><em>Bisoprolol</em></strong></p><p>&nbsp;</p><p>Bisoprolol has pharmacological effects that may cause harmful effects on pregnancy and/or the foetus/newborn (reduce placental perfusion associated with growth retardation, intrauterine death, abortion or early labour and adverse effects (e.g. hypoglycaemia and bradycardia) may occur in the foetus and newborn infant). If treatment with beta-adrenoceptor blockers is necessary, beta-1-selective adrenoceptor blockers are preferable.</p><p>Bisoprolol should not be used during pregnancy unless clearly necessary. If treatment with bisoprolol is considered necessary, the uteroplacental blood flow and the foetal growth should be monitored. In case of harmful effects on pregnancy or the foetus alternative treatment should be considered. The newborn infant must be closely monitored.</p><p>Symptoms of hypoglycaemia and bradycardia are generally to be expected within the first 3 days.</p><p>&nbsp;</p><p><strong><em>Perindopril</em></strong></p><p>&nbsp;</p><p>Epidemiological evidence regarding the risk of teratogenicity following exposure to ACE inhibitors during the first trimester of pregnancy has not been conclusive; however a small increase in risk cannot be excluded. Unless continued ACE inhibitor therapy is considered essential, patients planning pregnancy should be changed to alternative anti-hypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with ACE inhibitors should be stopped immediately, and, if appropriate, alternative therapy should be started.</p><p>Exposure to ACE inhibitor therapy during the second and third trimesters is known to induce human foetotoxicity (decreased renal function, oligohydramnios, skull ossification retardation) and neonatal toxicity (renal failure, hypotension, hyperkalaemia) (see section 5.3). Should exposure to ACE inhibitor have occurred from the second trimester of pregnancy, ultrasound check of renal function and skull is recommended. Infants whose mothers have taken ACE inhibitors should be closely observed for hypotension (see also sections 4.3 and 4.4).</p><p><u>&nbsp;</u></p><p><u>Breast-feeding</u>:</p><p>Cosyrel is not recommended during lactation.</p><p>&nbsp;</p><p>It is not known whether bisoprolol is excreted in human milk. Therefore, breastfeeding is not recommended during administration of bisoprolol.</p><p>Because no information is available regarding the use of perindopril during breastfeeding, perindopril is not recommended and alternative treatments with better established safety profiles during breast-feeding are preferable, especially while nursing a newborn or preterm infant.</p><p>&nbsp;</p><p><u>Fertility</u>:</p><p>There are no clinical data on fertility with the use of Cosyrel.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Cosyrel<strong> </strong>has no direct influence on the ability to drive and use machines but individual reactions related to low blood pressure may occur in some patients, particularly at the start of treatment or upon change of medication as well as in conjunction with alcohol.</p><p>As a result the ability to drive or operate machinery may be impaired.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Summary of the safety profile</u>:</p><p>The most common adverse reactions to bisoprolol include headache, dizziness, worsening of heart failure, hypotension, cold extremities, nausea, vomiting, abdominal pain, diarrhoea, constipation, asthenia and fatigue.</p><p>The most common adverse reactions reported in clinical trials and observed with perindopril include headache, dizziness, vertigo, paraesthesia, visual disturbance, tinnitus, hypotension, cough, dyspnoea, nausea, vomiting, abdominal pain, diarrhoea, constipation, dysgeusia, dyspepsia, rash, pruritus, muscle cramps and asthenia.</p><p>&nbsp;</p><p><u>Tabulated list of adverse reactions</u>:</p><p>The following undesirable effects have been observed during <u>clinical trials and/or post-marketing use</u> with bisoprolol or perindopril given separately and ranked under the MedDRA classification by body system and under the following frequency:</p><p>Very common (&ge; 1/10) ; common (&ge; 1/100 to &lt; 1/10) ; uncommon (&ge; 1/1000 to &lt; 1/100) ; rare (&ge; 1/10000 to &lt; 1/1000) ; very rare (&lt; 1/10000) ; not known (cannot be estimated from the available data).</p><p>&nbsp;</p><p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0" style="width:676px"><tbody><tr><td rowspan="2"><p><strong>MedDRA</strong></p><p><strong>System Organ Class</strong></p></td><td rowspan="2"><p><strong>Undesirable Effects</strong></p></td><td colspan="2"><p><strong>Frequency</strong></p></td></tr><tr><td><p><strong>Bisoprolol</strong></p></td><td><p><strong>Perindopril</strong></p></td></tr><tr><td><p><strong>Infections and infestations</strong></p></td><td><p>Rhinitis</p></td><td><p>Rare</p></td><td><p>Very rare</p></td></tr><tr><td rowspan="7"><p><strong>Blood and lymphatic System Disorders</strong></p></td><td><p>Eosinophilia</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Agranulocytosis (see section 4.4)</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Pancytopenia</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Leukopenia</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Neutropenia (see section 4.4)</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Thrombocytopenia (see section 4.4)</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Haemolytic anaemia in patients with a congenital deficiency of G-6PDH</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p><strong>Endocrine disorders</strong></p></td><td><p>Syndrome of inappropriate antidiuretic hormone secretion (SIADH)</p></td><td><p>-</p></td><td><p>Rare</p></td></tr><tr><td rowspan="3"><p><strong>Metabolism and nutrition disorders</strong></p></td><td><p>Hypoglycaemia (see sections 4.4 and 4.5)</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Hyperkalaemia, reversible on discontinuation</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Hyponatraemia</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td rowspan="5"><p><strong>Psychiatric disorders</strong></p></td><td><p>Mood altered</p></td><td><p>-</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Sleep disorder</p></td><td><p>Uncommon</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Depression</p></td><td><p>Uncommon</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Nightmares, Hallucinations</p></td><td><p>Rare</p></td><td><p>-</p></td></tr><tr><td><p>Confusion</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td rowspan="7"><p><strong>Nervous system disorders</strong></p></td><td><p>Headache**</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Dizziness**</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Vertigo</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Dysgeusia</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Paraesthesia</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Somnolence</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Syncope</p></td><td><p>Rare</p></td><td><p>Uncommon*</p></td></tr><tr><td rowspan="3"><p><strong>Eye disorders</strong></p></td><td><p>Visual impairment</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Reduced tear flow (to be considered if the patient uses lenses)</p></td><td><p>Rare</p></td><td><p>-</p></td></tr><tr><td><p>Conjunctivitis</p></td><td><p>Very rare</p></td><td><p>-</p></td></tr><tr><td rowspan="2"><p><strong>Ear and labyrinth disorders</strong></p></td><td><p>Tinnitus</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Hearing disorders</p></td><td><p>Rare</p></td><td><p>-</p></td></tr><tr><td rowspan="8"><p><strong>Cardiac disorders</strong></p></td><td><p>Palpitations</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Tachycardia</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Bradycardia</p></td><td><p>Very common</p></td><td><p>-</p></td></tr><tr><td><p>Worsening of heart failure</p></td><td><p>Common</p></td><td><p>-</p></td></tr><tr><td><p>AV-conduction disturbances</p></td><td><p>Uncommon</p></td><td><p>-</p></td></tr><tr><td><p>Arrhythmia</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Angina pectoris</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Myocardial infarction possibly secondary to excessive hypotension in high-risk patients (see section 4.4)</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td rowspan="7"><p><strong>Vascular disorders</strong></p></td><td><p>Hypotension and effects related to hypotension</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Feeling of coldness or numbness in the extremities</p></td><td><p>Common</p></td><td><p>-</p></td></tr><tr><td><p>Orthostatic hypotension</p></td><td><p>Uncommon</p></td><td><p>-</p></td></tr><tr><td><p>Vasculitis</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Flushing</p></td><td><p>-</p></td><td><p>Rare*</p></td></tr><tr><td><p>Stroke possibly secondary to excessive hypotension in high-risk patients (see section 4.4)</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Raynaud&rsquo;s phenomenon</p></td><td><p>-</p></td><td><p>Not known</p></td></tr><tr><td rowspan="4"><p><strong>Respiratory, thoracic and mediastinal disorders</strong></p></td><td><p>Cough</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Dyspnoea</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Bronchospasm</p></td><td><p>Uncommon</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Eosinophilic pneumonia</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td rowspan="8"><p><strong>Gastro-intestinal disorders</strong></p></td><td><p>Abdominal pain</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Constipation</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Diarrhoea</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Nausea</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Vomiting</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Dyspepsia</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Dry mouth</p></td><td><p>-</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Pancreatitis</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p><strong>Hepato-biliary disorders</strong></p></td><td><p>Hepatitis either cytolytic or cholestatic (see section 4.4)</p></td><td><p>Rare</p></td><td><p>Very rare</p></td></tr><tr><td rowspan="12"><p><strong>Skin and subcutaneous tissue disorders</strong></p></td><td><p>Rash</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Pruritus</p></td><td><p>-</p></td><td><p>Common</p></td></tr><tr><td><p>Angioedema of face, extremities, lips, mucous membranes, tongue, glottis and/or larynx (see section 4.4)</p></td><td><p>-</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Urticaria</p></td><td><p>-</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Photosensitivity reactions</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Pemphigoid</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Hyperhidrosis</p></td><td><p>-</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Hypersensitivity reactions (pruritus, flush, rash and angiodema)</p></td><td><p>Rare</p></td><td><p>-</p></td></tr><tr><td><p>Psoriasis aggravation</p></td><td><p>-</p></td><td><p>Rare*</p></td></tr><tr><td><p>Erythema multiform</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p>Alopecia</p></td><td><p>Very rare</p></td><td><p>-</p></td></tr><tr><td><p>Beta-blockers may provoke or worsen psoriasis or induce psoriasis-like rash</p></td><td><p>Very rare</p></td><td><p>-</p></td></tr><tr><td rowspan="4"><p><strong>Musculoskeletal and connective tissue disorders</strong></p></td><td><p>Muscle cramps</p></td><td><p>Uncommon</p></td><td><p>Common</p></td></tr><tr><td><p>Muscular weakness</p></td><td><p>Uncommon</p></td><td><p>-</p></td></tr><tr><td><p>Arthralgia</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Myalgia</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td rowspan="3"><p><strong>Renal and urinary disorders</strong></p></td><td><p>Renal insufficiency</p></td><td><p>-</p></td><td><p>Uncommon</p></td></tr><tr><td><p>Acute renal failure</p></td><td><p>-</p></td><td><p>Rare</p></td></tr><tr><td><p>Anuria/Oliguria</p></td><td><p>-</p></td><td><p>Rare*</p></td></tr><tr><td rowspan="2"><p><strong>Reproductive system and breast disorders</strong></p></td><td><p>Erectile dysfunction</p></td><td><p>Rare</p></td><td><p>Uncommon</p></td></tr><tr><td><p>&nbsp;</p></td></tr><tr><td rowspan="6"><p><strong>General disorders and administration site conditions</strong></p></td><td><p>Asthenia</p></td><td><p>Common</p></td><td><p>Common</p></td></tr><tr><td><p>Fatigue</p></td><td><p>Common</p></td><td><p>-</p></td></tr><tr><td><p>Chest pain</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Malaise</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Oedema peripheral</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Pyrexia</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td rowspan="6"><p><strong>Investigations</strong></p></td><td><p>Blood urea increased</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Blood creatinine increased</p></td><td><p>-</p></td><td><p>Uncommon*</p></td></tr><tr><td><p>Hepatic enzyme increased</p></td><td><p>Rare</p></td><td><p>Rare</p></td></tr><tr><td><p>Blood bilirubin increased</p></td><td><p>-</p></td><td><p>Rare</p></td></tr><tr><td><p>Increased triglycerides</p></td><td><p>Rare</p></td><td><p>-</p></td></tr><tr><td><p>Haemoglobin decreased and haematocrit decreased (see section 4.4)</p></td><td><p>-</p></td><td><p>Very rare</p></td></tr><tr><td><p><strong>Injury, poisoning and procedural complications</strong></p></td><td><p>Fall</p></td><td><p><strong>-</strong></p></td><td><p>Uncommon*</p></td></tr></tbody></table><p><em>* Frequency calculated from clinical trials for adverse events detected from spontaneous report</em></p><p><em>*</em><em>*</em><em>These symptoms especially occur at the beginning of the therapy. They are generally mild and often disappear within 1-2 weeks.</em></p><p>&nbsp;</p><p><u>Reporting of suspected adverse reactions</u></p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions via the national reporting system.</p><p><strong>&nbsp;</strong></p><p><strong>Reporting of suspected adverse reaction:</strong></p><p>&nbsp;</p><p><strong>Saudi Arabia&nbsp;</strong></p><p><strong>- National Pharmacovigilance Center (NPC)</strong></p><p><strong>- SFDA call center 19999</strong></p><p><strong>- Email: NPC.drug@sfda.gov.sa</strong></p><p><strong>- Website: www.sfda.gov.sa/npc</strong></p><p>&nbsp;</p><p><strong>Other GCC states:</strong></p><p><strong>- Please contact the relevant competent authority.&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There is no information on overdose with Cosyrel in humans.</p><p>&nbsp;</p><p><strong><em>Bisoprolol</em></strong></p><p>&nbsp;</p><p><u>Symptoms</u>:</p><p>In general the most common signs expected with overdosage of a beta-blocker are bradycardia, hypotension, bronchospasm, acute cardiac insufficiency and hypoglycaemia. To date a few cases of overdose (maximum: 2000 mg) with bisoprolol have been reported in patients suffering from hypertension and/or coronary heart disease showing bradycardia and/or hypotension; all patients recovered. There is a wide interindividual variation in sensitivity to one single high dose of bisoprolol and patients with heart failure are probably very sensitive.</p><p>&nbsp;</p><p><u>Management</u>:</p><p>If overdose occurs, bisoprolol treatment should be stopped and supportive and symptomatic treatment should be provided. Limited data suggest that bisoprolol is hardly dialysable. Based on the expected pharmacologic actions and recommendations for other beta-blockers, the following general measures should be considered when clinically warranted.</p><p><em>Bradycardia</em>: Administer intravenous atropine. If the response is inadequate, isoprenaline or another agent with positive chronotropic properties may be given cautiously. Under some circumstances, transvenous pacemaker insertion may be necessary.</p><p><em>Hypotension</em>: Intravenous fluids and vasopressors should be administered. Intravenous glucagon may be useful.</p><p><em>AV block (second or third degree):</em> Patients should be carefully monitored and treated with isoprenaline infusion or transvenous cardiac pacemaker insertion.</p><p><em>Acute worsening of heart failure:</em> Administer i.v. diuretics, inotropic agents, vasodilating agents.</p><p><em>Bronchospasm:</em> Administer bronchodilator therapy such as isoprenaline, beta2-sympathomimetic drugs and/or aminophylline.</p><p><em>Hypoglycaemia</em>: Administer i.v. glucose.</p><p>&nbsp;</p><p><strong><em>Perindopril</em></strong></p><p>&nbsp;</p><p><u>Symptoms</u>:</p><p>Limited data are available for overdosage in humans. Symptoms associated with overdosage of ACE inhibitors may include hypotension, circulatory shock, electrolyte disturbances, renal failure, hyperventilation, tachycardia, palpitations, bradycardia, dizziness, anxiety, and cough.</p><p>&nbsp;</p><p><u>Management</u>:</p><p>The recommended treatment of overdosage is intravenous infusion of sodium chloride 9 mg/ml (0.9%) solution. If hypotension occurs, the patient should be placed in the shock position. If available, treatment with angiotensin II infusion and/or intravenous catecholamines may also be considered. Perindopril may be removed from the general circulation by haemodialysis (see section 4.4). Pacemaker therapy is indicated for therapy-resistant bradycardia. Vital signs, serum electrolytes and creatinine concentrations should be monitored continuously.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: ACE inhibitors, other combinations.</p><p>ATC code: C09BX02</p><p><u>&nbsp;</u></p><p><u>Mechanism of action</u></p><p><u>&nbsp;</u></p><p><strong><em>Bisoprolol</em></strong></p><p>&nbsp;</p><p>Bisoprolol is a highly beta1-selective-adrenoceptor blocking agent, lacking intrinsic stimulating and relevant membrane stabilising activity. It only shows low affinity to the beta2-receptor of the smooth muscles of bronchi and vessels as well as to the beta2-receptors concerned with metabolic regulation. Therefore, bisoprolol is generally not to be expected to influence the airway resistance and beta2-mediated metabolic effects. Its beta1-selectivity extends beyond the therapeutic dose range.</p><p>&nbsp;</p><p><strong><em>Perindopril</em></strong></p><p>&nbsp;</p><p>Perindopril is an inhibitor of the enzyme that converts angiotensin I into angiotensin II (ACE). The converting enzyme, or kininase, is an exopeptidase that allows conversion of angiotensin I into the vasoconstrictor angiotensin II as well as causing the degradation of the vasodilator bradykinin into an inactive heptapeptide. Inhibition of ACE results in a reduction of angiotensin II in the plasma, which leads to increased plasma renin activity (by inhibition of the negative feedback of renin release) and reduced secretion of aldosterone. Since ACE inactivates bradykinin, inhibition of ACE also results in an increased activity of circulating and local kallikrein-kinin systems (and thus also activation of the prostaglandin system). It is possible that this mechanism contributes to the blood pressure-lowering action of ACE inhibitors and is partially responsible for certain of their side effects (e.g. cough).</p><p>Perindopril acts through its active metabolite, perindoprilat. The other metabolites show no inhibition of ACE activity in vitro.</p><p><u>&nbsp;</u></p><p><u>Pharmacodynamic effects</u></p><p>&nbsp;</p><p><strong><em>Bisoprolol</em></strong></p><p><u>&nbsp;</u></p><p>Bisoprolol has no significant negative inotropic effects.</p><p>Bisoprolol reaches its maximum effects 3-4 hours after administration. Due to the half-life of 10-12 hours, bisoprolol acts for 24 hours.</p><p>The maximum blood-pressure-lowering effects of bisoprolol are generally reached after 2 weeks.</p><p>&nbsp;</p><p>In acute administration in patients with coronary heart disease without chronic heart failure bisoprolol reduces the heart rate and stroke volume and thus the cardiac output and oxygen consumption. In chronic administration the initially elevated peripheral resistance decreases. The decrease in plasma renin activity is proposed as a mechanism of action underlying the antihypertensive effect of beta-blockers.</p><p>&nbsp;</p><p>Bisoprolol reduces the sympatho-adrenergic response by blocking cardiac beta-adrenergic receptors. This results in a decrease in heart rate and contractility, causing a reduction in oxygen consumption by the myocardium, which is the desired effect in the case of angina associated with underlying coronary heart disease.</p><p>&nbsp;</p><p><strong><em>Perindopril</em></strong></p><p>&nbsp;</p><p><em>Hypertension:</em></p><p>Perindopril is active in all grades of hypertension: mild, moderate, severe; a reduction in systolic and diastolic blood pressures in both supine and standing positions is observed.</p><p>Perindopril reduces peripheral vascular resistance, leading to blood pressure reduction. As a consequence, peripheral blood flow increases, with no effect on heart rate.</p><p>Renal blood flow increases as a rule, while the glomerular filtration rate (GFR) is usually unchanged.</p><p>&nbsp;</p><p><em>Heart failure:</em></p><p>Perindopril reduces cardiac work by a decrease in pre-load and after-load.</p><p><u>&nbsp;</u></p><p><u>Clinical efficacy and safety</u></p><p>&nbsp;</p><p><strong><em>Bisoprolol</em></strong></p><p>&nbsp;</p><p>In total 2647 patients were included in the CIBIS II trial. 83% (n = 2202) were in NYHA class III and 17% (n = 445) were in NYHA class IV. They had stable symptomatic systolic heart failure (ejection fraction &lt;35%, based on echocardiography). Total mortality was reduced from 17.3% to 11.8% (relative reduction 34%). A decrease in sudden death (3.6% vs 6.3%, relative reduction 44%) and a reduced number of heart failure episodes requiring hospital admission (12% vs 17.6%, relative reduction 36%) was observed. Finally, a significant improvement of the functional status according to NYHA classification has been shown. During the initiation and titration of bisoprolol hospital admission due to bradycardia (0.53%), hypotension (0.23%), and acute decompensation (4.97%) were observed, but they were not more frequent than in the placebo-group (0%, 0.3% and 6.74%). The numbers of fatal and disabling strokes during the total study period were 20 in the bisoprolol group and 15 in the placebo group.</p><p>&nbsp;</p><p>The CIBIS III trial investigated 1010 patients aged &ge;65 years with mild to moderate chronic heart failure (CHF; NYHA class II or III) and left ventricular ejection fraction &le;35%, who had not been treated previously with ACE inhibitors, beta-blockers, or angiotensin receptor blockers. Patients were treated with a combination of bisoprolol and enalapril for 6 to 24 months after an initial 6 months treatment with either bisoprolol or enalapril.</p><p>There was a trend toward higher frequency of chronic heart failure worsening when bisoprolol was used as the initial 6 months treatment. Non inferiority of bisoprolol-first versus enalapril-first treatment was not proven in the per-protocol analysis, although the two strategies for initiation of CHF treatment showed a similar rate of the primary combined endpoint death and hospitalization at study end (32.4% in the bisoprolol-first group vs. 33.1 % in the enalapril-first group, per-protocol population). The study shows that bisoprolol can also be used in elderly chronic heart failure patients with mild to moderate disease.</p><p>&nbsp;</p><p><strong><em>Perindopril</em></strong></p><p>&nbsp;</p><p><em>Hypertension:</em></p><p>Perindopril is active in all grades of hypertension: mild, moderate, severe; a reduction in systolic and diastolic blood pressures in both supine and standing positions is observed.</p><p>Perindopril reduces peripheral vascular resistance, leading to blood pressure reduction. As a consequence, peripheral blood flow increases, with no effect on heart rate.</p><p>Renal blood flow increases as a rule, while the GFR is usually unchanged.</p><p>The antihypertensive activity is maximal between 4 and 6 hours after a single dose and is sustained for at least 24 hours: trough effects are about 87- 100 % of peak effects.</p><p>The decrease in blood pressure occurs rapidly. In responding patients, normalisation is achieved within a month and persists without the occurrence of tachyphylaxis.</p><p>Discontinuation of treatment does not lead to a rebound effect.</p><p>Perindopril reduces left ventricular hypertrophy.</p><p>In man, perindopril has been confirmed to demonstrate vasodilatory properties. It improves large artery elasticity and decreases the media: lumen ratio of small arteries.</p><p>An adjunctive therapy with a thiazide diuretic produces an additive-type of synergy. The combination of an ACE inhibitor and a thiazide also decreases the risk of hypokalaemia induced by the diuretic treatment.</p><p><u>&nbsp;</u></p><p><em>Heart failure:</em></p><p>Studies in patients with heart failure have demonstrated:</p><p>-&nbsp;&nbsp;&nbsp; decreased left and right ventricular filling pressures,</p><p>-&nbsp;&nbsp;&nbsp; reduced total peripheral vascular resistance,</p><p>-&nbsp;&nbsp;&nbsp; increased cardiac output and improved cardiac index.</p><p>In comparative studies, the first administration of 2.5 mg of perindopril arginine to patients with mild to moderate heart failure was not associated with any significant reduction of blood pressure as compared to placebo.</p><p>&nbsp;</p><p><em>Patients with stable coronary artery disease:</em></p><p>The EUROPA study was a multicentre, international, randomised, double-blind, placebo-controlled clinical trial lasting 4 years.</p><p>Twelve thousand two hundred and eighteen (12 218) patients aged over 18 were randomised to 8 mg perindopril tert-butylamine (equivalent to 10 mg perindopril arginine) (n = 6 110) or placebo (n = 6 108).</p><p>The trial population had evidence of coronary artery disease with no evidence of clinical signs of heart failure. Overall, 90% of the patients had a previous myocardial infarction and/or a previous coronary revascularisation. Most of the patients received the study medication on top of conventional therapy including platelet inhibitors, lipid lowering agents and beta-blockers.</p><p>The main efficacy criterion was the composite of cardiovascular mortality, non-fatal myocardial infarction and/or cardiac arrest with successful resuscitation. The treatment with 8 mg perindopril tert-butylamine (equivalent to 10 mg perindopril arginine) once daily resulted in a significant absolute reduction in the primary endpoint of 1.9% (relative risk reduction of 20%, 95%CI [9.4; 28.6] &ndash; p&lt;0.001).</p><p>In patients with a history of myocardial infarction and/or revascularisation, an absolute reduction of 2.2% corresponding to a RRR of 22.4% (95%CI [12.0; 31.6] &ndash; p&lt;0.001) in the primary endpoint was observed by comparison to placebo.</p><p>&nbsp;</p><p>In a subgroup of patients treated with beta-blockers from EUROPA study defined in a post-hoc analysis, the addition of perindopril to beta-blockers (n=3789) showed a significant absolute reduction of 2.2% (relative risk reduction of 24%, 95%CI [9.5; 36.4]) compared to beta-blockers without perindopril (n=3745) in the composite of cardiovascular mortality, non-fatal myocardial infarction and/or cardiac arrest with successful resuscitation.</p><p>&nbsp;</p><p><em>Dual blockade of the renin-angiotensin-aldosterone system (RAAS) clinical trial data</em><em>:</em></p><p>Two large randomised, controlled trials (ONTARGET (ONgoing Telmisartan Alone and in combination with Ramipril Global Endpoint Trial) and VA NEPHRON-D (The Veterans Affairs Nephropathy in Diabetes) have examined the use of combination of an ACE-inhibitor with an angiotensin II receptor blocker.</p><p>ONTARGET was a study conducted in patients with a history of cardiovascular or cerebrovascular disease, or type 2 diabetes mellitus accompanied by evidence of end-organ damage. VA NEPHRON-D was a study in patients with type 2 diabetes mellitus and diabetic nephropathy.</p><p>These studies have shown no significant beneficial effect on renal and/or cardiovascular outcomes and mortality, while an increased risk of hyperkalaemia, acute kidney injury and/or hypotension as compared to monotherapy was observed. Given their similar pharmacodynamic properties, these results are also relevant for other ACE-inhibitors and angiotensin II receptor blockers.</p><p>ACE-inhibitors and angiotensin II receptor blockers should therefore not be used concomitantly in patients with diabetic nephropathy.</p><p>ALTITUDE (Aliskiren Trial in Type 2 Diabetes Using Cardiovascular and Renal Disease Endpoints) was a study designed to test the benefit of adding aliskiren to a standard therapy of an ACE-inhibitor or an angiotensin II receptor blocker in patients with type 2 diabetes mellitus and chronic kidney disease, cardiovascular disease, or both. The study was terminated early because of an increased risk of adverse outcomes. Cardiovascular death and stroke were both numerically more frequent in the aliskiren group than in the placebo group and adverse events and serious adverse events of interest (hyperkalaemia, hypotension and renal dysfunction) were more frequently reported in the aliskiren group than in the placebo group.</p><p>&nbsp;</p><p><em>Paediatric population:</em></p><p>No data are available with Cosyrel in children.</p><p>The European Medicines Agency has granted a product-specific waiver for Cosyrel in all subsets of the paediatric population in the treatment of hypertension, ischaemic coronary artery disease stable and chronic heart failure (see section 4.2 for information on paediatric use).</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The rate and extent of absorption of bisoprolol and perindopril from Cosyrel are not significantly different, respectively, from the rate and extent of absorption of bisoprolol and perindopril when taken alone as monotherapy.</p><p>&nbsp;</p><p><strong><em>Bisoprolol</em></strong></p><p>&nbsp;</p><p><u>Absorption</u></p><p>Bisoprolol is almost completely (&gt;90%) absorbed from the gastrointestinal tract and, because of its small hepatic first-pass metabolism (approximately 10%), it has a bioavailability of approximately 90% after oral administration.</p><p>&nbsp;</p><p><u>Distribution</u></p><p>The distribution volume is 3.5 l/kg. The plasma protein binding of bisoprolol is about 30%.</p><p>&nbsp;</p><p><u>Biotransformation and elimination</u></p><p>Bisoprolol is excreted from the body by two routes. 50% is metabolised by the liver to inactive metabolites which are then excreted by the kidneys. The remaining 50% is excreted by the kidneys in an unmetabolised form. Total clearance is approximately 15 l/h. The half-life in plasma of 10-12 hours gives a 24 hour effect after dosing once daily.</p><p>&nbsp;</p><p><u>Special populations</u></p><p>The kinetics of bisoprolol are linear and independent of age.</p><p>Since the elimination takes place in the kidneys and the liver to the same extent a dosage adjustment is not required for patients with impaired liver function or renal insufficiency. The pharmacokinetics in patients with chronic heart failure and with impaired liver or renal function has not been studied. In patients with chronic heart failure (NYHA stage III) the plasma levels of bisoprolol are higher and the half-life is prolonged compared to healthy volunteers. Maximum plasma concentration at steady state is 64&plusmn;21 ng/ml at a daily dose of 10 mg and the half-life is 17&plusmn;5 hours.</p><p><strong><em>Perindopril</em></strong></p><p>&nbsp;</p><p><u>Absorption</u></p><p>After oral administration, the absorption of perindopril is rapid and the peak concentration is achieved within 1 hour. The plasma half-life of perindopril is equal to 1 hour.</p><p>&nbsp;</p><p><u>Distribution</u></p><p>The volume of distribution is approximately 0.2 l/kg for unbound perindoprilat. Protein binding of perindoprilat to plasma proteins is 20%, principally to ACE, but is concentration-dependent.</p><p>&nbsp;</p><p><u>Biotransformation</u></p><p>Perindopril is a prodrug. Twenty seven percent of the administered perindopril dose reaches the bloodstream as the active metabolite perindoprilat. In addition to active perindoprilat, perindopril yields five metabolites, all inactive. The peak plasma concentration of perindoprilat is achieved within 3 to 4 hours.</p><p>As ingestion of food decreases conversion to perindoprilat, hence bioavailability, perindopril arginine should be administered orally in a single daily dose in the morning before a meal.</p><p>&nbsp;</p><p><u>Elimination</u></p><p>Perindoprilat is eliminated in the urine and the terminal half-life of the unbound fraction is approximately 17 hours, resulting in steady-state within 4 days.</p><p>&nbsp;</p><p><u>Linearity</u></p><p>It has been demonstrated a linear relationship between the dose of perindopril and its plasma exposure.</p><p>&nbsp;</p><p><em>Special population:</em></p><p>Elimination of perindoprilat is decreased in the elderly, and also in patients with heart or renal failure. Dosage adjustment in renal insufficiency is desirable depending on the degree of impairment (creatinine clearance).</p><p>Dialysis clearance of perindoprilat is equal to 70 ml/min.</p><p>Perindopril kinetics are modified in patients with cirrhosis: hepatic clearance of the parent molecule is reduced by half. However, the quantity of perindoprilat formed is not reduced and therefore no dosage adjustment is required (see sections 4.2 and 4.4).</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><em>Bisoprolol</em></strong></p><p>&nbsp;</p><p>Preclinical data reveal no special hazard for humans based on conventional studies of safety pharmacology, repeated dose toxicity, genotoxicity or carcinogenicity.</p><p>In reproductive toxicology studies, bisoprolol had no effect on fertility or other general results of reproduction.</p><p>Like other beta-blockers, bisoprolol caused maternal (decreased food intake and decreased body weight) and embryo/fetal toxicity (increased incidence of resorptions, reduced birth weight of the offspring, retarded physical development) at high doses but was not teratogenic.</p><p>&nbsp;</p><p><strong><em>Perindopril</em></strong></p><p>&nbsp;</p><p>In the chronic oral toxicity studies (rats and monkeys), the target organ is the kidney, with reversible damage.</p><p>No mutagenicity has been observed in in vitro or in vivo studies.</p><p>Reproduction toxicology studies (rats, mice, rabbits and monkeys) showed no sign of embryotoxicity or teratogenicity. However, ACE inhibitors, as a class, have been shown to induce adverse effects on late foetal development, resulting in foetal death and congenital effects in rodents and rabbits: renal lesions and an increase in peri- and postnatal mortality have been observed. Fertility was not impaired either in male or in female rats</p><p>No carcinogenicity has been observed in long term studies in rats and mice.</p><p>&nbsp;</p><p><u>Environmental Risk Assessment</u>:</p><p>Cosyrel contains known active substances, bisoprolol and perindopril. Cosyrel will be prescribed as a direct replacement for individual doses of bisoprolol and perindopril, so there will be no increase in the environmental exposure.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em>Core:</em></p><p>Cellulose microcrystalline PH 102 (E460)</p><p>Calcium carbonate (E170)</p><p>Pregelatinized maize starch</p><p>Sodium starch glycolate type A (E468)</p><p>Silica colloidal anhydrous (E551)</p><p>Magnesium stearate (E572)</p><p>Croscarmellose sodium (E468)</p><p>&nbsp;</p><p><em>Film-coating:</em></p><p>Glycerol (E422)</p><p>Hypromellose (E464)</p><p>Macrogol 6000</p><p>Magnesium stearate (E572)</p><p>Titanium dioxide (E171)</p><p>Iron dioxide yellow (E172)</p><p>Iron dioxide red (E172)</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Polypropylene tablet container of 10 film-coated tablets: 24 months.
+Polypropylene tablet container of 28 or 30 film-coated tablets: 30 months.
+High density polyethylene tablet container of 100 film-coated tablets: 30 months.
+
+Tablet container of 10 film-coated tablets : Once opened, Cosyrel should be used within 20 days.
+Tablet container of 28 or 30 film-coated tablets : Once opened, Cosyrel should be used within 60 days.
+Tablet container of 100 film-coated tablets : Once opened, Cosyrel should be used within 100 days.
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special storage or handling conditons are required.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Tablet container of 10, 28 or 30 film-coated tablets: white polypropylene tablet container equipped with a low-density polyethylene flow reducer and a white opaque stopper containing a desiccant gel.</p><p>&nbsp;</p><p>Tablet container of 100 film-coated tablets: high density polyethylene tablet container equipped with a polypropylene stopper containing desiccant.</p><p>&nbsp;</p><p>Box of 1 tablet container of 10, 28, 30 or 100 film-coated tablets.</p><p>Box of 3 tablet containers of 28 or 30 film-coated tablets.</p><p>Box of 4 tablet containers of 30 film-coated tablets.</p><p>&nbsp;</p><p>Not all pack sizes may be marketed.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Les Laboratoires Servier
+50, rue Carnot
+92284 Suresnes cedex
+France
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                02.2023
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

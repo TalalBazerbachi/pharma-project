@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        16-809-17
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2017
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        METAZ 0.1% W-W OINTMENT
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        MOMETASONE FUROATE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        0.1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        %
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Topical
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Ointment
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        15
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Tube
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        9.95
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="SPIMACO" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            SPIMACO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 718]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ARAC HEALTHCARE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            COOPER PHARMA
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        D07AC13
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Metaz
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Mometasone Furoate 0.1% w/w
+For full list of excipients see section 6.1
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                 Ointment
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Metaz is indicated for the treatment of inflammatory and pruritic manifestations of psoriasis (excluding widespread plaque psoriasis) and atopic dermatitis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em>Adults, including elderly patients and Children:</em> A thin film of Metaz should be applied to the affected areas of skin once daily.</p><p>Use of topical corticosteroids in children or on the face should be limited to the least amount compatible with an effective therapeutic regimen and duration of treatment should be no more than 5 days.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Metaz is contraindicated in facial rosacea, acne vulgaris, skin atrophy, perioral dermatitis, perianal and genital pruritis, napkin eruptions, bacterial (e.g. impetigo, pyodermas), viral (e.g. herpes simplex, herpes zoster and chickenpox verrucae vulgares, condylomata acuminata, molluscum contagiosum), parasitical and fungal (e.g. candida or dermatophyte) infections, varicella, tuberculosis, syphilis or post-vaccine reactions. Metaz should not be used on wounds or on skin which is ulcerated. Metaz should not be used in patients who are sensitive to mometasone furoate or to other corticosteroids or to any of the excipients listed in section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>If irritation or sensitisation develop with the use of Metaz, treatment should be withdrawn and appropriate therapy instituted.</p><p>Should an infection develop, use of an appropriate antifungal or antibacterial agent should be instituted. If a favourable response does not occur promptly, the corticosteroid should be discontinued until the infection is adequately controlled.</p><p>Systemic absorption of topical corticosteriods can produce reversible hypothalamic-pituitaryadrenal (HPA) axis suppression with the potential for glucocorticosteroid insufficiency after withdrawal of treatment. Manifestations of Cushing&#39;s syndrome, hyperglycemia, and glucosuria can also be produced in some patients by systemic absorption of topical corticosteroids while on treatment. Patients applying a topical steroid to a large surface area or areas under occlusion should be evaluated periodically for evidence of HPA axis suppression.</p><p>&nbsp;</p><p>Any of the side effects that are reported following systemic use of corticosteroids, including adrenal suppression, may also occur with topical corticosteroids, especially in infants and children.</p><p>Pediatric patients may be more susceptible to systemic toxicity from equivalent doses due to their larger skin surface to body mass ratios. As the safety and efficacy of Metaz in paediatric patients below 2 years of age have not been established, its use in this age group is not recommended.</p><p>Local and systemic toxicity is common especially following long continued use on large areas of damaged skin, in flexures and with polythene occlusion. If used in childhood, or on the face, occlusion should not be used. If used on the face, courses should be limited to 5 days and occlusion should not be used. Long term continuous therapy should be avoided in all patients irrespective of age.</p><p>Topical steroids may be hazardous in psoriasis for a number of reasons including rebound relapses following development of tolerance, risk of centralized pustular psoriasis and development of local or systemic toxicity due to impaired barrier function of the skin. If used in psoriasis careful patient supervision is important.</p><p>As with all potent topical glucocorticoids, avoid sudden discontinuation of treatment. When long term topical treatment with potent glucocorticoids is stopped, a rebound phenomenon can develop which takes the form of a dermatitis with intense redness, stinging and burning. This can be prevented by slow reduction of the treatment, for instance continue treatment on an intermittent basis before discontinuing treatment.</p><p>Glucocorticoids can change the appearance of some lesions and make it difficult to establish an adequate diagnosis and can also delay the healing.</p><p>Metaz topical preparations are not for ophthalmic use, including the eyelids, because of the very rare risk of glaucoma simplex or subcapsular cataract.</p><p>&nbsp;</p><p>Visual disturbance may be reported with systemic and topical (including, intranasal, inhaled and intraocular) corticosteroid use. If a patient presents with symptoms such as blurred vision or other visual disturbances, the patient should be considered for referral to an ophthalmologist for evaluation of possible causes of visual disturbances which may include cataract, glaucoma or rare diseases such as central serous chorioretinopathy (CSCR) which have been reported after use of systemic and topical corticosteroids.</p><p>Instruct patients not to smoke or go near naked flames - risk of severe burns. Fabric (clothing, bedding, dressings etc) that has been in contact with this product burns more easily and is a serious fire hazard. Washing clothing and bedding may reduce product build-up but not totally remove it.</p><p>&nbsp;</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>&nbsp;</p></td><td><p>None stated.</p><p>&nbsp;</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>&nbsp;</p></td><td><p><u>Pregnancy</u></p><p>During pregnancy and lactation treatment with Metaz should be performed only on the physician&#39;s order. Then however, the application on large body surface areas or over a prolonged period should be avoided. There is inadequate evidence of safety in human pregnancy. Topical administration of corticosteroids to pregnant animals can cause abnormalities of foetal development including cleft palate and intra-uterine growth retardation. There are no adequate and well-controlled studies with Metaz in pregnant women and therefore the risk of such effects to the human foetus is unknown. However as with all topically applied glucocorticoids, the possibility that foetal growth may be affected by glucocorticoid passage through the placental barrier should be considered. There may therefore be a very small risk of such effects in the human foetus. Like other topically applied glucocorticoids, Metaz should be used in pregnant women only if the potential benefit justifies the potential risk to the mother or the foetus.</p><p>&nbsp;</p><p><u>Lactation</u></p><p>It is not known whether topical administration of corticosteroids could result in sufficient systemic absorption to produce detectable quantities in breast milk. Metaz should be administered to nursing mothers only after careful consideration of the benefit/risk relationship. If treatment with higher doses or long term application is indicated, breast-feeding should be discontinued.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>&nbsp;</p></td><td><p>None stated.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><img src="data:image/png;base64,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" alt="" width="634" height="590" vspace="0" hspace="0" border="0" style="width:634px;height:590px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p>Local adverse reactions reported infrequently with topical dermatalogic corticosteroids include: skin dryness, irritation, dermatitis, perioral dermatitis, maceration of the skin, miliaria and telangiectasiae.</p><p>&nbsp;</p><p>Paediatric patients may demonstrate greater susceptibility to topical corticosteroid-induced</p><p>Hypothalamic-pituitary-adrenal axis suppression and Cushing&#39;s syndrome than mature patients because of a larger skin surface area to body weight ratio.</p><p>Chronic corticosteroids therapy may interfere with the growth and development of children.</p><p>&nbsp;</p><p><u>Reporting of suspected adverse reactions</u></p><p>Reporting suspected adverse reactions after authorization of the medicinal product is</p><p>important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions via</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td><p><strong>To report any side effect(s):</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p> The National Pharmacovigilance and Drug Safety Centre (NPC)</p><p>o Fax: +966-11-205-7662</p><p>o Call NPC at +966-11-2038222, Exts: 2317-2356-2340.</p><p>o Reporting hotline: 19999.</p><p>o E-mail: npc.drug@sfda.gov.sa</p><p>o Website: www.sfda.gov.sa/npc</p><p>&nbsp;</p></td></tr></tbody></table></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Excessive, prolonged use of topical corticosteroids can suppress hypothalamic-pituitary-adrenal function resulting in secondary adrenal insufficiency which is usually reversible.</p><p>&nbsp;</p><p>If HPA axis suppression is noted, an attempt should be made to withdraw the drug, to reduce the frequency of application or to substitute a less potent steroid.</p><p>&nbsp;</p><p>The steroid content of each container is so low as to have little or no toxic effect in the unlikely event of accidental oral ingestion</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>&nbsp;</p></td><td><p>Pharmacotherapeutic group: Mometasone, ATC code: D07AC13</p><p>Mometasone furoate exhibits marked anti-inflammatory activity and marked anti-psoriatic activity in standard animal predictive models.</p><p>In the croton oil assay in mice, mometasone was equipotent to betamethasone valerate after single application and about 8 times as potent after five applications.</p><p>In guinea pigs, mometasone was approximately twice as potent as betamethasone valerate in reducing m.ovalis-induced epidermal acanthosis (i.e. anti-psoriatic activity) after 14 applications.</p><p>&nbsp;</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacokinetic studies have indicated that systemic absorption following topical application of mometasone furoate 0.1% is minimal, approximately 0.4% of the applied dose in man, the majority of which is excreted within 72 hours following application. Characterisation of metabolites was not feasible owing to the small amounts present in plasma and excreta.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>There are no pre-clinical data of relevance to the prescriber which are additional to that already included in other sections of the SPC.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Hexylene Glycol,&nbsp;Arlacel P135,&nbsp;Polysorbate 80,&nbsp;White Soft Paraffin,&nbsp;Synchrowax BB4.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>&nbsp;</p></td><td><p>Not Known.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                36 Months/3 Years
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above 30&deg;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>&nbsp;</p></td><td><p>Metaz pack contains 10g&nbsp;and 30g&nbsp;Aluminum tube with threaded nozzle, fitted with fully applied tapered plastic screw cap.&nbsp;</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:582px"><tbody><tr><td><p>Not applicable</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Manufacturer:
+SPIMACO
+Al-Qassim pharmaceutical plant
+Saudi Arabia 
+For:
+Cooper Pharma
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                	March 2020.
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

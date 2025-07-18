@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        114-276-13
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2013
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        AUGMENTIN 1.2GM VIAL
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        AMOXICILLIN,CLAVULANIC ACID
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        1000,200
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Parenteral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        81.45
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="SMIITHKLINE BEECHAM" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            SMIITHKLINE BEECHAM
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 1182]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            GLAXO SAUDI ARABIA
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            GLAXO SAUDI ARABIA
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J01CR02
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                AUGMENTIN® INTRAVENOUS
+Amoxicillin sodium - Potassium clavulanate
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                AUGMENTIN 600 mg intravenous: 500 mg amoxicillin (as amoxicillin sodium) and 100 mg clavulanic acid (as potassium clavulanate) for reconstitution as an intravenous injection or infusion.
+AUGMENTIN 1.2 g intravenous: 1 g amoxicillin (as amoxicillin sodium) and 200 mg clavulanic acid (as potassium clavulanate) for reconstitution as an intravenous injection or infusion.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Sterile powder for injection.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>AUGMENTIN should be used in accordance with local official antibiotic-prescribing guidelines and local susceptibility data.<br />AUGMENTIN is indicated for short-term treatment of bacterial infections at the following sites:<br />Upper respiratory tract infections (including ENT) e.g. recurrent tonsillitis, sinusitis, otitis media.<br />Lower respiratory tract infections e.g. acute exacerbation of chronic bronchitis, lobar and bronchopneumonia.<br />Genito-urinary tract infections e.g. cystitis, urethritis, pyelonephritis.<br />Skin and soft tissue infections, e.g. boils, abscesses, cellulitis, wound infections.<br />Bone and joint infections e.g. osteomyelitis.<br />Other infections e.g. intra-abdominal sepsis.<br />AUGMENTIN intravenous is also indicated for prophylaxis against infection which may be associated with major surgical procedures such as gastrointestinal, pelvic, head and neck, cardiac, renal, joint replacement and biliary tract.</p><p>Susceptibility to AUGMENTIN will vary with geography and time (see Pharmacological Properties, Pharmacodynamics for further information). Local susceptibility data should be consulted where available, and microbiological sampling and susceptibility testing performed where necessary.<br />Infections caused by amoxicillin-susceptible organisms are amenable to AUGMENTIN treatment due to its amoxicillin content. Mixed infections caused by amoxicillin -susceptible organisms in conjunction with AUGMENTIN-susceptible -lactamase producing organisms may therefore be treated with AUGMENTIN.</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Dosage for the treatment of infections</p><p>Adults and children over 12 years:<br />Usually 1.2 g eight hourly. In more serious infections, increase frequency to six-hourly intervals.</p><p>Children 3 months-12 years:<br />Usually 30 mg/kg * AUGMENTIN eight hourly. In more serious infections, increase frequency to six-hourly intervals.</p><p>Children 0-3 months:<br />30 mg/kg* AUGMENTIN every 12 hours in premature infants and in full term infants during the perinatal period, increasing to eight hours thereafter.<br />* Each 30 mg AUGMENTIN contains 25 mg amoxicillin and 5 mg clavulanate.</p><p>Adult dosage for surgical prophylaxis<br />The usual dose is 1.2 g AUGMENTIN intravenous given at the induction of anaesthesia. Operations where there is a high risk of infection, e.g. colorectal surgery, may require three, and up to four, doses of 1.2 g AUGMENTIN intravenous in a 24-hour period. These doses are usually given at 0, 8, 16 (and 24) hours. This regimen can be continued for several days if the procedure has a significantly increased risk of infection.<br />Clear clinical signs of infection at operation will require a normal course of intravenous or oral AUGMENTIN therapy post-operatively.</p><p>Dosage in renal impairment<br />Adults</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td style="width:162px">Mild impairment<br />(creatinine clearance<br />&gt;30 ml/min)</td><td style="width:167px">Moderate impairment<br />(creatinine clearance<br />10-30 ml/min)</td><td style="width:169px">Severe impairment<br />(creatinine clearance<br />&lt;10 ml/min)</td></tr><tr><td style="width:162px">No change in dosage</td><td style="width:167px">1.2 g IV stat., followed by 600 mg IV 12 hourly</td><td style="width:169px">1.2 g IV stat., followed by 600 mg IV 24 hourly. Dialysis decreases serum concentrations of AUGMENTIN and an additional 600 mg IV dose may need to be given during dialysis and at the end of dialysis</td></tr></tbody></table><p>Children<br />Similar reductions in dosage should be made for children.<br />Dosage in hepatic impairment<br />Dose with caution; monitor hepatic function at regular intervals.<br />Each 1.2 g vial of AUGMENTIN contains 1.0 mmol of potassium and 3.1 mmol of sodium (approx.).<br />Administration<br />AUGMENTIN intravenous may be administered either by intravenous injection or by intermittent infusion. It is not suitable for intramuscular administration.</p><p>Contraindications<br />AUGMENTIN is contra-indicated in patients with a history of hypersensitivity to beta-lactams, e.g. penicillins and cephalosporins<br />AUGMENTIN is contra-indicated in patients with a previous history of AUGMENTIN-associated jaundice/hepatic dysfunction.<br />Warnings and Precautions<br />Before initiating therapy with AUGMENTIN, careful enquiry should be made concerning previous hypersensitivity reactions, cephalosporins, or other allergens.<br />Serious and occasionally fatal hypersensitivity (anaphylactoid) reactions have been reported in patients on penicillin therapy. These reactions are more likely to occur in individuals with a history of penicillin hypersensitivity (see Contraindications).<br />Changes in liver function tests have been observed in some patients receiving AUGMENTIN. The clinical significance of these changes is uncertain but AUGMENTIN should be used with caution in patients with evidence of hepatic dysfunction.<br />Cholestatic jaundice, which may be severe, but is usually reversible, has been reported rarely. Signs and symptoms may not become apparent for up to six weeks after treatment has ceased.<br />In patients with renal impairment AUGMENTIN dosage should be adjusted as recommended in the Dosage and Administration section.<br />AUGMENTIN should be avoided if infectious mononucleosis is suspected since the occurrence of a morbilliform rash has been associated with this condition following the use of amoxicillin.<br />Prolonged use may also occasionally result in overgrowth of non-susceptible organisms.<br />Pseudomembranous colitis has been reported with the use of antibiotics and may range in severity from mild to life-threatening. Therefore, it is important to consider its diagnosis in patients who develop diarrhoea during or after antibiotic use. If prolonged or significant diarrhoea occurs or the patient experiences abdominal cramps, treatment should be discontinued immediately and the patient investigated further.<br />Abnormal prolongation of prothrombin time (increased INR) has been reported rarely in patients receiving AUGMENTIN and oral anticoagulants. Appropriate monitoring should be undertaken when anticoagulants are prescribed concurrently. Adjustments in the dose of oral anticoagulants may be necessary to maintain the desired level of anticoagulation.<br />If the parenteral administration of high doses is necessary, the sodium content must be taken into account in patients on a sodium restricted diet.</p><p>In patients with reduced urine output crystalluria has been observed very rarely, predominantly with parenteral therapy. During administration of high doses of amoxicillin it is advisable to maintain adequate fluid intake and urinary output in order to reduce the possibility of amoxicillin crystalluria (see Overdose).<br />The presence of clavulanic acid in AUGMENTIN may cause a non-specific binding of IgG and albumin by red cell membranes leading to a false positive Coombs test.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                NA
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>NA</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Concomitant use of probenecid is not recommended. Probenecid decreases the renal tubular secretion of amoxicillin. Concomitant use with AUGMENTIN may result in increased and prolonged blood levels of amoxicillin but not of clavulanate.<br />Concomitant use of allopurinol during treatment with amoxicillin can increase the likelihood of allergic skin reactions. There are no data on the concomitant use of AUGMENTIN and allopurinol.<br />In common with other antibiotics, AUGMENTIN may affect the gut flora, leading to lower oestrogen reabsorption and reduced efficacy of combined oral contraceptives.<br />The presence of clavulanic acid in AUGMENTIN may cause a non-specific binding of IgG and albumin by red cell membranes leading to a false positive Coombs test.<br />In the literature there are rare cases of increased international normalised ratio in patients maintained on acenocoumarol or warfarin and prescribed a course of amoxicillin. If co-administration is necessary, the prothrombin time or international normalised ratio should be carefully monitored with the addition or withdrawal of AUGMENTIN.<br />In patients receiving mycophenolate mofetil, reduction in pre-dose concentration of the active metabolite mycophenolic acid of approximately 50% has been reported following commencement of oral amoxicillin plus clavulanic acid. The change in pre-dose level may not accurately represent changes in overall MPA exposure.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Use in Pregnancy<br />Pregnancy Category B: Reproduction studies in animals (mice and rats) with orally and parenterally administered AUGMENTIN have shown no teratogenic effects. In a single study in women with pre-term, premature rupture of the foetal membrane (pPROM), it was reported that prophylactic treatment with AUGMENTIN may be associated with an increased risk of necrotising enterocolitis in neonates. As with all medicines, use should be avoided in pregnancy, especially during the first trimester, unless considered essential by the physician.<br />Use in Lactation</p><p>AUGMENTIN may be administered during the period of lactation. With the exception of the risk of sensitisation, associated with the excretion of trace quantities in breast milk, there are no detrimental effects for the infant.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adverse effects on the ability to drive or operate machinery have not been observed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Data from large clinical trials were used to determine the frequency of very common to rare undesirable effects. The frequencies assigned to all other undesirable effects (i.e., those occurring at &lt;1/10,000) were mainly determined using post-marketing data and refer to a reporting rate rather than a true frequency.<br />The following convention has been used for the classification of frequency:<br />Very common &gt;1/10<br />Common &gt;1/100 and &lt;1/10<br />Uncommon &gt;1/1000 and &lt;1/100<br />Rare &gt;1/10,000 and &lt;1/1000<br />Very rare &lt;1/10,000.<br />Infections and infestations<br />Common Mucocutaneous candidiasis<br />Blood and lymphatic system disorders<br />Rare Reversible leucopenia (including neutropenia) and thrombocytopenia<br />Very rare Reversible agranulocytosis and haemolytic anaemia. Prolongation of bleeding time and prothrombin time<br />Immune system disorders<br />Very rare Angioneurotic oedema, anaphylaxis, serum sickness-like syndrome, hypersensitivity vasculitis<br />Nervous system disorders<br />Uncommon Dizziness, headache</p><p>&nbsp;</p><p>Very rare Convulsions. Convulsions may occur in patients with impaired renal function or in those receiving high doses.<br />Not known Aseptic meningitis<br />Vascular disorders<br />Rare Thrombophlebitis at the site of injection<br />Gastrointestinal disorders<br />Common Diarrhoea<br />Uncommon Nausea, vomiting, indigestion<br />Very rare Antibiotic-associated colitis (including pseudomembranous colitis and haemorrhagic colitis &ndash; see Warnings and Precautions) are less likely to occur after parenteral administration.<br />Hepatobiliary disorders<br />Uncommon A moderate rise in AST and/or ALT has been noted in patients treated with beta-lactam class antibiotics, but the significance of these findings is unknown.<br />Very rare Hepatitis and cholestatic jaundice. These events have been noted with other penicillins and cephalosporins.<br />Hepatic events have been reported predominantly in males and elderly patients and may be associated with prolonged treatment.<br />Signs and symptoms usually occur during or shortly after treatment but in some cases may not become apparent until several weeks after treatment has ceased. These are usually reversible. Hepatic events may be severe and in extremely rare circumstances, deaths have been reported. These have almost always occurred in patients with serious underlying disease or taking concomitant medications known to have the potential for hepatic effects.<br />Skin and subcutaneous tissue disorders<br />Uncommon Skin rash, pruritus, urticaria<br />Rare Erythema multiforme<br />Very rare Stevens-Johnson syndrome, toxic epidermal necrolysis, bullous exfoliative-dermatitis, acute generalised exanthemous pustulosis (AGEP)<br />If any hypersensitivity dermatitis reaction occurs, treatment should be discontinued.</p><p>Renal and urinary disorders<br />Very rare Interstitial nephritis, crystalluria (see Overdose)<br />To report any side effect(s):<br />Kingdom of Saudi Arabia<br />-National Pharmacovigilance centre (NPC)<br /> Fax: +966-11-205-7662<br /> Call NPC at +966-11-208222, Ext: 2317-2356-2353-2354-2334-2340<br /> Toll-free: 8002490000<br /> E-mail: npc.drug@sfda.gov.sa<br /> Website: www.sfda.gov.sa/npc<br />-GlaxoSmithKline - Head Office, Jeddah<br /> Tel: 00966(012)6536666<br /> Fax: 00966(012)6536660<br /> P.O Box 55850, Jeddah 21544, Saudi Arabia.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Gastrointestinal symptoms and disturbance of the fluid and electrolyte balances may be evident. Gastrointestinal symptoms may be treated symptomatically with attention to the water electrolyte balance.<br />Amoxicillin crystalluria, in some cases leading to renal failure, has been observed (see Warnings and Precautions).<br />AUGMENTIN can be removed from the circulation by haemodialysis.<br />Amoxicillin has been reported to precipitate in bladder catheters after intravenous administration of large doses. A regular check of patency should be maintained.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Resistance to many antibiotics is caused by bacterial enzymes which destroy the antibiotic before it can act on the pathogen. The clavulanate in AUGMENTIN anticipates this defence mechanism by blocking the &szlig;-lactamase enzymes, thus rendering the organisms sensitive to amoxicillin&rsquo;s rapid bactericidal effect at concentrations readily attainable in the body.<br />Clavulanate by itself has little antibacterial activity; however, in association with amoxicillin as AUGMENTIN, it produces an antibiotic agent of broad spectrum with wide application in hospital and general practice.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the list below, organisms are categorised according to their in vitro susceptibility to AUGMENTIN.</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>In vitro susceptibility of micro-organisms to AUGMENTIN<br />Where clinical efficacy of AUGMENTIN has been demonstrated in clinical trials this is indicated with an asterisk (*).<br />Organisms that do not produce beta-lactamase are identified (with &dagger;). If an isolate is susceptible to amoxicillin, it can be considered susceptible to AUGMENTIN.</td></tr><tr><td>Commonly susceptible species</td></tr><tr><td>Gram-positive aerobes:<br />Bacillius anthracis<br />Enterococcus faecalis<br />Gardnerella vaginalis<br />Listeria monocytogenes<br />Nocardia asteroides<br />Streptococcus pneumoniae*&dagger;<br />Streptococcus pyogenes*&dagger;<br />Streptococcus agalactiae*&dagger;<br />Viridans group streptococcus&dagger;<br />Streptococcus spp. (other &beta;-hemolytic)*&dagger;<br />Staphylococcus aureus (methicillin susceptible)*<br />Staphylococcus saprophyticus (methicillin susceptible)<br />Coagulase negative staphylococcus (methicillin susceptible)<br />&nbsp;</td></tr><tr><td><p>Gram-negative aerobes:<br />Bordetella pertussis<br />Haemophilus influenzae*<br />Haemophilus parainfluenzae<br />Helicobacter pylori<br />Moraxella catarrhalis*<br />Neisseria gonorrhoeae</p><p>Pasteurella multocida<br />Vibrio cholerae</p></td></tr></tbody></table><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>Other:<br />Borrelia burgdorferi<br />Leptospira ictterohaemorrhagiae<br />Treponema pallidum</td></tr><tr><td>Gram-positive anaerobes:<br />Clostridium spp.<br />Peptococcus niger<br />Peptostreptococcus magnus<br />Peptostreptococcus micros<br />Peptostreptococcus spp.</td></tr><tr><td>Gram-negative anaerobes:<br />Bacteroides fragilis<br />Bacteroides spp.<br />Capnocytophaga spp.<br />Eikenella corrodens<br />Fusobacterium nucleatum<br />Fusobacterium spp.<br />Porphyromonas spp.<br />Prevotella spp.</td></tr></tbody></table><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>Species for which acquired resistance may be a problem</td></tr><tr><td>Gram-negative aerobes:<br />Escherichia coli*<br />Klebsiella oxytoca<br />Klebsiella pneumoniae*<br />Klebsiella spp.<br />Proteus mirabilis<br />Proteus vulgaris<br />Proteus spp.<br />Salmonella spp.<br />Shigella spp.</td></tr><tr><td>Gram-positive aerobes:<br />Corynebacterium spp.<br />Enterococcus faeciium</td></tr><tr><td>Inherently resistant organisms</td></tr><tr><td>Gram-negative aerobes:<br />Acinetobacter spp.<br />Citrobacter freundii<br />Enterobacter spp.<br />Hafnia alvei<br />Legionella pneumophila<br />Morganella morganii<br />Providencia spp.<br />Pseudomonas spp.<br />Serratia spp.<br />Stenotrophomas maltophilia<br />Yersinia enterolitica</td></tr><tr><td><p>Others:<br />Chlamydia pneumoniae<br />Chlamydia psittaci</p><p>Chlamydia spp.<br />Coxiella burnetti<br />Mycoplasma spp.</p></td></tr></tbody></table><p>&nbsp;</p><p>Pharmacokinetics<br />The pharmacokinetics of the two components of AUGMENTIN are closely matched. Both clavulanate and amoxicillin have low levels of serum binding; about 70% remains free in the serum.<br />Doubling the dosage of AUGMENTIN approximately doubles the serum levels achieved.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No further information of relevance.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>AUGMENTIN intravenous should not be mixed with blood products, other proteinaceous fluids such as protein hydrolysates or with intravenous lipid emulsions.<br />If AUGMENTIN is prescribed concurrently with an aminoglycoside, the antibiotics should not be mixed in the syringe, intravenous fluid container or giving set because loss of activity of the aminoglycoside can occur under these conditions.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                The expiry date is indicated on the packaging.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>AUGMENTIN vials should be stored in a dry place below 25oC.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Glass vials (Ph.Eur. type I) fitted with butyl rubber bungs and aluminium overseals containing sterile white powder.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>600 mg vial: To reconstitute dissolve in 10 ml Water for Injections BP. (Final volume 10.5 ml)<br />1.2 g vial: To reconstitute dissolve in 20 ml Water for Injections BP. (Final volume 20.9 ml)<br />A transient pink coloration may or may not appear during reconstitution. Reconstituted solutions are normally colourless or a pale, straw colour.<br />Intravenous injection:<br />The stability of AUGMENTIN intravenous solution is concentration dependent, thus AUGMENTIN intravenous should be used immediately upon reconstitution and given by slow intravenous injection over a period of 3-4 minutes. AUGMENTIN intravenous solutions should be used within 20 minutes of reconstitution. AUGMENTIN may be injected directly into a vein or via a drip tube.<br />Intravenous infusion:<br />Alternatively, AUGMENTIN intravenous may be infused in Water for Injections BP or Sodium Chloride Intravenous Injection BP (0.9% w/v). Add, without delay*, 600 mg reconstituted solution to 50 ml infusion fluid or 1.2 g reconstituted solution to 100 ml infusion fluid (e.g. using a minibag or in-line burette). Infuse over 30-40 minutes and complete within four hours of reconstitution. For other appropriate infusion fluids, see Stability and Compatibility section.<br />*Solutions should be made up to full infusion volume immediately after reconstitution.<br />Any residual antibiotic solutions should be discarded.<br />Therapy can be started parenterally and continued with an oral preparation. Treatment should not be extended beyond 14 days without review.<br />Stability and Compatibility<br />Intravenous infusions of AUGMENTIN may be given in a range of different intravenous fluids. Satisfactory antibiotic concentrations are retained at 5&deg;C and at room temperature (25&deg;C) in the recommended volume of the following infusion fluids. If reconstituted and maintained at room temperature, infusions should be completed within the times stated.</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>Intravenous infusion fluids</td><td>Stability period at 25&deg;C</td></tr><tr><td>Water for Injections B.P.</td><td>4 hours</td></tr><tr><td>Sodium Chloride Intravenous Infusion B.P. (0.9% w/v)</td><td>4 hours</td></tr><tr><td>Sodium Lactate Intravenous Infusion B.P. (one-sixth molar)</td><td>4 hours</td></tr><tr><td>Compound Sodium Chloride Intravenous Infusion B.P. (Ringer&#39;s Solution)</td><td>3 hours</td></tr><tr><td>Compound Sodium Lactate Intravenous Infusion B.P. (Ringer-Lactate Solution; Hartmann&#39;s Solution)</td><td>3 hours</td></tr><tr><td>Potassium Chloride and Sodium Chloride Intravenous Infusion B.P.</td><td>3 hours</td></tr></tbody></table><p>Reconstituted solutions should not be frozen.<br />AUGMENTIN is less stable in infusions containing glucose, dextran or bicarbonate. Reconstituted solutions of AUGMENTIN should therefore not be added to such infusions but may be injected into the drip tubing over a period of 3-4 minutes.<br />For storage at 5&deg;C, the reconstituted solution should be added to pre-refrigerated infusion bags which can be stored for up to 8 hours. Thereafter, the infusion should be administered immediately after reaching room temperature.</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>Intravenous infusion fluids</td><td>Stability period at 5&deg;C</td></tr><tr><td>Water for Injections B.P.</td><td>8 hours</td></tr><tr><td>Sodium Chloride Intravenous Infusion B.P. (0.9% w/v)</td><td>8 hours</td></tr></tbody></table><p>&nbsp;</p><p>Not all presentations are available in every country.<br />AUGMENTIN is a registered trademark of the GlaxoSmithKline group of companies.<br />&copy; 2015 GlaxoSmithKline group of companies. All rights reserved.</p><p>&nbsp;</p><p>INSTRUCTIONS TO THE PATIENT<br />THIS IS A MEDICAMENT<br /> Medicament is a product which affects your health, and its consumption contrary to instructions is dangerous for you.<br /> Follow strictly the doctor&rsquo;s prescription, the method of use and the instructions of the pharmacist who sold the medicament.<br /> The Doctor and the Pharmacist are experts in medicine, its benefits and risks.<br /> Do not by yourself interrupt the period of treatment prescribed for you.<br /> Do not repeat the same prescription without consulting your doctor.<br /> KEEP ALL MEDICINES OUT OF THE REACH OF CHILDREN<br />Council of Arab Health Ministers<br />Union of Arab Pharmacists</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Manufactured by: SmithKline Beecham plc.* Worthing, UK.
+Packed by: Glaxo Saudi Arabia Ltd*, Jeddah, KSA
+Marketing Authorisation Holder
+Glaxo Saudi Arabia Ltd.* Jeddah, KSA
+Address: P.O. Box 22617 Jeddah 21416 – Kingdom of Saudi Arabia
+*member of the GlaxoSmithKline group of companies
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Version number: GDS28/IPI09
+Date of issue: 18 January 2013
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

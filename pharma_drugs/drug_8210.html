@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        39-887-19
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2019
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        MIDARINE 100 MG - 2 ML AMP
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SUXAMETHONIUM CHLORIDE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        100
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Ampoule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        18
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        98.1
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="GLAXOSMITHKLINE (GSK)" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            GLAXOSMITHKLINE (GSK)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 354]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            SAUDI INTERNATIONAL TRADING COMPANY LTD (SITCO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Aspen Pharma Trading Limited
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        M03AB01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Midarine 50 mg/ml Injection
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Suxamethonium chloride Injection BP 100 mg in 2 ml. 
+
+For a full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Solution for injection.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Used in anaesthesia as a muscle relaxant to facilitate endotracheal intubation, mechanical ventilation and a wide range of surgical and obstetric procedures.</p><p>It is also used to reduce the intensity of muscular contractions associated with pharmacologically or electrically-induced convulsions.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Usually by bolus intravenous injection.</p><p>Adults: The dose is dependent on body weight, the degree of muscular relaxation required, the route of administration, and the response of individual patients.</p><p>To achieve endotracheal intubation Midarine is usually administered intravenously in a dose of 1 mg/kg. This dose will usually produce muscular relaxation in about 30 to 60 seconds and has a duration of action of about 2 to 6 minutes. Larger doses will produce more prolonged muscular relaxation, but doubling the dose does not necessarily double the duration of relaxation. Supplementary doses of Midarine of 50% to 100% of the initial dose administered at 5 to 10 minute intervals will maintain muscle relaxation during short surgical procedures performed under general anaesthesia.</p><p>For prolonged surgical procedures Midarine may be given by intravenous infusion as a 0.1% to 0.2% solution, diluted in 5% glucose solution or sterile isotonic saline solution, at a rate of 2.5 to 4 mg per minute. The infusion rate should be adjusted according to the response of individual patients.</p><p>The total dose of Midarine given by repeated intravenous injection or continuous infusion should not exceed 500 mg per hour.</p><p>Children: Infants and young children are more resistant to Midarine compared with adults.</p><p>The recommended intravenous dose of Midarine for neonates and infants is 2 mg/kg. A dose of 1 mg/kg in older children is recommended.</p><p>When Midarine is given as intravenous infusion in children, the dosage is as for adults with a proportionately lower initial infusion rate based on body weight.</p><p>Midarine may be given intramuscularly to infants at doses up to 4 to 5 mg/kg and in older children up to 4 mg/kg. These doses produce muscular relaxation within about 3 minutes. A total dose of 150 mg should not be exceeded.</p><p>Use in the elderly: Dosage requirements of Midarine in the elderly are comparable to those for younger adults.</p><p>The elderly may be more susceptible to cardiac arrhythmias, especially if digitalis-like drugs are also being taken (see section 4.4).</p><p>Use in renal impairment: A normal single dose of suxamethonium injection may be administered to patients with renal insufficiency in the absence of hyperkalaemia. Multiples or larger doses may cause clinically significant rises in serum potassium and should not be used (see section 4.3 and 4.4).</p><p>Use in hepatic impairment: Termination of the action of suxamethonium is dependent on plasma cholinesterase, which is synthesised in the liver. Although plasma cholinesterase levels often fall in patients with liver disease, with the exception of severe hepatic failure, levels are seldom low enough to significantly prolong suxamethonium-induced apnoea (see section 4.4).</p><p>Use in patients with reduced plasma cholinesterase: Patients with reduced plasma cholinesterase activity may experience prolonged and intensified neuromuscular blockade following administration of suxamethonium. In these patients it may be advisable to administer reduced doses of suxamethonium injection (see section 4.3, 4.4 and 4.5).</p><p>Monitoring advice: Monitoring of neuromuscular function is recommended during infusion of suxamethonium injection or if suxamethonium injection is to be administered in relatively large cumulative doses over a relatively short period of time in order to individualise dosage requirements (see section 4.4).</p><p>Instructions to open the ampoule: See section 6.6 Special precautions for disposal and other handling for further information.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Midarine has no effect on the level of consciousness and should not be administered to a patient who is not
+fully anaesthetised.
+
+Hypersensitivity to suxamethonium may exist in rare instances, and Midarine should not be administered to
+patients known to be hypersensitive to the drug.
+
+As suxamethonium can act as a trigger of sustained myofibrillar contraction in susceptible individuals, Midarine
+is contraindicated in patients with a personal or family history of malignant hyperthermia. If this condition occurs
+unexpectedly, all anaesthetic agents known to be associated with its development (including Midarine) must be
+immediately discontinued, and full supportive measures must be immediately instituted. Intravenous dantrolene
+sodium is the primary specific therapeutic drug and is recommended as soon as possible after the diagnosis is
+made.
+
+Midarine is contraindicated in patients known to have an inherited atypical plasma cholinesterase activity.
+
+An acute transient rise in serum potassium often occurs following the administration of Midarine in normal
+individuals; the magnitude of this rise is of the order of 0.5 mmol/litre. In certain pathological states or
+conditions this increase in serum potassium following Midarine administration may be excessive and cause
+serious cardiac arrhythmias and cardiac arrest. For this reason the use of Midarine is contraindicated in:
+
+• patients recovering from major trauma or severe burns; the period of greatest risk of hyperkalaemia is from about 5 to 70 days after the injury and may be further prolonged if there is delayed healing due to persistent infection.
+
+• patients with neurological deficits involving acute major muscle wasting (upper and/or lower motor neurone lesions); the potential for potassium release occurs within the first 6 months after the acute onset of the neurological deficit and correlates with the degree and extent of muscle paralysis. Patients who have been immobilised for prolonged periods of time may be at similar risk.
+• patients with pre-existing hyperkalaemia. In the absence of hyperkalaemia and neuropathy, renal failure is not a contra-indication to the administration of a normal single dose of Midarine Injection, but multiple or large doses may cause clinically significant rises
+in serum potassium and should not be used.
+
+Suxamethonium causes a significant transient rise in intra-ocular pressure, and should therefore not be used in the presence of open eye injuries or where an increase in intraocular pressure is undesirable unless the potential benefit of its use outweighs the
+potential risk to the eye.
+
+Midarine should be avoided in patients with a personal or family history of congenital myotonic diseases such as myotonia congenita and dystrophia myotonica since its administration may on occasion be associated with severe myotonic spasms and rigidity.
+
+Midarine should not be used in patients with skeletal muscle myopathies e.g. Duchenne muscular dystrophy since its administration may be associated with malignant hyperthermia, ventricular dysrhythmias and cardiac arrest secondary to acute rhabdomyolysis with hyperkalaemia.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Midarine paralyses the respiratory muscles as well as other skeletal muscles but has no effect on consciousness.</strong></p><p><strong>Midarine should be administered only by or under close supervision of an anaesthetist familiar with its action, characteristics and hazards, who is skilled in the management of artificial respiration and only where there are adequate facilities for immediate endotracheal intubation with administration of oxygen by intermittent positive pressure ventilation.</strong></p><p>High rates of cross-sensitivity (greater than 50%) between neuromuscular blocking agents have been reported. Therefore, where possible, before administering suxamethonium, hypersensitivity to other neuromuscular blocking agents should be excluded. Suxamethonium, should only be used when absolutely essential in susceptible patients. Patients who experience a hypersensitivity reaction under general anaesthesia should be tested subsequently for hypersensitivity to other neuromuscular blockers.</p><p>Suxamethonium injection should not be mixed with any other drug prior to its administration.</p><p>Suxamethonium injection is acidic and should not be mixed with highly alkaline solutions, e.g. barbiturates.</p><p>During prolonged administration of Midarine, it is recommended that the patient is fully monitored with a peripheral nerve stimulator in order to avoid overdosage.</p><p>Midarine is rapidly hydrolysed by plasma cholinesterase which thereby limits the intensity and duration of the neuromuscular blockade.</p><p>Individuals with decreased plasma cholinesterase activity exhibit a prolonged response to suxamethonium .Approximately 0.05% of the population has an inherited cause of reduced cholinesterase activity.</p><p>Prolonged and intensified neuromuscular blockade following Midarine Injection may occur secondary to reduced plasma cholinesterase activity in the following states or pathological conditions:</p><p>&bull; physiological variation as in pregnancy and the puerperium (see section 4.6)<br />&bull; genetically determined abnormal plasma cholinesterase (see section 4.3)<br />&bull; severe generalised tetanus, tuberculosis, other severe or chronic infections<br />&bull; following severe burns (see section 4.3)<br />&bull; chronic debilitating disease, malignancy, chronic anaemia and malnutrition<br />&bull; end-stage hepatic failure, acute or chronic renal failure (see section 4.2)<br />&bull; auto-immune diseases: myxoedema, collagen diseases<br />&bull; iatrogenic: following plasma exchange, plasmapheresis, cardiopulmonary bypass, and as a result of concomitant drug therapy (see section 4.5).</p><p>If Midarine is given over a prolonged period, the characteristic depolarising neuromuscular (or Phase I) block may change to one with characteristics of a non-depolarising (or Phase II) block. Although the characteristics of a developing Phase II block resemble those of a true non-depolarising block, the former cannot always be fully or permanently reversed by anticholinesterase agents. When a Phase II block is fully established, its effects will then usually be fully reversible with standard doses of neostigmine accompanied by an anticholinergic agent.</p><p>Tachyphylaxis occurs after repeated administration of Midarine.</p><p>Muscle pains are frequently experienced after administration of suxamethonium and most commonly occur in ambulatory patients undergoing short surgical procedures under general anaesthesia. There appears to be no direct connection between the degree of visible muscle fasciculation after Midarine administration and the incidence or severity of pain. The use of small doses of non-depolarising muscle relaxants given minutes before suxamethonium administration has been advocated for the reduction of incidence and severity of<br />suxamethonium-associated muscle pains. This technique may require the use of doses of suxamethonium in excess of 1 mg/kg to achieve satisfactory conditions for endotracheal intubation.</p><p>Caution should be exercised when using suxamethonium in children, since paediatric patients are more likely to have an undiagnosed myopathy or an unknown predisposition to malignant hyperthermia and rhabdomyolysis, which places them at increased risk of serious adverse events following suxamethonium (see section 4.3 and section 4.8).</p><p>In patients with severe sepsis, the potential for hyperkalaemia seems to be related to the severity and duration<br />of infection.</p><p>It is inadvisable to administer Midarine to patients with advanced myasthenia gravis. Although these patients are resistant to suxamethonium they develop a state of Phase II block which can result in delayed recovery. Patients with myasthenic Eaton-Lambert syndrome are more sensitive than normal to Midarine, necessitating dosage reduction.</p><p>In healthy adults, Midarine occasionally causes a mild transient slowing of the heart rate on initial administration. Bradycardias are more commonly observed in children and on repeated administration of suxamethonium in both children and adults. Pre-treatment with intravenous atropine or glycopyrrolate significantly reduces the incidence and severity of suxamethonium-related bradycardia.</p><p>In the absence of pre-existing or evoked hyperkalaemia, ventricular arrhythmias are rarely seen following suxamethonium administration. Patients taking digitalis-like drugs are however more susceptible to such arrhythmias. The action of suxamethonium on the heart may cause changes in cardiac rhythm including cardiac arrest.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Certain drugs or chemicals are known to reduce normal plasma cholinesterase activity and may therefore prolong the neuromuscular blocking effects of Midarine. These include:</p><p>&bull; organophosphorous insecticides and metriphonate<br />&bull; ecothiopate eye drops<br />&bull; trimetaphan<br />&bull; specific anticholinesterase agents: neostigmine, pyridostigmine, physostigmine, edrophonium, tacrine hydrochloride<br />&bull; cytotoxic compounds: cyclophosphamide, mechlorethamine, triethylene-melamine, and thiotepa<br />&bull; psychiatric drugs: phenelzine, promazine and chlorpromazine<br />&bull; anaesthetic agents and drugs: ketamine, morphine and morphine antagonists, pethidine, pancuronium, propanidid<br />&bull; selective serotonin reuptake inhibitors (SSRI).</p><p>Other drugs with potentially deleterious effects on plasma cholinesterase activity include aprotinin, diphenhydramine, promethazine, oestrogens, oxytocin, high-dose steroids, and oral contraceptives, terbutaline and metoclopramide.</p><p>Certain drugs or substances may enhance or prolong the neuromuscular effects of Midarine by mechanisms unrelated to plasma cholinesterase activity. These include:</p><p>&bull; magnesium salts<br />&bull; lithium carbonate<br />&bull; azathioprine<br />&bull; quinine and chloroquine<br />&bull; antibiotics such as the aminoglycosides, clindamycin and polymyxins<br />&bull; antiarrhythmic drugs: quinidine, procainamide, verapamil, beta-blockers, lidocaine and procaine<br />&bull; volatile inhalational anaesthetic agents: halothane, enflurane, desflurane, isoflurane, diethylether and methoxyflurane have little effect on the Phase I block of Midarine injection but will accelerate the onset and enhance the intensity of a Phase II suxamethonium-induced block.</p><p>Patients receiving digitalis-like drugs are more susceptible to the effects of suxamethonium-exacerbated hyperkalaemia.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies of the effect of suxamethonium on female fertility or pregnancy have been performed.</p><p>Suxamethonium has no direct action on the uterus or other smooth muscle structures. In normal therapeutic doses it does not cross the placental barrier in sufficient amounts to affect the respiration of the infant.</p><p>The benefits of the use of suxamethonium as part of a rapid sequence induction for general anaesthesia normally outweigh the possible risk to the foetus.</p><p>Plasma cholinesterase levels fall during the first trimester of pregnancy to about 70 to 80% of their prepregnancy values; a further fall to about 60 to 70% of the pre-pregnancy levels occurs within 2 to 4 days after delivery. Plasma cholinesterase levels then increase to reach normal over the next 6 weeks. Consequently, a high proportion of pregnant and puerperal patients may exhibit mildly prolonged neuromuscular blockade following Midarine injection.</p><p>It is not known whether suxamethonium or its metabolites are excreted in human milk.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>This precaution is not relevant to the use of suxamethonium injection. Suxamethonium will always be used in<br />combination with a general anaesthetic and therefore the usual precautions relating to performance of tasks<br />following general anaesthesia apply.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adverse reactions are listed below by system organ class and frequency. Estimated frequencies were determined from published data. Frequencies are defined as follows: very common (&ge;1/10); common (&ge;1/100 to &lt;1/10), uncommon (&ge;1/1,000 to &lt;1/100); rare (&ge;1/10,000 to &lt;1/1,000); very rare (&lt;1/10,000).</p><p>Immune system disorders<br />Very rare&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Anaphylactic reactions.<br />Eye disorders<br />Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Increased intraocular pressure.<br />Cardiac disorders<br />Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Bradycardia, tachycardia.<br />Rare&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Arrhythmias (including ventricular arrhythmias), cardiac arrest.</p><p>There are case reports of hyperkalaemia-related cardiac arrests following the administration of suxamethonium to patients with congenital cerebral palsy, tetanus, Duchenne muscular dystrophy, and closed head injury.<br />Such events have also been reported rarely in children with hitherto undiagnosed muscular disorders.</p><p>Vascular disorders<br />Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Skin flushing.<br />Hypertension and hypotension have also been reported.</p><p>Respiratory, thoracic and mediastinal disorders<br />Rare&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Bronchospasm, prolonged respiratory depression&dagger;,<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;apnoea&dagger;.</p><p>&dagger; Individuals with decreased plasma cholinesterase activity exhibit a prolonged response to suxamethonium.<br />Approximately 0.05% of the population has an inherited cause of reduced cholinesterase activity (please refer to section 4.4).</p><p>Gastrointestinal disorders<br />Very common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Increased intragastric pressure.<br />Excessive salivation has also been reported</p><p>Skin and subcutaneous tissue disorders<br />Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rash.</p><p>Musculoskeletal and connective tissue disorders<br />Very common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Muscle fasciculation, post-operative muscle pains (please refer to section 4.4).<br />Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Myoglobinaemia#, myoglobinuria#.<br />Rare&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Trismus</p><p># Rhabdomyolysis has also been reported (see section 4.3 and section 4.4).</p><p>General disorders and administration site conditions</p><p>Very rare&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Malignant hyperthermia (please refer to section 4.4).<br />Investigations<br />Common&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Transient blood potassium increase.</p><p><strong>To report any side effect(s):<br />- In Saudi Arabia:</strong></p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>- The National Pharmacovigilance and Drug Safety Centre (NPC):<br />- Fax: 00966112057662<br />- Call NPC at 00966112038222, Exts: 2317-2356-2353-2354-2334-2340.<br />- Toll free phone: 8002490000<br />- E-mail: npc.drug@sfda.gov.sa<br />- Website: www.sfda.gov.sa/npc</td></tr></tbody></table><p>- Other GCC States:</p><table border="1" cellspacing="1" cellpadding="1" style="width:500px"><tbody><tr><td>Please contact the relevant competent authority.</td></tr></tbody></table><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Apnoea and prolonged muscle paralysis are the main serious effects of overdosage. It is essential, therefore, to maintain the airway and adequate ventilation until spontaneous respiration occurs.</p><p>The decision to use neostigmine to reverse a Phase II suxamethonium-induced block depends on the judgement of the clinician in the individual case. Valuable information in regard to this decision will be gained by monitoring neuromuscular function. If neostigmine is used its administration should be accompanied by appropriate doses of an anticholinergic agent such as atropine.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Peripherally acting muscle relaxants, choline derivatives, ATC code: M03AB01.</p><p>Short-acting depolarising neuromuscular blocking agent.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None stated.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Genotoxicity:-<br />No bacterial mutation assays have been conducted.</p><p>There are some data to suggest a weak clastogenic effect in mice, but not in patients who had received suxamethonium chloride.</p><p>Carcinogenicity:-<br />Carcinogenicity studies have not been performed.</p><p>Embryo-foetal Development:-<br />Animal reproduction studies have not been conducted with suxamethonium. It is also not known whether suxamethonium can affect reproductive capacity or cause foetal harm when administered to a pregnant woman.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Water for Injections EP.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None known.</p><p>Suxamethonium injection should not be mixed with any other drug prior to its administration.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                18 months.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store between 2 and 8 &deg;C. Do not freeze. Keep in the outer carton to protect from light.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Neutral glass. 2 ml ampoules.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>For intravenous injection under medical direction.</p><p><u>Instructions to open the ampoule</u></p><p>Ampoules are equipped with the OPC (One Point Cut) opening system and must be opened using the following instructions:</p><p>&bull; hold with the hand the bottom part of the ampoule as indicated in picture 1<br />&bull; put the other hand on the top of the ampoule positioning the thumb above the coloured point and press as indicated in picture 2</p><p>Picture 1</p><p><img alt="" width="200" height="256" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/4RD6RXhpZgAATU0AKgAAAAgABAE7AAIAAAAQAAAISodpAAQAAAABAAAIWpydAAEAAAAgAAAQ0uocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFobWFkIEFsWmFocmFuaQAABZADAAIAAAAUAAAQqJAEAAIAAAAUAAAQvJKRAAIAAAADMzEAAJKSAAIAAAADMzEAAOocAAcAAAgMAAAInAAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIwMjA6MDY6MDIgMDk6MDQ6MzUAMjAyMDowNjowMiAwOTowNDozNQAAAEEAaABtAGEAZAAgAEEAbABaAGEAaAByAGEAbgBpAAAA/+ELImh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4NCjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iPjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iLz48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+PHhtcDpDcmVhdGVEYXRlPjIwMjAtMDYtMDJUMDk6MDQ6MzUuMzEwPC94bXA6Q3JlYXRlRGF0ZT48L3JkZjpEZXNjcmlwdGlvbj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyI+PGRjOmNyZWF0b3I+PHJkZjpTZXEgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOmxpPkFobWFkIEFsWmFocmFuaTwvcmRmOmxpPjwvcmRmOlNlcT4NCgkJCTwvZGM6Y3JlYXRvcj48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC94OnhtcG1ldGE+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg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" /></p><p>Picture 2</p><p><img alt="" width="200" height="249" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/4RD6RXhpZgAATU0AKgAAAAgABAE7AAIAAAAQAAAISodpAAQAAAABAAAIWpydAAEAAAAgAAAQ0uocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFobWFkIEFsWmFocmFuaQAABZADAAIAAAAUAAAQqJAEAAIAAAAUAAAQvJKRAAIAAAADNDUAAJKSAAIAAAADNDUAAOocAAcAAAgMAAAInAAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIwMjA6MDY6MDIgMDk6MDY6MTUAMjAyMDowNjowMiAwOTowNjoxNQAAAEEAaABtAGEAZAAgAEEAbABaAGEAaAByAGEAbgBpAAAA/+ELImh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4NCjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iPjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iLz48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+PHhtcDpDcmVhdGVEYXRlPjIwMjAtMDYtMDJUMDk6MDY6MTUuNDUxPC94bXA6Q3JlYXRlRGF0ZT48L3JkZjpEZXNjcmlwdGlvbj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyI+PGRjOmNyZWF0b3I+PHJkZjpTZXEgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOmxpPkFobWFkIEFsWmFocmFuaTwvcmRmOmxpPjwvcmRmOlNlcT4NCgkJCTwvZGM6Y3JlYXRvcj48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC94OnhtcG1ldGE+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg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gCWiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopGYKpJoAWvOfixdyldE0+IAebqEMjN3ADYr0Xd04615v4rhj1T4t6HauHdYrR5SgPyhg4xketAHokKiONVB3BVwG9akT7vTFMXrswAMU9RheKAFooooAKKKKACiiigBrgFfmphJDEHGzHFPc4X69vWon2iPcx+Rclj6UAcR8VNWay8JrYW/wA1xqMyWoTvtfKk10PhXRx4f8N2NggCiCBVYDuwHJrzzTWl8efGO51AnzNG0INbIR92SRsMrD6c13/i7xHb+F/Dl1qdy2XjQlEz94+goA4v4i6nceJPENj4O0WX55HEl3Kp/wBWq4bB+oyK9Ft9OtrbS0s4IU+zouzyz0VfSuN+GfhW4tbe48Qa0M6nqbb2JH3UzlMfga9A2denJ54oA5iT4f8AhOWRpX0S3YufmJz/AI1r2GlWOnqv2G0jhxwoAxgVfMQII7HgilCkAc80AOooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkbGOaWkbp7d6AG9FyTjFeZaBnVPjRq11u3R2O+3HtkA16RM4S3mlPIVCcfQVwPwtIvtS8T6i0CoLi/Vo2A6jYBQB6GeCCOfWnLyKNvBx3paACiiigAooooAKKDnHFMMmADjigBZACuScY5z6VxHxK8SnRtFWyszu1C+Ijt0Xqc/e/Q12M88cNvJJclVjUZbPp715h4QspvGvjK58Vakoe0s3aKwTqFZSVYj60Adh4L8N2/hbw1BZIMTMA88h/iPqT+NcbdiX4i/EKKE/NoWjTbmA6SyjIYH2wa6D4jeJv7H8PiytHI1DUCIIEH3hu43fQGrvgLwwPDHheK2mIe7lHm3LH+Jz1NAHUwxrFCsacKowB6Cn0ifdHOaWgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApr5GCMYHWnU1+O9AGV4jvI9P8P3l1IrECJhhTjqMVgfCa0SH4f2Nwsbo90nmPvbOTkimfFTUmtPBkscOTJNLGmAOxYA10vhqxXTfDllZxjasUYAHp3oA1KKKKACiiigAooooAQ4xzTG+Xn8qkIyMGk2jn3oA86+I95fatPbeFNJLLNfHFzcJ/yyiPf1611eladbeG/DsdrHhYII8sy8ZIHJ/HFXv7MtIr5r1IgLhl2F+pxXF/EvWJ3tbbw5ppxqGpPtXb/CowTn0yKAMXwhHN478dXvie/j3adYuYNODDh0IBLe5BHWvVWYhQyrnB5HqKoeHtGt9E0K20+1jCxQpgfzrU2jj2oARAAoxTqQDA4paACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkc4UkdaWo5SQucgAdR60Aec+N5pNT8eaBo8OHhZne6HpgArXpEY2qFHQDArzTweV8RfEbWddzut4lSKH0DLlWr0uP7vtQA6iiigAooooAKKKKACiimcdO1ADbmeO1gaadgsaDLMegFea+Bo38WeLb7xddKTDG5gtFP8JQlSR9a0Pizqc9r4TGmWKs9xqzG1h2tghiM5/Sui8J6Nb6F4ZtLG2RkAjDSZOfnIBb9aANtORk06moCByc/SnUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABWT4ojv5fDV6NFx/aPlH7OWOAG+ta1FAHJfD7wzL4W8Mx2dyFNw8jzTsDnJY5/ma6tBjJ9e3pTqKACiiigAooooAKKKKAA9KjByA3bByKkPSoJ5Rb27yMcKiFifTAoA821SR/EPxhs9Njf8A0fTYluvl52vnFelHPKx53ADqODXn/wAMrVL3V9d11uZJbt4429U4Ir0agBqDAxjA7U6iigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAPSsHxheRWPg7UpZpCi/Z3UN6Eqa3TnHFcd8TXA8ImPyjKJrmKIqozyxxmgA+FdrHb/D7TXiJbz4VkZiMEkiuyrK8N2f8AZ/h+xs2UKYYFXA7Vq0AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABUU1rDcJsnjWRchsMM8joaKKAHogTp+tOoooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/2Q==" /></p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Aspen Pharma Trading Limited
+3016 Lake Drive
+CityWest Business Campus
+Dublin 24, Ireland
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                April/ 2018
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

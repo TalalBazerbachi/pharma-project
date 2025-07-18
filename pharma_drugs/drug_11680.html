@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2509222631
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2022
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        NABOTA
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        CLOSTRIDIUM BOTULINUM TYPE A TOXIN-HAEMAGGLUTININ COMPLEX
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        100
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        IU
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intramuscular use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        powder for solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Restricted
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        391.45
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="DAEWOONG PHARMACEUTICAL CO LTD" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            DAEWOONG PHARMACEUTICAL CO LTD
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 3025]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            AME compant for Medical Supplies
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            DAEWOONG PHARMACEUTICAL CO LTD
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        M03AX01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                NABOTA 
+100 Units 
+Powder for injection 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Botulinum toxin* type A, 100 Units/vial. 
+* from Clostridium botulinum
+Botulinum toxin units are not interchangeable from one product to another. 
+For a full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder for injection
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Glabella lines Temporary improvement in the appearance of moderate to severe glabellar lines (vertical lines between the eyebrows) associated with corrugator muscle and/or procerus muscle activities, in adults aged between 20 to 65. Focal upper limb spasticity Upper limb spasticity associated with stroke in adults over 18 years of age.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Posology Botulinum toxin units are not interchangeable from one product to another. Doses recommended are different from other botulinum toxin preparations. Paediatric population The safety and efficacy of NABOTA in children and adolescents aged below 20 years have not been established indicated for improvement of glabellar lines. Method of administration&nbsp;Glabella lines Reconstitute by diluting with preservative-free, sterile saline solution to make 100U/2.5 mL (4U/0.1 mL) using a sterile 30-gauge needle, inject a dose of 0.1 mL into each of the 5 injection sites: 2 injections in each corrugator muscle and 1 injection in the procerus muscle for a total dose of 20 Units. In order to reduce the complication of ptosis, injections near the levator palpebrae superioris muscle must be avoided, particularly in patients with larger brow-depressor complexes (depressor supercilii). Injections into inner corrugators muscle and central eyebrow should be placed at least 1 cm above the bony supraorbital ridge.</p><p>Careful attention should be paid to avoid injection of this product into the blood vessel. The thumb or index finger should be placed firmly below the orbital rim in order to prevent extravasation below the orbital rim. The needle should be oriented superiorly and medially during the injection and careful attention should be paid to inject accurate volume. Glabellar facial lines arise from the activity of corrugator muscle and orbicularis oculi muscle. These muscles move the brow medially, and the procerus muscle and depressor supercilii muscle pull the brow inferiorly. This creates a frown or &ldquo;furrowed brow&rdquo;. The location, size, and use of the muscles vary markedly among individuals. An effective dose for facial lines is determined by gross observation of the patient&rsquo;s ability to activate the superficial muscles injected. Each treatment lasts approximately three to four months. More frequent injection of this product is not recommended because the safety and efficacy are not established. Typically the initial doses of botulinum toxin induce chemical denervation of the injected muscles one to two days after injection, increasing in intensity during the first week. Focal upper limb spasticity The exact dosage and number of injection sites may be tailored to the individual based on the size, number and location of muscles involved, the severity of spasticity, the presence of local muscle weakness, and the patient response to previous treatment. Clinical improvement of spasticity was observed within the 4 weeks, and also assessed at 8 and 12 weeks after the injection. The injection doses in the clinical study are as follows: Muscle Total dose Number of sites Biceps brachii 100 - 200 Units U</p><p>Muscle Total dose Number of sites Flexor digitorum profundus 15 - 50 Units 1-2 sites Flexor digitorum sublimis 15 - 50 Units 1-2 sites Flexor carpi ulnaris 10 - 50 Units 1-2 sites Flexor carpi radialis 15 - 60 Units 1-2 sites</p><p>In the clinical study, the recommended dose was allowed up to 360 Units, and divided among selected muscles. Sterile 24-30 gauge needle is recommended. Needle length should be determined based on muscle location and depth. Localisation of the involved muscles with techniques such as electromyographic guidance, or nerve stimulation is recommended. Clinical improvement of spasticity was observed within the 4 weeks, and also assessed at 8 and 12 weeks after the injection of NABOTA&reg;.</p><p>Preparation and dilution technique Prior to injection, reconstitute freeze-dried product with a preservative-free, sterile saline. 0.9% sodium chloride injection is the recommended diluent. Draw up the proper amount of diluent in the syringe of appropriate size. Since this product is denatured by bubbling or similar violent agitation, the diluent should be injected gently into the vial. Discard the vial if a vacuum does not pull the diluent into the vial. Record the date and time of reconstitution on the space of the label. This product should be administered within 24 hours after reconstitution. During this period, reconstituted product should be stored in a refrigerator (2-8&deg;C). Reconstituted product should be clear, colorless and free of particulate matter. Parenteral drug products should be inspected visually for particulate matter and discoloration prior to administration. Because this product and the diluent do not contain any preservative, one vial of this product should be used for a single patient. Table 1: Dilution Table. Diluent Added (0.9% Sodium Chloride Injection) Resulting dose Units per 0.1 mL 1.0 mL 2.0 mL 4.0 mL 8.0 mL 10.0 Units 5.0 Units 2.5 Units 1.25 Units Note: These dilutions are calculated for an injection volume of 0.1 mL. A decrease or increase in the dose is also possible by administering a smaller or larger injection volume - from 0.05 mL (50% decrease in dose) to 0.15 mL (50% increase in dose.) For instructions on reconstitution of the powder for injection, handling and disposal of vials please refer to section 6.6.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Patients who are hypersensitive to botulinum toxin type A or to any ingredient in the formulation of 
+this product. 
+Patients who have neuromuscular junctional disorders (e.g., myasthenia gravis, Lambert-Eaton 
+syndrome or amyotrophic lateral sclerosis). The diseases may be exacerbated due to the muscle 
+relaxation activity of this drug product. 
+Patients with severe respiratory disorders, when used for treatment of cervical dystonia. 
+Pregnant women, women of childbearing potential or nursing mothers. 
+Patients with neurogenic detrusor overactivity who also has acute urinary tract infection and patients 
+with acute anuresis who does not routinely conduct clean intermittent catheterization, when injected 
+into detrusor muscle.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Special warnings Since the active ingredient of this drug product is Clostridium botulinum toxin type A which is derived from Clostridium botulinum, the information in this section should be fully understood and the recommended dosage and administra&not;tion methods should be strictly followed. Physicians administering this drug product should sufficiently understand the relevant neuromuscular and/or orbital anatomy of the area involved and any alterations to the anatomy due to prior surgical procedures, and standard electromyographic techniques. The recommended dosages and administration frequencies should not be exceeded. A. Spread of toxin effect The effects of botulinum toxin products may spread from the area of injection and produce negative symptoms. The symptoms may include asthenia, generalized muscle weakness, dysphonia, dysarthria, stuttering, urinary incon&not;tinence, breathing difficulties, dysphagia, diplopia, blurred vision, and ptosis. Swallowing and breathing difficulties can be life threatening and there have been reports of death related to spread of toxin effects. The risk of symptoms is probably greatest in children treated for spastic cerebral palsy, but symptoms can also occur in adults treated for spastic cerebral palsy and other conditions. Cases of the above adverse reactions have occurred at doses comparable to those used to treat cervical dystonia and at lower doses. B. Hypersensitivity reactions Serious and/or immediate hypersensitivity reactions have been reported in other botulinum toxin product. These reactions include anaphylaxis, urticaria, soft tissue edema and dyspnea. One fatal case of anaphylaxis has been reported in which lidocaine was used as a diluent, and consequently, the causal agent was not reliably determined. If such a reaction occurs, further injection of this drug product should be discontinued and appropriate medical therapy should be immediately instituted. C. Pre-existing neuromuscular disorders Individuals with peripheral motor neuropathic diseases (e.g., amyotrophic lateral sclerosis or motor neuropathy) or neuromuscular junction disorders (e.g., myasthenia gravis or Lambert-Eaton syndrome) may be at increased risk of clinically significant systemic effects, including severe dysphagia and respiratory compromise from typical doses of this product. Published medical literatures with other botulinum toxin product have reported rare cases of administration of a botulinum toxin to patients with known or unrecognized neuromuscular disorders where patients have shown serious hypersensitivity to systemic effects of typical clinical doses. In some cases, dysphagia lasted several months and placement of a gastric feeding tube was required. D. Dysphagia</p><p>Dysphagia is a commonly reported adverse event following treatment of cervical dystonia patients with all botulinum toxins. In these patients, there are reports of rare cases of dysphagia severe enough to warrant the insertion of a gastric feeding tube. There are also rare case reports where subsequent to the finding of dysphagia a patient developed aspiration pneumonia and died. E. There have also been reports of adverse reactions with other botulinum toxin product, involving cardiovascular system, including arrhythmia and myocardial infarction, some with fatal outcomes. Some of these patients had risk factors including cardiovascular disease. F. During administration of other botulinum toxin product for treatment of strabismus, retrobulbar hemorrhages sufficient to com&not;promise retinal circulation have occurred owing to penetration of the needle into areas surrounding eyes. It is recommended that appropriate instruments to decompress the orbit be accessible. Ocular (globe) penetrations by needles have also occurred. An ophthalmoscope to diagnose this condition should be available. Inducing paralysis in one or more extraocular muscles may produce spatial disorientation, double vision or past-pointing. Covering the affected eye may alleviate these symptoms. G. Blepharospasm Reduced blinking from injection of botulinum toxin into orbicularis muscle can lead to corneal exposure, persist&not;ent epithelial defect and corneal ulceration, especially in patients with VII nerve disorders. In the use of other botulinum toxin product for treatment of blepharospasm, one case of corneal perforation in an aphakic eye requiring corneal grafting has occurred because of this effect. Careful testing of corneal sensation in eyes previously operated upon should be conducted and injection into the lower lid area should be avoided to reduce the risk of ectropion. Vigorous treatment of any epithelial defect should be employed. This may require protective drops, ointment, therapeutic soft contact lenses, or closure of the eye by patching or other means. Ecchymosis occurs easily in the soft eyelid tissues. This can be minimised by applying gentle pressure at the injection site immediately after injection. Because of the anticholinergic activity of botulinum toxin, caution should be exercised when treating patients at risk for angle closure glaucoma, including patients with anatomically narrow angles. H. Lack of interchangeability between botulinum toxin products Since the potency units of botulinum toxin are specific to individual products, they are not interchangeable with other botulinum toxin product. Therefore, units of biological activity of botulinum tox&not;in cannot be compared or converted into units of any other botulinum toxin product assessed with other specific assay method. I. Injections in or near vulnerable anatomic structures Care should be taken when injecting in or near vulnerable anatomic structures. Serious adverse events including fatal outcomes have been reported in patients who had received botulinum toxin injected directly into salivary glands, the oro-lingual-pharyngeal region, esophagus and stomach (Safety and effectiveness have not been established for indications pertaining to these injection sites). Pneumothorax associated with injection procedure has been reported following the administration of botulinum toxin near the thorax. Caution is warranted when injecting in proximity to the lung, particularly the apices. J. Pulmonary effects of botulinum toxin in patients with compromised respiratory status treated for spasticity or for detrusor overactivity associated with a neurologic condition In patients with upper limb spasticity and respiratory disorder, upper respiratory tract infections and reduced lung function (decrease in Forced Vital Capacity [FVC] &ge;15%) were reported more frequently when administered with other botulinum toxin products, compared to placebo. Reduced</p><p>lung functions (decrease in Forced Vital Capacity [FVC] &ge;15%) were also reported in patients treated with other botulinum toxin products for detrusor overactivity associated with a neurologic condition. K. Bronchitis and upper respiratory tract infections in patients treated for spasticity Bronchitis was reported more frequently as an adverse reaction in patients treated for upper limb spasticity with botulinum toxin, compared to placebo. In patients with reduced lung function treated for upper limb spasticity, upper respiratory tract infections were also reported more frequently as adverse reactions in patients treated with botulinum toxin compared to placebo. Paediatric use The safety and efficacy of NABOTA for the paediatric population in section 4.1 has not been established. Administer with care to the following patients A. Patients under treatment with other muscle relaxants (e.g., tubocurarine chloride, dantrolene sodium, etc.) - Muscle relaxation may be potentiated or risks of dysphagia may be increased. B. Patients under treatment with drugs with muscle relaxation activity, e.g., spectinomycin HCl, aminoglycoside antibiotics (gen&not;tamicin sulfate, neomycin sulfate, etc.), polypeptide antibiotics (polymyxin B sulfate, etc.), tetracycline antibiotics, lincomycin antibiotics (lincosamides), muscle relaxants (baclofen etc.), anti-cholinergic agents (scopolamine butylbromide, trihexylphenidil HCl, etc.), benzodiazepine and other similar drugs (diazepam, etizolam, etc.), and benzamide drugs (thiapride HCl, sulpiride, etc.). Muscle relaxation may be potentiated or risks of dysphagia may be increased. General precautions A. This drug product contains albumin, a derivative of human blood. When a drug product derived from human blood or plasma is administered into human body, the potential of infectious diseases by transmissible agents cannot be completely excluded. It may include pathogenic agent that is still unknown. In order to minimize the risks of such infection by transmissible agents, particular cares are given to the albumin manufacturing process, including virus removal and/or inactivation processes, in addition to careful screening of donors and appropriate testing of donation units. B. Due to the nature of the disease being treated, the effects of this drug product on the ability to drive or to operate machines cannot be predicted. C. Glabellar line Reduced blinking from botulinum toxin injection of the orbicularis muscle can lead to corneal exposure, persistent epithelial defect and corneal ulceration, especially in patients with VII nerve</p><p>disorders. Patients with skin disorders such as skin disease, infection and scars at the injection site, patients with the history of treatment of glabellar part (including forehead) such as face lifting and permanent implant, patients with the history of facial nerve paralysis or the symptoms of eyelid ptosis, patients whose glabellar lines cannot be satisfactorily improved with physical method since the lines are not flattened even using hands were excluded from the phase III safety and efficacy test therefore, should be warned. Injection of this product should not be more frequent than every three months and minimum effective dose should be used.</p><p>D. Upper limb spasticity This drug is a treatment of focal spasticity that has only been studied in association with usual standard of care regimens, and is not likely to be effective in improving range of motion at a joint affected by a fixed contracture.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>A. The effects of botulinum toxin products are generally potentiated by concomitant use of aminoglycoside antibiotics or other drugs that interfere with neuromuscular transmission, e.g. tubocurarine-type muscle relaxants. Concomitant use of aminoglycosides or spectinomycin is contraindicated. Polymyxin, tetracycline and lincomycin should be carefully used in patients injected with this product. B. The effects of administering different botulinum neurotoxin serotypes at the same time or within several months are unknown. Excessive neuromuscular weakness may be exacerbated by administration of another botulinum toxin product before the effects of a previously administered botulinum toxin disappear.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pregnancy &amp; breastfeeding There are no adequate and well-controlled studies in pregnant women. When pregnant mice and rats were injected intramuscularly during the period of organogenesis, the developmental NOEL (No Observed Effect Level) of other botulinum toxin was 4 U/kg. Higher doses (8 or 16 U/kg) were associated with reductions in fetal body weights and/or delayed ossification. In a range finding study in rabbits, daily injection of 0.125 U/kg/day (days 6 to 18 of gestation) and 2 U/kg (days 6 and 13 of gestation) produced severe maternal toxicity, abortions and/or fetal malformations. Higher doses resulted in death of the dams. The rabbit appears to be a very sensitive species to this drug. The patient should be apprised of the potential risks, including abortion or fetal malformations which have been observed in rabbits. It is not known whether botulinum toxin is excreted in human milk. Because many drugs are excreted in human milk, caution should be exercised when this product is administered to a nursing woman. Administration of this product is not recommended during pregnancy or lactation. Fertility There are no adequate data on the effects on fertility from the use of botulinum toxin type A in women of childbearing potential.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects on the ability to drive and use machines have been performed. Due to the nature of the disease being treated, the effects of this drug product on the ability to drive or to operate machines cannot be predicted. However, advise patients that if loss of strength, muscle weakness, blurred vision, or drooping eyelids occur, they should avoid driving a car or engaging in o ther potentially hazardous activities.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>A. General There have been spontaneous reports of death, sometimes associated with dysphagia, pneumonia, and/or other significant debility or anaphylaxis, after treatment with botulinum toxin. There have also been rare reports of adverse events involving the cardiovascular system, including arrhythmia and myocardial infarction, some with fatal outcomes. The exact relationship of these events to the botulinum toxin injection has not been established. The following events have been reported in other botulinum toxin and a causal relationship to the botulinum toxin injected is unknown: skin rash (including erythema multiforme, urticaria and psoriasiform eruption), pruritus, and allergic reaction. In general, adverse reactions occur within the first week following injection and, while generally transient, may have a duration of several months. Localized pain, tenderness, bruising, traction, swelling, hot feeling or hypertonia at injection site or adjacent muscles may be associated with the injection. Local weakness of the injected muscle(s) represents the expected pharmacologi-cal action of botulinum toxin. However, weakness of adjacent muscles may also occur due to spread of toxin. When injected to patients with blepharospasm or cervical dystonia, some muscles distant from the injection site can show increased electrophysi&not;ological jitter (rapid variation in a waveform) which is not associated with clinical weakness or other types of electrophysiological abnormalities. B. Glabellar lines Safety of this product was evaluated in multicenter, comparative, double-blinded, randomized studies which included 268 patients aged between 20 to 65, with moderate to severe glabellar lines (test group 135, control group 133). Adverse reactions were observed in 20.00% of test group, and in 18.05% of control group. Most of the adverse reactions were mild, and none was severe. Adverse reactions reported more than 1% in the test group of this drug, listed in the order of frequency are; ptosis (2.22%), raised eyebrows (1.48%), and vertigo (1.48%). Table 2 lists adverse reactions reported in NABOTA treated group (N=135) and the control group (N=133) aged 20 to 65 who were evaluated in the randomized, active-controlled clinical studies treated for the improvement of the appearance of glabellar lines.</p><p>Table 2: Incidence of adverse drug reactions Adverse Reactions by System Organ Class NABOTA group (N=135) Control group (N=133) Eye disorders Extraocular muscle disorder 2(1.48%) 3(2.26%) Eyelid ptosis 3(2.22%) 0(0%) Nervous system disorders Dizziness 2(1.48%) 0(0%) Headache 0(0%) 1(0.75%) Skin and subcutaneous tissue disorders Pruritus 1(0.74%) 0(0%) Skin tightness 1(0.74%) 0(0%) Swelling face 0(0%) 1(0.75%) General disorders and administration site conditions Injection site oedema 0(0%) 2(1.50%)&nbsp;Adverse Reactions by System Organ Class NABOTA group (N=135) Control group (N=133) Gastrointestinal disorders Nausea 1(0.74%) 0(0%) Respiratory, thoracic and mediastinal disorders Rhinalgia 0(0%) 1(0.75%)</p><p>C. Upper limb spasticity In multicenter, double-blinded, randomized activecontrolled trial with 197 post-stroke patients aged over 18 years, more than 6 weeks since stroke onset, safety in upper limb spasticity was evaluated (NABOTA test group (n =99) or Botox control group (n = 98)). Adverse reactions occurred in 19.59% (19/97, 30 cases) of the test group and 19.39% (19/98, 22 cases) of the control group. Most of the adverse reactions were mild, and none was severe. Adverse reactions reported in this clinical study were 3 cases in the test group of this drug and 4 cases in the control group. The frequency of adverse reactions reported in the clinical trials is defined as follows: Very Common (&ge; 1/10); Common (&ge;1/100 to &lt;1/10); Uncommon (&ge;1/1,000 to &lt;1/100); Rare (&ge;1/10,000 to &lt;1/1,000); Very Rare (&lt;1/10,000). Adverse reactions reported commonly in treatment of this drug were listed as follows: See table below. Table 3: Reported adverse reactions in NABOTA-treated System Organ Class Common Musculoskeletal and connective tissue disorders Muscular weakness(1.03%, 1 case), pain in extremity(1.03%, 1 case), atrophy(1.03%, 1 case)</p><p>&nbsp;</p><p><strong>To report any side effect(s):</strong></p><p><strong>Saudi Arabia</strong>:</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The National Pharmacovigilance Centre (NPC):</p><p>&nbsp;</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fax: +966-11-205-7662</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Call NPC at +966-11-2038222, Ext 2317-2356-2340</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SFDA Call Center: 19999</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail: npc.drug@sfda.gov.sa</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Website&nbsp;: https://ade.sfda.gov.sa/</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Signs and symptoms of overdose are not apparent immediately after injection. Should accidental injection or oral intake occur, the person should be medically supervised for up to several weeks for signs or symptoms of systemic weakness or muscle paralysis. An antitoxin may be used in the event of immediate knowledge of overdose or wrong administration. The antitoxin will not reverse any botulinum toxin-induced muscle weakness effects already appeared by the time of antitoxin administration. If the muscles of the oropharynx and esophagus are affected, aspiration may occur which may lead to development of aspiration pneumonia. If the respiratory muscles become paralyzed or sufficiently weakened, intubation and assisted respiration may be required until recovery takes place. Supportive care could involve the need for a tracheostomy and/or prolonged mechanical ventila&not;tion, in addition to other general supportive care. These patients should be considered for further medical evaluation and appropriate medical therapy immediately instituted, which may include hospitalization.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Other muscle relaxants, peripherally acting agents. ATC code: M03ANABOTA01</p><p>Mechanism of action Clostridium botulinum type A toxin injection blocks neuromuscular transmission by binding to acceptor sites on motor or symptomatic nerve terminals, entering the nerve terminals, and inhibiting the release of acetylcholine. This inhibition occurs as neurotoxin cleaves SNAP-25, a protein integral to the successful docking and release of acetylcholine from vescicles situated within nerve endings. When injected intramuscularly at therapeutic doses, Clostridium botulinum type A toxin injection produces partial chemical denervation of the muscle resulting in a localized reduction in muscle activity. In addition, the muscle may atrophy, axonal sprouting may occur, and extrajunctional acetylcholine receptors may develop. There is evidence that reinnervation of the muscle may occur, thus slowly reversing muscle denervation produced by Clostridium botulinum type A toxin injection. Clinical efficacy and safety Glabellar lines A multi-center, randomized, double-blind, active drug controlled, phase III local clinical trial was conducted to assess the efficacy and the safety of NABOTA in adult patients for treatment of moderate-to-severe glabellar lines. A total of 281 subjects gave an informed consent in this study. Of these, 13 subjects were dropped out in screening. A total of 268 subjects were randomized, and administered test drug or control drug. Of these, 5 subjects were dropped out, and 263 subjects completed this study. A total of 268 subjects who have been doing safety evaluations more than once were used in safety analysis. Of these, 265 subjects were used in FA analysis with the exception of 3 persons. Of these, 263 subjects were included in primary efficacy evaluation(PPS1), and two subjects were excluded because of visit window violation in visit 3 and administration of prohibited concomitant medication, respectively. In addition, 245 subjects were included in secondary efficacy evaluation(PPS2) with the exception of 18 persons who couldn&rsquo;t complete the study complying with the protocol. The efficacy analysis results of Phase III were as follows. A primary endpoint in this study was an investigator&rsquo;s assessment for glabellar line at maximum frown at week 4 post dose. In PP analysis, the improvement rate was 93.89%(95% CI: 89.79, 97.99) in test group, and 88.64%(95% CI: 83.22, 94.05) in control group. The lower limit of 97.5% one side confidence interval for the difference of improvement rates between the test group and the control group was -1.53%. So, it was verified that the test group was non-inferior to the control group because the lower limit of confidence interval was &ge; -15%. In FA analysis, the improvement rate for glabellar line at maximum frown was 93.98%(95% CI: 89.94, 98.03) in test group, and 88.64%(95% CI: 83.22, 94.05) in control group. The lower limit of 97.5% one side confidence interval for the difference of improvement rates between the test group and the control group was -1.41%. This result was very similar to PP1 analysis result. In the analysis results of secondary endpoints, the significant differences were shown in comparison to pre-administration at every visit, and there was no statistically significant difference between test group and control group. Secondary endpoints in this study were as follows; Improvement Rates for Glabellar Line Severity at Maximum Frown at Week 8, 12 and 16 post dose, Improvement Rates from Investigator&rsquo;s Assessment for Glabellar Line Severity at Rest at Week 4, 8, 12 and 16 post dose, Improvement Rates from External Researcher&rsquo;s Photo Assessment of Glabellar Line Severity at&nbsp;Maximum Frown and at Rest, Improvement Rates from Subject&rsquo;s Assessment for Glabellar Line Severity, and Investigation on Subject Satisfaction. FA analysis has also shown similar results. In safety analysis results, the incidence of adverse events was 20.00%(27/135 persons, 44 cases) and 18.05%(24/133 persons, 36 cases) respectively in test group and control group, and a total of 80 cases of adverse events occurred(p=0.6835). The incidence of adverse drug reactions was 5.93%(8/135 persons, 10 cases) and 4.51%(6/133 persons, 8 cases) respectively in test group and control group. In other words, 18 cases of adverse drug reactions totally occurred, and there was no statistically significant difference between two groups(p=0.6028). Serious adverse events appeared in 1 case of control group(1/133 persons, 0.75%), and there was no statistically significant difference between two groups (p=0.4963). There was no serious adverse drug reaction in both groups. As a result, the incidence of adverse events in test group and control group was very similar. The type of adverse events appeared was a little different between two groups, but most of them were already known. An analysis of safety data in laboratory test, vital sign, and physical examination showed that there was no significant difference between two treatment groups in most items. There were a little differences in some of the items, but it was not clinically significant variation. In a result of antibody test for botulinum toxin type A, there was no subject who had antibody in visit 1, and an antibody was not formed in any subject after 16 weeks. To conclude, it was confirmed that NABOTA Injection was similar to the control drug in terms of safety and efficacy in Phase III. There was no safety information in that much care was required. By this study, it was verified that NABOTA Injection was non-inferior to the control drug in subject with glabellar line. In terms of the incidence of adverse event and adverse drug reaction, NABOTA Injection was similar to the control. In conclusion, it was considered that NABOTA Injection could be used effectively and safely as well as the control drug. Focal Upper Limb Spasticity A comparative phase 3 study was conducted to prove that treatment with NABOTA&reg; was not clinically inferior to the active control (Botulinum Toxin A). This product and the comparator were intramuscularly injected once up to a maximum dose of 350 Units. A total of 197 subjects were enrolled and randomized to active control (botulinum toxin A) (n=98) or NABOTA&reg; (n=99) treatment group. The primary efficacy assessment variable, the Modified Ashworth Scale (MAS) changes in the muscle tension values of wrist flexor were assessed by the investigator 4 weeks after the administration of NABOTA&reg; and the active control. The result of primary efficacy endpoint assessed that change of MAS at Week 4 was -1.44&plusmn;0.72 in the NABOTA&reg; treatment group, and -1.46&plusmn;0.77 in the control group. In both cases the upper limit of the 97.5% one-sided confidence interval was below he value recognized as clinically non-inferior in the clinical study protocol. Thus, it was confirmed that the study drug was not inferior to the comparator. No statistically significant differences were found between the experimental group and the control group in secondary efficacy endpoint of MAS change in the muscle tension of wrist flexor, elbow flexor, finger flexor, and thumb flexor, the efficacy rate in each of these sites, Disability Assessment Scale (DAS) change, and the global assessment conducted by the investigator.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>General characteristics of the active substance Classical absorption, distribution, biotransformation and elimination studies on the active substance have not been performed due to the extreme toxicity of botulinum toxin type A. Botulinum Toxin Type A is not expected to be present in the peripheral blood at measurable levels following IM or intradermal injection at the recommended doses. The recommended quantities of neurotoxin administered at each treatment session are not expected to result in systemic, overt distant clinical effects, i.e. muscle weakness, in patients without other neuromuscular dysfunction. However, in reported pharmacokinetic studies, sub-clinical systemic effects have been shown by single- fiber electromyography after IM doses of botulinum toxins appropriate to produce clinically observable local muscle weakness.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Carcninogenesis, mutagenesis, impairment of fertility Long term studies in animals have not been performed to evaluate carcinogenic potential. Animal Toxicity In a study of other botulinum toxin product to evaluate inadvertent peribladder administration, bladder stones were observed in 1 of 4 male monkeys that were injected with a total of 6.8 U/kg divided into the prostatic urethra and proximal rectum (single administration). No bladder stones were observed in male or female monkeys following injection of up to 36 U/kg (~12NABOTA the human dose) directly to the bladder as either single or 4 repeat dose injections or in female rats for single injection of up to 100 U/kg (~33NABOTA the human dose).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Human serum albumin</p><p>Sodium chloride</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the absence of compatibility studies, this medicinal product should not be mixed with other medicinal products. Since the potency units of botulinum toxin are specific to individual products, they are not interchangeable with other botulinum toxin product. Therefore, units of biological activity of botulinum toxin cannot be compared or converted into units of any other botulinum toxin product assessed with other specific assay method.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                36 months [W1]from manufacturing date
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Unopened vials of this drug product should be stored in a refrigerator (2-8&deg;C). Reconstituted product may be stored in a refrigerator (2-8&deg;C) for up to 24 hours after reconstitution. Do not use after the expiration date on the vial. Administer NABOTA Injection within 24 hours of reconstitution, within this period NABOTA Injection should be stored in a refrigerator (2&deg; to 8&deg;C), it should not be frozen. Reconstituted NABOTA Injection should be clear, colorless, transparent and free particulate matter.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>NABOTA Injection is supplied in a single use vial in 100 Units. A white to yellowish powder for injection in a colorless and transparent vial. It should become clear, colorless, transparent liquid when dissolved in the diluent (physiological saline solution).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Preparation and dilution technique Prior to injection, reconstitute freeze-dried product with a preservative-free, sterile saline. 0.9% sodium chloride injection is the recommended diluent. Draw up the proper amount of diluent in the syringe of appropriate size. Since this product is denatured by bubbling or similar violent agitation, the diluent should be injected gently into the vial. Discard the vial if a vacuum does not pull the diluent into the vial. Record the date and time of reconstitution on the space of the label. This product should be administered within 24 hours after reconstitution. During this period, reconstituted product should be stored in a refrigerator (2-8&deg;C). Reconstituted product should be clear, colorless and free of particulate matter. Parenteral drug products should be inspected visually for particulate matter and discoloration prior to administration. Because this product and the diluent do not contain any preservative, one vial of this product should be used for a single patient. Disposal For safe disposal, all vials including expired vials or equipment directly contacted with the drug should be disposed as medical waste. If inactivation is required (e.g. spillages), use of dilute hypochlorite solution (0.5% or 1%) before disposal as medical waste is recommended. Any unused product or waste material should be disposed of in accordance with local requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Manufactured by 
+Daewoong Pharmaceutical Co., Ltd. 
+35-14, Jeyakgongdan 4-Gil, Hyangnam-Eup, Hwaseong-Si, Gyeonggi-Do, Republic of Korea
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Not applicable 
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

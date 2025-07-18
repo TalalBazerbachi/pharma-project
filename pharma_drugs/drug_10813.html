@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        0102210482
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2021
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Envona
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        FOSAPREPITANT DIMEGLUMINE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        150
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder for solution for infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        286.2
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="MSN LABORATORIES PRIVATE LIMITED " />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            MSN LABORATORIES PRIVATE LIMITED 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2096]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Boston Oncology Arabia
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Boston Oncology Arabia
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        A04AD12
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Fosaprepitant Dimeglumine for injection 150mg/Vial. 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each vial contains 
+Fosaprepitant Dimeglumine 245.3 mg Equivalent to 150 mg Fosaprepitant. 
+For the full list of excipients, see section 6.1. 
+ 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder for solution for infusion. 
+White to off white lyophilized cake or powder. 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Prevention of nausea and vomiting associated with highly and moderately emetogenic cancer chemotherapy in adults and paediatric patients aged 6 months and older.</p><p>APRITANT IV is given as part of a combination therapy (see section 4.2).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Posology</u></p><p><u>Adults</u></p><p>The recommended dose is 150 mg administered as an infusion over 20-30 minutes on Day 1, initiated approximately 30 minutes prior to chemotherapy (see section 6.6). APRITANT IV should be administered in conjunction with a corticosteroid and a 5-HT<sub>3</sub> antagonist as specified in the tables below.</p><p>The following regimens are recommended for the prevention of nausea and vomiting associated with emetogenic cancer chemotherapy.</p><p>&nbsp;</p><p>Table 1: Recommended dosing for the prevention of nausea and vomiting associated with highly emetogenic chemotherapy regimen in adults</p><p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0" style="width:588px"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p><strong>Day 1</strong></p></td><td style="vertical-align:top"><p><strong>Day 2</strong></p></td><td style="vertical-align:top"><p><strong>Day 3</strong></p></td><td style="vertical-align:top"><p><strong>Day 4</strong></p></td></tr><tr><td><p>APRITANT IV</p></td><td style="vertical-align:top"><p>150 mg&nbsp;&nbsp;&nbsp; intravenously</p></td><td><p>none</p></td><td><p>none</p></td><td><p>none</p></td></tr><tr><td><p>Dexamethasone</p></td><td style="vertical-align:bottom"><p>12 mg orally</p></td><td><p>8 mg orally</p></td><td style="vertical-align:bottom"><p>8mg orally twice daily&nbsp;</p></td><td style="vertical-align:bottom"><p>8mg orally twice daily</p></td></tr><tr><td><p>5-HT<sub>3</sub> antagonists</p></td><td style="vertical-align:top"><p>Standard dose of 5HT<sub>3</sub> antagonists.</p><p>See the product information for the selected 5-HT<sub>3</sub> antagonist for appropriate dosing information</p></td><td><p>none</p></td><td><p>none</p></td><td><p>none</p></td></tr></tbody></table><p><strong>Dexamethasone </strong>should be administered 30 minutes prior to chemotherapy treatment on Day 1 and in the morning on Days 2 to 4. Dexamethasone should also be administered in the evenings on Days 3 and 4. The dose of dexamethasone accounts for active substance interactions.</p><p>Table 2: Recommended dosing for the prevention of nausea and vomiting associated with moderately emetogenic chemotherapy regimen in adults</p><p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0" style="width:588px"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:bottom"><p><strong>Day 1</strong></p></td></tr><tr><td style="vertical-align:bottom"><p>APRITANT IV</p></td><td style="vertical-align:bottom"><p>150 mg intravenously</p></td></tr><tr><td style="vertical-align:bottom"><p>Dexamethasone</p></td><td style="vertical-align:bottom"><p>12 mg orally</p></td></tr><tr><td style="vertical-align:top"><p>5-HT<sub>3</sub> antagonists</p></td><td style="vertical-align:bottom"><p>Standard dose of 5-HT<sub>3</sub> antagonists. See the product information for the selected 5-HT<sub>3</sub> antagonist for appropriate dosing information</p></td></tr></tbody></table><p>&nbsp;</p><p>Dexamethasone should be administered 30 min prior to chemotherapy treatment on Day 1.</p><p>The dose of dexamethasone accounts for active substance interactions.</p><p>&nbsp;</p><p><u>Paediatric population</u></p><p>Paediatric patients aged 6 months and older, and not less than 6 kg</p><p>The recommended dose regimen of APRITANT IV, to be administered with a 5-HT<sub>3</sub> antagonist, with or without a corticosteroid, for the prevention of nausea and vomiting associated with administration of single or multi-day chemotherapy regimens of Highly Emetogenic Chemotherapy (HEC) or Moderately Emetogenic Chemotherapy (MEC), is shown in Table 3. Single day chemotherapy regimens include those regimens in which HEC or MEC is administered for a single day only. Multi-day chemotherapy regimens include chemotherapy regimens in which HEC or MEC is administered for 2 or more days. An alternative dose regimen that may be used with single-day chemotherapy regimens is shown in Table 4.</p><p>Dosing for Single or Multi-Day Chemotherapy Regimens</p><p>For paediatric patients receiving single or multi-day regimens of HEC or MEC, administer APRITANT IV as an intravenous infusion through a central venous catheter on Days 1, 2, and 3. Fosaprepitant dimeglumine capsules or Fosaprepitant dimeglumine for oral suspension may be used on Days 2 and 3 instead of APRITANT IV, as shown in Table 3. See the Summary of Product Characteristics (SmPC) for Fosaprepitant dimeglumine capsules or Fosaprepitant dimeglumine for oral suspension for appropriate dosing</p><p>instructions.</p><p>Table 3: Recommended dosing for the prevention of nausea and vomiting associated with single or multi-day regimens of HEC or MEC</p><table border="0" cellspacing="0" cellpadding="0" style="width:600px"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p><strong>Population </strong></p></td><td style="vertical-align:top"><p><strong>Day 1</strong></p></td><td style="vertical-align:top"><p><strong>Day 2</strong></p></td><td style="vertical-align:top"><p><strong>Day 3</strong></p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>APRITANT IV</p></td><td style="vertical-align:top"><p>Paediatric patients 12 years and older</p></td><td style="vertical-align:top"><p>115 mg intravenously</p></td><td style="vertical-align:top"><p>80 mg intravenously</p><p>OR</p><p>80 mg orally</p><p>(Fosaprepitant dimeglumine capsules)</p></td><td style="vertical-align:top"><p>80 mg intravenously OR</p><p>80 mg orally</p><p>(Fosaprepitant dimeglumine capsules)</p></td></tr><tr><td style="vertical-align:top"><p>Paediatric patients 6 months to less than 12 years and not less than 6 kg</p></td><td style="vertical-align:top"><p>3 mg/kg intravenously</p><p>Maximum</p><p>dose 115 mg</p></td><td style="vertical-align:top"><p>2 mg/kg intravenously</p><p>OR</p><p>2 mg/kg orally</p><p>(Fosaprepitant dimeglumine oral suspension)&nbsp;</p><p>Maximum dose 80 mg</p></td><td style="vertical-align:top"><p>2 mg/kg intravenously</p><p>OR</p><p>2 mg/kg orally</p><p>(Fosaprepitant dimeglumine oral suspension)&nbsp;</p><p>Maximum dose 80 mg</p></td></tr><tr><td style="vertical-align:top"><p>Dexamethasone **</p></td><td style="vertical-align:top"><p>All&nbsp;&nbsp;&nbsp; paediatric patients</p></td><td colspan="3" style="vertical-align:top"><p>If a corticosteroid, such as dexamethasone, is co-administered, administer 50% of the recommended corticosteroid dose on days 1 through 4</p></td></tr><tr><td style="vertical-align:top"><p>5-HT3</p><p>antagonists</p></td><td style="vertical-align:top"><p>All&nbsp;&nbsp;&nbsp; paediatric patients</p></td><td colspan="3" style="vertical-align:top"><p>See selected 5-HT<sub>3</sub> antagonist prescribing information for the recommended dosage</p></td></tr></tbody></table><p>* For paediatric patients 12 years and older, administer APRITANT IV intravenously over 30 minutes, completing the infusion approximately 30 minutes prior to chemotherapy. For paediatric patients less than 12 years, administer APRITANT IV intravenously over 60 minutes, completing the infusion approximately 30 minutes prior to chemotherapy.</p><p>** Dexamethasone should be administered 30 minutes prior to chemotherapy treatment on Day 1.&nbsp;</p><p><em>&nbsp;</em></p><p>Alternative Dosing for Single Day Chemotherapy Regimens&nbsp;</p><p>For paediatric patients receiving single day HEC or MEC, APRITANT IV may be administered as an intravenous infusion through a central venous catheter on Day 1.</p><p>Table 4: Alternative dosing for the prevention of nausea and vomiting associated with single day regimens of HEC or MEC in paediatric patients</p><table border="0" cellspacing="0" cellpadding="0" style="width:588px"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p><strong>Population</strong></p></td><td style="vertical-align:top"><p><strong>Day 1</strong></p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>APRITANT IV</p><p>&nbsp;</p></td><td style="vertical-align:top"><p>Paediatric&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; patients&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12 years and older</p></td><td style="vertical-align:top"><p>150 mg intravenously</p></td></tr><tr><td style="vertical-align:top"><p>Paediatric patients 2 to less than 12 years</p></td><td style="vertical-align:top"><p>4 mg/kg intravenously&nbsp;</p><p>Maximum dose 150 mg</p></td></tr><tr><td style="vertical-align:top"><p>Paediatric patients 6 months to less than 2 years and not less than 6 kg</p></td><td style="vertical-align:top"><p>5 mg/kg intravenously&nbsp;</p><p>Maximum dose 150 mg</p></td></tr><tr><td style="vertical-align:top"><p>Dexamethasone**</p></td><td style="vertical-align:top"><p>All paediatric patients</p></td><td style="vertical-align:top"><p>If a corticosteroid, such as dexamethasone, is co- administered, administer 50% of the recommended corticosteroid dose on days 1 and 2.</p></td></tr><tr><td><p>5-HT<sub>3</sub> antagonist</p></td><td style="vertical-align:top"><p>All paediatric patients</p></td><td style="vertical-align:top"><p>See selected 5-HT<sub>3</sub> antagonist</p><p>prescribing information for the recommended dosage</p></td></tr></tbody></table><p>* For paediatric patients 12 years and older, administer APRITANT IV intravenously over 30 minutes, completing the infusion approximately 30 minutes prior to chemotherapy. For paediatric patients less than 12 years, administer APRITANT IV intravenously over 60 minutes, completing the infusion approximately 30 minutes prior to chemotherapy.</p><p>** Dexamethasone should be administered 30 minutes prior to chemotherapy treatment on Day 1.</p><p>&nbsp;</p><p>The safety and efficacy of APRITANT IV in infants below 6 months of age have not been established. No data are available.</p><p><em><u>General</u> </em></p><p>Efficacy data in combination with other corticosteroids and 5-HT<sub>3</sub> antagonists are limited. For additional information on the co-administration with corticosteroids, see section 4.5. Refer to the Summary of Product Characteristics of co-administered 5-HT<sub>3</sub> antagonist medicinal products.</p><p><em>&nbsp;</em></p><p><em><u>Special populations</u> </em></p><p><em>Elderly (&ge;65 years) </em></p><p>No dose adjustment is necessary for the elderly (see section 5.2).</p><p><em>Gender</em></p><p>No dose adjustment is necessary based on gender (see section 5.2).</p><p>Renal impairment</p><p>No dose adjustment is necessary for patients with renal impairment or for patients with end stage renal disease undergoing haemodialysis (see section 5.2).</p><p>Hepatic impairment</p><p>No dose adjustment is necessary for patients with mild hepatic impairment. There are limited data in patients with moderate hepatic impairment and no data in patients with severe hepatic impairment. APRITANT IV should be used with caution in these patients (see sections 4.4 and 5.2).</p><p>&nbsp;</p><p><u>Method of administration</u></p><p>APRITANT IV 150 mg should be administered intravenously and should not be given by the intramuscular or subcutaneous route. Intravenous administration in adults occurs preferably through a running intravenous infusion over 20-30 minutes. Intravenous administration in paediatric patients aged 6 months and older is recommended through a central venous catheter and should be administered over 30 minutes in patients aged 12 years and older or over 60 minutes in patients less than 12 years of age (See section 6.6). Do not administer APRITANT IV as a bolus injection or undiluted solution.</p><p>For instructions on reconstitution and dilution of the medicinal product before administration, see section 6.6.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to polysorbate 80 or any of the other excipients listed in section 6.1. 
+Co-administration with pimozide, terfenadine, astemizole or cisapride (see section 4.5). 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>with moderate to severe hepatic impairment</u></p><p>There are limited data in patients with moderate hepatic impairment and no data in patients with severe hepatic impairment. APRITANT IV should be used with caution in these patients (see section 5.2).</p><p><u>CYP3A4 interactions</u></p><p>APRITANT IV should be used with caution in patients receiving concomitant active substances that are metabolised primarily through CYP3A4 and with a narrow therapeutic range, such as cyclosporine, tacrolimus, sirolimus, everolimus, alfentanil, ergot alkaloid derivatives, fentanyl, and quinidine (see section 4.5). Additionally, concomitant administration with irinotecan should be approached with particular caution as the combination might result in increased toxicity.</p><p>&nbsp;</p><p><u>Co-administration with warfarin (a CYP2C9 substrate)</u></p><p>In patients on chronic warfarin therapy, the International Normalised Ratio (INR) should be monitored closely for 14 days following the use of fosaprepitant (see section 4.5).</p><p>&nbsp;</p><p><u>Co-administration with hormonal contraceptives</u></p><p>The efficacy of hormonal contraceptives may be reduced during and for 28 days after administration of fosaprepitant. Alternative non-hormonal back-up methods of contraception should be used during treatment with fosaprepitant and for 2 months following the use of fosaprepitant (see section 4.5).</p><p>&nbsp;</p><p><u>Hypersensitivity reactions</u></p><p>Immediate hypersensitivity reactions including flushing, erythema, dyspnoea and anaphylaxis/anaphylactic shock have occurred during or soon after infusion of fosaprepitant. These hypersensitivity reactions have generally responded to discontinuation of the infusion and administration of appropriate therapy. It is not recommended to reinitiate the infusion in patients who experience hypersensitivity reactions.</p><p>&nbsp;</p><p><u>Administration and infusion site reactions</u></p><p>Infusion site reactions (ISRs) have been reported with the use of fosaprepitant dimeglumine (see section 4.8). The majority of severe ISRs, including thrombophlebitis and vasculitis, were reported with concomitant vesicant (e.g., anthracycline-based) chemotherapy administration, particularly when associated with extravasation. Necrosis was also reported in some patients with concomitant vesicant chemotherapy. Mild injection site thrombosis has been observed at higher doses without concomitant vesicant chemotherapy.</p><p>APRITANT IV should not be given as a bolus injection but should always be diluted and given as a slow intravenous infusion (see section 4.2). APRITANT IV should not be administered intramuscularly or subcutaneously (see section 5.3). If signs or symptoms of local irritation occur, the injection or infusion should be terminated and restarted in another vein.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>When administered intravenously fosaprepitant is rapidly converted to aprepitant.&nbsp;</p><p>&nbsp;</p><p>Fosaprepitant 150 mg, given as a single dose, is a weak inhibitor of CYP3A4. Fosaprepitant does not seem to interact with the P-glycoprotein transporter, as demonstrated by the lack of interaction of oral aprepitant with digoxin. It is anticipated that fosaprepitant would cause less or no greater induction of CYP2C9, CYP3A4 and glucuronidation than that caused by the administration of oral aprepitant. Data are lacking regarding effects on CYP2C8 and CYP2C19.</p><p>Interactions with other medicinal products following administration of intravenous fosaprepitant are likely to occur with active substances that interact with oral aprepitant. The potential for interactions with multi-day fosaprepitant regimens are anticipated to be no greater than those for oral aprepitant regimens. Therefore, the recommendations for use of APRITANT IV with other medicinal products in paediatric patients are based upon adult data from fosaprepitant and aprepitant studies.&nbsp;</p><p>The following information was derived from studies conducted with oral aprepitant and studies conducted with intravenous single-dose fosaprepitant co-administered with dexamethasone, midazolam, or diltiazem.</p><p>&nbsp;</p><p><u>Effect of fosaprepitant on the pharmacokinetics of other active substances</u></p><p><em><u>CYP3A4 inhibition</u> </em></p><p>As a weak inhibitor of CYP3A4, the fosaprepitant 150 mg single dose can cause a transient increase in plasma concentrations of co-administered active substances that are metabolised through CYP3A4. The total exposure of CYP3A4 substrates may increase up to 2-fold on Days 1 and 2 after coadministration with a single 150 mg fosaprepitant dose. Fosaprepitant must not be used concurrently with pimozide, terfenadine, astemizole, or cisapride. Inhibition of CYP3A4 by fosaprepitant could result in elevated plasma concentrations of these active substances, potentially causing serious or life-threatening reactions. (See section 4.3). Caution is advised during concomitant administration of fosaprepitant and active substances that are metabolised primarily through CYP3A4 and with a narrow therapeutic range, such as cyclosporine, tacrolimus, sirolimus, everolimus, alfentanil, diergotamine, ergotamine, fentanyl, and quinidine (see section 4.4).</p><p><em>&nbsp;</em></p><p>Corticosteroids</p><p>Dexamethasone: The oral dexamethasone dose should be reduced by approximately 50 % when co-administered with fosaprepitant (see section 4.2). Fosaprepitant 150 mg administered as a single intravenous dose on Day 1 increased the AUC<sub>0-24hr</sub> of dexamethasone, a CYP3A4 substrate, by 100 % on Day 1, 86 % on Day 2 and 18 % on Day 3 when dexamethasone was co-administered as a single 8 mg oral dose on Days 1, 2, and 3.</p><p><em>&nbsp;</em></p><p>Chemotherapeutic medicinal products</p><p>Interaction studies with fosaprepitant 150 mg and chemotherapeutic medicinal products have not been conducted; however, based on studies with oral aprepitant and docetaxel and vinorelbine, APRITANT IV is not expected to have a clinically relevant interaction with intravenously administered docetaxel and vinorelbine. An interaction with orally administered chemotherapeutic medicinal products metabolised primarily or partly by CYP3A4 (e.g. etoposide, vinorelbine) cannot be excluded. Caution is advised and additional monitoring may be appropriate in patients receiving medicinal products metabolised primarily or partly by CYP3A4 (see section 4.4). Post-marketing events of neurotoxicity, a potential adverse reaction of ifosfamide, have been reported after aprepitant and ifosfamide co-administration.</p><p><em>&nbsp;</em></p><p>Immunosuppressants</p><p>Following a single 150 mg fosaprepitant dose, a transient moderate increase for two days possibly followed by a mild decrease in exposure of immunosuppressants metabolised by CYP3A4 (e.g. cyclosporine, tacrolimus, everolimus and sirolimus) is expected. Given the short duration of increased exposure, dose reduction of the immunosuppressant based on Therapeutic Dose Monitoring is not recommended on the day of and the day after administration of APRITANT IV.</p><p><em>&nbsp;</em></p><p>Midazolam</p><p>Fosaprepitant 150 mg administered as a single intravenous dose on Day 1 increased the AUC<sub>0-&infin;</sub> of midazolam by 77 % on Day 1 and had no effect on Day 4 when midazolam was co-administered as a single oral dose of 2 mg on Days 1 and 4. Fosaprepitant 150 mg is a weak CYP3A4 inhibitor as a single dose on Day 1 with no evidence of inhibition or induction of CYP3A4 observed on Day 4.</p><p>The potential effects of increased plasma concentrations of midazolam or other benzodiazepines metabolised via CYP3A4 (alprazolam, triazolam) should be considered when co-administering these medicinal products with APRITANT IV.</p><p><em>&nbsp;</em></p><p>Diltiazem</p><p>Interaction studies with fosaprepitant 150 mg and diltiazem have not been conducted; however, the following study with 100 mg of fosaprepitant should be considered when using APRITANT IV with diltiazem. In patients with mild to moderate hypertension, infusion of 100 mg of fosaprepitant over 15 minutes with diltiazem 120 mg 3 times daily, resulted in a 1.4-fold increase in diltiazem AUC and a small but clinically meaningful decrease in blood pressure, but did not result in a clinically meaningful change in heart rate, or PR interval.</p><p><em>&nbsp;</em></p><p><em><u>Induction</u> </em></p><p>The fosaprepitant 150 mg single dose did not induce CYP3A4 on Days 1 and 4 in the midazolam interaction study. It is anticipated that APRITANT IV would cause less or no greater induction of CYP2C9, CYP3A4, and glucuronidation than that caused by the administration of the 3-day oral aprepitant regimen, for which a transient induction with its maximum effect 6-8 days after first aprepitant dose has been observed. The 3-day oral aprepitant regimen resulted in an about 30-35 % reduction in AUC of CYP2C9 substrates and up to a 64 % decrease in ethinyl estradiol trough concentrations. Data are lacking regarding effects on CYP2C8 and CYP2C19. Caution is advised when warfarin, acenocoumarol, tolbutamide, phenytoin or other active substances that are known to be metabolised by CYP2C9 are administered with APRITANT IV .</p><p><em>&nbsp;</em></p><p>Warfarin</p><p>In patients on chronic warfarin therapy, the prothrombin time (INR) should be monitored closely during treatment with and for 14 days following the use of APRITANT IV for the prevention of chemotherapy induced nausea and vomiting (see section 4.4).</p><p><em>&nbsp;</em></p><p>Hormonal contraceptives</p><p>The efficacy of hormonal contraceptives may be reduced during and for 28 days after administration of fosaprepitant. Alternative non-hormonal back-up methods of contraception should be used during treatment with fosaprepitant and for 2 months following the use of fosaprepitant.</p><p>5-HT<sub>3</sub> antagonists</p><p>Interaction studies with fosaprepitant 150 mg and 5-HT<sub>3</sub> antagonists have not been conducted; however, in clinical interaction studies, the oral aprepitant regimen did not have clinically important effects on the pharmacokinetics of ondansetron, granisetron, or hydrodolasetron (the active metabolite of dolasetron). Therefore, there is no evidence of interaction with the use of APRITANT IV and 5-HT<sub>3 </sub>antagonists.</p><p>&nbsp;</p><p><u>Effect of other medicinal products on the pharmacokinetics of aprepitant resulting from</u> <u>administration of fosaprepitant 150 mg</u></p><p>Concomitant administration of fosaprepitant with active substances that inhibit CYP3A4 activity (e.g., ketoconazole, itraconazole, voriconazole, posaconazole, clarithromycin, telithromycin, nefazodone, and protease inhibitors) should be approached cautiously, as the combination is expected to result in several-fold increased plasma concentrations of aprepitant (see section 4.4). Ketoconazole increased the terminal half-life of oral aprepitant about 3-fold.</p><p>&nbsp;</p><p>Concomitant administration of fosaprepitant with active substances that strongly induce CYP3A4 activity (e.g. rifampicin, phenytoin, carbamazepine, phenobarbital) should be avoided as the combination could result in reductions of the plasma concentrations of aprepitant that may result in decreased efficacy. Concomitant administration of fosaprepitant with herbal preparations containing St. John&#39;s Wort (Hypericum perforatum) is not recommended. Rifampicin decreased the mean terminal half-life of oral aprepitant by 68 %.</p><p><em>&nbsp;</em></p><p>Diltiazem</p><p>Interaction studies with fosaprepitant 150 mg and diltiazem have not been conducted; however, the following study with 100 mg of fosaprepitant should be considered when using APRITANT IV with diltiazem. Infusion of 100 mg fosaprepitant over 15 minutes with diltiazem 120 mg 3 times daily, resulted in a 1.5-fold increase of aprepitant AUC. This effect was not considered clinically important.</p><p>Paediatric population Interaction studies have only been performed in adults.</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Contraception in males and females</u></p><p>The efficacy of hormonal contraceptives may be reduced during and for 28 days after administration of fosaprepitant. Alternative non-hormonal back-up methods of contraception should be used during treatment with fosaprepitant and for 2 months following the last dose of fosaprepitant (see sections 4.4 and 4.5).</p><p><u>Pregnancy</u></p><p>For fosaprepitant and aprepitant no clinical data on exposed pregnancies are available. The potential for reproductive toxicities of fosaprepitant and aprepitant have not been fully characterised, since exposure levels above the therapeutic exposure in humans could not be attained in animal studies. These studies did not indicate direct or indirect harmful effects with respect to pregnancy, embryonal/foetal development, parturition or postnatal development (see section 5.3). The potential effects on reproduction of alterations in neurokinin regulation are unknown. APRITANT IV should not be used during pregnancy unless clearly necessary.</p><p><u>Breast-feeding</u></p><p>Aprepitant is excreted in the milk of lactating rats after intravenous administration of fosaprepitant as well as after oral administration of aprepitant. It is not known whether aprepitant is excreted in human milk. Therefore, breast-feeding is not recommended during treatment with APRITANT IV.</p><p><u>Fertility</u></p><p>The potential for effects of fosaprepitant and aprepitant on fertility has not been fully characterized because exposure levels above the therapeutic exposure in humans could not be attained in animal studies. These fertility studies did not indicate direct or indirect harmful effects with respect to mating performance, fertility, embryonic/foetal development, or sperm count and motility (see section 5.3).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>APRITANT IV may have minor influence on the ability to drive and use machines. Dizziness and fatigue may occur following administration of APRITANT IV (see section 4.8).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Summary of the safety profile</u></p><p>In clinical studies, various formulations of fosaprepitant have been administered to a total of 2,687 adults including 371 healthy subjects and 2,084 patients, and 199 children and adolescents with chemotherapy induced nausea and vomiting (CINV). Since fosaprepitant is converted to aprepitant, those adverse reactions associated with aprepitant are expected to occur with fosaprepitant. The safety profile of aprepitant was evaluated in approximately 6,500 adults and 184 children and adolescents.</p><p>&nbsp;</p><p><u>Oral aprepitant</u></p><p>The most common adverse reactions reported at a greater incidence in adults treated with the aprepitant regimen than with standard therapy in patients receiving HEC were: hiccups (4.6</p><p>% versus 2.9 %), alanine aminotransferase (ALT) increased (2.8 % versus 1.1 %), dyspepsia (2.6 % versus 2.0 %), constipation (2.4 % versus 2.0 %), headache (2.0 % versus 1.8 %), and decreased appetite (2.0 % versus 0.5 %). The most common adverse reaction reported at a greater incidence in patients treated with the aprepitant regimen than with standard therapy in patients receiving MEC was fatigue (1.4 % versus 0.9 %).</p><p>The most common adverse reactions reported at a greater incidence in paediatric patients treated with the aprepitant regimen than with the control regimen while receiving emetogenic cancer chemotherapy were hiccups (3.3 % versus 0.0 %) and flushing (1.1 % versus 0.0 %).</p><p>&nbsp;</p><p><u>Tabulated list of adverse reactions - aprepitant</u></p><p>The following adverse reactions were observed in a pooled analysis of the HEC and MEC studies at a greater incidence with oral aprepitant than with standard therapy in adults or paediatric patients or in postmarketing use.</p><p>The frequency categories given in the table are based on the studies in adults; the observed frequencies in the paediatric studies were similar or lower, unless shown in the table. Some less common ADRs in the adult population were not observed in the paediatric studies.</p><p>Frequencies are defined as: very common (&ge;1/10); common (&ge;1/100 to &lt;1/10); uncommon (&ge;1/1,000 to &lt;1/100); rare (&ge;1/10,000 to &lt;1/1,000) and very rare (&lt;1/10,000), not known (cannot be estimated from the available data).</p><p>&nbsp;</p><p>&nbsp;</p><p>Table 5: Tabulated list of adverse reactions - aprepitant</p><table border="0" cellspacing="0" cellpadding="0" style="width:588px"><tbody><tr><td><p><strong>System organ class </strong></p></td><td><p><strong>Adverse reaction </strong></p></td><td><p><strong>Frequency </strong></p></td></tr><tr><td style="vertical-align:top"><p>Infection and infestations</p></td><td style="vertical-align:top"><p>candidiasis, staphylococcal infection</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td style="vertical-align:top"><p>Blood&nbsp;&nbsp; and&nbsp;&nbsp; lymphatic&nbsp;&nbsp; system disorders</p></td><td style="vertical-align:top"><p>febrile neutropenia, anaemia</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Immune system disorders</p></td><td style="vertical-align:top"><p>Hypersensitivity reactions including anaphylactic reactions</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>not known</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Metabolism and nutrition disorders</p></td><td style="vertical-align:top"><p>decreased appetite</p></td><td style="vertical-align:top"><p>common</p></td></tr><tr><td style="vertical-align:top"><p>polydipsia</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Psychiatric disorders</p></td><td style="vertical-align:top"><p>anxiety</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td style="vertical-align:top"><p>disorientation, euphoric mood</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p><p>Nervous system disorders</p></td><td style="vertical-align:top"><p>headache</p></td><td style="vertical-align:top"><p>common</p></td></tr><tr><td style="vertical-align:top"><p>dizziness, somnolence</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td><p>cognitive&nbsp;&nbsp;&nbsp;&nbsp; disorder, lethargy, dysgeusia</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td style="vertical-align:top"><p>Eye disorders</p></td><td style="vertical-align:top"><p>conjunctivitis</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td style="vertical-align:top"><p>Ear and labyrinth disorders</p></td><td style="vertical-align:top"><p>tinnitus</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p><p>Cardiac disorders</p></td><td style="vertical-align:top"><p>palpitations</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td><p>bradycardia, cardiovascular disorder</p></td><td><p>rare</p></td></tr><tr><td style="vertical-align:top"><p>Vascular disorders</p></td><td style="vertical-align:top"><p>hot flush/ flushing</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p><p>Respiratory, thoracic and mediastinal disorders</p></td><td style="vertical-align:top"><p>hiccups</p></td><td style="vertical-align:top"><p>common</p></td></tr><tr><td><p>oropharyngeal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pain, &nbsp;&nbsp;&nbsp;&nbsp; sneezing, &nbsp;&nbsp;&nbsp;&nbsp; cough,</p><p>postnasal drip, throat irritation</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>rare</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p><p>Gastrointestinal disorders</p></td><td style="vertical-align:top"><p>constipation, dyspepsia</p></td><td style="vertical-align:top"><p>common</p></td></tr><tr><td><p>eructation, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nausea*, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vomiting*, gastroesophageal reflux disease, abdominal pain, dry mouth, flatulence</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>uncommon</p></td></tr><tr><td><p>duodenal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ulcer &nbsp;&nbsp;&nbsp; perforation, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stomatitis, abdominal distension, faeces hard, neutropenic colitis</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>rare</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>Skin&nbsp;&nbsp; and&nbsp;&nbsp; subcutaneous&nbsp;&nbsp; tissue disorders</p></td><td style="vertical-align:top"><p>&nbsp;rash, acne</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td><p>photosensitivity reaction, hyperhidrosis, seborrhoea, skin lesion, rash pruritic, Stevens- Johnson syndrome/toxic epidermal necrolysis</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>rare</p></td></tr><tr><td style="vertical-align:top"><p>pruritus, urticaria</p></td><td style="vertical-align:top"><p>not known</p></td></tr><tr><td style="vertical-align:top"><p>Musculoskeletal and connective tissue disorders</p></td><td style="vertical-align:top"><p>muscular weakness, muscle spasms</p></td><td><p>rare</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Renal and urinary disorders</p></td><td style="vertical-align:top"><p>dysuria</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td style="vertical-align:top"><p>pollakiuria</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>General disorders and administration site conditions</p></td><td style="vertical-align:top"><p>fatigue</p></td><td style="vertical-align:top"><p>common</p></td></tr><tr><td style="vertical-align:top"><p>asthaenia, malaise</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td><p>oedema, chest discomfort, gait disturbance</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>&nbsp;</p><p>Investigations</p></td><td style="vertical-align:top"><p>ALT increased</p></td><td style="vertical-align:top"><p>common</p></td></tr><tr><td style="vertical-align:top"><p>AST increased, blood alkaline phosphatase increased</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>uncommon</p></td></tr><tr><td style="vertical-align:top"><p>red blood cells urine positive, blood sodium decreased, weight decreased, neutrophil count decreased, glucose urine present, urine output increased</p></td><td style="vertical-align:top"><p>&nbsp;</p><p>rare</p></td></tr></tbody></table><p>*Nausea and vomiting were efficacy parameters in the first 5-days of post-chemotherapy treatment and were reported as adverse reactions only thereafter.</p><p>&nbsp;</p><p><u>Description of selected adverse reactions</u></p><p>The adverse reactions profiles in the Multiple-Cycle extension of HEC and MEC studies in adults for up to 6 additional cycles of chemotherapy were generally similar to those observed in Cycle 1.</p><p>In an additional active-controlled clinical study in 1,169 adult patients receiving aprepitant and HEC, the adverse reactions profile was generally similar to that seen in the other HEC studies with aprepitant.&nbsp;</p><p>Additional adverse reactions were observed in adult patients treated with aprepitant for postoperative nausea and vomiting (PONV) and a greater incidence than with ondansetron: abdominal pain upper, bowel sounds abnormal, constipation*, dysarthria, dyspnoea, hypoaesthesia, insomnia, miosis, nausea, sensory disturbance, stomach discomfort, subileus*, visual acuity reduced, wheezing.</p><p>*Reported in patients taking a higher dose of aprepitant.</p><p>&nbsp;</p><p><u>Fosaprepitant</u></p><p>In an active-controlled clinical study in patients receiving HEC, safety was evaluated for 1,143 patients receiving the 1-day regimen of Fosaprepitant dimeglumine 150 mg compared to 1,169 patients receiving the 3-day regimen of aprepitant. Additionally, in a placebocontrolled clinical trial in adult patients receiving MEC, safety was evaluated for 504 patients receiving a single dose of Fosaprepitant dimeglumine 150 mg compared to 497 patients receiving the control regimen.</p><p>&nbsp;</p><p>In a pooled analysis of 3 active-controlled clinical studies in paediatric patients (aged 6 months to 17 years) receiving either HEC or MEC and a single dose of Fosaprepitant dimeglumine at or above the recommended 1-day regimen dose, safety was evaluated for 139 patients receiving the 1-day regimen of Fosaprepitant dimeglumine. In the same analysis, safety was evaluated for 199 patients receiving either HEC or MEC and a single dose of Fosaprepitant dimeglumine at or above the recommended 3-day regimen of Fosaprepitant dimeglumine. Safety data following the administration of the 3-day IV/oral/oral regimen were also included.</p><p>&nbsp;</p><p>No data are available following the administration of a 3-day IV fosaprepitant regimen in paediatric patients. The safety profile of the 3-day IV fosaprepitant regimen in paediatric patients is expected to be similar to that of the 1-day fosaprepitant regimen as the low daily trough levels do not significantly increase the exposures on subsequent days.</p><p>The safety profile of fosaprepitant in adult and paediatric patients was generally similar to that observed with aprepitant.</p><p>&nbsp;</p><p><u>Tabulated list of adverse reactions - fosaprepitant</u></p><p>The following are adverse reactions reported in patients receiving fosaprepitant in clinical studies or postmarketing that have not been reported with aprepitant as described above. The frequency categories in the table are based on studies in adults; the observed frequencies in the paediatric studies were similar or lower. Some adverse reactions that are commonly observed in the adult population were not observed in the paediatric studies. Infusion site reactions (ISRs) have been reported with the use of fosaprepitant dimeglumine (see section</p><p>4.4).</p><p>Frequencies are defined as: very common (&ge;1/10); common (&ge;1/100 to &lt;1/10); uncommon (&ge;1/1,000 to &lt;1/100); rare (&ge;1/10,000 to &lt;1/1,000) and very rare (&lt;1/10,000), not known (cannot be estimated from the available data).</p><p><strong>&nbsp; </strong></p><p>Table 6: Tabulated list of adverse reactions &ndash; fosaprepitant</p><table border="0" cellspacing="0" cellpadding="0" style="width:585px"><tbody><tr><td style="vertical-align:top"><p><strong>System organ class</strong></p></td><td style="vertical-align:top"><p><strong>Adverse reaction</strong></p></td><td style="vertical-align:top"><p><strong>Frequency</strong></p></td></tr><tr><td style="vertical-align:top"><p>Vascular disorders</p></td><td><p>flushing, thrombophlebitis (predominantly, infusion-site thrombophlebitis)</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td><p>Skin and subcutaneous tissue disorders</p></td><td style="vertical-align:top"><p>erythema</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>General disorders and administration site conditions</p></td><td><p>infusion site erythema, infusion site pain, infusion site pruritus</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr><tr><td style="vertical-align:top"><p>infusion site induration</p></td><td style="vertical-align:top"><p>rare</p></td></tr><tr><td><p>immediate hypersensitivity reactions including flushing, erythema, dyspnoea, anaphylactic reactions/anaphylactic shock</p></td><td style="vertical-align:top"><p>not known</p></td></tr><tr><td style="vertical-align:top"><p>Investigations</p></td><td style="vertical-align:top"><p>blood pressure increased</p></td><td style="vertical-align:top"><p>uncommon</p></td></tr></tbody></table><p>Reporting of suspected adverse reactions</p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions to the competent authority in Saudi Arabia as per details below:</p><p><strong>To reports any side effect(s): </strong></p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><u>Saudi Arabia</u></strong></p><table border="0" cellspacing="0" cellpadding="0" style="width:576px"><tbody><tr><td style="vertical-align:top"><p>The National Pharmacovigilance and Drug Safety Centre (NPC) <strong>o </strong>Fax: +966-11-205-7662 <strong>o </strong>Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.</p><p><strong>o </strong>Toll free phone: 8002490000 <strong>o </strong>E-mail: <u>npc.drug@sfda.gov.sa </u><strong>o </strong>Website: <u>www.sfda.gov.sa/npc</u></p></td></tr></tbody></table><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><u>Other GCC States:</u></strong></p><table border="0" cellspacing="0" cellpadding="0" style="width:413px"><tbody><tr><td style="vertical-align:top"><p>&bull;</p></td><td style="vertical-align:top"><p>Please contact the relevant competent authority.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the event of overdose, fosaprepitant should be discontinued and general supportive treatment and monitoring should be provided. Because of the antiemetic activity of aprepitant, emesis induced by a medicinal product may not be effective.</p><p>Aprepitant cannot be removed by haemodialysis.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><em>Pharmacotherapeutic group:</em></strong><em> Antiemetics and antinauseants <strong>ATC code</strong>: A04AD12. </em></p><p>Fosaprepitant is the prodrug of aprepitant and when administered intravenously is converted rapidly to aprepitant (see section 5.2). The contribution of fosaprepitant to the overall antiemetic effect has not fully been characterised, but a transient contribution during the initial phase cannot be ruled out. Aprepitant is a selective high-affinity antagonist at human substance P neurokinin 1 (NK<sub>1</sub>) receptors. The pharmacological effect of fosaprepitant is attributed to aprepitant.</p><p>&nbsp;</p><p>1-Day Regimen of Fosaprepitant in Adults</p><p><em>&nbsp;</em></p><p><u>Highly Emetogenic Chemotherapy (HEC)</u></p><p>In a randomized, parallel, double-blind, active-controlled study, fosaprepitant dimeglumine 150 mg IV (N=1,147) was compared with a 3-day aprepitant regimen (N=1,175) in adult patients receiving a HEC regimen that included cisplatin (&ge;70 mg/m<sup>2</sup>). The fosaprepitant regimen consisted of fosaprepitant 150 mg on Day 1 in combination with ondansetron 32 mg IV on Day 1 and dexamethasone 12 mg on Day 1, 8 mg on Day 2, and 8 mg twice daily on Days 3 and 4. The aprepitant regimen consisted of aprepitant 125 mg on Day 1 and 80 mg/day on Days 2 and 3 in combination with ondansetron 32 mg IV on Day 1 and dexamethasone 12 mg on Day 1 and 8 mg daily on Days 2 through 4. Fosaprepitant placebo, aprepitant placebo, and dexamethasone placebo (in the evenings on Days 3 and 4) were used to maintain blinding (see section 4.2). Although a 32 mg intravenous dose of ondansetron was used in clinical trials, this is no longer the recommended dose. See the product information for the selected 5-HT<sub>3 </sub>antagonist for appropriate dosing information.</p><p>&nbsp;</p><p>Efficacy was based on evaluation of the following composite measures: complete response in both the overall and delayed phases and no vomiting in the overall phase. Fosaprepitant dimeglumine 150 mg IV was shown to be noninferior to that of the 3-day regimen of aprepitant. A summary of the primary and secondary endpoints is shown in Table 7.</p><table border="0" cellspacing="0" cellpadding="0" style="width:602px"><tbody><tr><td colspan="4" style="vertical-align:top"><p><strong>Table 7: Percent of adult patients receiving Highly Emetogenic Chemotherapy responding by treatment group and phase &mdash; Cycle 1</strong></p></td></tr><tr><td style="vertical-align:top"><p>ENDPOINTS*</p></td><td style="vertical-align:top"><p>Fosaprepitant regimen</p><p>(N =1,106) ** %</p></td><td style="vertical-align:top"><p>Aprepitant regimen</p><p>(N =1,134) ** %</p></td><td style="vertical-align:top"><p>Difference<sup>&dagger; </sup></p><p>(95 % CI)</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p><strong>Complete response</strong><sup>&Dagger;</sup></p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p><p><strong>Overall</strong><sup>&sect;</sup></p></td><td style="vertical-align:top"><p>71.9</p></td><td style="vertical-align:top"><p>72.3</p></td><td style="vertical-align:top"><p>-0.4 (-4.1, 3.3)</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p><p>Delayed phase<sup>&sect;&sect;</sup></p></td><td style="vertical-align:top"><p>74.3</p></td><td style="vertical-align:top"><p>74.2</p></td><td style="vertical-align:top"><p>0.1 (-3.5, 3.7)</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p>No vomiting</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p><p>Overall<sup>&sect;</sup></p></td><td style="vertical-align:top"><p>72.9</p></td><td style="vertical-align:top"><p>74.6</p></td><td style="vertical-align:top"><p>-1.7 (-5.3, 2.0)</p></td></tr></tbody></table><p>*Primary end point is bolded.</p><p>**N: Number of patients included in the primary analysis of complete response.</p><p>&dagger;Difference and confidence interval (CI) were calculated using the method proposed by Miettinen and Nurminen and adjusted for gender.</p><p>&Dagger;Complete response = no vomiting and no use of rescue therapy.</p><p>&sect;Overall = 0 to 120 hours post initiation of cisplatin chemotherapy.</p><p>&sect;&sect;Delayed phase = 25 to 120 hours post initiation of cisplatin chemotherapy.</p><p><u>Moderately Emetogenic Chemotherapy (MEC)</u></p><p>In a randomized, parallel, double-blind, placebo-controlled study, Fosaprepitant dimeglumine 150 mg IV (N=502) in combination with ondansetron and dexamethasone was compared with ondansetron and dexamethasone alone (control regimen) (N=498) in adult patients receiving a moderately emetogenic chemotherapy regimen. The fosaprepitant regimen consisted of fosaprepitant 150 mg on Day 1 in combination with oral ondansetron 8 mg for 2 doses and oral dexamethasone 12 mg. On Days 2 and 3, patients in the fosaprepitant group received placebo for ondansetron every 12 hours. The control regimen consisted of fosaprepitant placebo 150 mg IV on Day 1 in combination with oral ondansetron 8 mg for 2 doses and oral dexamethasone 20 mg. On Days 2 and 3, patients in the control group received 8 mg oral ondansetron every 12 hours. Fosaprepitant placebo and dexamethasone placebo (on Day 1) were used to maintain blinding.</p><p>The efficacy of fosaprepitant was evaluated based on the primary and secondary endpoints listed in Table 8 and was shown to be superior to the control regimen with regard to complete response in the delayed and overall phases.</p><table border="0" cellspacing="0" cellpadding="0" style="width:591px"><tbody><tr><td colspan="4"><p><strong>Table 8: Percent of adult patients receiving Moderately Emetogenic Chemotherapy responding by treatment group and phase </strong></p></td></tr><tr><td style="vertical-align:top"><p>ENDPOINTS*</p></td><td style="vertical-align:top"><p>Fosaprepitant regimen</p><p>(N =502) ** %</p></td><td style="vertical-align:top"><p>Control regimen</p><p>(N =498) ** %</p></td><td style="vertical-align:top"><p>P-Value</p></td></tr><tr><td colspan="4" style="vertical-align:top"><p>Complete response&dagger;</p></td></tr><tr><td style="vertical-align:top"><p>Delayed phase&Dagger;</p></td><td style="vertical-align:top"><p>78.9</p></td><td style="vertical-align:top"><p>68.5</p></td><td style="vertical-align:top"><p>&lt;0.001</p></td></tr><tr><td colspan="4"><p>Complete response&dagger;</p></td></tr><tr><td style="vertical-align:top"><p>Overall&sect;</p></td><td style="vertical-align:top"><p>77.1</p></td><td style="vertical-align:top"><p>66.9</p></td><td style="vertical-align:top"><p>&lt;0.001</p></td></tr><tr><td style="vertical-align:top"><p>Acute phase&sect;&sect;</p></td><td style="vertical-align:top"><p>93.2</p></td><td style="vertical-align:top"><p>91</p></td><td style="vertical-align:top"><p>0.18</p></td></tr></tbody></table><p>*Primary endpoint is bolded.</p><p>**N: Number of adult patients included in the intention to treat population.</p><p>&dagger;&nbsp; Complete response = no vomiting and no use of rescue therapy.</p><p>&Dagger;&nbsp; Delayed phase = 25 to 120 hours post-initiation of chemotherapy.</p><p>&sect;Overall = 0 to 120 hours post-initiation of chemotherapy.</p><p>&sect;&sect;Acute= 0 to 24 hours post-initiation of chemotherapy.</p><p>The estimated time to first emesis is depicted by the Kaplan-Meier plot in Figure 1.</p><p><strong>Figure 1: </strong></p><p>Percent of adult patients receiving Moderately Emetogenic Chemotherapy who remain emesis free over time</p><p><strong>&nbsp;</strong></p><p><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_6390" o:spid="_x0000_i1025" type="#_x0000_t75"
+ style='width:303pt;height:193.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/L/AppData/Local/Temp/msohtmlclip1/01/clip_image001.jpg"
+  o:title=""/>
+</v:shape><![endif]--><img width="404" height="258" src="file:///C:/Users/L/AppData/Local/Temp/msohtmlclip1/01/clip_image001.jpg" />&nbsp;</p><p>&nbsp;</p><p><u>Paediatric population</u></p><p>In 3 active-controlled, open-label clinical studies, paediatric patients aged 6 months to 17 years received either highly or moderately emetogenic chemotherapy and a single dose of fosaprepitant at or above the recommended 1-day regimen dose (139 patients) or 3-day regimen (199 patients), in combination with ondansetron with or without dexamethasone.</p><p>&nbsp;</p><p><u>Paediatric Patients Receiving 1-Day Fosaprepitant Regimen</u></p><p>The efficacy of the 1-day fosaprepitant regimen in paediatric patients was extrapolated from that demonstrated in adults receiving the 1-day fosaprepitant regimen as described in the 1Day Regimen of Fosaprepitant in Adults subsection.</p><p>The efficacy of a 1-day fosaprepitant regimen in paediatric patients is expected to be similar to that of the 1-day adult fosaprepitant regimen.</p><p>&nbsp;</p><p><u>Paediatric Patients Receiving 3-Day Fosaprepitant Regimen</u></p><p>The efficacy of the 3-day fosaprepitant regimen in paediatric patients was based on that demonstrated in paediatric patients receiving the 3-day oral aprepitant regimen.</p><p>&nbsp;</p><p>The efficacy of a 3-day fosaprepitant regimen in paediatric patients is expected to be similar to that of the 3-day oral aprepitant regimen. See the summary of product characteristics for Fosaprepitant dimeglumine capsules and Fosaprepitant dimeglumine powder for oral suspension for complete clinical information regarding studies performed with oral aprepitant.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Fosaprepitant, a prodrug of aprepitant, when administered intravenously is rapidly converted to aprepitant. Plasma concentrations of fosaprepitant are below quantifiable levels within 30 minutes of the completion of infusion.</p><p>&nbsp;</p><p><u>Aprepitant after fosaprepitant administration</u></p><p>Following a single intravenous 150-mg dose of fosaprepitant administered as a 20-minute infusion to healthy adult volunteers, the mean AUC<sub>0-&infin;</sub> of aprepitant was 35.0 &mu;g&middot;hr/ml and the mean maximal aprepitant concentration was 4.01 &mu;g/ml.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><u>Distribution</u></p><p>Aprepitant is highly protein bound, with a mean of 97 %. The geometric mean volume of distribution at steady state (Vd<sub>ss</sub>) of aprepitant estimated from a single 150 mg intravenous dose of fosaprepitant is approximately 82 L in humans.</p><p>&nbsp;</p><p><u>Biotransformation</u></p><p>Fosaprepitant was rapidly converted to aprepitant in in vitro incubations with liver preparations from humans. Furthermore, fosaprepitant underwent rapid and nearly complete conversion to aprepitant in S9 preparations from other human tissues including kidney, lung and ileum. Thus, it appears that the conversion of fosaprepitant to aprepitant can occur in multiple tissues. In humans, fosaprepitant administered intravenously was rapidly converted to aprepitant within 30 minutes following the end of infusion.</p><p>Aprepitant undergoes extensive metabolism. In healthy young adults, aprepitant accounts for approximately 19 % of the radioactivity in plasma over 72 hours following a single intravenous administration 100 mg dose of [<sup>14</sup>C]- fosaprepitant, a prodrug for aprepitant, indicating a substantial presence of metabolites in the plasma. Twelve metabolites of aprepitant have been identified in human plasma. The metabolism of aprepitant occurs largely via oxidation at the morpholine ring and its side chains and the resultant metabolites were only weakly active. In vitro studies using human liver microsomes indicate that aprepitant is metabolised primarily by CYP3A4 and potentially with minor contribution by CYP1A2 and CYP2C19.</p><p>All metabolites observed in urine, faeces and plasma following an intravenous 100 mg [<sup>14</sup>C]fosaprepitant dose were also observed following an oral dose of [<sup>14</sup>C]-aprepitant. Upon conversion of 245.3 mg of fosaprepitant dimeglumine (equivalent to 150 mg fosaprepitant) to aprepitant, 23.9 mg of phosphoric acid and 95.3 mg of meglumine are liberated.</p><p>&nbsp;</p><p><u>Elimination</u></p><p>Aprepitant is not excreted unchanged in urine. Metabolites are excreted in urine and via biliary excretion in faeces. Following a single intravenously administered 100 mg dose of [<sup>14</sup>C]- fosaprepitant to healthy subjects, 57 % of the radioactivity was recovered in urine and 45 % in faeces.</p><p>The pharmacokinetics of aprepitant is non-linear across the clinical dose range. The terminal half-life of aprepitant following a 150 mg intravenous dose of fosaprepitant was approximately 11 hours. The geometric mean plasma clearance of aprepitant following a 150 mg intravenous dose of fosaprepitant was approximately 73 ml/min.</p><p>&nbsp;</p><p><u>Pharmacokinetics in special populations</u></p><p>Hepatic impairment: Fosaprepitant is metabolized in various extrahepatic tissues; therefore, hepatic impairment is not expected to alter the conversion of fosaprepitant to aprepitant. Mild hepatic impairment (Child-Pugh class A) does not affect the pharmacokinetics of aprepitant to a clinically relevant extent. No dose adjustment is necessary for patients with mild hepatic impairment. Conclusions regarding the influence of moderate hepatic impairment (Child-Pugh class B) on aprepitant pharmacokinetics cannot be drawn from available data. There are no clinical or pharmacokinetic data in patients with severe hepatic impairment (Child-Pugh class C).</p><p>&nbsp;</p><p>Renal impairment: A single 240 mg dose of oral aprepitant was administered to patients with severe renal impairment (CrCl&lt; 30 ml/min) and to patients with end stage renal disease (ESRD) requiring haemodialysis.</p><p>In patients with severe renal impairment, the AUC<sub>0-&yen; </sub>of total aprepitant (unbound and protein bound) decreased by 21 % and C<sub>max</sub> decreased by 32 %, relative to healthy subjects. In patients with ESRD undergoing haemodialysis, the AUC<sub>0-&yen; </sub>of total aprepitant decreased by 42 % and C<sub>max</sub> decreased by 32 %. Due to modest decreases in protein binding of aprepitant in patients with renal disease, the AUC of pharmacologically active unbound aprepitant was not significantly affected in patients with renal impairment compared with healthy subjects. Haemodialysis conducted 4 or 48 hours after dosing had no significant effect on the pharmacokinetics of aprepitant; less than 0.2 % of the dose was recovered in the dialysate. No dose adjustment is necessary for patients with renal impairment or for patients with ESRD undergoing haemodialysis.</p><p><em>&nbsp;</em></p><p><em>Paediatric population:</em> As part of a 3-day IV/IV/IV regimen, simulated median AUC<sub>0-24hr</sub> of aprepitant with median peak plasma concentration (C<sub>max</sub>) on Day 1 and the median concentrations at the end of Day 1, Day 2 and Day 3 in paediatric patients (6 months to 17 years old) are shown in Table 9.</p><p><strong>&nbsp; </strong></p><p>Table 9: Pharmacokinetic parameters of aprepitant for 3-day IV fosaprepitant regimen in paediatric patients</p><table border="0" cellspacing="0" cellpadding="0" style="width:588px"><tbody><tr><td style="vertical-align:top"><p>Population</p></td><td style="vertical-align:top"><p>3-day IV/IV/IV dose</p></td><td style="vertical-align:top"><p>AUC 0-24 hr.</p><p>&nbsp;</p><p>(ng*hr/mL)</p></td><td style="vertical-align:top"><p>Cmax</p><p>(ng/mL)</p></td><td style="vertical-align:top"><p>C24</p><p>&nbsp;</p><p>(ng/mL)</p></td><td style="vertical-align:top"><p>C48</p><p>&nbsp;</p><p>(ng/mL)</p></td><td style="vertical-align:top"><p>C72</p><p>&nbsp;</p><p>(ng/mL)</p></td></tr><tr><td><p>12 - 17 years old</p></td><td style="vertical-align:bottom"><p>115mg, 80mg, 80mg</p></td><td><p>21172</p></td><td><p>2475</p></td><td><p>454</p></td><td><p>424</p></td><td><p>417</p></td></tr><tr><td><p>6 - &lt; 12 years old</p></td><td rowspan="3" style="vertical-align:bottom"><p>3mg/kg, 2mg/kg, 2mg/kg</p></td><td><p>25901</p></td><td><p>2719</p></td><td><p>518</p></td><td><p>438</p></td><td><p>418</p></td></tr><tr><td><p>2 - &lt; 6 years old</p></td><td><p>20568</p></td><td><p>2335</p></td><td><p>336</p></td><td><p>248</p></td><td><p>232</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>6 months &ndash; &lt; 2 years old</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>16979</p></td><td style="vertical-align:top"><p>1916</p></td><td style="vertical-align:top"><p>256</p></td><td style="vertical-align:top"><p>179</p></td><td style="vertical-align:top"><p>167</p></td></tr></tbody></table><p>In the 1-day IV fosaprepitant setting, simulated median AUC<sub>0-24hr</sub> of aprepitant with median peak plasma concentration (C<sub>max</sub>) on Day 1 and the median concentrations at the end of Day 1, Day 2 and Day 3 in paediatric patients (6 months to &lt; 12 years old) and observed mean AUC<sub>0-24hr</sub> with median peak plasma concentration (C<sub>max</sub>) on Day 1 and mean concentrations at the end of Day 1, Day 2 and Day 3 in paediatric patients (12 to 17 years old) are shown in Table 10.</p><p>Table 10: Pharmacokinetic parameters of aprepitant for 1-day IV fosaprepitant regimen in paediatric patients</p><table border="0" cellspacing="0" cellpadding="0" style="width:594px"><tbody><tr><td style="vertical-align:top"><p>Population</p></td><td style="vertical-align:top"><p>1-day IV</p><p>dose</p></td><td style="vertical-align:bottom"><p>AUC 0-24 hr.</p><p>&nbsp;</p><p>(ng*hr/mL)</p></td><td style="vertical-align:bottom"><p>Cmax</p><p>(ng/mL)</p></td><td style="vertical-align:bottom"><p>C24</p><p>&nbsp;</p><p>(ng/mL)</p></td><td style="vertical-align:bottom"><p>C48</p><p>&nbsp;</p><p>(ng/mL)</p></td><td style="vertical-align:bottom"><p>C72</p><p>&nbsp;</p><p>(ng/mL)</p></td></tr><tr><td style="vertical-align:top"><p>12 - 17 years old</p></td><td style="vertical-align:top"><p>150 mg</p></td><td style="vertical-align:top"><p>30400</p></td><td style="vertical-align:top"><p>3500</p></td><td style="vertical-align:top"><p>735</p></td><td style="vertical-align:top"><p>NR*</p></td><td style="vertical-align:top"><p>NR*</p></td></tr><tr><td style="vertical-align:top"><p>6 - &lt; 12 years old</p></td><td rowspan="2" style="vertical-align:top"><p>&nbsp;</p><p>4 mg/kg</p></td><td style="vertical-align:top"><p>35766</p></td><td style="vertical-align:top"><p>3637</p></td><td style="vertical-align:top"><p>746</p></td><td style="vertical-align:top"><p>227</p></td><td style="vertical-align:top"><p>69.2</p></td></tr><tr><td style="vertical-align:top"><p>2 - &lt; 6 years old</p></td><td style="vertical-align:top"><p>28655</p></td><td style="vertical-align:top"><p>3150</p></td><td style="vertical-align:top"><p>494</p></td><td style="vertical-align:top"><p>108</p></td><td style="vertical-align:top"><p>23.5</p></td></tr><tr><td style="vertical-align:top"><p>6 months &ndash; &lt; 2 years old</p></td><td style="vertical-align:top"><p>5 mg/kg</p></td><td style="vertical-align:top"><p>30484</p></td><td style="vertical-align:top"><p>3191</p></td><td style="vertical-align:top"><p>522</p></td><td style="vertical-align:top"><p>112</p></td><td style="vertical-align:top"><p>24.4</p></td></tr></tbody></table><p>*NR = Not Reported</p><p>A population pharmacokinetic analysis of aprepitant in paediatric patients (aged 6 months through 17 years) suggests that gender and race have no clinically meaningful effect on the pharmacokinetics of aprepitant.</p><p><u>Relationship between concentration and effect</u></p><p>Positron emission tomography (PET) imaging studies, using a highly specific NK<sub>1</sub>-receptor tracer, in healthy young men administered a single intravenous dose of 150 mg fosaprepitant (N=8) demonstrated brain NK<sub>1</sub> receptor occupancy of &ge;100 % at T<sub>max</sub>, and 24 hours, &ge;97 % at 48 hours, and between 41 % and 75 % at 120 hours, following dosing. Occupancy of brain NK<sub>1</sub> receptors, in this study, correlate well with aprepitant plasma concentrations.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pre-clinical data obtained with intravenous administration of fosaprepitant and oral administration of aprepitant reveal no special hazard for humans based on conventional studies of single and repeated dose toxicity, genotoxicity (including in vitro tests), and toxicity to reproduction and development.</p><p>Carcinogenic potential in rodents was only investigated with orally administered aprepitant. However, it should be noted that the value of the toxicity studies carried out with rodents, rabbits and monkeys, including the reproduction toxicity studies, are limited since systemic exposures to fosaprepitant and aprepitant were only similar or even lower than therapeutic exposure in adult humans. In the performed safety pharmacology and repeated dose toxicity studies with dogs, fosaprepitant C<sub>max</sub> and aprepitant AUC values were up to 3 times and 40 times, respectively, higher than clinical values.</p><p>In a toxicity study in juvenile dogs treated with fosaprepitant from postnatal day 14 to day 42, a decreased testicular weight and Leydig cell size were seen in the males at 6 mg/kg/day and increased uterine weight, hypertrophy of the uterus and cervix, and oedema of vaginal tissues were seen in females from 4 mg/kg/day. In a juvenile toxicity study in rats treated with aprepitant from postnatal day 10 to day 63, earlier vaginal opening in females from 250 mg/kg b.i.d. and delayed preputial separation in males from 10 mg/kg b.i.d was seen. There were no treatment-related effects on mating, fertility or embryonic/foetal survival, and no pathological changes in the reproductive organs. There were no margins to clinically relevant exposure of aprepitant. For short term treatment, these findings are considered unlikely to be clinically relevant.</p><p>In laboratory animals, fosaprepitant in non-commercial formulations caused vascular toxicity and hemolysis at concentrations below 1 mg/ml and higher, dependent on the formulation. In human washed blood cells also evidence of hemolysis was found with noncommercial formulations at fosaprepitant concentrations of 2.3 mg/ml and higher, although tests in human whole blood were negative. No hemolysis was found with the commercial formulation up to a fosaprepitant concentration of 1 mg/ml in human whole blood and washed human erythrocytes.</p><p>In rabbits, fosaprepitant caused initial transient local acute inflammation following paravenous, subcutaneous and intramuscular administration. At the end of the follow-up period (post-dose day 8), up to slight local subacute inflammation was noted following paravenous and intramuscular administration and additional up to moderate focal muscle degeneration/necrosis with muscle regeneration following intramuscular administration.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Disodium edetate&nbsp;</p><p>Polysorbate 80&nbsp;</p><p>Lactose anhydrous</p><p>Sodium hydroxide</p><p>Hydrochloric acid <strong>&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>APRITANT IV is incompatible with any solutions containing divalent cations (e.g., Ca<sup>2+</sup>, Mg<sup>2+</sup>), including Hartman&#39;s and lactated Ringer&#39;s solutions. This medicinal product must not be mixed with other medicinal products except those mentioned in section 6.6.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                36 months.
+
+After reconstitution and dilution, chemical and physical in-use stability has been demonstrated for 24 hours at 25°C.
+
+From a microbiological point of view, the medicinal product should be used immediately. If not used immediately, in-use storage times and conditions prior to use are the responsibility of the user and would normally not be longer than 24 hours at 2 to 8°C.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store in a refrigerator (2&deg;C - 8&deg;C). Protect from light and moisture.</p><p>For storage conditions after reconstitution and dilution of the medicinal product, see section</p><p>6.3.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>10 mL clear tubular Type-I glass vial with 13 mm neck containing Fosaprepitant Dimeglumine for Injection in lyophilized cake or powder form is stoppered with 13 mm Bromo butyl double slotted rubber stopper sealed with 13 mm aluminium flip off seal with Green color plastic disc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>APRITANT IV must be reconstituted and then diluted prior to administration.</p><p>Preparation of APRITANT IV for intravenous administration:</p><p>1. Inject 5 ml sodium chloride 9 mg/ml (0.9 %) solution for injection into the vial. Assure that sodium chloride 9 mg/ml (0.9 %) solution for injection is added to the vial along the vial wall in order to prevent foaming. Swirl the vial gently. Avoid shaking and jetting sodium chloride 9 mg/ml (0.9 %) solution for injection into the vial.</p><p>2. Prepare an infusion bag filled with 145 ml of sodium chloride 9 mg/ml (0.9 %) solution for injection (for example, by removing 105 ml of sodium chloride 9 mg/ml (0.9 %) solution for injection from a 250 ml sodium chloride 9 mg/ml (0.9 %) solution for injection infusion bag).</p><p>3. Withdraw the entire volume from the vial and transfer it into an infusion bag containing 145 ml of sodium chloride 9 mg/ml (0.9 %) solution for injection to yield a total volume of 150 ml and a final constitution of 1 mg/ml. Gently invert the bag 2-3 times.</p><p>4. Determine the volume to be administered from this prepared infusion bag, based on the recommended dose (see section 4.2).</p><p><u>Adults</u></p><p>The entire volume of the prepared infusion bag (150 ml) should be administered.</p><p><u>Paediatrics</u></p><p>In patients 12 years and older, the volume to be administered is calculated as follows:</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Volume to administer (ml) equals the recommended dose (mg)</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In patients 6 months to less than 12 years, the volume to be administered is calculated as follows:</p><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Volume to administer (ml) = recommended dose (mg/kg) x weight (kg) o <strong>Note: Do not exceed maximum doses (see section 4.2). </strong></p><p>5. If necessary, for volumes less than 150 ml, the calculated volume can be transferred to an appropriate size bag or syringe prior to administration by infusion.</p><p>The appearance of the reconstituted solution should be clear colorless to pale yellow colour solution free from visible particle matter.</p><p>The reconstituted and diluted medicinal product should be inspected visually for particulate matter and discoloration before administration.</p><p>Discard any remaining solution and waste material. Any unused medicinal product or waste material should be disposed of in accordance with local requirements.</p><p>The medicinal product must not be reconstituted or mixed with solutions for which physical and chemical compatibility has not been established (see section 6.2).</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Tadawi Biomedical Company  
+Sudair Industrial Zone, 
+Sudair, 
+Saudi Arabia 
+ 
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                XXXX
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

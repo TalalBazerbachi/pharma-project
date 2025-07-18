@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        285-24-17
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2017
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        TECENTRIQ 60 mg/ml Concentrate For Solution For Infusion
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        ATEZOLIZUMAB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        60
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        29065.25
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="ROCHE DIAGNOSTICS" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            ROCHE DIAGNOSTICS
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 583]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            ALNAGHI COMPANY
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            ROCHE
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L01XC32
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>What Tecentriq is </strong></p><p>Tecentriq is an anti‑cancer medicine that contains the active substance atezolizumab. It belongs to a group of medicines called monoclonal antibodies. A monoclonal antibody is a type of protein designed to recognise and attach to a specific target in the body.</p><p>&nbsp;</p><p><strong>What Tecentriq is used for </strong></p><p>TECENTRIQ is a prescription medicine used to treat adults with:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A type of bladder and urinary tract cancer called urothelial carcinoma.</strong> TECENTRIQ may be used when your bladder cancer has spread or cannot be removed by surgery, and if you have any one of the following conditions:</p><p>&sect;&nbsp; you are not able to take chemotherapy that contains a medicine called cisplatin, and your cancer tests positive for &ldquo;PD-L1&rdquo;, or</p><p>&sect;&nbsp; you are not able to take chemotherapy that contains any platinum regardless of &ldquo;PD-L1&rdquo; status.</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A type of lung cancer called non-small cell lung cancer (NSCLC):</strong></p><p>o&nbsp;&nbsp;&nbsp; <strong>TECENTRIQ may be used alone as your first treatment when your lung cancer:</strong></p><p>&sect;&nbsp; has spread or grown, <strong>and</strong></p><p>&sect;&nbsp; your cancer tests positive for &ldquo;high PD-L1&rdquo;, <strong>and</strong></p><p>&sect;&nbsp; your tumor does not have an abnormal &ldquo;EGFR&rdquo; or &ldquo;ALK&rdquo; gene.</p><p><strong>&nbsp;</strong></p><p>o&nbsp;&nbsp;&nbsp; <strong>TECENTRIQ may be used with the medicines bevacizumab, paclitaxel, and carboplatin as your first treatment when your lung cancer:</strong></p><p>&sect;&nbsp; has spread or grown, <strong>and</strong></p><p>&sect;&nbsp; is a type called &ldquo;non-squamous NSCLC&rdquo;, <strong>and</strong></p><p>&sect;&nbsp; your tumor does not have an abnormal &ldquo;EGFR&rdquo; or &ldquo;ALK&rdquo; gene.</p><p>&nbsp;</p><p>o&nbsp;&nbsp;&nbsp; <strong>TECENTRIQ may be used with the medicines paclitaxel protein-bound and carboplatin as your first treatment when your lung cancer:</strong></p><p>&sect;&nbsp; has spread or grown, <strong>and</strong></p><p>&sect;&nbsp; is a type called &ldquo;non-squamous NSCLC&rdquo;, <strong>and</strong></p><p>&sect;&nbsp; your tumor does not have an abnormal &ldquo;EGFR&rdquo; or &ldquo;ALK&rdquo; gene.</p><p><strong><em>&nbsp;</em></strong></p><p>o&nbsp;&nbsp;&nbsp; <strong>TECENTRIQ may also be used alone when your lung cancer:</strong></p><p>&sect;&nbsp; has spread or grown, <strong>and</strong></p><p>&sect;&nbsp; you have tried chemotherapy that contains platinum, and it did not work or is no longer working.</p><p>&sect;&nbsp; if your tumor has an abnormal &ldquo;EGFR&rdquo; or &ldquo;ALK&rdquo; gene, you should have also tried an FDA-approved therapy for tumors with these abnormal genes, and it did not work or is no longer working.</p><p>&nbsp;</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A type of lung cancer called small cell lung cancer (SCLC):</strong></p><p>TECENTRIQ may be used with the chemotherapy medicines carboplatin and etoposide as your first treatment when your lung cancer is a type called &ldquo;extensive-stage SCLC,&rdquo; which means that it has spread or grown.</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A type of liver cancer called hepatocellular carcinoma (HCC):</strong><strong> </strong></p><p>TECENTRIQ may be used with the medicine bevacizumab when your liver cancer:</p><p>&sect;&nbsp; has spread or cannot be removed by surgery, <strong>and</strong></p><p>&sect;&nbsp; you have not received other medicines by mouth or injection through your vein (IV) to treat your cancer.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>You must not be given Tecentriq if:</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You are allergic to atezolizumab or any of the other ingredients of this medicine (listed in section&nbsp;6).</p><p>If you are not sure, talk to your doctor or nurse before you are given Tecentriq.</p><p>&nbsp;</p><p><strong>Warnings and precautions </strong></p><p>Talk to your doctor or nurse before you are given Tecentriq if you:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Have immune system problems such as Crohn&rsquo;s disease, ulcerative colitis, or lupus</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; have received an organ transplant</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; have received or plan to receive a stem cell transplant that uses donor stem cells (allogeneic)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; have received radiation treatment to your chest area</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Have a condition that affects your nervous system, such as myasthenia gravis or Guillain-Barr&eacute; syndrome</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Are pregnant or plan to become pregnant. TECENTRIQ can harm your unborn baby. Tell your healthcare provider right away if you become pregnant or think you may be pregnant during treatment with TECENTRIQ.</p><p><strong>&nbsp;</strong></p><p>If any of the above applies to you (or you are not sure), talk to your doctor or nurse before you are given Tecentriq.</p><p>&nbsp;</p><p>TECENTRIQ is a medicine that may treat certain cancers by working with your immune system. TECENTRIQ can cause your immune system to attack normal organs and tissues in any area of your body and can and can affect the way they work. These problems can sometimes become severe or life-threatening and can lead to death. You can have more than one of these problems at the same time. These problems may happen anytime during your treatment or even after your treatment has ended.</p><p>&nbsp;</p><p>&nbsp;</p><p>Call or see your healthcare provider right away if you get any symptoms of the following problems or these symptoms get worse:</p><p>&middot;&nbsp;Lung problems:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cough</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shortness of breath</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chest pain</p><p>&nbsp;</p><p>&middot; Intestinal problems:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; diarrhea (loose stools) or more bowel movements than usual</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stools that are black, tarry, sticky, or have blood or mucus</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; severe stomach area (abdomen) pain or tenderness</p><p>&nbsp;</p><p>&middot; Liver problems:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yellowing of your skin or the whites of your eyes</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; severe nausea or vomiting</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pain on the right side of your stomach area (abdomen)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dark urine (tea colored)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bleeding or bruising more easily than normal</p><p>&nbsp;</p><p>&middot; Hormone gland problems:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; headaches that will not go away or unusual headaches</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eye sensitivity to light</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eye problems</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rapid heart beat</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; increased sweating</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; extreme tiredness</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; weight gain or weight loss</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; feeling more hungry or thirsty than usual</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; urinating more often than usual</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hair loss</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; feeling cold</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; constipation</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; your voice gets deeper</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dizziness or fainting</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; changes in mood or behavior, such as decreased sex drive, irritability, or forgetfulness</p><p>&nbsp;</p><p>&nbsp;</p><p>&middot; Kidney problems:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; decrease in your amount of urine</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blood in your urine</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swelling of your ankles</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loss of appetite</p><p>&nbsp;</p><p>&middot; Problems can also happen in other organs:</p><p>These are not all of the signs and symptoms of immune system problems that can happen with TECENTRIQ. Call or see your healthcare provider right away for any new or worse signs or symptoms, including:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chest pain, irregular heartbeat, shortness of breath or swelling of the ankles</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; confusion, sleepiness, memory problems, changes in mood or behavior, stiff neck, balance problems, tingling or numbness of the arms or legs</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double vision, blurry vision, sensitivity to light, eye pain, changes in eye sight</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; persistent or severe muscle pain or weakness, muscle cramps</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; low red blood cells, bruising</p><p>&nbsp;</p><p>&middot; Severe infections. Signs and symptoms of infection may include:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fever</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cough</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flu-like symptoms</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pain when urinating, frequent urination or back pain</p><p>&nbsp;</p><p>&middot; Severe infusion reactions. Signs and symptoms of infusion reactions may include:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; chills or shaking</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itching or rash</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flushing</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shortness of breath or wheezing</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dizziness</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; feeling like passing out</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fever</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; back or neck pain</p><p>Complications, including graft-versus-host disease (GVHD), in people who have received a bone marrow (stem cell) transplant that uses donor stem cells (allogeneic). These complications can be serious and can lead to death. These complications may happen if you underwent transplantation either before or after being treated with TECENTRIQ. Your healthcare provider will monitor you for these complications</p><p>Getting medical treatment right away may help keep these problems from becoming more serious.</p><p>Your healthcare provider will check you for these problems during your treatment with TECENTRIQ. Your healthcare provider may treat you with corticosteroid or hormone replacement medicines. Your healthcare provider may delay or completely stop treatment with TECENTRIQ if you have severe side effects.</p><p><strong>&nbsp;</strong></p><p><strong>Children and adolescents</strong></p><p>It is not known if TECENTRIQ is safe and effective in children.</p><p>&nbsp;</p><p><strong>Other medicines and Tecentriq</strong></p><p>Tell your healthcare provider about all the medicines you take, including prescription and over-the-counter medicines, vitamins, and herbal supplements.</p><p>&nbsp;</p><p><strong>Pregnancy and contraception</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Are pregnant or plan to become pregnant. TECENTRIQ can harm your unborn baby. Tell your healthcare provider right away if you become pregnant or think you may be pregnant during treatment with TECENTRIQ.</p><p>&nbsp;</p><p>&middot; Females who are able to become pregnant:</p><p>o&nbsp;&nbsp;&nbsp; Your healthcare provider should do a pregnancy test before you start treatment with TECENTRIQ.</p><p>o&nbsp;&nbsp;&nbsp; You should use an effective method of birth control during your treatment and for at least 5 months after the last dose of TECENTRIQ.</p><p><strong>&nbsp;</strong></p><p><strong>Breast‑feeding</strong></p><p>&nbsp;It is not known if TECENTRIQ passes into your breast milk. Do not breastfeed during treatment and for at least 5 months after the last dose of TECENTRIQ.</p><p>&nbsp;</p><p><strong>Driving and using machines</strong></p><p>Tecentriq has minor influence on your ability to drive and use machines. If you feel tired, do not drive or use machines until you feel better.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your healthcare provider will give you TECENTRIQ into your vein through an intravenous (IV) line over 30 to 60 minutes.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TECENTRIQ is usually given every 2, 3, or 4 weeks.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your healthcare provider will decide how many treatments you need.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your healthcare provider will test your blood to check you for certain side effects.</p><p>&nbsp;</p><p><strong>If you miss a dose of Tecentriq</strong></p><p>If you miss any appointments, call your healthcare provider as soon as possible to reschedule your appointment.</p><p>&nbsp;</p><p><strong>If you stop receiving Tecentriq</strong></p><p>Do not stop treatment with Tecentriq unless you have discussed this with your doctor. This is because stopping treatment may stop the effect of the medicine.</p><p>&nbsp;</p><p>If you have any further questions on the use of this medicine, ask your doctor or nurse.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p><strong>&nbsp;</strong></p><p>TECENTRIQ can cause serious side effects, including:</p><p>&nbsp;</p><p>&middot;&nbsp;<strong>See &ldquo;Warning and Precaution?&rdquo;</strong></p><p><em>&nbsp;</em></p><p>&middot;&nbsp;<strong>The most common side effects of TECENTRIQ when used alone include:</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; feeling tired or weak</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; decreased appetite</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nausea</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cough</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shortness of breath</p><p>&nbsp;</p><p>&middot;&nbsp;<strong>The most common side effects of TECENTRIQ when used in lung cancer with other anti-cancer medicines include:</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; feeling tired or weak</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nausea</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hair loss</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; constipation</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; diarrhea</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; decreased appetite</p><p>&nbsp;</p><p>&middot;&nbsp;<strong>The most common side effects of TECENTRIQ when used in hepatocellular carcinoma with bevacizumab include:</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; high blood pressure</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; feeling tired or weak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; too much protein in the urine</p><p>If you notice any of the side effects above or if they get worse, tell your doctor straight away.</p><p><strong>&nbsp;</strong></p><p><strong>Reporting of side effects</strong></p><p>If you get any side effects, talk to your doctor or nurse. This includes any possible side effects not listed in this leaflet. By reporting side effects you can help provide more information on the safety of this medicine.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Tecentriq will be stored by the healthcare professionals at the hospital or clinic. The storage details are as follows:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Keep this medicine out of the sight and reach of children.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not use this medicine after the expiry date which is stated on the carton and the vial label after EXP. The expiry date refers to the last day of that month.&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Store in a refrigerator (2&nbsp;&deg;C&nbsp;‑&nbsp;8&nbsp;&deg;C). Do not freeze.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Keep the vial in the outer carton in order to protect from light.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The diluted solution should not be kept more than 24 hours at 2&nbsp;&deg;C to 8&nbsp;&deg;C or 8 hours at ambient temperature.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do not use if this medicine is cloudy, discoloured or contains particles</p><p>&nbsp;</p><p>Do not throw away any medicines via wastewater or household waste. Your healthcare professional will throw away any medicines that are no longer being used. These measures will help to protect the environment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr">What Tecentriq contains&nbsp;</p><p dir="ltr">∙ The active substance is atezolizumab. Each mL contains 60&nbsp;mg of atezolizumab.<br />Each vial contains 1,200&nbsp;mg of atezolizumab (in 20&nbsp;mL).</p><p>∙ Inactive ingredients glacial acetic acid, L-histidine, sucrose, polysorbate 20.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                What Tecentriq looks like and contents of the pack
+
+Tecentriq is a concentrate for solution for infusion. It is a clear, colourless to slightly yellowish liquid. 
+
+Tecentriq is available in a pack containing 1 glass vial.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p dir="ltr">F. Hoffmann-La Roche Ltd,</p><p dir="ltr">Grenzacherstrasse 124,&nbsp;</p><p dir="ltr">CH-4070 Basel,&nbsp;</p><p dir="ltr">Switzerland.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                This leaflet was last revised in May 2020.
+
+To report any side effect(s):
+Saudi Arabia:
+The National Pharmacovigilance and Drug Safety Centre (NPC)
+Fax: +966-11-205-7662
+SFDA call center: 19999 
+E-mail: npc.drug@sfda.gov.sa
+Website: www.sfda.gov.sa/npc
+
+Other GCC States:
+Please contact the relevant competent authority.
+
+Council of Arab Health Ministers:
+This is a Medicament
+Medicament is a product which affects your health and its consumption contrary to instructions is dangerous for you. 
+Follow strictly the doctor’s prescription, the method of use and the instructions of the pharmacist who sold the medicament. 
+The doctor and the pharmacist are the experts in medicines, their benefits and risks. 
+Do not by yourself interrupt the period of treatment prescribed for you. 
+Do not repeat the same prescription without consulting your doctor. 
+Keep all medicaments out of reach of children. 
+Council of Arab Health Ministers
+Union of Arab Pharmacists
+
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p><strong><u>ما هو تيسنتريك</u></strong></p><p><strong>تيسنتريك</strong> هو دواء مضاد للسرطان يحتوي على المادة الفعالة <strong>أتيزوليزوماب</strong> وينتمي إلى مجموعة من الأدوية تسمى الأجسام المضادة وحيدة النسيلة. الأجسام المضادة وحيدة النسيلة هي نوع من البروتين المصمم للتعرف على هدف محدد في الجسم والالتصاق به .</p><p>&nbsp;</p><p><strong><u>لأي غرض يتم استخدامه</u></strong></p><p><strong>تيسنتريك هو علاج وصفي يُستخدم لعلاج البالغين الذين يعانون من:&nbsp;&nbsp;&nbsp; </strong></p><p><strong><u>* نوع من سرطان المثانة والمسالك البولية يسمى سرطان الظهارة البولية</u></strong>. يمكن استخدامه عندما ينتشر سرطان المثانة أو إذا كان لا يمكن إزالته عن طريق التدخل الجراحي وإذا كنت تعاني من أي من الحالات التالية:&nbsp;&nbsp;&nbsp;</p><p dir="RTL">- لا يمكنك تناول العلاج الكيميائي الذي يحتوي على دواء يدعى <strong>سيسبلاتين</strong>، وتكون اختبارات السرطان لديك إيجابية بالنسبة لـبروتين يدعى موت الخلية المبرمج 1 (PD-L1)˓ أو</p><p dir="RTL">- <strong>لا يمكنك تناول العلاج الكيميائي الذي يحتوي على البلاتين، بغض النظر عن نتيجة اختبارات السرطان </strong>بالنسبة لـبروتين يدعى موت الخلية المبرمج 1 (PD-L1)<strong> </strong>.</p><p dir="RTL"><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong><strong><u>. (NSCLC)* نوع من سرطان الرئة يسمى سرطان الرئة ذو الخلايا غير الصغيرة </u></strong></p><p><strong>قد يُستخدم التيسنتريك لوحده كعلاجك الأول عندما يكون سرطان الرئة:</strong></p><p>-&nbsp; قد انتشر أو تزايد&nbsp;&nbsp;</p><p dir="RTL">- وتكون اختبارات السرطان الخاصة بك إيجابية بالنسبة للبروتين المبرمج لموت الخلية 1 PD-L1&rdquo;&quot;</p><p dir="RTL">- إذا كان الورم الذي تعاني منه لا يحوي جين غير طبيعي (بالنسبة للترشيح الكبيبي المقدر أو سرطان الغدد الليمفاوية كيناز)</p><p><strong>&nbsp;</strong></p><p><strong>قد يُستخدم التيسنتريك مع بيفاسيزوماب</strong><strong>،</strong><strong> كاربوبلاتين</strong><strong>،</strong><strong> وباكليتاكسيل كعلاجك الأول عندما يكون سرطان الرئة:</strong></p><p>-&nbsp; قد انتشر أو تزايد&nbsp;&nbsp;</p><p>- نوعاً يُسمى سرطان الخلايا الرئوية غير الحرشفية</p><p>- إذا كان الورم الذي تعاني منه لا يحوي جين غير طبيعي (بالنسبة للترشيح الكبيبي المقدر أو سرطان الغدد الليمفاوية كيناز)</p><p>&nbsp;</p><p><strong>قد يُستخدم التيسنتريك مع باكليتاكسيل-المرتبط بالبروتين</strong><strong>، و</strong><strong> كاربوبلاتين</strong><strong> </strong><strong>كعلاجك الأول عندما يكون سرطان الرئة:</strong></p><p>-&nbsp; قد انتشر أو تزايد&nbsp;&nbsp;</p><p>- نوعاً يُسمى سرطان الخلايا الرئوية غير الحرشفية</p><p>- إذا كان الورم الذي تعاني منه لا يحوي جين غير طبيعي (بالنسبة للترشيح الكبيبي المقدر أو سرطان الغدد الليمفاوية كيناز)</p><p>&nbsp;</p><p>&nbsp;* يمكن أن يُستخدم <strong>تيسنتريك </strong>أيضاً لوحده إذا كان سرطان الرئة لديك:</p><p>- &nbsp;قد انتشر أو تزايد&nbsp;</p><p>- قد جربت علاجًا كيميائيًا يحتوي على <strong>البلاتين</strong> ولم ينجح أو لم يعد يعمل</p><p>- إذا كان الورم الذي تعاني منه يحوي جين غير طبيعي بالنسبة للترشيح الكبيبي المقدر أو سرطان الغدد الليمفاوية كيناز وسبق أن &nbsp;جربت أيضا علاجاً للأورام المحتوية على هذه الجينات الشاذة معتمداً من هيئة الغذاء والدواء ولم ينجح أو لم يعد يعمل</p><p dir="RTL">&nbsp;</p><p><strong><u>. (SCLC)* نوع من سرطان الرئة يسمى سرطان الرئة ذو الخلايا الصغيرة </u></strong></p><p dir="RTL">يمكن استخدام تيسنتريك مع أدوية العلاج الكيميائي كاربوبلاتين و إيتوبوسيد كخيار علاج أولي في حال كنت تعاني من نوع من سرطان الرئة يدعى &quot; سرطان الرئة ذو الخلايا الصغيرة &ndash; واسع الانتشار&quot; ((Extensive-stage SCLC ,والذي يعني أن المرض قد انتشر و تزايد.</p><p dir="RTL">&nbsp;</p><p><strong><u>. (HCC)* نوع من سرطان الكبد يسمى سرطان الخلية الكبدية </u></strong></p><p>قد يُستخدم التيسنتريك مع بيفاسيزوماب عندما يكون سرطان الكبد:</p><p>- انتشر أو كان لا يمكن إزالته عن طريق التدخل الجراحي</p><p>- لم يسبق لك استعمال أي علاج للسرطان (سواء عن طريق تناول أدوية عن طريق الفم أو حقن داخل الوريد).</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p>&nbsp;&nbsp; يجب ألا تتناول <strong>تيسنتريك</strong> إذا:</p><p>* كان لديك حساسية من دواء (<strong>أتيزوليزيوماب</strong>) أو أي من المكونات الأخرى لهذا الدواء المدرجة في القسم 6</p><p>* إذا لم تكن متأكد قم بالتحدث مع طبيبك الخاص أو ممرضتك قبل أن تتناول <strong>تيسنتريك</strong>&nbsp;</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* <u>المحاذير والاحتياطات:</u></strong></p><p dir="RTL">تحدث إلى طبيبك أو ممرضك قبل أن تحصل على <strong>تيسنتريك</strong> إذا:&nbsp;&nbsp;&nbsp;</p><p dir="RTL">- كان لديك مشاكل في الجهاز المناعي مثل مرض كرون، التهاب القولون التقرحي، أو الذئبة</p><p dir="RTL">- خضعت لعملية زرع أعضاء</p><p dir="RTL">- تلقيت أو تخطط لتلقي زراعة للخلايا الجذعية التي تستخدم الخلايا الجذعية المانحة</p><p dir="RTL">- تلقيت علاجاً بالأشعة لمنطقة الصدر</p><p dir="RTL">- كان لديك حالة تؤثر على الجهاز العصبي مثل الوهن العضلي الوبيل أو متلازمة غيلان باري</p><p dir="RTL">- كنتِ حاملاً أو تخططين لتصبحين حاملاً. يمكن لتيسنتريك أن يضر طفلك الذي لم يولد بعد. أخبري مقدم الرعاية الصحية على الفور إذا كنتي حاملاً أو تعتقدين أنك حامل أثناء العلاج <strong>بالتيسنتريك</strong></p><p dir="RTL">إذا كان أي مما سبق ينطبق عليك <strong>(أو لم تكن متأكدًا)</strong>، فتحدث إلى طبيبك أو ممرضتك قبل أن تحصل على <strong>تيسنتريك</strong></p><p dir="RTL"><strong>تيسنتريك</strong> هو دواء قد يعالج بعض أنواع السرطان عن طريق العمل مع الجهاز المناعي. يمكن أن يتسبب <strong>تيسنتريك</strong> في مهاجمة الجهاز المناعي للأعضاء والأنسجة الطبيعية في أي منطقة من الجسد ويمكن أن يؤثر على طريقة عملها. هذه المشاكل يمكن أن تصبح في بعض الأحيان خطيرة أو قد تهدد الحياة ويمكن أن تؤدي إلى الموت. يمكن أن يتزامن حدوث أكثر من عرض في نفس الوقت، أو خلال أي مرحلة من مراحل تلقي العلاج، أو بعد انتهاءه.</p><p dir="RTL">اتصل أو اطلب رؤية مقدم الرعاية الصحية على الفور إذا عانيت من أي عرض من أعراض المشاكل التالية أو إذا كانت هذه الأعراض تزداد سوءًا:</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* مشاكل الرئة:</strong></p><p dir="RTL">- السعال</p><p dir="RTL">- ضيق في التنفس</p><p dir="RTL">- ألم في الصدر</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* مشاكل معوية:</strong></p><p dir="RTL">- الإسهال <strong>(براز سائب)</strong> أو حركة الأمعاء أكثر من المعتاد</p><p dir="RTL">- دم أو مخاط في برازك أو براز داكن أو قاتم أو لزج</p><p dir="RTL">- ألم شديد في منطقة البطن أو حساسية للألم</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* مشاكل الكبد:</strong></p><p dir="RTL">- اصفرار بشرتك أو بياض عينيك</p><p dir="RTL">- الغثيان الشديد أو القيء</p><p dir="RTL">- ألم في الجانب الأيمن من منطقة معدتك <strong>(البطن)</strong></p><p dir="RTL">- البول الداكن <strong>(لون الشاي)</strong></p><p dir="RTL">- نزيف أو كدمات بسهولة على غير المعتاد</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* مشاكل الغدد الهرمونية:</strong></p><p dir="RTL">- الصداع المستمر أو الصداع الغير معتاد</p><p dir="RTL">- حساسية العين للضوء</p><p dir="RTL">- مشاكل في العين أو النظر</p><p dir="RTL">- تسارع في نبضات القلب</p><p dir="RTL">- زيادة التعرق</p><p dir="RTL">- التعب الشديد</p><p dir="RTL">- زيادة الوزن أو فقدان الوزن</p><p dir="RTL">- الشعور بالجوع أو العطش أكثر من المعتاد</p><p dir="RTL">- التبول أكثر من المعتاد</p><p dir="RTL">- تساقط الشعر</p><p dir="RTL">- الشعور بالبرد</p><p dir="RTL">- الإمساك</p><p dir="RTL">- صوتك يصبح أعمق</p><p dir="RTL">- الدوخة أو الإغماء</p><p dir="RTL">- تغييرات في المزاج أو السلوك، مثل انخفاض الدافع الجنسي، والتهيج، أو النسيان</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* مشاكل في الكلى:</strong></p><p dir="RTL">- انخفاض في كمية البول</p><p dir="RTL">- ظهور دم في البول</p><p dir="RTL">- تورم في الكاحلين</p><p dir="RTL">- فقدان الشهية</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* قد تحدث بعض مشاكل في أعضاء الجسم الأُخرى:</strong></p><p dir="RTL">هذه ليست كل علامات وأعراض مشاكل الجهاز المناعي التي يمكن أن تحدث مع تيسينتريك. اتصل أو راجع مقدم الرعاية الصحية الخاص بك على الفور لمعرفة أي علامات أو أعراض جديدة أو أسوأ ، بما في ذلك:</p><p dir="RTL">- ألم في الصدر وعدم انتظام ضربات القلب وضيق التنفس أو تورم الكاحلين</p><p dir="RTL">- ارتباك ، نعاس ، مشاكل في الذاكرة ، تغيرات في الحالة المزاجية أو السلوك ، تصلب الرقبة ، مشاكل في التوازن ، وخز أو تنميل في الذراعين أو الساقين</p><p dir="RTL">- ازدواج الرؤية ، رؤية ضبابية ، حساسية من الضوء ، ألم في العين ، تغيرات في الرؤية</p><p dir="RTL">- ألم عضلي مستمر أو شديد أو ضعف وتشنجات عضلية</p><p dir="RTL">- انخفاض خلايا الدم الحمراء ، كدمات</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* <u>الالتهابات الحادة. قد تشمل علامات وأعراض الإصابة كما يلي</u>:</strong></p><p dir="RTL">- حمى</p><p dir="RTL">- سعال <strong>(كحة)</strong></p><p dir="RTL">- بأعراض تشبه أعراض الانفلونزا</p><p dir="RTL">- ألم عند التبول والتبول المتكرر أو آلام الظهر</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* <u>ردود الفعل التحسسية الشديدة المصاحبة للحقن الوريدي. قد تشمل علامات وأعراض تفاعلات الحقن</u>:</strong></p><p dir="RTL">- قشعريرة أو رعشة</p><p dir="RTL">- حكة أو طفح جلدي</p><p dir="RTL">- الهبات الساخنة</p><p dir="RTL">- ضيق في التنفس أو الصفير</p><p dir="RTL">- دوخة</p><p dir="RTL">- الشعور بالإغماء</p><p dir="RTL">- حمى</p><p dir="RTL">- آلام الظهر أو الرقبة</p><p>المضاعفات ، بما في ذلك داء الطعم حيال المضيف ، في الأشخاص الذين تلقوا عملية زرع نخاع العظم (الخلايا الجذعية) التي تستخدم الخلايا الجذعية من متبرع . يمكن أن تكون هذه المضاعفات خطيرة ويمكن أن تؤدي إلى الوفاة. قد تحدث هذه المضاعفات إذا خضعت لعملية زرع إما قبل أو بعد العلاج بـ تيسينتريك. سيراقبك مقدم الرعاية الصحية الخاص بك بحثًا عن هذه المضاعفات</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* <u>الحصول على العلاج الطبي على الفور قد يساعد في منع هذه المشاكل من أن تصبح أكثر خطورة</u>.</strong></p><p dir="RTL">سيقوم مقدم الرعاية الصحية الخاص بك بالتحقق من هذه المشكلات أثناء علاجك <strong>بالتيسنتريك</strong>. قد يقوم مقدم الرعاية الصحية الخاص بك بمعالجتك بالأدوية البديلة كا<strong>لكورتيكوستيرويد</strong> أو الهرمونات. قد يؤخر مقدم الرعاية الصحية أو يوقف تمامًا العلاج باستخدام <strong>تيسنتريك</strong> إذا كان لديك آثار جانبية حادة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong><u>الأطفال والمراهقين</u></strong></p><p dir="RTL">من غير المعروف ما إذا كان <strong>تيسنتريك</strong> آمنًا وفعالًا بالنسبة للأطفال.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong><u>الأدوية الأخرى وتيسنتريك</u></strong></p><p dir="RTL">أخبر مقدم الرعاية الصحية الخاص بك عن جميع الأدوية التي تتناولها بما في ذلك الأدوية التي تُصرف بدون وصفة طبية وكذلك الفيتامينات والمكملات العشبية.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong><u>الحمل ووسائل منع الحمل</u></strong></p><p dir="RTL">إذا كنتِ حاملا أو تخخطين للحمل. يمكن <strong>لتيسنتريك</strong> أن يضر طفلك الذي لم يولد بعد. عليكي إبلاغ مقدم الرعاية الصحية على الفور إذا كنتي حاملاً أو تعتقدين بأنك حامل أثناء العلاج <strong>بالتيسنتريك.</strong></p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong><u>الإناث القادرات على الحمل</u></strong><strong>:</strong></p><p dir="RTL">يجب على مقدم الرعاية الصحية إجراء اختبار الحمل لكِ قبل البدء في العلاج <strong>بالتيسنتريك.</strong></p><p dir="RTL">يجب عليكِ استخدام وسيلة فعالة لمنع الحمل أثناء العلاج ولمدة 5 أشهر على الأقل بعد آخر جرعة من <strong>تيسنتريك.</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* <u>الرضاعة الطبيعية</u></strong>&nbsp;</p><p dir="RTL">ليس من المعروف ما إذا كان تيسنتريك ينتقل إلى حليب الثدي. لا ترضعي طفلك أثناء العلاج ولمدة خمسة أشهر على</p><p dir="RTL">الأقل بعد آخر جرعة من <strong>تيسنتريك.</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* <u>القيادة واستخدام الآلات</u></strong></p><p dir="RTL">تيسنتريك له تأثير بسيط على قدرتك على القيادة واستخدام الآلات. إذا شعرت بالتعب، فلا تقود السيارة أو تستخدم الآلات إلى أن تشعر بالتحسن.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">- سوف يقوم مقدم الرعاية الصحية الخاص بك بإعطائك <strong>تيسنتريك</strong> حقناً في الوريد خلال 30 إلى 60 دقيقة.</p><p dir="RTL">- يتم إعطاء تيسنتريك عادة كل أسبوعين، ثلاثة أسابيع، أو أربعة أسابيع.</p><p dir="RTL">- سيقرر مقدم الرعاية الصحية الخاص بك عدد العلاجات التي تحتاجها.</p><p dir="RTL">- سيقوم مقدم الرعاية الصحية بفحص دمك للتحقق من وجود آثار جانبية معينة</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>إذا كنت نسيت جرعة من تيسنتريك</strong></p><p dir="RTL">إذا تغيبت عن أي مواعيد، فعليك أن تتصل بمقدم الرعاية الصحية في أقرب وقت ممكن لإعادة جدولة موعدك</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>إذا توقفت عن تلقي تيسنتريك</strong></p><p dir="RTL">لا تتوقف عن العلاج <strong>بالتيسنتريك</strong> إلا إذا ناقشت ذلك مع طبيبك. وذلك لأن التوقف عن تناول العلاج قد يوقف تأثير الدواء.</p><p dir="RTL">إذا كانت لديك أي أسئلة أخرى حول استخدام هذا الدواء، اسأل طبيبك أو ممرضتك.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">- كجميع الأدوية ˓ يمكن أن يسبب هذا الدواء آثارًا جانبية ولكن ليس بالضرورة أن تصيب جميع مستخدميه.</p><p dir="RTL">&nbsp;- يمكن أن يسبب <strong>تيسنتريك</strong> آثار جانبية خطيرة، بما في ذلك:</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* انظر &quot;التحذير والاحتياطات؟&quot;</strong></p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* تشمل الآثار الجانبية الأكثر شيوعًا للتيسنتريك عند استخدامه بمفرده التالي:</strong></p><p dir="RTL">- الشعور بالتعب أو الضعف</p><p dir="RTL">- نقص في الشهية</p><p dir="RTL">- الغثيان</p><p dir="RTL">- السعال <strong>(الكحة)</strong></p><p dir="RTL">- ضيق في التنفس</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>* تشمل الآثار الجانبية الأكثر شيوعًا للتيسنتريك عند استخدامه لعلاج سرطان الرئة مع أدوية السرطان الأخرى التالي:</strong></p><p dir="RTL">- الشعور بالتعب أو الضعف</p><p dir="RTL">- الغثيان</p><p dir="RTL">- تساقط الشعر</p><p dir="RTL">- الإمساك</p><p dir="RTL">- الإسهال</p><p dir="RTL">- نقص في الشهية</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>* تشمل الآثار الجانبية الأكثر شيوعًا للتيسنتريك عند استخدامه لعلاج سرطان الخلية الكبدية مع دواء </strong><strong>بيفاسيزوماب </strong><strong>التالي:</strong></p><p dir="RTL">- ارتفاع في ضغط الدم</p><p dir="RTL">- الشعور بالتعب أو الضعف</p><p dir="RTL">- كثرة البروتين في البول</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا لاحظت أي من الآثار الجانبية المذكورة أعلاه أو إذا ساءت، أخبر طبيبك على الفور</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>* <u>الإبلاغ عن الآثار الجانبية</u></strong></p><p dir="RTL">- إذا كنت تعاني من أي آثار جانبية قم بالتحدث إلى طبيبك أو ممرضتك. يشمل ذلك أي آثار جانبية محتملة غير مدرجة في هذه النشرة. عن طريق الإبلاغ عن الآثار الجانبية يمكنك المساعدة في توفير المزيد من المعلومات حول سلامة هذا الدواء.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">* سوف يتم تخزين <strong>تيسنتريك</strong> من قبل أخصائيي الرعاية الصحية في المستشفى أو في العيادة. وتفاصيل التخزين ستكون كما يلي:&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">- احفظ هذا الدواء بعيدا عن مرأى ومتناول الأطفال.</p><p dir="RTL">- لا تستخدم هذا الدواء بعد تاريخ انتهاء الصلاحية المذكور على الكرتون و ملصق القارورة. يشير تاريخ انتهاء الصلاحية إلى اليوم الأخير من ذلك الشهر</p><p dir="RTL">- قم بحفظ الدواء في الثلاجة (2 - 8 درجة مئوية). لا تجمد الدواء</p><p dir="RTL">- احفظ القارورة في الكرتون الخارجي من أجل الحماية من الضوء</p><p dir="RTL">- لا ينبغي أن يظل المحلول المخفف أكثر من 24 ساعة في درجة حرارة&nbsp; من2 درجة مئوية إلى 8 درجة مئوية أو 8 ساعات في درجة الحرارة المحيطة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">- لا تستخدم هذا الدواء إذا كان قاتم اللون <strong>(غير شفاف)</strong> أو تغير لونه أو يحتوي على جزيئات</p><p dir="RTL">* لا تقم بالتخلص من أي أدوية عن طريق مياه الصرف الصحي أو النفايات المنزلية. فسوف يقوم أخصائي الرعاية الصحية الخاص بك بالتخلص من أي أدوية لم تعد تحت طي الإستخدام ومن شأن هذه التدابير أن تساعد على حماية البيئة</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>* ما الذي يحتوي عليه تيسنتريك</strong></p><p dir="RTL">- المادة الفعالة هي <strong>أتيزوليزوماب</strong>. كل مل يحتوي على 60 مللجم من أ<strong>تيزوليزوماب</strong>. كل قارورة تحتوي على 1200 مللجم من أتيزوليزوماب في 20 مل</p><p dir="RTL">&nbsp;-المكونات الغير فعالة: حمض الخليك الثلجي و ال- هيستيدين والسكروز والبوليسوربات 20.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="rtl"><strong>* كيف يبدو تيسنتريك وما هي محتويات العبوة</strong></p><p dir="RTL">- تيسنتريك هو محلول مركز من أجل الحقن وهو سائل نقي عديم اللون يميل قليلاً إلى الإصفرار.</p><p dir="RTL">- وهو متوفر في عبوة تحتوي على أنبول زجاجي واحد</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="rtl"><strong>إف هوفمان لا روش المحدودة</strong></p><p dir="rtl"><strong>جرينزاشيرتسراس 124</strong></p><p dir="rtl"><strong>سي اتش - 4070، بازل،&nbsp;</strong></p><p dir="rtl"><strong>سويسرا</strong></p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            تم مراجعة هذه النشرة في شهر مايو 2020م
+
+للإبلاغ عن أي آثار جانبية:
+المملكة العربية السعودية:
+المركز الوطني للتيقظ والسلامة الدوائية (NPC)
+فاكس: 966112057662+
+مركز الاتصال الموحد 19999 
+البريد الإلكتروني: npc.drug@sfda.gov.sa
+الموقع الإلكتروني: www.sfda.gov.sa/npc
+
+دول مجلس التعاون الخليجي الأخرى:
+يرجى الاتصال بالهيئة المختصة ذات الصلة.
+
+هذا الدواء
+- هذا الدواء منتج يؤثر على صحتك واستهلاكه بطريقة مخالفة للتعليمات يعرض حياتك للخطر.
+- اتبع إرشادات الطبيب وطريقة الاستخدام وتعليمات الصيدلي الذي باع لك هذا الدواء.
+- الطبيب والصيدلي هم خبراء في الأدوية وفوائدها ومخاطرها.
+- لا تتوقف من تلقاء نفسك عن العلاج الموصوف لك.
+- لا تكرر نفس الوصفة الطبية من تلقاء نفسك دور استشارة الطبيب.
+- تحفظ جميع الأدوية بعيدا عن متناول الأطفال.
+
+مجلس وزراء الصحة العرب
+اتحاد الصيادلة العرب
+
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

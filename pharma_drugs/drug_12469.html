@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        0304245150
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Uptravi 400 mcg
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SELEXIPAG
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        400
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        60
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        48
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        10927.20
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="EXCELLA GmbH &amp; Co. KG" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            EXCELLA GmbH & Co. KG
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 359]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Cigalah Group
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Janssen-Cilag International NV 
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        B01AC27
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Uptravi 200 microgram film-coated tablets. Uptravi 400 microgram film coated tablets
+Uptravi 600 microgram film-coated tablets.
+Uptravi 800 microgram film coated tablets
+Uptravi 1,000 microgram film-coated tablets. Uptravi 1,200 microgram film-coated tablets. Uptravi 1,400 microgram film-coated tablets. Uptravi 1,600 microgram film-coated tablets.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Uptravi 200 microgram film-coated tablets
+Each film-coated tablet contains 200 micrograms of selexipag.
+
+Uptravi 400 microgram film coated tablets
+
+Each film coated tablet contains 400 micrograms of selexipag 
+
+Uptravi 600 microgram film-coated tablets
+Each film-coated tablet contains 600 micrograms of selexipag.
+
+Uptravi 800 microgram film coated tablets
+
+Each film coated tablet contains 800 micrograms of selexipag.
+
+Uptravi 1,000 microgram film-coated tablets
+Each film-coated tablet contains 1,000 micrograms of selexipag.
+
+Uptravi 1,200 microgram film-coated tablets
+Each film-coated tablet contains 1,200 micrograms of selexipag.
+
+Uptravi 1,400 microgram film-coated tablets
+Each film-coated tablet contains 1,400 micrograms of selexipag.
+
+Uptravi 1,600 microgram film-coated tablets
+Each film-coated tablet contains 1,600 micrograms of selexipag. For the full list of excipients, see section 6.1.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film coated tablet
+
+Uptravi 200 microgram film coated tablets
+Round, 7.3 mm diameter, light yellow, film coated tablets,with “2” debossed on one side.
+
+Uptravi 400 microgram film coated tablets
+Round, 7.3 mm diameter, red, film coated tablets with “4” debossed on one side.
+
+Uptravi 600 microgram film coated tablets
+Round, 7.3 mm diameter, light violet, film coated tablets with “6” debossed on one side.
+
+Uptravi 800 microgram film coated tablets
+Round, 7.3 mm diameter, green, film coated tablets with “8” debossed on one side.
+
+Uptravi 1,000 microgram film coated tablets
+Round, 7.3 mm diameter, orange, film coated tablets with “10” debossed on one side.
+
+Uptravi 1,200 microgram film coated tablets
+Round, 7.3 mm diameter, dark violet, film coated tablets with “12” debossed on one side.
+
+Uptravi 1,400 microgram film coated tablets
+Round, 7.3 mm diameter, dark yellow, film coated tablets with “14” debossed on one side.
+
+Uptravi 1,600 microgram film coated tablets
+Round, 7.3 mm diameter, brown, film coated tablets with “16” debossed on one side.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Uptravi is indicated for the long-term treatment of pulmonary arterial hypertension (PAH) in adult patients with WHO functional class (FC) II&ndash;III, either as combination therapy in patients insufficiently controlled with an endothelin receptor antagonist (ERA) and/or a phosphodiesterase type 5 (PDE-5) inhibitor, or as monotherapy in patients who are not candidates for these therapies.</p><p>&nbsp;</p><p>Efficacy has been shown in a PAH population including idiopathic and heritable PAH, PAH associated with connective tissue disorders, and PAH associated with corrected simple congenital heart disease (see section 5.1).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment should only be initiated and monitored by a physician experienced in the treatment of PAH.</p><p>&nbsp;</p><p><u>Posology</u></p><p>&nbsp;</p><p><em>Individualised dose titration</em></p><p>Each patient should be up‑titrated to the highest individually tolerated dose, which can range from 200&nbsp;micrograms given twice daily to 1,600&nbsp;micrograms given twice daily (individualised maintenance dose).</p><p>&nbsp;</p><p>The recommended starting dose is 200&nbsp;micrograms given twice daily, approximately 12&nbsp;hours apart. The dose is increased in increments of 200&nbsp;micrograms given twice daily, usually at weekly intervals. At the beginning of treatment and at each up‑titration step it is recommended to take the first dose in the evening. During dose titration some adverse reactions, reflecting the mode of action of selexipag (such as headache, diarrhoea, nausea and vomiting, jaw pain, myalgia, pain in extremity, arthralgia, and flushing), may occur. They are usually transient or manageable with symptomatic treatment (see section&nbsp;4.8). However, if a patient reaches a dose that cannot be tolerated, the dose should be reduced to the previous dose level.</p><p>&nbsp;</p><p>In patients in whom up‑titration was limited by reasons other than adverse reactions reflecting the mode of action of selexipag, a second attempt to continue up‑titration to the highest individually tolerated dose up to a maximum dose of 1,600&nbsp;micrograms twice daily may be considered.</p><p>&nbsp;</p><p><em>Individualised maintenance dose</em></p><p>The highest tolerated dose reached during dose titration should be maintained. If the therapy over time is less tolerated at a given dose, symptomatic treatment and/or a dose reduction to the next lower dose should be considered.</p><p>&nbsp;</p><p><em>Interruptions and discontinuations</em></p><p>If a dose is missed, it should be taken as soon as possible. The missed dose should not be taken if the next scheduled dose is within approximately 6&nbsp;hours.</p><p>&nbsp;</p><p>If treatment is missed for 3&nbsp;days or more, Uptravi should be restarted at a lower dose and then up‑titrated.</p><p>&nbsp;</p><p>There is limited experience with abrupt discontinuation of selexipag in patients with PAH. No evidence for acute rebound has been observed.</p><p>&nbsp;</p><p>However, if the decision to withdraw Uptravi is taken, it should be done gradually while an alternative therapy is introduced.</p><p>&nbsp;</p><p><em>Dose adjustment with co-administration of moderate CYP2C8 inhibitors</em></p><p>When co-administered with moderate CYP2C8 inhibitors (e.g., clopidogrel, deferasirox and teriflunomide), reduce the dosing of Uptravi to once daily. If the therapy is not tolerated at a given dose, symptomatic treatment and/or a dose reduction to the next lower dose should be considered. Revert to twice daily dosing frequency of Uptravi when co-administration of moderate CYP2C8 inhibitor is stopped (see section 4.5).</p><p>&nbsp;</p><p><u>Special populations</u></p><p><em>Elderly (&ge;</em><em>&nbsp;65</em><em>&nbsp;years)</em></p><p>No adjustment to the dose regimen is needed in elderly people (see section&nbsp;5.2). There is limited clinical experience in patients over the age of 75&nbsp;years, therefore Uptravi should be used with caution in this population (see section&nbsp;4.4).</p><p>&nbsp;</p><p>Hepatic impairment</p><p>Selexipag should not be administered in patients with severe liver impairment (Child‑Pugh class&nbsp;C; see section&nbsp;4.4). For patients with moderate hepatic impairment (Child‑Pugh class&nbsp;B), the starting dose of treatment should be 200&nbsp;micrograms once daily and increased at weekly intervals by increments of 200&nbsp;micrograms given once daily until adverse reactions, reflecting the mode of action of selexipag, that cannot be tolerated or medically managed are experienced. No adjustment to the dose regimen is needed in patients with mild hepatic impairment (Child‑Pugh class&nbsp;A).</p><p>&nbsp;</p><p>Renal impairment</p><p>No adjustment to the dose regimen is needed in patients with mild or moderate renal impairment. No change in starting dose is required in patients with severe renal impairment (estimated glomerular filtration rate [eGFR] &lt;&nbsp;30&nbsp;mL/min/1.73&nbsp;m<sup>2</sup>); dose titration should be done with caution in these patients (see section&nbsp;4.4).</p><p>&nbsp;</p><p><em>Paediatric population</em></p><p>The safety and efficacy of selexipag in children aged 0 to less than 18&nbsp;years have not yet been established. No data are available. Administration of selexipag in the paediatric population is not recommended. Animal studies indicated an increased risk of intussusception, but the clinical relevance of these findings is unknown (see section&nbsp;5.3).</p><p>&nbsp;</p><p><u>Method of administration</u></p><p>&nbsp;</p><p>Oral use.</p><p>&nbsp;</p><p>The film‑coated tablets are to be taken orally in the morning and in the evening. To improve tolerability, it is recommended to take Uptravi with food and, at the beginning of each up‑titration phase, to take the first increased dose in the evening.</p><p>&nbsp;</p><p>The tablets should not be split, crushed or chewed, and are to be swallowed with water.</p><p>&nbsp;</p><p>Patients who have poor vision or are blind must be instructed to get assistance from another person when taking Uptravi during the titration period.</p><p>&nbsp;</p><p><br />&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                 Hypersensitivity to the active substance or to any of the excipients listed in section 6.1.
+
+·                Severe coronary heart disease or unstable angina.
+
+·                Myocardial infarction within the last 6 months.
+
+·                Decompensated cardiac failure if not under close medical supervision.
+
+·                Severe arrhythmias.
+
+·                Cerebrovascular events (e.g., transient ischaemic attack, stroke) within the last 3 months.
+
+·                Congenital or acquired valvular defects with clinically relevant myocardial function disorders not related to pulmonary hypertension.
+
+·                Concomitant use of strong inhibitors of CYP2C8 (e.g., gemfibrozil; see section 4.5).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Hypotension</u></p><p>&nbsp;</p><p>Selexipag has vasodilatory properties that may result in lowering of blood pressure. Before prescribing Uptravi, physicians should carefully consider whether patients with certain underlying conditions could be adversely affected by vasodilatory effects (e.g., patients on antihypertensive therapy or with resting hypotension, hypovolaemia, severe left ventricular outflow obstruction or autonomic dysfunction) (see section 4.8).</p><p>&nbsp;</p><p><u>Hyperthyroidism</u></p><p>&nbsp;</p><p>Hyperthyroidism has been observed with Uptravi. Thyroid function tests are recommended as clinically indicated in the presence of signs or symptoms of hyperthyroidism (see section 4.8).</p><p>&nbsp;</p><p><u>Pulmonary veno</u><u>‑occlusive disease</u></p><p>&nbsp;</p><p>Cases of pulmonary oedema have been reported with vasodilators (mainly prostacyclins) when used in patients with pulmonary veno‑occlusive disease. Consequently, if signs of pulmonary oedema occur when Uptravi is administered in patients with PAH, the possibility of pulmonary veno‑occlusive disease should be considered. If confirmed, treatment is to be discontinued.</p><p>&nbsp;</p><p><u>Elderly (&ge;</u><u>&nbsp;65</u><u>&nbsp;years)</u></p><p>&nbsp;</p><p>There is limited clinical experience with selexipag in patients over the age of 75&nbsp;years, therefore, Uptravi should be used with caution in this population (see section&nbsp;4.2).</p><p>&nbsp;</p><p><u>Hepatic impairment</u></p><p>&nbsp;</p><p>There is no clinical experience with selexipag in patients with severe liver impairment (Child‑Pugh class&nbsp;C), therefore treatment should not be administered in these patients. The exposure to selexipag and its active metabolite is increased in subjects with moderate hepatic impairment (Child‑Pugh class&nbsp;B; see section&nbsp;5.2). In patients with moderate hepatic impairment, Uptravi should be dosed once daily (see section&nbsp;4.2).</p><p>&nbsp;</p><p><u>Renal impairment</u></p><p>&nbsp;</p><p>In patients with severe renal impairment (eGFR &lt;&nbsp;30&nbsp;mL/min/1.73&nbsp;m<sup>2</sup>), caution should be exercised during dose titration. There is no experience with Uptravi in patients undergoing dialysis (see section&nbsp;5.2), therefore Uptravi should not be used in these patients.</p><p>&nbsp;</p><p><u>Women of childbearing potential</u></p><p><u>&nbsp;</u></p><p>Women of childbearing potential should practise effective contraception while taking selexipag (see section 4.6).</p><p>&nbsp;</p><p>&nbsp;</p><p><br />&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Effect of other medicinal products on selexipag</u></p><p>&nbsp;</p><p>Selexipag is hydrolysed to its active metabolite by carboxylesterases (see section&nbsp;5.2). Selexipag and its active metabolite both undergo oxidative metabolism mainly by CYP2C8 and to a smaller extent by CYP3A4. The glucuronidation of the active metabolite is catalysed by UGT1A3 and UGT2B7. Selexipag and its active metabolite are substrates of OATP1B1 and OATP1B3. Selexipag is a weak substrate of the P‑gp efflux pump. The active metabolite is a weak substrate of the breast cancer resistance protein (BCRP).</p><p>&nbsp;</p><p>The pharmacokinetics of selexipag and its active metabolite are not affected by warfarin.</p><p>&nbsp;</p><p><em>Inhibitors of CYP2C8</em></p><p>In the presence of 600 mg gemfibrozil, twice a day, a strong inhibitor of CYP2C8, exposure to selexipag increased approximately 2-fold, whereas exposure to the active metabolite, the major contributor to efficacy, increased approximately 11-fold. Concomitant administration of Uptravi with strong inhibitors of CYP2C8 (e.g., gemfibrozil) is contraindicated (see section&nbsp;4.3).</p><p>&nbsp;</p><p>Concomitant administration of Uptravi with clopidogrel (loading dose of 300 mg or maintenance dose of 75 mg once a day), a moderate inhibitor of CYP2C8, had no relevant effect on the exposure to selexipag but increased the exposure to the active metabolite approximately 2.2 and 2.7-fold following loading dose and maintenance dose, respectively. Dosing frequency of Uptravi should be reduced to once daily when co-administered with moderate CYP2C8 inhibitors (e.g., clopidogrel, deferasirox, teriflunomide). Dosing frequency of Uptravi should be reverted to twice daily when co-administration of moderate CYP2C8 inhibitor is stopped (see section 4.2).</p><p>&nbsp;</p><p><em>Inducers of CYP2C8</em></p><p>In the presence of 600 mg rifampicin, once a day, an inducer of CYP2C8 (and UGT enzymes), the exposure to selexipag did not change, whereas exposure to the active metabolite was reduced by half. Dose adjustment of selexipag may be required with concomitant administration of inducers of CYP2C8 (e.g., rifampicin, carbamazepine, phenytoin).</p><p>&nbsp;</p><p><em>Inhibitors of UGT1A3 and UGT2B7</em></p><p>The effect of strong inhibitors of UGT1A3 and UGT2B7 (valproic acid, probenecid, and fluconazole) on the exposure to selexipag and its active metabolite has not been studied. Caution is required when administering these medicinal products concomitantly with Uptravi. A potential pharmacokinetic interaction with strong inhibitors of UGT1A3 and UGT2B7 cannot be excluded.</p><p>&nbsp;</p><p><em>Inhibitors and inducers of CYP3A4</em></p><p>In the presence of 400&nbsp;mg/100&nbsp;mg lopinavir/ritonavir twice daily, a strong CYP3A4 inhibitor, exposure to selexipag increased approximately 2‑fold, whereas the exposure to the active metabolite of selexipag did not change. Given the 37‑fold higher potency of the active metabolite, this effect is not clinically relevant. Since a strong inhibitor of CYP3A4 did not affect the pharmacokinetics of the active metabolite, indicating that the CYP3A4 pathway is not important in the elimination of the active metabolite, no effect of inducers of CYP3A4 on the pharmacokinetics of the active metabolite is expected.</p><p>&nbsp;</p><p><em>PAH</em><em>‑specific therapies</em></p><p>In the Phase 3 placebo‑controlled trial in patients with PAH, the use of selexipag in combination with both an ERA and a PDE‑5 inhibitor resulted in a 30% lower exposure to the active metabolite.</p><p>&nbsp;</p><p><em>Transporter inhibitors (lopinavir/ritonavir)</em></p><p>In the presence of 400&nbsp;mg/100&nbsp;mg lopinavir/ritonavir twice daily, a strong OATP (OATP1B1 and OATP1B3) and P‑gp inhibitor, exposure to selexipag increased approximately 2‑fold, whereas the exposure to the active metabolite of selexipag did not change. Given that the majority of the pharmacological effect is driven by the active metabolite, this effect is not clinically relevant.</p><p>&nbsp;</p><p><u>Effect of selexipag on other medicinal products</u></p><p>&nbsp;</p><p>Selexipag and its active metabolite do not inhibit or induce cytochrome P450 enzymes and transport proteins at clinically relevant concentrations.</p><p>&nbsp;</p><p><em>Anticoagulants or inhibitors of platelet aggregation</em></p><p>Selexipag is an inhibitor of platelet aggregation in vitro. In the Phase 3 placebo‑controlled study in patients with PAH, no increased risk of bleeding was detected with selexipag compared to placebo, including when selexipag was administered with anticoagulants (such as heparin, coumarin‑type anticoagulants) or inhibitors of platelet aggregation. In a study in healthy subjects, selexipag (400&nbsp;micrograms twice daily) did not alter the exposure to S‑warfarin (CYP2C9 substrate) or R‑warfarin (CYP3A4 substrate) after a single dose of 20&nbsp;mg warfarin. Selexipag did not influence the pharmacodynamic effect of warfarin on the international normalised ratio.</p><p>&nbsp;</p><p><em>Midazolam</em></p><p>At steady state after up-titration to 1,600&nbsp;micrograms selexipag twice a day, no clinically relevant change in exposure to midazolam, a sensitive intestinal and hepatic CYP3A4 substrate, or its metabolite, 1‑hydroxymidazolam, was observed. Concomitant administration of selexipag with CYP3A4 substrates does not require dose adjustment.</p><p>&nbsp;</p><p><em>Hormonal contraceptives</em></p><p>Specific drug‑drug interaction studies with hormonal contraceptives have not been conducted. Since selexipag did not affect the exposure to the CYP3A4 substrates midazolam and R‑warfarin or to the CYP2C9 substrate S‑warfarin, reduced efficacy of hormonal contraceptives is not expected.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Women of childbearing potential</u></p><p><u>&nbsp;</u></p><p>Women of childbearing potential should practise effective contraception while taking selexipag (see section 4.4).</p><p>&nbsp;</p><p><u>Pregnancy</u></p><p>&nbsp;</p><p>There are no data from the use of selexipag in pregnant women. Animal studies do not indicate direct or indirect harmful effects with respect to reproductive toxicity. Selexipag and its main metabolite showed 20- to 80‑times lower prostacyclin (IP) receptor potency <em>in&nbsp;vitro</em> for animal species used in reproductive toxicity testing compared to humans. Therefore, safety margins for potential IP&nbsp;receptor‑mediated effects on reproduction are accordingly lower than for non‑IP‑related effects (see section&nbsp;5.3).</p><p>&nbsp;</p><p>Uptravi is not recommended during pregnancy and in women of childbearing potential not using contraception.</p><p><u>&nbsp;</u></p><p><u>Breast-feeding</u></p><p>&nbsp;</p><p>It is unknown whether selexipag or its metabolites are excreted in human milk. In rats, selexipag or its metabolites are excreted in milk (see section&nbsp;5.3). A risk to the suckling child cannot be excluded. Uptravi should not be used during breast‑feeding.</p><p><u>&nbsp;</u></p><p><u>Fertility</u></p><p>&nbsp;</p><p>There are no clinical data available. In rat studies, selexipag at high doses caused transient disturbances in oestrus cycles that did not affect fertility (see section&nbsp;5.3). The relevance for humans is not known.</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Uptravi has minor influence on the ability to drive and use machines. The clinical status of the patient and the adverse reaction profile of selexipag (such as headache or hypotension, see section 4.8) should be kept in mind when considering the patient&rsquo;s ability to drive and use machines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Summary of the safety profile</u></p><p>&nbsp;</p><p>The most commonly reported adverse reactions are headache, diarrhoea, nausea and vomiting, jaw pain, myalgia, pain in extremity, arthralgia, and flushing. These reactions are more frequent during the up‑titration phase. The majority of these reactions are of mild to moderate intensity.</p><p><u>&nbsp;</u></p><p>The safety of selexipag has been evaluated in a long‑term, Phase 3 placebo‑controlled study enrolling 1,156&nbsp;patients with symptomatic PAH. The mean treatment duration was 76.4&nbsp;weeks (median 70.7&nbsp;weeks) for patients receiving selexipag versus 71.2&nbsp;weeks (median 63.7&nbsp;weeks) for patients on placebo. The exposure to selexipag was up to 4.2&nbsp;years.</p><p><u>&nbsp;</u></p><p><u>Tabulated list of adverse reactions</u></p><p>&nbsp;</p><p>Adverse reactions obtained from the pivotal clinical study are tabulated below. The adverse reactions are ranked by frequency within each system organ class (SOC) and presented in order of decreasing seriousness. Frequencies are defined as very common (&ge;1/10), common (&ge;1/100 to &lt;1/10); uncommon (&ge;1/1,000 to &lt;1/100); rare (&ge;1/10,000 to &lt;1/1,000); very rare (&lt;1/10,000).</p><p><u>&nbsp;</u></p><table border="1" cellspacing="0" cellpadding="0" style="width:619px"><tbody><tr><td style="vertical-align:bottom"><p><strong>System organ class</strong></p></td><td style="vertical-align:bottom"><p><strong>Very common</strong></p></td><td style="vertical-align:bottom"><p><strong>Common</strong></p></td><td style="vertical-align:bottom"><p><strong>Uncommon</strong></p></td></tr><tr><td style="vertical-align:top"><p>Blood and lymphatic disorders</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td><td style="vertical-align:top"><p>Anaemia*</p><p>Haemoglobin decreased*</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Endocrine disorders</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td><td style="vertical-align:top"><p>Hyperthyroidism*</p><p>Thyroid-stimulating Hormone decreased</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Metabolism and nutrition disorders</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td><td style="vertical-align:top"><p>Decreased appetite</p><p>Weight decrease</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Nervous system disorders</p></td><td style="vertical-align:top"><p>Headache*</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Cardiac disorders</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td><td style="vertical-align:top"><p>Sinus tachycardia*</p></td></tr><tr><td style="vertical-align:top"><p>Vascular disorders</p></td><td style="vertical-align:top"><p>Flushing*</p></td><td style="vertical-align:top"><p>Hypotension*</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Respiratory, thoracic and mediastinal disorders</p></td><td style="vertical-align:top"><p>Nasopharyngitis (of non-infectious origin)</p></td><td style="vertical-align:top"><p>Nasal congestion</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Gastro‑intestinal disorders</p></td><td style="vertical-align:top"><p>Diarrhoea*</p><p>Vomiting*</p><p>Nausea*</p></td><td style="vertical-align:top"><p>Abdominal pain</p><p>Dyspepsia*</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Skin and subcutaneous tissue disorders</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td><td style="vertical-align:top"><p>Rash</p><p>Urticaria</p><p>Erythema</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr><tr><td style="vertical-align:top"><p>Musculoskeletal and connective tissue disorders</p></td><td style="vertical-align:top"><p>Jaw pain*</p><p>Myalgia*</p><p>Arthralgia*</p><p>Pain in extremity*</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>General disorders and administration site conditions</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td><td style="vertical-align:top"><p>Pain</p></td><td style="vertical-align:top"><p><u>&nbsp;</u></p></td></tr></tbody></table><p><sup>*</sup>&nbsp;&nbsp; See section Description of selected adverse reactions.</p><p><u>&nbsp;</u></p><p><u>Description of selected adverse reactions</u></p><p><u>&nbsp;</u></p><p><em>Pharmacological effects associated with titration and maintenance treatment</em></p><p>Adverse reactions associated with the mode of action of selexipag have been observed frequently, in particular during the phase of individualised dose titration, and are tabulated below:</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0" style="width:100%"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>Prostacyclin-like associated adverse reactions</strong><strong> </strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Titration</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Maintenance</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>Selexipag</strong></p></td><td style="vertical-align:top"><p><strong>Placebo</strong></p></td><td style="vertical-align:top"><p><strong>Selexipag</strong></p></td><td style="vertical-align:top"><p><strong>Placebo</strong></p></td></tr><tr><td style="vertical-align:top"><p>Headache</p></td><td style="vertical-align:top"><p>64%</p></td><td style="vertical-align:top"><p>28%</p></td><td style="vertical-align:top"><p>40%</p></td><td style="vertical-align:top"><p>20%</p></td></tr><tr><td style="vertical-align:top"><p>Diarrhoea</p></td><td style="vertical-align:top"><p>36%</p></td><td style="vertical-align:top"><p>12%</p></td><td style="vertical-align:top"><p>30%</p></td><td style="vertical-align:top"><p>13%</p></td></tr><tr><td style="vertical-align:top"><p>Nausea</p></td><td style="vertical-align:top"><p>29%</p></td><td style="vertical-align:top"><p>13%</p></td><td style="vertical-align:top"><p>20%</p></td><td style="vertical-align:top"><p>10%</p></td></tr><tr><td style="vertical-align:top"><p>Pain in jaw</p></td><td style="vertical-align:top"><p>26%</p></td><td style="vertical-align:top"><p>4%</p></td><td style="vertical-align:top"><p>21%</p></td><td style="vertical-align:top"><p>4%</p></td></tr><tr><td style="vertical-align:top"><p>Myalgia</p></td><td style="vertical-align:top"><p>15%</p></td><td style="vertical-align:top"><p>5%</p></td><td style="vertical-align:top"><p>9%</p></td><td style="vertical-align:top"><p>3%</p></td></tr><tr><td style="vertical-align:top"><p>Pain in extremity</p></td><td style="vertical-align:top"><p>14%</p></td><td style="vertical-align:top"><p>5%</p></td><td style="vertical-align:top"><p>13%</p></td><td style="vertical-align:top"><p>6%</p></td></tr><tr><td style="vertical-align:top"><p>Vomiting</p></td><td style="vertical-align:top"><p>14%</p></td><td style="vertical-align:top"><p>4%</p></td><td style="vertical-align:top"><p>8%</p></td><td style="vertical-align:top"><p>6%</p></td></tr><tr><td style="vertical-align:top"><p>Flushing</p></td><td style="vertical-align:top"><p>11%</p></td><td style="vertical-align:top"><p>4%</p></td><td style="vertical-align:top"><p>10%</p></td><td style="vertical-align:top"><p>3%</p></td></tr><tr><td style="vertical-align:top"><p>Arthralgia</p></td><td style="vertical-align:top"><p>7%</p></td><td style="vertical-align:top"><p>5%</p></td><td style="vertical-align:top"><p>9%</p></td><td style="vertical-align:top"><p>5%</p></td></tr></tbody></table><p>&nbsp;</p><p>These effects are usually transient or manageable with symptomatic treatment. 7.5% of patients on selexipag discontinued treatment due to these adverse reactions. The approximate rate of adverse reactions that were serious was 2.3% in the selexipag group and 0.5% in the placebo group. In clinical practice, gastro‑intestinal events have been observed to respond to anti‑diarrhoeal, anti‑emetic, and anti‑nauseant medicinal products and/or medicinal products for functional gastro‑intestinal disorders. Pain‑associated events have frequently been treated with analgesics (such as paracetamol).</p><p><em>Haemoglobin decrease</em></p><p>In a Phase 3 placebo‑controlled study in patients with PAH, mean absolute changes in haemoglobin at regular visits compared to baseline ranged from -0.34 to -0.02&nbsp;g/dL in the selexipag group compared to -0.05 to 0.25&nbsp;g/dL in the placebo group. A decrease from baseline in haemoglobin concentration to below 10&nbsp;g/dL was reported in 8.6% of selexipag‑treated patients and 5.0% of placebo‑treated patients.</p><p>&nbsp;</p><p>In a phase&nbsp;3 placebo-controlled study in patients newly diagnosed with PAH, mean absolute changes in haemoglobin at regular visits compared to baseline ranged from -1.77 to -1.26&nbsp;g/dL in the triple therapy group (selexipag, macitentan, tadalafil) compared to -1.61 to -1.28&nbsp;g/dL in the double therapy group (placebo, macitentan and tadalafil). A decrease from baseline in haemoglobin concentration to below 10&nbsp;g/dL was reported in 19.0% of patients in the triple therapy group and 14.5% in the double therapy group. Anaemia was reported with very common frequency (13.4%) in the triple therapy group compared to common frequency (8.3%) in the double therapy group.</p><p>&nbsp;</p><p><em>Thyroid function tests</em></p><p>In a Phase 3 placebo‑controlled study in patients with PAH, hyperthyroidism was reported for 1.6% of patients in the selexipag group, compared to no case in the placebo group (see section&nbsp;4.4). A reduction (up to -0.3&nbsp;MU/L from a baseline median of 2.5&nbsp;MU/L) in median thyroid‑stimulating hormone was observed at most visits in the selexipag group. In the placebo group, little change in median values was apparent. There were no mean changes in triiodothyronine or thyroxine in either group.</p><p>&nbsp;</p><p><em>Increase in heart rate</em></p><p>In the Phase 3 placebo‑controlled study in patients with PAH, a transient increase in mean heart rate of 3&ndash;4&nbsp;bpm at 2&ndash;4&nbsp;hours post‑dose was observed. Electrocardiogram investigations showed sinus tachycardia in 11.3% of patients in the selexipag group compared to 8.8% in the placebo group (see section 5.1).</p><p>&nbsp;</p><p><em>Hypotension</em></p><p>In the Phase 3 placebo‑controlled study in patients with PAH, hypotension was reported for 5.8% of patients in the selexipag group compared to 3.8% in the placebo group. Mean absolute changes in systolic blood pressure at regular visits compared to baseline ranged from -2.0 to -1.5&nbsp;mmHg in the selexipag group compared to -1.3 to 0.0&nbsp;mmHg in the placebo group and in diastolic blood pressure ranged from -1.6 to -0.1&nbsp;mmHg in the selexipag group compared to -1.1 to 0.3&nbsp;mmHg in the placebo group. Systolic blood pressure decrease below 90&nbsp;mmHg was recorded for 9.7% of patients in the selexipag group compared 6.7% in the placebo group.</p><p>&nbsp;</p><p><em>Dyspepsia </em></p><p>In a phase&nbsp;3 placebo-controlled study in patients newly diagnosed with PAH, dyspepsia was reported with very common frequency (16.8%) in patients receiving triple therapy (selexipag, macitentan, tadalafil) compared to common frequency (8.3%) in patients receiving double therapy (placebo, macitentan and tadalafil).</p><p>&nbsp;</p><p><em>Long-term safety</em></p><p>Of the 1,156&nbsp;patients who participated in the pivotal study, 709 patients entered a long-term open-label extension study (330 patients who continued on selexipag from the GRIPHON study and 379 patients who received placebo in GRIPHON and crossed over to selexipag). Long-term follow up of patients treated with selexipag for a median treatment duration of 30.5 months and for a maximum of up to 103 months showed a safety profile that was similar to that observed in the pivotal clinical study described above.</p><p>&nbsp;</p><p><u>Reporting of suspected adverse reactions</u></p><p>&nbsp;</p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions via the national reporting system listed in Appendix V.</p><p><u>To reports any side effect(s):</u></p><p>&nbsp;</p><p>Saudi Arabia:</p><p><strong>&nbsp;</strong></p><p>&middot;&nbsp;&nbsp;&nbsp; The National Pharmacovigilance Centre (NPC):</p><p>-&nbsp; &nbsp;SFDA Call Center: 19999</p><p>-&nbsp;&nbsp;&nbsp; E-mail: npc.drug@sfda.gov.sa</p><p>-&nbsp;&nbsp;&nbsp; Website: https://ade.sfda.gov.sa/</p><p><br /><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><![endif]--><!--[if mso & !supportInlineShapes & supportFields]><span
+lang=EN-GB><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:455.55pt;
+ height:67.5pt'>
+ <v:imagedata croptop="-65520f" cropbottom="65520f"/>
+</v:shape><span style='mso-element:field-end'></span></span><![endif]--></p><p><strong>&nbsp;</strong></p><p><strong>Other GCC States:</strong></p><p><strong>&nbsp;</strong>&ndash; Please contact the relevant competent authority.</p><p>.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Isolated cases of overdose up to 3,200&nbsp;micrograms were reported. Mild, transient nausea was the only reported consequence. In the event of overdose, supportive measures must be taken as required. Dialysis is unlikely to be effective because selexipag and its active metabolite are highly protein bound.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Antithrombotic agents, platelet aggregation inhibitors excluding heparin, ATC code: B01AC27</p><p>&nbsp;</p><p><u>Mechanism of action</u></p><p>&nbsp;</p><p>Selexipag is a selective IP&nbsp;receptor agonist distinct from prostacyclin and its analogues. Selexipag is hydrolysed by carboxylesterases to yield its active metabolite, which is approximately 37‑fold more potent than selexipag. Selexipag and the active metabolite are high‑affinity IP&nbsp;receptor agonists with a high selectivity for the IP&nbsp;receptor versus other prostanoid receptors (EP<sub>1</sub>&ndash;EP<sub>4</sub>, DP, FP, and TP). Selectivity against EP<sub>1</sub>, EP<sub>3</sub>, FP, and TP is important because these are well‑described contractile receptors in the gastro‑intestinal tract and blood vessels. Selectivity against EP<sub>2</sub>, EP<sub>4</sub>, and DP<sub>1</sub> is important because these receptors mediate immune depressive effects.</p><p>&nbsp;</p><p>Stimulation of the IP&nbsp;receptor by selexipag and the active metabolite leads to vasodilatory as well as anti‑proliferative and anti‑fibrotic effects. Selexipag prevents cardiac and pulmonary remodelling in a rat model of PAH and causes proportional decreases in pulmonary and peripheral pressures, indicating that peripheral vasodilation reflects pulmonary pharmacodynamic efficacy. Selexipag does not cause IP&nbsp;receptor desensitisation <em>in</em><em> vitro</em> nor tachyphylaxis in a rat model.</p><p>&nbsp;</p><p><u>Pharmacodynamic effects</u></p><p>&nbsp;</p><p><em>Cardiac electrophysiology</em></p><p>In a thorough QT study in healthy subjects, repeated doses of 800 and 1,600&nbsp;micrograms of selexipag twice daily did not show an effect on cardiac repolarisation (QT<sub>c</sub> interval) or conduction (PR and QRS intervals) and had a mild accelerating effect on heart rate (the placebo‑corrected, baseline‑adjusted increase in heart rate reached 6&ndash;7&nbsp;bpm at 1.5 to 3&nbsp;h after dosing with 800&nbsp;micrograms selexipag and 9‑10&nbsp;bpm at the same timepoints after 1,600&nbsp;micrograms selexipag).</p><p>&nbsp;</p><p><em>Coagulation factors</em></p><p>In Phase 1 and 2 studies a slight decrease in plasma levels of von Willebrand factor (vWF) was observed with selexipag; the vWF values remained above the lower limit of the normal range.</p><p>&nbsp;</p><p><em>Pulmonary haemodynamics</em></p><p>A Phase 2 double‑blind, placebo‑controlled clinical study assessed haemodynamic variables after 17&nbsp;weeks of treatment in patients with PAH WHO FC II&ndash;III and concomitantly receiving ERAs and/or PDE‑5 inhibitors. Patients titrating selexipag to an individually tolerated dose (200&nbsp;micrograms twice daily increments up to 800&nbsp;micrograms twice daily; N&nbsp;=&nbsp;33) achieved a statistically significant mean reduction in pulmonary vascular resistance of 30.3% (95% confidence interval [CI]: -44.7%, -12.2%; p&nbsp;=&nbsp;0.0045) and an increase in cardiac index (mean treatment effect) of 0.48&nbsp;L/min/m<sup>2</sup> (95% CI: 0.13, 0.83) compared to placebo (N&nbsp;=&nbsp;10).</p><p>&nbsp;</p><p><u>Clinical efficacy and safety</u></p><p>&nbsp;</p><p><em>Efficacy in patients with PAH</em></p><p>The effect of selexipag on progression of PAH was demonstrated in a multi‑centre, long‑term (maximum duration of exposure approximately 4.2&nbsp;years), double‑blind, placebo‑controlled, parallel‑group, event‑driven Phase 3 study (GRIPHON) in 1,156&nbsp;patients with symptomatic (WHO FC I&ndash;IV) PAH. Patients were randomised to either placebo (N&nbsp;=&nbsp;582) or selexipag (N&nbsp;=&nbsp;574) twice daily. The dose was increased at weekly intervals by increments of 200&nbsp;micrograms given twice daily to determine the individualised maintenance dose (200&ndash;1,600&nbsp;micrograms twice daily).</p><p>&nbsp;</p><p>The primary study endpoint was the time to first occurrence of a morbidity or mortality event up to end of treatment, defined as a composite of death (all causes); or hospitalisation for PAH; or progression of PAH resulting in need for lung transplantation or balloon atrial septostomy; or initiation of parenteral prostanoid therapy or chronic oxygen therapy; or other disease‑progression events (patients in WHO FC II or III at baseline) confirmed by a decrease in 6‑minute walk distance (6MWD) from baseline (&ge;&nbsp;15%) and worsening of WHO FC or (patients in WHO FC III or IV at baseline) confirmed by a decrease in 6MWD from baseline (&ge;&nbsp;15%) and need for additional PAH‑specific therapy.</p><p>&nbsp;</p><p>All events were confirmed by an independent adjudication committee, blinded to treatment allocation.</p><p>&nbsp;</p><p>The mean age was 48.1&nbsp;years (range 18&ndash;80&nbsp;years of age), with the majority of subjects being Caucasian (65.0%) and female (79.8%). 17.9% of patients were &ge;&nbsp;65 and 1.1% &ge;&nbsp;75&nbsp;years of age. Approximately 1%, 46%, 53%, and 1% of patients were in WHO FC I, II, III and IV, respectively, at baseline.</p><p>&nbsp;</p><p>Idiopathic or heritable PAH was the most common aetiology in the study population (58%) followed by PAH due to connective tissue disorders (29%), PAH associated with simple corrected congenital heart disease (10%), and PAH associated with other aetiologies (drugs and toxins [2%] and HIV [1%]).</p><p>&nbsp;</p><p>At baseline, the majority of enrolled patients (80%) were being treated with a stable dose of a specific therapy for PAH, either an ERA (15%) or a PDE‑5 inhibitor (32%) or both an ERA and a PDE‑5 inhibitor (33%).</p><p>&nbsp;</p><p>The overall median double‑blind treatment duration was 63.7&nbsp;weeks for the placebo group and 70.7&nbsp;weeks for the selexipag group. 23% of patients on selexipag achieved maintenance doses in the range of 200&ndash;400&nbsp;micrograms, 31% achieved doses in the range of 600&ndash;1,000&nbsp;micrograms, and 43% achieved doses in the range of 1,200&ndash;1,600&nbsp;micrograms.</p><p>&nbsp;</p><p>Treatment with selexipag 200&ndash;1,600&nbsp;micrograms twice daily resulted in a 40% reduction (hazard ratio [HR] 0.60; 99% CI:&nbsp;0.46, 0.78; one‑sided log‑rank p value &lt;&nbsp;0.0001) of the occurrence of morbidity or mortality events up to 7&nbsp;days after last dose compared to placebo (Figure 1). The beneficial effect of selexipag was primarily attributable to a reduction in hospitalisation for PAH and a reduction in other disease‑progression events (Table 1).</p><p><img alt="" width="503" height="514" src="data:image/png;base64,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ARIgARJIiUCpFXeI7E8//SQjRoxQcR84cKD85z//kdatW8vHH38s3377rUydOlV69uzpWeT7yLXXXqs/Bx98sIJeu25lRNw9i/2nOXPkP57FXqfOYfL777+r9e9uO+20k9SsWTNq0VPgU2qrLEQCJEACJJAggVIp7mZxz5o1S4YPHy7du3eXZ599VipXriynn366fP311zJmzBgV9xdffFF22WUX3adTp04q0v/884+MHDlCEW/jxd8t+3OJNGt2rBxau4G8/vrr0qNHD1mzZo3suOOOsnTpUjn++OOld+/esueee0Ytfwi8ufATrCvuRgIkUEoJuIG7FttTUihwfjfOyI1dwt+IP7LPsB/ecxjitM3imFwvJ8ps2LBB97Vj27HsfY3fKGOfW5yUHdcNji4pNtl03lIt7rNnz5ahQ4fK7bffLj/++KM8/fTTcsstt8hzzz0np556qlrvsLqPPPJIefDBB+Wxxx6TXXfdtWD9bdkkM6dPk389t3yt+o204eHn559/lv3331/uuusuGTdunEybNk2ef/55adq0qVSsWFG9BGyM2fQo8FpIILsJFDabJ9NX7Q41WqzS22+/LSeeeKLssMMO8s0336i3c8WKFfLDDz+oWFerVk3+7//+T72l7n00btxY342rVq2S//73v+oZhQEFkV+5cqV88skn+i7Gv7/44gt9dx544IF6y/iuTp06aoyddtppenxu+QRKtbjDhY6GceaZZ2qDgwi/8cYb0rx5c/1BbxNCP8dzu3fu3FmqV68eHVPPb+BbZNaM6bIR4l73sGjPEgJvvVB0Io499li15vE5OhHt2rWLWu4Q+theKF33fExJgARca9dm5riWbyYJ2TvP3m14b+FvWNyHHnqofPnll7L77rvr8GWrVq3k888/F3hH8e48//zz9d0K0b/sssvk6KOPVk8ovKLNmjWTvn37qqe0T58+8t1336lR1bVrVzW+hg0bJkcccYQ89NBDGgP16quvyrJly6RDhw7ywgsv6LkmTZpEYymmMZRacQcHcx25wuo+OPjeXEHGLVZ0t7iWe72GW+2PBxIBfFOmTNEhgM8++0y9BAjSM7fU3Xffrb1ebLDmUcYEP/b8mXyYeS4SIIHsIYD30eDBg+XJJ58s4ObO5BXinQWhRsCxDSvi/XbIIYfou61SpUoq7meddZaKPbyfLVq0kCee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0aNHS8eOHaOWOgQdq8TZakJp4FToISnumaTNc5EACZAACSRCIDTijpvBuDcWi0EmowceeCA69Q3j5Nj8BNQlAivePhT3VMmxHAmQAAmQQLoIhE7cv/zyS10VrmLFilFxR8rBu+66K+WpcH7gUtz90GNZEiABEiCBdBAInbgDAiLn8WMLDmA8HmkMLQVhOkAVdkyKeyZp81wkQAIkQAKJEAiduCOgDgsEwD2PVYWQhrZfv35y9913Bx4tnwhAinsilLgPCZAACZBAJgmETtzfeecdmTRpklx00UXy5ptvyjnnnKOLumCKHC33TDYdnosESIAESCBbCYRO3LG4y7PPPqsLu7z99ts69j5v3jz9NzY/K8OlUkm03FOhxjIkQAIkQALpJBA6cV+/fr0uyzpu3DhZt26drth2/vnnaxIbJLChuKezufDYJEACJEACYSAQCnHHVDeMteMH092WLVumbG0NYAh65cqVo2sAZxI8LfdM0ua5SIAESIAEEiEQCnHH/PapU6cKpsFhydUBAwYUuDe45rHWOpLZMENdItXOfUiABEiABHKZQGjEHdPdIPKWdhartGGDm37ixIly9NFHM0NdLrdU3hsJkAAJkEDCBEIj7hB2LO+K5Vjxd/PmzfX34sWLpU+fPho5zwx1Cdc7dyQBEiABEshhAqESd6yvjux0sOKPOOIIdcEjkc1RRx0lVapUYYa6HG6ovDUSIAESIIHECYRC3O12YKmvWbNGfv/9d3XHI6AOQXaffvqpXHvttbLddtslfucB7cmAuoBA8jAkQAIkQAKBEQiduCOwrn379lKpUiVZuXKlToG76qqrpGXLllK2bNnAwCR6IIp7oqS4HwmQAAmQQKYIhE7cR4wYIWvXrtUx988++0waN24st9xyizz33HN0y2eq1fA8JEACJEACWU0gdOKOALoxY8Zo+tl7771XVq9eLTvuuKP06NGD4p7VTY0XRwIkQAIkkCkCoRN3rAaHgLqNGzcKktsgQh5JbPCD4LpMb3TLZ5o4z0cCJEACJFAcgdCJOyLmYaUffPDBKuhz587V1eGaNm0aFXcE2mVqo7hnijTPQwIkQAIkkCiB0Ik7xtyXL1+ubnlEzyMVLf5+6623Coh7pgSe4p5oU+N+JEACJEACmSIQOnFftGiR9O3bVx588EEV8x9//FHef/996dKli8Blb+55inum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8bdraZvA2T4oE7ufcbVy+Pc///wjHTt2lKFDh0bvA9+7THFsl7fdryvSsWVQ3j4Dt3Hjxsl//vMfOemkk6RWrVrKEMdB5wL3+v3332sHA8z3339/+f3332XEiBF6ffXq1ZMTTjhBOyGvvPKKLF++XPft1KmT7Ljjjlr2u+++kxUrVkj37t0p7j6fSRYnARLwDCrvBVVwYJdUkiJQmOUOrBAnvPxHjRol06dPl3vuuScqdK6FiZf+qlWr5M8//5SKFSvKLrvsInPnzpW9995bX/RLliyR1atXy2uvvSbly5eXLl26yNq1a2XhwoW6/6677qrH/eOPP+Tvv/+WL774QnbaaScVGhOwt956S9555x158skn9TOcE/v+9ttveo4qVaqo4Kxbt06FCcfENe23337y66+/6ne4F/wb17ly5UqpXLmyihOuBV6Fv/76S8+LsmPHjpVffvlFLrzwQr3OfffdV614E9Yff/xRrx1lcZwddtihgHWP+8E5sIEHPBG4np133ll54N/gg61169aCDg2uC9ex1157yYIFC2SfffbR77E/7svuEfttv/32eq1WD9bJMa8D7hki3KBBA2nZsqWyg1Cff/75MmzYML0XiP2iRYvkoosuknfffVfvBR2NV199VerXr6+/0RFo0qSJ9OvXT+bNm6fX0aFDB62jadOmKR/UBY7/1FNPyfjx47Xd4NjcSIAESCBVAhT3VMnllSvMcrfDQixgVc6aNUtuv/32rSxuiBjE5+STT5b//e9/UrVqValZs6Za+c8//7x888038sEHH6jA4OV/5JFHSvv27eWOO+7QfZ5++mm5//77ZdmyZfLmm29K8+bNZfTo0dK0aVM5++yzo4KJzyAg2B/iDqG64oor5LzzzlMRxXlwHFj2OC6sVlw3LM0LLrhABRgiVr16dRUmlEen5YUXXpBBgwaphwKdiYceekjef/99+frrr2XGjBl6vxDVM888M2qRggk+69mzp+y2224CjwSEEMJtFjG4zJ8/X+677z557rnn5M4775TTTz9dOxc///yzng+WLpiZuIPXlClT5NFHH5Vzzz1XBg8erNc4c+ZMFWl0OPr06SPffvutdgxwDbhPiCmuCR0GeEzWrFkjRxxxhJbBd2CGusO1gQ+sa3BAGXhE0Fk47bTT9FjnnHOO3HbbbXLqqaeq8OMzCDuO88Ybb0jf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4Z4sNsaez7DWob2uokFjnvEQu1CRDUmEPULcfS7d17SbRbM0BsolKlkU90RJFbGfuxoZHjT0nu3BCvvL0r1te1nCqrVlXnPJGsL94Qf1Ce8LfmOKI+4VdWp1GVZhsGEV1CnuDV4Ja7smirjXMFvxsGCtDl1LFveEe8RSvFhWN6yWn40f417sXnEvWOTJDAzrwLltNoDXXEYP4b5TcWJbZdE6pNahwTMZ5vaaTqgU9wDo/n979x5kV1G1DXz/qaW++BYlUEAJovnkkgQQFUVUJCUiSjQCooCKiFqowSBWASkUKC4a5O6FSyQooBRRkFAGDJILyFURUIFEFBABKSSI5a0+EPTLr+Ma2/OdSSY5TGbvce2qqZk5Z+/e3U9fnrVWdz8dx4N+8YtfLDK1W265ZVG2i3n35+AVrUjCfLvz0i+44IIygB577LHlnPeuGzBhtCDymTNnNm9729uat771rc19991X6hEh+IxKYZe9IYO/RXRnnHFGIfbPfOYzhfCOOeaYZtmyZc2ECROa448/fug0wFY0ujXMBMPTtlTz7Or14IMPLscLa6NPPPFE8+53v7u56qqrmv/5n+G3jK3hK9fp7UHud955Z3PccceV9rj11luXdovsDzvssMZOjw984APN1KlTO9tetUtt9ROf+ETz5z//uawnmDVrVhlTv/zlL5dx9nnPe15z5plnFu2RLvfL0WpASe4DIhvhsTvuuKO59tprmxkzZjRz5sxZsVp+vaJo11Uvrx8s9kSffvrpZbDccMMNm0033bR0sK5bzkF63/72txuD5u67717KiNRjMEWI06dPX7GP+IWdq9M6vInYDJq/+MUvikjTI488Un4rH0NGGbfYYovOlTHaK0L/61//OuTJHnrooc0555xT1lAo58UXX1zKjhC6fCljHM189NFHNx/60Iea888/v3nf+95XVDT9Vm59tItjUEQh9EFRCbs6/Lbd76GHHipt1M/6669fxqAulnG021+S+4AIB7nbNiUMZovYvffe28ybN69I1nbdq63hYS3zDBgtP/vZz4oXNGXKlM6TeywU5PkwzDbffPPiuRsweBBW6H7pS18q3mBMRwzYbNbp4/V2KoSA3E899dQSeeEVIfTHHntsxVax/y1yy7ykrl4RtpX/xYsXl50dRxxxRHPaaac1kyZNaj7/+c+X6BPju8tGqXISWTrk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" /></p><p><strong>Table 1</strong><strong>&nbsp; Summary of outcome events</strong></p><table border="1" cellspacing="0" cellpadding="0" style="width:101%"><tbody><tr><td rowspan="2" style="vertical-align:bottom"><p><strong>Endpoints &amp; statistics</strong></p></td><td colspan="2" style="vertical-align:bottom"><p><strong>Patients with an event</strong><strong> </strong></p></td><td colspan="4"><p><strong>Treatment comparison: selexipag vs placebo</strong></p></td></tr><tr><td style="vertical-align:bottom"><p><strong>Placebo (N=582)</strong></p></td><td style="vertical-align:bottom"><p><strong>Selexipag (N=574)</strong></p></td><td style="vertical-align:bottom"><p><strong>Absolute risk reduction</strong></p></td><td style="vertical-align:bottom"><p><strong>Relative risk reduction (99% CI)</strong></p></td><td style="vertical-align:bottom"><p><strong>HR</strong></p><p><strong>(99% CI)</strong></p></td><td style="vertical-align:bottom"><p><strong>p-value</strong><strong> </strong></p></td></tr><tr><td style="vertical-align:bottom"><p><strong>Morbidity-mortality </strong><strong>event<sup>a</sup></strong></p></td><td><p>58.3%</p></td><td><p>41.8%</p></td><td><p>16.5%</p></td><td><p>40%</p><p>(22%; 54%)</p></td><td><p>0.60</p><p>(0.46; 0.78)</p></td><td><p>&lt; 0.0001</p></td></tr><tr><td style="vertical-align:bottom"><p><strong>Hospitalisation due to </strong><strong>PAH<sup>b</sup></strong></p><p><strong>n (%)</strong></p></td><td><p>109</p><p>(18.7%)</p></td><td><p>78</p><p>(13.6%)</p></td><td><p>5.1%</p></td><td><p>33%</p><p>(2%; 54%)</p></td><td><p>0.67</p><p>(0.46; 0.98)</p></td><td><p>0.04</p></td></tr><tr><td style="vertical-align:bottom"><p><strong>Disease </strong><strong>progression<sup>b</sup></strong></p><p><strong>n (%)</strong></p></td><td><p>100</p><p>(17.2%)</p></td><td><p>38</p><p>(6.6%)</p></td><td><p>10.6%</p></td><td><p>64%</p><p>(41%; 78%)</p></td><td><p>0.36</p><p>(0.22; 0.59)</p></td><td><p>&lt; 0.0001</p></td></tr><tr><td style="vertical-align:bottom"><p><strong>i.v./s.c.</strong></p><p><strong>Prostanoid initiation or oxygen therapy<sup>b,c</sup></strong></p><p><strong>n (%)</strong></p></td><td><p>15</p><p>(2.6%)</p></td><td><p>11</p><p>(1.9%)</p></td><td><p>0.7%</p></td><td><p>32%</p><p>(-90%; 76%)</p></td><td><p>0.68</p><p>(0.24; 1.90)</p></td><td><p>0.53</p></td></tr><tr><td style="vertical-align:bottom"><p><strong>Death up to EOT + 7</strong>&nbsp;<strong>days<sup>d</sup></strong></p><p><strong>n (%)</strong></p></td><td><p>37</p><p>(6.4%)</p></td><td><p>46</p><p>(8.0%)</p></td><td><p>-1.7%</p></td><td><p>-17%</p><p>(-107%; 34%)</p></td><td><p>1.17</p><p>(0.66; 2.07)</p></td><td><p>0.77</p></td></tr><tr><td style="vertical-align:bottom"><p><strong>Death up to study closure<sup>d</sup></strong></p><p><strong>n (%)</strong></p></td><td><p>105</p><p>(18.0%)</p></td><td><p>100</p><p>(17.4%)</p></td><td><p>0.6%</p></td><td><p>3%</p><p>(-39%; 32%)</p></td><td><p>0.97</p><p>(0.68; 1.39)</p></td><td><p>0.42</p></td></tr></tbody></table><p>CI = confidence interval; EOT = end of treatment; HR = hazard ratio; i.v. = intravenous; PAH = pulmonary arterial hypertension; s.c.&nbsp;=&nbsp;subcutaneous.</p><p><sup>a</sup>&nbsp;&nbsp;&nbsp;&nbsp; % of patients with an event at 36&nbsp;months = 100 &times; (1 &ndash; Kaplan‑Meier estimate); hazard ratio estimated using Cox&rsquo;s proportional hazard model; unstratified one‑sided log‑rank p‑value</p><p><sup>b</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % of patients with an event as part of the primary endpoint up to EOT + 7&nbsp;days; hazard ratio estimated using Aalen Johansen method; 2‑sided p‑value using Gray&rsquo;s test</p><p><sup>c</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Includes &lsquo;Need for lung transplantation or atrial septostomy&rsquo; (1 patient on selexipag and 2 on placebo)</p><p><sup>d</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % of patients with an event up to EOT + 7&nbsp;days or up to study closure; hazard ratio estimated using Cox&rsquo;s proportional hazard model; unstratified one‑sided log‑rank p‑value</p><p>The numerical increase in deaths up to end of treatment +&nbsp;7&nbsp;days but not up to study closure was further investigated by mathematical modelling, showing that the imbalance in deaths is consistent with the assumption of a neutral effect on PAH mortality and reduction of non-fatal events.</p><p>&nbsp;</p><p>The observed effect of selexipag versus placebo on the primary endpoint was consistent across individualised maintenance dose as shown by the hazard ratio for the three pre‑defined categories (0.60 for 200&ndash;400&nbsp;micrograms twice daily, 0.53 for 600&ndash;1,000&nbsp;micrograms twice daily, and 0.64 for 1,200&ndash;1,600&nbsp;micrograms twice daily), which was consistent with the overall treatment effect (0.60).</p><p>&nbsp;</p><p>The efficacy of selexipag on the primary endpoint was consistent across subgroups of age, sex, race, aetiology, geographical region, WHO FC, and as monotherapy or in combination with an ERA or a PDE‑5 inhibitor or triple combination with both an ERA and a PDE‑5 inhibitor.</p><p>&nbsp;</p><p>Time to PAH‑related death or hospitalisation for PAH was assessed as a secondary endpoint. The risk of an event for this endpoint was reduced by 30% in patients receiving selexipag compared to placebo (HR&nbsp;0.70, 99% CI:&nbsp;0.50, 0.98; one‑sided log‑rank p&nbsp;=&nbsp;0.0031). The percentages of patients with an event at Month&nbsp;36 were 28.9% and 41.3% in the selexipag and placebo groups, respectively, with an absolute risk reduction of 12.4%.</p><p>&nbsp;</p><p>The number of patients who experienced, as a first event, death due to PAH or hospitalisation for PAH up to end of treatment was 102 (17.8%) in the selexipag group and 137 (23.5%) in the placebo group. Death due to PAH as a component of the endpoint was observed in 16 (2.8%) patients on selexipag and 14 (2.4%) on placebo. Hospitalisation for PAH was observed in 86 (15.0%) patients on selexipag and 123 (21.1%) patients on placebo. Selexipag reduced the risk of hospitalisation for PAH as a first outcome event compared to placebo (HR 0.67, 99% CI: 0.46, 0.98; one‑sided log‑rank p&nbsp;=&nbsp;0.04).</p><p>&nbsp;</p><p>The total number of deaths of all causes up to study closure was 100 (17.4%) for the selexipag group and 105 (18.0%) for the placebo group (HR 0.97, 99% CI: 0.68, 1.39). The number of deaths due to PAH up to study closure was 70 (12.2%) for the selexipag group and 83 (14.3%) for the placebo group.</p><p>&nbsp;</p><p><em>Symptomatic endpoints</em></p><p>Exercise capacity was evaluated as a secondary endpoint. Median 6MWD at baseline was 376&nbsp;m (range: 90&ndash;482&nbsp;m) and 369&nbsp;m (range: 50&ndash;515&nbsp;m) in selexipag patients and placebo patients, respectively. Treatment with selexipag resulted in a placebo‑corrected median effect on 6MWD measured at trough (i.e., approximately 12&nbsp;h post‑dose) of 12&nbsp;m at Week&nbsp;26 (99% CI: 1, 24&nbsp;m; one‑sided p value&nbsp;=&nbsp;0.0027). In patients without concurrent PAH‑specific therapy, the placebo‑corrected treatment effect measured at trough was 34&nbsp;m (99% CI: 10, 63&nbsp;m).</p><p>&nbsp;</p><p>Quality of life was assessed in a subset of patients in the GRIPHON study using the Cambridge Pulmonary Hypertension Outcome Review (CAMPHOR) questionnaire. There was no significant treatment effect from baseline to Week&nbsp;26.</p><p>&nbsp;</p><p><em>Long-term data in PAH</em></p><p>Patients enrolled into the pivotal study (GRIPHON) were eligible to enter a long-term open-label extension study. A total of 574&nbsp;patients were treated with selexipag in the GRIPHON study; of these, 330&nbsp;patients continued selexipag treatment in the open-label extension study. The median follow-up duration was 4.5&nbsp;years and the median exposure to selexipag was 3&nbsp;years. During the follow-up, at least one other PAH medication was added to selexipag in 28.4% of the patients. However, most of the treatment exposure (86.3%) in all of the 574&nbsp;patients was accumulated without addition of any new PAH medication. Kaplan-Meier estimates of survival of these 574&nbsp;patients across the GRIPHON and the long-term extension study at 1, 2, 5 and 7 years were 92%, 85%, 71%, and 63%, respectively. Survival at 1, 2, 5, and 7 years for 273&nbsp;patients of WHO FC II at baseline of the pivotal study were 97%, 91%, 80% and 70%, respectively, and for 294&nbsp;patients of WHO FC III at baseline were 88%, 80%, 62% and 56%, respectively. Given that additional PAH treatment was initiated in a small proportion of patients and that there was no control group in the extension study, the survival benefit of selexipag cannot be confirmed from these data.</p><p>&nbsp;</p><p><em>Initial triple combination t</em><em>reatment with </em><em>selexipag, </em><em>macitentan and tadalafil in newly diagnosed PAH patients</em></p><p>In a double blind, placebo-controlled study, a total of 247 newly diagnosed PAH patients were randomised to evaluate the treatment effect of initial triple (selexipag, macitentan and tadalafil) (N&nbsp;=&nbsp;123) versus initial double (placebo, macitentan and tadalafil) (N&nbsp;=&nbsp;124) therapy.</p><p>The primary endpoint, change from baseline in pulmonary vascular resistance (PVR) at Week&nbsp;26, did not show a statistically significant difference between the groups, while showing an improvement from baseline in both treatment groups (relative reduction by 54% in the initial triple therapy group vs 52% in the initial double therapy group).</p><p>Over a median follow-up of 2&nbsp;years, 4 (3.4%) patients in the triple therapy group and 12 (9.4%) patients in the double therapy group died.</p><p>&nbsp;</p><p><u>Paediatric population</u></p><p>&nbsp;</p><p>The European Medicines Agency has deferred the obligation to submit the results of studies with Uptravi in one or more subsets of the paediatric population for treatment of pulmonary hypertension, (see section&nbsp;4.2 for information on paediatric use).</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The pharmacokinetics of selexipag and its active metabolite have been studied primarily in healthy subjects. The pharmacokinetics of selexipag and the active metabolite, both after single- and multiple‑dose administration, were dose‑proportional up to a single dose of 800&nbsp;micrograms and multiple doses of up to 1,800&nbsp;micrograms twice daily. After multiple‑dose administration, steady state conditions of selexipag and the active metabolite were reached within 3&nbsp;days. No accumulation in plasma, either of parent compound or active metabolite, occurred after multiple‑dose administration.</p><p>&nbsp;</p><p>In healthy subjects, inter‑subject variability in exposure (area under the curve over a dosing interval) at steady state was 43% and 39% for selexipag and the active metabolite, respectively. Intra‑subject variability in exposure was 24% and 19% for selexipag and the active metabolite, respectively.</p><p>&nbsp;</p><p>Exposure to selexipag and the active metabolite at steady state in PAH patients and healthy subjects was similar. The pharmacokinetics of selexipag and the active metabolite in PAH patients were not influenced by the severity of the disease and did not change with time.</p><p><u>&nbsp;</u></p><p><u>Absorption</u></p><p>&nbsp;</p><p>Selexipag is rapidly absorbed and is hydrolysed by carboxylesterases to its active metabolite.</p><p>&nbsp;</p><p>Maximum observed plasma concentrations of selexipag and its active metabolite after oral administration are reached within 1&ndash;3&nbsp;h and 3&ndash;4&nbsp;h, respectively.</p><p>&nbsp;</p><p>The absolute bioavailability of selexipag in humans is approximately 49%. This is most probably due to a first‑pass effect of selexipag, as plasma concentrations of the active metabolite are similar after the same oral and intravenous dose administration.</p><p>&nbsp;</p><p>In the presence of food, the exposure to selexipag after a single dose of 400&nbsp;micrograms was increased by 10% in Caucasian subjects and decreased by 15% in Japanese subjects, whereas exposure to the active metabolite was decreased by 27% (Caucasian subjects) and 12% (Japanese subjects). More subjects reported adverse events after administration in the fasted than in the fed state.</p><p>&nbsp;</p><p><u>Distribution</u></p><p>&nbsp;</p><p>Selexipag and its active metabolite are highly bound to plasma proteins (approximately 99% in total and to the same extent to albumin and alpha1‑acid glycoprotein). The volume of distribution of selexipag at steady state is 11.7&nbsp;L.</p><p>&nbsp;</p><p><u>Biotransformation</u></p><p>&nbsp;</p><p>Selexipag is hydrolysed to its active metabolite in the liver and in the intestine by carboxylesterases. Oxidative metabolism catalysed mainly by CYP2C8 and to a smaller extent by CYP3A4 leads to the formation of hydroxylated and dealkylated products. UGT1A3 and UGT2B7 are involved in the glucuronidation of the active metabolite. Except for the active metabolite, none of the circulating metabolites in human plasma exceed 3% of the total drug‑related material. Both in healthy subjects and PAH patients, after oral administration, exposure at steady state to the active metabolite is approximately 3- to 4‑fold higher than to the parent compound.</p><p>&nbsp;</p><p><u>Elimination</u></p><p>&nbsp;</p><p>Elimination of selexipag is predominantly via metabolism with a mean terminal half‑life of 0.8&ndash;2.5&nbsp;h. The active metabolite has a half‑life of 6.2&ndash;13.5&nbsp;h. The total body clearance of selexipag is 17.9&nbsp;L/h. Excretion in healthy subjects was complete 5&nbsp;days after administration and occurred primarily via faeces (accounting for 93% of the administered dose) compared to 12% in urine.</p><p>&nbsp;</p><p><u>Special populations</u></p><p>&nbsp;</p><p>No clinically relevant effects of sex, race, age, or body weight on the pharmacokinetics of selexipag and its active metabolite have been observed in healthy subjects or PAH patients.</p><p><u>&nbsp;</u></p><p><u>Renal impairment</u></p><p>&nbsp;</p><p>A 1.4- to 1.7‑fold increase in exposure (maximum plasma concentration and area under the plasma concentration‑time curve) to selexipag and its active metabolite was observed in subjects with severe renal impairment (eGFR &lt;&nbsp;30&nbsp;mL/min/1.73&nbsp;m<sup>2</sup>).</p><p>&nbsp;</p><p><u>Hepatic impairment</u></p><p>&nbsp;</p><p>In subjects with mild (Child‑Pugh class&nbsp;A) or moderate (Child‑Pugh class&nbsp;B) hepatic impairment, exposure to selexipag was 2- and 4‑fold higher, respectively, when compared to healthy subjects. Exposure to the active metabolite remained almost unchanged in subjects with mild hepatic impairment and was doubled in subjects with moderate hepatic impairment. Only two subjects with severe (Child-Pugh class&nbsp;C) hepatic impairment were dosed with selexipag. Exposure to selexipag and its active metabolite in these two subjects was similar to that in subjects with moderate (Child‑Pugh class&nbsp;B) hepatic impairment.</p><p>&nbsp;</p><p>Based on modelling and simulation data from a study in subjects with hepatic impairment, the exposure to selexipag at steady state in subjects with moderate hepatic impairment (Child‑Pugh class&nbsp;B) after a once‑daily regimen is predicted to be approximately 2‑fold higher than that in healthy subjects during a twice‑daily regimen. The exposure to the active metabolite at steady state in these patients during a once‑daily regimen is predicted to be similar to that in healthy subjects during a twice‑daily regimen. Subjects with severe hepatic impairment (Child‑Pugh class&nbsp;C) showed similar predicted exposure at steady state as subjects with moderate hepatic impairment during a once‑daily regimen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the repeated‑dose toxicity studies in rodents, strong blood pressure decrease as a result of exaggerated pharmacology induced transient clinical signs and reduced food consumption and body‑weight gain. In adult and juvenile dogs, intestine and bone / bone marrow were identified as the main target organs after treatment with selexipag. A delay in the closure of the femoral and/or tibial epiphyseal growth plate was observed in juvenile dogs. A no‑observed‑adverse‑effect level was not established. In juvenile dogs, intussusception due to prostacyclin‑related effects on intestinal motility was observed sporadically. Safety margins adapted for IP&nbsp;receptor potency for the active metabolite were 2‑fold (based on total exposure) in relation to human therapeutic exposure. The finding did not occur in mouse or rat toxicity studies. Because of the species‑specific sensitivity of dogs to develop intussusception, this finding is considered not relevant for adult humans.</p><p>&nbsp;</p><p>Increased bone ossification and related changes in the bone marrow in dog studies are considered to be due to the activation of EP<sub>4</sub> receptors in dogs. As human EP<sub>4</sub> receptors are not activated by selexipag or its active metabolite, this effect is species‑specific and, therefore, not relevant to humans.</p><p>&nbsp;</p><p>Selexipag and the active metabolite are not genotoxic on the basis of the overall evidence of conducted genotoxicity studies.</p><p>&nbsp;</p><p>In the 2‑year carcinogenicity studies, selexipag caused an increased incidence of thyroid adenomas in mice and Leydig cell adenomas in rats. The mechanisms are rodent‑specific. Tortuosity of retinal arterioles was noted after 2&nbsp;years of treatment only in rats. Mechanistically, the effect is considered to be induced by life‑long vasodilation and subsequent changes in ocular haemodynamics. Additional histopathological findings of selexipag were observed only at exposures sufficiently in excess of the maximum human exposure, indicating little relevance to humans.</p><p>&nbsp;</p><p>In a fertility study performed in rats, a prolongation of oestrus cycles resulting in increases in days until copulation was observed at exposures 173‑fold above therapeutic exposures (based on total exposures), the no‑observed‑effect level being 30‑fold above therapeutic exposures. Otherwise, fertility parameters were not affected.</p><p>&nbsp;</p><p>Selexipag was not teratogenic in rats and rabbits (exposure margins above therapeutic exposure of 13‑fold for selexipag and 43‑fold for the active metabolite, based on total exposure). Safety margins for potential IP&nbsp;receptor‑related effects on reproduction were 20 for fertility and 5 and 1 (based on free exposure) for embryo‑foetal development in rats and rabbits, respectively, when adapted for differences in receptor potency. In the rat pre‑/post‑natal development study, selexipag induced no effects on maternal and pup reproductive function.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Tablet core</u></p><p>Mannitol (E421)</p><p>Maize starch</p><p>Low‑substituted hydroxypropyl cellulose</p><p>Hydroxypropyl cellulose</p><p>Magnesium stearate</p><p>&nbsp;</p><p><u>Film coating</u></p><p><em><u>Uptravi 200</u></em><em><u>&nbsp;microgram film</u></em><em><u>‑coated tablet</u></em></p><p>Hypromellose</p><p>Propylene glycolTitanium dioxide (E171)</p><p>Iron oxide yellow (E172) Carnauba wax</p><p>&nbsp;</p><p><u>Uptravi 400</u><u>&nbsp;microgram film‑coated tablet</u></p><p>Hypromellose</p><p>Propylene glycol</p><p>Titanium dioxide (E171)</p><p>Iron oxide red (E172)</p><p>Carnauba wax</p><p>&nbsp;</p><p><u>Uptravi 600 microgram film-coated tablet</u></p><p>Hypromellose</p><p>Propylene glycolTitanium dioxide (E171)</p><p>&nbsp;</p><p>Iron oxide red (E172) Iron oxide black (E172)Carnauba wax</p><p><em><u>&nbsp;</u></em></p><p><em><u>Uptravi 800</u></em><em><u>&nbsp;microgram film‑coated tablet</u></em></p><p>Hypromellose</p><p>Propylene glycol</p><p>Titanium dioxide (E171)</p><p>Iron oxide yellow (E172)</p><p>Iron oxide black (E172)</p><p>Carnauba wax</p><p>&nbsp;</p><p><u>Uptravi 1,000 microgram film-coated tablet</u></p><p>Hypromellose,</p><p>Propylene glycol, titanium dioxide (E171)Iron oxide red (E172)</p><p>Iron oxide yellow (E172)</p><p>Carnauba wax</p><p>&nbsp;</p><p><u>Uptravi 1,200 microgram film-coated tablet</u></p><p>Hypromellose</p><p>Propylene glycolTitanium dioxide (E171) Iron oxide black (E172)Iron oxide red (E172) Carnauba wax</p><p>&nbsp;</p><p><u>Uptravi 1,400 microgram film-coated tablet</u></p><p>Hypromellose</p><p>Propylene glycol Titanium dioxide (E171)</p><p>Iron oxide yellow (E172)Carnauba wax</p><p>&nbsp;</p><p><u>Uptravi 1,600 microgram film-coated tablet</u></p><p>Hypromellose</p><p>Propylene glycol Titanium dioxide (E171)Iron oxide black (E172)Iron oxide red (E172)</p><p>Iron oxide yellow (E172)Carnauba wax</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                4 years
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 30<sup>○</sup>C</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Polyamide / aluminium / HDPE / PE with an embedded desiccant agent / HDPE blister sealed with an aluminium foil.</p><p>Each blister strip contains 10 film‑coated tablets</p><p><u>&nbsp;</u></p><p><u>Uptravi 200</u><u>&nbsp;microgram film</u><u>‑coated tablets</u></p><p><u>&nbsp;</u></p><p>Cartons of 10 or 60&nbsp;film‑coated tablets. (1 or 6 blister strips)</p><p>Cartons of 60 or 140&nbsp;film‑coated tablets (titration packs, 6 or 14 blister strips).</p><p>&nbsp;</p><p><u>Uptravi</u><u> 400&nbsp;microgram</u><u>, 600</u><u>&nbsp;microgram, 800&nbsp;</u><u>microgram, 1,000</u><u>&nbsp;</u><u>microgram, 1,200</u><u>&nbsp;</u><u>microgram, 1,400</u><u>&nbsp;</u><u>microgram, and 1,600</u><u>&nbsp;</u><u>microgram film</u><u>‑</u><u>coated tablets</u></p><p><u>&nbsp;</u></p><p>Cartons of 60&nbsp;film‑coated tablets (6 blister strips).</p><p>&nbsp;</p><p>Not all pack sizes may be marketed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements for disposal.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Janssen Cilag International NV
+Turnhoutseweg 30
+B 2340 Beerse
+Belgium
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                6-December-2023
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        31-355-05
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2005
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        ALEXAN 500MG- 10ML
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        CYTARABINE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg/ml
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection/infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 25°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        51.75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value=" Fareva Unterach GmbH " />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                             Fareva Unterach GmbH 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 360]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Farouk, Maamoun Tamer & CO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            EBEWE PHARMA
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L01BC01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Cytarabine, the active substance in Alexan, inhibits cell division and therefore the growth of cancer cells.</p><p>&nbsp;</p><p>Alexan is a medication used to treat various types of cancer (leukaemia, lymphomas).</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Do not use Alexan</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are allergic to cytarabine or any of the other ingredients of this medication listed under Section 6</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in case of reduced production of blood cells in bone marrow (myelosuppression)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in case of severely reduced renal and/or hepatic function</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in case of existing severe infections</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in case of stomach and intestinal ulcers and recent operations</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in case of anaemia (erythrocytopaenia), leukopaenia (white blood cell deficiency) and/or thrombocytopaenia (platelet deficiency)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are currently being treated or have received treatment for chickenpox or shingles (herpes zoster) with brivudine, sorivudine or their analogues in the last 4 weeks</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; during lactation</p><p>&nbsp;</p><p><strong>Warnings and Precautions</strong></p><p>Speak to your doctor or pharmacist before using Alexan. If you take phenytoin against epileptic seizures, you should be examined regularly due to potentially elevated phenytoin plasma levels. Simultaneous use of phenytoin and Alexan can intensify the effect of phenytoin.</p><p>&nbsp;</p><p>Alexan must only be used with caution in specialised facilities with appropriate possibilities for regular monitoring of the effects during and after administration.</p><p>Alexan inhibits the production of blood cells in bone marrow (myelosuppression). After discontinuing the medication, the number of blood cells may continue to decrease. The number of blood cells should be checked regularly, even after the end of therapy, and a bone marrow examination should be conducted if required.</p><p>Caution should be exercised with patients with drug-induced myelosuppression in their medical history.</p><p>&nbsp;</p><p>Alexan can cause increased uric acid levels in the blood due to the destruction of cancer cells. The uric acid content in the blood should therefore be monitored. Your doctor will inform you about the need to take medications to control your uric acid level.</p><p>&nbsp;</p><p>Special caution is required with mild reduction of hepatic and renal function.</p><p>&nbsp;</p><p>Reduced liver and kidney function is considered a predisposing factor for increased CNS toxicity due to Alexan.</p><p>&nbsp;</p><p>Since Alexan is mainly broken down in the liver, a stronger effect of the substance is possible in users with liver damage. An increase in efficacy also results in reduced renal function. In the case of reduced liver and/or kidney function, a corresponding dose reduction must be performed while blood levels are monitored. Regular monitoring of liver and kidney function as well as uric acid levels is necessary. In patients with preexisting reduced liver function, cytarabine should be administered with caution and after a strict risk-benefit assessment, particularly with high doses.</p><p>&nbsp;</p><p>Ensure that you drink enough fluids.</p><p>&nbsp;</p><p>Anaphylactic reactions may occur during treatment with Alexan, especially immediately after intravenous administration.</p><p>&nbsp;</p><p>High-dose treatment with Alexan in patients over 60 years of age may only take place after a particularly careful risk-benefit assessment.</p><p><strong>&nbsp;</strong></p><p><u>Birth Control Measures:</u></p><p>Alexan can change the genetic material. Men should therefore not father children during treatment and for up to six months after ending treatment. In addition, you should receive information before treatment regarding the option of sperm preservation, since there is the possibility of infertility (sterility) after Alexan therapy.</p><p>&nbsp;</p><p>A genetic consultation is recommended if women wish to have children after the end of treatment.</p><p>&nbsp;</p><p>Severe gastrointestinal side effects require antiemetic (for nausea) and other supportive measures.</p><p>&nbsp;</p><p>High dosage treatments require regular monitoring of the central nervous system function and the lung function by a specialist.</p><p>&nbsp;</p><p>In order to avoid eye problems, they must be rinsed regularly during high dosage treatment.</p><p>&nbsp;</p><p>During therapy with Alexan, no vaccinations with live vaccines should be administered.</p><p>&nbsp;</p><p>Treatment with Alexan involves the risk of bleeding complications and severe infections.</p><p>During high-dose therapy, disorders of the central nervous system, the gastrointestinal tract, the liver, as well as skin reactions and eye symptoms may occur.</p><p>&nbsp;</p><p>Contact with the skin, mucous membranes and eyes must be avoided.</p><p>&nbsp;</p><p>Simultaneous use of Alexan with other medications may cause acute inflammation of the pancreas.</p><p>&nbsp;</p><p>Cases of severe neurological side effects that range from headache to paralysis, coma, and stroke-like episodes have been mainly observed in children and adolescents who received intravenous Alexan in combination with intrathecal methotrexate.</p><p>&nbsp;</p><p>Cytarabine, the active substance of Alexan, is a substance that can harm your unborn child and change the genetic material.</p><p>&nbsp;</p><p><strong>Use of Alexan with Other Medications</strong></p><p>Inform your doctor or pharmacist if you are taking/using other medications, have recently taken/used other medications or intend to take/use any other medications.</p><p>&nbsp;</p><p>Concomitant use of certain antiviral (used to treat viruses) medications such as sorivudine, brivudine, or their derivatives, may significantly intensify the side effects of Alexan (see the Section &ldquo;Do Not Use Alexan&rdquo;).</p><p>&nbsp;</p><p>You must exercise particular caution if you take medications against epileptic seizures (phenytoin). Simultaneous use of phenytoin and Alexan can intensify the effect of phenytoin. Your doctor will regularly monitor your phenytoin plasma level.</p><p>&nbsp;</p><p>Simultaneous or prior therapy with cell-damaging substances or radiation therapy may intensify the myelosuppression caused by Alexan.</p><p>&nbsp;</p><p>Alexan may cause acute pancreatitis in case of previous treatment with L-asparaginase (medication used to treat blood cancer).</p><p>&nbsp;</p><p>Interactions are to be expected when combining different cytostatics (medication used to treat cancer).</p><p>&nbsp;</p><p>5-fluorocytosin should not be administered with Alexan, as it has been shown that the effect of 5-fluorocytosin (medication to treat fungal infections) can be inhibited by Alexan.</p><p>&nbsp;</p><p>In patients who also receive digoxin (medication used to treat heart failure), digoxin levels in the blood must be monitored during Alexan therapy since a reduction in blood levels and therefore an impaired effect of digoxin may occur. Since this is not the case with digitoxin, a switch from digoxin to digitoxin is advisable for patients receiving cytarabine therapy.</p><p>&nbsp;</p><p>In laboratory studies, Alexan appears to reduce the susceptibility of some bacteria (K. pneumoniae) to the antibiotic gentamicin. If there is no response to gentamicin, your doctor will switch antibiotics if necessary.</p><p><strong>&nbsp;</strong></p><p><strong>Pregnancy, Breastfeeding and Fertility</strong></p><p>If you are pregnant or breastfeeding, think you may be pregnant or are planning to have a baby, ask your doctor for advice before taking this medication.</p><p>&nbsp;</p><p><u>Pregnancy</u></p><p>In some animal species, malformations occurred in the use of cytarabine on the foetus. The use of cytarabine in women who are pregnant or could become pregnant may only be carried out after careful consideration of the possible risks and benefits.</p><p>&nbsp;</p><p>If you become pregnant during treatment with Alexan, please notify your doctor immediately.</p><p>&nbsp;</p><p><u>Breastfeeding</u></p><p>Do not breastfeed during treatment with Alexan. Breastfeeding must be stopped before the start of treatment with Alexan.</p><p>&nbsp;</p><p><u>Fertility</u></p><p>Alexan may be mutagenic. This means that the medication may cause genetic mutations. Alexan may impair sperm and egg production, which is associated with the possibility of birth defects.</p><p>During treatment with Alexan and at least during the first 6 months after the end of treatment, you must avoid conceiving a child. Since treatment with Alexan can lead to infertility, it may be advisable for male patients to consider sperm preservation before the start of treatment (see also the Section &ldquo;Warnings and Precautions&rdquo;).</p><p>&nbsp;</p><p><strong>Driving and Operating Machinery</strong></p><p><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1025" type="#_x0000_t75"
+ alt="Symbol: Achtung" style='width:30.75pt;height:27pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="file:///C:/Users/abulase1/AppData/Local/Temp/3/msohtmlclip1/01/clip_image001.png"
+  o:title=" Achtung"/>
+</v:shape><![endif]--><img width="41" height="36" alt="Symbol: Achtung" src="file:///C:/Users/abulase1/AppData/Local/Temp/3/msohtmlclip1/01/clip_image002.gif" />&nbsp;&nbsp;&nbsp; Caution: This medication may affect the ability to react and impair the ability to &nbsp; drive.</p><p>&nbsp;</p><p><strong>Alexan contains sodium</strong></p><p>This medication contains less than 1 mmol (23 mg) of sodium per ml, i.e. it is virtually &ldquo;sodium-free&rdquo;.</p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Alexan therapy may only be used by doctors with special training and experience in the field of cancer therapy. This therapy should be initiated in hospital.</p><p>&nbsp;</p><p>For intravenous (in a vein) and intrathecal (in the cerebrospinal fluid) or subcutaneous (in the subcutaneous fatty tissue) administration.</p><p>You will receive Alexan either as an infusion into a vein (intravenous), as an injection into the cerebrospinal fluid or occasionally as an injection into the subcutaneous fatty tissue (subcutaneous).</p><p>&nbsp;</p><p>Information for the Physician: For information on dosage, see the prescribing information or treatment protocols in the specialist literature.</p><p>&nbsp;</p><p>If you receive more Alexan than you should</p><p>Your doctor will ensure that you receive the correct dose for your disease. In the event of an overdose, increased side effects may occur. Your doctor will then discontinue the therapy and, if required, treat any side effect symptoms and initiate supportive measures.</p><p>&nbsp;</p><p>If you have any further questions on the use of this medication, contact your doctor or pharmacist.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medications, this medication can cause adverse reactions, though they will not occur in every person being treated with Alexan.</p><p>&nbsp;</p><p>The side effects caused by Alexan depend on the dosage, method of administration and treatment duration.</p><p>&nbsp;</p><p>Local tolerance is generally high. Sometimes inflammation may occur at the injection site.</p><p>&nbsp;</p><p>The evaluation of adverse reactions is based on the following frequencies:</p><p>Very common (may affect more than 1 in 10 persons treated)</p><p>Common (may affect up to 1 in 10 persons treated)</p><p>Uncommon (may affect up to 1 in 100 persons treated)</p><p>Rare (may affect up to 1 in 1,000 persons treated)</p><p>Very rare (may affect up to 1 in 10,000 persons treated)</p><p>Unknown (frequency cannot be estimated from the available data)</p><p>&nbsp;</p><p><strong>Very common </strong>(may affect more than 1 in 10 persons treated)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blood poisoning (sepsis)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation of the lungs (pneumonia)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Infection</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bone marrow failure disorders, changes in blood count (e.g. white or red blood cell or platelet deficiency, abnormal blood cells); are dosage-dependent</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rash</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Conjunctivitis (in case of high dosage therapy)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reduced liver function, hyperbilirubinaemia (increased levels of the bile pigment bilirubin) have been observed in 25&ndash;50% of patients receiving high dosage treatment.</p><p>&nbsp;</p><p><strong>Common</strong> (may affect up to 1 in 10 persons treated)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loss of appetite, increased uric acid levels in the blood. Hypocalcaemia may also occur (calcium deficiency in the blood).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Abdominal pain</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Swallowing difficulties</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation or ulcers in the mouth or anus</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Severe diarrhoea, nausea and vomiting (especially after rapid intravenous injection)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Skin reactions (redness, ulceration, skin rash, hives), vascular inflammation, mottled skin, itching. After high doses, exfoliative dermatitis (inflammation of the skin with blistering and peeling skin) and hair loss may occur.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cerebral disorders (eye tremor, speech disorders, movement disorders, confusion and personality changes), thought and movement disorders, dizziness, impaired consciousness with increased stimulation threshold, coma, trembling, seizures and loss of appetite</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Conjunctivitis, inflammation of the cornea, light sensitivity, burning eyes, severe lacrimation and vision disorders are dosage-dependent and were observed in 25&ndash;80% of patients undergoing high dosage therapy. (The symptoms may be prevented or mitigated with frequent eye rinses or prophylactic use of corticosteroid eye drops.)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Urinary disorders, renal impairment. An increase in plasma creatinine (metabolite) has been observed in 5 to 20% of patients receiving high-dose cytarabine therapy, but a confirmed causal connection with cytarabine has not been proven. Measures to prevent uric acid nephropathy should be taken in the case of massive cell degeneration.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Throat inflammation, allergic oedema (water accumulation), disordered production of sex hormones, sperm and ovum cells, pain in the chest area, ascites (water accumulation in the abdominal cavity), weakened immune system, sepsis (blood poisoning), thrombophlebitis (inflammation and occlusion of the veins) and bleeding. Fever occurs in 20&ndash;50% of patients undergoing high dosage therapy.</p><p>&nbsp;</p><p><strong>Uncommon</strong> (may affect up to 1 in 100 persons treated)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation or ulcers in the oesophagus, severe mucous membrane changes in the gastrointestinal tract with ulceration, destruction and perforation of the intestinal wall (necrosis), intestinal obstruction, peritonitis</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Brown/black pigment spots on the skin (lentigo), ulcers on the skin, itching, burning pain on the palms and soles of the feet</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Disease of the peripheral nerves (peripheral neuropathy)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Muscle pain and/or joint pain were observed after high doses of Alexan.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Breathing problems, shortness of breath, sore throat, pulmonary oedema (fluid accumulation in the lungs, can be cured in most cases), pneumonia (diffuse interstitial pneumonia)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Acute pericardial inflammation</p><p>&nbsp;</p><p><strong>Rare</strong> (may affect up to 1 in 1,000 persons treated)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Intrathecal (injection into the cerebrospinal fluid) use of Alexan may cause nausea, vomiting and fever</p><p><strong>Very rare</strong> (may affect up to 1 in 10,000 persons treated)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation of the pancreas</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inflammation of the perspiratory glands</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Isolated cases of pathological changes in white brain matter (necrotising leucoencephalopathy), damage to the spinal cord with symptoms of paralysis that affect the limbs (para- and quadriplegia) and blindness have been described after administration of Alexan into the cerebrospinal fluid.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Occurrence of rhabdomyolysis (breakdown of muscle fibres) has been described.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enlargement of the liver. There are individual reports of the occlusion of blood vessels that drain the liver (Budd-Chiari syndrome).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Heart muscle damage, temporary cardiac arrhythmia</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Allergic reactions (hives, allergic shock)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The syndrome of inadequate antidiuretic hormone secretion has been observed in individual cases in patients receiving high dosage treatment with Alexan.</p><p>&nbsp;</p><p><strong>Unknown</strong> (frequency cannot be estimated from the available data)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cellulitis (inflammation of the deep layers of skin) at the injection site, liver abscess</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hand-foot syndrome</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dizziness, headache, inflammation of the nerves and, after high doses, individual cases of peripheral nerve damage have been described, as well as cases of paralysis, meningitis and encephalitis.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jaundice</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Slow heart rate</p><p>&nbsp;</p><p><u>Alexan (Ara-C) syndrome</u></p><p>This syndrome described in the literature is characterised by fever, muscle pain, bone pain, occasionally chest pain, skin rash with blistering, conjunctivitis and nausea. It generally occurs 6&ndash;12 hours after administration. Corticosteroids (anti-inflammatory agent) have been proved to be successful in the treatment or prevention of the syndrome. If corticosteroids are effective in this regard, continuation of treatment with Alexan may be considered.</p><p>&nbsp;</p><p>With a high dosage prolonged infusion, the side effects are more pronounced than in standard therapy.</p><p>Cases of early death were reported as a result of myelosuppression.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Store below 25&deg;C.</p><p>Store in the original packaging in order to protect from light.</p><p>&nbsp;</p><p>Keep this medication out of the sight and reach of children.</p><p>&nbsp;</p><p>Do not use this medication past the expiry date indicated on the outer packaging or on the label after &ldquo;Use by&rdquo;. The expiry date refers to the last day of the month specified.</p><p>&nbsp;</p><p>For single use only. Dispose of any unused product.</p><p>&nbsp;</p><p><u>Solution for infusion after dilution</u></p><p>&nbsp;</p><p>The chemical and physical stability of the ready-for-use preparation when diluted with 0.9% sodium chloride has been demonstrated at 2&deg;C to 8&deg;C for 28 days.</p><p>&nbsp;</p><p>From a microbiological point of view, the reconstituted preparation should be used immediately. If the reconstituted preparation is not used immediately, the user is responsible for the duration and conditions of storage. If the ready-to-use solution is not prepared under controlled and validated aseptic conditions, it should not be stored for longer than 24&nbsp;hours at 2&deg;C to 8&deg;C.</p><p>&nbsp;</p><p>After use, dispose of the bottle and injection materials (including gloves) according to the regulations for cytostatics. Any unused product as well as the primary packaging must be disposed of as hazardous waste.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The active substance is cytarabine.</p><p>1 ml contains 50 mg cytarabine in stabilised, aqueous solution.</p><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The other excipients are: sodium lactate solution 60%, lactic acid, water for injections,</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                Clear, colourless injection/infusion solution
+pH value: 7.5–9.3
+
+
+For 50 mg/ml:
+1/5/10 x 10 ml vials
+1/5/10 x 20 ml vials
+1/5/10 x 40 ml vials
+
+Glass vials with/without transparent plastic containers (Onco-Safe).
+Not all pack sizes may be marketed.
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Marketing Authorization Holder</p><p>EBEWE Pharma Ges.m.b.H. Nfg. KG, 4866 Unterach, Austria</p><p>&nbsp;</p><p>Manufacturer</p><p>Fareva Unterach GmbH, 4866 Unterach, Austria</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                July 2021
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL">تثبط مادة سيتارابين، وهي المادة الفعَّالة الموجودة في عقار أليكسان، انقسام الخلية؛ وبالتَّالي فهي تثبط نمو الخلايا السرطانية.</p><p dir="RTL">&nbsp;</p><p dir="RTL">عقار أليكسان هو دواء يُستخدَم لعلاج أنواع مختلفة من السرطان (سرطان الدَّم، سرطان الغدد الليمفاوية).</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>لا تستخدم عقار أليكسان في الحالات الآتية:</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من حساسية تجاه سيتارابين أو تجاه أي مكون من المكونات الأخرى الموجودة بهذا الدَّواء المدرجة أسفل القسم: 6.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; في حالة انخفاض إنتاج خلايا الدَّم في النخاع العظمي (كبت النخاع العظمي).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; في حالة الإصابة بقصور شديد في وظائف الكُلى و/أو الكبد.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; في حالة الإصابة بعدوى شديدة قائمة.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; في حالة الإصابة بقُرَح في المعدة والأمعاء والخضوع لعمليات جراحية حديثًا.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; في حالة الإصابة بفقر الدَّم (قلَّة كرَيَّات الدَّم الحمراء) و/أو قلَّة كرَيَّات الدَّم البيْضاء و/أو نقص الصَّفائح الدَّموية.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تُعالج حاليًّا أو قد تلقيت علاجًا للجُدري المائي أو الهربس النطاقي باستخدام بريفودين أو سوريفودين أو نظائرهما خلال الأسابيع الأربعة الأخيرة.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أثناء الرضاعة الطبيعيَّة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تحذيرات واحتياطات</strong></p><p dir="RTL">تحدَّث إلى طبيبك أو الصيدلي الخاص بك قبل استخدام عقار أليكسان. إذا كنت تتناول فينيتوين لعلاج نوبات الصرع، ينبغي عليك الخضوع للفحص بصفة منتظمة بسبب احتمالية ارتفاع مستويات فينيتوين بالبلازما. قد يؤدي استخدام فينيتوين بالتَّزامن مع عقار أليكسان إلى زيادة حدة تأثير فينيتوين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب استخدام عقار أليكسان فقط مع توخي الحذر، ويتم ذلك في منشآت متخصصة ذات إمكانيات مناسبة تسمح بمراقبة الآثار بصفة منتظمة أثناء تلقي العقار وبعد تلقيه.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يثبط عقار أليكسان إنتاج خلايا الدَّم في النخاع العظمي (كبت النخاع العظمي). بعد التوقف عن تلقي الدَّواء، قد يستمر عدد خلايا الدَّم في الانخفاض. يجب التحقق من عدد خلايا الدَّم بصفة منتظمة، حتى بعد نهاية العلاج، كما يجب إجراء فحص للنخاع العظمي إذا لزم الأمر.</p><p dir="RTL">يجب توخي الحذر في المرضى الذين لديهم تاريخ مَرَضي من التعرُّض لكبت النخاع العظمي المحفز بواسطة العقار.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يُؤدي عقار أليكسان إلى ارتفاع مستويات حمض اليوريك في الدَّم نتيجة تدمير الخلايا السرطانية. لذلك، يجب مراقبة محتوى حمض اليوريك في الدَّم. سيبلغك طبيبك بضرورة تناوُل الأدوية لضبط مستوى حمض اليوريك لديك بالدّم.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب توخي حذر خاص مع القصور الطفيف في وظائف الكبد والكُلى.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يُعتَبَر قصور وظائف الكبد والكُلى أحد العوامل المهيئة لزيادة تسمم الجهاز العصبي المركزي نتيجة العلاج بعقار أليكسان.</p><p dir="RTL">&nbsp;</p><p dir="RTL">نظرًا إلى أن عقار أليكسان يتم تكسيره في الكبد بشكل أساسي، فمن المُمكِن أن يكون للمادة تأثير أقوى في المستخدمين الذين لديهم تلف بالكبد. تؤدي أيضًا الزيادة في الفعَّالية إلى الإصابة بقصور في وظائف الكُلى. في حال حدوث قصور في وظائف الكبد و/أو الكُلى، يجب إجراء خفض مماثل للجرعة أثناء فحص مستويات العقار في الدَّم. من الضروري إجراء مراقبة منتظمة لوظائف الكبد والكُلى فضلًا عن مستويات حمض اليوريك. في المرضى المُصابين بحالة قائمة بالفعل من قصور وظائف الكبد، يجب استخدام سيتارابين بحذر وبعد تقييم صارم للفوائد مقابل المخاطر لا سيَّما عند استخدامه بجرعات مرتفعة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تأكَّد من شرب كميات كافية من السَّوائل.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد تحدث تفاعلات تأقية أثناء العلاج بعقار أليكسان لا سيَّما فور إعطائه عن طريق الوريد.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يتم علاج المرضى ممن تزيد أعمارهم عن 60 عامًا بجرعة مرتفعة من عقار أليكسان فقط بعد إجراء تقييم دقيق بشكل خاص للفوائد مقابل المخاطر.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><u>تدابير منع الحَمْل</u><u>:</u></p><p dir="RTL">يُمكِن أن يُغيِّر عقار أليكسان من طبيعة المادة الوراثية. لذلك، يجب على الرجال تجنُّب إحداث الحمل أثناء العلاج ولمدة تصل إلى ستة أشهر بعد إنهاء العلاج. بالإضافة إلى ذلك، يجب عليك الحصول على معلومات قبل العلاج بشأن خيار الاحتفاظ بالحيوانات المنوية؛ ذلك لأنه من المُمكِن حدوث عُقْم بعد العلاج بعقار أليكسان.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يُوصى بالاستشارة بشأن الأمور الوراثية إذا كانت السيدات ترغب في الإنجاب بعد نهاية العلاج.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تتطلب الآثار الجانبية الشديدة التي تصيب الجهاز الهضمي علاجًا مضادًّا للقيء (لعلاج الغثيان) واتخاذ تدابير أخرى داعمة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">تتطلب العلاجات باستخدام جرعة مرتفعة إجراء مراقبة منتظمة لوظائف الجهاز العصبي المركزي ووظائف الرئة من جانب طبيب متخصص.</p><p dir="RTL">&nbsp;</p><p dir="RTL">لتجنُّب حدوث مشاكل في العين، يجب شطف العينين بصفة منتظمة أثناء العلاج باستخدام جرعة مرتفعة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب عدم تلقي أي تطعيمات بلقاحات حية أثناء العلاج بعقار أليكسان.</p><p dir="RTL">&nbsp;</p><p dir="RTL">ينطوي العلاج بعقار أليكسان على احتمالية التعرُّض لخطر حدوث مضاعفات نزفية وعدوى شديدة.</p><p dir="RTL">قد تحدث اضطرابات في الجهاز العصبي المركزي والجهاز الهضمي والكبد، فضلًا عن حدوث تفاعلات جلدية وأعراض في العين أثناء العلاج باستخدام جرعة مرتفعة من العلاج.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب تجنُّب ملامسة العقار للجلد والأغشية المخاطية والعينين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يؤدي استخدام عقار أليكسان بالتَّزامن مع أدوية أخرى إلى حدوث التهاب حاد في البنكرياس.</p><p dir="RTL">&nbsp;</p><p dir="RTL">لوحظ حدوث حالات من الإصابة بآثار جانبية متعلقة بالجهاز العصبي تراوحت بين الصداع إلى الشلل والغيبوبة ونوبات شبيهة بنوبات السكتة الدماغية بشكل أساسي في الأطفال والمراهقين الذين تلقوا عقار أليكسان عن طريق الوريد بمصاحبة ميثوتريكسات داخل القراب.</p><p dir="RTL">&nbsp;</p><p dir="RTL">سيتارابين، المادة الفعَّالة لعقار أليكسان، هي مادة قد تُلحِق ضررًا بجنينك كما قد تُغيِّر من طبيعة المادة الوراثية.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>استخدام عقار أليكسان مع الأدوية الأخرى</strong></p><p dir="RTL">أبلِغ طبيبك أو الصيدلي الخاص بك إذا كنت تتناول/تستخدم أدوية أخرى أو تناولت/استخدمت مؤخرًا أدوية أخرى أو تنوي تناوُل/استخدام أيَّة أدوية أخرى.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يؤدي الاستخدام المُتزامِن لبعض الأدوية المضادة للفيروسات (التي تُستَخدَم للعلاج من الفيروسات) مثل: سوريفودين أو بريفودين أو مشتقاتهما إلى زيادة حدة الآثار الجانبية لعقار أليكسان بشكلٍ ملحوظ (انظر قسم: &quot;لا تستخدم عقار أليكسان في الحالات الآتية&quot;).</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب عليك توخي حذر خاص إذا كنت تتناول أدوية لعلاج نوبات الصرع (فينيتوين). قد يؤدي استخدام فينيتوين بالتَّزامن مع عقار أليكسان إلى زيادة حدة تأثير فينيتوين. سيراقب طبيبك مستوى فينيتوين لديك في البلازما بصفة منتظمة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يؤدي العلاج المُتزامِن أو العلاج السابق بمواد مُتلِفة للخلايا أو بالعلاج الإشعاعي إلى زيادة حدة تثبيط النخاع العظمي بفعل عقار أليكسان.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قد يؤدي عقار أليكسان إلى حدوث التهاب حاد بالبنكرياس في حالة العلاج السابق بعقار إل- أسباراجيناز (دواء يُستَخدَم لعلاج سرطان الدَّم).</p><p dir="RTL">&nbsp;</p><p dir="RTL">يُتوَقَّع حدوث تداخلات دوائية عند الجمع بين مثبطات نمو الخلايا المختلفة (أدوية تُستَخدَم لعلاج السرطان).</p><p dir="RTL">&nbsp;</p><p dir="RTL">ينبغي ألا يُستَخدَم 5-فلوروسيتوزين بمصاحبة عقار أليكسان، فقد تبين أن عقار أليكسان من المُمكِن أن يثبط تأثير 5-فلوروسيتوزين (دواء يُستَخدَم لعلاج العدوى الفطرية).</p><p dir="RTL">&nbsp;</p><p dir="RTL">في المرضى الذين يتلقون أيضًا ديجوكسين (دواء يُستَخدَم لعلاج فشل القلب)، يجب مراقبة مستويات ديجوكسين في الدَّم أثناء العلاج بعقار أليكسان؛ ذلك لأنه قد يحدث انخفاض في مستويات ديجوكسين في الدَّم وبالتَّالي يضعف تأثيره. نظرًا لعدم انطباق ما سبق على العلاج بديجيتوكسين، فيُنصح المرضى الذين يتلقون علاجًا بسيتارابين الانتقال من العلاج بديجوكسين إلى العلاج بديجيتوكسين.</p><p dir="RTL">&nbsp;</p><p dir="RTL">وفقًا للدراسات المعملية التي أُجريت، تبين أن عقار أليكسان يخفض حساسية بعض البكتيريا (الكلبسيلة الرئوية) تجاه المضاد الحيوي جنتاميسين. إذا لم تكن هناك استجابة تجاه جنتاميسين، فسيغير طبيبك المضاد الحيوي إذا اقتضى الأمر.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الحمل والرضاعة الطبيعية والخصوبة</strong></p><p dir="RTL">إذا كنتِ حاملًا أو مرضعًا، أو تعتقدين أنكِ حامل أو تخططين لذلك، فاستشيري طبيبكِ قبل تلقي هذا الدَّواء.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>الحمل</u></p><p dir="RTL">في بعض فصائل الحيوانات، حدثت تشوُّهات في الأجنة عند استخدام سيتارابين. ينبغي ألا تستخدم السيدات الحوامل أو اللاتي يمكن أن يصبحن حوامل سيتارابين إلا بعد التَّمَعُّن جيدًا في المخاطر والفوائد المُحتَمَلة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يجب عليكِ إخطار طبيبكِ فورًا إذا أصبحتِ حاملًا أثناء العلاج بعقار أليكسان.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>الرضاعة الطبيعية</u></p><p dir="RTL">لا تمارسي الرضاعة الطبيعية أثناء العلاج بعقار أليكسان. يجب التوقف عن ممارسة الرضاعة الطبيعية قبل بدء العلاج بعقار أليكسان.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>الخصوبة</u></p><p dir="RTL">من المُمكِن أن يكون لعقار أليكسان تأثير مُطَفِّر. وهذا يعني أنَّ الدّواء قد يُسبب طفرات وراثية. قد يُضعف عقار أليكسان إنتاج الحيوانات المنوية والبويضات، وهو أمر يُصاحِبه إمكانية حدوث عيوب خلقية.</p><p dir="RTL">يجب تجنب الإنجاب أثناء العلاج بعقار أليكسان وخلال الأشهر الستة الأولى على الأقل بعد نهاية العلاج. نظرًا إلى أن العلاج بعقار أليكسان قد يُؤدي إلى حدوث العقم، فقد يكون من المُسْتَحْسَن للمرضى من الذكور وضع حفظ الحيوانات المنوية بعين الاعتبار قبل بدء العلاج (انظر أيضًا قسم: &quot;تحذيرات واحتياطات&quot;).</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>القيادة وتشغيل الآلات</strong></p><p dir="RTL"><!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+ o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+ stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1025" type="#_x0000_t75"
+ alt="Symbol: Achtung" style='width:30.75pt;height:27pt;visibility:visible'>
+ <v:imagedata src="file:///C:/Users/abulase1/AppData/Local/Temp/3/msohtmlclip1/01/clip_image001.png"
+  o:title=" Achtung"/>
+</v:shape><![endif]--><img width="41" height="36" alt="Symbol: Achtung" src="file:///C:/Users/abulase1/AppData/Local/Temp/3/msohtmlclip1/01/clip_image002.gif" />&nbsp;&nbsp;&nbsp; تنبيه: قد يؤثر هذا الدّواء على القدرة على الاستجابة، ويُضعف القدرة على &nbsp; القيادة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>يحتوي عقار أليكسان على الصوديوم</strong></p><p dir="RTL">يحتوي هذا الدّواء على أقل من 1 مللي مول (23 مجم) من الصوديوم لكل مللي لتر، أي: إنه &quot;خالٍ من الصوديوم&quot; تقريبًا.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">قد يقتصر استخدام العلاج بعقار أليكسان على الأطباء ممن تلقوا تدريبًا خاصًّا ولديهم خبرة في مجال علاج السرطان. يجب بدء هذا العلاج في المستشفى.</p><p dir="RTL">&nbsp;</p><p dir="RTL">هذا العقار مُخصص للاستخدام عن طريق الوريد وداخل القراب (في السائل الدماغي النخاعي) أو تحت الجلد (في النسيج الدهني تحت الجلد).</p><p dir="RTL">ستتلقى عقار أليكسان إما في هيئة تسريب وريدي أو في هيئة حَقْن في السائل الدماغي النخاعي أو أحيانًا في هيئة حَقْن في النسيج الدهني أسفل الجلد.</p><p dir="RTL">&nbsp;</p><p dir="RTL">معلومات للطبيب: للاطلاع على معلومات حول الجرعة، انظر المعلومات الوصفية أو بروتوكولات العلاج الواردة في النَّشرة المُوَجَّهة للأخصائيين.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إذا تلقيت كمية أكبر مما يجب من عقار أليكسان</strong></p><p dir="RTL">سيتأكَّد طبيبك من أنك قد تلقيت الجرعة الصحيحة لحالتك المَرَضيّة. في حال تلقي جرعة زائدة، قد تحدث آثار جانبية متزايدة. حينها سيوقف طبيبك العلاج، وإذا لزم الأمر سيتولى علاج الأعراض الناجمة عن حدوث أي أثر جانبي، وسيبدأ في اتخاذ التَّدابير الدَّاعمة.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا كانت لديك أية أسئلة إضافية حول استخدام هذا الدَّواء، فاتصل بطبيبك أو الصيدلي الخاص بك.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثله مثل كافة الأدوية، قد يسبب هذا الدّواء آثارًا جانبية إلا أنها لن تحدث لدى كل شخص يُعالج بعقار أليكسان.</p><p dir="RTL"><u>&nbsp;</u></p><p dir="RTL">تعتمد الآثار الجانبية الناجمة عن عقار أليكسان على الجرعة وطريقة الاستخدام ومدة العلاج.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يُعد التحمُّل الموضعي مرتفعًا بشكل عام. قد يحدث أحيانًا التهاب في موضع الحقن.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يستند تقييم الآثار الجانبية على معدّلات التكرار التَّالية:</p><p dir="RTL">شائعة جدًّا (قد تُؤثر على أكثر من شخص واحد من بين كل 10&nbsp;أشخاص خاضعين للعلاج)</p><p dir="RTL">شائعة (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 10&nbsp;أشخاص خاضعين للعلاج)</p><p dir="RTL">غير شائعة (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 100 شخص خاضع للعلاج)</p><p dir="RTL">نادرة (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 1000 شخص خاضع للعلاج)</p><p dir="RTL">نادرة جدًّا (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 10000 شخص خاضع للعلاج)</p><p dir="RTL">غير معروفة (لا يمكن تقدير معدل التكرار من واقع البيانات المتاحة)</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>شائعة جدًّا </strong>(قد تُؤثر على أكثر من شخص واحد من بين كل 10&nbsp;أشخاص خاضعين للعلاج)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تسمم دموي (تعفن الدَّم).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب الرئتين.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الإصابة بالعدوى.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضطرابات فشل النخاع العظمي، تغيُّرات في عدد خلايا الدَّم (على سبيل المثال: نقص خلايا الدَّم البيضاء أو الحمراء أو الصفائح الدَّموية، اضطراب خلايا الدَّم)؛ ويعتمد ذلك على الجرعة.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب المُلْتَحِمَة (في حالة الخضوع للعلاج بجرعة مرتفعة).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لوحظ حدوث قصور في وظائف الكبد، فَرْط البِيلِيروبين بالدَّم (ارتفاع مستويات الصبغة الموجودة في العصارة الصفراوية &quot;البيليروبين&quot;) في 25-50٪ من المرضى الذين يتلقون العلاج بجرعة مرتفعة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>شائعة</strong> (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 10&nbsp;أشخاص خاضعين للعلاج)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; فقدان الشهية، ارتفاع مستويات حمض اليوريك في الدَّم. قد يحدث أيضًا نقص في مستوى الكالسيوم بالدَّم.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم بالبطن.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; صعوبات في البلع.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب أو قُرَح بالفم أو الشرج.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إسهال شديد، غثيان وقيء (لا سيَّما بعد الحَقْن الوريدي السريع).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعلات جلدية (احمرار، تقرُّح، طفح جلدي، شرى [أرتكاريا])، التهاب الأوعية الدَّموية، بقع بالجلد، حكة. بعد تلقي جرعات مرتفعة، قد يحدث التهاب الجلد التقشري (التهاب الجلد مع ظهور بثور وتقشر بالجلد) وتساقط الشعر.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضطرابات بالدماغ (ارتعاش بالعين واضطرابات بالكلام واضطرابات بالحركة وارتباك وتغيُّرات في الشخصية)، اضطرابات في الأفكار والحركة، دوخة، ضعف الوعي مع ارتفاع عتبة التَّحفيز، غيبوبة، ارتجاف، نوبات تشنُّجية وفقدان الشهية.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لوحظ حدوث التهاب بالمُلْتَحِمَة، التهاب بالقرنية، حساسية تجاه الضوء، حُرقة بالعينين، إدماع شديد واضطرابات في الرؤية في 25-80٪ من المرضى الذين يخضعون للعلاج بجرعة مرتفعة، وهي أعراض معتمدة على الجرعة. (يُمكِن الوقاية من الأعراض أو تخفيفها عن طريق شطف العين بصفة متكررة أو الاستخدام الوقائي لقطرات العين التي تحتوي على الكورتيكوستيرويدات).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضطرابات المسالك البولية، قصور وظائف الكُلى. لوحظ حدوث ارتفاع في مستوى الكرياتينين (مُستَقلَب) في البلازما في 5 إلى 20٪ من المرضى الذين يتلقون علاجًا بجرعة مرتفعة من سيتارابين، ولكن لم يُثبَت وجود علاقة سببية مؤكدة بالعلاج بسيتارابين. ينبغي اتخاذ إجراءات للوقاية من اعتلال الكُلى الناجم عن تراكم حمض اليوريك في حال حدوث انحلال جسيم بالخلايا.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب الحَلْق، وذمة تحسسية (تراكُم الماء)، اضطرابات في إنتاج الهرمونات الجنسية وخلايا الحيوانات المنوية والبويضات، ألم في منطقة الصدر، استسقاء (تراكُم الماء في تجويف البطن)، ضعف الجهاز المناعي، تعفن الدَّم (تسمم دموي)، التهاب الوريد الخثاري (التهاب الأوردة وانسدادها) ونزيف. يُصاب 20-50٪ من المرضى الذين يخضعون للعلاج بجرعة مرتفعة بالحُمى.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>غير شائعة</strong> (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 100 شخص خاضع للعلاج)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب أو قُرَح في المريء، تغيُّرات شديدة في الغشاء المخاطي في الجهاز الهضمي مع حدوث تقرحات، تلف وانثقاب جدار الأمعاء (نخر)، انسداد الأمعاء، الْتِهاب الصِّفاق.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ظهور بقع صبغية باللون البني/الأسود على الجلد (نمش)، قُرَح على الجلد، حكة، ألم حارق على راحتي اليدين وباطني القدمين.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مرض يصيب الأعصاب الطرفية (اعتلال الأعصاب الطرفية).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لوحظ حدوث ألم عضلي و/أو ألم بالمفاصل بعد تلقي جرعات مرتفعة من عقار أليكسان.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مشاكل في التَّنَفُّس، ضيق في التَّنَفُّس، التهاب الحَلْق، وذمة رِئَوِيَّة (تراكُم السَّوائل في الرئتين، يُمكِن علاجه في غالبية الحالات)، التهاب رئوي (التهاب رئوي خلالي منتشر).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب التأمور الحاد.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>نادرة</strong> (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 1000 شخص خاضع للعلاج)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قد يؤدي استخدام عقار أليكسان داخل القراب (الحَقْن في السائل الدماغي النخاعي) إلى الإصابة بالغثيان والقيء والحُمّى.</p><p dir="RTL"><strong>نادرة جدًّا</strong> (قد تُؤثر على ما يصل إلى شخص واحد من بين كل 10000 شخص خاضع للعلاج)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب البنكرياس.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب الغدد العرقية.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جرى رصد حالات فردية من حدوث تغيُّرات باثولوجية في المادة البيضاء الموجودة بالمخ (اعتلال ناخر ببيضاء الدماغ)، وتلف بالنخاع الشوكي مصحوب بأعراض شلل تصيب الأطراف (شلل سُفلِي ورباعي) وفقدان البصر، وذلك بعد إعطاء عقار أليكسان في السائل الدماغي النخاعي.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جرى رصد حدوث إصابة بانحلال الربيدات (تحلل الألياف العضلية).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تَضخُّم الكبد. وردت تقارير فردية بشأن حدوث انسداد بالأوعية الدَّموية التي تعمل على تصريف الدم من الكبد (متلازمة بود-كياري).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تلف بعضلة القلب، اضطرابات مؤقتة في النَّظْم القلبي.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعلات حساسية (شرى [أرتكاريا]، صدمة تحسسية).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تم رصد الإصابة بمتلازمة الإفراز غير المناسب للهرمون المضاد لإدرار البول في حالات فردية من المرضى الذين يتلقون العلاج بعقار أليكسان بجرعة مرتفعة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>غير معروفة</strong> (لا يمكن تقدير معدل التكرار من واقع البيانات المتاحة)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب النسيج الخلوي (التهاب الطبقات العميقة من الجلد) في موضع الحَقْن، خراج في الكبد.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; متلازمة اليد والقدم.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جرى رصد حالات من الدوخة والصداع والتهاب الأعصاب، وبعد تلقي جرعات مرتفعة، جرى رصد حالات فردية من تلف الأعصاب الطرفية، فضلًا عن حالات من الشلل والتهاب السّحَايَا والتهاب الدماغ.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يرقان.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; انخفاض معدل ضربات القلب.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>متلازمة عقار أليكسان </u><u>(</u><u>سيتوزين</u><u>- </u><u>أرابينوسيد</u><u>)</u></p><p dir="RTL">تتمثل خصائص هذه المتلازمة المُوَضَّحة في المواد المنشورة في حدوث حُمّى، ألم في العضلات، ألم في العظام، ألم بالصدر أحيانًا، طفح جلدي مصحوب ببثور، التهاب بالمُلْتَحِمَة وغثيان. وتحدث بشكل عام بعد مرور 6&ndash;12 ساعة من الإعطاء. ثبت نجاح الكورتيكوستيرويدات (أدوية مضادة للالتهاب) في علاج المتلازمة أو الوقاية منها. إذا كانت الكورتيكوستيرويدات فعَّالة في هذا الصدد، فيُمكِن النظر في مواصلة العلاج بعقار أليكسان.</p><p dir="RTL">&nbsp;</p><p dir="RTL">مع تسريب الجرعات المرتفعة لفترة طويلة، تكون الآثار الجانبية أكثر وضوحًا منها مع العلاج القياسي.</p><p dir="RTL">جرى الإبلاغ عن حالات من الوفاة المبكرة نتيجة كبت النخاع العظمي.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">يُحفَظ في درجة حرارة أقل من 25 درجة مئوية.</p><p dir="RTL">يُحفَظ داخل العبوة الأصلية، للحماية من الضوء.</p><p dir="RTL">&nbsp;</p><p dir="RTL">يُحفَظ هذا الدَّواء بعيدًا عن رؤية ومُتناوَل الأطفال.</p><p dir="RTL">&nbsp;</p><p dir="RTL">لا تَستخدم هذا الدَّواء بعد تاريخ انتهاء الصلاحية المُدون على العبوة الخارجية أو على المُلصق بعد &quot;يُستخدَم قبل&quot;. يشير تاريخ انتهاء الصلاحية إلى اليوم الأخير من الشهر المحدد.</p><p dir="RTL">&nbsp;</p><p dir="RTL">للاستخدام مرة واحدة فقط. تَخلّص من أي منتج لم يتم استخدامه.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>المحلول المُعد للتسريب بعد التخفيف</u><u>:</u></p><p dir="RTL"><u>&nbsp;</u></p><p dir="RTL">أظهر المستحضر الجاهز للاستخدام ثباتًا كيميائيًّا وفيزيائيًّا عند تخفيفه باستخدام كلوريد الصوديوم 0.9٪ في درجة حرارة تتراوح بين درجتين مئويتين و8 درجات مئوية لمدة 28 يومًا.</p><p dir="RTL">&nbsp;</p><p dir="RTL">من وجهة النَّظر الميكروبيولوجية، يجب استخدام المستحضر المُعَد على الفور. إذا لم يُستَخدَم المستحضر المُعَد على الفور، يتحمل المُستخدِم مسؤولية مدة التَّخزين وظروفه. إذا لم يُحَضَّر المحلول الجاهز للاستخدام في ظل ظروف تعقيم مُضبطة وتم التَّحقق من صحتها، ينبغي عدم تخزينه لمدة تزيد عن 24 ساعة في درجة حرارة تتراوح بين درجتين مئويتين و8 درجات مئوية.</p><p dir="RTL">&nbsp;</p><p dir="RTL">بعد الاستخدام، تخلَّص من الزجاجة ومواد الحَقْن (بما في ذلك القفازات) وفقًا للأحكام الخاصة بالتَّخلُّص من مثبطات نمو الخلايا. يجب التَّخلص من أي مُنتَج غير مُستَخدَم فضلًا عن العبوة الرئيسية باعتبارهما نفايات خطرة.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المادة الفعَّالة هي سيتارابين.</p><p dir="RTL">يحتوي كل 1 مللي لتر على 50 مجم سيتارابين في محلول مائي مستقر.</p><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; السواغات الأخرى هي: محلول لاكتات الصوديوم 60٪، حمض اللاكتيك، ماء للحقن.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">محلول حقن/تسريب صافٍ وعديم اللون.</p><p dir="RTL">قيمة درجة الحموضة: 7.5&ndash;9.3</p><p dir="RTL">&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">بالنسبة للتركيز 50 مجم/مللي لتر:</p><p dir="RTL">1/5/10 زجاجات &times; 10 مللي لترات</p><p dir="RTL">1/5/10 زجاجات &times; 20 مللي لترًا</p><p dir="RTL">1/5/10 زجاجات &times; 40 مللي لترًا</p><p dir="RTL">&nbsp;</p><p dir="RTL">زجاجات زجاجية ذات/بدون حاويات بلاستيكية شفافة (Onco-Safe).</p><p dir="RTL">قد لا يتم تسويق جميع أحجام العبوات.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مالك حق التسويق</p><p dir="RTL">شركة إيبيفيه فارما المحدودة 4866 أونتراخ، النمسا</p><p dir="RTL">جھة التصَّنیع</p><p dir="RTL"><br />شركة فاریفا أونتراخ المحدودة<br />٤۸٦٦ أونتراخ، النمسا</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            يوليو 2021
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

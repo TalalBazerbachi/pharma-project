@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        23-201-96
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1996
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        E-MOX 500MG CAPS
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        AMOXICILLIN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        500
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Capsule
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        16
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        10.25
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="EIPICO" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            EIPICO
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 449]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Khalid Bin Saad Int. Company LTD
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            EIPICO
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        J01CA04
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                E-MOX capsules.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each capsule contains:
+Amoxicillin (as trihydrate) 500 mg
+For excipients, see 6.1
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Capsules: Hard gelatin capsule with a red cap & white body containing white to creamy white gritty powder with imprinted E361 on the red cap.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment of Infection: E-MOX is a broad spectrum antibiotic indicated for the treatment of commonly occurring bacterial infections such as:<br />Upper respiratory tract infections<br />Otitis media<br />Acute and chronic bronchitis<br />Chronic bronchial sepsis<br />Lobar and bronchopneumonia<br />Cystitis, urethritis, pyelonephritis<br />Bacteriuria in pregnancy<br />Gynaecological infections including puerperal sepsis and septic abortion<br />Gonorrhoea<br />Peritonitis<br />Intra-abdominal sepsis<br />Septicaemia<br />Bacterial endocarditis<br />Typhoid and paratyphoid fever<br />Skin and soft tissue infections<br />Dental abscess (as an adjunct to surgical management)<br />Helicobacter pylori eradication in peptic (duodenal and gastric) ulcer disease.<br />In children with urinary tract infection the need for investigation should be considered.<br />Prophylaxis of endocarditis: Amoxicillin may be used for the prevention of bacteraemia, associated with procedures such as dental extraction, in patients at risk of developing bacterial endocarditis.<br />Consideration should be given to official local guidance (e.g. national requirements) on the appropriate use of antibacterial agents. &rdquo;Susceptibility of the causative organism to the treatment should be tested (if possible), although the therapy may be initiated before the results are available.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment of Infection:<br />Adult dosage (including elderly patients):<br />Standard adult dosage: 250 mg three times daily, increasing to 500 mg three times daily for more severe infections.<br />High dosage therapy (maximum recommended oral dosage 6 g daily in divided doses): A dosage of 3 g twice daily is recommended in appropriate cases for the treatment of severe or recurrent purulent infection of the respiratory tract.<br />Short course therapy: Simple acute urinary tract infection: two 3 g doses with 10-12 hours between the doses. Dental abscess: two 3 g doses with 8 hours between the doses. Gonorrhoea: single 3 g dose.</p><p>Dosage in impaired renal function:<br />The dose should be reduced in patients with severe renal function impairment. In patients with a creatinine clearance of less than 30 ml/min an increase in the dosage interval and a reduction in the total daily dose is recommended (see section 4.4 and 5.2):<br />Glomerular filtration rate&gt;30ml/min No adjustment necessary.<br />Glomerular filtration rate 10-30ml/min: Amoxicillin. max.500mg b.d<br />Glomerular filtration rate&lt;10ml/min: Amoxicillin. Max. 500mg/day<br />Helicobacter eradication in peptic (duodenal and gastric) ulcer disease:<br />E-MOX is recommended at a dose of twice daily in association with a proton pump inhibitor and antimicrobial agents as detailed below:<br />Omeprazole 40 mg daily, Amoxicillin 1G BID, Clarithromycin 500mg<br />BID x 7days<br />Or<br />Omeprazole 40mg daily, Amoxicillin750mg-1G BID, Metronidazole 400mg<br />TID x 7 days<br />Children weighing &lt; 40 kg<br />The daily dosage for children is 40 - 90 mg/kg/day in two to three divided doses* (not exceeding 3 g/day) depending on the indication, severity of the disease and the susceptibility of the pathogen (see special dosage recommendations below and sections 4.4, 5.1 and 5.2).<br />* PK/PD data indicate that dosing three times daily is associated with enhanced efficacy, thus twice daily dosing is only recommended when the dose is in the upper range.<br />Children weighing more than 40 kg should be given the usual adult dosage.<br />Renal impairment in children under 40 kg:</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="border-color:black; height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:55.4pt; margin-right:19.95pt; text-indent:-34.8pt"><strong>Creatinine clearance ml/min</strong></p></td><td style="border-color:black; height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:.4pt; text-align:center"><strong>Dose</strong></p></td><td style="border-color:black; height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:35.75pt; margin-right:29.95pt; text-indent:-5.2pt"><strong>Interval between administration</strong></p></td></tr><tr><td style="border-color:black; height:13.85pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">&gt; 30</p></td><td style="height:13.85pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">Usual dose</p></td><td style="height:13.85pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">No adjustment necessary</p></td></tr><tr><td style="border-color:black; height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">10 &ndash; 30</p></td><td style="height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">Usual dose</p></td><td style="height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">12 h (corresponding to 2/3</p><p style="margin-left:5.35pt">of the dose)</p></td></tr><tr><td style="border-color:black; height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">&lt; 10</p></td><td style="height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">Usual dose</p></td><td style="height:27.55pt; vertical-align:top; width:147.6pt"><p style="margin-left:5.35pt">24 h (corresponding to 1/3</p><p style="margin-left:5.35pt">of the dose)</p></td></tr></tbody></table><p>E-MOX Paediatric Suspension is recommended for children under six months of age.<br />Special dosage recommendation<br />Tonsillitis: 50 mg/kg/day in two divided doses.<br />Acute otitis media: In areas with high prevalence of pneumococci with reduced susceptibility to penicillins, dosage regimens should be guided by national/local recommendations. In severe or recurrent acute otitis media, especially where compliance may be a problem, 750 mg twice a day for two days may be used as an alternative course of treatment in children aged 3 to 10 years.<br />Early Lyme disease (isolated erythema migrans): 50 mg/kg/day in three divided doses, over 14-21days.</p><p>Prophylaxis of endocarditis: see the table.<br />Administration: Oral:<br />Treatment should be continued for 2 to 3 days following the disappearance of symptoms. It is recommended that at least 10 days treatment be given for any infection caused by beta-haemolytic streptococci in order to achieve eradication of the organism.<br />Prophylaxis of endocarditis:</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="background-color:#dadada; border-color:black; height:38.0pt; width:112.55pt"><p style="margin-left:23.75pt; margin-right:0cm"><strong>CONDITION</strong></p></td><td style="background-color:#dadada; border-color:black; height:38.0pt; width:90.1pt"><p>&nbsp;</p></td><td style="background-color:#dadada; border-color:black; height:38.0pt; width:107.85pt"><p style="margin-left:.7pt; text-align:center"><strong>ADULTS&#39; DOSAGE (INCLUDING ELDERLY)</strong></p></td><td style="background-color:#dadada; border-color:black; height:38.0pt; width:103.4pt"><p style="margin-left:.4pt; margin-right:0cm; text-align:center"><strong>CHILDREN&#39;S DOSAGE</strong></p><p style="margin-left:.4pt; margin-right:.05pt; text-align:center"><strong>( &lt; 40 kg)</strong></p></td><td style="background-color:#dadada; border-color:black; height:38.0pt; width:107.95pt"><p style="margin-left:35.35pt; margin-right:0cm"><strong>NOTES</strong></p></td></tr><tr><td rowspan="3" style="border-color:black; height:96.55pt; vertical-align:top; width:112.55pt"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p style="margin-left:5.75pt; margin-right:5.45pt; text-align:center; text-indent:.15pt">Dental procedures: prophylaxis for patients undergoing extraction, scaling or surgery involving gingival tissues and who have not received a penicillin in the previous month.</p><p><strong>&nbsp;</strong></p><p style="margin-left:7.05pt; margin-right:6.65pt; text-align:center; text-indent:-.05pt">(N.B. Patients with prosthetic heart valves should be referred to hospital - see below).</p></td><td style="height:96.55pt; vertical-align:top; width:90.1pt"><p><strong>&nbsp;</strong></p><p style="margin-left:9.45pt; margin-right:9.1pt; text-align:center; text-indent:.05pt">Patient not having general anaesthetic.</p></td><td style="height:96.55pt; vertical-align:top; width:107.85pt"><p style="margin-left:.7pt; margin-right:.15pt; text-align:center">3 g &#39; <strong>E-MOX</strong>&#39;</p><p style="margin-left:5.75pt; margin-right:5.15pt; text-align:center; text-indent:.1pt">orally, 1 hour before procedure. A second dose may be given 6 hours later, if considered necessary.</p></td><td rowspan="3" style="height:96.55pt; vertical-align:top; width:103.4pt"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p style="margin-left:5.3pt; margin-right:4.8pt; text-align:center; text-indent:.1pt">50 mg amoxicillin/kg body weight given as a single dose one hour preceding the surgical procedure</p></td><td rowspan="3" style="height:96.55pt; vertical-align:top; width:107.95pt"><p style="margin-left:5.45pt; margin-right:11.5pt"><strong>Note 1. </strong>If prophylaxis with &lsquo;E<strong>-MOX </strong>&#39; is given twice within one month, emergence of resistant streptococci is unlikely to be a problem.</p><p style="margin-left:5.45pt; margin-right:6.65pt">Alternative antibiotics are recommended if more frequent prophylaxis is required, or if the patient has received a course of treatment with a penicillin during the previous month. <strong>Note 2</strong></p><p style="margin-left:5.45pt; margin-right:6.4pt">To minimise pain on injection, Amoxicillin may be given as two injections of 500 mg dissolved in sterile 1% lidocaime solution (see Administration).</p></td></tr><tr><td style="height:137.95pt; vertical-align:top; width:90.1pt"><p><strong>&nbsp;</strong></p><p style="margin-left:5.6pt; margin-right:5.3pt; text-align:center; text-indent:.05pt">Patient having general anaesthetic: if oral antibiotics considered to be appropriate.</p></td><td style="height:137.95pt; vertical-align:top; width:107.85pt"><p style="margin-left:6.45pt; margin-right:6.0pt; text-align:center; text-indent:.05pt">Initially 3g &#39;<strong>E- MOX</strong>&#39; orally 4 hours prior to anaesthesia, followed by 3 g orally (or 1 g IV or IM if oral dose not tolerated) as soon</p><p style="margin-left:.7pt; margin-right:.25pt; text-align:center">as possible after the operation.</p></td></tr><tr><td style="height:233.6pt; vertical-align:top; width:90.1pt"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p style="margin-left:6.95pt; margin-right:6.7pt; text-align:center; text-indent:.1pt">Patient having general anaesthetic: if oral antibiotics not appropriate.</p></td><td style="height:233.6pt; vertical-align:top; width:107.85pt"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p style="margin-left:6.6pt; margin-right:6.05pt; text-align:center; text-indent:-.15pt">1 g Amoxicillin IV or IM immediately before induction; with 500 mg orally, 6 hours later.</p></td></tr></tbody></table><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2" style="background-color:#dadada; border-color:black; height:37.9pt; width:112.6pt"><p style="margin-left:23.75pt; margin-right:0cm"><strong>CONDITION</strong></p></td><td style="background-color:#dadada; border-color:black; height:37.9pt; width:90.15pt"><p>&nbsp;</p></td><td style="background-color:#dadada; border-color:black; height:37.9pt; width:107.9pt"><p style="margin-left:.45pt; text-align:center"><strong>ADULTS&#39; DOSAGE (INCLUDING ELDERLY)</strong></p></td><td style="background-color:#dadada; border-color:black; height:37.9pt; width:103.45pt"><p style="margin-left:.05pt; text-align:center"><strong>CHILDREN&#39;S DOSAGE</strong></p><p style="text-align:center"><strong>( &lt; 40 kg)</strong></p></td><td style="background-color:#dadada; border-color:black; height:37.9pt; width:108.0pt"><p style="margin-left:.25pt; margin-right:.15pt; text-align:center"><strong>NOTES</strong></p></td></tr><tr><td colspan="3" style="border-color:black; height:151.3pt; vertical-align:top; width:202.75pt"><p style="margin-left:5.35pt; margin-right:0cm">Dental procedures: patients for whom</p><p style="margin-left:5.35pt">referral to hospital is recommended:</p><p style="margin-left:5.35pt">a) Patients to be given a general</p><p style="margin-left:5.35pt">anaesthetic who have been given a</p><p style="margin-left:5.35pt">penicillin in the previous month.</p><p style="margin-left:5.35pt">b) Patients to be given a general</p><p style="margin-left:5.35pt">anaesthetic who have a prosthetic heart</p><p style="margin-left:5.35pt">valve.</p><p style="margin-left:5.35pt">c) Patients who have had one or more</p><p style="margin-left:5.35pt">attacks of endocarditis.</p></td><td style="height:151.3pt; vertical-align:top; width:107.9pt"><p style="margin-left:5.3pt; margin-right:0cm">Initially: 1 g</p><p style="margin-left:5.3pt">Amoxicillin IV or</p><p style="margin-left:5.3pt">IM with 120 mg</p><p style="margin-left:5.3pt">gentamicin IV or</p><p style="margin-left:5.3pt">IM immediately</p><p style="margin-left:5.3pt">prior to anaesthesia</p><p style="margin-left:5.3pt">(if given) or 15</p><p style="margin-left:5.3pt">minutes prior to</p><p style="margin-left:5.3pt">dental procedure.</p></td><td rowspan="2" style="height:151.3pt; vertical-align:top; width:103.45pt"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p style="margin-left:5.15pt; margin-right:5.0pt; text-align:center; text-indent:.1pt">50 mg amoxicillin/kg body weight given as a single dose one hour preceding the surgical procedure</p></td><td style="height:151.3pt; vertical-align:top; width:108.0pt"><p style="margin-left:5.25pt">See Note 2.</p><p style="margin-left:5.25pt; margin-right:5.6pt"><strong>Note 3</strong>. Amoxicillin and gentamicin should not be mixed in the same syringe. <strong>Note 4</strong>. Please consult the appropriate data sheet for full prescribing information on gentamicin.</p></td></tr><tr><td colspan="3" style="border-color:black; height:147.2pt; vertical-align:top; width:202.75pt"><p style="margin-left:5.35pt">Genitourinary Surgery or</p><p style="margin-left:5.35pt">Instrumentation: prophylaxis for</p><p style="margin-left:5.35pt">patients who have no urinary tract</p><p style="margin-left:5.35pt">infection and who are to have genito-</p><p style="margin-left:5.35pt">urinary surgery or instrumentation</p><p style="margin-left:5.35pt">under general anaesthesia.</p><p style="margin-left:5.35pt">In the case of Obstetric and</p><p style="margin-left:5.35pt">Gynaecological Procedures and</p><p style="margin-left:5.35pt">Gastrointestinal Procedures&ndash; routine</p><p style="margin-left:5.35pt">prophylaxis is recommended only for</p><p style="margin-left:5.35pt">patients with prosthetic heart valves.</p></td><td style="height:147.2pt; vertical-align:top; width:107.9pt"><p style="margin-left:5.3pt">Initially: 1 g</p><p style="margin-left:5.3pt">Amoxicillin IV or</p><p style="margin-left:5.3pt">IM with 120 mg</p><p style="margin-left:5.3pt">gentamicin IV or</p><p style="margin-left:5.3pt">IM, immediately</p><p style="margin-left:5.3pt">before induction.</p><p style="margin-left:5.3pt">Followed by (6</p><p style="margin-left:5.3pt">hours later): 500</p><p style="margin-left:5.3pt">mg Amoxicillin</p><p style="margin-left:5.3pt">orally or IV or IM</p><p style="margin-left:5.3pt">according to</p><p style="margin-left:5.3pt">clinical condition.</p></td><td style="height:147.2pt; vertical-align:top; width:108.0pt"><p style="margin-left:.25pt; text-align:center">See Notes 2, 3 and</p><p style="margin-left:.25pt; margin-right:.25pt; text-align:center">4 above.</p></td></tr><tr><td rowspan="2" style="border-color:black; height:96.55pt; vertical-align:top; width:101.3pt"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p style="margin-left:6.1pt; margin-right:5.6pt; text-align:center; text-indent:.05pt">Surgery or Instrumentation of the Upper Respiratory Tract</p></td><td colspan="2" style="height:96.55pt; vertical-align:top; width:101.45pt"><p style="margin-left:5.35pt; margin-right:6.2pt">Patients other than those with prosthetic heart valves.</p></td><td style="height:96.55pt; vertical-align:top; width:107.9pt"><p style="margin-left:5.3pt; margin-right:8.75pt">1 g Amoxicillin IV or IM immediately before induction; 500 mg Amoxicillin IV or IM 6 hours later.</p></td><td style="height:96.55pt; vertical-align:top; width:103.45pt"><p><strong>&nbsp;</strong></p><p style="margin-left:5.15pt; margin-right:5.6pt">50mg amoxicillin/kg body weight given as a single dose one hour preceding the surgical procedure</p></td><td style="height:96.55pt; vertical-align:top; width:108.0pt"><p style="margin-left:5.25pt; margin-right:5.95pt">See Note 2 above. <strong>Note 5</strong>. The second dose of Amoxicillin may be administered orally</p><p style="margin-left:5.25pt; margin-right:5.95pt">as Amoxicillin Syrup SF/DF.</p></td></tr><tr><td colspan="2" style="height:113.55pt; vertical-align:top; width:101.45pt"><p style="margin-left:5.35pt; margin-right:21.35pt">Patients with prosthetic heart valves.</p></td><td style="height:113.55pt; vertical-align:top; width:107.9pt"><p style="margin-left:5.3pt">Initially: 1 g Amoxicillin IV or IM with 120 mg gentamicin IV or IM,</p><p style="margin-left:5.3pt">immediately before induction; followed</p><p style="margin-left:5.3pt">by (6 hours later) 500</p><p style="margin-left:5.3pt">mg Amoxicillin IV or</p><p style="margin-left:5.3pt">IM.</p></td><td style="height:113.55pt; vertical-align:top; width:103.45pt"><p style="margin-left:5.15pt; margin-right:5.0pt">50 mg amoxicillin/kg body weight given as a single dose one hour preceding the surgical procedure</p></td><td style="height:113.55pt; vertical-align:top; width:108.0pt"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p style="margin-left:5.25pt">See Notes 2, 3, 4</p><p style="margin-left:5.25pt">and 5 above.</p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Use in patients with hypersensitivity to penicillins, including ampicillin or cephalosporins or to any of the other excipients.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Prolonged use of anti-infective agent may result in superinfection by organisms resistant to that anti-infective.<br />In patients with renal impairment, the rate of excretion of amoxicillin will be reduced depending on the degree of impairment and it may be necessary to reduce the total daily unit amoxicillin dosage accordingly.<br />Serious and occasionally fatal hypersensitivity (anaphylactoid) reactions have been reported in patients on penicillin therapy. Although anaphylaxis is more frequent following parenteral therapy, it has occurred in patients on oral penicillins. These reactions are more likely to occur in persons with a history of penicillin hypersensitivity and/ or a history of sensitivity to multiple allergens. There have been reports of individuals with a history of severe reactions when treated with cephalosporin. Before initiating therapy with any penicillin, careful inquiry should be made concerning previous hypersensitivity reactions to penicillins, cephalosporins, or other allergens.<br />Erythematous (mornilliform) rashes have been associated with glandular fever in patients receiving amoxicillin.<br />If allergic reaction occurs, amoxicillin should be discontinued and appropriate therapy should be instituted and discontinuance of amoxicillin therapy considered.<br />Serious anaphylactoid reactions require immediate emergency treatment with epinephrine. Oxygen, intravenous steroids, and airway management, including intubation, should be administered as indicated.<br />In patients with reduced urine output crystalluria has been observed very rarely predominantly with parenteral therapy. During the administration of high doses of amoxicillin, it is advisable to maintain adequate fluid intake and urinary output in order to reduce the possibility of amoxicillin crystalluria<br />Precaution should be taken in premature children and during the neonatal period: renal, hepatic and haematological functions should be monitored.<br />This medicinal product contains sucrose. Patients with rare hereditary problems of fructose intolerance, glucose-galactose malabsorption or sucrose-isomaltase insufficiency should not take this medicine.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>When administered concurrently, the following drugs may interact with amoxicillin:<br />Oral Contraceptives: In common with other broad spectrum antibiotics, amoxicillin may reduce the efficacy of oral contraceptives and patients should be warned accordingly.<br />Bacteriostatic antibiotics: Chloramphenicol, erythromycins, sulfonamides or tetracyclines may interfere with the bactericidal effects of penicillins. This has been demonstrated in vitro; however, the clinical significance of this interaction is not well documented.</p><p>Probenecid: Probenecid may decrease renal tubular secretion of amoxicillin resulting in increased blood levels and/or amoxicillin toxicity.<br />Drug/Laboratory Test Interactions:<br />After treatment with amoxicillin, a false-positive reaction for glucose in the urine may occur with copper sulphate tests (Benedict&#39;s solution, fehling&#39;s solution, or Clinitest tablets) but not with enzyme based tests..<br />Allopurinol: Concurrent administration of allopurinol during treatment with amoxicillin can increase the likelihood of allergic skin reactions.<br />Methotrexate: Excretion of methotrexate is reduced by penicillins; increased risk of toxicity.<br />Oral typhoid vaccine: The oral typhoid vaccine is inactivated by antibacterials<br />Sulfinpyrazone: Excretion of penicillins is reduced by sulfinpyrazone.<br />Anticoagulants: Prolongation of prothrombin time has been reported rarely in patients receiving amoxicillin. Appropriate monitoring should be undertaken when anticoagulants are prescribed concurrently.<br />Muscle relaxants: Piperacillin (and possibly other penicillins) enhance the effects of non-depolarising muscle relaxants and suxamethonium.<br />Antibacterials: Absorption of phenoxymethylpenicillin (and possibly other penicillins) reduced by neomycin.<br />Guar Gum: Reduced absorption of penicillins.<br />Digoxin: An increase in the absorption of digoxin is possible on concurrent administration with amoxicillin.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Animal studies with amoxicillin have shown no teratogenic effects. Amoxicillin has been in extensive clinical use and its suitability in human pregnancy has been well documented in clinical studies. The product should only be used during pregnancy where potential benefits outweigh the potential risks associated with treatment.<br />Amoxicillin may be administered during the period of lactation. With the exception of the risk of sensitisation associated with the excretion of trace quantities of amoxicillin in breast milk, there are no known detrimental effects for the breast-fed infant.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The following convention has been utilised for the classification of undesirable effects:-<br />Very common (&gt;1/10), common (&gt;1/100, &lt;1/10), uncommon (&gt;1/1000,&lt;1/100), rare (&gt;1/10,000, &lt;1/1000), very rare (&lt;1/10,000)<br />The majority of side effects listed below are not unique to amoxicillin and may occur when using other pencillins.<br />Unless otherwise stated, the frequency of adverse events has been derived from more than 30 years of post-marketing reports.</p><p>Infections and Infestations:<br />Very rare: Mucocutaneous candidiasis<br />Blood and lymphatic system disorders:<br />Very rare: As with other beta-lactam antibiotics, reversible leucopenia (including severe neutropenia and agranulocytosis), reversible thrombocytopenia and haemolytic anaemia have been reported.<br />Prolongation of bleeding time and prothrombin time have also been reported (see section 4.5 Interaction with other medicinal products and other forms of interaction).<br />Immune System disorders:<br />Hypersensitivity reactions: As with other antibiotics, severe allergic reactions including angioneurotic oedema, and anaphylaxis (see section 4.4 Special Warnings and Precautions for Use) serum sickness and hypersensitivity vasculitis have been reported rarely.<br />If hypersensitivity reaction occurs, the treatment should be discontinued. (See also skin and subcutaneous tissue disorders)<br />Nervous system disorders:<br />Very rare: Hyperkinesia, dizziness and convulsions. Convulsions may occur in patients with impaired renal function or in those receiving high doses.<br />Gastrointestinal disorders:<br />Clinical Trial Data:<br />*Common: Diarrhoea and nausea<br />*Uncommon: Vomiting<br />Post-marketing data:<br />Very rare: Antibiotic associated colitis including pseudomembranous colitis and haemorrhagic colitis have been reported<br />Black hairy tongue.<br />Superficial tooth discolouration has been reported in children. This may respond to brushing.<br />Hepato-biliary disorders:<br />Very rare: Hepatitis and cholestatic jaundice. A moderate rise in AST and/or ALT, but the significance of this is unclear.<br />Skin and subcutaneous tissue disorders:<br />Clinical Trial Data:<br />*Common: Skin rash,<br />*Uncommon: Pruritus and urticaria.<br />Post Marketing Data:<br />Very rare: Skin reactions such as erythema multiforme and Stevens-Johnson syndrome, toxic epidermal necrolysis, bullous and exfoliative dermatitis and acute generalised exanthematous pustulosis (AGEP).(See also Immune System Disorders)<br />Renal and Urinary Tract disorders:<br />Very rare: Interstitial nephritis<br />Very rare: Crystalluria (See section 4.9 Overdose) can occur.</p><p>*The incidence of these AEs was derived from clinical studies involving a total of approximately 6,000 adult and paediatric patients taking amoxicillin.<br />Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of benefit/risk balance of the medicinal product. Health care professionals are asked to report any suspected adverse reactions.<br />Reporting of suspected adverse reactions<br />National pharmacovigilance &amp; Drug safety centre (NPC):<br />NPC Contact Information:<br />Fax: +966-11-205-7662.<br />Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.<br />Toll free phone: 8002490000.<br />E-mail: npc.drug@sfda.gov.sa.<br />Website: www.sfda.gov.sa/npc.</p><p>Other GCC States:<br />Please contact the relevant competent authority.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Gastrointestinal effects such as nausea, vomiting and diarrhoea may be evident and should be treated symptomatically with attention to the water/electrolyte balance. Amoxicillin crystalluria, in some cases leading to renal failure has been observed (see section 4.4 Special warnings and precautions for use).<br />Amoxicillin may be removed from the circulation by haemodialysis.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Amoxicillin is a broad spectrum antibiotic which is bactericidal for both gram positive and gram negative bacteria.<br />Amoxicillin is well absorbed by the oral route. Oral administration, usually at convenient t.d.s. dosage, produces high serum levels independent of the time at which the food is taken. Amoxicillin gives good penetration into bronchial secretions and high urinary concentrations of unchanged antibiotic. It is rapidly bactericidal and possesses the safety profile of a penicillin.<br />In portal systemic encephalopathy (PSE) or (pre)coma hepaticum, the effect has been attributed to suppression of proteolytic bacteria by an increase of acidophilic bacteria (e.g. lactobacillus), trapping of ammonia in the ionic form by acidification of the colonic contents, catharsis due to the low pH in the colon as well as an osmotic effect, and alteration of the bacterial nitrogen metabolism by stimulating the bacteria to utilize ammonia for bacterial protein synthesis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Amoxicillin is rapidly absorbed from the gastro-intestinal tract; it is not converted to ampicillin. It is widely distributed and is reported to product peak antibiotic plasma concentrations that are up to twice as high as those from the same dose of ampicillin.</p><p>Peak plasma-amoxicillin concentrations of about 5 mcg/ml have been observed 2 hours after a dose of 250mg, with detectable amounts present for up to 8 hours. Doubling the dose can produce double the concentration. The presence of food in the stomach does not appear to diminish absorption significantly.<br />Up to 20% is bound to plasma proteins in the circulation and plasma half-lives of about one hour have been reported. Amoxicillin diffuses across the placenta: little appears to be excreted in breast milk. It penetrates well into purulent and mucoid sputum and low concentrations have been found in ocular fluid. About 60% of an oral dose is excreted in the urine in six hours.<br />In preterm infants with gestational age 26-33 weeks, the total body clearance after intravenous dosing of amoxicillin, day 3 of life, ranged between 0.75 &ndash; 2 ml/min, very similar to the inuline clearance (GFR) in this population. Following oral administration, the absorption pattern and the bioavailability of amoxicillin in small children may be different to that of adults. Consequently, due to the decreased CL, the exposure is expected to be elevated in this group of patients, although this increase in exposure may in part be diminished by decreased bioavailability when given orally.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Capsules: Maize Starch, Microcrystalline Cellulose, Talc Purified, Magnesium Stearate, Colloidal Silicon Dioxide.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None known.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                3 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store at a temperature not exceeding 30&deg; C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>E-MOX 500 mg Capsules: A carton box contain 1 or 2 Blisters each of 8 capsules and pamphlet.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                 Egyptian International Pharmaceutical Industries Company, E.I.P.I.CO. 10th of Ramadan City – Industrial Area B1 – P.O. Box: 149 Tenth – Egypt. Tel: 0554/499199 0554/499277 Fax: 0554/499306 E-mail: eipico@eipico.com.eg 
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                August 2015
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

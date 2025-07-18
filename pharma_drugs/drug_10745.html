@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2-5366-20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2020
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        CANHERA
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        Trastuzumab
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        440
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder and solvent for solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store in a refrigerator (2°c – 8°c)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        4003.10
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Biocon Limited " />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Biocon Limited 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 587]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            EBRAHIM M. ALMANA & BROS. CO.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Biocon Biologics Limited 
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L01XC03 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                NAME OFTHE MEDICINAL PRODUCT
+CANHERA"
+GENERIC NAME
+Trastuzumab lyophilized powder for injection (r-DNA
+origin)
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                COMPOSITION
+150 mg single-dose, 150 mg multi-dose and 440 mg
+multi-dose vials containing powder for concentrate for
+solution for intravenous infusion. Reconstituted
+CANHERA" concentrate contains approximately 21
+mg/mL of trastuzumab, a humanised lgG1 monoclonal
+antibody expressed in Chinese hamster ovary cell
+suspension culture, and purified by affinity and ionexchange
+chromatography including specific viral
+inactivation and removal procedures.
+Composition of Trastuzumab for Injection
+(150 mg I vial)
+Component Quantity I vial
+Trastuzumab 150 mg
+L-Histidine 2.16 mg
+L-Histidine Hydrochloride 3.36 mg
+Polyethylene Glycol3350 (Macrogol3350) 33.6 mg
+D-Sorbitol 115.2 mg
+Composition of Trastuzumab for Injection (440 mg I
+vial)
+Component Quantity/vial
+Trastuzumab 440 mg
+L-Histidine 6.3 mg
+L-Histidine Hydrochloride 9.9 mg
+Polyethylene Glycol3350 (Macrogol3350) 98.6 mg
+D-Sorbitol 337.9 mg
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Powder for concentrate for solution for infusion.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>THERAPEUTIC INDICATIONS<br />Metastatic Breast Cancer<br />CANHERA&quot; is indicated for the treatment of MBC patients who have human epidermal growth factor receptor 2- (HER2)-overexpressing tumours.</p><p>Early Breast Cancer (EBC)<br />CANHERA&quot; is indicated for the treatment of adult patients with HER2 positive EBC.<br />CANHERA&quot;should only be used in MBC or EBC patients who have tumours with either overexpression of HER2 or HER2 gene amplification.</p><p><br />Metastatic Gastric Cancer (MGC)<br />CANHERA&quot; in combination with capecitabine or 5- fluorouracil and cisplatin is indicated for the treatment of adult patients with HER2 positive metastatic adenocarcinoma of the stomach or gastroesophageal junction who have not received prior anti-cancer treatment for their metastatic disease.<br />CANHERA&quot;should be used in only those MGC patients whose tumours overexpress H ER2, as defined by:<br />&bull; IHC2+ plus a confirmatory silver in situ hybridisation (SISH) or fluorescence in situ hybridisation (FISH) result, OR<br />&bull; IHC 3+ result.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>DOSE AND METHOD OF ADMINISTRATION&#39;&middot;&#39;<br />Before starting trastuzumab treatment. HER2 testing is<br />mandatory.<br />&bull; Administertrastuzumab as intravenous infusion.<br />&bull; Trastuzumab is not to be administered as an intravenous push or bolus.<br />&bull; Do not mix with other drugs.<br />&bull; Patients with MBC and MGC should be treated<br />until disease progression.<br />&bull; Only a physician experienced in the<br />administration of cytotoxic chemotherapy treatment should initiate treatment. Only a healthcare professional should administer trastuzumab and it should be administered by a healthcare professional prepared to manage anaphylaxis and an emergency kit should be available to manage any unexpected complications.<br />&bull; Loading dose should be administered as a 90- minute intravenous infusion. If the initial loading dose is well tolerated, subsequent doses can be administered as a 30-minute infusion. Observe patients for at least six hours after the start of the first infusion and for two hours after the start of subsequent infusions for symptoms like fever and chills or other infusion-related symptoms (see Undesirable Effects). If a patient displays infusion-associated symptoms, the infusion may be interrupted to help control the symptoms; and may be resumed once the symptoms have abated. Metastatic Breast Cancer<br />3-weeklydosing<br />&bull; An initial loading dose of 8 mg/kg is recommended; a maintenance dose of 6 mg/kg at 3-weekly intervals is recommended, beginning 3 weeks after the loading dose.<br />&bull; The loading dose should be administered as an intravenous infusion over approximately 90 minutes. The subsequent doses can be administered as a 30 minute infusion, if the initial loading dose was well tolerated.<br />Weekly dosing<br />&bull; An initial loading dose of 4 mg/kg is recommended; a maintenance dose of 2 mg/kg at weekly intervals is recommended, beginning one FRONT week after the loading dose.<br />&bull; The loading dose should be administered as an intravenous infusion over approximately 90 minutes. The subsequent doses can be administered as a 30-minute infusion, if the initial loading dose was well tolerated. Trastuzumab is indicated as monotherapy in patients who have already had two or more chemotherapy regimens for metastatic disease. Prior chemotherapy must have been an anthracycline and a taxane (at least), unless patients are unsuitable for these treatments. Hormonal therapy must also have been tried, and have failed, in hormone receptor-positive patients (unless patients are unsuitable for hormonal therapy).</p><p>Trastuzumab is indicated in combination with paclitaxel in patients who have not received chemotherapy for their metastatic disease and for whom an anthracycline is not suitable; in combination with docetaxel in patients who have not received chemotherapy for their metastatic disease; and in combination with an aromatase inhibitor in postmenopausal patients with hormone-receptor positive MBC, who have not previously been treated with trastuzumab.<br />Administration in combination with paclitaxel or docetaxel In clinical trials, paclitaxel or docetaxel was administered the day following the first dose of trastuzumab (reference product). If the dose was well tolerated,<br />paclitaxeVdocetaxel was administered immediately after the subsequent doses of trastuzumab (reference<br />product). Administration in combination with an aromatase inhibitor In a clinical trial, trastuzumab (reference product) and anastrozole were administered from day 1; without restrictions on the relative timing of administration of trastuzumab (reference product) and anastrozole.<br />Early Breast Cancer<br />Weekly dosing<br />In itialloading dose of 4 mglkg followed by 2 mg/kg every week concomitantly with paclitaxel following chemotherapy with doxorubicin and cyclophosphamide.<br />Three-weekly dosing<br />An initial loading dose of 8 mg/kg is recommended; a maintenance dose of 6 mglkg at 3-weekly intervals is recommended, beginning 3 weeks after the loading dose.<br />Trastuzumab is indicated after surgery, neoadjuvant or adjuvant chemotherapy, and (if applicable) radiotherapy. Trastuzumab should be used after adjuvant chemotherapy with doxorubicin and cyclophosphamide, in combination with paclitaxel or docetaxel. Trastuzumab should be used in combination with adjuvant chemotherapy consisting of docetaxel and carboplatin.<br />Trastuzumab should be used in combination with neoadjuvant chemotherapy followed by adjuvant trastuzumab therapy, for locally advanced disease (including inflammatory disease) or tumours of diameter &gt;2cm.</p><p><br />Metastatic Gastric Cancer<br />Three-weekly dosing<br />An initial loading dose of 8 mg/kg is recommended; a maintenance dose of 6 mglkg at 3-weekly intervals is recommended, beginning 3 weeks after the loading dose.<br />Duration of Treatment<br />Patients with MBC or MGC should be treated with trastuzumab until disease progression. Patients with EBC should be treated with trastuzumab for 1 year or until disease recurrence, whichever occurs first; it is not recommended to extend treatment in EBC beyond one year.<br />Dose Reduction<br />During periods of reversible chemotherapy-induced myelosuppression, trastuzumab may be continued; but observe the patient carefully for complications of neutropenia. Chemotherapy doses should be reduced or maintained as per the instructions for the specific<br />regimen.<br />If LVEF drops ;, 1 0 ejection fraction (EF) points from baseline and to below 50%, treatment should be stopped and a repeat LVEF assessment should be<br />performed within approximately 3 weeks.<br />Discontinuation of trastuzumab should be strongly considered if LVEF does not improve, or declines further, or symptomatic congestive heart failure (CHF) develops; unless the benefits outweigh the risks for the individual patient. All such patients should be referred for assessment by a cardiologist and followed up.<br />Missed Doses<br />For a dose missed by s1 week, administer the usual maintenance dose of trastuzumab (weekly regimen: 2 mg/kg; three-weekly regimen: 6 mg/kg), as soon as possible, without waiting till the next planned cycle. Subsequent maintenance doses should then be given according to the previous schedule.<br />For a dose missed by &gt; 1 week, administer a re-loading<br />dose of trastuzumab (weekly regimen: 4 mg!kg; threeweekly regimen: 8 mg/kg) over approximately 90 minutes; subsequent maintenance doses (weekly regimen: 2 mg/kg; three-weekly regimen 5 mg/kg respectively) should then be given (weekly regimen: every week; three-weekly regimen: every 3 weeks) from that point.<br />USE IN SPECIAL POPULATIONS&#39;&middot;&#39;&middot;&quot;<br />From available data, disposition of trastuzumab (reference product) is not altered with increasing age, renal impairment or serum creatinine levels. Elderly patients in reported clinical trials did not receive reduced doses.<br />Pregnancy and Lactation (see Warnings and Precautions section)<br />Children<br />The safety and efficacy of trastuzumab has not been established in paediatric patients (below 18 years of age). Trastuzumab should not be used in these patients.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                CONTRAINDICATIONS'
+• Hypersensitivity to trastuzumab, murine proteins
+or to any other component of CAN HERA •
+• Severe dyspnoea at rest due to complications of
+advanced malignancy
+• Requiring supplementary oxygen therapy.
+See section Composition for a list of components of CANHERA".
+Data in the following section (Warnings and Precautions) has been taken from publicly available data on trastuzumab (reference product).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>WARNINGS AND PRECAUTIONS&#39;&middot;&#39;&middot;&#39;<br />General<br />Initiate trastuzumab therapy under the supervision of a physician experienced in cancer treatment. Exacerbation of chemotherapy-induced neutropenia<br />Incidences of neutropenia, including febrile neutropenia,</p><p>were reported in clinical trials in patients receiving trastuzumab (reference product) in combination with myelosuppressive chemotherapy as compared to those who received chemotherapy alone. The incidence of septic death was similar among patients who received trastuzumab (reference product) and those who did not.<br />The risk of neutropenia may be slightly increased when trastuzumab is administered with docetaxel following anthracycl ine therapy. Infusion-related reactions Serious infusion-related reactions to trastuzumab (reference product) infusion have been reported; and include dyspnoea, hypotension, wheezing, bronchospasm, tachycardia, reduced oxygen saturation, hypertension, supraventricular tachyarrhythmia, anaphylaxis, urticaria, angioedema and respiratory distress. The majority of these events occur during or within 2.5 hours of the start ofthe first infusion. Patients may be at increased risk of a fatal infusion reaction if they are experiencing dyspnoea at rest, arising from complications of advanced malignancy or comorbidities.<br />Should infusion reactions occur, discontinue trastuzumab infusion or slow the rate of infusion, and observe the patient until the symptoms resolve. Rarely, such reactions culminate in death. Most patients experienced resolution of symptoms and were given further infusions of trastuzumab (reference product). Supportive therapy, such as oxygen, epinephrine, antihistamine, bronchodilators, beta-agonists and corticosteroids, has been successfully used to treat serious reactions (see Undesirable Effects). There have also been reports of initial improvement followed by delayed reactions with rapid clinical deterioration. Within hours and up to one week following infusion, deaths have occurred. Very rarely, the onset of infusion symptoms and pulmonary symptoms have occurred more than 6 hours after the start of the infusion. Warn patients of the possibility of such a late onset and instruct them to contact the physician if these symptoms occur. Prior to resumption of trastuzumab (reference product) infusion, the majority of patients who experienced a severe infusion reaction were premedicated with antihistamines and/or corticosteroids. While some patients tolerated trastuzumab (reference product) infusions, others had recurrent severe infusion reactions despite pre-medications.<br />Pulmonary toxicity<br />Severe pulmonary events have been reported with trastuzumab (reference product), occasionally resulting in death. Cases of interstitial lung diseases including lung infiltrates, acute respiratory distress syndrome, pneumonia, pneumonitis, pleural effusion, respiratory distress, acute pulmonary oedema and respiratory insufficiency have been reported; these events may occur as part of an infusion-related reaction or with a delayed onset. Risk factors associated with interstitial lung disease include prior or concomitant therapy with other anti-neoplastic therapies such as taxanes, gemcitabine, vinorelbine and radiation therapy. Patients may be at greater risk of severe reactions if they have symptomatic intrinsic lung disease; or extensive tumour involvement of the lungs, resulting in dyspnoea at rest. Therefore, such patients should not be treated with trastuzumab (see Contraindication). Exercise caution for pneumonitis, especially in patients being treated concomitantly with taxanes.<br />Cardiac dysfunction<br />Trastuzumab therapy increases the risk of CHF (New York Heart Association [NYHA] class II - IV) or asymptomatic cardiac dysfunction. These events have been observed in patients receiving trastuzumab (reference product) alone or in combination with paclitaxel following anthracycline (doxorubicin or epirubicin). These events can be moderate to severe and may be associated with death.<br />Caution should be taken when treating patients with increased cardiac risk (e.g., hypertension, documented coronary artery disease, CHF, LVEF &lt;55%, older age).</p><p>Since the half-life of trastuzumab is long, it may persist in the circulation for up to 27 weeks after stopping<br />treatment. Patients who receive anthracyclines after stopping trastuzumab may possibly be at increased risk of cardiotoxicity. If possible, physicians should avoid anthracycline-based therapy for up to 27 weeks after stopping treatment, and monitor cardiac function carefully if anthracyclines are used. If left ventricular function continues to decrease, but patients remain asymptomatic, the physician should consider discontinuing therapy if no clinical benefit of therapy has been seen. Trastuzumab and anthracycline should not be given concurrently in the adjuvant treatment setting (EBC) or MBC setting. In patients with EBC eligible for neoadjuvant-adjuvant chemotherapy, trastuzumab should only be used concurrently with anthracyclines in<br />chemotherapy-naive patients and only with low-dose anthracycline regimens (maximum cumulative doses of doxorubicin 180 mg/m&#39; or epirubicin 360 mg!m&#39;). In patients being concurrently treated with full course of low-dose anthracyclines and trastuzumab in the neoadjuvant setting, additional cytotoxic chemotherapy should not be given after surgery.<br />Patients who are going to start trastuzumab, especially those with prior exposure to anthracycline and cyclophosphamide, should undergo baseline cardiac assessment, including history and physical examination, ECG, echocardiogram and/or multigated acquisition (MUGA) scan. Repeat cardiac assessments every 3 months during treatment and every 6 months following discontinuation of treatment until 24 months from the last administration oftrastuzumab.<br />If LVEF drops 0!!1 0 EF points from baseline and to below 50%, treatment should be stopped and a repeat LVEF assessment should be performed within approximately 3 weeks. If LVEF does not improve, or declines further, or symptomatic CHF develops, discontinuation of trastuzumab should be strongly considered, unless the benefits for the individual patient outweigh the risks. All such patients should be referred for assessment by a cardiologist and followed up.</p><p>No prospective study has been done on the safety of continuing or resuming trastuzumab (reference product) in patients who experience cardiotoxicity. In the pivotal trials, most patients who developed heart failure improved with standard treatments (including diuretics, cardiac glycosides, beta blockers and/or angiotensin converting enzyme inhibitors). In these trials, most patients with cardiac symptoms who also had evidence of a clinical benefit from trastuzumab (reference product) treatment continued on therapy with trastuzumab (reference product) without further clinical cardiac events.<br />In a global early breast cancer trial with trastuzumab (reference product), patients with the following conditions were excluded:<br />&bull; History of myocardial infarction<br />&bull; Angina pectoris requiring medical treatment<br />&bull; Clinically significant cardiac valvular disease<br />&bull; History of existing cardiac heart failure (NYHA II -IV)<br />&bull; Other cardiomyopathy, cardiac arrhythmia<br />requiring medical treatment<br />&bull; Poorly controlled hypertension<br />&bull; LVEF&lt;55%<br />&bull; hemodynamic effective pericardia! effusion<br />Therefore, the benefit-risk balance for such patients is unknown, and treatment is not recommended.<br />Benzyl alcohol<br />Benzyl alcohol (1.1 %) is used as a preservative in bacteriostatic water for injection in the 1 50 mg and 440 mg CANHERA&quot;multi-dose vials. If a patient is known to be hypersensitive to benzyl alcohol, reconstitute CANHERA&quot; with water for injection, and use only one dose per CANHERA&quot; vial. Discard any unused portion.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Formal drug interaction studies with trastuzumab (reference product) have not been performed in humans. In clinical trials of trastuzumab (reference product), no clinically significant interactions with the concomitant medications used were observed (see Pharmacokinetic Properties). The results of a small sub-study suggested that the exposure to the bioactive metabolites (e.g.,<br />5-fluorouracil) of capecitabine was not affected by concurrent use of cisplatin or by concurrent use of</p><p>cisplatin plus trastuzumab (reference product). However, capecitabine itself showed higher concentrations and a longer half-life when combined with trastuzumab (reference product). The mean serum trough concentration of trastuzumab (reference product) was consistently elevated approximately 1.5-fold, when administered in combination with paclitaxel as compared to trough concentrations of trastuzumab (referenceproduct) when administered in combination with an anthracycline and cyclophosphamide. Trastuzumab can increase the overall exposure of 7-deoxy-13 dihydrodoxorubicinone (D7D), a doxorubicin metabolite. The bioactivity of D7D and the clinical impact of the increase of this metabolite is not clear.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Fertility, pregnancy and lactation Women of childbearing potential<br />Women of childbearing potential should be advised to use effective contraception during treatment with trastuzumab and for 7 months after treatment has concluded.</p><p><br />Pregnancy<br />Reproduction studies have been performed in cynomolgus monkey at doses up to 25 times the weekly human dose and have revealed no evidence of impaired fertility or harm to the fetus due to trastuzumab. Placental transfer of trastuzumab during the early (days 20-50 of gestation) and late (days 120-150 of gestation) foetal development period was observed. It is not known whether trastuzumab can affect reproductive capacity. As animal reproduction studies are not always predictive of human response, trastuzumab should be avoided during pregnancy unless the potential benefit for the mother outweighs the potential risk to the foetus.<br />In the post-marketing setting, cases of foetal renal growth and/or function impairment in association with oligohydramnios, some associated with fatal pulmonary hypoplasia of the foetus, have been reported in pregnant women receiving trastuzumab. Women who become pregnant should be advised of the possibility of harm to the foetus. If a pregnant woman is treated with trastuzumab, or if a patient becomes pregnant while receiving trastuzumab or within 7 months following the last dose of trastuzumab, close monitoring by a multidisciplinary team is desirable.</p><p>Breast-feeding<br />A study conducted in lactating Cynomolgus monkeys at doses 25 times that of the weekly human maintenance dose demonstrated that trastuzumab is secreted in the milk. The presence of trastuzumab in the serum of infant monkeys was not associated with any adverse effects on their growth or development from birth to 1 month of age. It is not known whether trastuzumab is secreted in human milk. As human lgG1 is secreted into human milk, and the potential for harm to the infant is unknown,<br />women should not breast-feed during CANHERA&quot;150 mg therapy and for 7 months after the last dose.<br />Fertility<br />There is no fertility data available.<br />&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Effects on Ability to Drive and Use Machines<br />Trastuzumab has no or negligible influence on the ability to drive or use machines. Patients should be advised not to drive and use machines if they are experiencing infusion-related symptoms; until the symptoms abate.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>UNDESIRABLE EFFECTS&#39;&middot;&#39;-&#39;<br />The following undesirable effects are based on publicly available information categorized on the basis of frequency of occurrence of adverse reactions in different clinical trials and post-marketing information for trastuzumab (reference product).</p><p>Very common (&#39;!!.1 11 0): Tremor, blood pressure decreased, blood pressure increased, heart beat irregular, palpitation, cardiac flutter, lip swelling, swelling face, muscle tightness (adverse reactions reported largely in association with infusion-related reactions); ejection fraction decreased (observed with combination therapy following anthracyclines and combined with taxanes); wheezing (adverse reactions reported in association with a fatal outcome and infusion-related reactions); dyspnoea (adverse reactions reported in association with a fatal outcome); infection, nasopharyngitis, febrile&nbsp; neutropenia, anaemia, neutropenia, leukopenia, thrombocytopenia, weight decreased/weight loss, anorexia, weight increased, decreased appetite, insomnia, dizziness, headache, paraesthesia, hypoaesthesia, dysgeusia, conjunctivitis, lacrimation increased, lymphoedema, hot flush, cough, epistaxis,<br />rhinorrhoea, oropharyngeal pain, diarrhoea, vomiting, nausea, abdominal pain, dyspepsia, constipation, stomatitis, erythema, rash, alopecia, nail disorder, Palmar-plantar erythrodysaesthesia syndrome, arthralgia, myalgia, asthenia, chest pain, chills, fatigue, influenza-like symptoms, infusion-related reaction, pain, pyrexia, mucosal inflammation, peripheral oedema, nail toxicity_<br />Common (?.1 /100 to &lt;1 /10): Cardiac failure(congestive),<br />pneumonia, pleural effusion (adverse reactions reported in association with a fatal outcome); supraventricular tachyarrhythmia, hypotension (adverse reactions reported in association with a fatal outcome and infusion-related reactions); neutropenic sepsis, cystitis, herpes zoster, influenza, sinusitis, skin infection, rhinitis, upper respiratory tract infection, urinary tract infection, erysipelas, cellulitis, pharyngitis, hypersensitivity, anxiety, depression, thinking abnormal, peripheral neuropathy, hypertonia, somnolence, ataxia, dry eye, cardiomyopathy, hypertension, vasodilatation, asthma, lung disorder, pancreatitis, haemorrhoids, dry mouth, hepatocellular injury, hepatitis, liver tenderness, acne, dry skin, ecchymosis, hyperhydrosis, maculopapular rash, pruritus, onychoclasis, dermatitis, arthritis, back pain, bone pain, muscle spasms, neck pain, pain in extremity, renal disorder, breast inflammation/mastitis, malaise, oedema, contusion_<br />Uncommon (?.111,000 to &lt;11100): Sepsis, deafness,<br />pericardia I effusion, urticaria_<br />Rare (?.1110,000 to &lt;111,000): Paresis, pneumonitis,<br />jaundice.<br />Not known (cannot be estimated from the available data): Anaphylactic reaction, anaphylactic shock, pulmonary fibrosis, respiratory distress, respiratory failure, lung infiltration, acute pulmonary oedema, acute respiratory distress syndrome, bronchospasm, hypoxia, oxygen saturation decreased (adverse reactions reported in association with a fatal outcome); malignant neoplasm progression, neoplasm progression, hypoprothrombinaemia, hyperkalaemia, brain oedema, papilledema, retinal haemorrhage, cardiogenic shock, pericarditis, bradycardia, gallop rhythm present, laryngeal oedema, pharyngolaryngeal pain, pulmonary hypertension, Herpes simplex, hypokalaemia, dysphagia, accidental injury, thrombosis/embolism, sudden death, autoimmune thyroiditis, flu syndrome, allergic reaction, orthopnoea, pulmonary oedema, interstitial lung disease, hepatic failure, angioedema, dermatitis, urticaria, glomerulonephritis membranous, glomerulonephropathy, renal failure, oligohydramnios, renal hypoplasia, pulmonary hypoplasia.<br />The most serious and/or common adverse reactions reported with trastuzumab (reference product) are: cardiac dysfunction, infusion-related reactions and hypersensitivity, haematological toxicity, infections and pulmonarytoxicity.<br />Cardiac dysfunction<br />CHF (NYHA II-IV) is a common adverse reaction observed with trastuzumab (reference product) and has been associated with fatal outcome. Signs and symptoms of cardiac dysfunction observed in patients treated with trastuzumab (reference product) include: dyspnoea, orthopnoea, increased cough, pulmonary oedema, 53 gallop or reduced ventricular ejection fraction (see Warnings and Precautions). Infusion-related reactions (IRRs) and<br />Hypersensitivity<br />The following infusion-related reactions (IRRs) were seen in all trastuzumab (reference product) trials: chills and/or fever, dyspnoea, hypotension, wheezing, bronchospasm, tachycardia, reduced oxygen saturation and respiratory distress (see Warning and Precautions). Majority of IRRs are mild to moderate in intensity; usually occur during first, second or third infusion and lessen in frequency in subsequent infusions.</p><p>Anaphylactoid reactions have been observed with trastuzumab (reference product) in isolated cases. Haematological toxicity Febrile neutropenia is the most common haematological toxicity observed with trastuzumab (reference product).<br />The common haematological toxicity are: anaemia, leukopenia, thrombocytopenia and neutropenia. When trastuzumab is administered with docetaxel following anthracycline therapy, the risk of neutropenia may be slightly increased.<br />Infections<br />In the adjuvant setting, the most common sites of infections include upper respiratory tract, skin and urinary tract.<br />Pulmonary toxicity<br />The following pulmonary adverse reactions were observed with trastuzumab (reference product): pulmonary infiltrates, acute respiratory distress syndrome, pneumonia, pneumonitis, pleural effusion, respiratory distress, acute pulmonary oedema and respiratory insufficiency.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>OVERDOSE<br />There is no information on overdose from human clinical trials. Single doses greater than 10 mg/kg oftrastuzumab (reference product) alone have not been administered in the clinical trials. Doses up to this level were well tolerated.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacodynamic Properties<br />Pharmacotherapeutic group: Antineoplastic agents,<br />monoclonal antibodies<br />ATC code: L01 XC03&#39;<br />Mechanism of Action&#39;&middot;&#39;&middot;&#39;<br />Trastuzumab is a humanised monoclonallgG 1 antibody produced by recombinant DNA technology; and contains complementarity-determining regions from a mouse antibody (anti-p185) specific for the extracellular domain ofthe human epidermal growth factor receptor 2 protein (HER2), along with human framework sequences.<br />The HER2 receptor becomes constitutive instead of inducible in tumour cells. This is a result of increased cell surface expression/overexpression of HER2 protein caused by HER2 gene amplification. Overexpression is seen in 25% to 30% of primary breast cancers and in 6.8% to42.6% gastric cancers.<br />Studies showed that amplification or overexpression of HER2 correlates with shorter disease-free survival.</p><p>Trastuzumab binds to sub-domain IV, a juxta-membrane region of HER2&#39;s extracellular domain, with high affinity and specificity. This binding inhibits ligand-independent HER2 signalling and prevents the proteolytic cleavage of its extracellular domain, an activation mechanism of HER2.<br />In in-vitro assays and in animals, trastuzumab is reported to have inhibited proliferation of human tumour cells overexpressing HER2. Trastuzumab also preferentially mediates antibody-dependent cell-mediated cytotoxicity (ADCC) on tumour cells overexpressing HER2.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacokinetic Properties<br />Two phase 1 studies</p><p>1) Single-center, single-dose, 2- period, randomized, double-blind, cross-over study and<br />2) Single-center, randomized, double-blind, three-arm, parallel-group study were conducted in normal healthy volunteers. Both studies showed that pharmacokinetic profile of CANHERA&quot;was similar to that of trastuzumab (reference product). In addition, a multicenter, doubleblind, randomized, parallel-group, phase Ill study showed that pharmacokinetic, efficacy, safety and immunogenicity profiles of CANHERA&quot; was similar to trastuzumab (reference product) in patients with HER2- positive metastatic breast cancer (MBC).<br />Pharmacokinetics in Special Populations&#39;A&quot;<br />The pharmacokinetics of trastuzumab (reference product) have not been studied specifically in elderly patients, patients with renal impairment, or patients with hepatic impairment. However, in the trials conducted with trastuzumab (reference product), distribution and elimination were not noted to be affected by age and renal impairment (see Dose and Method of Administration).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>PRECLINICAL SAFETY DATA<br />Nonclinical studies (conventional toxicity studies) on CANHERA&quot; did not indicate any special hazard for humans. During conventional single- and repeat-dose toxicity studies of CANHERA&quot; in mice and rabbits, no clinically relevant adverse events were observed at the highest dose levels tested. Local tolerance was also evaluated in these toxicity studies, and no clinically BIOCON FORMULATIONS MASTER PROOF OF APPROVED PRINTED PI ART WORK CANHERA&reg;150 mg Pack FOR COLOUR COPY [For (SAUDI) SFDA MOH SUBMISSION] ANNEXURE-4 [Ref. No. : BF/QA/SOP/006] ARTWORK CODE: BF1624/02<br />relevant effects were observed. Two comparative nonclinical studies undertaken in cynomolgus monkeys showed that the pharmacokinetic and toxicokinetic profile of CANHERA&quot;was similar to that of trastuzumab (reference product).<br /><br />&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>List of Excipients:<br />L-Histidine,</p><p>L-Histidine hydrochloride,</p><p>PolyethyleneGlycol3350 (Macrogol3350),</p><p>D-Sorbitol.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>INCOMPATIBILITIES<br />CANHERA&quot; should not be mixed or diluted with other<br />products except those mentioned under Special<br />Precautions for Disposal and Other Handling<br />section.<br />Do not dilute with glucose solutions, since these cause<br />aggregation ofthe protein.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Please refer to carton/label.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>STORAGE AND HANDLING INFORMATION<br />Store vials at 2&quot;C to S&quot;C prior to reconstitution.<br />Store away from light.<br />Vials should not be used beyond the expiration date<br />stamped on the vial; the reconstituted drug solution<br />should be used as given below; and any unused portion<br />must be discarded. DO NOT FREEZE DRUG THAT HAS<br />BEEN RECONSTITUTED.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>PACKAGING INFORMATION<br />150 mg CAN HERA&quot; (Single-dose vial)<br />CAN HERA&quot; finished product 150 mg is filled in 15 ml<br />USP type 1 glass vial, closed with a halobutyl rubber<br />stopper and sealed with 20MM lavender flip-off seal.<br />150 mg CANHERA&quot;(Multi-dosevial)<br />CAN HERA&quot; finished product 150 mg is filled in 15 mL<br />USP type 1 glass vial, closed with a halobutyl rubber<br />stopper and sealed with 20MM lavender flip-off seal.<br />The 150 mg pack is provided with total 1 0 ml<br />bacteriostatic water for injection (containing 1.1%<br />benzyl alcohol as preservative), of which 7.2 ml is to be<br />used for reconstitution.<br />440 mg CANHERA&quot;(Multi-dosevial)<br />CAN HERA&quot; finished product 440 mg is filled in 50 mL<br />USP type 1 glass vial closed with a halobutyl rubber<br />stopper and sealed with 20MM lavender flip-off seal.<br />The 440 mg pack is provided with total 20 ml<br />bacteriostatic water for injection (containing 1.1%<br />benzyl alcohol as preservative) for reconstitution.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Special Precautions for Disposal and Other Handling<br />&bull; Appropriate aseptic technique should be used.<br />&bull; Use of other reconstitution solvents should be avoided.<br />Reconstitution details are given in the table below:</p><p>Table 2: Reconstitution Details of 150 mg (Single- and Multi-dose Use) and 440 mg Vials (Multi-dose Use) Type of Vial Reconstitution 150 mg 7.2 ml of sterile (single-dose) water for injection* 150 mg 7.2 ml of BWFI (multi-dose) (containing 1.1% benzyl alcohol) 440mg 20 ml of BWFI (multi-dose) (containing 1.1% benzyl alcohol) BWFI: bacteriostatic water for injection.<br />*Not supplied<br />Trastuzumab pH<br />mg/ml<br />-21 -6.0<br />-21 -6.0<br />-21 -6.0<br />&bull; During reconstitution, handle CANHERA&quot; carefully. Causing excessive foaming during reconstitution or shaking the reconstituted solution may result in problems with the amount of CAN HERA&quot; that can be withdrawn from the vial.<br />&bull; Do not freeze the reconstituted solution.<br />Instructions for reconstitution-150 mg vial (single -dose via/1<br />1) Slowly inject 7.2 ml of sterile water for injection into the vial containing the lyophilized CAN HERA&quot;, using a sterile syringe. Direct the stream into the lyophilized cake.<br />2) To aid reconstitution, the vial should be swirled gently. DO NOT SHAKE.<br />Instructions for reconstitution-150 mg vial (multi-dose vial)<br />1) Slowly inject 7.2 ml of bacteriostatic water for injection into the vial containing the lyophilized CANHERA&quot;, using a sterile syringe. Direct the stream into the lyophilized cake.<br />2) To aid reconstitution, the vial should be swirled gently. DO NOT SHAKE.</p><p>Instructions for reconstitution-440 mg vial (multi-dose vial)<br />1) Slowly inject 20 ml of bacteriostatic water for injection into the vial containing the lyophilized CANHERA&quot;, using a sterile syringe. Direct the stream into the lyophilized cake.<br />2) To aid reconstitution, the vial should be swirled gently. DO NOT SHAKE.<br />Slight foaming of the product may be seen upon reconstitution; this is not unusual. The vial should be allowed to stand undisturbed for approximately 5 minutes. Reconstituted CANHERA&quot;is a colourless to pale yellow, transparent solution. No particles should be visible.<br />Instructions for dilution:<br />Determine the volume of CAN HERA &quot;solution required:<br />&bull; Based on a loading dose of 4 mg CANHERA&quot;Ikg, or D:\e drive\Jobs G Drive Data\HEALTH CAREIPACKAGING\INTERNATIONAL\CANHERA (SAUDI) SFDA\CANHERA PI FOR MOH SUBMISSION asubsequentweeklydoseof2 mg CANHERA&quot;/kg: Body weight (kg) x dose (4 mglkg for loading or 2 mglkg for maintenance) Volume (mL) = __:____:,~----=-----=---=-----__:__ 21 (mg/mL, concentration of reconstituted solution)<br />&bull; Based on a loading dose of S mg CANHERA&quot;fkg, or a subsequent 3-weekly dose of 6 mg CANHERA&quot; /kg: Body weight (kg) x dose (8 mglkg for loading or 6 mg/kg for maintenance) Volume (mL) = __::___::_:_ _ _:_ ___:__:, ___ __:__ 21 (mglmL, concentration of reconstituted solution)<br />&bull; Withdraw the appropriate amount of solution from the vial, and add it to an infusion bag containing 250 mL of 0.9% sodium chloride solution.<br />&bull; Glucose/dextrose-containing solutions should not be used.<br />&bull; Mix the solution by inverting the bag gently (toavoid foaming).<br />&bull; Once the infusion is prepared it should be administered immediately.<br />&bull; If diluted aseptically, it may be stored for 24 hours (do not store above 30&deg;(). Inspect visually for particulate matter and discoloration prior to administration.<br />No incompatibilities have been observed between trastuzumab and polyvinylchloride, polyethylene or polypropylene bags.</p><p>Dispose of unused medicinal product in accordance with local regulations.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                MANUFACTURED BY
+Biocon Limited
+Special Economic Zone
+Plot No.2, 3, 4and 5, PhaseiV Bommasandra-
+Jigani Link Road,
+Bommasandra Post,
+Bengaluru - 560 099
+MARKETED BY
+Biocon Limited
+20th KM, Hosur Road
+Electronics City
+Bengaluru - 560 1 DO
+For further details, please contact:
+BACK
+Medical Advisor
+Biocon House, Semicon Park, Electronics City Phase II,
+Bengaluru- 560100.
+Telephone: +91-S0-6775 1107
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Leaflet generated October 2018
+®-Registered trademark of Biocon Limited.
+To report adverse events and/or product complaints visit our website www.biocon.com or e-mail us at DrugSafety@biocon.com
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        0410200179
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2020
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Pemitax
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        PEMETREXED
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        500
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Intravenous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Powder for concentrate for solution for infusion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Vial
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        1816.60
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Gland Pharma Limited " />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Gland Pharma Limited 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2096]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Boston Oncology Arabia
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Boston Oncology Arabia
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        L01BA04
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Pemetrexed for Injection 500 mg/vial
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each vial contains:
+Pemetrexed Disodium
+equivalent to Pemetrexed………500 mg 
+Excipients..............................q.s.
+Excipient(s) with known effect:
+For a full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Pemetrexed for Injection is a white to either light yellow or green yellow sterile lyophilized cake or powder.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pemetrexed&nbsp;for&nbsp;Injection&nbsp;is&nbsp;indicated&nbsp;for:</p><p><u>Non-Squamous&nbsp;Non-Small&nbsp;Cell&nbsp;Lung&nbsp;Cancer&nbsp;(NSCLC)</u></p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->in combination with&nbsp;cisplatin for the&nbsp;initial&nbsp;treatment of patients with&nbsp;locally advanced or metastatic, non-squamous, non-small cell lung cancer (NSCLC).</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->in combination with carboplatin and pembrolizumab for the initial treatment of patients with metastatic, non-squamous NSCLC. This indication is approved under accelerated approval based on tumor&nbsp;response rate and progression-free survival. Continued approval for this indication may be contingent upon verification and description of clinical benefit in the confirmatory trials.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->as a single agent for the maintenance treatment of patients with locally advanced or metastatic, non-squamous NSCLC whose disease has not progressed after four cycles of platinum-based first-line chemotherapy.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->as a single agent for the treatment of patients with recurrent, metastatic non-squamous, NSCLC after prior chemotherapy.</p><p><strong>Limitations&nbsp;of&nbsp;Use:&nbsp;</strong></p><p>Pemetrexed&nbsp;for&nbsp;Injection&nbsp;is&nbsp;not&nbsp;indicated&nbsp;for&nbsp;the&nbsp;treatment&nbsp;of&nbsp;patients&nbsp;with squamous cell, non-small cell lung cancer.</p><p><u>Mesothelioma</u></p><p>Pemetrexed&nbsp;for&nbsp;Injection&nbsp;is&nbsp;indicated,&nbsp;in&nbsp;combination&nbsp;with&nbsp;cisplatin,&nbsp;for&nbsp;the&nbsp;initial&nbsp;treatment&nbsp;of patients with malignant pleural mesothelioma whose disease is unresectable or who are otherwise not candidates for curative surgery.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><!--[if !supportLists]--><strong>4.2.1&nbsp;&nbsp;</strong><!--[endif]--><strong>Recommended&nbsp;Dosage&nbsp;for&nbsp;Non-Squamous&nbsp;NSCLC</strong></p><p>The recommended dose of Pemetrexed for Injection when administered with cisplatin for initial treatment of NSCLC in patients with a creatinine clearance (calculated by Cockcroft- Gault equation) of 45 mL/min or greater is 500 mg/m<sup>2</sup>&nbsp;as an intravenous infusion over 10 minutes administered prior to cisplatin on Day 1 of each 21-day cycle for up to six cycles in the absence of disease progression or unacceptable toxicity.</p><p>The recommended dose of Pemetrexed for Injection for maintenance treatment of NSCLC in patients&nbsp;with&nbsp;acreatinine&nbsp;clearance&nbsp;(calculated&nbsp;by&nbsp;Cockcroft-Gault&nbsp;equation)&nbsp;of&nbsp;45&nbsp;mL/min&nbsp;or greater&nbsp;is&nbsp;500&nbsp;mg/m<sup>2</sup>&nbsp;as&nbsp;anintravenous&nbsp;infusion&nbsp;over&nbsp;10&nbsp;minutes&nbsp;on&nbsp;Day&nbsp;1&nbsp;of&nbsp;each&nbsp;21-day&nbsp;cycle until&nbsp;disease&nbsp;progression&nbsp;or&nbsp;unacceptabletoxicity&nbsp;after&nbsp;four&nbsp;cycles&nbsp;of&nbsp;platinum-based&nbsp;first-line&nbsp;chemotherapy.</p><p>The recommended dose of Pemetrexed for Injection for treatment of recurrent NSCLC in patients&nbsp;with&nbsp;acreatinine&nbsp;clearance&nbsp;(calculated&nbsp;by&nbsp;Cockcroft-Gault&nbsp;equation)&nbsp;of&nbsp;45&nbsp;mL/min&nbsp;or greater&nbsp;is&nbsp;500&nbsp;mg/m<sup>2</sup>&nbsp;as&nbsp;anintravenous&nbsp;infusion&nbsp;over&nbsp;10&nbsp;minutes&nbsp;on&nbsp;Day&nbsp;1&nbsp;of&nbsp;each&nbsp;21-day&nbsp;cycle until disease progression or unacceptable toxicity.</p><p>The recommended dose of Pemetrexed for Injection when administered with carboplatin and pembrolizumab for the initial treatment of NSCLC in patients with a creatinine clearance (calculated by&nbsp;Cockcroft-Gault equation)of&nbsp;45&nbsp;mL/min or&nbsp;greater is&nbsp;500&nbsp;mg/m<sup>2</sup>&nbsp;administered as&nbsp;an&nbsp;intravenous&nbsp;infusion&nbsp;over&nbsp;10&nbsp;minutes&nbsp;prior&nbsp;tocarboplatin&nbsp;on&nbsp;Day&nbsp;1&nbsp;of&nbsp;each&nbsp;21-day&nbsp;cycle for 4 cycles. Following completion of platinum-based therapy, Pemetrexed for Injection may be administered as maintenance therapy, alone or with pembrolizumab, until disease progression or unacceptable toxicity. Pembrolizumab should be administered prior to Pemetrexed for Injection when given on the same day.</p><p><!--[if !supportLists]--><strong>4.2.1&nbsp;&nbsp;<!--[endif]-->Recommended&nbsp;Dosage&nbsp;for&nbsp;Mesothelioma</strong></p><p>The recommended dose of Pemetrexed for Injection when administered with cisplatin in patients&nbsp;with&nbsp;acreatinine&nbsp;clearance&nbsp;(calculated&nbsp;by&nbsp;Cockcroft-Gault&nbsp;equation)&nbsp;of&nbsp;45&nbsp;mL/min&nbsp;or greater&nbsp;is&nbsp;500&nbsp;mg/m<sup>2</sup>&nbsp;as&nbsp;anintravenous&nbsp;infusion&nbsp;over&nbsp;10&nbsp;minutes&nbsp;on&nbsp;Day&nbsp;1&nbsp;of&nbsp;each&nbsp;21-day&nbsp;cycle until disease progression or unacceptable toxicity.</p><p><!--[if !supportLists]--><strong>4.2.2&nbsp;&nbsp;<!--[endif]-->Renal&nbsp;Impairment</strong></p><p>Pemetrexed for Injection dosing recommendations&nbsp;are provided for patients with a creatinine clearance(calculated&nbsp;by&nbsp;Cockcroft-Gault&nbsp;equation)&nbsp;of 45&nbsp;mL/min&nbsp;or&nbsp;greater&nbsp;(see&nbsp;section&nbsp;4.2). There&nbsp;is&nbsp;no&nbsp;recommendeddose&nbsp;for&nbsp;patients&nbsp;whose&nbsp;creatinine&nbsp;clearance&nbsp;is&nbsp;less&nbsp;than&nbsp;45&nbsp;mL/min.</p><p><!--[if !supportLists]--><strong>4.2.3&nbsp;&nbsp;<!--[endif]-->Patients&nbsp;with&nbsp;hepatic&nbsp;impairment</strong></p><p>No relationships between AST (SGOT), ALT (SGPT), or total bilirubin and pemetrexed pharmacokinetics were identified. However, patients with hepatic impairment, such as bilirubin &gt;&nbsp;1.5-times the upper limit of normal and/or aminotransferase &gt; 3.0-times the upper limit of normal (hepatic metastases absent) or &gt; 5.0-times the upper limit of normal (hepatic metastases present), have not been specifically studied.</p><p><!--[if !supportLists]--><strong>4.2.4&nbsp;&nbsp;<!--[endif]-->Premedication&nbsp;and&nbsp;Concomitant&nbsp;Medications&nbsp;to&nbsp;Mitigate&nbsp;Toxicity</strong></p><p><u>Vitamin&nbsp;Supplementation</u></p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Initiate&nbsp;folic&nbsp;acid&nbsp;400&nbsp;mcg&nbsp;to&nbsp;1000&nbsp;mcg&nbsp;orally&nbsp;once&nbsp;daily,&nbsp;beginning&nbsp;7&nbsp;days&nbsp;before&nbsp;the&nbsp;first dose of Pemetrexed for Injection and continuing until 21 days after the last dose of Pemetrexed for Injection (see section 4.4).</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Administer&nbsp;vitamin&nbsp;B12&nbsp;1&nbsp;mg&nbsp;intramuscularly,&nbsp;1&nbsp;week&nbsp;prior&nbsp;to&nbsp;the&nbsp;first&nbsp;dose&nbsp;of&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;and every&nbsp;3 cycles thereafter. Subsequent vitamin&nbsp;B injections may be&nbsp;given the same day as treatment with Pemetrexed for (see section 4.4).</p><p>Do&nbsp;not&nbsp;substitute&nbsp;oral&nbsp;vitamin&nbsp;B&nbsp;for&nbsp;intramuscular&nbsp;vitamin&nbsp;B12.</p><p><strong>&nbsp;</strong></p><p><u>Corticosteroids</u></p><p>Administer dexamethasone 4 mg orally twice daily for three consecutive days, beginning the day before each Pemetrexed for Injection administration.</p><p><!--[if !supportLists]--><strong>4.2.1&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Dosage Modification of Ibuprofen in Patients with Mild to Moderate Renal Impairment Receiving Pemetrexed for Injection</strong></p><p>In patients with creatinine clearances between 45 mL/min and 79 mL/min, modify administration of ibuprofen as follows (see section 4.4, section 4.5 and section 5).</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Avoid administration of ibuprofen&nbsp;for 2&nbsp;days before, the&nbsp;day of, and&nbsp;2 days following administration of Pemetrexed for Injection.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Monitor patients more frequently for myelosuppression, renal, and gastrointestinal toxicity, if concomitant administration of ibuprofen cannot be avoided.</p><p><!--[if !supportLists]--><strong>4.2.2&nbsp;&nbsp;<!--[endif]-->Dosage&nbsp;Modifications&nbsp;for&nbsp;Adverse&nbsp;Reactions</strong></p><p>Obtain complete blood count on Days 1, 8, and 15&nbsp;of each cycle. Assess creatinine clearance prior to each cycle. Do not administer Pemetrexed for Injection if the creatinine clearance is less than 45 mL/min. Delay initiation of the next cycle of Pemetrexed for Injection until:</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->recovery of&nbsp;non-hematologic&nbsp;toxicity to&nbsp;Grade 0-2,</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->absolute&nbsp;neutrophil&nbsp;count&nbsp;(ANC)&nbsp;is&nbsp;1500&nbsp;cells/mm<sup>3</sup>&nbsp;or&nbsp;higher,&nbsp;and</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->platelet&nbsp;count&nbsp;is 100,000&nbsp;cells/mm<sup>3</sup>&nbsp;or&nbsp;higher.</p><p>Upon recovery, modify the dosage of Pemetrexed for Injection in the next cycle as specified in Table 1.</p><p>For dosing modifications&nbsp;for cisplatin,&nbsp;refer&nbsp;to&nbsp;the&nbsp;prescribing information for&nbsp;cisplatin.</p><p><strong>Table&nbsp;1:&nbsp;Recommended&nbsp;Dosage&nbsp;Modifications&nbsp;for&nbsp;Adverse&nbsp;Reactions<sup>a</sup></strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p><strong>Toxicity&nbsp;in Most&nbsp;Recent&nbsp;Treatment&nbsp;Cycle</strong></p></td><td style="vertical-align:top"><p><strong>Pemetrexed&nbsp;for&nbsp;Injection&nbsp;Dose Modification for Next Cycle</strong></p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Myelosuppressive&nbsp;toxicity&nbsp;</strong>(see&nbsp;section&nbsp;4.4)</p></td></tr><tr><td style="vertical-align:top"><p>ANC&nbsp;less&nbsp;than&nbsp;500/mm<sup>3</sup>&nbsp;and&nbsp;platelets&nbsp;greater&nbsp;than&nbsp;or&nbsp;equal to 50,000/mm<sup>3</sup>&nbsp;OR Platelet count less than 50,000/mm<sup>3</sup>without bleeding.</p></td><td style="vertical-align:top"><p>75%&nbsp;of&nbsp;previous&nbsp;dose</p></td></tr><tr><td style="vertical-align:top"><p>Platelet&nbsp;count&nbsp;less&nbsp;than&nbsp;50,000/mm<sup>3</sup>&nbsp;with&nbsp;bleeding</p></td><td style="vertical-align:top"><p>50%&nbsp;of&nbsp;previous&nbsp;dose</p></td></tr><tr><td style="vertical-align:top"><p>Recurrent&nbsp;Grade&nbsp;3&nbsp;or&nbsp;4&nbsp;myelosuppression&nbsp;after&nbsp;2&nbsp;dose&nbsp;reductions</p></td><td style="vertical-align:top"><p>Discontinue</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Non-hematologic&nbsp;toxicity</strong></p></td></tr><tr><td style="vertical-align:top"><p>Any Grade 3 or 4 toxicities EXCEPT mucositis or neurologic&nbsp;toxicity&nbsp;OR&nbsp;Diarrhea&nbsp;requiring&nbsp;hospitalization</p></td><td style="vertical-align:top"><p>75%&nbsp;of&nbsp;previous&nbsp;dose</p></td></tr><tr><td style="vertical-align:top"><p>Grade&nbsp;3 or&nbsp;4&nbsp;mucositis</p></td><td style="vertical-align:top"><p>50%&nbsp;of&nbsp;previous&nbsp;dose</p></td></tr></tbody></table><table border="1" cellspacing="0" cellpadding="0" style="width:1164px"><tbody><tr><td style="vertical-align:top; width:762px"><p>Renal&nbsp;toxicity&nbsp;(see&nbsp;section&nbsp;4.4)</p></td><td style="vertical-align:top; width:401px"><p>Withhold&nbsp;until&nbsp;creatinine&nbsp;clearance&nbsp;is 45 mL/min or greater</p></td></tr><tr><td style="vertical-align:top; width:762px"><p>Grade&nbsp;3&nbsp;or&nbsp;4&nbsp;neurologic&nbsp;toxicity</p></td><td style="vertical-align:top; width:401px"><p>Permanently&nbsp;discontinue</p></td></tr><tr><td style="vertical-align:top; width:762px"><p>Recurrent&nbsp;Grade&nbsp;3&nbsp;or&nbsp;4&nbsp;non-hematologic&nbsp;toxicity&nbsp;after&nbsp;2 dose reductions</p></td><td style="vertical-align:top; width:401px"><p>Permanently&nbsp;discontinue</p></td></tr><tr><td style="vertical-align:top; width:762px"><p>Severe&nbsp;and&nbsp;life-threatening&nbsp;Skin&nbsp;Toxicity&nbsp;(see&nbsp;section&nbsp;4.4)</p></td><td style="vertical-align:top; width:401px"><p>Permanently&nbsp;discontinue</p></td></tr><tr><td style="vertical-align:top; width:762px"><p>Interstitial&nbsp;Pneumonitis&nbsp;(see&nbsp;section&nbsp;4.4)</p></td><td style="vertical-align:top; width:401px"><p>Permanently&nbsp;discontinue</p></td></tr></tbody></table><p>&nbsp;</p><p><!--[if !supportLists]--><strong>4.2.1&nbsp;&nbsp;<!--[endif]-->Preparation&nbsp;for&nbsp;Administration</strong></p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Pemetrexed&nbsp;for&nbsp;Injection&nbsp;is&nbsp;a&nbsp;cytotoxic&nbsp;drug.&nbsp;Follow&nbsp;applicable&nbsp;special&nbsp;handling&nbsp;and disposal procedures.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Calculate&nbsp;the&nbsp;dose&nbsp;of&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;and&nbsp;determine&nbsp;the&nbsp;number&nbsp;of&nbsp;vials&nbsp;needed.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Reconstitute&nbsp;Pemetrexed&nbsp;for&nbsp;Injection to&nbsp;achieve&nbsp;a&nbsp;concentration&nbsp;of&nbsp;25&nbsp;mg/mL&nbsp;as&nbsp;follows:</p><p><!--[if !supportLists]-->&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Reconstitute&nbsp;each&nbsp;500-mg&nbsp;vial&nbsp;with&nbsp;20&nbsp;mL&nbsp;of&nbsp;0.9%&nbsp;Sodium&nbsp;Chloride&nbsp;Injection, USP (preservative-free)</p><p><!--[if !supportLists]-->&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Do&nbsp;not use&nbsp;calcium-containing solutions&nbsp;for&nbsp;reconstitution.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Gently swirl&nbsp;each vial&nbsp;until&nbsp;the powder is&nbsp;completely dissolved. The&nbsp;resulting solution&nbsp;is clear and ranges in color from colorless to yellow or green-yellow. FURTHER DILUTION IS REQUIRED prior to administration.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Store reconstituted, preservative-free product under refrigerated conditions [2-8&deg;C (36- 46&deg;F)] for no longer than 24 hours from the time of reconstitution. Discard vial after 24&nbsp;hours.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Inspect reconstituted product visually for particulate matter and discoloration prior to further dilution. If particulate matter is observed, discard vial.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Withdraw&nbsp;the&nbsp;calculated&nbsp;dose&nbsp;of&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;from&nbsp;the&nbsp;vial(s)&nbsp;and&nbsp;discard vial with any unused portion.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Further&nbsp;dilute&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;with&nbsp;0.9%&nbsp;Sodium&nbsp;Chloride&nbsp;Injection (preservative-free) to achieve a total volume of 100 mL for intravenous infusion.</p><p><!--[if !supportLists]-->&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Store diluted, reconstituted product under refrigerated conditions [2-8&deg;C (36-46&deg;F)] for no more than 24 hours from the time of reconstitution. Discard after 24 hours</p><p><!--[if !supportLists]--><strong>4.2.1&nbsp;&nbsp;<!--[endif]-->Elderly</strong></p><p>In clinical studies, there has been no indication that patients 65 years of age or older are at&nbsp;increased risk of adverse events compared to patients younger than 65 years old. No dose reductions other than those recommended for all patients are necessary.</p><p><!--[if !supportLists]--><strong>4.2.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Pediatric&nbsp;population</strong></p><p>There is no relevant use of&nbsp;Pemetrexed for Injection&nbsp;in the pediatric population in malignant pleural mesothelioma and non-small cell lung cancer.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Pemetrexed for Injection is contraindicated in patients with a history of severe hypersensitivity reaction to pemetrexed (see section 4.8).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Myelosuppression and Increased Risk of Myelosuppression without Vitamin&nbsp;Supplementation</strong></p><p>Pemetrexed can suppress bone marrow function as manifested by neutropenia, thrombocytopenia, and anaemia (or pancytopenia) (see section 4.8). Myelosuppression is usually the dose-limiting toxicity. Patients should be monitored for myelosuppression during therapy&nbsp;and&nbsp;pemetrexed&nbsp;should&nbsp;not&nbsp;be&nbsp;given&nbsp;to&nbsp;patients&nbsp;until&nbsp;absoluteneutrophil&nbsp;count&nbsp;(ANC) returns&nbsp;to&nbsp;&ge;&nbsp;1,500&nbsp;cells/mm<sup>3</sup>&nbsp;and&nbsp;platelet&nbsp;count&nbsp;returns&nbsp;to&nbsp;&ge;&nbsp;100,000&nbsp;cells/mm<sup>3</sup>.&nbsp;Dosereductions for&nbsp;subsequent&nbsp;cycles&nbsp;are&nbsp;based&nbsp;on&nbsp;nadir&nbsp;ANC,&nbsp;platelet&nbsp;count,&nbsp;and&nbsp;maximum&nbsp;non-haematologic toxicity seen from the previous cycle (see section 4.2).</p><p>Less toxicity and reduction in Grade 3/4 haematologic and non-haematologic toxicities, such as neutropenia, febrile neutropenia, and infection with Grade 3/4 neutropenia, were reported&nbsp;when pre-treatment with folic acid and vitamin B12&nbsp;was administered. Therefore, all patients treated&nbsp;with&nbsp;pemetrexed&nbsp;must&nbsp;be&nbsp;instructed&nbsp;to&nbsp;take&nbsp;folicacid&nbsp;and&nbsp;vitamin&nbsp;B12&nbsp;as&nbsp;a&nbsp;prophylactic&nbsp;measure to reduce treatment-related toxicity (see section 4.2).</p><p><strong>Renal&nbsp;Function</strong></p><p>Pemetrexed&nbsp;for&nbsp;Injection&nbsp;can&nbsp;cause&nbsp;severe,&nbsp;and&nbsp;sometimes&nbsp;fatal,&nbsp;renal&nbsp;toxicity.&nbsp;The&nbsp;incidences of renal failure were found to be up to 2.2% in clinical studies in which patients received Pemetrexed for Injection with cisplatin. The incidence of renal failure in clinical studies in which&nbsp;patients&nbsp;received&nbsp;Pemetrexed for&nbsp;Injection&nbsp;asa&nbsp;single&nbsp;agent&nbsp;ranged&nbsp;from&nbsp;0.4%&nbsp;to&nbsp;0.6%.</p><p>Determine creatinine clearance before each dose and periodically monitor renal function during&nbsp;treatment&nbsp;withPemetrexed&nbsp;for&nbsp;Injection.&nbsp;Withhold&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;in&nbsp;patients with a creatinine clearance of less than 45 mL/minute (see section 4.2).</p><p><strong>Bullous&nbsp;and&nbsp;Exfoliative&nbsp;Skin&nbsp;Toxicity</strong></p><p>Serious and sometimes fatal, bullous, blistering and exfoliative skin toxicity, including cases suggestive of Stevens-Johnson Syndrome/Toxic epidermal necrolysis can occur with Pemetrexed for Injection. Permanently discontinue Pemetrexed for Injection for severe and life-threatening bullous, blistering or exfoliating skin toxicity.</p><p><strong>Interstitial&nbsp;Pneumonitis</strong></p><p>Serious&nbsp;interstitial&nbsp;pneumonitis,&nbsp;including&nbsp;fatal&nbsp;cases,&nbsp;can&nbsp;occur&nbsp;with&nbsp;Pemetrexed&nbsp;for&nbsp;Injection treatment. Withhold Pemetrexed for Injection for acute onset of new or progressive unexplained pulmonary symptoms such as dyspnea, cough, or fever pending diagnostic evaluation. If pneumonitis is confirmed, permanently discontinue Pemetrexed for Injection.</p><p><strong>Radiation&nbsp;Recall</strong></p><p>Radiation recall can occur with Pemetrexed for Injection in patients who have received radiation&nbsp;weeks&nbsp;to&nbsp;yearspreviously.&nbsp;Monitor&nbsp;patients&nbsp;for&nbsp;inflammation&nbsp;or&nbsp;blistering&nbsp;in&nbsp;areas&nbsp;of previous radiation treatment. Permanently discontinue Pemetrexed for Injection for signs of radiation recall.</p><p><strong>Increased&nbsp;Risk&nbsp;of Toxicity&nbsp;with&nbsp;Ibuprofen&nbsp;in&nbsp;Patients&nbsp;with&nbsp;Renal&nbsp;Impairment</strong></p><p>Exposure to Pemetrexed for Injection is increased in patients with mild to moderate renal impairment who take concomitant ibuprofen, increasing the risks of adverse reactions of Pemetrexed for Injection. In patients with creatinine clearances between 45 mL/min and 79 mL/min,&nbsp;avoid&nbsp;administration&nbsp;of&nbsp;ibuprofen&nbsp;for&nbsp;2&nbsp;days&nbsp;before,the&nbsp;day&nbsp;of,&nbsp;and&nbsp;2&nbsp;days&nbsp;following administration of Pemetrexed for Injection. If concomitant ibuprofen use cannot be avoided, monitor patients more frequently for Pemetrexed for Injection adverse reactions, including myelosuppression, renal,&nbsp;and&nbsp;gastrointestinal&nbsp;toxicity (See&nbsp;section&nbsp;4.4,&nbsp;section&nbsp;4.5&nbsp;and&nbsp;section&nbsp;5).</p><p><strong>Embryo-Fetal&nbsp;Toxicity</strong></p><p>Based on findings&nbsp;from&nbsp;animal&nbsp;studies and&nbsp;its mechanism of&nbsp;action, Pemetrexed&nbsp;for&nbsp;Injection can&nbsp;cause&nbsp;fetalharm&nbsp;when&nbsp;administered&nbsp;to&nbsp;a&nbsp;pregnant&nbsp;woman.&nbsp;In&nbsp;animal&nbsp;reproduction&nbsp;studies,&nbsp;intravenous&nbsp;administration&nbsp;of&nbsp;pemetrexed&nbsp;to&nbsp;pregnant&nbsp;mice&nbsp;during&nbsp;the&nbsp;period&nbsp;of&nbsp;organogenesis was&nbsp;teratogenic,resulting&nbsp;in&nbsp;developmental&nbsp;delays&nbsp;and&nbsp;increased&nbsp;malformations&nbsp;at&nbsp;doses&nbsp;lower than the recommended human dose of 500 mg/m<sup>2</sup>. Advise pregnant women of the potential risk&nbsp;to&nbsp;the&nbsp;fetus.&nbsp;Advise&nbsp;females&nbsp;of&nbsp;reproductive&nbsp;potentialto&nbsp;use&nbsp;effective&nbsp;contraception&nbsp;during treatment with Pemetrexed for Injection and for 6 months after the final dose. Advise males&nbsp;with female partners of&nbsp;reproductive&nbsp;potential to&nbsp;use effective contraception during treatment with Pemetrexed for Injection and for 3 months after the final dose.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pemetrexed&nbsp;is&nbsp;mainly&nbsp;eliminated&nbsp;unchanged&nbsp;renally&nbsp;by&nbsp;tubular&nbsp;secretion&nbsp;and&nbsp;to&nbsp;a&nbsp;lesser&nbsp;extent by glomerular filtration. Concomitant administration of nephrotoxic drugs (e.g., aminoglycoside, loop diuretics, platinum compounds, cyclosporin) could potentially result in delayed&nbsp;clearance&nbsp;of&nbsp;pemetrexed.&nbsp;This&nbsp;combination&nbsp;shouldbe&nbsp;used&nbsp;with&nbsp;caution.&nbsp;If&nbsp;necessary, creatinine clearance should be closely monitored.</p><p>Concomitant administration of substances that are also tubularly secreted (e.g., probenecid, penicillin)&nbsp;couldpotentially&nbsp;result&nbsp;in&nbsp;delayed&nbsp;clearance&nbsp;of&nbsp;pemetrexed.&nbsp;Caution&nbsp;should&nbsp;be&nbsp;made when&nbsp;these&nbsp;drugs&nbsp;are&nbsp;combinedwith&nbsp;pemetrexed. If&nbsp;necessary, creatinine&nbsp;clearance&nbsp;should&nbsp;be closely monitored.</p><p>In patients with normal renal function (creatinine clearance &ge; 80ml/min), high doses of non- steroidal anti-inflammatory drugs (NSAIDs, such as ibuprofen &gt; 1600mg/day) and acetylsalicylic acid at higher doses (&ge; 1.3g daily) may decrease pemetrexed elimination and, consequently,&nbsp;increase&nbsp;the&nbsp;occurrence&nbsp;of&nbsp;pemetrexed&nbsp;adverseevents.&nbsp;Therefore,&nbsp;caution&nbsp;should be&nbsp;made&nbsp;when&nbsp;administering&nbsp;higher&nbsp;doses&nbsp;of&nbsp;NSAIDs&nbsp;or&nbsp;acetylsalicylic&nbsp;acid,concurrently&nbsp;with pemetrexed to patients with normal function (creatinine clearance &ge; 80ml/min).</p><p>In patients with mild to moderate renal insufficiency (creatinine clearance from 45 to 79ml/min), the concomitant administration of pemetrexed with NSAIDs (e.g., ibuprofen) or acetylsalicylic acid at higher doses should be avoided for 2 days before, on the day of, and 2 days following pemetrexed administration (see section 4.4).</p><p>In the absence of data regarding potential interaction with NSAIDs having longer half-lives such as piroxicam or rofecoxib, the concomitant administration with pemetrexed in patients with mild to moderate&nbsp;renal insufficiency should be&nbsp;interrupted&nbsp;for at least 5 days&nbsp;prior to, on the&nbsp;day&nbsp;of,&nbsp;and&nbsp;at&nbsp;least&nbsp;2&nbsp;days&nbsp;following&nbsp;pemetrexedadministration&nbsp;(see&nbsp;section&nbsp;4.4).&nbsp;</p><p>If&nbsp;concomitant administration&nbsp;of&nbsp;NSAIDs&nbsp;is&nbsp;necessary, patients&nbsp;should&nbsp;be monitored&nbsp;closely&nbsp;for toxicity, especially myelosuppression and gastrointestinal toxicity.</p><p>Pemetrexed undergoes limited hepatic metabolism. Results from&nbsp;<em>in vitro&nbsp;</em>studies with human liver microsomes indicated that pemetrexed would not be predicted to cause clinically significant inhibition of the metabolic clearance of drugs metabolised by CYP3A, CYP2D6,&nbsp;CYP2C9, and CYP1A2.</p><p><u>Interactions&nbsp;Common to&nbsp;all&nbsp;Cytotoxics</u></p><p>Due to the increased thrombotic risk in patients with cancer, the use of anticoagulation treatment is frequent. The high intra-individual variability of the coagulation status during diseases and the possibility of interaction between oral anticoagulants and anti-cancer chemotherapy require increased frequency of INR (International Normalised Ratio) monitoring, if it is decided to treat the patient with oral anticoagulants.</p><p>Concomitant&nbsp;Use&nbsp;Contraindicated:</p><p>Yellow&nbsp;fever&nbsp;vaccine:&nbsp;Risk&nbsp;of&nbsp;fatal&nbsp;generalised&nbsp;vaccinale&nbsp;disease&nbsp;(see&nbsp;section&nbsp;4.3). Concomitant Use Not Recommended:</p><p><em>Live attenuated&nbsp;vaccines&nbsp;(except yellow&nbsp;fever, for&nbsp;which concomitant use&nbsp;is contraindicated):&nbsp;</em>Risk of systemic, possibly fatal, disease. The risk is increased in subjects who are already immunosuppressed by their underlying disease. Use an inactivated vaccine where it exists (poliomyelitis) (see section 4.4).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Contraception in males&nbsp;and&nbsp;females</u></p><p>Women of childbearing potential must use effective contraception during treatment with pemetrexed. Pemetrexed can have genetically damaging effects. Sexually mature males are advised&nbsp;not&nbsp;to&nbsp;father&nbsp;a&nbsp;childduring&nbsp;the&nbsp;treatment,&nbsp;and&nbsp;up&nbsp;to&nbsp;6&nbsp;months&nbsp;thereafter.&nbsp;Contraceptive measures or abstinence are recommended.</p><p><u>Pregnancy</u></p><p>There are no data&nbsp;from the use of pemetrexed in pregnant women; but pemetrexed, like other anti-metabolites, is suspected to cause serious birth defects when administered during pregnancy. Animal studies have shown reproductive toxicity (see section 5.3). Pemetrexed should&nbsp;not&nbsp;be&nbsp;used&nbsp;during&nbsp;pregnancy&nbsp;unless&nbsp;clearlynecessary, after a&nbsp;careful&nbsp;consideration&nbsp;of the needs of the mother and the risk for the foetus (see section 4.4).</p><p><u>Breast-feeding</u></p><p>It is not known whether pemetrexed is excreted in human milk, and adverse reactions on the suckling child cannot be excluded. Breast-feeding must be discontinued during pemetrexed therapy (see section 4.3).</p><p><u>Fertility</u></p><p>Owing&nbsp;to&nbsp;the&nbsp;possibility&nbsp;of&nbsp;pemetrexed&nbsp;treatment&nbsp;causing&nbsp;irreversible&nbsp;infertility,&nbsp;men&nbsp;are advised to seek counselling on sperm storage before starting treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No studies on the effects on the ability to drive and use machines have been performed.&nbsp;However, it has&nbsp;been reported that pemetrexed may cause fatigue. Therefore, patients should be cautioned against driving or operating machines if this event occurs.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><!--[if !supportLists]-->a.&nbsp;&nbsp;<!--[endif]--><em>Summary&nbsp;of&nbsp;the&nbsp;safety&nbsp;profile</em></p><p>The most commonly reported undesirable effects related to pemetrexed, whether used as monotherapy or in combination, are bone marrow suppression manifested as anaemia, neutropenia, leukopenia, thrombocytopenia; and gastrointestinal toxicities, manifested as anorexia, nausea, vomiting, diarrhoea, constipation, pharyngitis, mucositis, and stomatitis. Other undesirable effects include renal toxicities, increased aminotransferases, alopecia, fatigue, dehydration, rash, infection/sepsis and neuropathy. Rarely seen events include Stevens-Johnson syndrome and Toxic epidermal necrolysis.</p><p><!--[if !supportLists]-->b.&nbsp;&nbsp;<!--[endif]--><em>Tabulated&nbsp;summary&nbsp;of&nbsp;adverse&nbsp;reactions</em></p><p>The Table 2 below provides the frequency and severity of undesirable effects that have been reported&nbsp;in&nbsp;&gt;5%&nbsp;of168&nbsp;patients&nbsp;with&nbsp;mesothelioma&nbsp;who&nbsp;were&nbsp;randomised&nbsp;to receive&nbsp;cisplatin and pemetrexed, and 163 patients with mesothelioma randomised to receive single-agent cisplatin.&nbsp;In&nbsp;both&nbsp;treatment&nbsp;arms,&nbsp;these&nbsp;chemonaive&nbsp;patientswere&nbsp;fully&nbsp;supplemented&nbsp;with&nbsp;folic&nbsp;acid and vitamin B12.</p><p>Frequency estimate: Very common (&ge; 1/10), common (&ge; 1/100 to &lt; 1/10), uncommon (&ge; 1/1,000 to &lt; 1/100), rare (&ge;1/10,000 to &lt; 1/1,000), very rare (&lt; 1/10,000) and not known (cannot be estimated from available data).&nbsp;</p><p>Within&nbsp;each&nbsp;frequency&nbsp;grouping,&nbsp;undesirable&nbsp;effects&nbsp;are&nbsp;presented&nbsp;in&nbsp;order&nbsp;of&nbsp;decreasing&nbsp;seriousness.</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>System&nbsp;organclass</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Frequency</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Event*</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Pemetrexed/Cisplatin&nbsp;</strong><strong>(N = 168)</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Cisplatin</strong><strong>(N&nbsp;=&nbsp;163)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>All&nbsp;gradestoxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4toxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>All&nbsp;gradestoxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4toxicity&nbsp;(%)</strong></p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Blood and lymphatic&nbsp;system&nbsp;Disorders</p></td><td rowspan="4" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Neutrophils/ Granulocytes decreased</p></td><td style="vertical-align:top"><p>56.0</p></td><td style="vertical-align:top"><p>23.2</p></td><td style="vertical-align:top"><p>13.5</p></td><td style="vertical-align:top"><p>3.1</p></td></tr><tr><td style="vertical-align:top"><p>Leukocytes decreased</p></td><td style="vertical-align:top"><p>53.0</p></td><td style="vertical-align:top"><p>14.9</p></td><td style="vertical-align:top"><p>16.6</p></td><td style="vertical-align:top"><p>0.6</p></td></tr><tr><td style="vertical-align:top"><p>Haemoglobin decreased</p></td><td style="vertical-align:top"><p>26.2</p></td><td style="vertical-align:top"><p>4.2</p></td><td style="vertical-align:top"><p>10.4</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Platelets decreased</p></td><td style="vertical-align:top"><p>23.2</p></td><td style="vertical-align:top"><p>5.4</p></td><td style="vertical-align:top"><p>8.6</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Metabolism and nutrition&nbsp;disorders</p></td><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Dehydration</p></td><td style="vertical-align:top"><p>6.5</p></td><td style="vertical-align:top"><p>4.2</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>0.6</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Nervous&nbsp;system&nbsp;disorders</p></td><td style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Neuropathy- sensory</p></td><td style="vertical-align:top"><p>10.1</p></td><td style="vertical-align:top"><p>0.0</p></td><td style="vertical-align:top"><p>9.8</p></td><td style="vertical-align:top"><p>0.6</p></td></tr><tr><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Taste disturbance</p></td><td style="vertical-align:top"><p>7.7</p></td><td style="vertical-align:top"><p>0.0***</p></td><td style="vertical-align:top"><p>6.1</p></td><td style="vertical-align:top"><p>0.0***</p></td></tr><tr><td style="vertical-align:top"><p>Eye&nbsp;disorders</p></td><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Conjunctivitis</p></td><td style="vertical-align:top"><p>5.4</p></td><td style="vertical-align:top"><p>0.0</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td rowspan="7" style="vertical-align:top"><p>Gastro-intestinal disorders</p></td><td rowspan="6" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Diarrhoea</p></td><td style="vertical-align:top"><p>16.7</p></td><td style="vertical-align:top"><p>3.6</p></td><td style="vertical-align:top"><p>8.0</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Vomiting</p></td><td style="vertical-align:top"><p>56.5</p></td><td style="vertical-align:top"><p>10.7</p></td><td style="vertical-align:top"><p>49.7</p></td><td style="vertical-align:top"><p>4.3</p></td></tr><tr><td style="vertical-align:top"><p>Stomatitis/ Pharyngitis</p></td><td style="vertical-align:top"><p>23.2</p></td><td style="vertical-align:top"><p>3.0</p></td><td style="vertical-align:top"><p>6.1</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Nausea</p></td><td style="vertical-align:top"><p>82.1</p></td><td style="vertical-align:top"><p>11.9</p></td><td style="vertical-align:top"><p>76.7</p></td><td style="vertical-align:top"><p>5.5</p></td></tr><tr><td style="vertical-align:top"><p>Anorexia</p></td><td style="vertical-align:top"><p>20.2</p></td><td style="vertical-align:top"><p>1.2</p></td><td style="vertical-align:top"><p>14.1</p></td><td style="vertical-align:top"><p>0.6</p></td></tr><tr><td style="vertical-align:top"><p>Constipation</p></td><td style="vertical-align:top"><p>11.9</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>7.4</p></td><td style="vertical-align:top"><p>0.6</p></td></tr><tr><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Dyspepsia</p></td><td style="vertical-align:top"><p>5.4</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Skin and&nbsp;subcutaneous&nbsp;tissue&nbsp;disorders</p></td><td rowspan="2" style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Rash</p></td><td style="vertical-align:top"><p>16.1</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>4.9</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Alopecia</p></td><td style="vertical-align:top"><p>11.3</p></td><td style="vertical-align:top"><p>0.0***</p></td><td style="vertical-align:top"><p>5.5</p></td><td style="vertical-align:top"><p>0.0***</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Renal&nbsp;and&nbsp;urinarydisorders</p></td><td rowspan="2" style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Creatinine elevation</p></td><td style="vertical-align:top"><p>10.7</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>9.8</p></td><td style="vertical-align:top"><p>1.2</p></td></tr><tr><td style="vertical-align:top"><p>Creatinine clearance decreased**</p></td><td style="vertical-align:top"><p>16.1</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>17.8</p></td><td style="vertical-align:top"><p>1.8</p></td></tr><tr><td style="vertical-align:top"><p>General disorders and&nbsp;administration site conditions</p></td><td style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Fatigue</p></td><td style="vertical-align:top"><p>47.6</p></td><td style="vertical-align:top"><p>10.1</p></td><td style="vertical-align:top"><p>42.3</p></td><td style="vertical-align:top"><p>9.2</p></td></tr></tbody></table><p>*&nbsp;Refer&nbsp;to&nbsp;National&nbsp;Cancer&nbsp;Institute&nbsp;CTC&nbsp;version&nbsp;2&nbsp;for&nbsp;each&nbsp;grade&nbsp;of&nbsp;toxicity&nbsp;except&nbsp;the&nbsp;term&nbsp;&ldquo;creatinine&nbsp;clearance&nbsp;decreased&rdquo;.</p><p>**&nbsp;Which&nbsp;is&nbsp;derived&nbsp;from&nbsp;the&nbsp;term&nbsp;&ldquo;renal/genitourinary&nbsp;other&rdquo;.</p><p>***&nbsp;According&nbsp;to&nbsp;National&nbsp;Cancer&nbsp;Institute&nbsp;CTC&nbsp;(v2.0;&nbsp;NCI&nbsp;1998),&nbsp;taste&nbsp;disturbance&nbsp;and&nbsp;alopecia&nbsp;should&nbsp;only&nbsp;be reported as Grade 1 or 2.</p><p>&nbsp;</p><p>For the purpose of this table a cut off of 5% was used for inclusion of all events where the reporter considered a possible relationship to pemetrexed and cisplatin.</p><p>Clinically relevant CTC toxicities that were reported in &ge; 1% and &le; 5% of the patients that were randomly assigned to receive cisplatin and pemetrexed include: renal failure, infection, pyrexia, febrile neutropenia, increased AST, ALT, and GGT, urticaria and chest pain.</p><p>Clinically&nbsp;relevant&nbsp;CTC&nbsp;toxicities&nbsp;that&nbsp;were&nbsp;reported&nbsp;in&nbsp;&lt;&nbsp;1%&nbsp;of&nbsp;the&nbsp;patients&nbsp;that&nbsp;were&nbsp;randomly&nbsp;assigned to receive cisplatin and pemetrexed include arrhythmia and motor neuropathy.</p><p>Table 3 below provides the frequency and severity of undesirable effects that have been reported in &gt; 5% of 265 patients randomly assigned to receive single-agent pemetrexed with&nbsp;folic acid and vitamin B12&nbsp;supplementation, and 276 patients randomly assigned to receive&nbsp;single-agent docetaxel. All patients were diagnosed with locally advanced or metastatic non- small cell lung cancer and received prior chemotherapy.</p><p><strong>Table&nbsp;3</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>System&nbsp;organ&nbsp;class</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Frequency</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Event*</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Pemetrexed&nbsp;(N = 265)</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Docetaxel&nbsp;(N&nbsp;=&nbsp;276)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>All&nbsp;grades&nbsp;toxicity(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4&nbsp;toxicity(%)</strong></p></td><td style="vertical-align:top"><p><strong>All&nbsp;grades&nbsp;toxicity(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4&nbsp;toxicity(%)</strong></p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Blood and lymphatic&nbsp;system&nbsp;Disorders</p></td><td rowspan="3" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Neutrophils/ Granulocytes decreased</p></td><td style="vertical-align:top"><p>10.9</p></td><td style="vertical-align:top"><p>5.3</p></td><td style="vertical-align:top"><p>45.3</p></td><td style="vertical-align:top"><p>40.2</p></td></tr><tr><td style="vertical-align:top"><p>Leukocytes decreased</p></td><td style="vertical-align:top"><p>12.1</p></td><td style="vertical-align:top"><p>4.2</p></td><td style="vertical-align:top"><p>34.1</p></td><td style="vertical-align:top"><p>27.2</p></td></tr><tr><td style="vertical-align:top"><p>Haemoglobin decreased</p></td><td style="vertical-align:top"><p>19.2</p></td><td style="vertical-align:top"><p>4.2</p></td><td style="vertical-align:top"><p>22.1</p></td><td style="vertical-align:top"><p>4.3</p></td></tr><tr><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Platelets decreased</p></td><td style="vertical-align:top"><p>8.3</p></td><td style="vertical-align:top"><p>1.9</p></td><td style="vertical-align:top"><p>1.1</p></td><td style="vertical-align:top"><p>0.4</p></td></tr><tr><td rowspan="6" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Gastrointestinal Disorders</p></td><td rowspan="5" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Diarrhoea</p></td><td style="vertical-align:top"><p>12.8</p></td><td style="vertical-align:top"><p>0.4</p></td><td style="vertical-align:top"><p>24.3</p></td><td style="vertical-align:top"><p>2.5</p></td></tr><tr><td style="vertical-align:top"><p>Vomiting</p></td><td style="vertical-align:top"><p>16.2</p></td><td style="vertical-align:top"><p>1.5</p></td><td style="vertical-align:top"><p>12.0</p></td><td style="vertical-align:top"><p>1.1</p></td></tr><tr><td style="vertical-align:top"><p>Stomatitis/ Pharyngitis</p></td><td style="vertical-align:top"><p>14.7</p></td><td style="vertical-align:top"><p>1.1</p></td><td style="vertical-align:top"><p>17.4</p></td><td style="vertical-align:top"><p>1.1</p></td></tr><tr><td style="vertical-align:top"><p>Nausea</p></td><td style="vertical-align:top"><p>30.9</p></td><td style="vertical-align:top"><p>2.6</p></td><td style="vertical-align:top"><p>16.7</p></td><td style="vertical-align:top"><p>1.8</p></td></tr><tr><td style="vertical-align:top"><p>Anorexia</p></td><td style="vertical-align:top"><p>21.9</p></td><td style="vertical-align:top"><p>1.9</p></td><td style="vertical-align:top"><p>23.9</p></td><td style="vertical-align:top"><p>2.5</p></td></tr><tr><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Constipation</p></td><td style="vertical-align:top"><p>5.7</p></td><td style="vertical-align:top"><p>0.0</p></td><td style="vertical-align:top"><p>4.0</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Hepatobiliary Disorders</p></td><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>SGPT&nbsp;(ALT)</p><p>elevation</p></td><td style="vertical-align:top"><p>7.9</p></td><td style="vertical-align:top"><p>1.9</p></td><td style="vertical-align:top"><p>1.4</p></td><td style="vertical-align:top"><p>0.0</p></td></tr></tbody></table><table border="1" cellspacing="0" cellpadding="0" style="width:1203px"><tbody><tr><td style="vertical-align:top; width:234px"><p>&nbsp;</p></td><td style="vertical-align:top; width:97px"><p>&nbsp;</p></td><td style="vertical-align:top; width:228px"><p>SGOT&nbsp;(AST)</p><p>elevation</p></td><td style="vertical-align:top; width:162px"><p>6.8</p></td><td style="vertical-align:top; width:159px"><p>1.1</p></td><td style="vertical-align:top; width:162px"><p>0.7</p></td><td style="vertical-align:top; width:160px"><p>0.0</p></td></tr><tr><td rowspan="3" style="vertical-align:top; width:234px"><p>Skin and&nbsp;subcutaneous tissue disorders</p></td><td style="vertical-align:top; width:97px"><p>Very&nbsp;common</p></td><td style="vertical-align:top; width:228px"><p>Rash/ desquamation</p></td><td style="vertical-align:top; width:162px"><p>14.0</p></td><td style="vertical-align:top; width:159px"><p>0.0</p></td><td style="vertical-align:top; width:162px"><p>6.2</p></td><td style="vertical-align:top; width:160px"><p>0.0</p></td></tr><tr><td rowspan="2" style="vertical-align:top; width:97px"><p>Common</p></td><td style="vertical-align:top; width:228px"><p>Pruritus</p></td><td style="vertical-align:top; width:162px"><p>6.8</p></td><td style="vertical-align:top; width:159px"><p>0.4</p></td><td style="vertical-align:top; width:162px"><p>1.8</p></td><td style="vertical-align:top; width:160px"><p>0.0</p></td></tr><tr><td style="vertical-align:top; width:228px"><p>Alopecia</p></td><td style="vertical-align:top; width:162px"><p>6.4</p></td><td style="vertical-align:top; width:159px"><p>0.4**</p></td><td style="vertical-align:top; width:162px"><p>37.7</p></td><td style="vertical-align:top; width:160px"><p>2.2**</p></td></tr><tr><td rowspan="2" style="vertical-align:top; width:234px"><p>General disorders andadministration site conditions</p></td><td style="vertical-align:top; width:97px"><p>Very&nbsp;common</p></td><td style="vertical-align:top; width:228px"><p>Fatigue</p></td><td style="vertical-align:top; width:162px"><p>34.0</p></td><td style="vertical-align:top; width:159px"><p>5.3</p></td><td style="vertical-align:top; width:162px"><p>35.9</p></td><td style="vertical-align:top; width:160px"><p>5.4</p></td></tr><tr><td style="vertical-align:top; width:97px"><p>Common</p></td><td style="vertical-align:top; width:228px"><p>Fever</p></td><td style="vertical-align:top; width:162px"><p>8.3</p></td><td style="vertical-align:top; width:159px"><p>0.0</p></td><td style="vertical-align:top; width:162px"><p>7.6</p></td><td style="vertical-align:top; width:160px"><p>0.0</p></td></tr></tbody></table><p>*Refer&nbsp;to&nbsp;National&nbsp;Cancer&nbsp;Institute&nbsp;CTC&nbsp;version&nbsp;2&nbsp;for&nbsp;each&nbsp;grade&nbsp;of&nbsp;toxicity.</p><p>**According&nbsp;to&nbsp;National&nbsp;Cancer&nbsp;Institute&nbsp;CTC&nbsp;(v2.0;&nbsp;NCI&nbsp;1998),&nbsp;alopecia&nbsp;should&nbsp;only&nbsp;be&nbsp;reported&nbsp;as&nbsp;Grade&nbsp;1&nbsp;or&nbsp;2.</p><p>&nbsp;</p><p>For the purpose of this table a cut off of 5% was used for inclusion of all events where the reporter considered a possible relationship to pemetrexed.</p><p>Clinically relevant CTC toxicities that were reported in &ge; 1% and &le; 5% of the patients that were randomly assigned to pemetrexed include: infection without neutropenia, febrile neutropenia, allergic reaction/hypersensitivity, increased creatinine, motor neuropathy, sensory neuropathy, erythema multiforme, and abdominal pain.</p><p>Clinically&nbsp;relevant&nbsp;CTC&nbsp;toxicities&nbsp;that&nbsp;were&nbsp;reported&nbsp;in&nbsp;&lt;&nbsp;1%&nbsp;of&nbsp;the&nbsp;patients&nbsp;that&nbsp;were&nbsp;randomly assigned to pemetrexed include supraventricular arrhythmias.</p><p>Clinically relevant Grade 3&nbsp;and Grade 4&nbsp;laboratory&nbsp;toxicities were&nbsp;similar&nbsp;between integrated Phase 2 results from three single-agent pemetrexed studies (N = 164) and the&nbsp;Phase 3 single- agent pemetrexed study described above, with the exception of neutropenia (12.8% versus 5.3%,&nbsp;respectively)&nbsp;and&nbsp;alanine&nbsp;aminotransferaseelevation&nbsp;(15.2%&nbsp;versus&nbsp;1.9%,&nbsp;respectively). These differences were likely due to differences in the patient population, since the Phase 2 studies included both chemonaive and heavily pre-treated breast cancer patients with pre- existing liver metastases and/or abnormal baseline liver function tests.</p><p>Table 4 below&nbsp;provides the&nbsp;frequency and severity&nbsp;of undesirable effects considered possibly related to study drug that have been reported&nbsp;in &gt;&nbsp;5% of 839 patients with NSCLC who were randomized to receive cisplatin and pemetrexed and 830 patients with NSCLC who were randomized&nbsp;to&nbsp;receive&nbsp;cisplatin&nbsp;and&nbsp;gemcitabine.&nbsp;Allpatients&nbsp;received&nbsp;study&nbsp;therapy&nbsp;as&nbsp;initial treatment for locally advanced or metastatic NSCLC and patients in both treatment groups&nbsp;were fully supplemented with folic acid and vitamin B12.</p><p><strong>Table&nbsp;4</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>System&nbsp;organ&nbsp;class</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Frequency</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Event*</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Pemetrexed/Cisplatin&nbsp;</strong><strong>(N = 839)</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Gemcitabine/&nbsp;Cisplatin (N = 830)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>All&nbsp;grades&nbsp;toxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4&nbsp;toxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>All&nbsp;grades&nbsp;toxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4&nbsp;toxicity(%)</strong></p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Blood and lymphatic&nbsp;system&nbsp;disorders</p></td><td rowspan="4" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Haemoglobin decreased</p></td><td style="vertical-align:top"><p>33.0*</p></td><td style="vertical-align:top"><p>5.6*</p></td><td style="vertical-align:top"><p>45.7*</p></td><td style="vertical-align:top"><p>9.9*</p></td></tr><tr><td style="vertical-align:top"><p>Neutrophils/ Granulocytes decreased</p></td><td style="vertical-align:top"><p>29.0*</p></td><td style="vertical-align:top"><p>15.1*</p></td><td style="vertical-align:top"><p>38.4*</p></td><td style="vertical-align:top"><p>26.7*</p></td></tr><tr><td style="vertical-align:top"><p>Leukocytes decreased</p></td><td style="vertical-align:top"><p>17.8</p></td><td style="vertical-align:top"><p>4.8*</p></td><td style="vertical-align:top"><p>20.6</p></td><td style="vertical-align:top"><p>7.6*</p></td></tr><tr><td style="vertical-align:top"><p>Platelets decreased</p></td><td style="vertical-align:top"><p>10.1*</p></td><td style="vertical-align:top"><p>4.1*</p></td><td style="vertical-align:top"><p>26.6*</p></td><td style="vertical-align:top"><p>12.7*</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Nervous&nbsp;system&nbsp;disorders</p></td><td rowspan="2" style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Neuropathy- sensory</p></td><td style="vertical-align:top"><p>8.5*</p></td><td style="vertical-align:top"><p>0.0*</p></td><td style="vertical-align:top"><p>12.4*</p></td><td style="vertical-align:top"><p>0.6*</p></td></tr><tr><td style="vertical-align:top"><p>Taste disturbance</p></td><td style="vertical-align:top"><p>8.1</p></td><td style="vertical-align:top"><p>0.0***</p></td><td style="vertical-align:top"><p>8.9</p></td><td style="vertical-align:top"><p>0.0***</p></td></tr><tr><td rowspan="7" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Gastrointestinal disorders</p></td><td rowspan="6" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Nausea</p></td><td style="vertical-align:top"><p>56.1</p></td><td style="vertical-align:top"><p>7.2*</p></td><td style="vertical-align:top"><p>53.4</p></td><td style="vertical-align:top"><p>3.9*</p></td></tr><tr><td style="vertical-align:top"><p>Vomiting</p></td><td style="vertical-align:top"><p>39.7</p></td><td style="vertical-align:top"><p>6.1</p></td><td style="vertical-align:top"><p>35.5</p></td><td style="vertical-align:top"><p>6.1</p></td></tr><tr><td style="vertical-align:top"><p>Anorexia</p></td><td style="vertical-align:top"><p>26.6</p></td><td style="vertical-align:top"><p>2.4*</p></td><td style="vertical-align:top"><p>24.2</p></td><td style="vertical-align:top"><p>0.7*</p></td></tr><tr><td style="vertical-align:top"><p>Constipation</p></td><td style="vertical-align:top"><p>21.0</p></td><td style="vertical-align:top"><p>0.8</p></td><td style="vertical-align:top"><p>19.5</p></td><td style="vertical-align:top"><p>0.4</p></td></tr><tr><td style="vertical-align:top"><p>Stomatitis/ Pharyngitis</p></td><td style="vertical-align:top"><p>13.5</p></td><td style="vertical-align:top"><p>0.8</p></td><td style="vertical-align:top"><p>12.4</p></td><td style="vertical-align:top"><p>0.1</p></td></tr><tr><td style="vertical-align:top"><p>Diarrhoea without</p><p>colostomy</p></td><td style="vertical-align:top"><p>12.4</p></td><td style="vertical-align:top"><p>1.3</p></td><td style="vertical-align:top"><p>12.8</p></td><td style="vertical-align:top"><p>1.6</p></td></tr><tr><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Dyspepsia/ heartburn</p></td><td style="vertical-align:top"><p>5.2</p></td><td style="vertical-align:top"><p>0.1</p></td><td style="vertical-align:top"><p>5.9</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Skin and&nbsp;subcutaneous&nbsp;tissue&nbsp;disorders</p></td><td style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Alopecia</p></td><td style="vertical-align:top"><p>11.9*</p></td><td style="vertical-align:top"><p>0***</p></td><td style="vertical-align:top"><p>21.4*</p></td><td style="vertical-align:top"><p>0.5***</p></td></tr><tr><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Rash/ desquamation</p></td><td style="vertical-align:top"><p>6.6</p></td><td style="vertical-align:top"><p>0.1</p></td><td style="vertical-align:top"><p>8.0</p></td><td style="vertical-align:top"><p>0.5</p></td></tr><tr><td style="vertical-align:top"><p>Renal&nbsp;and&nbsp;urinarydisorders</p></td><td style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Creatinine elevation</p></td><td style="vertical-align:top"><p>10.1*</p></td><td style="vertical-align:top"><p>0.8</p></td><td style="vertical-align:top"><p>6.9*</p></td><td style="vertical-align:top"><p>0.5</p></td></tr><tr><td style="vertical-align:top"><p>General disorders and&nbsp;administration</p><p>site&nbsp;conditions</p></td><td style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Fatigue</p></td><td style="vertical-align:top"><p>42.7</p></td><td style="vertical-align:top"><p>6.7</p></td><td style="vertical-align:top"><p>44.9</p></td><td style="vertical-align:top"><p>4.9</p></td></tr></tbody></table><p>*p-values&nbsp;&lt;&nbsp;0.05&nbsp;comparing&nbsp;pemetrexed/cisplatin&nbsp;to&nbsp;gemcitabine/cisplatin,&nbsp;using&nbsp;Fisher&nbsp;Exact&nbsp;test.</p><p>**Refer&nbsp;to&nbsp;National&nbsp;Cancer&nbsp;Institute&nbsp;CTC&nbsp;(v2.0;&nbsp;NCI&nbsp;1998)&nbsp;for&nbsp;each&nbsp;Grade&nbsp;of&nbsp;Toxicity.</p><p>***According&nbsp;to&nbsp;National&nbsp;Cancer&nbsp;Institute CTC&nbsp;(v2.0;&nbsp;NCI&nbsp;1998),&nbsp;taste disturbance&nbsp;and&nbsp;alopecia&nbsp;should&nbsp;only be reported as Grade 1 or 2.</p><p>&nbsp;</p><p>For the purpose of this table, a cut off of 5% was used for inclusion of all events where the&nbsp;reporter considered a possible relationship to pemetrexed and cisplatin.</p><p>Clinically&nbsp;relevant&nbsp;toxicity&nbsp;that&nbsp;was&nbsp;reported&nbsp;in&nbsp;&ge;&nbsp;1%&nbsp;and&nbsp;&le;&nbsp;5%&nbsp;of&nbsp;the&nbsp;patients&nbsp;that&nbsp;were randomly&nbsp;assigned&nbsp;toreceive&nbsp;cisplatin&nbsp;and&nbsp;pemetrexed&nbsp;include:&nbsp;AST&nbsp;increase,&nbsp;ALT&nbsp;increase, infection,&nbsp;febrile&nbsp;neutropenia,&nbsp;renal&nbsp;failure,&nbsp;pyrexia,&nbsp;dehydration,&nbsp;conjunctivitis,&nbsp;and&nbsp;creatinine clearance decrease.</p><p>Clinically relevant toxicity that was reported in &lt; 1% of the patients that were randomly assigned to receive cisplatin and pemetrexed include: GGT increase, chest pain, arrhythmia, and motor neuropathy.</p><p>Clinically relevant toxicities with respect to gender were similar to the overall population in patients receiving pemetrexed plus cisplatin.</p><p>Table 5 below&nbsp;provides the&nbsp;frequency and severity&nbsp;of undesirable effects considered possibly related to study drug that have been reported in &gt; 5% of 800 patients randomly assigned to receive&nbsp;single-agent&nbsp;pemetrexed&nbsp;and402&nbsp;patients&nbsp;randomly&nbsp;assigned&nbsp;to&nbsp;receive&nbsp;placebo&nbsp;in&nbsp;the single-agent pemetrexed maintenance (JMEN: N= 663) and continuation pemetrexed maintenance&nbsp;(PARAMOUNT:&nbsp;N=539)&nbsp;studies.&nbsp;All&nbsp;patients&nbsp;were&nbsp;diagnosed&nbsp;withStage&nbsp;IIIB&nbsp;or IV&nbsp;NSCLC&nbsp;and had&nbsp;received&nbsp;prior platinum-based chemotherapy. Patients&nbsp;in&nbsp;both&nbsp;study&nbsp;arms&nbsp;were fully supplemented with folic acid and vitamin B12.</p><p><strong>Table&nbsp;5</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>System&nbsp;organ&nbsp;class</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Frequency*</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Event**</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Pemetrexed***&nbsp;</strong><strong>(N = 800)</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Placebo***</strong><strong>(N = 402)</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>All&nbsp;</strong><strong>grades toxicity</strong></p><p><strong>(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4&nbsp;toxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>All&nbsp;grades&nbsp;toxicity&nbsp;(%)</strong></p></td><td style="vertical-align:top"><p><strong>Grade&nbsp;3-4&nbsp;toxicity&nbsp;(%)</strong></p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p>Blood&nbsp;and&nbsp;lymphatic system disorders</p></td><td style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Haemoglobin decreased</p></td><td style="vertical-align:top"><p>18.0</p></td><td style="vertical-align:top"><p>4.5</p></td><td style="vertical-align:top"><p>5.2</p></td><td style="vertical-align:top"><p>0.5</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p><strong>&nbsp;</strong></p><p>Common</p></td><td style="vertical-align:top"><p>Leukocytes decreased</p></td><td style="vertical-align:top"><p>5.8</p></td><td style="vertical-align:top"><p>1.9</p></td><td style="vertical-align:top"><p>0.7</p></td><td style="vertical-align:top"><p>0.2</p></td></tr><tr><td style="vertical-align:top"><p>Neutrophils decreased</p></td><td style="vertical-align:top"><p>8.4</p></td><td style="vertical-align:top"><p>4.4</p></td><td style="vertical-align:top"><p>0.2</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Nervous&nbsp;system&nbsp;disorders</p></td><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Neuropathy- sensory</p></td><td style="vertical-align:top"><p>7.4</p></td><td style="vertical-align:top"><p>0.6</p></td><td style="vertical-align:top"><p>5.0</p></td><td style="vertical-align:top"><p>0.2</p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p>Gastrointestinal disorders</p></td><td rowspan="2" style="vertical-align:top"><p>Very</p><p>common</p></td><td style="vertical-align:top"><p>Nausea</p></td><td style="vertical-align:top"><p>17.3</p></td><td style="vertical-align:top"><p>0.8</p></td><td style="vertical-align:top"><p>4.0</p></td><td style="vertical-align:top"><p>0.2</p></td></tr><tr><td style="vertical-align:top"><p>Anorexia</p></td><td style="vertical-align:top"><p>12.8</p></td><td style="vertical-align:top"><p>1.1</p></td><td style="vertical-align:top"><p>3.2</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Vomiting</p></td><td style="vertical-align:top"><p>8.4</p></td><td style="vertical-align:top"><p>0.3</p></td><td style="vertical-align:top"><p>1.5</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Mucositis/ Stomatitis</p></td><td style="vertical-align:top"><p>6.8</p></td><td style="vertical-align:top"><p>0.8</p></td><td style="vertical-align:top"><p>1.7</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Hepatobiliary disorders</p></td><td rowspan="2" style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>ALT&nbsp;(SGPT)</p><p>elevation</p></td><td style="vertical-align:top"><p>6.5</p></td><td style="vertical-align:top"><p>0.1</p></td><td style="vertical-align:top"><p>2.2</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>AST&nbsp;(SGOT)</p><p>elevation</p></td><td style="vertical-align:top"><p>5.9</p></td><td style="vertical-align:top"><p>0.0</p></td><td style="vertical-align:top"><p>1.7</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>Skin&nbsp;and</p><p>subcutaneous&nbsp;tissue&nbsp;disorders</p></td><td style="vertical-align:top"><p>Common</p></td><td style="vertical-align:top"><p>Rash/ desquamation</p></td><td style="vertical-align:top"><p>8.1</p></td><td style="vertical-align:top"><p>0.1</p></td><td style="vertical-align:top"><p>3.7</p></td><td style="vertical-align:top"><p>0.0</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Very&nbsp;common</p></td><td style="vertical-align:top"><p>Fatigue</p></td><td style="vertical-align:top"><p>24.1</p></td><td style="vertical-align:top"><p>5.3</p></td><td style="vertical-align:top"><p>10.9</p></td><td style="vertical-align:top"><p>0.7</p></td></tr></tbody></table><table border="1" cellspacing="0" cellpadding="0" style="width:1121px"><tbody><tr><td rowspan="2" style="vertical-align:top; width:233px"><p>General disorders and&nbsp;administration site conditions</p></td><td rowspan="2" style="vertical-align:top; width:202px"><p>Common</p></td><td style="vertical-align:top; width:72px"><p>Pain</p></td><td style="vertical-align:top"><p>7.6</p></td><td style="vertical-align:top; width:243px"><p>0.9</p></td><td style="vertical-align:top; width:165px"><p>4.5</p></td><td style="vertical-align:top; width:165px"><p>0.0</p></td></tr><tr><td style="vertical-align:top; width:72px"><p>Oedema</p></td><td style="vertical-align:top"><p>5.6</p></td><td style="vertical-align:top; width:243px"><p>0.0</p></td><td style="vertical-align:top; width:165px"><p>1.5</p></td><td style="vertical-align:top; width:165px"><p>0.0</p></td></tr><tr><td style="vertical-align:top; width:233px"><p>Renal&nbsp;Disorders</p></td><td style="vertical-align:top; width:202px"><p>Common</p></td><td style="vertical-align:top; width:72px"><p>Renal disorders****</p></td><td style="vertical-align:top"><p>7.6</p></td><td style="vertical-align:top; width:243px"><p>0.9</p></td><td style="vertical-align:top; width:165px"><p>1.7</p></td><td style="vertical-align:top; width:165px"><p>0.0</p></td></tr></tbody></table><p>Abbreviations: ALT = alanine aminotransferase; AST = aspartate aminotransferase; CTCAE = Common Terminology&nbsp;Criteria for Adverse Event; NCI&nbsp;= National Cancer&nbsp;Institute; SGOT = serum glutamic oxaloacetic aminotransferase; SGPT = serum glutamic pyruvic aminotransferase.</p><p>*Definition of frequency terms: Very common - &ge; 10%; Common - &gt; 5% and &lt; 10%. For the purpose of this table, a&nbsp;cut&nbsp;off&nbsp;of&nbsp;5%&nbsp;wasused&nbsp;for&nbsp;inclusion&nbsp;of&nbsp;all&nbsp;events&nbsp;where&nbsp;the&nbsp;reporter&nbsp;considered&nbsp;a&nbsp;possible&nbsp;relationship&nbsp;to&nbsp;pemetrexed.</p><p>**Refer to NCI CTCAE Criteria (Version 3.0; NCI 2003) for each grade of toxicity. The reporting rates shown are according to CTCAE version 3.0.</p><p>***Integrated&nbsp;adverse&nbsp;reactions&nbsp;table&nbsp;combines&nbsp;the&nbsp;results&nbsp;of&nbsp;the&nbsp;JMEN&nbsp;pemetrexed&nbsp;maintenance&nbsp;(N=663)&nbsp;and PARAMOUNT continuation pemetrexed maintenance (N=539) studies.</p><p>****&nbsp;Combined&nbsp;term&nbsp;includes&nbsp;increased&nbsp;serum/blood&nbsp;creatinine,&nbsp;decreased&nbsp;glomerular&nbsp;filtration&nbsp;rate,&nbsp;renal&nbsp;failure and renal/genitourinary- other.</p><p>&nbsp;</p><p><!--[if !supportLists]-->c.&nbsp;&nbsp;<!--[endif]--><em>Description&nbsp;of&nbsp;selected&nbsp;adverse&nbsp;reactions</em></p><p>Clinically&nbsp;relevant&nbsp;CTC&nbsp;toxicity&nbsp;of&nbsp;any&nbsp;grade&nbsp;that&nbsp;was&nbsp;reported&nbsp;in&nbsp;&ge;1%&nbsp;and&nbsp;&le;5%&nbsp;of&nbsp;the&nbsp;patients that were randomly assigned to pemetrexed include: febrile neutropenia, infection, decreased platelets, diarrhoea, constipation, alopecia, pruritus/itching, fever (in the absence of neutropenia),&nbsp;ocular&nbsp;surface&nbsp;disease&nbsp;(includingconjunctivitis),&nbsp;increased&nbsp;lacrimation,&nbsp;dizziness and motor neuropathy.</p><p>Clinically relevant CTC toxicity that was reported&nbsp;in &lt;1% of the patients that were randomly assigned to pemetrexed include: allergic reaction/hypersensitivity, erythema multiforme, supraventricular arrhythmia and pulmonary embolism.</p><p>Safety was assessed for patients who were randomised to receive pemetrexed (N=800). The incidence of adverse reactions was evaluated for patients who received &le;6 cycles of pemetrexed maintenance (N=519) and compared to patients who received &gt;6 cycles of pemetrexed (N=281). Increases in adverse reactions (all grades) were observed with longer exposure. A significant increase in the incidence of possibly study-drug-related Grade 3/4 neutropenia was observed with longer exposure to pemetrexed (&le;6 cycles: 3.3%, &gt;6 cycles: 6.4%: p=0.046). No statistically significant differences in any other individual Grade 3/4/5 adverse reactions were seen with longer exposure.</p><p>Serious cardiovascular and cerebrovascular events, including myocardial infarction, angina pectoris, cerebrovascular accident, and transient ischaemic attack, have been uncommonly reported&nbsp;during&nbsp;clinicalstudies&nbsp;with&nbsp;pemetrexed,&nbsp;usually&nbsp;when&nbsp;given&nbsp;in&nbsp;combination&nbsp;with&nbsp;another cytotoxic agent. Most of the patients in whom these events have been observed had pre-existing cardiovascular risk factors.</p><p>Rare cases of hepatitis, potentially serious, have been reported during clinical studies with&nbsp;pemetrexed.</p><p>Pancytopenia&nbsp;has&nbsp;been uncommonly reported&nbsp;during clinical trials&nbsp;with&nbsp;pemetrexed.</p><p>In clinical trials, cases of colitis (including intestinal and rectal bleeding, sometimes fatal, intestinal perforation, intestinal necrosis and typhlitis) have been reported uncommonly in patients treated with pemetrexed.</p><p>In clinical trials, cases of interstitial pneumonitis with respiratory insufficiency, sometimes fatal, have been reported uncommonly in patients treated with pemetrexed.</p><p>Uncommon cases of oedema have been reported in patients treated with pemetrexed. Oesophagitis/&nbsp;radiationoesophagitis&nbsp;has&nbsp;been&nbsp;uncommonly&nbsp;reported&nbsp;during&nbsp;clinical&nbsp;trials&nbsp;with&nbsp;pemetrexed.</p><p>Sepsis, sometimes fatal, has been commonly reported during clinical trials with pemetrexed. During&nbsp;post-marketingsurveillance,&nbsp;the following&nbsp;adverse&nbsp;reactions&nbsp;have&nbsp;been reported in patients treated with pemetrexed:</p><p>Uncommon cases of acute renal failure have been reported with pemetrexed alone or in association with other chemotherapeutic agents (see section 4.4). Nephrogenic diabetes insipidus and renal tubular necrosis have been reported in post marketing setting with an unknown frequency.</p><p>Uncommon&nbsp;cases&nbsp;of&nbsp;radiation&nbsp;pneumonitis&nbsp;have&nbsp;been&nbsp;reported&nbsp;in&nbsp;patients&nbsp;treated&nbsp;with&nbsp;radiation either prior, during or subsequent to their pemetrexed therapy (see section 4.4).</p><p>Rare cases of radiation recall have been reported in patients who have received radiotherapy previously (see section 4.4).</p><p>Uncommon cases&nbsp;of peripheral&nbsp;ischaemia leading&nbsp;sometimes&nbsp;to extremity&nbsp;necrosis have&nbsp;been&nbsp;reported.</p><p>Rare&nbsp;cases&nbsp;of&nbsp;bullous&nbsp;conditions&nbsp;have&nbsp;been&nbsp;reported&nbsp;including&nbsp;Stevens-Johnson&nbsp;syndrome&nbsp;and Toxic epidermal necrolysis which in some cases were fatal.</p><p>Rarely, immune-mediated haemolytic anaemia has been reported in patients treated with&nbsp;pemetrexed.</p><p>Rare&nbsp;cases&nbsp;of anaphylactic&nbsp;shock&nbsp;have&nbsp;been&nbsp;reported.</p><p>Erythematous oedema mainly of the lower limbs has been reported with an unknown&nbsp;frequency.</p><p><!--[if !supportLists]--><em>d.&nbsp;&nbsp;</em><!--[endif]--><em>Pediatric&nbsp;population</em></p><p>The safety and effectiveness of Pemetrexed for Injection in pediatric patients have not been established. The safety and pharmacokinetics of Pemetrexed for Injection were evaluated in two&nbsp;clinical&nbsp;studies&nbsp;conducted&nbsp;inpediatric&nbsp;patients&nbsp;with&nbsp;recurrent&nbsp;solid&nbsp;tumors.&nbsp;Pemetrexed&nbsp;for Injection was administered at doses ranging from 400 to 2480 mg/m<sup>2</sup>&nbsp;intravenously over 10 minutes on Day 1 of a 21-day cycle to 32 pediatric patients with recurrent solid tumors in a dose-finding study. The maximum tolerated dose (MTD) was determined to be 1910 mg/m<sup>2</sup>&nbsp;(60&nbsp;mg/kg&nbsp;for&nbsp;patients&nbsp;&lt;12&nbsp;months&nbsp;old).&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;was&nbsp;administered&nbsp;at&nbsp;the&nbsp;MTD every 21 days&nbsp;in an&nbsp;activity-estimating study enrolling 72&nbsp;patients with&nbsp;relapsed or refractory osteosarcoma, Ewing sarcoma/peripheral primitive neural ectodermal tumor (PNET), rhabdomyosarcoma,&nbsp;neuroblastoma,ependymoma,&nbsp;medulloblastoma/supratentorial&nbsp;PNET, or&nbsp;non-brainstem high grade glioma. Patients in both studies received concomitant vitamin B12&nbsp;and folic acid supplementation and dexamethasone.</p><p>No tumor responses were observed. Adverse reactions observed in pediatric patients were similar to those observed in adults.</p><p>Single-dose&nbsp;pharmacokinetics&nbsp;of&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;administered&nbsp;at&nbsp;doses&nbsp;ranging&nbsp;from 400 to 2480 mg/m<sup>2</sup>&nbsp;were evaluated in 22 patients (13 males and 9 females) age 4 to 18 years&nbsp;(average age 12 years). Pemetrexed exposure (AUC and Cmax) appeared to increase&nbsp;proportionally with dose. Average clearance (2.30 L/h/m<sup>2</sup>) and half-life (2.3 hours) were similar in pediatric patients compared to adults.</p><p><!--[if !supportLists]-->e.&nbsp;&nbsp;<!--[endif]--><em>Other&nbsp;special&nbsp;population(s)</em></p><p><u>Geriatric&nbsp;Use</u></p><p>Of&nbsp;the&nbsp;3,946&nbsp;patients&nbsp;enrolled&nbsp;in&nbsp;clinical&nbsp;studies&nbsp;of&nbsp;Pemetrexed&nbsp;for&nbsp;Injection,&nbsp;34%&nbsp;were&nbsp;65&nbsp;and over&nbsp;and&nbsp;4%&nbsp;were75&nbsp;and&nbsp;over.&nbsp;No&nbsp;overall&nbsp;differences&nbsp;in&nbsp;effectiveness&nbsp;were&nbsp;observed&nbsp;between these patients and younger patients. The incidences of Grade 3-4 anemia, fatigue, thrombocytopenia, hypertension, and neutropenia&nbsp;were higher inpatients 65 years of age and older as compared to younger patients: in at least one of five randomized clinical trials (see section 4.8 and section 5)</p><p><u>Patients&nbsp;with&nbsp;Renal&nbsp;Impairment</u></p><p>Pemetrexed&nbsp;for&nbsp;Injection&nbsp;is&nbsp;primarily&nbsp;excreted&nbsp;by&nbsp;the&nbsp;kidneys.&nbsp;Decreased&nbsp;renal&nbsp;function&nbsp;results in reduced clearance and greater&nbsp;exposure (AUC)&nbsp;to Pemetrexed&nbsp;for&nbsp;Injection compared&nbsp;with patients with normal renal function. (see section 4.4 and section 5).</p><p>No dose is recommended for patients with creatinine clearance less than 45 mL/min (see section 4.2)</p><p><u>To reports&nbsp;any side&nbsp;effect(s):</u></p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important.&nbsp;</p><p>It&nbsp;allows&nbsp;continuedmonitoring&nbsp;of&nbsp;the&nbsp;benefit/risk&nbsp;balance&nbsp;of&nbsp;the&nbsp;medicinal&nbsp;product.</p><p>Healthcare&nbsp;professionals&nbsp;are&nbsp;asked&nbsp;to&nbsp;report&nbsp;any&nbsp;suspectedadverse&nbsp;reactions&nbsp;to&nbsp;the&nbsp;competent authority in Saudi Arabia as per details below:</p><p><!--[if !supportLists]--><strong>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->The&nbsp;National&nbsp;Pharmacovigilance&nbsp;and&nbsp;Drug&nbsp;Safety&nbsp;Centre&nbsp;(NPC)</strong></p><p><strong>o&nbsp;Fax:&nbsp;+966-11-205-7662</strong></p><p><strong>o&nbsp;Call&nbsp;NPC&nbsp;at&nbsp;+966-11-2038222,&nbsp;Exts:&nbsp;2317-2356-2353-2354-2334-2340.</strong></p><p><!--[if !supportLists]--><strong>o&nbsp;&nbsp;&nbsp;<!--[endif]-->Toll free&nbsp;phone:&nbsp;8002490000</strong></p><p><!--[if !supportLists]--><strong>o&nbsp;&nbsp;&nbsp;<!--[endif]-->E-mail:&nbsp;npc.drug@sfda.gov.sa</strong></p><p><!--[if !supportLists]--><strong>o&nbsp;&nbsp;&nbsp;<!--[endif]-->Website:&nbsp;www.sfda.gov.sa/npc</strong></p><table cellpadding="0" cellspacing="0"><tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p>To&nbsp;report&nbsp;the&nbsp;Adverse&nbsp;event&nbsp;in&nbsp;other&nbsp;GCC&nbsp;States&nbsp;-&nbsp;Please&nbsp;contact&nbsp;the&nbsp;relevant&nbsp;competent&nbsp;authority</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There&nbsp;have&nbsp;been&nbsp;few&nbsp;cases&nbsp;of&nbsp;Pemetrexed&nbsp;overdose.&nbsp;Reported&nbsp;toxicities&nbsp;included&nbsp;neutropenia, anaemia, thrombocytopenia, mucositis, and rash. Anticipated complications of overdose include bone marrow suppression as manifested by neutropenia, thrombocytopenia, and anaemia. In&nbsp;addition,&nbsp;infection&nbsp;with&nbsp;or&nbsp;without&nbsp;fever,diarrhoea,&nbsp;and&nbsp;mucositis&nbsp;may&nbsp;be&nbsp;seen.&nbsp;</p><p>If an&nbsp;overdose&nbsp;occurs,&nbsp;general&nbsp;supportive measures&nbsp;should&nbsp;be&nbsp;instituted&nbsp;asdeemed&nbsp;necessary&nbsp;by the treating physician.</p><p>Based on animal studies, administration of leucovorin may mitigate the toxicities of Pemetrexed for Injection overdosage. It is not known whether pemetrexed is dialyzable.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic&nbsp;group:&nbsp;Antineoplastic&nbsp;Agents, ATC&nbsp;code:&nbsp;<em>L01BA04</em></p><p>&nbsp;</p><p><em><u>Mechanism&nbsp;of&nbsp;Action</u></em></p><p>Pemetrexed for Injection is a folate analog metabolic inhibitor that disrupts folate-dependent metabolic&nbsp;processesessential&nbsp;for&nbsp;cell&nbsp;replication.&nbsp;<em>In&nbsp;vitro&nbsp;</em>studies&nbsp;show&nbsp;that&nbsp;pemetrexed&nbsp;inhibits thymidylate synthase (TS), dihydrofolate reductase, and glycinamide ribonucleotide formyltransferase (GARFT), which are folate dependent enzymes involved in the de novo biosynthesis&nbsp;of&nbsp;thymidine&nbsp;and&nbsp;purine&nbsp;nucleotides.&nbsp;Pemetrexed&nbsp;istaken&nbsp;into&nbsp;cells&nbsp;by&nbsp;membrane carriers such as the reduced folate carrier and membrane folate binding protein transport systems. Once in the cell, pemetrexed is converted to polyglutamate forms by the enzyme folylpolyglutamate&nbsp;synthetase.&nbsp;The&nbsp;polyglutamate&nbsp;forms&nbsp;are&nbsp;retained&nbsp;in&nbsp;cells&nbsp;and&nbsp;are&nbsp;inhibitors of TS and GARFT.</p><p><em><u>Pharmacodynamic&nbsp;effect</u></em></p><p>Pemetrexed inhibited the&nbsp;<em>in vitro&nbsp;</em>growth of mesothelioma cell lines (MSTO-211H, NCI- H2052) and showed synergistic effects when combined with cisplatin.</p><p>Based on population pharmacodynamic analyses, the depth of the absolute neutrophil counts (ANC) nadir correlates with the systemic exposure to pemetrexed and supplementation with&nbsp;folic acid and vitamin B12. There is no cumulative effect of pemetrexed exposure on ANC&nbsp;nadir over multiple treatment cycles.</p><p><em><u>Clinical&nbsp;efficacy&nbsp;and&nbsp;safety</u></em></p><p><em>&nbsp;</em><strong>Non-Squamous NSCLC&nbsp;</strong><em>Mesothelioma</em></p><p>EMPHACIS, a multi-centre, randomised, single-blind Phase 3 study of Pemetrexed for Injection plus cisplatin versus cisplatin in chemonaive patients with malignant pleural mesothelioma,&nbsp;has&nbsp;shown&nbsp;that&nbsp;patients&nbsp;treatedwith&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;and&nbsp;cisplatin&nbsp;had a&nbsp;clinically&nbsp;meaningful&nbsp;2.8-month&nbsp;median&nbsp;survival&nbsp;advantageover&nbsp;patients&nbsp;receiving cisplatin&nbsp;alone.</p><p>During the study, low-dose folic acid and vitamin B12&nbsp;supplementation was introduced to&nbsp;patients&#39; therapy to reduce toxicity. The primary analysis of this study was performed on the population of all patients randomly assigned to a treatment arm who received study drug (randomised&nbsp;and&nbsp;treated).&nbsp;A&nbsp;subgroup&nbsp;analysis&nbsp;wasperformed&nbsp;on&nbsp;patients&nbsp;who&nbsp;received&nbsp;folic&nbsp;acid and vitamin B12&nbsp;supplementation during the entire course of study therapy (fully&nbsp;supplemented).&nbsp;The&nbsp;resultsof&nbsp;these&nbsp;analyses&nbsp;of&nbsp;efficacy&nbsp;are&nbsp;summarised&nbsp;in&nbsp;the&nbsp;Table&nbsp;6&nbsp;below.</p><p><strong>Table 6: Efficacy of Pemetrexed for Injection plus cisplatin vs. cisplatin in malignant pleural&nbsp;mesothelioma</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td colspan="2" style="vertical-align:top"><p><strong>Randomised&nbsp;and&nbsp;treated&nbsp;patients</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Fully&nbsp;supplemented&nbsp;patients</strong></p></td></tr><tr><td style="vertical-align:top"><p><strong>&nbsp;</strong></p><p><strong>Efficacy&nbsp;parameter</strong></p></td><td style="vertical-align:top"><p><strong>Pemetrexed&nbsp;for</strong></p><p><strong>Injection/Cisplatin (N = 226)</strong></p></td><td style="vertical-align:top"><p><strong>Cisplatin&nbsp;(N&nbsp;=&nbsp;222)</strong></p></td><td style="vertical-align:top"><p><strong>Pemetrexed&nbsp;for</strong></p><p><strong>Injection/Cisplatin (N = 168)</strong></p></td><td style="vertical-align:top"><p><strong>Cisplatin&nbsp;(N&nbsp;=&nbsp;163)</strong></p></td></tr><tr><td style="vertical-align:top"><p>Median overall survival(months)</p><p>(95%&nbsp;CI)</p></td><td style="vertical-align:top"><p>12.1</p><p>(10.0-14.4)</p></td><td style="vertical-align:top"><p>9.3</p><p>(7.8-10.7)</p></td><td style="vertical-align:top"><p>13.3</p><p>(11.4-14.9)</p></td><td style="vertical-align:top"><p>10.0</p><p>(8.4-11.9)</p></td></tr><tr><td style="vertical-align:top"><p>Log&nbsp;rank&nbsp;<em>p</em>-value*</p></td><td colspan="2" style="vertical-align:top"><p>0.020</p></td><td colspan="2" style="vertical-align:top"><p>0.051</p></td></tr><tr><td style="vertical-align:top"><p>Median&nbsp;time&nbsp;to</p></td><td style="vertical-align:top"><p>5.7</p></td><td style="vertical-align:top"><p>3.9</p></td><td style="vertical-align:top"><p>6.1</p></td><td style="vertical-align:top"><p>3.9</p></td></tr><tr><td style="vertical-align:top"><p>tumour&nbsp;progression</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>(months)</p><p>(95%&nbsp;CI)</p></td><td style="vertical-align:top"><p>(4.9-6.5)</p></td><td style="vertical-align:top"><p>(2.8-4.4)</p></td><td style="vertical-align:top"><p>(5.3-7.0)</p></td><td style="vertical-align:top"><p>(2.8-4.5)</p></td></tr><tr><td style="vertical-align:top"><p>Log&nbsp;rank&nbsp;<em>p</em>-value*</p></td><td colspan="2" style="vertical-align:top"><p>0.001</p></td><td colspan="2" style="vertical-align:top"><p>0.008</p></td></tr><tr><td style="vertical-align:top"><p>Time to&nbsp;treatment</p></td><td style="vertical-align:top"><p>4.5</p></td><td style="vertical-align:top"><p>2.7</p></td><td style="vertical-align:top"><p>4.7</p></td><td style="vertical-align:top"><p>2.7</p></td></tr><tr><td style="vertical-align:top"><p>failure&nbsp;(months)</p><p>(95%&nbsp;CI)</p></td><td style="vertical-align:top"><p>(3.9-4.9)</p></td><td style="vertical-align:top"><p>(2.1-2.9)</p></td><td style="vertical-align:top"><p>(4.3-5.6)</p></td><td style="vertical-align:top"><p>(2.2-3.1)</p></td></tr><tr><td style="vertical-align:top"><p>Log&nbsp;rank&nbsp;<em>p</em>-value*</p></td><td colspan="2" style="vertical-align:top"><p>0.001</p></td><td colspan="2" style="vertical-align:top"><p>0.001</p></td></tr><tr><td style="vertical-align:top"><p>Overall&nbsp;response</p></td><td style="vertical-align:top"><p>41.3%</p></td><td style="vertical-align:top"><p>16.7%</p></td><td style="vertical-align:top"><p>45.5%</p></td><td style="vertical-align:top"><p>19.6%</p></td></tr><tr><td style="vertical-align:top"><p>rate**</p><p>(95%&nbsp;CI)</p></td><td style="vertical-align:top"><p>(34.8-48.1)</p></td><td style="vertical-align:top"><p>(12.0-22.2)</p></td><td style="vertical-align:top"><p>(37.8-53.4)</p></td><td style="vertical-align:top"><p>(13.8-26.6)</p></td></tr><tr><td style="vertical-align:top"><p>Fisher&#39;s&nbsp;exact&nbsp;p-</p><p>value*</p></td><td colspan="2" style="vertical-align:top"><p>&lt;0.001</p></td><td colspan="2" style="vertical-align:top"><p>&lt;0.001</p></td></tr></tbody></table><p>Abbreviation:&nbsp;CI&nbsp;=&nbsp;confidence&nbsp;interval.</p><p>*p-value&nbsp;refers&nbsp;to&nbsp;comparison&nbsp;between&nbsp;arms.</p><p>**&nbsp;In the Pemetrexed&nbsp;for&nbsp;Injection Pemetrexed&nbsp;for&nbsp;Injection&nbsp;/cisplatin&nbsp;arm,&nbsp;randomized&nbsp;and&nbsp;treated&nbsp;(N=225)&nbsp;and&nbsp;fully supplemented (N=167).</p><p>&nbsp;</p><p>A statistically significant improvement of the clinically relevant symptoms (pain and dyspnoea)&nbsp;associated&nbsp;withmalignant&nbsp;pleural&nbsp;mesothelioma&nbsp;in&nbsp;the&nbsp;Pemetrexed&nbsp;for&nbsp;Injection</p><p>/cisplatin arm (212 patients) versus the cisplatin arm alone (218 patients) was demonstrated using the Lung Cancer Symptom Scale. Statistically significant differences in pulmonary function&nbsp;tests&nbsp;were&nbsp;also&nbsp;observed.&nbsp;Theseparation&nbsp;between&nbsp;the&nbsp;treatment&nbsp;arms&nbsp;was&nbsp;achieved&nbsp;by improvement&nbsp;in&nbsp;lung&nbsp;function&nbsp;in&nbsp;the&nbsp;Pemetrexed&nbsp;for Injection&nbsp;/cisplatin&nbsp;arm&nbsp;and&nbsp;deterioration of lung function over time in the control arm.</p><p>There are limited data in patients with malignant pleural mesothelioma treated with Pemetrexed for Injection alone. Pemetrexed for Injection at a dose of 500mg/m<sup>2</sup>&nbsp;was studied as&nbsp;a&nbsp;single&nbsp;agent&nbsp;in&nbsp;64&nbsp;chemonaive&nbsp;patientswith&nbsp;malignant&nbsp;pleural&nbsp;mesothelioma.&nbsp;The&nbsp;overall response rate was 14.1%.</p><p><em>NSCLC,&nbsp;second-line&nbsp;treatment</em></p><p>A multi-centre, randomised, open-label Phase 3 study of Pemetrexed for Injection versus docetaxel&nbsp;in&nbsp;patientswith&nbsp;locally&nbsp;advanced&nbsp;or&nbsp;metastatic&nbsp;NSCLC&nbsp;after&nbsp;prior&nbsp;chemotherapy&nbsp;has shown&nbsp;median&nbsp;survival&nbsp;times&nbsp;of 8.3months&nbsp;for patients&nbsp;treated&nbsp;with&nbsp;Pemetrexed&nbsp;for&nbsp;Injection (Intent-To-Treat&nbsp;[ITT]&nbsp;population&nbsp;N&nbsp;=&nbsp;283)&nbsp;and&nbsp;7.9months&nbsp;for&nbsp;patients&nbsp;treated&nbsp;with&nbsp;docetaxel (ITT N = 288). Prior chemotherapy did not include Pemetrexed for Injection. An analysis of the impact of NSCLC histology on the treatment effect on overall survival was in favour of Pemetrexed&nbsp;for&nbsp;Injection&nbsp;versus&nbsp;docetaxel&nbsp;for&nbsp;other&nbsp;than&nbsp;predominantly&nbsp;squamous&nbsp;histologies (N&nbsp;=399,&nbsp;9.3&nbsp;versus&nbsp;8.0&nbsp;months,&nbsp;adjusted&nbsp;hazard&nbsp;ratio&nbsp;(HR)&nbsp;= 0.78;&nbsp;95%&nbsp;CI&nbsp;=&nbsp;0.61-1.00,&nbsp;p&nbsp;=</p><p>0.047) and was in favour of docetaxel for squamous cell carcinoma histology (N =172, 6.2 versus 7.4 months, adjusted HR = 1.56; 95% CI = 1.08-2.26, p = 0.018). There were no clinically relevant differences observed for the safety profile of Pemetrexed for Injection within the histology subgroups.</p><p>Limited clinical data from a separate randomized, Phase 3, controlled trial, suggest that efficacy data (overall survival, progression-free survival) for pemetrexed are similar between patients previously pre-treated with docetaxel (N = 41) and patients who did not receive previous docetaxel treatment (N = 540).</p><p><strong>Table&nbsp;7:&nbsp;Efficacy&nbsp;of&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;vs.&nbsp;Docetaxel&nbsp;in&nbsp;NSCLC&nbsp;-&nbsp;ITT&nbsp;population</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p><strong>Pemetrexed&nbsp;for&nbsp;Injection</strong></p></td><td style="vertical-align:top"><p><strong>Docetaxel</strong></p></td></tr><tr><td style="vertical-align:top"><p>Survival&nbsp;time&nbsp;(months)</p></td><td style="vertical-align:top"><p>(N =&nbsp;283)</p></td><td style="vertical-align:top"><p>(N =&nbsp;288)</p></td></tr><tr><td style="vertical-align:top"><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->Median&nbsp;(m)</p></td><td style="vertical-align:top"><p>8.3</p></td><td style="vertical-align:top"><p>7.9</p></td></tr><tr><td style="vertical-align:top"><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->95%&nbsp;CI&nbsp;for&nbsp;median</p></td><td style="vertical-align:top"><p>(7.0-9.4)</p></td><td style="vertical-align:top"><p>(6.3-9.2)</p></td></tr><tr><td style="vertical-align:top"><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->HR</p></td><td colspan="2" style="vertical-align:top"><p>0.99</p></td></tr><tr><td style="vertical-align:top"><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->95%&nbsp;CI&nbsp;for&nbsp;HR</p></td><td colspan="2" style="vertical-align:top"><p>(0.82-1.20)</p></td></tr><tr><td style="vertical-align:top"><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->Non-inferiority&nbsp;p-value&nbsp;(HR)</p></td><td colspan="2" style="vertical-align:top"><p>0.226</p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p>Progression-freesurvival&nbsp;(months)</p><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->Median</p><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->HR&nbsp;(95%&nbsp;CI)</p></td><td style="vertical-align:top"><p>(N =&nbsp;283)</p></td><td style="vertical-align:top"><p>(N =&nbsp;283)</p></td></tr><tr><td style="vertical-align:top"><p>2.9</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>2.9</p></td></tr><tr><td colspan="2" style="vertical-align:top"><p>0.97&nbsp;(0.82-1.16)</p></td></tr><tr><td style="vertical-align:top"><p>Response&nbsp;(n:&nbsp;qualified&nbsp;for</p></td><td style="vertical-align:top"><p>(N =&nbsp;264)</p></td><td style="vertical-align:top"><p>(N =&nbsp;274)</p></td></tr><tr><td style="vertical-align:top"><p>response)</p></td><td style="vertical-align:top"><p>9.1&nbsp;(5.9-13.2)</p></td><td style="vertical-align:top"><p>8.8&nbsp;(5.7-12.8)</p></td></tr><tr><td style="vertical-align:top"><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->Response&nbsp;rate&nbsp;(%)&nbsp;(95%&nbsp;CI)</p></td><td style="vertical-align:top"><p>45.8</p></td><td style="vertical-align:top"><p>46.4</p></td></tr><tr><td style="vertical-align:top"><p><!--[if !supportLists]-->&bull;&nbsp;&nbsp;<!--[endif]-->Stable&nbsp;disease&nbsp;(%)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td colspan="3" style="vertical-align:top"><p>Abbreviations:&nbsp;CI&nbsp;=&nbsp;confidence&nbsp;interval;&nbsp;HR&nbsp;=&nbsp;hazard&nbsp;ratio;&nbsp;ITT&nbsp;=&nbsp;intent-to-treat;&nbsp;N&nbsp;=&nbsp;total</p><p>population&nbsp;size.</p></td></tr></tbody></table><p>&nbsp;</p><p><em>NSCLC,&nbsp;first-line&nbsp;treatment</em></p><p>A&nbsp;multi-centre,&nbsp;randomised,&nbsp;open-label,&nbsp;Phase&nbsp;3&nbsp;study&nbsp;of&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;plus&nbsp;cisplatin versus gemcitabine plus cisplatin in chemonaive patients with locally advanced or metastatic&nbsp;(Stage&nbsp;IIIbor&nbsp;IV)&nbsp;non-small&nbsp;cell&nbsp;lung&nbsp;cancer&nbsp;(NSCLC)&nbsp;showed&nbsp;that&nbsp;Pemetrexed&nbsp;for Injection plus cisplatin (Intent-To-Treat [ITT] population N = 862) met its primary endpoint and showed similar clinical efficacy as gemcitabine plus cisplatin (ITT N = 863) in overall survival (adjusted hazard ratio (HR) 0.94; 95% CI= 0.84-1.05). All patients included in this study had an ECOG performance status 0 or 1.</p><p>The primary efficacy analysis was based on the ITT population. Sensitivity analyses of main efficacy&nbsp;endpointswere&nbsp;also&nbsp;assessed&nbsp;on&nbsp;the&nbsp;Protocol&nbsp;Qualified&nbsp;(PQ)&nbsp;population.&nbsp;The&nbsp;efficacy analyses using PQ population are consistent with the analyses for the ITT population and support the non-inferiority of AC versus GC.</p><p>Progression-free&nbsp;survival&nbsp;(PFS)&nbsp;and&nbsp;overall&nbsp;response&nbsp;rate&nbsp;were&nbsp;similar&nbsp;between&nbsp;treatment&nbsp;arms: median&nbsp;PFS&nbsp;was4.8&nbsp;months&nbsp;for&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;plus&nbsp;cisplatin&nbsp;versus&nbsp;5.1&nbsp;months&nbsp;for gemcitabine plus cisplatin (adjusted hazard ratio (HR) 1.04; 95% CI= 0.94-1.15), and overall response&nbsp;rate&nbsp;was&nbsp;30.6%&nbsp;(95%&nbsp;CI=&nbsp;27.3-&nbsp;33.9)&nbsp;forPemetrexed&nbsp;for&nbsp;Injection&nbsp;plus&nbsp;cisplatin versus&nbsp;28.2%&nbsp;(95% CI=&nbsp;25.0-31.4) for gemcitabine&nbsp;plus&nbsp;cisplatin.&nbsp;PFSdata&nbsp;were&nbsp;partially confirmed by an independent review (400/1725 patients were randomly selected for review). The analysis of the impact of NSCLC histology on overall survival demonstrated clinically&nbsp;relevant differences in survival according to histology, see table below.</p><p><strong>Table 8: Efficacy of Pemetrexed for Injection + cisplatin vs. gemcitabine + cisplatin in first-line non-small cell lung cancer &ndash; ITT population and histology subgroups</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" style="vertical-align:top"><p><strong>ITT&nbsp;population and histology&nbsp;subgroups</strong></p></td><td colspan="4" style="vertical-align:top"><p><strong>Median&nbsp;overall&nbsp;survival&nbsp;in&nbsp;months</strong></p><p><strong>(95%&nbsp;CI)</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Adjusted hazard&nbsp;ratio&nbsp;(HR)</strong></p><p><strong>(95%&nbsp;CI)</strong></p></td><td rowspan="2" style="vertical-align:top"><p><strong>Superiority p-value</strong></p></td></tr><tr><td colspan="2" style="vertical-align:top"><p><strong>Pemetrexed&nbsp;for</strong></p><p><strong>Injection +&nbsp;Cisplatin</strong></p></td><td colspan="2" style="vertical-align:top"><p><strong>Gemcitabine&nbsp;+&nbsp;Cisplatin</strong></p></td></tr><tr><td style="vertical-align:top"><p>ITT&nbsp;population</p></td><td style="vertical-align:top"><p>10.3</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;862</p></td><td style="vertical-align:top"><p>10.3</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;863</p></td><td style="vertical-align:top"><p>0.94a</p></td><td style="vertical-align:top"><p>0.259</p></td></tr><tr><td style="vertical-align:top"><p>(N =&nbsp;1725)</p></td><td style="vertical-align:top"><p>(9.8-11.2)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(9.6&nbsp;&ndash;&nbsp;10.9)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(0.84-1.05)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Adenocarcinoma</p></td><td style="vertical-align:top"><p>12.6</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;436</p></td><td style="vertical-align:top"><p>10.9</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;411</p></td><td style="vertical-align:top"><p>0.84</p></td><td style="vertical-align:top"><p>0.033</p></td></tr><tr><td style="vertical-align:top"><p>(N =&nbsp;847)</p></td><td style="vertical-align:top"><p>(10.7-13.6)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(10.2-11.9)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(0.71&ndash;0.99)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Large&nbsp;cell</p></td><td style="vertical-align:top"><p>10.4</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;76</p></td><td style="vertical-align:top"><p>6.7</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;77</p></td><td style="vertical-align:top"><p>0.67</p></td><td style="vertical-align:top"><p>0.027</p></td></tr><tr><td style="vertical-align:top"><p>(N =&nbsp;153)</p></td><td style="vertical-align:top"><p>(8.6&nbsp;&ndash;&nbsp;14.1)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(5.5&nbsp;&ndash;&nbsp;9.0)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(0.48&ndash;0.96)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Other</p></td><td style="vertical-align:top"><p>8.6</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;106</p></td><td style="vertical-align:top"><p>9.2</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;146</p></td><td style="vertical-align:top"><p>1.08</p></td><td style="vertical-align:top"><p>0.586</p></td></tr><tr><td style="vertical-align:top"><p>(N =&nbsp;252)</p></td><td style="vertical-align:top"><p>(6.8&nbsp;&ndash;&nbsp;10.2)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(8.1&nbsp;&ndash;&nbsp;10.6)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(0.81&ndash;1.45)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td style="vertical-align:top"><p>Squamous&nbsp;cell</p></td><td style="vertical-align:top"><p>9.4</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;244</p></td><td style="vertical-align:top"><p>10.8</p></td><td style="vertical-align:top"><p>N&nbsp;=&nbsp;229</p></td><td style="vertical-align:top"><p>1.23</p></td><td style="vertical-align:top"><p>0.050</p></td></tr><tr><td style="vertical-align:top"><p>(N =&nbsp;473)</p></td><td style="vertical-align:top"><p>(8.4&nbsp;&ndash;&nbsp;10.2)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(9.5&nbsp;&ndash;&nbsp;12.1)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>(1.00&ndash;1.51)</p></td><td style="vertical-align:top"><p>&nbsp;</p></td></tr><tr><td colspan="7" style="vertical-align:top"><p>Abbreviations:&nbsp;CI&nbsp;=&nbsp;confidence&nbsp;interval;&nbsp;ITT&nbsp;=&nbsp;intent-to-treat; N&nbsp;=&nbsp;total&nbsp;population&nbsp;size.</p><p><sup>a</sup>&nbsp;Statistically&nbsp;significant for&nbsp;non-inferiority, with&nbsp;the&nbsp;entire&nbsp;confidence&nbsp;interval&nbsp;for&nbsp;HR&nbsp;well below&nbsp;the&nbsp;1.17645 noninferiority margin (<em>p&nbsp;</em>&lt; 0.001).</p></td></tr></tbody></table><p>&nbsp;</p><p><img width="179" height="153" src="blob:https://sdi.sfda.gov.sa/246eaee2-0d0c-4058-b8f1-1c6b1f654084" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="202" height="145" src="blob:https://sdi.sfda.gov.sa/3bb95889-a727-4869-8fd1-aeecc297f6f1" /></p><p><strong>Figure&nbsp;1:&nbsp;Kaplan-Meier&nbsp;plots&nbsp;of&nbsp;overall&nbsp;survival&nbsp;by&nbsp;histology</strong></p><p>&nbsp;</p><p>There&nbsp;were&nbsp;no&nbsp;clinically&nbsp;relevant&nbsp;differences&nbsp;observed&nbsp;for&nbsp;the&nbsp;safety&nbsp;profile&nbsp;of&nbsp;Pemetrexed&nbsp;for Injection Pemetrexed for Injection plus cisplatin within the histology subgroups.</p><p>Patients&nbsp;treated&nbsp;with&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;and&nbsp;cisplatin&nbsp;required&nbsp;fewer&nbsp;transfusions&nbsp;(16.4% versus 28.9%, p &lt; 0.001), red blood cell transfusions (16.1% versus 27.3%, p &lt; 0.001) and platelet&nbsp;transfusions&nbsp;(1.8%&nbsp;versus&nbsp;4.5%,p&nbsp;=&nbsp;0.002).&nbsp;Patients&nbsp;also&nbsp;required&nbsp;lower&nbsp;administration of&nbsp;erythropoietin/darbopoietin&nbsp;(10.4%&nbsp;versus&nbsp;18.1%,&nbsp;p&lt;&nbsp;0.001),&nbsp;G-CSF/GM-CSF&nbsp;(3.1%&nbsp;versus&nbsp;6.1%,&nbsp;p&nbsp;=&nbsp;0.004),&nbsp;and&nbsp;iron&nbsp;preparations&nbsp;(4.3%&nbsp;versus&nbsp;7.0%,&nbsp;p&nbsp;=&nbsp;0.021).</p><p><em>NSCLC,&nbsp;maintenance&nbsp;treatment</em></p><p>JMEN</p><p>A multi-centre, randomised, double-blind, placebo-controlled Phase 3 study (JMEN), compared&nbsp;the&nbsp;efficacy&nbsp;andsafety&nbsp;of&nbsp;maintenance&nbsp;treatment&nbsp;with&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;plus best&nbsp;supportive&nbsp;care&nbsp;(BSC)&nbsp;(N&nbsp;=&nbsp;441)&nbsp;withthat&nbsp;of&nbsp;placebo&nbsp;plus&nbsp;BSC&nbsp;(N&nbsp;=&nbsp;222)&nbsp;in&nbsp;patients&nbsp;with locally&nbsp;advanced&nbsp;(Stage&nbsp;IIIB)&nbsp;or&nbsp;metastatic&nbsp;(Stage&nbsp;IV)&nbsp;Non-Small&nbsp;Cell&nbsp;Lung&nbsp;Cancer&nbsp;(NSCLC) who did not progress after 4 cycles of first-line doublet therapy containing Cisplatin or Carboplatin in combination with Gemcitabine, Paclitaxel, or Docetaxel. First-line doublet therapy containing Pemetrexed for Injection was not included. All patients included in this study had an ECOG performance status 0 or 1. Patients received maintenance treatment until disease progression. Efficacy and safety were measured from&nbsp;the time of randomisation after completion of first-line (induction) therapy. Patients received a median of 5 cycles of maintenance&nbsp;treatment&nbsp;with&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;and&nbsp;3.5&nbsp;cycles&nbsp;of&nbsp;placebo.A&nbsp;total&nbsp;of&nbsp;213 patients (48.3%) completed &ge; 6 cycles and a total of 103 patients (23.4%) completed &ge; 10 cycles of treatment with Pemetrexed for Injection.</p><p>The&nbsp;study&nbsp;met&nbsp;its&nbsp;primary&nbsp;endpoint&nbsp;and&nbsp;showed&nbsp;a&nbsp;statistically&nbsp;significant&nbsp;improvement&nbsp;in&nbsp;PFS in the Pemetrexed for Injection arm over the placebo arm (N = 581, independently reviewed population;&nbsp;median&nbsp;of&nbsp;4.0&nbsp;months&nbsp;and2.0&nbsp;months,&nbsp;respectively)&nbsp;(hazard&nbsp;ratio&nbsp;=&nbsp;0.60,&nbsp;95%&nbsp;CI</p><p>=&nbsp;0.49-0.73, p &lt;&nbsp;0.00001).&nbsp;The&nbsp;independent review&nbsp;of patient scans&nbsp;confirmed&nbsp;the&nbsp;findings&nbsp;of the&nbsp;investigatorassessment&nbsp;of&nbsp;PFS.&nbsp;The&nbsp;median&nbsp;OS&nbsp;for&nbsp;the&nbsp;overall&nbsp;population (N&nbsp;=&nbsp;663)&nbsp;was</p><p>13.4&nbsp;months&nbsp;for&nbsp;the&nbsp;Pemetrexed&nbsp;for&nbsp;Injection&nbsp;arm&nbsp;and&nbsp;10.6&nbsp;months&nbsp;for&nbsp;the&nbsp;placebo&nbsp;arm,&nbsp;hazard ratio = 0.79 (95% CI= 0.65-0.95, p = 0.01192).</p><p>Consistent with other Pemetrexed for Injection studies, a difference in efficacy according to NSCLC&nbsp;histologywas&nbsp;observed&nbsp;in&nbsp;JMEN.&nbsp;For&nbsp;patients&nbsp;with&nbsp;NSCLC&nbsp;other&nbsp;than&nbsp;predominantly squamous cell histology (N = 430, independently reviewed population) median PFS was 4.4 months&nbsp;for&nbsp;the Pemetrexed&nbsp;for&nbsp;Injection&nbsp;arm&nbsp;and&nbsp;1.8months&nbsp;for&nbsp;the placebo&nbsp;arm,&nbsp;hazard&nbsp;ratio</p><p>=&nbsp;0.47&nbsp;(95%&nbsp;CI&nbsp;=&nbsp;0.37-0.60,&nbsp;p&nbsp;=&nbsp;0.00001).&nbsp;The&nbsp;median&nbsp;OS&nbsp;for&nbsp;patients&nbsp;with&nbsp;NSCLC&nbsp;other&nbsp;than predominantly squamous cell histology (N = 481) was 15.5 months for the Pemetrexed for Injection arm and 10.3 months&nbsp;for the&nbsp;placebo arm, hazard ratio&nbsp;=&nbsp;0.70&nbsp;(95% CI&nbsp;=&nbsp;0.56-&nbsp;0.88, p&nbsp;=&nbsp;0.002).&nbsp;Including&nbsp;the&nbsp;induction&nbsp;phase, the&nbsp;median OS&nbsp;for&nbsp;patients&nbsp;with&nbsp;NSCLC&nbsp;other&nbsp;than predominantly&nbsp;squamous&nbsp;cell&nbsp;histology&nbsp;was&nbsp;18.6&nbsp;months&nbsp;for&nbsp;thePemetrexed&nbsp;for&nbsp;Injection&nbsp;arm and 13.6 months for the placebo arm, hazard ratio&nbsp;= 0.71 (95% CI = 0.56-0.88, p = 0.002).</p><p>The PFS and OS&nbsp;results in patients with squamous cell histology suggested no advantage for Pemetrexed for Injection over placebo.</p><p>&nbsp;</p><table cellpadding="0" cellspacing="0" align="left"><tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><img width="447" height="167" src="blob:https://sdi.sfda.gov.sa/fc5583d8-a523-447c-9187-9413c2fa48da" /></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><strong>Figure 2: JMEN: Kaplan-Meier plots of progression-free survival (PFS) and overall survival Pemetrexed for Injection versus placebo in patients with NSCLC other than predominantly squamous cell histology:</strong></p><p>&nbsp;</p><p>PARAMOUNT</p><p>A&nbsp;multi-centre,&nbsp;randomised,&nbsp;double-blind,&nbsp;placebo-controlled&nbsp;Phase&nbsp;3&nbsp;study&nbsp;(PARAMOUNT), compared the efficacy and safety of continuation&nbsp;maintenance treatment with&nbsp;Pemetrexed for Injection plus&nbsp;BSC&nbsp;(N&nbsp;=&nbsp;359)with&nbsp;that&nbsp;of&nbsp;placebo&nbsp;plus&nbsp;BSC&nbsp;(N&nbsp;=&nbsp;180)&nbsp;in&nbsp;patients&nbsp;with&nbsp;locally advanced (Stage IIIB) or metastatic (Stage IV) NSCLC other than predominantly squamous cell histology who did not progress after 4 cycles of first-line doublet therapy of Pemetrexed for Injection in combination with cisplatin. Of the 939 patients treated with Pemetrexed for Injection&nbsp;plus&nbsp;cisplatin&nbsp;induction,&nbsp;539&nbsp;patients&nbsp;were&nbsp;randomised&nbsp;to&nbsp;maintenance&nbsp;treatment&nbsp;with pemetrexed&nbsp;or&nbsp;placebo.&nbsp;Of&nbsp;the&nbsp;randomised&nbsp;patients,&nbsp;44.9%&nbsp;had&nbsp;a&nbsp;complete/partial&nbsp;response&nbsp;and 51.9% had a response of stable disease to Pemetrexed for Injection plus cisplatin induction. Patients randomised to maintenance treatment were required to have an ECOG performance status 0 or 1. The median time from the start of Pemetrexed for Injection plus cisplatin induction therapy to the start of maintenance treatment was 2.96 months on both the pemetrexed arm and the placebo arm. Randomised patients received maintenance treatment until disease progression. Efficacy and safety were measured from the time of randomisation after completion of first-line (induction) therapy. Patients received a median of 4 cycles of maintenance treatment with Pemetrexed for Injection and 4 cycles of placebo. A total of 169 patients (47.1%) completed &ge; 6 cycles maintenance treatment with Pemetrexed for Injection, representing at least 10 total cycles of Pemetrexed for Injection.</p><p>The&nbsp;study&nbsp;met&nbsp;its&nbsp;primary&nbsp;endpoint&nbsp;and&nbsp;showed&nbsp;a&nbsp;statistically&nbsp;significant&nbsp;improvement&nbsp;in&nbsp;PFS in the Pemetrexed for Injection arm over the placebo arm (N = 472, independently reviewed population;&nbsp;median&nbsp;of&nbsp;3.9&nbsp;months&nbsp;and2.6&nbsp;months,&nbsp;respectively)&nbsp;(hazard&nbsp;ratio&nbsp;=&nbsp;0.64,&nbsp;95%&nbsp;CI</p><p>= 0.51-0.81, p = 0.0002). The independent review of patient scans confirmed the findings of the investigator assessment of PFS. For randomised patients, as measured from the start of Pemetrexed&nbsp;for&nbsp;Injection&nbsp;pluscisplatin&nbsp;first-line&nbsp;induction&nbsp;treatment,&nbsp;the&nbsp;median&nbsp;investigator- assessed PFS was 6.9 months for the Pemetrexed for Injection arm and 5.6 months for the placebo arm (hazard ratio = 0.59, 95% CI = 0.47-0.74).</p><p>Following Pemetrexed for Injection plus cisplatin induction (4 cycles), treatment with Pemetrexed for Injection was statistically superior to placebo for OS (median 13.9 months versus&nbsp;11.0&nbsp;months,&nbsp;hazard&nbsp;ratio&nbsp;=&nbsp;0.78,95%CI=0.64-0.96,&nbsp;p=0.0195).&nbsp;At&nbsp;the&nbsp;time&nbsp;of&nbsp;this&nbsp;final&nbsp;survival analysis, 28.7% of patients were alive or lost to follow up on the Pemetrexed for Injection arm versus 21.7% on the placebo arm.</p><p>The relative treatment effect of Pemetrexed for Injection was internally consistent across subgroups (including disease stage, induction response, ECOG PS, smoking status, gender, histology&nbsp;and&nbsp;age) and&nbsp;similar to&nbsp;thatobserved&nbsp;in&nbsp;the&nbsp;unadjusted&nbsp;OS&nbsp;and&nbsp;PFS&nbsp;analyses. The&nbsp;1 year and 2 year survival rates for patients on Pemetrexed for Injection were 58% and 32% respectively,&nbsp;compared&nbsp;to&nbsp;45%&nbsp;and&nbsp;21%&nbsp;for&nbsp;patients&nbsp;on&nbsp;placebo.&nbsp;From&nbsp;the&nbsp;startof&nbsp;Pemetrexed for Injection plus cisplatin first-line induction treatment, the median OS of patients was 16.9 months for the Pemetrexed for Injection arm and 14.0 months for the placebo arm (hazard ratio=&nbsp;0.78,&nbsp;95%&nbsp;CI=0.64-0.96).&nbsp;The&nbsp;percentage&nbsp;of&nbsp;patients&nbsp;that&nbsp;received&nbsp;post-study&nbsp;treatment was 64.3% for Pemetrexed for Injection and 71.7% for placebo.</p><p><strong>PARAMOUNT:&nbsp;Kaplan-Meier&nbsp;plot&nbsp;of&nbsp;progression-free&nbsp;survival&nbsp;(PFS)&nbsp;and&nbsp;Overall&nbsp;Survival&nbsp;(OS) for continuation Pemetrexed for Injection maintenance versus placebo in patients with NSCLC other than predominantly squamous cell histology (measured from randomisation)</strong></p><p>&nbsp;</p><table cellpadding="0" cellspacing="0" align="left"><tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><img width="447" height="156" src="blob:https://sdi.sfda.gov.sa/5764a735-778a-4213-801c-930aefdc7290" /></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><strong>Figure 3:&nbsp;The&nbsp;Pemetrexed for&nbsp;Injection maintenance safety profiles from the&nbsp;two studies JMEN and PARAMOUNT were similar.</strong></p><p><strong>&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Absorption</u></p><p>The pharmacokinetics of pemetrexed when Pemetrexed for Injection was administered as a single agent in doses ranging from 0.2 to 838 mg/m<sup>2</sup>&nbsp;infused over a 10-minute period have been&nbsp;evaluated&nbsp;in&nbsp;426&nbsp;cancer&nbsp;patients&nbsp;witha&nbsp;variety&nbsp;of&nbsp;solid&nbsp;tumors.&nbsp;Pemetrexed&nbsp;total&nbsp;systemic&nbsp;exposure&nbsp;(AUC)&nbsp;and&nbsp;maximum&nbsp;plasma&nbsp;concentration(Cmax)&nbsp;increased&nbsp;proportionally&nbsp;with increase&nbsp;of&nbsp;dose.&nbsp;The&nbsp;pharmacokinetics&nbsp;of&nbsp;pemetrexed&nbsp;did&nbsp;not&nbsp;change&nbsp;over&nbsp;multiple&nbsp;treatment&nbsp;cycles.</p><p><u>Distribution</u></p><p>Pemetrexed has a steady-state volume of distribution of 16.1 liters.&nbsp;<em>In vitro&nbsp;</em>studies indicated that pemetrexed is 81% bound to plasma proteins.</p><p><u>Elimination</u></p><p>The total systemic clearance of pemetrexed is 91.8 mL/min and the elimination half-life of pemetrexed is 3.5 hours in patients with normal renal function (creatinine clearance of 90 mL/min). As renal function decreases, the clearance of pemetrexed decreases and exposure (AUC) of pemetrexed increases.</p><p><em>Metabolism</em></p><p>Pemetrexed is&nbsp;not metabolized&nbsp;to an appreciable&nbsp;extent.</p><p><em>Excretion</em></p><p>Pemetrexed is primarily eliminated in the urine, with 70% to 90% of the dose recovered unchanged within the first 24 hours following administration. In vitro studies indicated that pemetrexed&nbsp;is&nbsp;a&nbsp;substrate&nbsp;of&nbsp;OAT3&nbsp;(organicanion&nbsp;transporter&nbsp;3),&nbsp;a&nbsp;transporter&nbsp;that&nbsp;is&nbsp;involved in the active secretion of pemetrexed.</p><p><u>Specific&nbsp;Populations</u></p><p>Age&nbsp;(26&nbsp;to&nbsp;80&nbsp;years)&nbsp;and&nbsp;sex&nbsp;had&nbsp;no&nbsp;clinically&nbsp;meaningful&nbsp;effect&nbsp;on&nbsp;the&nbsp;systemic&nbsp;exposure&nbsp;of pemetrexed based on population pharmacokinetic analyses.</p><p><em>Racial&nbsp;Groups</em></p><p>The&nbsp;pharmacokinetics&nbsp;of&nbsp;pemetrexed&nbsp;were&nbsp;similar&nbsp;in&nbsp;Whites&nbsp;and&nbsp;Blacks&nbsp;or&nbsp;African&nbsp;Americans. Insufficient data are available for other ethnic groups.</p><p><em>Patients&nbsp;with&nbsp;Hepatic&nbsp;Impairment</em></p><p>Pemetrexed has not been formally studied in patients with hepatic impairment. No effect of elevated&nbsp;AST,&nbsp;ALT,or&nbsp;total&nbsp;bilirubin&nbsp;on&nbsp;the&nbsp;PK&nbsp;of&nbsp;pemetrexed&nbsp;was&nbsp;observed&nbsp;in&nbsp;clinical&nbsp;studies.&nbsp;</p><p><em>Patients with Renal Impairment&nbsp;</em></p><p>Pharmacokinetic analyses of pemetrexed included 127 patients with impaired renal function. Plasma&nbsp;clearance&nbsp;ofpemetrexed&nbsp;decreases&nbsp;as&nbsp;renal&nbsp;function&nbsp;decreases,&nbsp;with&nbsp;a&nbsp;resultant&nbsp;increase in&nbsp;systemic&nbsp;exposure.&nbsp;Patients&nbsp;withcreatinine&nbsp;clearances&nbsp;of&nbsp;45,&nbsp;50,&nbsp;and&nbsp;80 mL/min&nbsp;had&nbsp;65%,</p><p>54%,&nbsp;and&nbsp;13%&nbsp;increases,&nbsp;respectively in&nbsp;systemic&nbsp;exposure (AUC)&nbsp;compared&nbsp;to&nbsp;patients with creatinine clearance of 100 mL/min (see section 4.2 and section 4.4)</p><p><em>Third-Space&nbsp;Fluid</em></p><p>The&nbsp;pemetrexed&nbsp;plasma&nbsp;concentrations&nbsp;in&nbsp;patients with&nbsp;various&nbsp;solid&nbsp;tumors&nbsp;with&nbsp;stable, mild to&nbsp;moderate&nbsp;third-space&nbsp;fluid&nbsp;were&nbsp;comparable&nbsp;to&nbsp;those&nbsp;observed&nbsp;in&nbsp;patients&nbsp;without&nbsp;third&nbsp;space fluid collections. The effect of severe third space fluid on pharmacokinetics is not known.</p><p><u>Drug Interaction&nbsp;Studies</u></p><p><em>Drugs&nbsp;Inhibiting&nbsp;OAT3&nbsp;Transporter</em></p><p>Ibuprofen,&nbsp;an&nbsp;OAT3&nbsp;inhibitor,&nbsp;administered&nbsp;at&nbsp;400&nbsp;mg&nbsp;four&nbsp;times&nbsp;a&nbsp;day&nbsp;decreased&nbsp;the&nbsp;clearance of pemetrexed and increased its exposure (AUC) by approximately 20% in patients with normal renal function (creatinine clearance &gt;80 mL/min).</p><p><em>In&nbsp;Vitro&nbsp;Studies</em></p><p>Pemetrexed is a substrate for OAT3. Ibuprofen, an OAT3 inhibitor inhibited the uptake of&nbsp;pemetrexed in OAT3-expressing cell cultures with an average [Iu]/IC50&nbsp;ratio of 0.38.&nbsp;<em>In vitro&nbsp;</em>data predict that at clinically relevant concentrations, other NSAIDs (naproxen, diclofenac, celecoxib) would not inhibit the uptake of pemetrexed by OAT3 and would not increase the AUC of pemetrexed to a clinically significant extent (see section 4.5).</p><p>Pemetrexed is a substrate for OAT4.&nbsp;<em>In vitro</em>, ibuprofen and other NSAIDs (naproxen, diclofenac, celecoxib) are not inhibitors of OAT4 at clinically relevant concentrations.</p><p><em>Aspirin</em></p><p>Aspirin, administered in&nbsp;low&nbsp;to moderate&nbsp;doses&nbsp;(325 mg&nbsp;every&nbsp;6 hours), does&nbsp;not&nbsp;affect&nbsp;the pharmacokinetics of pemetrexed.</p><p><em>Cisplatin</em></p><p>Cisplatin&nbsp;does&nbsp;not&nbsp;affect&nbsp;the&nbsp;pharmacokinetics&nbsp;of&nbsp;pemetrexed&nbsp;and&nbsp;the&nbsp;pharmacokinetics&nbsp;of&nbsp;total platinum are unaltered by pemetrexed.</p><p><em>Vitamins</em></p><p>Neither folic&nbsp;acid&nbsp;nor&nbsp;vitamin&nbsp;B12&nbsp;affect&nbsp;the&nbsp;pharmacokinetics&nbsp;of&nbsp;pemetrexed.</p><p><em>Drugs&nbsp;Metabolized&nbsp;by&nbsp;Cytochrome&nbsp;P450&nbsp;Enzymes</em></p><p><em>In&nbsp;vitro&nbsp;</em>studies&nbsp;suggest&nbsp;that&nbsp;pemetrexed&nbsp;does&nbsp;not&nbsp;inhibit&nbsp;the&nbsp;clearance&nbsp;of&nbsp;drugs&nbsp;metabolized&nbsp;by CYP3A, CYP2D6, CYP2C9, and CYP1A2.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Carcinogenesis,&nbsp;Mutagenesis,&nbsp;Impairment&nbsp;of&nbsp;Fertility</strong></p><p>No&nbsp;carcinogenicity&nbsp;studies&nbsp;have&nbsp;been&nbsp;conducted&nbsp;with&nbsp;pemetrexed.&nbsp;Pemetrexed&nbsp;was&nbsp;clastogenic in an&nbsp;<em>in&nbsp;vivo</em>micronucleus assay in&nbsp;mouse bone&nbsp;marrow but&nbsp;was&nbsp;not&nbsp;mutagenic&nbsp;in&nbsp;multiple&nbsp;<em>in vitro&nbsp;</em>tests (Ames assay, Chinese Hamster Ovary cell assay).</p><p>Pemetrexed administered intraperitoneally at doses of &ge;0.1 mg/kg/day to male mice (approximately&nbsp;0.006&nbsp;timesthe&nbsp;recommended&nbsp;human&nbsp;dose&nbsp;based&nbsp;on&nbsp;BSA)&nbsp;resulted&nbsp;in&nbsp;reduced&nbsp;fertility, hypospermia, and testicular atrophy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Mannitol&nbsp;</p><p>Hydrochloric&nbsp;Acid</p><p>SodiumHydroxide</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pemetrexed is physically incompatible with diluents containing calcium, including lactated Ringer&#39;s injection and Ringer&#39;s injection. In the absence of other compatibility studies this medicinal product must not be mixed with other medicinal products.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Unopened vial :24 months Reconstituted and infusion solutions
+When prepared as directed, reconstituted and infusion solutions of Pemetrexed contain no antimicrobial preservatives. Chemical and physical in-use stability of reconstituted and infusion solutions of pemetrexed were demonstrated for 24 hours at refrigerated temperature. From a microbiological point of view, the product should be used immediately. If not used immediately, in-use storage times and conditions prior to use are the responsibility of the user and would not be longer than 24 hours at 2°C to 8°C(36-46°F).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 30&deg;C</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The&nbsp;product is&nbsp;packed as&nbsp;(20 mL&nbsp;fill volume) Pemetrexed Disodium equivalent to 500 mg of&nbsp;Pemetrexed&nbsp;in&nbsp;50mL&nbsp;USP&nbsp;Type&nbsp;I&nbsp;clear&nbsp;glass&nbsp;lyo&nbsp;vial,&nbsp;stoppered&nbsp;with&nbsp;20&nbsp;mm&nbsp;grey&nbsp;Chlorobutyl rubber stoppers and sealed with 20 mm aluminium flip-off seals.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><!--[if !supportLists]-->1.&nbsp;&nbsp;&nbsp;<!--[endif]-->Use aseptic technique during the reconstitution and further dilution of pemetrexed for intravenous infusion administration.</p><p><!--[if !supportLists]-->2.&nbsp;&nbsp;&nbsp;<!--[endif]-->Calculate the dose and the number of Pemetrexed for Injection vials needed. Each vial contains an excess of pemetrexed to facilitate delivery of label amount.</p><p><!--[if !supportLists]-->3.&nbsp;&nbsp;&nbsp;<!--[endif]-->Reconstitute 500mg vials with 20ml of sodium chloride 9mg/ml (0.9%) solution for injection,&nbsp;withoutpreservative,&nbsp;resulting&nbsp;in&nbsp;a&nbsp;solution&nbsp;containing&nbsp;25mg/ml&nbsp;pemetrexed.&nbsp;Gently swirl each vial until the powder is completely dissolved. The resulting solution is clear and ranges in colour from colourless to yellow or green-yellow without adversely affecting product&nbsp;quality.&nbsp;The&nbsp;pH&nbsp;of&nbsp;the&nbsp;reconstituted&nbsp;solution&nbsp;is&nbsp;between&nbsp;6.6&nbsp;and&nbsp;7.8.<strong>Further&nbsp;dilution is required</strong>.</p><p><!--[if !supportLists]-->4.&nbsp;&nbsp;<!--[endif]-->The appropriate volume of reconstituted pemetrexed solution must be further diluted to 100ml with sodium chloride 9mg/ml&nbsp;(0.9%) solution for injection, without preservative, and administered as an intravenous infusion over 10 minutes.</p><p><!--[if !supportLists]-->5.&nbsp;&nbsp;<!--[endif]-->Pemetrexed infusion solutions prepared as directed above are compatible with polyvinyl chloride- and polyolefin- lined administration sets and infusion bags.</p><p><!--[if !supportLists]-->6.&nbsp;&nbsp;&nbsp;&nbsp;<!--[endif]-->Parenteral medicinal products must be inspected visually for particulate matter and discolouration prior to administration. If particulate matter is observed, do not administer.</p><p><!--[if !supportLists]-->7.&nbsp;&nbsp;&nbsp;<!--[endif]-->Pemetrexed solutions are for single use only. Any unused medicinal product or waste material must be disposed of in accordance with local requirements.</p><p><strong>Preparation and administration precautions:&nbsp;</strong>As with other potentially toxic anti-cancer agents, care should be exercised in the handling and preparation of pemetrexed infusion solutions.&nbsp;The&nbsp;use&nbsp;of&nbsp;gloves&nbsp;isrecommended.&nbsp;If&nbsp;a&nbsp;pemetrexed&nbsp;solution&nbsp;contacts&nbsp;the&nbsp;skin,&nbsp;wash the&nbsp;skin&nbsp;immediately&nbsp;and&nbsp;thoroughly&nbsp;with&nbsp;soapand&nbsp;water.&nbsp;If&nbsp;pemetrexed&nbsp;solutions&nbsp;contact&nbsp;the mucous&nbsp;membranes,&nbsp;flush&nbsp;thoroughly&nbsp;with&nbsp;water.&nbsp;Pemetrexed&nbsp;isnot&nbsp;a&nbsp;vesicant.&nbsp;There&nbsp;is&nbsp;not&nbsp;a specific&nbsp;antidote&nbsp;for&nbsp;extravasation&nbsp;of&nbsp;pemetrexed.&nbsp;There&nbsp;have&nbsp;been&nbsp;few&nbsp;reportedcases&nbsp;of&nbsp;pemetrexed&nbsp;extravasation,&nbsp;which&nbsp;were&nbsp;not&nbsp;assessed&nbsp;as&nbsp;serious&nbsp;by&nbsp;the&nbsp;investigator.&nbsp;Extravasation should be managed by local standard practice as with other non-vesicants.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Tadawi Biomedical Company, 
+Sudair Industrial Zone, 
+Sudair,
+Saudi Arabia.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                11/2019
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

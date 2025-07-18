@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        101-368-08
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2008
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        ACILOC
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        OMEPRAZOLE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Gastro-resistant capsule, hard
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        28
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        do not store above 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        88.90
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Jamjoom Pharmaceuticals Factory Company" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Jamjoom Pharmaceuticals Factory Company
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 394]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            JAMJOOM PHARMACEUTICALS CO. LTD.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Jamjoom Pharmaceuticals Factory  Company
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        A02BC01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Aciloc 20 mg
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Each capsule contains 20 mg omeprazole Pellets.
+Excipient:
+For a full list of excipients, see section 6.1.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Gastro-resistant capsule, hard (gastro-resistant capsule)
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Aciloc capsules are indicated for:<br />Adults<br />&bull; Treatment of duodenal ulcers<br />&bull; Prevention of relapse of duodenal ulcers<br />&bull; Treatment of gastric ulcers<br />&bull; Prevention of relapse of gastric ulcers<br />&bull; In combination with appropriate antibiotics, Helicobacter pylori (H. pylori) eradication in<br />peptic ulcer disease<br />&bull; Treatment of NSAID-associated gastric and duodenal ulcers</p><p>&bull; Prevention of NSAID-associated gastric and duodenal ulcers in patients at risk<br />&bull; Treatment of reflux oesophagitis<br />&bull; Long-term management of patients with healed reflux oesophagitis<br />&bull; Treatment of symptomatic gastro-oesophageal reflux disease<br />&bull; Treatment of Zollinger-Ellison syndrome<br />Paediatric use<br />Children over 1 year of age and &ge; 10 kg<br />&bull; Treatment of reflux oesophagitis<br />&bull; Symptomatic treatment of heartburn and acid regurgitation in gastro-oesophageal reflux<br />disease<br />Children and adolescents over 4 years of age<br />&bull; In combination with antibiotics in treatment of duodenal ulcer caused by H. pylori<br />&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Posology in adults<br />Treatment of duodenal ulcers<br />The recommended dose in patients with an active duodenal ulcer is Aciloc 20 mg once<br />daily. In most patients healing occurs within two weeks. For those patients who may not be<br />fully healed after the initial course, healing usually occurs during a further two weeks<br />treatment period. In patients with poorly responsive duodenal ulcer Aciloc 40 mg once daily<br />is recommended and healing is usually achieved within four weeks.<br />Prevention of relapse of duodenal ulcers<br />For the prevention of relapse of duodenal ulcer in H. pylori negative patients or when H.<br />pylori eradication is not possible the recommended dose is Aciloc 20 mg once daily. In some<br />patients a daily dose of 10 mg may be sufficient. In case of therapy failure, the dose can be<br />increased to 40 mg.<br />Treatment of gastric ulcers<br />The recommended dose is Aciloc 20 mg once daily. In most patients healing occurs within<br />four weeks. For those patients who may not be fully healed after the initial course, healing<br />usually occurs during a further four weeks treatment period. In patients with poorly<br />responsive gastric ulcer Aciloc 40 mg once daily is recommended and healing is usually<br />achieved within eight weeks.<br />Prevention of relapse of gastric ulcers<br />For the prevention of relapse in patients with poorly responsive gastric ulcer the<br />recommended dose is Aciloc 20 mg once daily. If needed the dose can be increased to<br />Aciloc 40 mg once daily.<br />H. pylori eradication in peptic ulcer disease<br />For the eradication of H. pylori the selection of antibiotics should consider the individual<br />patient&#39;s drug tolerance, and should be undertaken in accordance with national, regional and<br />local resistance patterns and treatment guidelines.<br />&bull; Aciloc 20 mg + clarithromycin 500 mg + amoxicillin 1,000 mg, each twice daily for one<br />week, or<br />&bull; Aciloc 20 mg + clarithromycin 250 mg (alternatively 500 mg) + metronidazole 400 mg (or500 mg or tinidazole 500 mg), each twice daily for one week or<br />&bull; Aciloc 40 mg once daily with amoxicillin 500 mg and metronidazole 400 mg (or 500 mg or<br />tinidazole 500 mg), both three times a day for one week.<br />In each regimen, if the patient is still H. pylori positive, therapy may be repeated.<br />Treatment of NSAID-associated gastric and duodenal ulcers<br />For the treatment of NSAID-associated gastric and duodenal ulcers, the recommended dose<br />is Aciloc 20 mg once daily. In most patients healing occurs within four weeks. For those<br />patients who may not be fully healed after the initial course, healing usually occurs during a<br />further four weeks treatment period.<br />Prevention of NSAID-associated gastric and duodenal ulcers in patients at risk<br />For the prevention of NSAID-associated gastric ulcers or duodenal ulcers in patients at risk<br />(age&gt; 60, previous history of gastric and duodenal ulcers, previous history of upper GI<br />bleeding) the recommended dose is Aciloc 20 mg once daily.<br />Treatment of reflux oesophagitis<br />The recommended dose is Aciloc 20 mg once daily. In most patients healing occurs within<br />four weeks. For those patients who may not be fully healed after the initial course, healing<br />usually occurs during a further four weeks treatment period.<br />In patients with severe oesophagitis Aciloc 40 mg once daily is recommended and healing is<br />usually achieved within eight weeks.<br />Long-term management of patients with healed reflux oesophagitis<br />For the long-term management of patients with healed reflux oesophagitis the<br />recommended dose is Aciloc 10 mg once daily. If needed, the dose can be increased to<br />Aciloc 20-40 mg once daily.<br />Treatment of symptomatic gastro-oesophageal reflux disease<br />The recommended dose is Aciloc 20 mg daily. Patients may respond adequately to 10 mg<br />daily, and therefore individual dose adjustment should be considered.<br />If symptom control has not been achieved after four weeks treatment with Aciloc 20 mg<br />daily, further investigation is recommended.</p><p>Treatment of Zollinger-Ellison syndrome<br />In patients with Zollinger-Ellison syndrome the dose should be individually adjusted and<br />treatment continued as long as clinically indicated. The recommended initial dose is Aciloc<br />60 mg daily. All patients with severe disease and inadequate response to other therapies<br />have been effectively controlled and more than 90% of the patients maintained on doses of<br />Aciloc 20-120 mg daily. When dose exceed Aciloc 80 mg daily, the dose should be divided<br />and given twice daily.<br />Posology in children<br />Children over 1 year of age and &ge; 10 kg<br />Treatment of reflux oesophagitis<br />Symptomatic treatment of heartburn and acid regurgitation in gastro-oesophageal reflux<br />disease<br />The posology recommendations are as follows:</p><p><br />- 1 year of age&nbsp; (Weight 10-20 kg) 10 mg once daily. The dose can be increased to 20 mg once daily if needed<br />- 2 years of age (Weight &gt; 20 kg ) 20 mg once daily. The dose can be increased to 40 mg once daily if needed</p><p>&nbsp;</p><p>Reflux oesophagitis: The treatment time is 4-8 weeks.<br />Symptomatic treatment of heartburn and acid regurgitation in gastro-oesophageal reflux<br />disease: The treatment time is 2&ndash;4 weeks. If symptom control has not been achieved after 2&ndash;4<br />weeks the patient should be investigated further.<br />Children and adolescents over 4 years of age<br />Treatment of duodenal ulcer caused by H. pylori<br />When selecting appropriate combination therapy, consideration should be given to official<br />national, regional and local guidance regarding bacterial resistance, duration of treatment (most<br />commonly 7 days but sometimes up to 14 days), and appropriate use of antibacterial agents.<br />The treatment should be supervised by a specialist.<br />The posology recommendations are as follows:</p><p>(Weight 15&ndash;30 kg): Combination with two antibiotics: Aciloc 10 mg, amoxicillin 25 mg/kg body<br />weight and clarithromycin 7.5 mg/kg body weight are all administrated together two times daily for one week.<br />(Weight 31&ndash;40 kg): Combination with two antibiotics: Aciloc 20 mg, amoxicillin 750 mg and<br />clarithromycin 7.5 mg/kg body weight are all administrated two times daily for one week.<br />(Weight &gt; 40 kg): Combination with two antibiotics: Aciloc 20 mg, amoxicillin 1 g and<br />clarithromycin 500 mg are all administrated two times daily for one week.</p><p>Special populations<br />Impaired renal function<br />Dose adjustment is not needed in patients with impaired renal function (see section 5.2).<br />Impaired hepatic function<br />In patients with impaired hepatic function a daily dose of 10&ndash;20 mg may be sufficient</p><p>(see section 5.2).<br />Elderly (&gt; 65 years old)<br />Dose adjustment is not needed in the elderly (see section 5.2).<br />Method of administration<br />It is recommended to take Aciloc capsules in the morning, preferably without food, swallowed<br />whole with half a glass of water. The capsules must not be chewed or crushed.<br />For patients with swallowing difficulties and for children who can drink or swallow semi-solid food<br />Patients can open the capsule and swallow the contents with half a glass of water or after mixing<br />the contents in a slightly acidic fluid e.g., fruit juice or applesauce, or in non-carbonated water.<br />Patients should be advised that the dispersion should be taken immediately (or within 30 minutes)<br />and always be stirred just before drinking and rinsed down with half a glass of water.<br />Alternatively patients can suck the capsule and swallow the pellets with half a glass of water. The<br />enteric-coated pellets must not be chewed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to omeprazole, substituted benzimidazoles or to any of the excipients.
+Omeprazole like other proton pump inhibitors (PPIs) must not be used concomitantly with
+nelfinavir (see section 4.5).
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In the presence of any alarm symptom (e.g. significant unintentional weight loss, recurrent<br />vomiting, dysphagia, haematemesis or melena) and when gastric ulcer is suspected or<br />present, malignancy should be excluded, as treatment may alleviate symptoms and delay<br />diagnosis.<br />Co-administration of atazanavir with proton pump inhibitors is not recommended (see<br />section 4.5). If the combination of atazanavir with a proton pump inhibitor is judged<br />unavoidable, close clinical monitoring (e.g virus load) is recommended in combination with<br />an increase in the dose of atazanavir to 400 mg with 100 mg of ritonavir; omeprazole 20 mg<br />should not be exceeded.<br />Omeprazole, as all acid-blocking medicines, may reduce the absorption of vitamin<br />B12 (cyanocobalamin) due to hypo- or achlorhydria. This should be considered in patients<br />with reduced body stores or risk factors for reduced vitamin B12absorption on long-term<br />therapy.</p><p>Omeprazole is a CYP2C19 inhibitor. When starting or ending treatment with omeprazole,<br />the potential for interactions with drugs metabolised through CYP2C19 should be<br />considered. An interaction is observed between clopidogrel and omeprazole (see section<br />4.5). The clinical relevance of this interaction is uncertain. As a precaution, concomitant use<br />of omeprazole and clopidogrel should be discouraged.<br />Severe hypomagnesaemia has been reported in patients treated with proton pump inhibitors<br />(PPIs) like omeprazole for at least three months, and in most cases for a year. Serious<br />manifestations of hypomagnesaemia such as fatigue, tetany, delirium, convulsions,<br />dizziness and ventricular arrhythmia can occur but they may begin insidiously and be<br />overlooked. In most affected patients, hypomagnesaemia improved after magnesium<br />replacement and discontinuation of the PPI.<br />For patients expected to be on prolonged treatment or who take PPIs with digoxin or drugs<br />that may cause hypomagnesaemia (e.g. diuretics), healthcare professionals should consider<br />measuring magnesium levels before starting PPI treatment and periodically during<br />treatment.<br />Proton pump inhibitors, especially if used in high doses and over long durations (&gt;1 year),<br />may modestly increase the risk of hip, wrist and spine fracture, predominantly in the elderly<br />or in presence of other recognised risk factors. Observational studies suggest that proton<br />pump inhibitors may increase the overall risk of fracture by 10-40%. Some of this increase<br />may be due to other risk factors. Patients at risk of osteoporosis should receive care<br />according to current clinical guidelines and they should have an adequate intake of vitamin<br />D and calcium.<br />Interference with laboratory tests<br />Increased CgA level may interfere with investigations for neuroendocrine tumours. To avoid<br />this interference the omeprazole treatment should be temporarily stopped five days before<br />CgA measurements.<br />Some children with chronic illnesses may require long-term treatment although it is not<br />recommended.<br />Aciloc contains lactose. Patients with rare hereditary problems of galactose intolerance, the<br />Lapp lactase deficiency or glucose-galactose malabsorption should not take this medicine.<br />Treatment with proton pump inhibitors may lead to slightly increased risk of gastrointestinal<br />infections such asSalmonella and Campylobacter (see section 5.1).</p><p>As in all long-term treatments, especially when exceeding a treatment period of 1 year,<br />patients should be kept under regular surveillance.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Effects of omeprazole on the pharmacokinetics of other active substances<br />Active substances with pH dependent absorption<br />The decreased intragastric acidity during treatment with omeprazole might increase or<br />decrease the absorption of active substances with a gastric pH dependent absorption.<br />Nelfinavir, atazanavir<br />The plasma levels of nelfinavir and atazanavir are decreased in case of coadministration<br />with omeprazole.<br />Concomitant administration of omeprazole with nelfinavir is contraindicated (see section<br />4.3). Co-administration of omeprazole (40 mg once daily) reduced mean nelvinavir<br />exposure by ca. 40% and the mean exposure of the pharmacologically active metabolite<br />M8 was reduced by ca. 75 &ndash;90%. The interaction may also involve CYP2C19 inhibition.<br />Concomitant administration of omeprazole with atazanavir is not recommended (see<br />section 4.4). Concomitant administration of omeprazole (40 mg once daily) and<br />atazanavir 300 mg/ritonavir 100 mg to healthy volunteers resulted in a 75% decrease of<br />the atazanavir exposure. Increasing the atazanavir dose to 400 mg did not compensate<br />for the impact of omeprazole on atazanavir exposure. The co-administration of<br />omeprazole (20 mg once daily) with atazanavir 400 mg/ritonavir 100 mg to healthy<br />volunteers resulted in a decrease of approximately 30% in the atazanavir exposure as<br />compared to atazanavir 300 mg/ritonavir 100 mg once daily.<br />Digoxin<br />Concomitant treatment with omeprazole (20 mg daily) and digoxin in healthy subjects<br />increased the bioavailability of digoxin by 10%. Digoxin toxicity has been rarely<br />reported. However caution should be exercised when omeprazole is given at high doses<br />in elderly patients. Therapeutic drug monitoring of digoxin should be then be reinforced.</p><p>Clopidogrel<br />In a crossover clinical study, clopidogrel (300 mg loading dose followed by 75 mg/day)<br />alone and with omeprazole (80 mg at the same time as clopidogrel) were administered<br />for 5 days. The exposure to the active metabolite of clopidogrel was decreased by 46%<br />(Day 1) and 42% (Day 5) when clopidogrel and omeprazole were administered together.<br />Mean inhibition of platelet aggregation (IPA) was diminished by 47% (24 hours) and<br />30% (Day 5) when clopidogrel and omeprazole were administered together. In another<br />study it was shown that administering clopidogrel and omeprazole at different times did<br />not prevent their interaction that is likely to be driven by the inhibitory effect of<br />omeprazole on CYP2C19. Inconsistent data on the clinical implications of this PK/PD<br />interaction in terms of major cardiovascular events have been reported from<br />observational and clinical studies.<br />Other active substances<br />The absorption of posaconazole, erlotinib, ketoconazole and itraconazole is significantly<br />reduced and thus clinical efficacy may be impaired. For posaconazole and erlotinib<br />concomitant use should be avoided.<br />Active substances metabolised by CYP2C19<br />Omeprazole is a moderate inhibitor of CYP2C19, the major omeprazole metabolising<br />enzyme. Thus, the metabolism of concomitant active substances also metabolised by<br />CYP2C19, may be decreased and the systemic exposure to these substances<br />increased. Examples of such drugs are R-warfarin and other vitamin K antagonists,<br />cilostazol, diazepam and phenytoin.<br />Cilostazol<br />Omeprazole, given in doses of 40 mg to healthy subjects in a cross-over study,<br />increased Cmax and AUC for cilostazol by 18% and 26% respectively, and one of its<br />active metabolites by 29% and 69% respectively.<br />Phenytoin<br />Monitoring phenytoin plasma concentration is recommended during the first two weeks<br />after initiating omeprazole treatment and, if a phenytoin dose adjustment is made,<br />monitoring and a further dose adjustment should occur upon ending omeprazole<br />treatment.</p><p>Unknown mechanism<br />Saquinavir<br />Concomitant administration of omeprazole with saquinavir/ritonavir resulted in increased<br />plasma levels up to approximately 70% for saquinavir associated with good tolerability<br />in HIV-infected patients.<br />Tacrolimus<br />Concomitant administration of omeprazole has been reported to increase the serum<br />levels of tacrolimus. A reinforced monitoring of tacrolimus concentrations as well as<br />renal function (creatinine clearance) should be performed, and dosage of tacrolimus<br />adjusted if needed.<br />Methotrexate<br />When given together with proton-pump inhibitors, methotrexate levels have been<br />reported to increase in some patients. In high-dose methotrexate administration a<br />temporary withdrawal of omeprazole may need to be considered.<br />Effects of other active substances on the pharmacokinetics of omeprazole<br />Inhibitors CYP2C19 and/or CYP3A4<br />Since omeprazole is metabolised by CYP2C19 and CYP3A4, active substances known<br />to inhibit CYP2C19 or CYP3A4 (such as clarithromycin and voriconazole) may lead to<br />increased omeprazole serum levels by decreasing omeprazole&#39;s rate of metabolism.<br />Concomitant voriconazole treatment resulted in more than doubling of the omeprazole<br />exposure. As high doses of omeprazole have been well-tolerated adjustment of the<br />omeprazole dose is not generally required. However, dose adjustment should be<br />considered in patients with severe hepatic impairment and if long-term treatment is<br />indicated.<br />Inducers of CYP2C19 and/or CYP3A4<br />Active substances known to induce CYP2C19 or CYP3A4 or both (such as rifampicin<br />and St John&#39;s wort) may lead to decreased omeprazole serum levels by increasing<br />omeprazole&#39;s rate of metabolism.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Results from three prospective epidemiological studies (more than 1000 exposed outcomes)<br />indicate no adverse effects of omeprazole on pregnancy or on the health of the<br />foetus/newborn child. Omeprazole can be used during pregnancy.<br />Omeprazole is excreted in breast milk but is not likely to influence the child when therapeutic<br />doses are used.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Aciloc is not likely to affect the ability to drive or use machines. Adverse drug reactions such<br />as dizziness and visual disturbances may occur (see section 4.8). If affected, patients<br />should not drive or operate machinery</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The most common side effects (1-10% of patients) are headache, abdominal pain, constipation,<br />diarrhoea, flatulence and nausea/vomiting.<br />The following adverse drug reactions have been identified or suspected in the clinical trials<br />programme for Omeprazole and post-marketing. None was found to be dose-related. Adverse<br />reactions listed below are classified according to frequency and System Organ Class (SOC).<br />Frequency categories are defined according to the following convention: Very common ( 1/10),<br />Common ( 1/100 to &lt; 1/10), Uncommon ( 1/1,000 to &lt; 1/100), Rare ( 1/10,000 to &lt; 1/1,000),<br />Very rare (&lt; 1/10,000), Not known (cannot be estimated from the available data).</p><p>SOC/frequency &nbsp; &nbsp; &nbsp;Adverse reaction Blood and lymphatic system disorders</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Leukopenia, thrombocytopenia</p><p>Very rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Agranulocytosis, pancytopenia</p><p>Immune system disorders</p><p>Rare:</p><p>Hypersensitivity reactions e.g. fever, angioedema and anaphylactic</p><p>reaction/shock</p><p>Metabolism and nutrition disorders</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Hyponatraemia</p><p>Very rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Hypomagnesaemia</p><p>Psychiatric disorders</p><p>Uncommon: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Insomnia</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Agitation, confusion, depression</p><p>Very rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Aggression, hallucinations</p><p>Nervous system disorders</p><p>Common: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Headache</p><p>Uncommon: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Dizziness, paraesthesia, somnolence Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Taste&nbsp;<br />disturbance</p><p><br />Eye disorders</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Blurred vision Ear and labyrinth disorders Uncommon: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br />Vertigo</p><p>Respiratory, thoracic and mediastinal disorders</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bronchospasm</p><p>Gastrointestinal disorders</p><p>Common: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Abdominal pain, constipation, diarrhoea, flatulence, nausea/vomiting Rare: &nbsp;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Dry mouth, stomatitis, gastrointestinal candidiasis</p><p>Hepatobiliary disorders</p><p>Uncommon: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Increased liver enzymes</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Hepatitis with or without jaundice</p><p>Very rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Hepatic failure, encephalopathy in patients with pre-existing liver&nbsp;<br />disease</p><p>Skin and subcutaneous tissue disorders</p><p>Uncommon: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Dermatitis, pruritus, rash, urticaria Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Alopecia,&nbsp;<br />photosensitivity</p><p>Very rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Erythema multiforme, Stevens-Johnson syndrome, toxic epidermal&nbsp;<br />necrolysis (TEN)</p><p>Musculoskeletal and connective tissue disorders</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Arthralgia, myalgia</p><p>Very rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Muscular weakness</p><p>Renal and urinary disorders</p><p>Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Interstitial nephritis</p><p><br />Reproductive system and breast disorders</p><p>Very rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Gynaecomastia</p><p>General disorders and administration site conditions</p><p>Uncommon: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Malaise, peripheral oedema Rare: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Increased sweating</p><p>Paediatric population<br />The safety of Omeprazole has been assessed in a total of 310 children aged 0 to 16 years with<br />acid-related disease. There are limited long term safety data from 46 children who received<br />maintenance therapy of Omeprazole during a clinical study for severe erosive oesophagitis for up<br />to 749 days. The adverse event profile was generally the same as for adults in short- as well as in<br />long-term treatment. There are no long term data regarding the effects of Omeprazole treatment<br />on puberty and growth.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There is limited information available on the effects of overdoses of omeprazole in humans.<br />In the literature, doses of up to 560 mg have been described, and occasional reports have<br />been received when single oral doses have reached up to 2,400 mg omeprazole (120 times<br />the usual recommended clinical dose). Nausea, vomiting, dizziness, abdominal pain,<br />diarrhoea and headache have been reported. Also apathy, depression and confusion have<br />been described in single cases.<br />The symptoms described have been transient, and no serious outcome has been reported.<br />The rate of elimination was unchanged (first order kinetics) with increased doses.<br />Treatment, if needed, is symptomatic.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Proton pump inhibitors, ATC code: A02BC01<br />Mechanism of action<br />Omeprazole, a racemic mixture of two enantiomers reduces gastric acid secretion<br />through a highly targeted mechanism of action. It is a specific inhibitor of the acid pump<br />in the parietal cell. It is rapidly acting and provides control through reversible inhibition of<br />gastric acid secretion with once daily dosing.<br />Omeprazole is a weak base and is concentrated and converted to the active form in the<br />highly acidic environment of the intracellular canaliculi within the parietal cell, where it<br />inhibits the enzyme H+ K+-ATPase - the acid pump. This effect on the final step of the<br />gastric acid formation process is dose-dependent and provides for highly effective<br />inhibition of both basal acid secretion and stimulated acid secretion, irrespective of<br />stimulus.<br />Pharmacodynamic effects<br />All pharmacodynamic effects observed can be explained by the effect of omeprazole on<br />acid secretion.<br />Effect on gastric acid secretion<br />Oral dosing with omeprazole once daily provides for rapid and effective inhibition of<br />daytime and night-time gastric acid secretion with maximum effect being achieved within<br />4 days of treatment. With omeprazole 20 mg, a mean decrease of at least 80% in 24-<br />hour intragastric acidity is then maintained in duodenal ulcer patients, with the mean<br />decrease in peak acid output after pentagastrin stimulation being about 70% 24 hours<br />after dosing.<br />Oral dosing with omeprazole 20 mg maintains an intragastric pH of &ge; 3 for a mean time<br />of 17 hours of the 24-hour period in duodenal ulcer patients.<br />As a consequence of reduced acid secretion and intragastric acidity, omeprazole dosedependently<br />reduces/normalizes acid exposure of the oesophagus in patients with<br />gastro-oesophageal reflux disease.<br />The inhibition of acid secretion is related to the area under the plasma concentration-time</p><p>curve (AUC) of omeprazole and not to the actual plasma concentration at a given time.<br />No tachyphylaxis has been observed during treatment with omeprazole.<br />Effect on H. pylori<br />H. pylori is associated with peptic ulcer disease, including duodenal and gastric ulcer<br />disease. H. pylori is a major factor in the development of gastritis. H. pylori together with<br />gastric acid are major factors in the development of peptic ulcer disease. H. pylori is a<br />major factor in the development of atrophic gastritis which is associated with an<br />increased risk of developing gastric cancer.<br />Eradication of H. pylori with omeprazole and antimicrobials is associated with, high rates<br />of healing and long-term remission of peptic ulcers.<br />Dual therapies have been tested and found to be less effective than triple therapies.<br />They could, however, be considered in cases where known hypersensitivity precludes<br />use of any triple combination.<br />Other effects related to acid inhibition<br />During long-term treatment gastric glandular cysts have been reported in a somewhat<br />increased frequency. These changes are a physiological consequence of pronounced<br />inhibition of acid secretion, are benign and appear to be reversible.<br />Decreased gastric acidity due to any means including proton pump inhibitors, increases<br />gastric counts of bacteria normally present in the gastrointestinal tract. Treatment with<br />acid-reducing drugs may lead to slightly increased risk of gastrointestinal infections such<br />as Salmonella and Campylobacter.<br />Chromogranin A (CgA) also increases due to decreased gastric acidity. This CgA<br />modifying effect can not be demonstrated five days after stopping treatment with PPIs.<br />Paediatric use<br />In a non-controlled study in children (1 to 16 years of age) with severe reflux<br />oesophagitis, omeprazole at doses of 0.7 to 1.4 mg/kg improved oesophagitis level in<br />90% of the cases and significantly reduced reflux symptoms. In a single-blind study,<br />children aged 0&ndash;24 months with clinically diagnosed gastro-oesophageal reflux disease<br />were treated with 0.5, 1.0 or 1.5 mg omeprazole/kg. The frequency of<br />vomiting/regurgitation episodes decreased by 50% after 8 weeks of treatment<br />irrespective of the dose.</p><p>Eradication of H. pylori in children<br />A randomised, double blind clinical study (H&eacute;liot study) concluded that omeprazole in<br />combination with two antibiotics (amoxicillin and clarithromycin), was safe and effective in<br />the treatment of H. pylori infection in children age 4 years old and above with gastritis: H.<br />pylori eradication rate: 74.2% (23/31 patients) with omeprazole + amoxicillin +<br />clarithromycin versus 9.4% (3/32 patients) with amoxicillin + clarithromycin. However,<br />there was no evidence of any clinical benefit with respect to dyspeptic symptoms. This<br />study does not support any information for children aged less than 4 years.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Absorption<br />Omeprazole and omeprazole magnesium are acid labile and are therefore administered<br />orally as enteric-coated granules in capsules or tablets. Absorption of omeprazole is rapid,<br />with peak plasma levels occurring approximately 1-2 hours after dose. Absorption of<br />omeprazole takes place in the small intestine and is usually completed within 3-6 hours.<br />Concomitant intake of food has no influence on the bioavailability. The systemic availability<br />(bioavailability) from a single oral dose of omeprazole is approximately 40%. After repeated<br />once-daily administration, the bioavailability increases to about 60%.<br />Distribution<br />The apparent volume of distribution in healthy subjects is approximately 0.3 l/kg body<br />weight. Omeprazole is 97% plasma protein bound.<br />Metabolism<br />Omeprazole is completely metabolised by the cytochrome P450 system (CYP). The major<br />part of its metabolism is dependent on the polymorphically expressed CYP2C19,<br />responsible for the formation of hydroxyomeprazole, the major metabolite in plasma. The<br />remaining part is dependent on another specific isoform, CYP3A4, responsible for the<br />formation of omeprazole sulphone. As a consequence of high affinity of omeprazole to<br />CYP2C19, there is a potential for competitive inhibition and metabolic drug-drug interactions<br />with other substrates for CYP2C19. However, due to low affinity to CYP3A4, omeprazole<br />has no potential to inhibit the metabolism of other CYP3A4 substrates. In addition,<br />omeprazole lacks an inhibitory effect on the main CYP enzymes.</p><p>Approximately 3% of the Caucasian population and 15-20% of Asian populations lack a<br />functional CYP2C19 enzyme and are called poor metabolisers. In such individuals the<br />metabolism of omeprazole is probably mainly catalysed by CYP3A4. After repeated oncedaily<br />administration of 20 mg omeprazole, the mean AUC was 5 to 10 times higher in poor<br />metabolisers than in subjects having a functional CYP2C19 enzyme (extensive<br />metabolisers). Mean peak plasma concentrations were also higher, by 3 to 5 times. These<br />findings have no implications for the posology of omeprazole.<br />Excretion<br />The plasma elimination half-life of omeprazole is usually shorter than one hour both after<br />single and repeated oral once-daily dosing. Omeprazole is completely eliminated from<br />plasma between doses with no tendency for accumulation during once-daily administration.<br />Almost 80% of an oral dose of omeprazole is excreted as metabolites in the urine, the<br />remainder in the faeces, primarily originating from bile secretion.<br />The AUC of omeprazole increases with repeated administration. This increase is dosedependent<br />and results in a non-linear dose-AUC relationship after repeated administration.<br />This time- and dose-dependency is due to a decrease of first pass metabolism and systemic<br />clearance probably caused by an inhibition of the CYP2C19 enzyme by omeprazole and/or<br />its metabolites (e.g. the sulphone).<br />No metabolite has been found to have any effect on gastric acid secretion.<br />Special populations<br />Impaired hepatic function<br />The metabolism of omeprazole in patients with liver dysfunction is impaired, resulting in an<br />increased AUC. Omeprazole has not shown any tendency to accumulate with once daily<br />dosing.<br />Impaired renal function<br />The pharmacokinetics of omeprazole, including systemic bioavailability and elimination rate,<br />are unchanged in patients with reduced renal function.<br />Elderly<br />The metabolism rate of omeprazole is somewhat reduced in elderly subjects (75-79 years of<br />age).</p><p>Paediatric patients<br />During treatment with the recommended doses to children from the age of 1 year, similar<br />plasma concentrations were obtained as compared to adults. In children younger than 6<br />months, clearance of omeprazole is low due to low capacity to metabolise omeprazole</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Gastric ECL-cell hyperplasia and carcinoids, have been observed in life-long studies in rats<br />treated with omeprazole. These changes are the result of sustained hypergastrinaemia<br />secondary to acid inhibition. Similar findings have been made after treatment with H2-<br />receptor antagonists, proton pump inhibitors and after partial fundectomy. Thus, these<br />changes are not from a direct effect of any individual active substance</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Mannitol<br />Sucrose<br />Disodium hydrogen phosphate<br />Sodium Lauryl sulphate<br />Lactose<br />Calcium Carbonate<br />Hydroxy propyl methy Cellulose<br />Methacrylic acid<br />Propylene glycol</p><p>Diethyl phthalate<br />Cetyl alcohol<br />Sodium hydroxide<br />Tween-80<br />Pvpk-30<br />Titanium dioxide<br />Talc</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                2 years.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Do not store above 30&deg;C. Protect from light</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Immediate Container: Alu-Alu printed strip, 128 x 92 mm Alu-Alu printed blister strip.<br />Outer Individual Carton: 280g/m2 grammage paper, dimension 130 mm x 98 mm, 10 mm<br />printing As per drawing<br />Insert/Leaflet: 50-60 g/m2 paper, both side printed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>No special requirements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                JAMJOOM PHARMACEUTICALS CO. LTD.
+P.O. Box 6267
+Jeddah 21442
+Tel +96626081111
+Fax +96626081222
+Kingdom of Saudi Arabia
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Oct-2017
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

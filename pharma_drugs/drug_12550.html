@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2205245336
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Olmy
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        OLMESARTAN MEDOXOMIL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Oral use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Film-coated tablet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        30
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Blister
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Generic
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        24
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        38.70
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Hetero Labs Limited Unit &#x2013; V" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Hetero Labs Limited Unit – V
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2950]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Saudi Amarox
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            Saudi Amarox
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        QC09CA08
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Olmy (Olmesartan Medoxomil Tablets 20mg and 40mg)
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Olmy 20 (Olmesartan Medoxomil Tablets 20mg)
+Each film coated tablet contains 20mg of Olmesartan Medoxomil Ph.Eur.
+Olmy 40 (Olmesartan Medoxomil Tablets 40mg)
+Each film coated tablet contains 40mg of Olmesartan Medoxomil Ph.Eur.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Film Coated Tablet
+Olmy 20 (Olmesartan Medoxomil Tablets 20mg)
+White to off white, round, biconvex, film coated tablets, debossed with ‘H’ on one side and ‘O3’ on the other side.
+Olmy 40 (Olmesartan Medoxomil Tablets 40mg)
+White to off white, oval, biconvex, film coated tablets, debossed with ‘H’ on one side and ‘O4’ on the other side.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Treatment of essential hypertension in adults.</p><p>Treatment of hypertension in children and adolescents from 6 to less than 18 years of age.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Posology</u></p><p>&nbsp;</p><p>Adults</p><p>&nbsp;</p><p>The recommended starting dose of Olmy is 10 mg once daily. In patients whose blood pressure is not adequately controlled at this dose, the dose of Olmy may be increased to 20 mg once daily as the optimal dose. If additional blood pressure reduction is required, Olmy dose may be increased to a maximum of 40 mg daily or hydrochlorothiazide therapy may be added<strong>.</strong></p><p>&nbsp;</p><p>The antihypertensive effect of Olmy is substantially present within 2 weeks of initiating therapy and is maximal by about 8 weeks after initiating therapy. This should be borne in mind when considering changing the dose regimen for any patient.</p><p>Elderly (65 years or over)</p><p>&nbsp;</p><p>No adjustment of dosage is generally required in elderly people (see below for dose recommendations in patients with renal impairment). If up-titration to the maximum dose of 40 mg daily is required, blood pressure should be closely monitored.</p><p>Renal impairment</p><p>&nbsp;</p><p>The maximum dose in patients with mild to moderate renal impairment (creatinine clearance of 20 &ndash; 60 mL/min) is 20 mg olmesartan medoxomil once daily, owing to limited experience of higher dosages in this patient group. The use of olmesartan medoxomil in patients with severe renal impairment (creatinine clearance &lt; 20 mL/min) is not recommended, since there is only limited experience in this patient group (see sections 4.4, 5.2).</p><p>Hepatic impairment</p><p>&nbsp;</p><p>No adjustment of dosage recommendations is required for patients with mild hepatic impairment. In patients with moderate hepatic impairment, an initial dose of 10 mg olmesartan medoxomil once daily is recommended and the maximum dose should not exceed 20 mg once daily. Close monitoring of blood pressure and renal function is advised in hepatically-impaired patients who are already receiving diuretics and/or other antihypertensive agents. There is no experience of olmesartan medoxomil in patients with severe hepatic impairment, therefore use is not recommended in this patient group (see sections 4.4 and 5.2). Olmesartan medoxomil should not be used in patients with biliary obstruction (see section 4.3).</p><p>Paediatric population</p><p>&nbsp;</p><p>Children and adolescents from 6 to less than 18 years of age:</p><p>&nbsp;</p><p>The recommended starting dose of olmesartan medoxomil in children from 6 to less than 18 years of age is 10 mg olmesartan medoxomil once daily. In children whose blood pressure is not adequately controlled at this dose, the dose of olmesartan medoxomil may be increased to 20 mg</p><p>&nbsp;</p><p>once daily. If additional blood pressure reduction is required, in children who weigh &ge; 35 kg, the olmesartan medoxomil dose may be increased to a maximum of 40 mg. In children who weigh &lt; 35 kg, the daily dose should not exceed 20 mg.</p><p>Other paediatric population:</p><p>&nbsp;</p><p>The safety and efficacy of olmesartan medoxomil in children aged 1 to 5 years old have not yet been established. Currently available data are described in sections 4.8 and 5.1 but no recommendation on a posology can be made.</p><p>Olmesartan medoxomil should not be used in children below 1 years of age because of safety concerns and lack of data in this age group.</p><p><u>Method of administration</u></p><p>&nbsp;</p><p>In order to assist compliance, it is recommended that Olmy tablets be taken at about the same time each day, with or without food, for example at breakfast time. The tablet should be swallowed with a sufficient amount of fluid (e.g. one glass of water). The tablet should not be chewed.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Hypersensitivity to the active substance or to any of the excipients listed in section 6.1. Second and third trimesters of pregnancy (see sections 4.4 and 4.6).
+Biliary obstruction (see section 5.2).
+
+The concomitant use of Olmy with aliskiren-containing products is contraindicated in patients with diabetes mellitus or renal impairment (GFR < 60 mL/min/1.73 m2) (see
+5.1).
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>1.1&nbsp;&nbsp; Intravascular volume depletion:</p><p>Symptomatic hypotension, especially after the first dose, may occur in patients who are volume and/or sodium depleted by vigorous diuretic therapy, dietary salt restriction, diarrhoea or vomiting. Such conditions should be corrected before the administration of olmesartan medoxomil.</p><p>&nbsp;</p><p>Other conditions with stimulation of the renin-angiotensin-aldosterone system:</p><p><strong>&nbsp;</strong></p><p>In patients whose vascular tone and renal function depend predominantly on the activity of the renin-angiotensin-aldosterone system (e.g. patients with severe congestive heart failure or underlying renal disease, including renal artery stenosis), treatment with other drugs that affect this system has been associated with acute hypotension, azotaemia, oliguria or, rarely, acute&nbsp; renal failure. The possibility of similar effects cannot be excluded with angiotensin II receptor antagonists.</p><p>Renovascular hypertension:</p><p><strong>&nbsp;</strong></p><p>There is an increased risk of severe hypotension and renal insufficiency when patients with bilateral renal artery stenosis or stenosis of the artery to a single functioning kidney are treated with medicinal products that affect the renin-angiotensin-aldosterone system.</p><p>Renal impairment and kidney transplantation:</p><p><strong>&nbsp;</strong></p><p>When olmesartan medoxomil is used in patients with impaired renal function, periodic monitoring of serum potassium and creatinine levels is recommended. Use of olmesartan medoxomil is not recommended in patients with severe renal impairment (creatinine clearance &lt; 20 mL/min) (see sections 4.2, 5.2). There is no experience of the administration of olmesartan medoxomil in patients with a recent kidney transplant or in patients with end-stage renal impairment (i.e. creatinine clearance &lt;12 mL/min).</p><p>Hepatic impairment:</p><p><strong>&nbsp;</strong></p><p>There is no experience in patients with severe hepatic impairment and therefore use of olmesartan medoxomil in this patient group is not recommended (see section 4.2 for dosage recommendations in patients with mild or moderate hepatic impairment).</p><p>Hyperkalaemia:</p><p><strong>&nbsp;</strong></p><p>The use of medicinal products that affect the renin-angiotensin-aldosterone system may cause hyperkalaemia.</p><p>&nbsp;</p><p>The risk, that may be fatal, is increased in elderly people, in patients with renal insufficiency and in diabetic patients, in patients concomitantly treated with other medicinal products that may increase potassium levels, and/or in patients with intercurrent events.</p><p>Before considering the concomitant use of medicinal products that affect the renin-angiotensin- aldosterone system, the benefit risk ratio should be evaluated and other alternatives considered (see also below section &ldquo;Dual blockade of the renin-angiotensin-aldosterone system (RAAS)&rdquo;).</p><p>The main risk factors for hyperkalaemia to be considered are:</p><p>&nbsp;</p><p>-&nbsp; Diabetes, renal impairment, age (&gt; 70 years)</p><p>&nbsp;</p><p>-&nbsp;&nbsp; Combination with one or more other medicinal products that affect the renin-angiotensin- aldosterone system and/or potassium supplements. Some medicinal products or therapeutic class of medicinal products may provoke a hyperkalaemia: salt substitutes containing potassium, potassium-sparing diuretics, ACE inhibitors, angiotensin II receptors antagonists, non steroidal anti-inflammatory drugs (including selective COX-2 inhibitors), heparin, immunosuppressor as ciclosporin or tacrolimus, trimethoprim.</p><p>-&nbsp;&nbsp;&nbsp; Intercurrent events, in particular dehydration, acute cardiac decompensation, metabolic acidosis, worsening of renal function, sudden worsening of the renal condition (e.g. infectious diseases), cellular lysis (e.g, acute limb ischemia, rhabdomyolysis, extended trauma).</p><p>Close-monitoring of serum potassium in at risk patients is recommended (see section 4.5).</p><p>&nbsp;</p><p>Dual blockade of the renin-angiotensin-aldosterone system (RAAS):</p><p><strong>&nbsp;</strong></p><p>There is evidence that the concomitant use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren increases the risk of hypotension, hyperkalaemia and decreased renal function (including acute renal failure). Dual blockade of RAAS through the combined use of ACE- inhibitors, angiotensin II receptor blockers or aliskiren is therefore not recommended (see sections 4.5 and 5.1).</p><p>If dual blockade therapy is considered absolutely necessary, this should only occur under specialist supervision and subject to frequent close monitoring of renal function, electrolytes and blood pressure.</p><p>&nbsp;</p><p>ACE-inhibitors and angiotensin II receptor blockers should not be used concomitantly in patients with diabetic nephropathy.</p><p>Lithium:</p><p><strong>&nbsp;</strong></p><p>As with other angiotensin-II receptor antagonists, the combination of lithium and olmesartan medoxomil is not recommended (see section 4.5).</p><p>Aortic or mitral valve stenosis; obstructive hypertrophic cardiomyopathy:</p><p><strong>&nbsp;</strong></p><p>As with other vasodilators, special caution is indicated in patients suffering from aortic or mitral valve stenosis, or obstructive hypertrophic cardiomyopathy.</p><p>Primary aldosteronism:</p><p><strong>&nbsp;</strong></p><p>Patients with primary aldosteronism generally will not respond to antihypertensive drugs acting through inhibition of the renin-angiotensin system. Therefore, the use of Olmesartan medoxomil is not recommended in such patients.</p><p>Sprue-like enteropathy:</p><p><strong>&nbsp;</strong></p><p>In very rare cases severe, chronic diarrhoea with substantial weight loss has been reported in patients taking olmesartan few months to years after drug initiation, possibly caused by a localized delayed hypersensitivity reaction. Intestinal biopsies of patients often demonstrated villous atrophy. If a patient develops these symptoms during treatment with olmesartan, and in the absence of other apparent etiologies, olmesartan treatment should be immediately discontinued and should not be restarted. If diarrhoea does not improve during the week after the discontinuation, further specialist (e.g. a gastro-enterologist) advice should be considered.</p><p>Ethnic differences:</p><p><strong>&nbsp;</strong></p><p>As with all other angiotensin II antagonists, the blood pressure lowering effect of Olmesartan medoxomil is somewhat less in black patients than in non-black patients, possibly because of a higher prevalence of low-renin status in the black hypertensive population.</p><p>&nbsp;</p><p>Pregnancy:</p><p><strong>&nbsp;</strong></p><p>Angiotensin II antagonists should not be initiated during pregnancy. Unless continued angiotensin II antagonists therapy is considered essential, patients planning pregnancy should be changed to alternative anti-hypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with angiotensin II antagonists should be stopped immediately, and, if appropriate, alternative therapy should be started (see sections 4.3 and 4.6).</p><p>Other:</p><p><strong>&nbsp;</strong></p><p>As with any antihypertensive agent, excessive blood pressure decrease in patients with ischaemic heart disease or ischaemic cerebrovascular disease could result in a myocardial infarction or stroke.</p><p>This medicinal product contains lactose. Patients with rare hereditary problems of galactose intolerance, the Lapp-lactase deficiency or glucose-galactose malabsorption should not take this medicinal product.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>1.1&nbsp;&nbsp; Effects of other medicinal products on olmesartan medoxomil:</p><p>Other antihypertensive medications:</p><p>&nbsp;</p><p>The blood pressure lowering effect of olmesartan medoxomil can be increased by concomitant use of other antihypertensive medications.</p><p>ACE-inhibitors, angiotensin II receptor blockers or aliskiren:</p><p>&nbsp;</p><p>Clinical trial data has shown that dual blockade of the renin-angiotensin-aldosterone-system (RAAS) through the combined use of ACE-inhibitors, angiotensin II receptor blockers or aliskiren is associated with a higher frequency of adverse events such as hypotension, hyperkalaemia and decreased renal function (including acute renal failure) compared to the use of a single RAAS-acting agent (see sections 4.3, 4.4 and 5.1).</p><p>Potassium supplements and potassium sparing diuretics:</p><p>&nbsp;</p><p>Based on experience with the use of other drugs that affect the renin-angiotensin system, concomitant use of potassium-sparing diuretics, potassium supplements, salt substitutes containing potassium or other drugs that may increase serum potassium levels (e.g. heparin) may lead to increases in serum potassium (see section 4.4). Such concomitant use is therefore not recommended.</p><p>Non-steroidal anti-inflammatory drugs (NSAIDs):</p><p>&nbsp;</p><p>NSAIDs (including acetylsalicylic acid at doses &gt; 3g/day and also COX-2 inhibitors) and angiotensin-II receptor antagonists may act synergistically by decreasing glomerular filtration. The risk of the concomitant use of NSAIDs and angiotensin II antagonists is the occurrence of acute renal failure. Monitoring of renal function at the beginning of treatment should be recommended as well as regular hydration of the patient.</p><p>Additionally, concomitant treatment can reduce the antihypertensive effect of angiotensin II receptor antagonists, leading to their partial loss of efficacy.</p><p>Bile acid sequestering agent colesevelam:</p><p>&nbsp;</p><p>Concurrent administration of the bile acid sequestering agent colesevelam hydrochloride reduces the systemic exposure and peak plasma concentration of olmesartan and reduces t1/2. Administration of olmesartan medoxomil at least 4 hours prior to colesevelam hydrochloride decreased the drug interaction effect. Administering olmesartan medoxomil at least 4 hours before the colesevelam hydrochloride dose should be considered (see section 5.2).</p><p>Other compounds:</p><p>&nbsp;</p><p>After treatment with antacid (aluminium magnesium hydroxide), a modest reduction in bioavailability of olmesartan was observed. Coadministration of warfarin and digoxin had no effect on the pharmacokinetics of olmesartan.</p><p>Effects of olmesartan medoxomil on other medicinal products:</p><p><strong>&nbsp;</strong></p><p>Lithium:</p><p>&nbsp;</p><p>Reversible increases in serum lithium concentrations and toxicity have been reported during concomitant administration of lithium with angiotensin converting enzyme inhibitors and</p><p>&nbsp;</p><p>angiotensin II antagonists. Therefore use of olmesartan medoxomil and lithium in combination is not recommended (see section 4.4). If use of the combination proves necessary, careful monitoring of serum lithium levels is recommended.</p><p>Other compounds:</p><p>&nbsp;</p><p>Compounds which have been investigated in specific clinical studies in healthy volunteers include warfarin, digoxin, an antacid (magnesium aluminium hydroxide), hydrochlorothiazide and pravastatin. No clinically relevant interactions were observed and in particular olmesartan medoxomil had no significant effect on the pharmacokinetics or pharmacodynamics of warfarin or the pharmacokinetics of digoxin.</p><p>Olmesartan had no clinically relevant inhibitory effects on in vitro human cytochrome P450 enzymes 1A1/2, 2A6, 2C8/9, 2C19, 2D6, 2E1 and 3A4, and had no or minimal inducing effects on rat cytochrome P450 activities. Therefore in vivo interaction studies with known cytochrome P450 enzyme inhibitors and inducers were not conducted, and no clinically relevant interactions between olmesartan and drugs metabolised by the above cytochrome P450 enzymes are expected.</p><p>Paediatric population:</p><p><strong>&nbsp;</strong></p><p>Interaction studies have only been performed in adults.</p><p>&nbsp;</p><p>It is not known if the interactions in children are similar to those in adults.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Pregnancy</u></p><p><!--[if gte vml 1]><o:wrapblock><v:shapetype
+  id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="_x0000_s1026" type="#_x0000_t202" style='position:absolute;
+  margin-left:88.45pt;margin-top:14.7pt;width:518.3pt;height:65.9pt;z-index:-251655168;
+  mso-wrap-distance-left:0;mso-wrap-distance-right:0;
+  mso-position-horizontal-relative:page' filled="f" strokecolor="#7c7c7c"
+  strokeweight=".72pt">
+  <v:textbox inset="0,0,0,0">
+   <![if !mso]>
+   <table cellpadding=0 cellspacing=0 width="100%">
+    <tr>
+     <td><![endif]>
+     <div>
+     <p class=MsoBodyText style='margin-top:1.25pt;margin-right:.9pt;
+     margin-bottom:0in;margin-left:1.15pt;margin-bottom:.0001pt;text-align:
+     justify;line-height:150%'>The use of angiotensin II antagonists is not
+     recommended during the first trimester of pregnancy (see section 4.4). The
+     use of angiotensin II antagonists is contra-indicated during the 2nd and
+     3rd trimester of pregnancy (see sections 4.3 and 4.4).<o:p></o:p></p>
+     </div>
+     <![if !mso]></td>
+    </tr>
+   </table>
+   <![endif]></v:textbox>
+  <w:wrap type="topAndBottom" anchorx="page"/>
+ </v:shape><![endif]--></p><table cellpadding="0" cellspacing="0" align="left"><tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><img width="695" height="92" alt="Text Box: The use of angiotensin II antagonists is not recommended during the first trimester of pregnancy (see section 4.4). The use of angiotensin II antagonists is contra-indicated during the 2nd and 3rd trimester of pregnancy (see sections 4.3 and 4.4)." src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" /></td></tr></tbody></table><p><!--[if gte vml 1]></o:wrapblock><![endif]--></p><p>&nbsp;</p><p>Epidemiological &nbsp;evidence &nbsp;regarding &nbsp;the &nbsp;risk &nbsp;of &nbsp;teratogenicity &nbsp;following &nbsp;exposure &nbsp;to &nbsp;ACE</p><p>inhibitors during the first trimester of pregnancy has not been conclusive; however a small increase in risk cannot be excluded. Whilst there is no controlled epidemiological data on the risk with angiotensin II antagonists, similar risks may exist for this class of drugs. Unless continued angiotensin receptor blocker therapy is considered essential, patients planning pregnancy should</p><p>&nbsp;</p><p>be changed to alternative anti-hypertensive treatments which have an established safety profile for use in pregnancy. When pregnancy is diagnosed, treatment with angiotensin II antagonists should be stopped immediately, and, if appropriate, alternative therapy should be started.</p><p>Angiotensin II antagonists therapy exposure during the second and third trimesters is known to induce human fetotoxicity (decreased renal function, oligohydramnios, skull ossification retardation) and neonatal toxicity (renal failure, hypotension, hyperkalaemia). (See also 5.3 &ldquo;Preclinical Safety Data&rdquo;.)</p><p>Should exposure to angiotensin II antagonists have occurred from the second trimester of pregnancy, ultrasound check of renal function and skull is recommended. Infants whose mothers have taken angiotensin II antagonists should be closely observed for hypotension (see also sections 4.3 and 4.4).</p><p><u>Breast-feeding</u></p><p>&nbsp;</p><p>Olmesartan is excreted in the milk of lactating rats but it is not known whether olmesartan is excreted in human milk. Because no information is available regarding the use of Olmy during breast-feeding, Olmy is not recommended and alternative treatments with better established safety profiles during breast-feeding are preferable, especially while nursing a newborn or preterm infant.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Olmy has minor or moderate influence on the ability to drive and use machines. Dizziness&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or fatigue may occasionally occur in patients taking antihypertensive therapy, which may impair the ability to react.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>1.1&nbsp;&nbsp; <u>Summary of the safety profile:</u></p><p>The most commonly reported adverse reactions during treatment with Olmy are headache (7.7%), influenza-like symptoms (4.0%) and dizziness (3.7%).</p><p>In placebo-controlled monotherapy studies, the only adverse drug reaction that was unequivocally related to treatment was dizziness (2.5% incidence on olmesartan medoxomil and 0.9% on placebo).</p><p>&nbsp;</p><p>The incidence was also somewhat higher on olmesartan medoxomil compared with placebo for hypertriglyceridaemia (2.0% versus 1.1%) and for raised creatine phosphokinase (1.3% versus 0.7%).</p><p><strong><u>Tabulated list of adverse reactions:</u></strong></p><p><strong>&nbsp;</strong></p><p>Adverse reactions from Olmy in clinical trials, post-authorisation safety studies and spontaneous reporting are summarized in the below table.</p><p>The following terminologies have been used in order to classify the occurrence of adverse reactions: very common (&ge;1/10); common (&ge;1/100 to &lt;1/10); uncommon (&ge;1/1,000 to &lt;1/100); rare (&ge;1/10,000 to &lt;1/1,000); very rare (&lt;1/10,000).</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>MedDRA</p><p>System Organ Class</p></td><td style="vertical-align:top"><p>Adverse reactions</p></td><td style="vertical-align:top"><p>Frequency</p></td></tr><tr><td style="vertical-align:top"><p>Blood and lymphatic system disorders</p></td><td style="vertical-align:top"><p>Thrombocytopenia</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Immune system disorders</p></td><td style="vertical-align:top"><p>Anaphylactic reaction</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>Metabolism and nutrition disorders</p></td><td style="vertical-align:top"><p>Hypertriglyceridaemia</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Hyperuricaemia</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Hyperkalaemia</p></td><td style="vertical-align:top"><p>Rare</p></td></tr><tr><td rowspan="2" style="vertical-align:top"><p>Nervous system disorders</p></td><td style="vertical-align:top"><p>Dizziness</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Headache</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Ear and labyrinth disorders</p></td><td style="vertical-align:top"><p>Vertigo</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Cardiac disorders</p></td><td style="vertical-align:top"><p>Angina pectoris</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Vascular disorders</p></td><td style="vertical-align:top"><p>Hypotension</p></td><td style="vertical-align:top"><p>Rare</p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p>Respiratory,&nbsp;&nbsp;&nbsp;&nbsp; thoracic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mediastinal disorders</p></td><td style="vertical-align:top"><p>Bronchitis</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Pharyngitis</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Cough</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Rhinitis</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Gastrointestinal disorders</p></td><td style="vertical-align:top"><p>Gastroenteritis</p></td><td style="vertical-align:top"><p>Common</p></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Diarrhoea</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Abdominal pain</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Nausea</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Dyspepsia</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Vomiting</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Sprue-like enteropathy (see section 4.4)</p></td><td style="vertical-align:top"><p>Very rare</p></td></tr><tr><td style="vertical-align:top"><p>Hepatobiliary disorders</p></td><td style="vertical-align:top"><p>Autoimmune hepatitis*</p></td><td style="vertical-align:top"><p>Not known</p></td></tr><tr><td rowspan="6" style="vertical-align:top"><p>Skin and subcutaneous tissue disorders</p></td><td style="vertical-align:top"><p>Exanthema</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Allergic dermatitis</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Urticaria</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Rash</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Pruritus</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Angioedema</p></td><td style="vertical-align:top"><p>Rare</p></td></tr><tr><td rowspan="5" style="vertical-align:top"><p>Musculoskeletal&nbsp;&nbsp;&nbsp;&nbsp; and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; connective&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tissue disorders</p></td><td style="vertical-align:top"><p>Arthritis</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Back pain</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Skeletal pain</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Myalgia</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Muscle spasm</p></td><td style="vertical-align:top"><p>Rare</p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p>Renal and urinary disorders</p></td><td style="vertical-align:top"><p>Haematuria</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Urinary tract infection</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Acute renal failure</p></td><td style="vertical-align:top"><p>Rare</p></td></tr><tr><td style="vertical-align:top"><p>Renal insufficiency</p></td><td style="vertical-align:top"><p>Rare</p></td></tr><tr><td rowspan="3" style="vertical-align:top"><p>General disorders and administration site conditions</p></td><td style="vertical-align:top"><p>Pain</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Chest pain</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Peripheral oedema</p></td><td style="vertical-align:top"><p>Common</p></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="6" style="vertical-align:top"><p>&nbsp;</p></td><td style="vertical-align:top"><p>Influenza-like symptoms</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Fatigue</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Face oedema</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Asthenia</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Malaise</p></td><td style="vertical-align:top"><p>Uncommon</p></td></tr><tr><td style="vertical-align:top"><p>Lethargy</p></td><td style="vertical-align:top"><p>Rare</p></td></tr><tr><td rowspan="4" style="vertical-align:top"><p>Investigations</p></td><td style="vertical-align:top"><p>Hepatic enzymes increased</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Blood urea increased</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Blood&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; creatine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; phosphokinase increased</p></td><td style="vertical-align:top"><p>Common</p></td></tr><tr><td style="vertical-align:top"><p>Blood creatinine increased</p></td><td style="vertical-align:top"><p>Rare</p></td></tr></tbody></table><p>*Cases of autoimmune hepatitis with a latency of few months to years have been reported post- marketing, that were reversible after the withdrawal of olmesartan.</p><p>Single cases of rhabdomyolysis have been reported in temporal association with the intake of angiotensin II receptor blockers.</p><p><u>Additional information on special populations</u></p><p>&nbsp;</p><p>Paediatric population</p><p>&nbsp;</p><p>The safety of olmesartan medoxomil was monitored in 361 children and adolescents, aged 1-17 years old during 2 clinical trials. Whilst the nature and severity of the adverse events are similar to that of the adults, the frequency of the following is higher in the children:</p><p>-&nbsp;&nbsp; Epistaxis is a common adverse event in children (i.e. &ge; 1/100 to &lt; 1/10) that has not been reported in adults.</p><p>-&nbsp; During the 3 weeks of double blind study, the incidence of treatment emergent dizziness and headache nearly doubled in children 6-17 years of age in the high olmesartan medoxomil dose group.</p><p>&nbsp;</p><p>The overall safety profile for olmesartan medoxomil in paediatric patients does not differ significantly from the safety profile in adults.</p><p>Elderly (age 65 years or over)</p><p>&nbsp;</p><p>In elderly people the frequency of hypotension is slightly increased from rare to uncommon. <u>Reporting of suspected adverse reactions</u></p><p>Reporting suspected adverse reactions after authorisation of the medicinal product is important. It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare professionals are asked to report any suspected adverse reactions (see details below)</p><p><u>Reporting of suspected adverse reactions</u></p><p>&nbsp;</p><p>&bull;&nbsp; Saudi Arabia<em>:</em></p><p><strong><em>&nbsp;</em></strong></p><p><!--[if gte vml 1]><o:wrapblock><v:shapetype
+  id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="_x0000_s1026" type="#_x0000_t202" style='position:absolute;
+  margin-left:84.6pt;margin-top:9.7pt;width:383.8pt;height:128.9pt;z-index:-251654144;
+  mso-wrap-distance-left:0;mso-wrap-distance-right:0;
+  mso-position-horizontal-relative:page' filled="f" strokeweight=".16969mm">
+  <v:textbox inset="0,0,0,0">
+   <![if !mso]>
+   <table cellpadding=0 cellspacing=0 width="100%">
+    <tr>
+     <td><![endif]>
+     <div>
+     <p class=MsoBodyText style='margin-top:0in;margin-right:68.25pt;
+     margin-bottom:0in;margin-left:5.15pt;margin-bottom:.0001pt;line-height:
+     150%'>The National Pharmacovigilance and Drug Safety Centre (NPC) o Fax:
+     +966-11-205-7662<o:p></o:p></p>
+     <p class=MsoBodyText style='margin-left:5.15pt'>o Call NPC at
+     +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.<o:p></o:p></p>
+     <p class=MsoBodyText style='margin-top:6.55pt;margin-right:0in;margin-bottom:
+     0in;margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-9.05pt;
+     mso-list:l0 level1 lfo1;tab-stops:14.2pt'><![if !supportLists]><span
+     style='letter-spacing:-.05pt'><span style='mso-list:Ignore'>o<span
+     style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+     dir=LTR></span>Toll free phone:<span style='letter-spacing:-.1pt'> </span>8002490000<o:p></o:p></p>
+     <p class=MsoBodyText style='margin-top:6.95pt;margin-right:0in;margin-bottom:
+     0in;margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-9.05pt;
+     mso-list:l0 level1 lfo1;tab-stops:14.2pt'><![if !supportLists]><span
+     style='letter-spacing:-.05pt'><span style='mso-list:Ignore'>o<span
+     style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+     dir=LTR></span>E-mail:<span style='letter-spacing:-.05pt'> </span><a
+     href="mailto:npc.drug@sfda.gov.sa"><span style='color:blue;text-decoration:
+     none;text-underline:none'>npc.drug@sfda.gov.sa</span></a><o:p></o:p></p>
+     <p class=MsoBodyText style='margin-top:6.85pt;margin-right:0in;margin-bottom:
+     0in;margin-left:14.15pt;margin-bottom:.0001pt;text-indent:-9.05pt;
+     mso-list:l0 level1 lfo1;tab-stops:14.2pt'><![if !supportLists]><span
+     style='letter-spacing:-.05pt'><span style='mso-list:Ignore'>o<span
+     style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+     dir=LTR></span>Website:<span style='letter-spacing:-.05pt'> </span><a
+     href="http://www.sfda.gov.sa/npc"><span style='color:blue;text-decoration:
+     none;text-underline:none'>www.sfda.gov.sa/npc</span></a><o:p></o:p></p>
+     </div>
+     <![if !mso]></td>
+    </tr>
+   </table>
+   <![endif]></v:textbox>
+  <w:wrap type="topAndBottom" anchorx="page"/>
+ </v:shape><![endif]--></p><table cellpadding="0" cellspacing="0" align="left"><tbody><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><img width="516" height="176" alt="Text Box: The National Pharmacovigilance and Drug Safety Centre (NPC) o Fax: +966-11-205-7662
+o Call NPC at +966-11-2038222, Exts: 2317-2356-2353-2354-2334-2340.
+o	Toll free phone: 8002490000
+o	E-mail: npc.drug@sfda.gov.sa
+o	Website: www.sfda.gov.sa/npc
+" src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" /></td></tr></tbody></table><p><!--[if gte vml 1]></o:wrapblock><![endif]--></p><p>&nbsp;</p><p><strong>o Other GCC States:</strong></p><p>Please contact the relevant competent authority.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Only limited information is available regarding overdosage in humans. The most likely effect of overdosage is hypotension. In the event of overdosage, the patient should be carefully monitored and treatment should be symptomatic and supportive.</p><p>No information is available regarding the dialysability of olmesartan.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Pharmacotherapeutic group: Angiotensin II antagonists, ATC code: C09C A 08.</p><p>&nbsp;</p><p><u>Mechanism of action / Pharmacodynamic effects</u></p><p>&nbsp;</p><p>Olmesartan medoxomil is a potent, orally active, selective angiotensin II receptor (type AT1) antagonist. It is expected to block all actions of angiotensin II mediated by the AT1 receptor, regardless of the source or route of synthesis of angiotensin II. The selective antagonism of the angiotensin II (AT1) receptors results in increases in plasma renin levels and angiotensin I and II concentrations, and some decrease in plasma aldosterone concentrations.</p><p>Angiotensin II is the primary vasoactive hormone of the renin-angiotensin-aldosterone system and plays a significant role in the pathophysiology of hypertension via the type 1 (AT1) receptor.</p><p><u>Clinical efficacy and safety</u></p><p>&nbsp;</p><p>In hypertension, olmesartan medoxomil causes a dose-dependent, long-lasting reduction in arterial blood pressure. There has been no evidence of first-dose hypotension, of tachyphylaxis during long-term treatment, or of rebound hypertension after cessation of therapy.</p><p>Once daily dosing with olmesartan medoxomil provides an effective and smooth reduction in blood pressure over the 24 hour dose interval. Once daily dosing produced similar decreases in blood pressure as twice daily dosing at the same total daily dose.</p><p>With continuous treatment, maximum reductions in blood pressure are achieved by 8 weeks after the initiation of therapy, although a substantial proportion of the blood pressure lowering effect is already observed after 2 weeks of treatment. When used together with hydrochlorothiazide, the reduction in blood pressure is additive and coadministration is well tolerated.</p><p>The effect of olmesartan on mortality and morbidity is not yet known.</p><p>&nbsp;</p><p>The Randomised Olmesartan and Diabetes Microalbuminuria Prevention (ROADMAP) study in 4447 patients with type 2 diabetes, normo-albuminuria and at least one additional cardiovascular risk factor, investigated whether treatment with olmesartan could delay the onset of microalbuminuria. During the median follow-up duration of 3.2 years, patients received either olmesartan or placebo in addition to other antihypertensive agents, except ACE inhibitors or ARBs.</p><p>&nbsp;</p><p>For the primary endpoint, the study demonstrated a significant risk reduction in the time to onset of microalbuminuria, in favour of olmesartan. After adjustment for BP differences this risk reduction was no longer statistically significant. 8.2% (178 of 2160) of the patients in the olmesartan group and 9.8% (210 of 2139) in the placebo group developed microalbuminuria.</p><p>For the secondary endpoints, cardiovascular events occurred in 96 patients (4.3%) with olmesartan and in 94 patients (4.2%) with placebo. The incidence of cardiovascular mortality was higher with olmesartan compared to placebo treatment (15 patients (0.7%) vs. 3 patients (0.1%)), despite similar rates for non-fatal stroke (14 patients (0.6%) vs. 8 patients (0.4%)), &nbsp;non-</p><p>fatal myocardial infarction (17 patients (0.8%) vs. 26 patients (1.2%)) and non-cardiovascular</p><p>mortality (11 patients (0.5%) vs. 12 patients (0.5%)). Overall mortality with olmesartan was numerically increased (26 patients (1.2%) vs. 15 patients (0.7%)), which was mainly driven by a higher number of fatal cardiovascular events.</p><p>The Olmesartan Reducing Incidence of End-stage Renal Disease in Diabetic Nephropathy Trial (ORIENT) investigated the effects of olmesartan on renal and cardiovascular outcomes in 577 randomized Japanese and Chinese type 2 diabetic patients with overt nephropathy. During a median follow-up of 3.1 years, patients received either olmesartan or placebo in addition to other antihypertensive agents including ACE inhibitors.</p><p>The primary composite endpoint (time to first event of the doubling of serum creatinine, end- stage renal disease, all-cause death) occurred in 116 patients in the olmesartan group (41.1%) and 129 patients in the placebo group (45.4%) (HR 0.97 (95% CI 0.75 to 1.24); p=0.791). The composite secondary cardiovascular endpoint occurred in 40 olmesartan-treated patients (14.2%) and 53 placebo-treated patients (18.7%). This composite cardiovascular endpoint included cardiovascular&nbsp; death&nbsp; in&nbsp; 10&nbsp; (3.5%)&nbsp; patients&nbsp; receiving&nbsp; olmesartan&nbsp; versus&nbsp; 3&nbsp; (1.1%) &nbsp;receiving</p><p>placebo,&nbsp; overall&nbsp; mortality 19&nbsp; (6.7%)&nbsp; versus&nbsp; 20&nbsp; (7.0%),&nbsp; non-fatal&nbsp; stroke&nbsp; 8&nbsp; (2.8%)&nbsp; versus 11</p><p>(3.9%) and non-fatal myocardial infarction 3 (1.1%) versus 7 (2.5%), respectively. <u>Paediatric population</u></p><p>The antihypertensive effects of olmesartan medoxomil in the paediatric population were evaluated in a randomized, double-blind, placebo-controlled study in 302 hypertensive patients aged 6 to 17 years. The study population consisted of an all black cohort of 112 patients and a</p><p>&nbsp;</p><p>mixed racial cohort of 190 patients, including 38 blacks. The etiology of the hypertension was predominantly essential hypertension (87% of the black cohort and 67% of the mixed cohort). Patients who weighed 20 to &lt;35 kg were randomized to 2.5 mg (low dose) or 20 mg (high dose) of olmesartan medoxomil once daily and patients who weighed &ge;35 kg were randomized to 5 mg (low dose) or 40 mg (high dose) of olmesartan medoxomil once daily. Olmesartan medoxomil significantly reduced both systolic and diastolic blood pressure in a weight-adjusted dose- dependent manner. Olmesartan medoxomil at both low and high doses significantly reduced systolic blood pressure by 6.6 and 11.9 mmHg from the baseline, respectively. This effect was also observed during the 2 weeks randomized withdrawal phase, whereby both mean systolic and diastolic blood pressures demonstrated a statistically significant rebound in the placebo group compared to olmesartan group. The treatment was effective in both, paediatric patients with primary and secondary hypertension. As observed in adult populations, the blood pressure reductions were smaller in black patients.</p><p>In the same study, 59 patients aged 1 to 5 years who weighed &ge;5 kg received 0.3 mg/kg of olmesartan medoxomil once daily for three weeks in an open label phase and then were randomized to receiving olmesartan medoxomil or placebo in a double-blind phase. At the end of the second week of withdrawal, the mean systolic/diastolic blood pressure at trough was 3/3 mmHg lower in the group randomized to olmesartan medoxomil; this difference in blood pressure was not statistically significant (95% C.I. -2 to 7/-1 to 7).</p><p><u>Other information:</u></p><p>&nbsp;</p><p>Two large randomised, controlled trials (ONTARGET (ONgoing Telmisartan Alone and in combination with Ramipril Global Endpoint Trial) and VA NEPHRON-D (The Veterans Affairs Nephropathy in Diabetes)) have examined the use of the combination of an ACE-inhibitor with an angiotensin II receptor blocker.</p><p>ONTARGET was a study conducted in patients with a history of cardiovascular or cerebrovascular disease, or type 2 diabetes mellitus accompanied by evidence of end-organ damage. VA NEPHRON-D was a study in patients with type 2 diabetes mellitus and diabetic nephropathy.</p><p>&nbsp;</p><p>These studies have shown no significant beneficial effect on renal and/or cardiovascular outcomes and mortality, while an increased risk of hyperkalaemia, acute kidney injury and/or hypotension as compared to monotherapy was observed. Given their similar pharmacodynamic properties, these results are also relevant for other ACE-inhibitors and angiotensin II receptor blockers.</p><p>ACE-inhibitors and angiotensin II receptor blockers should therefore not be used concomitantly in patients with diabetic nephropathy.</p><p>ALTITUDE (Aliskiren Trial in Type 2 Diabetes Using Cardiovascular and Renal Disease Endpoints) was a study designed to test the benefit of adding aliskiren to a standard therapy of an ACE-inhibitor or an angiotensin II receptor blocker in patients with type 2 diabetes mellitus and chronic kidney disease, cardiovascular disease, or both. The study was terminated early because of an increased risk of adverse outcomes. Cardiovascular death and stroke were both numerically more frequent in the aliskiren group than in the placebo group and adverse events and serious adverse events of interest (hyperkalaemia, hypotension and renal dysfunction) were more frequently reported in the aliskiren group than in the placebo group.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><u>Absorption and distribution</u></p><p>&nbsp;</p><p>Olmesartan medoxomil is a prodrug. It is rapidly converted to the pharmacologically active metabolite, olmesartan, by esterases in the gut mucosa and in portal blood during absorption from the gastrointestinal tract.</p><p>No intact olmesartan medoxomil or intact side chain medoxomil moiety have been detected in plasma or excreta. The mean absolute bioavailability of olmesartan from a tablet formulation was 25.6%.</p><p>The mean peak plasma concentration (Cmax) of olmesartan is reached within about 2 hours after oral dosing with olmesartan medoxomil, and olmesartan plasma concentrations increase approximately linearly with increasing single oral doses up to about 80 mg.</p><p>Food had minimal effect on the bioavailability of olmesartan and therefore olmesartan medoxomil may be administered with or without food.</p><p>&nbsp;</p><p>No clinically relevant gender-related differences in the pharmacokinetics of olmesartan have been observed.</p><p>Olmesartan is highly bound to plasma protein (99.7%), but the potential for clinically significant protein binding displacement interactions between olmesartan and other highly bound coadministered drugs is low (as confirmed by the lack of a clinically significant interaction between olmesartan medoxomil and warfarin). The binding of olmesartan to blood cells is negligible. The mean volume of distribution after intravenous dosing is low (16 &ndash; 29 L).</p><p><u>Biotransformation and elimination</u></p><p>&nbsp;</p><p>Total plasma clearance was typically 1.3 L/h (CV, 19%) and was relatively slow compared to hepatic blood flow (ca 90 L/h). Following a single oral dose of 14C-labelled olmesartan medoxomil, 10 - 16% of the administered radioactivity was excreted in the urine (the vast majority within 24 hours of dose administration) and the remainder of the recovered radioactivity was excreted in the faeces. Based on the systemic availability of 25.6%, it can be calculated that absorbed olmesartan is cleared by both renal excretion (ca 40%) and hepato-biliary excretion (ca 60%). All recovered radioactivity was identified as olmesartan. No other significant metabolite was detected. Enterohepatic recycling of olmesartan is minimal. Since a large proportion of olmesartan is excreted via the biliary route, use in patients with biliary obstruction is contraindicated (see section 4.3).</p><p>The terminal elimination half life of olmesartan varied between 10 and 15 hours after multiple oral dosing. Steady state was reached after the first few doses and no further accumulation was evident after 14 days of repeated dosing. Renal clearance was approximately 0.5 &ndash; 0.7 L/h and was independent of dose.</p><p><u>Pharmacokinetics in special populations</u></p><p>&nbsp;</p><p>Paediatric population:</p><p>&nbsp;</p><p>The pharmacokinetics of olmesartan was studied in paediatric hypertensive patients aged 1 to 16 years. The clearance of olmesartan in paediatric patients was similar to that in adult patients when adjusted by the body weight.</p><p>There is no pharmacokinetic information available in renally impaired paediatric subjects.</p><p>&nbsp;</p><p>Elderly (age 65 years or over):</p><p>&nbsp;</p><p>In hypertensive patients, the AUC at steady state was increased by ca 35% in elderly people (65</p><p>&ndash; 75 years old) and by ca 44% in very elderly people (&ge; 75 years old) compared with the younger age group. This may be at least in part related to a mean decrease in renal function in this group of patients.</p><p>Renal impairment:</p><p>&nbsp;</p><p>In renally impaired patients, the AUC at steady state increased by 62%, 82% and 179% in patients with mild, moderate and severe renal impairment, respectively, compared to healthy controls (see sections 4.2, 4.4).</p><p>Hepatic impairment:</p><p>&nbsp;</p><p>After single oral administration, olmesartan AUC values were 6% and 65% higher in mildly and moderately hepatically impaired patients, respectively, than in their corresponding matched healthy controls. The unbound fraction of olmesartan at 2 hours post-dose in healthy subjects, in patients with mild hepatic impairment and in patients with moderate hepatic impairment was 0.26%, 0.34% and 0.41%, respectively. Following repeated dosing in patients with moderate hepatic impairment, olmesartan mean AUC was again about 65% higher than in matched healthy controls. Olmesartan mean Cmax values were similar in hepatically-impaired and healthy subjects. Olmesartan medoxomil has not been evaluated in patients with severe hepatic impairment (see sections 4.2, 4.4).</p><p>Drug interactions</p><p><strong>&nbsp;</strong></p><p>Bile acid sequestering agent colesevelam:</p><p>&nbsp;</p><p>Concomitant administration of 40 mg olmesartan medoxomil and 3750 mg colesevelam hydrochloride in healthy subjects resulted in 28% reduction in Cmax and 39% reduction in AUC of olmesartan. Lesser effects, 4% and 15% reduction in Cmax and AUC respectively, were observed when olmesartan medoxomil was administered 4 hours prior to colesevelam hydrochloride. Elimination half life of olmesartan was reduced by 50 &ndash; 52% irrespectively of whether administered concomitantly or 4 hours prior to colesevelam hydrochloride (see section 4.5).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>In chronic toxicity studies in rats and dogs, olmesartan medoxomil showed similar effects to other AT1 receptor antagonists and ACE inhibitors: raised blood urea (BUN) and creatinine (through functional changes to the kidneys caused by blocking AT1 receptors); reduction in heart weight; a reduction of red cell parameters (erythrocytes, haemoglobin, haematocrit); histological indications of renal damage (regenerative lesions of the renal epithelium, thickening of the basal membrane, dilatation of the tubules). These adverse effects caused by the pharmacological action of olmesartan medoxomil have also occurred in preclinical trials on other AT1 receptor antagonists and ACE inhibitors and can be reduced by simultaneous oral administration of sodium chloride.</p><p>In both species, increased plasma renin activity and hypertrophy/hyperplasia of the juxtaglomerular cells of the kidney were observed. These changes, which are a typical effect of the class of ACE inhibitors and other AT1 receptor antagonists, would appear to have no clinical relevance.</p><p>Like other AT1 receptor antagonists olmesartan medoxomil was found to increase the incidence of chromosome breaks in cell cultures in vitro. No relevant effects were observed in several in vivo studies using olmesartan medoxomil at very high oral doses of up to 2000 mg/kg. The overall data of a comprehensive genotoxicity testing suggest that olmesartan is very unlikely to exert genotoxic effects under conditions of clinical use.</p><p>Olmesartan medoxomil was not carcinogenic, neither in rats in a 2 year study nor in mice when tested in two 6 month carcinogenicity studies using transgenic models.</p><p>In reproductive studies in rats, olmesartan medoxomil did not affect fertility and there was no evidence of a teratogenic effect. In common with other angiotensin II antagonists, survival of offspring was reduced following exposure to olmesartan medoxomil and pelvic dilatation of the kidney was seen after exposure of the dams in late pregnancy and lactation. In common with other antihypertensive agents, olmesartan medoxomil was shown to be more toxic to pregnant rabbits than to pregnant rats, however, there was no indication of a fetotoxic effect.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>6.1&nbsp;&nbsp;&nbsp; </strong><strong>Olmesartan Medoxomil</strong></p><p>The other ingredients are: Lactose Monohydrate, Cellulose Microcrystalline, Low-Substituted Hydroxypropyl cellulose, Hydroxypropyl cellulose, Magnesium stearate.</p><p>Film coating composition: HPMC 2910/Hypromellose, Talc, Titanium Dioxide.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Not applicable</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                24 months
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store below 30&ordm;C.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Alu-Alu Blister</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>na</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Saudi Amarox Industrial Company,
+Aljameah Street, Malaz quarter, Riyadh 11441, Saudi Arabia
+Tel: +966 11 477 2215
+
+Manufacture: Hetero Labs Limited Unit V, Hyderabad, India
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                05/2023
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

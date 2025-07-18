@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        15-400-04
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2004
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        IMIGRAN 20 MG NASAL SPRAY
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        SUMATRIPTAN
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        20
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Nasal use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Nasal spray
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Nasal Applicator
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        NCE
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        store below 30°c
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        47.75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="GLAXOSMITHKLINE (GSK)" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            GLAXOSMITHKLINE (GSK)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 354]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            SAUDI INTERNATIONAL TRADING COMPANY LTD (SITCO)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            GLAXOSMITHKLINE (GSK)
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        N02CC01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="A-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <span class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</span>
+            </div>
+    </div>
+    <div id="M-div" class="box-data">
+
+
+    <div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr"><i class="fa fa-info-circle"></i>&nbsp;Read this leaflet carefully before you start using this product as it contains important information for you</div>
+    </div>
+<div class="row clearfix ltr">
+
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="MedicinalName">1. NAME OF THE MEDICINAL PRODUCT </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Sumatriptan Nasal Spray
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="QualitativeQuantitativeComposition">2. QUALITATIVE AND QUANTITATIVE COMPOSITION </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Unit dose spray device for intra-nasal administration. The device delivers either 10 or 20 mg of sumatriptan in 0.1 mL of an aqueous buffered solution. The solution has a characteristic taste.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="DosageForm">3. PHARMACEUTICAL FORM </label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                IMIGRAN nasal spray is a clear, pale to yellow to dark yellow liquid.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">4. CLINICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="TherapeuticIndications">4.1 Therapeutic Indications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Indications</p><p><strong>&nbsp;</strong></p><p><em>IMIGRAN </em>nasal spray is indicated for the acute relief of migraine attacks with or without aura.</p><p>&nbsp;</p><p>It is particularly suitable for patients who suffer with nausea and vomiting or who require a rapid onset of effect during an attack</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PosologyAndMethodAdministration">4.2 Posology And Method Administration</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em>IMIGRAN </em>should not be used prophylactically. The recommended dose of <em>IMIGRAN</em></p><p>should not be exceeded.</p><p>&nbsp;</p><p>It is advisable that <em>IMIGRAN </em>be given as early as possible after the onset of a migraine headache.&nbsp; It is equally effective at whatever stage of the attack it is administered.</p><p>&nbsp;</p><p><strong>Populations</strong></p><p><strong>&nbsp;</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adults (18 years of age and over)</p><p><strong>&nbsp;</strong></p><p>The optimal dose of <em>IMIGRAN </em>nasal spray is 20 mg for administration into one nostril. Due to inter-/intra-patient variability of both the migraine attacks and the absorption of sumatriptan, 10 mg may be effective in some patients and attacks.</p><p>&nbsp;</p><p>If the patient does not respond to the first dose of <em>IMIGRAN</em>, a second dose should not be taken for the same attack. <em>IMIGRAN </em>nasal spray may be taken for subsequent attacks.</p><p>&nbsp;</p><p>If the patient has responded to the first dose, but the symptoms recur a second dose may be given in the next 24 hours, provided that there is a minimum interval of 2 hours between the doses.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>No more than two sumatriptan 20 mg nasal sprays should be used in any 24-hour period.</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adolescents (12 to 17 years of age)</p><p><strong>&nbsp;</strong></p><p>The recommended dose of <em>IMIGRAN </em>nasal spray is 10 mg for administration into one nostril. Due to inter-/intra-patient variability of migraine attacks and the exposure to <em>IMIGRAN</em>, a dose of 20 mg may be required in some patients.</p><p>&nbsp;</p><p>If a patient does not respond to the first dose of <em>IMIGRAN</em>, a second dose should not be taken for the same attack. <em>IMIGRAN </em>nasal spray may be taken for subsequent attacks.</p><p>&nbsp;</p><p>If the patient has responded to the first dose of <em>IMIGRAN </em>nasal spray, but the symptoms recur a second dose may be given in the next 24 hours, provided that there is a minimum interval of 2 hours between the two doses.</p><p>&nbsp;</p><p>No more than two sumatriptan 20 mg nasal sprays to be used in any 24-hour period.</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Children (under 12 years of age)</p><p><strong>&nbsp;</strong></p><p>The safety and effectiveness of <em>IMIGRAN </em>nasal spray in children has not yet been established.</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Elderly (over 65 years of age)</p><p><strong>&nbsp;</strong></p><p>There is no clinical experience of the use of <em>IMIGRAN </em>nasal spray in patients over 65 years of age.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Contraindications">4.3 Contraindications</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                	Hypersensitivity to any component of the preparation.
+
+	IMIGRAN should not be given to patients who have had myocardial infarction or have ischaemic heart disease (IHD), Prinzmetal's angina/coronary vasospasm, peripheral vascular disease or patients who have symptoms or signs consistent with IHD.
+
+	IMIGRAN should not be administered to patients with a history of previous cerebrovascular accident (CVA) or transient ischaemic attack (TIA).
+
+	The use of IMIGRAN in patients with uncontrolled hypertension is contraindicated.
+
+	IMIGRAN should not be administered to patients with severe hepatic impairment.
+
+	The concomitant use of ergotamine or derivatives of ergotamine (including methysergide) is contraindicated (see Interactions).
+
+	Concurrent administration of monoamine oxidase inhibitors (MAOIs) and IMIGRAN is contraindicated. IMIGRAN must not be used within two weeks of discontinuation of therapy with MAOIs.
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialWarnings">4.4. Special warnings and precautions for use</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><em>IMIGRAN </em>should only be used where there is a clear diagnosis of migraine.</p><p>&nbsp;</p><p><em>IMIGRAN </em>is not indicated for use in the management of hemiplegic, basilar or ophthalmoplegic migraine.</p><p>&nbsp;</p><p>Before treating with <em>IMIGRAN</em>, care should be taken to exclude potentially serious neurological conditions (e.g. CVA, TIA) if the patient presents with atypical symptoms or if they have not received an appropriate diagnosis for <em>IMIGRAN </em>use.</p><p>&nbsp;</p><p>Following administration, <em>IMIGRAN </em>can be associated with transient symptoms including chest pain and tightness which may be intense and involve the throat (<em>see Adverse Reactions</em>). Where such symptoms are thought to indicate IHD appropriate evaluation should be carried out.</p><p>&nbsp;</p><p><em>IMIGRAN </em>should not be given to patients in whom unrecognised cardiac disease is likely without a prior evaluation for underlying cardiovascular disease. Such patients include post-menopausal women, males over 40 and patients with risk factors for coronary artery disease. However, these evaluations may not identify every patient who has cardiac disease and, in very rare cases, serious cardiac events have occurred in patients without underlying cardiovascular disease.</p><p>&nbsp;</p><p><em>IMIGRAN </em>should be administered with caution to patients with controlled hypertension as transient increases in blood pressure and peripheral vascular resistance have been observed in a small proportion of patients.</p><p>&nbsp;</p><p>There have been rare post-marketing reports describing patients with serotonin syndrome (including altered mental status, autonomic instability and neuromuscular abnormalities) following the use of a selective serotonin reuptake inhibitor (SSRI) and sumatriptan.</p><p>Serotonin syndrome has been reported following concomitant treatment with triptans and serotonin noradrenaline reuptake inhibitors (SNRIs).</p><p>&nbsp;</p><p>If concomitant treatment with <em>IMIGRAN </em>and an SSRI/SNRI is clinically warranted, appropriate observation of the patient is advised (<em>see Interactions</em>).</p><p>&nbsp;</p><p>The concomitant administration of any triptan/5-HT1 agonist with <em>IMIGRAN </em>is not recommended.</p><p>&nbsp;</p><p><em>IMIGRAN </em>should be administered with caution to patients with conditions that may affect significantly the absorption, metabolism or excretion of the drug, e.g. impaired hepatic (Child Pugh grade A or B; <em>see Pharmacokinetics &ndash; Special Patient Populations</em>) or renal function (<em>see Pharmacokinetics</em>).</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><em>&nbsp;</em></p><p><em>IMIGRAN </em>should be used with caution in patients with a history of seizures or other risk factors which lower the seizure threshold.</p><p>&nbsp;</p><p>Patients with known hypersensitivity to sulphonamides may exhibit an allergic reaction following administration of <em>IMIGRAN</em>. Reactions may range from cutaneous hypersensitivity to anaphylaxis. Evidence of cross-sensitivity is limited, however, caution should be exercised before using <em>IMIGRAN </em>in these patients.</p><p>&nbsp;</p><p>Overuse of acute headache treatments has been associated with the exacerbation of headache (medication overuse headache, MOH) in susceptible patients. Withdrawal of the treatment may be necessary.</p><p>&nbsp;</p><p>St John&rsquo;s Wort (Hypericum perforatum). Taking herbal remedies that contain St John&rsquo;s Wort while you are using Imigran may make side effects more likely.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="InteractionsOtherMedicines">4.5. Interactions with other medicinal products</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>There is no evidence of interactions with propanolol, flunarizine, pizotifen or alcohol.</p><p>&nbsp;</p><p>Prolonged vasospastic reactions have been reported with ergotamine. As these effects may be additive, 24 hours should elapse before <em>IMIGRAN </em>can be taken following any ergotamine containing preparation. Conversely, ergotamine containing preparations should not be taken until six hours have elapsed following <em>IMIGRAN </em>administration.</p><p>&nbsp;</p><p>An interaction may occur between <em>IMIGRAN </em>and MAOIs and concomitant administration is contraindicated (<em>see Contraindications</em>).</p><p>&nbsp;</p><p>There have been rare post-marketing reports describing patients with serotonin syndrome (including altered mental status, autonomic instability and neuromuscular abnormalities) following the use of SSRIs and sumatriptan. Serotonin syndrome has also been reported following concomitant treatment with triptans and SNRIs (<em>see Warnings and Precautions</em>).</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="FertilityAndPregnantWarnings">4.6. Fertility, pregnancy and lactation</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Pregnancy</strong></p><p><strong>&nbsp;</strong></p><p>Caution should be exercised by considering the expected benefit to the mother against possible risk to the foetus.</p><p>&nbsp;</p><p>Post-marketing data from multiple prospective pregnancy registries have documented the pregnancy outcomes in over 1,000 women exposed to sumatriptan. Although there is insufficient information to draw definitive conclusions, the findings have not detected an increase in the frequency of birth defects nor a consistent pattern of birth defects, amongst women exposed to sumatriptan compared with the general population.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><strong>&nbsp;</strong></p><p><strong>Lactation</strong></p><p><strong>&nbsp;</strong></p><p>It has been demonstrated that following subcutaneous administration sumatriptan is excreted into breast milk. Infant exposure can be minimised by avoiding breast-feeding for 12 hours after treatment.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="EffectsAbilityDriveMachines">4.7. Effects on ability to drive and use machines</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Drowsiness may occur as a result of migraine or treatment with <em>IMIGRAN</em>.</p><p>&nbsp;</p><p>Caution is recommended in patients performing skilled tasks, e.g. driving or operating machinery.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="UndesirableEffects">4.8. Undesirable effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Adverse events are listed below by system organ class and frequency. Frequencies are defined as: very common (&sup3;1/10), common (&sup3;1/100 to &lt;1/10), uncommon (&sup3;1/1000 to</p><p>&lt;1/100), rare (&sup3;1/10000 to &lt;1/1000) and very rare (&lt;1/10000) including isolated reports. The data from clinical trials are estimates. It should be noted that the background rate in comparator groups was not taken into account. Post-marketing data refer to reporting rate rather than true frequency.</p><p>&nbsp;</p><p><strong>Clinical Trial Data</strong></p><p><strong>&nbsp;</strong></p><p>Nervous System Disorders</p><p><strong>&nbsp;</strong></p><p>Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dizziness, drowsiness, sensory disturbance including paraesthesia and hypoaesthesia.</p><p>&nbsp;</p><p>Vascular disorders</p><p><strong>&nbsp;</strong></p><p>Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transient increases in blood pressure arising soon after treatment.</p><p>Flushing.</p><p>&nbsp;</p><p>Respiratory, Thoracic and Mediastinal Disorders</p><p><strong>&nbsp;</strong></p><p>Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dyspnoea; following administration of <em>IMIGRAN </em>nasal spray mild, transient irritation or burning sensation in the nose or throat or epistaxis have been reported.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>Gastrointestinal Disorders</p><p><strong>&nbsp;</strong></p><p>Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nausea and vomiting occurred in some patients but the relationship to sumatriptan is not clear.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>Musculoskeletal and Connective Tissue Disorders</p><p><strong>&nbsp;</strong></p><p>The following symptom is usually transient and may be intense and can affect any part of the body including the chest and throat:</p><p>&nbsp;</p><p>Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sensations of heaviness.</p><p>&nbsp;</p><p>General Disorders and Administration Site Conditions</p><p><strong>&nbsp;</strong></p><p>The following symptoms are usually transient and may be intense and can affect any part of the body including the chest and throat:</p><p>&nbsp;</p><p>Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pain, sensations of heat or cold, pressure or tightness.</p><p>&nbsp;</p><p>The following symptoms are mostly mild to moderate in intensity and transient: Common:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feelings of weakness, fatigue.</p><p>Investigations</p><p><strong>&nbsp;</strong></p><p>Very rare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Minor disturbances in liver function tests have occasionally been observed.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><strong>Post-Marketing Data</strong></p><p><strong>&nbsp;</strong></p><p>Immune System Disorders</p><p><strong>&nbsp;</strong></p><p>Very rare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hypersensitivity reactions ranging from cutaneous hypersensitivity to anaphylaxis.</p><p>&nbsp;</p><p>Nervous System Disorders</p><p><strong>&nbsp;</strong></p><p>Very rare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seizures, although some have occurred in patients with either a history of seizures or concurrent conditions predisposing to seizures there are also reports in patients where no such predisposing factors are apparent.</p><p>&nbsp;</p><p>Tremor, dystonia, nystagmus, scotoma.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>Eye disorders</p><p><strong>&nbsp;</strong></p><p>Very rare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flickering, diplopia, reduced vision.&nbsp;&nbsp;&nbsp;&nbsp; Loss of vision (usually transient). However, visual disorders may also occur during a migraine attack itself.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>Cardiac disorders</p><p><strong>&nbsp;</strong></p><p>Very rare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bradycardia, tachycardia, palpitations, cardiac arrhythmias, transient ischaemic ECG changes, coronary artery vasospasm, angina, myocardial infarction (<em>see Contraindications, Warnings and Precautions</em>).</p><p>&nbsp;</p><p>Vascular disorders</p><p><strong>&nbsp;</strong></p><p>Very rare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hypotension, Raynaud&rsquo;s phenomenon.</p><p>&nbsp;</p><p>Gastrointestinal Disorders</p><p><strong>&nbsp;</strong></p><p>Very rare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ischaemic colitis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Overdoes">4.9. Overdoes</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>Symptoms and Signs</strong></p><p><strong>&nbsp;</strong></p><p>Single doses of <em>IMIGRAN</em>, up to 40 mg intra-nasally have not been associated with side effects other than those mentioned.</p><p>&nbsp;</p><p>In clinical studies volunteers have received 20 mg of <em>IMIGRAN </em>by the intra-nasal route three times a day for a period of four days without significant adverse effects.</p><p>&nbsp;</p><p><strong>Treatment</strong></p><p><strong>&nbsp;</strong></p><p>If overdosage occurs, the patient should be monitored for at least 10 hours and standard supportive treatment applied as required.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>It is unknown what effect haemodialysis or peritoneal dialysis has on the plasma concentrations of sumatriptan.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <label style="float: left">5. PHARMACOLOGICAL PROPERTIES</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PharmacodynamicProperties">5.1. Pharmacodynamic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong><em>ATC Code</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>N02CC01.</p><p>&nbsp;</p><p><strong><em>Mechanism of Action</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>Pharmacotherapeutic group: Selective 5-HT1 receptor agonists.</p><p>Sumatriptan has been demonstrated to be a selective vascular 5-hydroxytryptamine-1-(5- HT1D) receptor agonist with no effect at other 5-HT receptor (5-HT2&ndash;7) subtypes. The vascular 5-HT1D receptor is found predominantly in cranial blood vessels and mediates vasoconstriction.</p><p>&nbsp;</p><p>In animals, sumatriptan selectively constricts the carotid arterial circulation, but does not alter cerebral blood flow. The carotid arterial circulation supplies blood to the extracranial and intracranial tissues such as the meninges and dilatation and/or oedema formation in these vessels is thought to be the underlying mechanism of migraine in man. In addition, experimental evidence suggests that sumatriptan inhibits trigeminal nerve activity. Both these actions may contribute to the anti-migraine action of sumatriptan in humans.</p><p>&nbsp;</p><p><strong><em>Pharmacodynamic Effects</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>Clinical response begins 10 to 15 minutes following a 6 mg subcutaneous injection, 15 minutes following a 20 mg dose given by intra-nasal administration and around 30 minutes following a 100 mg oral dose or 25 mg rectal dose.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+                <label style="float: left" for="PharmacokineticProperties">5.2. Pharmacokinetic Properties</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>The pharmacokinetics of sumatriptan do not appear to be significantly affected by migraine attacks.</p><p>&nbsp;</p><p><strong><em>Absorption</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>After intra-nasal administration, sumatriptan is rapidly absorbed, with maximum plasma concentration occurring in 1 to 1.5 hours. After a 20 mg dose, the mean maximum concentration is 12.9 nanograms/mL. Mean intra-nasal bioavailability, relative to subcutaneous administration is 15.8%, partly due to pre-systemic metabolism.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><!--[if mso & !supportInlineShapes & supportFields]><span
+lang=EN-GB style='font-size:1.0pt'><span style='mso-element:field-begin;
+mso-field-lock:yes'></span>SHAPE<span style='mso-spacerun:yes'>  </span>\*
+MERGEFORMAT<span style='mso-element:field-separator'></span></span><![endif]--><!--[if gte vml 1]><v:group id="_x0000_s1026"
+ style='width:435.55pt;height:1pt;mso-position-horizontal-relative:char;
+ mso-position-vertical-relative:line' coordsize="8711,20" o:allowincell="f">
+ <v:shape id="_x0000_s1027" style='position:absolute;left:7;top:7;width:8697;
+  height:20;mso-position-horizontal-relative:page;
+  mso-position-vertical-relative:page' coordsize="8697,20" o:allowincell="f"
+  path="m,hhl8696,e" filled="f" strokeweight=".25397mm">
+  <v:path arrowok="t"/>
+ </v:shape><w:wrap type="none"/>
+ <w:anchorlock/>
+</v:group><![endif]--><img width="582" height="2" src="file:///C:/Users/iaa10356/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" /><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><![endif]--><!--[if mso & !supportInlineShapes & supportFields]><span
+lang=EN-GB style='font-size:1.0pt'><v:shape id="_x0000_i1025" type="#_x0000_t75"
+ style='width:435.55pt;height:1pt'>
+ <v:imagedata croptop="-1" cropbottom="1"/>
+ <o:lock v:ext="edit" rotation="t" position="t"/>
+</v:shape><span style='mso-element:field-end'></span></span><![endif]--></p><p><strong><em>&nbsp;</em></strong></p><p><strong><em>Distribution</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>Plasma protein binding is low (14 to 21%); the mean total volume of distribution is 170 litres.</p><p>&nbsp;</p><p><strong><em>Metabolism</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>The major metabolite, the indole acetic acid analogue of sumatriptan is mainly excreted in urine, where it is present as a free acid and the glucuronide conjugate. It has no known 5-HT1 or 5-HT2 activity. Minor metabolites have not been identified.</p><p><strong><em>Elimination</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>The elimination half-life is approximately two hours. The mean total plasma clearance is approximately 1,160 mL/min and the mean renal plasma clearance is approximately</p><p>260 mL/min.</p><p>&nbsp;</p><p>Non-renal clearance accounts for about 80% of the total clearance. Sumatriptan is eliminated primarily by oxidative metabolism mediated by monoamine oxidase A.</p><p>&nbsp;</p><p><strong><em>Special Patient Populations</em></strong></p><p><strong><em>&nbsp;</em></strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hepatic impairment</p><p><strong>&nbsp;</strong></p><p>Following oral administration, pre-systemic clearance is reduced in patients with hepatic impairment resulting in increased plasma levels of sumatriptan. A similar increase would be expected following intra-nasal administration (<em>see Warnings and Precautions</em>).</p><p>&nbsp;</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adolescents (12 to 17 years of age)</p><p><strong>&nbsp;</strong></p><p>A pharmacokinetic study in adolescent subjects (12 to 17 years) indicated that the mean maximum plasma concentration was 13.9 nanograms/mL and mean elimination half-life was approximately two hours following a 20 mg intra-nasal dose. Population pharmacokinetic modelling indicated that clearance and volume of distribution both increase with body size in the adolescent population resulting in higher exposure in lower body weight adolescents.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PreclinicalSafetyData">5.3 Preclinical Safety Data</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Carcinogenesis, mutagenesis</p><p><strong>&nbsp;</strong></p><p>Sumatriptan was devoid of genotoxic and carcinogenic activity in <em>in-vitro </em>systems and animal studies.</p><p>&nbsp;</p><p>Reproductive toxicology</p><p><strong>&nbsp;</strong></p><p>In a rat fertility study oral doses of sumatriptan resulting in plasma levels approximately 750 times those seen in man after a 20 mg intra-nasal dose were associated with a reduction in the success of insemination.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>This effect did not occur during a subcutaneous study where maximum plasma levels in rats achieved approximately 500 times those seen in man by the intra-nasal route.</p><p>&nbsp;</p><p>Pregnancy and lactation</p><p><strong>&nbsp;</strong></p><p>No teratogenic effects have been seen in rats or rabbits, and sumatriptan had no effect on the post-natal development of rats.</p><p>&nbsp;</p><p>When administered to pregnant rabbits throughout the period of organogenesis sumatriptan has occasionally caused embryolethality at doses that were sufficiently high to produce maternal toxicity.</p><p>&nbsp;</p><p>Animal toxicology and/or pharmacology</p><p><strong>&nbsp;</strong></p><p>In studies carried out to test for local and ocular irritancy, following administration of sumatriptan nasal spray, there was no nasal irritancy seen in laboratory animals and no ocular irritancy observed when the spray was applied directly to the eyes of rabbits.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. PHARMACEUTICAL PARTICULARS</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ExcipientsList">6.1 Excipients List</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Potassium dihydrogen phosphate. Dibasic sodium phosphate anhydrous. Sulphuric acid.</p><p>Sodium hydroxide. Purified water.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="Incompatibilities">6.2. Incompatibilities</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>None</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ShelfLife">6.3. Shelf Life</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                The expiry date is indicated on the packaging.
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="PrecautionsStorageConditions">6.4. Special precautions for storage</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Store IMIGRAN Nasal Spray below 30&deg;C, don&rsquo;t freeze.</p><p>&nbsp;</p><p>It should be kept in the sealed blister, preferably in the box, to protect from light.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="ContainerContents">6.5. Nature and contents of container</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p>Unit dose disposable nasal spray device.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label style="float: left" for="SpecialPrecautionsDisposal">6.6. Special precautions for disposal and other handling</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                <p><strong>The nasal Spray consists of the following parts:</strong></p><p>&nbsp;</p><p><strong>&nbsp;</strong></p><p>&nbsp;</p><p><strong>&nbsp;</strong></p><p><!--[if gte vml 1]><v:rect id="_x0000_s1029"
+ style='position:absolute;left:0;text-align:left;margin-left:365.3pt;
+ margin-top:-1.05pt;width:158pt;height:191pt;z-index:251652096;
+ mso-position-horizontal-relative:page' o:allowincell="f" filled="f" stroked="f">
+ <v:textbox inset="0,0,0,0"/>
+ <w:wrap anchorx="page"/>
+</v:rect><![endif]--></p><table cellpadding="0" cellspacing="0"><tbody><tr><td><table cellpadding="0" cellspacing="0" style="width:100%"><tbody><tr><td><p><!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+     o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+     stroked="f">
+     <v:stroke joinstyle="miter"/>
+     <v:formulas>
+      <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+      <v:f eqn="sum @0 1 0"/>
+      <v:f eqn="sum 0 0 @1"/>
+      <v:f eqn="prod @2 1 2"/>
+      <v:f eqn="prod @3 21600 pixelWidth"/>
+      <v:f eqn="prod @3 21600 pixelHeight"/>
+      <v:f eqn="sum @0 0 1"/>
+      <v:f eqn="prod @6 1 2"/>
+      <v:f eqn="prod @7 21600 pixelWidth"/>
+      <v:f eqn="sum @8 21600 0"/>
+      <v:f eqn="prod @7 21600 pixelHeight"/>
+      <v:f eqn="sum @10 21600 0"/>
+     </v:formulas>
+     <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+     <o:lock v:ext="edit" aspectratio="t"/>
+    </v:shapetype><v:shape id="_x0000_i1026" type="#_x0000_t75" style='width:158.25pt;
+     height:191.25pt'>
+     <v:imagedata src="file:///C:/Users/iaa10356/AppData/Local/Temp/msohtmlclip1/01/clip_image001.jpg"
+      o:title=""/>
+    </v:shape><![endif]--><img width="596" height="315" alt="" vspace="0" hspace="0" border="0" style="width:596px;height:315px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/iaa10356/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" /></p><p>&nbsp;</p></td></tr></tbody></table></td></tr></tbody></table><p><!--[if gte vml 1]><v:rect
+ id="_x0000_s1027" style='position:absolute;left:0;text-align:left;
+ margin-left:133.2pt;margin-top:-3.7pt;width:100pt;height:101pt;text-indent:0;
+ z-index:251650048;mso-position-horizontal-relative:page' o:allowincell="f"
+ filled="f" stroked="f">
+ <v:textbox inset="0,0,0,0"/>
+ <w:wrap anchorx="page"/>
+</v:rect><![endif]--></p><table cellpadding="0" cellspacing="0"><tbody><tr><td><table cellpadding="0" cellspacing="0" style="width:100%"><tbody><tr><td><p><!--[if gte vml 1]><v:shape id="_x0000_i1027" type="#_x0000_t75"
+     style='width:99.75pt;height:100.5pt'>
+     <v:imagedata src="file:///C:/Users/iaa10356/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg"
+      o:title=""/>
+    </v:shape><![endif]--><img width="600" height="604" alt="" vspace="0" hspace="0" border="0" style="width:600px;height:604px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/iaa10356/AppData/Local/Temp/msohtmlclip1/01/clip_image005.jpg" /></p><p>&nbsp;</p></td></tr></tbody></table></td></tr></tbody></table><p>&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--[if gte vml 1]><v:rect
+ id="_x0000_s1028" style='position:absolute;left:0;text-align:left;
+ margin-left:130.35pt;margin-top:9.5pt;width:103pt;height:103pt;text-indent:0;
+ z-index:251651072;mso-position-horizontal-relative:page' o:allowincell="f"
+ filled="f" stroked="f">
+ <v:textbox inset="0,0,0,0"/>
+ <w:wrap anchorx="page"/>
+</v:rect><![endif]--></p><table cellpadding="0" cellspacing="0"><tbody><tr><td><table cellpadding="0" cellspacing="0" style="width:100%"><tbody><tr><td><p><!--[if gte vml 1]><v:shape id="_x0000_i1028" type="#_x0000_t75"
+     style='width:103.5pt;height:102.75pt'>
+     <v:imagedata src="file:///C:/Users/iaa10356/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg"
+      o:title=""/>
+    </v:shape><![endif]--><img width="677" height="455" alt="" vspace="0" hspace="0" border="0" style="width:677px;height:455px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" src="file:///C:/Users/iaa10356/AppData/Local/Temp/msohtmlclip1/01/clip_image007.jpg" /></p><p>&nbsp;</p></td></tr></tbody></table></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="AuthorizationMarketingHolder">7. MARKETING AUTHORISATION HOLDER</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Manufactured by:
+GlaxoSmithKline Manufacturing S.p.A.* Parma Italy Marketing Authorisation Holder: GlaxoSmithKline Manufacturing S.p.A.* Parma Italy
+Address: GlaxoSmithKline Manufacturing S.p.A., Strada Provinciale Asolana, 90 43056 San Polo di Torrile, Parma, Italy
+*member of the GlaxoSmithKline group of companies
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label style="float: left" for="RevisionDateText">8. DATE OF REVISION OF THE TEXT</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="ltr">
+                Version number: GDS 23 / IPI 06 Date of issue:  18 January 2014
+            </div>
+        </div>
+    </div>
+</div>
+
+            }    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>

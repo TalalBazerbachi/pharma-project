@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="نظام معلومات الأدوية السعودي Saudi Drugs Information System">
+    <meta name="author" content="Saudi Food & Drug Authority (SFDA)">
+    <noscript><meta http-equiv="refresh" content="0; url=/noScript.html" /></noscript>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>&#x646;&#x638;&#x627;&#x645; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</title>
+    <link href="/fonts/roboto/roboto.css?v=53F8z0aw8DRnG9ou9x1tuKMPbNjRZWM-VBHl3B0s9-o" rel="stylesheet" />
+    <link href="/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-rtl.css?v=0env-Atj9mTPLILmJGwuDlLIOS_Akxxy4gnH1UUtrjU" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-glyphicons.css?v=U5a39oen_WYzVAAexH5aoahbpqlKHcIzQrnXujf1yio" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/dist/css/bootstrap-select.css?v=DeY2lH0e0tmNnO9XZ-gGVOGk6_YoWlZ49y7CnD3ST00" rel="stylesheet" />
+    <link href="/lib/toastr/toastr.css?v=kKePN_CyxTiMEgsSDu_7z21ru07YOZtR-0UV0JOkt5o" rel="stylesheet" />
+    <link href="/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css?v=JVJiF3s2_kk99xQHfYhfxo_-Dd52ZIruDMOILwPkqv0" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.css?v=YIHlqxkiJtENTMuzIHC9EfZaB5RniGr7kF7juUQJUuc" rel="stylesheet" />
+    <link href="/lib/Waves/dist/waves.css?v=nd3hxjNg6DhkuFIz5IbxLK8Xw2ac0blsDQpF4pkJxUc" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.css?v=IT6GQizZpVcaM1_L_mIiNAYVvZErMgfwewf1GGWXG_I" rel="stylesheet" />
+    <link href="/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ" rel="stylesheet" />
+    <link href="/css/Publicstyle.css?v=xhOiVjq-54ODzSIeHXoascHsEJm_n_bIHqZatpxnYhg" rel="stylesheet">
+    <link href="/css/Comman.css?v=bcS6_IRqBsBcY1mS_iriWWanrYR0Scdo1ffk8rQGXwQ" rel="stylesheet" />
+    <link href="/css/themes/all-themes.css?v=eGSl5zNTWrXYfUx_EJW9ksC3CUTUUxvxmPiA3aQDtQo" rel="stylesheet" />
+    <link href="/view-resources/Views/Shared/_Layout.css?v=BLxBuNISlF2O5EBHWdsX039NvnIHy-GtcqeI_MbyIc0" rel="stylesheet" />
+    <link href="/lib/enjoyhint/enjoyhint.css?v=rSxIyBbiAvx_48ZcFxbn2DNPCCgEc0FXa2Vb72enxk4" rel="stylesheet" />
+    <link href="/lib/dropzone/dropzone.css?v=IQDlHJdeYZ4gMH87EuB1yEG7ujA7DSEkV_SWfACk8Rg" rel="stylesheet" />
+
+    <!-- View specific styles -->
+    
+    <script type="text/javascript" nonce="c7f26c8w">
+        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '/';
+
+    </script>
+    <style>
+        .popover .popover-title {
+            text-align: right;
+            font-weight: bold;
+        }
+        .popover .popover-content {
+            text-align: right;
+            font-size: 14px;
+            font-family: 'Almarai', sans-serif;
+            color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>&#x628;&#x631;&#x62C;&#x627;&#x621; &#x627;&#x644;&#x625;&#x646;&#x62A;&#x638;&#x627;&#x631; ...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar navbar-inverse naav" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse rtl" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/DrugSearch">&#x627;&#x644;&#x623;&#x62F;&#x648;&#x64A;&#x629;</a></li>
+                        <li><a href="/Account/Login"><i class="fa fa-key"></i>&nbsp;&#x62A;&#x633;&#x62C;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644;</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="famfamfam-flags sa" title="&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;"></i>
+        <span>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+                <li><a href="/AbpLocalization/ChangeCulture?cultureName=en"><i class="famfamfam-flags gb"></i> English</a></li>
+
+    </ul>
+</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="mainContent" class="content">
+        <nav class="navbar naav" style="margin-bottom: 0;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="text-center" href="/">
+                            <img src="/images/logo_sdi.png" style="margin: auto;" width="250">
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-header navbar-toggle2 ">
+                    <button type="button" class="navbar-toggle navbar-toggle2" data-toggle="collapse"
+                            data-target="#myNavbar2">
+                        <span class="icon-bar icon-bar2 "></span>
+                        <span class="icon-bar icon-bar2"></span>
+                        <span class="icon-bar icon-bar2"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="موقع الكترونى يمكن شركات ووكلاء الادويه من رفع النشرات الممارس الصحى ونشرة معلومات المريض وصورة عبوة الدواء المعتمدة من الهيئة العامة للعذاء والدواء بهدف بناء مرجع وطنى للادوية المسجلة يمكن الرجوع له من قبل الممارس الصحى والمريض كمصدر موثوق للمعلومات الدوائية"
+                               data-original-title="&#x645;&#x646; &#x646;&#x62D;&#x646;">
+                                &#x645;&#x646; &#x646;&#x62D;&#x646;
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-right waves-effect" data-trigger="focus"
+                               style="color: #4276a1;" data-container="body" data-toggle="popover"
+                               data-placement="bottom"
+                               title=""
+                               data-content="&#x627;&#x630;&#x627; &#x643;&#x627;&#x646; &#x644;&#x62F;&#x64A;&#x643;&#x645; &#x645;&#x644;&#x627;&#x62D;&#x638;&#x627;&#x62A; &#x627;&#x648; &#x627;&#x642;&#x62A;&#x631;&#x627;&#x62D;&#x627;&#x62A; &#x64A;&#x631;&#x62C;&#x649; &#x627;&#x644;&#x62A;&#x648;&#x627;&#x635;&#x644; &#x639;&#x644;&#x649;   SDI@SFDA.GOV.SA"
+                               data-original-title="&#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;">
+                                &#x62A;&#x648;&#x627;&#x635;&#x644; &#x645;&#x639;&#x646;&#x627;
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+<div class="col-xs-12">
+    <div class="row text-center">
+        <a href="/" class="btn bg-blue btn-lg m-b-10 hover-white">&#x628;&#x62D;&#x62B; &#x62C;&#x62F;&#x64A;&#x62F;</a>
+    </div>
+</div>
+<div class="jumbotron" style="margin-bottom: 0px; background-color: white !important;">
+    <h3 class="text-center" style="color: #57aabf; ">Search Results</h3>
+    <hr width="20%" style="border-top: 3px solid #54ae90;">
+
+    <br>
+    <table class="table s-row">
+        <thead style="margin-bottom: 30px !important">
+                <tr>
+                    <th id="M" style="color:white;">
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A;</a>
+                    </th>
+                    <th id="A" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="E" style="color:white;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x646;&#x634;&#x631;&#x629; &#x645;&#x639;&#x644;&#x648;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x64A;&#x636; &#x628;&#x627;&#x644;&#x627;&#x646;&#x62C;&#x644;&#x64A;&#x632;&#x64A;&#x629;</a>
+                    </th>
+                    <th id="f" class="active-tab" type='button'>
+                        <a href="javascript:void(0)" style="color: white;">&#x635;&#x648;&#x631; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+                    <th id="D" style="color:white; background-color: #47a4ba;" type='button'>
+                        <a href="javascript:void(0)"
+                           style="color: white;">&#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</a>
+                    </th>
+
+                </tr>
+        </thead>
+    </table>
+    <div id="D-div" class="box-data" style="display: block;">
+        <div class="row">
+
+<div class="modal-body rtl">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane m-r-60  animated fadeIn active" id="edit-user-details">
+<div class="row clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="RegisterNumber">&#x631;&#x642;&#x645; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        1405245289
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="RegisterYear">&#x633;&#x646;&#x629; &#x627;&#x644;&#x62A;&#x633;&#x62C;&#x64A;&#x644;</label>
+                                    <div class="form-line">
+                                        2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="TradeName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x62A;&#x62C;&#x627;&#x631;&#x64A;</label>
+                                    <div class="form-line">
+                                        Dupixent 300 mg Solution for injection in pre-filled pen
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label col-view" for="ScientificName">&#x627;&#x644;&#x627;&#x633;&#x645; &#x627;&#x644;&#x639;&#x644;&#x645;&#x64A;</label>
+                                    <div class="form-line">
+                                        DUPILUMAB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label " for="Strength">&#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StrengthUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62A;&#x631;&#x643;&#x64A;&#x632;</label>
+                                    <div class="form-line">
+                                        mg
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AdministrationRouteName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x625;&#x633;&#x62A;&#x639;&#x645;&#x627;&#x644;</label>
+                                    <div class="form-line">
+                                        Subcutaneous use
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PharmaceuticalFormName">&#x627;&#x644;&#x634;&#x643;&#x644; &#x627;&#x644;&#x635;&#x64A;&#x62F;&#x644;&#x627;&#x646;&#x64A;</label>
+                                    <div class="form-line">
+                                        Solution for injection
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Size">&#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SizeUnitName">&#x648;&#x62D;&#x62F;&#x629; &#x627;&#x644;&#x62D;&#x62C;&#x645;</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageSize">&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x639;&#x628;&#x648;&#x629;</label>
+                                    <div class="form-line">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="PackageTypeName">&#x627;&#x646;&#x648;&#x627;&#x639; &#x627;&#x644;&#x639;&#x628;&#x648;&#x627;&#x62A;</label>
+                                    <div class="form-line">
+                                        Pre-filled pen
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="LegalStatusName">&#x637;&#x631;&#x64A;&#x642;&#x629; &#x627;&#x644;&#x635;&#x631;&#x641;</label>
+                                    <div class="form-line">
+                                        Prescription
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ProductControlName">&#x62D;&#x627;&#x644;&#x629; &#x627;&#x644;&#x645;&#x631;&#x627;&#x642;&#x628;&#x629;</label>
+                                    <div class="form-line">
+                                        Uncontrolled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="DrugTypeName">&#x646;&#x648;&#x639; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621;</label>
+                                    <div class="form-line">
+                                        Biological
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="ShelfLife">&#x645;&#x62F;&#x629; &#x627;&#x644;&#x635;&#x644;&#x627;&#x62D;&#x64A;&#x629; &#x628;&#x627;&#x644;&#x623;&#x634;&#x647;&#x631;</label>
+                                    <div class="form-line">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="StorageConditionsName">&#x634;&#x631;&#x648;&#x637; &#x627;&#x644;&#x62A;&#x62E;&#x632;&#x64A;&#x646;</label>
+                                    <div class="form-line">
+                                        Store in a refrigerator (2°C – 8°C), do not freeze
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Price">&#x633;&#x639;&#x631; &#x627;&#x644;&#x62C;&#x645;&#x647;&#x648;&#x631; &#x628;&#x627;&#x644;&#x631;&#x64A;&#x627;&#x644;  ( &#x627;&#x644;&#x633;&#x639;&#x631; )</label>
+                                    <div class="form-line">
+                                        5408.60
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Manufacture_NameEn" name="Manufacture.NameEn" value="Sanofi aventis Deutschland GmbH" />
+                                        <label class="form-label" for="Manufacture_NameEn">&#x627;&#x644;&#x645;&#x635;&#x646;&#x639;</label>
+                                        <div class="form-line">
+                                            Sanofi aventis Deutschland GmbH
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Agent" name="Agent" value="[Agent 2218]" />
+                                        <label class="form-label">&#x627;&#x644;&#x648;&#x643;&#x64A;&#x644;</label>
+                                        <div class="form-line">
+                                            Sanofi Arabia Trading Co. Ltd
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Company_NameEn">&#x627;&#x644;&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x633;&#x648;&#x642;&#x629;</label>
+                                        <div class="form-line">
+                                            SANOFI AVENTIS GROUPE
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode1">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 1</label>
+                                    <div class="form-line">
+                                        D11AH05
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="AtcCode2">&#x643;&#x648;&#x62F; &#x627;&#x644;&#x643;&#x64A;&#x645;&#x64A;&#x627;&#x621; &#x627;&#x644;&#x639;&#x644;&#x627;&#x62C;&#x64A;&#x629; &#x627;&#x644;&#x62A;&#x634;&#x631;&#x64A;&#x62D;&#x64A;&#x629; 2</label>
+                                    <div class="form-line">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div id="E-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> SFDA PIL</span>
+                <span style="font-size:small;">  (Patient Information Leaflet (PIL) are under review by Saudi Food and Drug Authority)</span>
+
+            </div>
+</div>
+
+
+<div class="clearfix ltr">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="InventedNameEn">1. What this product is and what it is used for</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>What Dupixent is</strong></p><p>Dupixent contains the active substance dupilumab.</p><p>&nbsp;</p><p>Dupilumab is a monoclonal antibody (a type of specialised protein) that blocks the action of proteins called interleukins (IL)-4 and IL-13. Both play a major role in causing the signs and symptoms of atopic dermatitis, asthma, and chronic rhinosinusitis with nasal polyposis (CRSwNP).</p><p>&nbsp;</p><p><strong>What Dupixent is used for</strong></p><p>Dupixent is used to treat adults and adolescents 12 years and older with moderate-to-severe atopic dermatitis, also known as atopic eczema. Dupixent is also used to treat children 6 to 11 years oldwith severe atopic dermatitis (see section Children and adolescents). Dupixent may be used with eczema medicines that you apply to the skin or it may be used on its own.</p><p>&nbsp;</p><p>Dupixent is also used with other asthma medicines for the maintenance treatment of severe asthma in adults. adolescents, and children aged 6 years and older whose asthma is not controlled with their current asthma medicines (e.g. corticosteroids).</p><p>&nbsp;</p><p>Dupixent is also used with other medicines for the maintenance treatment of CRSwNP in adults whose disease is not controlled with their current CRSwNP medicines. Dupixent can also reduce the need for surgery and the need for systemic corticosteroid use.</p><p>&nbsp;</p><p>Dupixent is indicated for the treatment of eosinophilic esophagitis in adults and adolescents 12 years and older, weighing at least 40 kg, who are inadequately controlled by, are intolerant to, or who are not candidates for conventional medicinal therapy.</p><p>Dupixent is also used to treat adult patients with prurigo nodularis (PN), who are candidate for systemic therapy.</p><p>&nbsp;</p><p><strong>How Dupixent works</strong></p><p>Using Dupixent for atopic dermatitis (atopic eczema) can improve the condition of your skin and reduce itching. Dupixent has also been shown to improve symptoms of pain, anxiety, and depression associated with atopic dermatitis. In addition, Dupixent helps improve your sleep disturbance and overall quality of life.</p><p>&nbsp;</p><p>Dupixent helps prevent severe asthma attacks (exacerbations) and can improve your breathing. Dupixent may also help reduce the amount of another group of medicines you need to control your asthma, called oral corticosteroids, while preventing severe asthma attacks and improving your breathing.</p><p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="form-group clearfix">
+            <label style="float: left" class="h2" for="PrecautionsEn">2. What you need to know before you use this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>Do not use Dupixent</strong><!--[if supportFields]><b style='mso-bidi-font-weight:
+normal'><span lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-no-proof:yes'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_efc23fc9-e7e4-4a51-bfaa-b09839ea6afb \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are allergic to dupilumab or any of the other ingredients of this medicine (listed in section&nbsp;6).</p><p>If you think you may be allergic, or you are not sure, ask your doctor, pharmacist or nurse for advice before using Dupixent.</p><p>&nbsp;</p><p><strong>Warnings and precautions</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_7725491a-3c66-4782-ad29-d4510b848def \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>Talk to your doctor, pharmacist or nurse before using Dupixent:</p><p>&nbsp;</p><p>Dupixent <strong>is not a rescue medicine</strong> and should not be used to treat a sudden asthma attack.</p><p>&nbsp;</p><p>Every time you get a new pack of Dupixent, it is important that you note down the date and the batch number (which is on the packaging after &ldquo;Lot&rdquo;) and keep this information in a safe place.</p><p>&nbsp;</p><p><u>Allergic reactions</u></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rarely, Dupixent can cause serious side effects, including allergic (hypersensitivity) reactions and anaphylactic reaction and angioedema. These reactions can occur from minutes until seven days after Dupixent administration. You must look out for signs of these conditions (i.e. breathing problems, swelling of the face, lips, mouth, throat or tongue, fainting, dizziness, feeling lightheaded (low blood pressure), fever, general ill feeling, swollen lymph nodes, hives, itching, joint pain, skin rash) while you are taking Dupixent. Such signs are listed under &ldquo;Serious side effects&rdquo; in section&nbsp;4.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop using Dupixent and tell your doctor or get medical help immediately if you notice any signs of an allergic reaction.</p><p>&nbsp;</p><p><u>Eosinophilic conditions</u></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rarely patients taking an asthma medicine may develop inflammation of blood vessels or lungs due to an increase of certain white blood cells (eosinophilia).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is not known whether this is caused by Dupixent. This usually, but not always, happens in people who also take a steroid medicine which is being stopped or for which the dose is being lowered.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tell your doctor immediately if you develop a combination of symptoms such as a flu-like illness, pins and needles or numbness of arms or legs, worsening of pulmonary symptoms, and/or rash.</p><p>&nbsp;</p><p><u>Parasitic (intestinal parasites) infection</u></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dupixent may weaken your resistance to infections caused by parasites. If you already have a parasitic infection it should be treated before you start treatment with Dupixent.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Check with your doctor if you have diarrhoea, gas, upset stomach, greasy stools, and dehydration which could be a sign of a parasitic infection.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you live in a region where these infections are common or if you are travelling to such a region check with your doctor.</p><p>&nbsp;</p><p><u>Asthma</u></p><p>If you have asthma and are taking asthma medicines, do not change or stop your asthma medicine without talking to your doctor. Talk to your doctor before you stop Dupixent or if your asthma remains uncontrolled or worsens during treatment with this medicine.</p><p>&nbsp;</p><p><u>Eye problems</u></p><p>Talk to your doctor if you have any new or worsening eye problems, including eye pain or changes in vision.</p><p>&nbsp;</p><p><strong>Children and adolescents</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The Dupixent pre-filled pen is not intended for use in <strong>children below 6 years of age.</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The safety and benefits of Dupixent are not yet known in children with atopic dermatitis below the age of 6 years..</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The safety and benefits of Dupixent are not yet known in children with asthma below the age of 6.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The safety and benefits of Dupixent are not yet known in children with CRSwNP below the age of 18 years.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The safety and effectiveness of DUPIXENT for the treatment of EoE in pediatric patients less than 12years of age and weighing less than 40 kg have not been established .</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is not known if DUPIXENT is safe and effective in children with prurigo nodularis under 18 years of age.</p><p><strong>&nbsp;</strong></p><p><strong>Other medicines and Dupixent</strong></p><p>Tell your doctor or pharmacist</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you are using, have recently used or might use any other medicines.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if you have recently had or are due to have a vaccination.</p><p><strong>&nbsp;</strong></p><p><strong>Other medicines for asthma</strong></p><p>Do not stop or reduce your asthma medicines, unless instructed by your doctor.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; These medicines (especially ones called corticosteroids) must be stopped gradually.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This must be done under the direct supervision of your doctor and dependent on your response to Dupixent.</p><p><strong>&nbsp;</strong></p><p><strong>Pregnancy and breast-feeding</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you are pregnant, think you may be pregnant, or are planning to have a baby, ask your doctor for advice before using this medicine. The effects of this medicine in pregnant women are not known; therefore, it is preferable to avoid the use of Dupixent in pregnancy unless your doctor advises to use it.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you are breast-feeding or are planning to breast-feed, talk to your doctor before using this medicine. You and your doctor should decide if you will breast-feed or use Dupixent. You should not do both.</p><p>&nbsp;</p><p><strong>Driving and using machines</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_f01d9a19-fe7b-413b-93f7-c8cda6ca0353 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>Dupixent is unlikely to influence your ability to drive and use machines.</p><p>&nbsp;</p><p><strong>Dupixent contains sodium </strong></p><p>This medicine contains less than 1 mmol sodium (23&nbsp;mg) per 300&nbsp;mg dose, that is to say essentially &ldquo;sodium-free&rdquo;.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="AdministrationRoutesEn">3. How to use this product.</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Always use this medicine exactly as your doctor or pharmacist has told you. Check with your doctor or pharmacist if you are not sure.</p><p>&nbsp;</p><p><strong>How much Dupixent you will receive</strong></p><p>Your doctor will decide which dose of Dupixent is right for you.</p><p>&nbsp;</p><p><u>Recommended dose in adults with atopic dermatitis</u></p><p>For patients with atopic dermatitis, the recommended dose of Dupixent is:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An initial dose of 600&nbsp;mg (two 300&nbsp;mg injections)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Followed by 300&nbsp;mg given every other week by subcutaneous injection.</p><p>&nbsp;</p><p><u>Recommended </u><u>dose in adolescents with atopic dermatitis</u></p><p>The recommended dose of Dupixent for adolescents (12 to 17 years of age) with atopic dermatitis is based on body weight:</p><p><img alt="" width="644" height="116" src="data:image/png;base64,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1X5mO7qnjKx0TltzLHX8mPbO/aRt598EufJx5p5mTIhxtOu3b5d3OZ4y55x19j1jw7LTX66D/05ma/3pC3t1SN55OMPqICj/zTvH5+5lsoonXgL+AfHurPzGSxEffQZfxKeBP249b/o++Jms9p98uOWPhPLf9EJYPoR/zSe8WD77cnoX3jU+iQ9iZ3Lp0kffu18Kd5e2r/ALuk/7VoU4usfmvg9+HlwGVzHQPyA/Ti+E5UP4gsrSr+pv553jkziZsUM8XYLD/93/2OBFN/32GZ+knpMgVu596Z+2xnIb+a8hWPrt4Mc5PU+21p++sPKzaXyW8jyab6VcpxfCUr6Bxmcpz6P5Vsp1fvSFsKWlpaWlpaWl5bZyMv2zr5RSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlzemFsJRSSinlrfnnn/8B2HUpjyU1q0AAAAAASUVORK5CYII=" /></p><p><u>Recommended </u><u>dose in children with atopic dermatitis</u></p><p>The recommended dose of Dupixent for children (6 to 11 years of age) with atopic dermatitis is based on body weight:</p><p><img alt="" width="645" height="167" src="data:image/png;base64,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" /></p><p><u>Recommended dose in adult and adolescent patients with asthma (12 years of age and older)</u></p><p>For patients with severe asthma and who are on oral corticosteroids or for patients with severe asthma and co-morbid moderate-to-severe atopic dermatitis or adults with co-morbid severe chronic rhinosinusitis with nasal polyposis, the recommended dose of Dupixent is:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An initial dose of 600&nbsp;mg (two 300&nbsp;mg injections)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Followed by 300&nbsp;mg given every other week administered as subcutaneous injection.</p><p>&nbsp;</p><p>For all other patients with severe asthma, the recommended dose of Dupixent is:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An initial dose of 400&nbsp;mg (two 200&nbsp;mg injections)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Followed by 200&nbsp;mg given every other week administered as subcutaneous injection.</p><p><u>Recommended</u><u> dose children with asthma</u></p><p>The recommended dose of Dupixent for children (6 to 11 years of age) with asthma is based on body weight:</p><p><img alt="" width="579" height="182" src="data:image/png;base64,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" /></p><p>For patients 6 to 11 years old with asthma and coexisting severe atopic dermatitis, your doctor will decide which dose of Dupixent is right for you.</p><p>&nbsp;</p><p><u>Recommended</u><u> dose in adults with chronic rhinosinusitis with nasal polyposis (CRSwNP)</u></p><p>In CRSwNP, the recommended first dose of Dupixent is 300&nbsp;mg followed by 300 mg given every two weeks by subcutaneous injection.</p><p>&nbsp;</p><p><u>Recommended</u><u> dose in adults and children with Eosinophilic Esophagitis (EoE)</u></p><p>In EoE, the recommended dose for adults and children patients 12 years of age and older, weighing at least 40kg, is 300 mg given every week.</p><p>&nbsp;</p><p><u>Recommended dose in adults with Prurigo Nodularis (PN)</u></p><p>In PN, the recommended dose for adult patients is an initial dose of 600 mg (two 300 mg injections) folllowed by 300 mg given every other week.</p><p>&nbsp;</p><p><strong>Injecting Dupixent</strong></p><p>Dupixent is given by injection under your skin (subcutaneous injection). You and your doctor or nurse should decide if you should inject Dupixent yourself.</p><p>&nbsp;</p><p>Before injecting Dupixent yourself you must have been properly trained by your doctor or nurse. Your Dupixent injection may also be given by a caregiver after proper training by a doctor or nurse.</p><p>&nbsp;</p><p>Each pre-filled pen contains one dose of Dupixent (300&nbsp;mg). Do not shake the pre-filled pen.</p><p>&nbsp;</p><p>Read carefully the &ldquo;Instructions for Use&rdquo; included at the end of the package leaflet before using Dupixent.</p><p><strong>&nbsp;</strong></p><p><strong>If you use more Dupixent than you should</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_6973808c-a884-4761-b094-7780fd7fdc53 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>If you use more Dupixent than you should or the dose has been given too early, talk to your doctor, pharmacist or nurse.<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt'><span style='mso-element:field-begin'></span>
+DOCVARIABLE vault_nd_dddc02ee-e8da-4e42-b820-3c1cf2b57915 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt'><span style='mso-element:field-end'></span></span><![endif]--></p><p>&nbsp;</p><p><strong>If you forget to use Dupixent</strong><!--[if supportFields]><b style='mso-bidi-font-weight:normal'><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-no-proof:yes'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_29e7a52b-41e6-44be-b849-67438e89ca80 \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>If you have forgotten to inject a dose of Dupixent, talk to your doctor, pharmacist or nurse.</p><p>&nbsp;</p><p><strong>If you stop using Dupixent</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_2359e35d-4a89-44fd-9702-8aed49595d5c \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span></b><![endif]--><strong>&nbsp;</strong><!--[if supportFields]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-GB style='mso-bidi-font-size:
+11.0pt;mso-no-proof:yes'><span style='mso-element:field-end'></span></span></b><![endif]--></p><p>Do not stop using Dupixent without speaking to your doctor first.<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-no-proof:yes'><span
+style='mso-element:field-begin'></span> DOCVARIABLE
+vault_nd_6977bf38-6586-454b-ab62-9ed84818af8e \* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]-->&nbsp;<!--[if supportFields]><span
+lang=EN-GB style='mso-bidi-font-size:11.0pt;mso-no-proof:yes'><span
+style='mso-element:field-end'></span></span><![endif]--></p><p>&nbsp;</p><p>If you have any further questions on the use of this medicine, ask your doctor, pharmacist or nurse.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsEn">4. Possible side effects</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>Like all medicines, this medicine can cause side effects, although not everybody gets them.</p><p>&nbsp;</p><p>Dupixent can cause serious side effects, including rare allergic (hypersensitivity) reactions, including anaphylactic reaction, serum sickness reaction, serum sickness-like reaction; the signs may include:</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; breathing problems</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swelling of the face, lips, mouth, throat or tongue (angioedema)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fainting, dizziness, feeling lightheaded (low blood pressure)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fever</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; general ill feeling</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swollen lymph nodes</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hives</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itching</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; joint pain</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; skin rash</p><p>&nbsp;</p><p>If you develop an allergic reaction, stop using Dupixent and talk to your doctor right away.</p><p>&nbsp;</p><p><u>Other side effects</u></p><p>&nbsp;</p><p><strong>Common </strong>(may affect up to 1 in 10 people):</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; injection site reactions (i.e. redness, swelling, itching, pain)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eye redness and itching</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eye infection</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cold sores (on lips and skin)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an increase in a certain kind of white blood cell (eosinophils)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; joint pain (arthralgia)</p><p><strong>&nbsp;</strong></p><p><strong>Uncommon</strong> (may affect up to 1 in 100 people):</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swelling of the face, lips, mouth, throat or tongue (angioedema)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eyelid itching, redness and swelling</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inflammation of the eye surface, sometimes with blurred vision (keratitis)</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; facial rash or redness</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eye dryness</p><p>&nbsp;</p><p><strong>&nbsp;</strong></p><p><strong>Rare </strong>(may affect up to 1 in 1,000 people):</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serious allergic (hypersensitivity) reactions</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ulcers on the outer clear layer of the eye, sometimes with blurred vision (ulcerative keratitis)</p><p><strong>&nbsp;</strong></p><p><u>Additional side effects in children 6 to 11 years old with asthma</u></p><p><strong>Common:</strong> pinworms (enterobiasis)</p><p>&nbsp;</p><p><strong>Reporting of side effects</strong></p><p><strong>To report any side effect(s):</strong></p><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Saudi Arabia:</strong></p></td></tr></tbody></table><table border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>The National Pharmacovigilance and Drug Safety Centre (NPC)</strong></p></td></tr><tr><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>SFDA call center : 19999</strong></p></td></tr><tr><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>E-mail: </strong><strong>npc.drug@sfda.gov.sa</strong><strong> </strong></p></td></tr><tr><td style="vertical-align:top"><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Website: </strong>https://ade.sfda.gov.sa/</p></td></tr><tr><td style="vertical-align:top"><p><strong>&bull; Sanofi- Pharmacovigilance: </strong><strong>KSA_Pharmacovigilance@sanofi.com</strong></p></td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsEn">5. How to store this product</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p>Keep this medicine out of the sight and reach of children.</p><p>&nbsp;</p><p>Do not use this medicine after the expiry date which is stated on the label and carton after EXP. The expiry date refers to the last day of that month.</p><p>&nbsp;</p><p>Store in a refrigerator (2&deg;C to 8&deg;C). Do not freeze. Store in the original carton to protect from light. If necessary, the pre-filled pen can be removed from the refrigerator and kept in the pack for up to 14 days at room temperature up to 25&deg;C, while protected from light. The date of removal from the refrigerator shall be recorded in the space provided on the outer carton. The pack must be discarded if left out of the refrigerator for more than 14 days or if the expiry date has passed.</p><p>&nbsp;</p><p>Do not use this medicine if you notice that the medicine is cloudy, discoloured, or has particles in it.</p><p>Do not throw away any medicines via wastewater or household waste. Ask your doctor, pharmacist or nurse how to throw away medicines you no longer use. These measures will help protect the environment</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: left">6. Further information</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsEn">a. What this product contains</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p><strong>What Dupixent contains</strong></p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The active substance is dupilumab.</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Each pre-filled pen contains 300&nbsp;mg of dupilumab in 2 mL solution for injection (injection).</p><p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The other ingredients are arginine hydrochloride, histidine, polysorbate 80 (E433), sodium acetate, glacial acetic acid (E260), sucrose, water for injections.</p><p><strong>&nbsp;</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsEn">b. What this product looks like and contents of the pack</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                	What Dupixent looks like and contents of the pack
+Dupixent is a clear to slightly opalescent, colourless to pale yellow solution supplied in a pre-filled pen.
+
+The pre-filled pen may either have a round cap and oval viewing window encircled with an arrow or may have a square cap with ridges and an oval viewing window without an arrow. Although there are minor differences in the appearance of the two pre-filled pens, they both function the same.
+
+Dupixent is available as 300 mg pre-filled pens in a pack containing 1, 2, or 6 pre-filled pens or in a pack containing 6 (2 packs of 3) pre-filled pens. 
+
+Not all pack sizes may be marketed. 
+	
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingEn">c. Marketing Authorization Holder and Manufacturer</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                <p>&nbsp;</p><p><strong>Marketing Authorisation Holder</strong></p><p>sanofi-aventis groupe</p><p>54, rue La Bo&eacute;tie</p><p>75008 Paris</p><p>France</p><p><strong>Manufacturer</strong></p><p>SANOFI WINTHROP INDUSTRIE<br />1051 Boulevard Industriel,</p><p>76580 LE TRAIT,</p><p>FRANCE</p><p>&nbsp;</p><p>Genzyme&nbsp;Ireland&nbsp;Ltd.&nbsp;</p><p>IDA&nbsp;Industrial&nbsp;Park&nbsp;Waterford,</p><p>Old&nbsp;Kilmeaden&nbsp;Road,</p><p>Ireland</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteEn">d. This leaflet was last revised in {MM/YYYY}</label>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="m-l-60">
+                	This leaflet was last revised in May 2024
+            </div>
+        </div>
+    </div>
+</div>    </div>
+    <div id="A-div" class="box-data">
+<div class="p-20 text-center font-22">
+            <div class="p-10 bg-light-blue  m-t-20 m-b-20 ltr">
+                <i class="fa fa-info-circle"></i>&nbsp;
+                <span style="font-size: large; background-color: rgb(245,245,245); color: rgb(51,51,51); "> نشرة الدواء تحت مراجعة الهيئة العامة للغذاء والدواء</span>
+                <span style="font-size:small;">  (اقرأ هذه النشرة بعناية قبل البدء في استخدام هذا المنتج لأنه يحتوي على معلومات مهمة لك)</span>
+            </div>
+    <div class="p-10 bg-light-blue font-15 m-t-20 m-b-20 ltr">
+
+    </div>
+
+</div>
+<div class="clearfix rtl">
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="InventedNameAr">1. ما ھو هذا المستحضر وماھي دواعي استعماله</label>
+        </div>
+        <div class="form-group clearfix" style="float: right">
+            <br />
+            <p dir="RTL"><strong>ما هو دوبيكسنت </strong></p><p dir="RTL">يحتوي دوبيكسنت على المادة الفاعلة دوبيلوماب.</p><p dir="RTL">دوبيلوماب هو جسم مضاد أحاديّ المنشأ (نوع من البروتين المتخصص) يمنع عمل بروتينين يُسميّان إنترلوكينIL-4 &nbsp;و IL-13 ويلعبان دورًا رئيسيًا في التسبب بإشارات وأعراض التهاب الجلد التأتبي والربو والتهاب الجيوب المزمن مع داء السلائل الأنفي.</p><p dir="RTL"><strong>ما هي دواعي استعمال دوبيكسنت</strong></p><p dir="RTL">يُستعمل دوبيكسنت لعلاج البالغين والمراهقين في عمر 12 سنة وما فوق المصابين بالتهاب الجلد التأتبي المعتدل إلى الحاد، المعروف أيضًا بالأكزيما التأتبيّة. يمكن استعمال دوبيكسنت كذلك لدى الأطفال التي تتراوح أعمارهم بين 6 و11 سنة لعلاج التهاب الجلد التأتبي الحاد (راجع فقرة الأطفال والمراهقون). يمكن استعمال دوبيكسنت مع أدوية الأكزيما التي تضعها على الجلد أو يمكن استعماله بمفرده.</p><p dir="RTL">يُستعمل دوبيكسنت أيضًا مع أدوية ربو أخرى كعلاج مداومة للربو الحاد لدى البالغين والمراهقين والأطفال بعمر 6 سنوات وما فوق الذين لا يكون الربو لديهم متحكّمًا به بأدوية الربو الحاليّة التي يأخذونها (مثلًا الكورتيكوستيرويد).</p><p dir="RTL">يُستعمل دوبيكسنت أيضًا مع أدوية أخرى لعلاج الصيانة لالتهاب الجيوب المزمن مع داء السلائل الأنفي لدى البالغين الذين لا يكون مرضهم متحكّمًا به بأدوية التهاب الجيوب المزمن مع داء السلائل الأنفي الحاليّة التي يأخذونها. كما يمكن أن يقلل دوبيكسنت من الحاجة إلى الجراحة والحاجة إلى استعمال الكورتيكوستيرويد الجهازي.</p><p dir="RTL">يُستعمل دوبيكسنت لعلاج التهاب المريء اليوزيني لدى المرضى البالغين والمراهقين في الثانية عشرة من العمر وما فوق، والذين لا يقل وزنهم عن 40 كلغ والذين لا يتمّ التحكّم بمرضهم بشكل مناسب، أو لا يتحملّون العلاج الطبّي التقليدي، أو ليسوا مرشّحين لتلقّيه.</p><p dir="RTL">يُستعمل دوبيكسنت أيضًا لعلاج المرضى البالغين المصابين بحكاك عقَيْدي، المرشّحين لتلقّي العلاج الجهازي.</p><p dir="RTL"><strong>كيف يعمل</strong> <strong>دوبيكسنت</strong></p><p dir="RTL">إنّ استعمال دوبيكسنت لالتهاب الجلد التأتبي (الأكزيما التأتبيّة) يمكن أن يحسّن حالة جلدك ويخفّف من الحكّة. وقد ثَبت أيضًا أنّ دوبيكسنت يحسّن أعراض الألم والقلق والاكتئاب المرتبطة بالتهاب الجلد التأتبي. بالإضافة إلى ذلك، يساعد دوبيكسنت على تحسين اضطرابات النوم والجودة الشاملة للحياة.&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL">يساعد دوبيكسنت على منع نوبات الربو الحادة (تفاقم الربو) ويمكنه أن يحسّن التنفّس لديك. يمكن أن يساعد دوبيكسنت أيضًا على الحدّ من كميّة مجموعة أخرى من الأدوية تحتاج إليها للتحكّم بالربو الذي تعاني منه وتُسمّى كورتيكوستيرويد عن طريق الفم، مانعًا نوبات الربو الحاد ومحسّنًا التنفّس لديك.&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group clearfix">
+            <label class="h2" for="PrecautionsAr">2. ما الذي يجب عليك معرفته قبل استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>لا تستعمل دوبيكسنت</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعاني من حساسية ضدّ دوبيلوماب أو ضدّ أيّ من المركّبات الأخرى في هذا الدواء (المذكورة في القسم 6).</p><p dir="RTL">إذا كنت تعتقد أنّك قد تكون تعاني من حساسيّة أو إذا لم تكن واثقًا، استشر الطبيب أو الصيدلي أو الممرّضة قبل استعمال دوبيكسنت.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تحذيرات واحتياطات</strong></p><p dir="RTL">تحدّث إلى الطبيب أو الصيدلي أو الممرّضة قبل استعمال دوبيكسنت:</p><p dir="RTL">دوبيكسنت <strong>ليس دواء إنقاذ</strong> ولا ينبغي استعماله لعلاج نوبة ربو مفاجئة.</p><p dir="RTL">في كلّ مرّة تحصل فيها على عبوة جديدة من دوبيكسنت، من المهمّ أن تدوّن التاريخ ورقم الدُفعة (الموجود على العبوة بعد&nbsp; كلمة&quot;<strong>Lot</strong>&quot;&nbsp; &quot;الدفعة&quot;) وأن تحتفظ بهذه المعلومات في مكان آمن.</p><p dir="RTL"><u>الارتكاسات التحسسيّة</u></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يمكن أن يسبّب دوبيكسنت بشكل نادر تأثيرات جانبيّة خطيرة تتضمّن ارتكاسات تحسسيّة (فرط حساسيّة) وردّ فعل تأقيًّا ووذمة وعائية. يُمكِن أن تحدث هذه التفاعلات خلال دقائق وحتى سبعة أيام بعد استعمال دوبيكسنت. يجب عليك أن تنتبه إلى إشارات هذه الحالات (أيّ مشاكل في التنفّس، تورّم الوجه أو الشفتيْن أو الفم أو الحلق أو اللسان، إغماء، دوار، الشعور بدوخة (انخفاض ضغط الدم)، حمى، شعور عام بالتوعّك، تورّم الغدد الليمفاويّة، قشعريرة، حكّة، ألم في المفاصل، طفح جلدي) وأنت تأخذ دوبيكسنت. هذه الإشارات مذكورة في فقرة &quot;التأثيرات الجانبيّة الخطيرة&quot; في القسم 4.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; توقّف عن استعمال دوبيكسنت وأعلم طبيبك أو اطلب مساعدة طبيّة طارئة إذا لاحظت أيّ إشارات ارتكاس تحسسيّ.</p><p dir="RTL"><u>فرط الحمضات</u></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; نادرًا ما يُصاب المرضى الذين يأخذون دواء للربو بالتهاب في الأوعية الدمويّة أو الرئتين بسبب ارتفاع عدد بعض كريات الدم البيضاء (فرط الحمضات).</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; من غير المعروف ما إذا كان السبب يعود إلى دوبيكسنت. يحصل هذا عادة ولكن ليس دائمًا لدى الأشخاص الذين يأخذون دواء ستيرويديًا يتمّ إيقافه أو يتمّ تخفيض جرعته.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; أعلم طبيبك على الفور إذا أصبت بمجموعة من الأعراض مثل مرض يشبه الانفلوانزا أو شعور بالوخز أو الخدر في الذراعين أو الساقين أو تفاقم الأعراض الرئويّة و/أو الطفح.&nbsp;</p><p dir="RTL"><u>العدوى الطفيليّة (الطفيليّات المعويّة)</u></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يمكن أن يُضعف دوبيكسنت مقاومتك تجاه حالات العدوى التي تسبّبها الطفيليّات. إذا كنت مصابًا بعدوى طفيليّة يجب أن تُعالج قبل أن تبدأ العلاج بدوبيكسنت.</p><p dir="RTL">من غير المحتمل أن يؤثّر دوبيكسنت على قدرتك على القيادة وعلى استعمال الآلات.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تحقق مع الطبيب إذا كنت مصابًا بإسهال وغازات واضطرابات في المعدة وبراز دهني وجفاف مما يمكن أن يكون إشارة على عدوى طفيليّة.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تعيش في منطقة تكون فيها حالات العدوى هذه شائعة أو إذا كنت تسافر إلى منطقة كهذه، تحقق مع طبيبك.</p><p dir="RTL"><u>الربو</u></p><p dir="RTL">إذا كنت مصابًا بالربو وكنت تأخذ أدوية ربو، لا تغيّر أو توقف دواء الربو الذي تأخذه بدون التحدّث إلى طبيبك. تحدّث إلى طبيبك قبل أن توقف دوبيكسنت أو إذا بقي الربو الذي تعاني منه غير متحكّم به أو إذا تفاقم في خلال العلاج بهذا الدواء.&nbsp;</p><p dir="RTL"><u>مشاكل العينين </u></p><p dir="RTL">تحدّث إلى طبيبك إذا أصبت بمشاكل جديدة في العينين أو إذا تفاقمت مشاكلك في العينين، بما في ذلك ألم العين أو التغييرات في الرؤية.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>الأطفال والمراهقون</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; القلم المعبّأ مسبقًا دوبيكسنت غير مخصّص للاستعمال <strong>لدى الأطفال ما دون عمر 6 سنوات.</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إنّ سلامة دوبيكسنت ومنافعه غير معروفة بعد لدى الأطفال المصابين بالتهاب الجلد التأتبي ما دون 6 سنوات من العمر.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إنّ سلامة دوبيكسنت ومنافعه غير معروفة بعد لدى الأطفال المصابين بالربو ما دون 6 من العمر. &nbsp;</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إنّ سلامة دوبيكسنت ومنافعه غير معروفة بعد لدى الأطفال المصابين بالتهاب الجيوب المزمن مع داء السلائل الأنفي ما دون الـ18 من العمر.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; لم يتم التأكّد من سلامة وفعالية دوبيكسنت لعلاج التهاب المريء اليوزيني لدى المرضى الأطفال الذين تقلّ أعمارهم عن 12 عامًا ويزنون أقل من 40 كلغ.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; من غير المعروف إذا كان دوبيكسنت آمنًا وفعّالاً لدى الأطفال المصابين بحكاك عقَيْدي ما دون الـ18 من العمر.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>أدوية أخرى ودوبيكسنت</strong></p><p dir="RTL">أعلم الطبيب أو الصيدلي</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تستعمل أو استعملت مؤخّرًا أو قد تستعمل أيّ أدوية أخرى.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا تلقّيت لقاحًا مؤخّرًا أو كنت ستتلقّى لقاحًا.&nbsp;</p><p dir="RTL"><strong>أدوية أخرى للربو</strong></p><p dir="RTL">لا توقف أدوية الربو التي تأخذها أو تخفف جرعتها إلاّ إذا طلب الطبيب ذلك.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يجب إيقاف هذه الأدوية (بخاصة الأدوية المسمّاة كورتيكوستيرويد) بشكل تدريجيّ.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يجب أن يتمّ هذا تحت الرقابة المباشرة لطبيبك وحسب تجاوبك مع دوبيكسنت.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الحمل والإرضاع</strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت حاملاً أو تعتقدين نفسك حاملاً أو كنت تخططين للحمل، استشيري طبيبك قبل استعمال هذا الدواء. إنّ تأثيرات هذا الدواء لدى النساء الحوامل غير معروفة؛ لذلك يُفضّل تفادي استعمال دوبيكسنت في خلال فترة الحمل إلاّ إذا أوصى الطبيب باستعماله.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إذا كنت تُرضعين أو كنتِ تخططين للرضاعة الطبيعيّة، تحدّثي إلى طبيبك قبل استعمال هذا الدواء. يجب أن تقررا أنت وطبيبك إذا كنت ستُرضعين أو ستستعملين دوبيكسنت. لا يجدر بك فعل الأمرين معًا.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>قيادة السيّارات واستعمال الآلات</strong></p><p dir="RTL">من غير المحتمل أن يؤثّر دوبيكسنت على قدرتك على القيادة وعلى استعمال الآلات.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>يحتوي دوبيكسنت على الصوديوم</strong></p><p dir="RTL">يحتوي هذا الدواء على أقلّ من 1 ملمول من الصوديوم (23 ملغ) في كلّ جرعة من 300 ملغ، أي أنّه &quot;خالٍ من الصوديوم&quot; بشكل أساسيّ.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            https://localhost:44358/Dashboard
+            <label class="h2" for="AdministrationRoutesAr">3. ماھي طريقة استعمال هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">استعمل هذا الدواء دائمًا حسب تعليمات الطبيب أو الصيدلي تمامًا. تحقق مع الطبيب أو الصيدلي إذا لم تكن واثقًا.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>كميّة دوبيكسنت التي ستتلقّاها</strong></p><p dir="RTL">سيقرّر طبيبك جرعة دوبيكسنت المناسبة لك.&nbsp;</p><p dir="RTL"><u>الجرعة الموصى بها لدى البالغين المصابين بالتهاب الجلد التأتبي</u></p><p dir="RTL">الجرعة الموصى بها من دوبيكسنت لدى المرضى المصابين بالتهاب الجلد التأتبي هي:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جرعة أوّلية من 600 ملغ (على حقنتين من 300 ملغ)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تليها جرعة من 300 ملغ مرّة كلّ أسبوعين عن طريق الحقن تحت الجلد.</p><p dir="RTL"><u>الجرعة الموصى بها لدى المراهقين المصابين بالتهاب الجلد التأتبي</u></p><p dir="RTL">ترتكز الجرعة الموصى بها من دوبيكسنت للمراهقين (12 إلى 17 عامًا) المصابين بالتهاب الجلد التأتبي على وزن الجسم:</p><p dir="RTL"><img src="data:image/png;base64,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" alt="" width="631" height="92" vspace="0" hspace="0" border="0" style="width:631px;height:92px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px;border:0px solid black;" /></p><p dir="RTL"><u>الجرعة الموصى بها لدى الأطفال المصابين بالتهاب الجلد التأتبي</u></p><p dir="RTL">ترتكز الجرعة الموصى بها من دوبيكسنت للأطفال (6 إلى 11 عام) المصابين بالتهاب الجلد التأتبي على وزن الجسم:</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><strong>وزن جسم المريض</strong></p></td><td style="vertical-align:top"><p dir="RTL"><strong>الجرعة الأوليّة</strong></p></td><td style="vertical-align:top"><p dir="RTL"><strong>الجرعات اللاحقة</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">15 كلغ إلى أقلّ من 60 كلغ</p></td><td style="vertical-align:top"><p dir="RTL">300 ملغ (حقنة واحدة من 300 ملغ) في اليوم 1، تليها 300 ملغ في اليوم 15</p></td><td style="vertical-align:top"><p dir="RTL">300 ملغ <strong>كلّ 4 أسابيع*</strong>، تبدأ بعد 4 أسابيع من جرعة اليوم 15</p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">60 كلغ أو أكثر</p></td><td style="vertical-align:top"><p dir="RTL">600 ملغ (حقنتان من 300 ملغ)</p></td><td style="vertical-align:top"><p dir="RTL">300 ملغ <strong>كلّ أسبوعين</strong></p></td></tr></tbody></table><p dir="RTL">* يمكن زيادة الجرعة حتّى 200 ملغ كلّ أسبوعيْن بحسب رأي الطبيب.</p><p dir="RTL"><u>الجرعة الموصى بها لدى المرضى البالغين والمراهقين المصابين بالربو (12 عامًا وما فوق)</u></p><p dir="RTL">للمرضى المصابين بالربو الحاد ويأخذون كورتيكوستيرويد عن طريق الفم أو للمرضى المصابين بربو حاد وبالتهاب الجلد التأتبي المصاحب المعتدل إلى الشديد أو للبالغين المصابين بالتهاب الأنف والجيوب المزمن الحاد مع داء السّلائل الأنفي المصاحب، تبلغ جرعة دوبيكسنت الموصى بها:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جرعة أوّلية من 600 ملغ (على حقنتين من 300 ملغ)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تليها جرعة من 300 ملغ مرّة كلّ أسبوعين عن طريق الحقن تحت الجلد.</p><p dir="RTL">لكلّ المرضى الآخرين المصابين بالربو الحاد، تبلغ جرعة دوبيكسنت الموصى بها:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جرعة أوّلية من 400 ملغ (على حقنتين من 200 ملغ)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تليها جرعة من 200 ملغ مرّة كلّ أسبوعين عن طريق الحقن تحت الجلد.</p><p dir="RTL"><u>الجرعة الموصى بها لدى الأطفال المصابين بالربو</u></p><p dir="RTL">ترتكز الجرعة الموصى بها من دوبيكسنت للأطفال (6 إلى 11 عامًا) المصابين بالربو على وزن الجسم:</p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><strong>وزن جسم المريض</strong></p></td><td style="vertical-align:top"><p dir="RTL"><strong>الجرعات الأوّليّة واللاحقة </strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">15 إلى أقلّ من 30 كلغ</p></td><td style="vertical-align:top"><p dir="RTL">100 ملغ <strong>مرّة كلّ أسبوعين</strong></p><p dir="RTL">أو</p><p dir="RTL">300 ملغ <strong>مرّة كلّ 4 أسابيع</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">30 كلغ إلى أقلّ من 60 كلغ</p></td><td style="vertical-align:top"><p dir="RTL">200 ملغ <strong>مرّة كلّ أسبوعين</strong></p><p dir="RTL">أو</p><p dir="RTL">300 ملغ <strong>مرّة كلّ 4 أسابيع</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">60 كلغ أو أكثر</p></td><td style="vertical-align:top"><p dir="RTL">200 ملغ <strong>مرّة كلّ أسبوعين</strong></p></td></tr></tbody></table><p dir="RTL">للمرضى من 6 إلى 11 عام المصابين بربو متصاحب مع التهاب الجلد التأتبي الحادّ، سوف يقرّر طبيبك الجرعة المناسبة لك.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><u>الجرعة الموصى بها لدى المرضى البالغين المصابين </u><u>ب</u><u>التهاب الجيوب المزمن مع داء السلائل الأنفي</u></p><p dir="RTL">في التهاب الجيوب المزمن مع داء السلائل الأنفي، تبلغ الجرعة الأولى الموصى بها من دوبيكسنت 300 ملغ تليها جرعة 300 ملغ تُعطى كلّ أسبوعين عن طريق الحقن تحت الجلد.</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><u>الجرعة الموصى بها للبالغين والأطفال المصابين بالتهاب المريء اليوزيني</u></p><p dir="RTL">في التهاب المريء اليوزيني، تبلغ الجرعة الموصى بها للمرضى البالغين والأطفال بعمر 12 سنة وما فوق والذين يزنون 40 كلغ على الأقلّ، 300 ملغ تُعطى كلّ أسبوع.</p><p dir="RTL"><u>الجرعة الموصى بها </u><u>للبالغين المصابين ب</u><u>حكاك عقَيْدي</u></p><p dir="RTL">الجرعة الموصى بها لدى المرضى البالغين المصابين بحكاك عقَيْدي هي جرعة أوّليّة من 600 ملغ (على حقنتين من 300 ملغ) تليها جرعة 300 ملغ تُعطى مرّة كلّ أسبوعيْن.</p><p dir="RTL"><strong>حقن</strong><strong> </strong><strong>دوبيكسنت </strong></p><p dir="RTL">يُعطى دوبيكسنت عن طريق الحقن تحت الجلد (حقن تحت الجلد). يجب أن تقررا أنت وطبيبك أو الممرضة إذا كان يجدر بك حقن دوبيكسنت بنفسك.</p><p dir="RTL">&nbsp;</p><p dir="RTL">قبل حقن دوبيكنست بنفسك، يجب أن يكون قد درّبك طبيبك أو ممرّضتك كما يجب. يمكن أيضًا أن يعطيك مقدّم الرعاية الصحيّة الخاص بك الحقنة بعد تدريب مناسب من قبل طبيب أو ممرّضة.&nbsp; &nbsp;</p><p dir="RTL">يحتوي كلّ قلم معبّأ مسبقًا على جرعة واحدة من دوبيكسنت (300 ملغ). لا ترجّ القلم المعبّأ مسبقًا.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إقرأ بدقّة &quot;تعليمات الاستعمال&quot; المذكورة في نهاية النشرة الدوائيّة قبل استعمال دوبيكسنت.&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إذا استعملت كميّة من دوبيكسنت أكثر مما يجب</strong></p><p dir="RTL">إذا استعملت كميّة دوبيكسنت أكثر مما يجب أو إذا تمّ إعطاؤك الجرعة في موعد مبكر جدًا، تحدّث إلى الطبيب أو الصيدليّ أو الممرّضة.&nbsp;</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إذا نسيت استعمال دوبيكسنت</strong></p><p dir="RTL">إذا نسيت حقن جرعة من دوبيكسنت، تحدّث إلى الطبيب أو الصيدلي أو الممرّضة.</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>إذا توقفت عن استعمال دوبيكسنت</strong></p><p dir="RTL">لا تتوقف عن استعمال دوبيكسنت بدون التحدّث إلى طبيبك أوّلاً.</p><p dir="RTL">&nbsp;</p><p dir="RTL">إذا كان لديك أيّ أسئلة إضافيّة حول استعمال هذا الدواء، اطرحها على الطبيب أو الصيدلي أو الممرضة.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="SideEffectsAr">4. الأعراض الجانبية المحتملة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">مثل الأدوية كلّها، يمكن أن يسبّب هذا الدواء تأثيرات جانبيّة لا تصيب المرضى كلّهم.</p><p dir="RTL">يمكن أن يسبّب دوبيكسنت تأثيرات جانبيّة خطيرة، تتضمّن تفاعلات حساسية نادرة (فرط الحساسية)، بما في ذلك ردّ فعل تحسسي، تفاعل داء المصل، تفاعل شبيه بداء المصل؛ قد تشمل الأعراض:</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مشاكل في التنفّس</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورّم الوجه أو الشفتيْن أو الفم أو الحلق أو اللسان (وذمة وعائية)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; إغماء، دوار، الشعور بدوخة (انخفاض ضغط الدم)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حمى</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; شعور عام بالتوعّك</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورّم الغدد الليمفاوية</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; شرى</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حكّة</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم في المفاصل</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي&nbsp;&nbsp;</p><p dir="RTL">إذا أصبت بارتكاس تحسسيّ، توقّف عن استعمال دوبيكسنت وتحدّث إلى طبيبك على الفور.</p><p dir="RTL"><u>&nbsp;</u></p><p dir="RTL"><u>تأثيرات جانبيّة أخرى</u></p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تأثيرات جانبيّة شائعة </strong>(قد تصيب حتّى شخص من أصل 10 أشخاص):</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ارتكاسات في موقع الحقن (أيّ احمرار وتورّم وحكّة وألم)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; احمرار وحكّة في العينين</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; عدوى في العين</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; قروح باردة (على الشفتين والجلد)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; زيادة في نوع معيّن من خلايا الدم البيضاء (الحمضات)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ألم المفاصل</p><p dir="RTL"><strong>تأثيرات جانبيّة غير شائعة </strong>(قد تصيب حتّى شخص من أصل 100 أشخاص):</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تورّم الوجه أو الشفتيْن أو الفم أو الحلق أو اللسان (وذمة وعائية)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; حكّة واحمرار وتورّم في الجفن</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التهاب سطح العين مع رؤية ضبابيّة احيانًا (التهاب القرنيّة)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; طفح جلدي أو احمرار الجلد</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; جفاف في العينين</p><p dir="RTL">&nbsp;</p><p dir="RTL"><strong>تأثيرات جانبيّة نادرة </strong>(قد تصيب حتّى شخص من أصل 1000 أشخاص)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تفاعلات حساسية خطيرة (فرط الحساسية)</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تقرّحات على الطبقة الخارجية الصافية للعين مع رؤية ضبابيّة أحيانًا (التهاب القرنية التقرحي)</p><p dir="RTL"><u>تأثيرات جانبيّة إضافيّة لدى الأطفال من 6 إلى 11 عامًا المصابين بالربو</u></p><p dir="RTL"><strong>تأثيرات جانبيّة شائعة: </strong>الدودة الدبوسية (داء السرميات)</p><p dir="RTL"><strong>&nbsp;</strong></p><p dir="RTL"><strong>الإبلاغ عن التأثيرات الجانبيّة</strong></p><p dir="RTL"><strong>للإبلاغ عن أي أعراض جانبية</strong><strong>:</strong></p><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>المملكة العربية السعودية:</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>المركز الوطني للتّيقُّظ والسلامة الدوائية</strong></p></td></tr></tbody></table><table dir="rtl" border="1" cellspacing="0" cellpadding="0"><tbody><tr><td style="vertical-align:top"><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>مركز اتصال الهيئة العامة للغذاء والدواء: 19999</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>البريد الإلكتروني: </strong><strong>npc.drug@sfda.gov.sa</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>الموقع الإلكتروني: </strong><strong>https://ade.sfda.gov.sa/</strong></p></td></tr><tr><td style="vertical-align:top"><p dir="RTL"><strong>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>سانوفي للتّيقُّظ والسلامة الدوائية:&nbsp;</strong><strong>KSA_Pharmacovigilance@sanofi.com</strong><strong> &nbsp;</strong></p></td></tr></tbody></table><p dir="RTL"><strong>&nbsp;</strong>&nbsp;</p><p>&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <label class="h2" for="StorageConditionsAr">5. طريقة تخزين المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL">احفظ هذا الدواء بعيدًا عن نظر الأطفال ومتناولهم.</p><p dir="RTL">لا تستعمل هذا الدواء بعد انقضاء تاريخ الصلاحيّة المذكور على الملصق وعلبة الكرتون بعد كلمة EXP. يشير تاريخ انقضاء الصلاحيّة إلى اليوم الأخير من الشهر المذكور.&nbsp;</p><p dir="RTL">يُحفظ في البرّاد (بين درجتين مئويّتين و8 درجات مئويّة). لا يُجمّد. يُحفظ في علبة الكرتون الأصليّة لحمايته من الضوء. عند الضرورة، يمكن إخراج القلم المعبّأ مسبقًا من البرّاد وحفظه في العلبة لغاية 14 يومًا في حرارة الغرفة حتّى 25 درجة مئويّة، مع حمايته من الضوء. يجب تسجيل تاريخ الإخراج من البرّاد في المكان المخصّص لذلك على علبة الكرتون الخارجيّة. يجب التخلّص من العبوة إذا تُركت خارج البراد لأكثر من 14 يومًا أو إذا انقضى تاريخ انتهاء الصلاحية.&nbsp;</p><p dir="RTL">لا تستعمل هذا الدواء إذا لاحظت أنّه عكر أو تغيّر لونه أو به جزيئات.</p><p dir="RTL">لا تقم برمي أيّ أدوية في مياه الصرف الصحي أو مع النفايات المنزليّة. اسأل الطبيب أو الصيدلي أو الممرضة عن كيفيّة التخلّص من الأدوية التي لم تعد تستعملها، فمن شأن هذه الإجراءات حماية البيئة.</p><p dir="RTL">&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label style="float: right">6. معلومات أخرى</label>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="IngredientsAr">أ‌. على ماذا يحتوي هذا المستحضر</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>ماذا يحتوي دوبيكسنت</strong><strong> </strong></p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المادة الفاعلة هي دوبيلوماب.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يحتوي كلّ قلم معبّأ مسبقًا على 300 ملغ من الدوبيلوماب في 2<strong> </strong>مل من محلول الحقن.</p><p dir="RTL">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; المكوّنات الأخرى هي هيدروكلورايد الأرجينين، هيستيدين، بوليسوربات 80 (E433)، أسيتات الصوديوم، حمض الخليك الجليدي (E260)، سكروز، ماء للحقن.</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ShapeAndContentsAr">ب‌. كيف يبدو شكل هذا المستحضر وماهي محتويات العلبة</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>كيف هو شكل دوبيكسنت ومحتويات العلبة</strong><strong> </strong></p><p dir="RTL">دوبيكسنت هو محلول صافٍ إلى غميم (غير شفاف) بعض الشيء، عديم اللون إلى أصفر باهت يأتي في قلم معبّأ مسبقًا.</p><p dir="RTL">قد يكون للقلم المعبّأ مسبقًا غطاء دائري ونافذة عرض بيضاوية محاطة بسهم أو قد يكون له غطاء مربّع مع حواف ونافذة عرض بيضاوية بدون سهم. على الرغم من وجود اختلافات طفيفة في مظهر القلمين المعبّأين مسبقًا، إلا أنهما يعملان بالطريقة نفسها.</p><p dir="RTL">يأتي دوبيكسنت على شكل أقلام معبّأة مسبقًا من 300 ملغ في عبوة تحتوي على قلم معبّأ مسبقًا أو على قلمَين معبّأيْن مسبقًا أو على 6 أقلام معبّأة مسبقًا أو في عبوة تحتوي على 6 (عبوتان من 3) أقلام معبّأة مسبقًا.</p><p dir="RTL">قد لا تكون أحجام العبوات كلّها مسوّقة.&nbsp;</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="ManufacturingAndMarketingAr">ت‌. الشركة المصنعة ومالك حق التسويق</label>
+        </div>
+        <div class="m-r-60">
+            <p dir="RTL"><strong>حامل رخصة التسويق</strong></p><p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>sanofi-aventis groupe</p><p>54, rue La Bo&eacute;tie</p><p>75008 Paris</p><p>France</p><p>&nbsp;</p><p><strong>المصنّع</strong></p><p>SANOFI WINTHROP INDUSTRIE<br />1051 Boulevard Industriel,</p><p>76580 LE TRAIT,</p><p>FRANCE</p><p>&nbsp;</p><p>Genzyme&nbsp;Ireland&nbsp;Ltd.</p><p>IDA&nbsp;Industrial&nbsp;Park&nbsp;Waterford,</p><p>Old&nbsp;Kilmeaden&nbsp;Road,</p><p>Ireland<br /><br />Sanofi-Aventis Deutschland GmbH<br />Br&uuml;ningstrasse 50<br />Industriepark Hoechst<br />65926 FRANKFURT AM MAIN<br />GERMANY</p>
+        </div>
+    </div>
+    <div class="col-xs-11 col-offset">
+        <div class="clearfix">
+            <label class="h2" for="RevisionNoteAr">ث‌. تمت مراجعة هذه النشرة في التاريخ الذي تمت فيه مراجعة النشرة بالشهر والسنة</label>
+        </div>
+        <div class="m-r-60">
+            تمّت مراجعة هذه النشرة للمرّة الأخيرة في شهر أيّار/مايو 2024
+        </div>
+    </div>
+</div>
+    </div>
+    <div id="M-div" class="box-data">
+            <div class="p-20 text-center font-20">
+                <div class="p-10 bg-red"><i class="fa fa-times-circle"></i>&nbsp;&#x644;&#x645; &#x64A;&#x62A;&#x645; &#x625;&#x62F;&#x62E;&#x627;&#x644; &#x628;&#x64A;&#x627;&#x646;&#x627;&#x62A;  &#x646;&#x634;&#x631;&#x629; &#x627;&#x644;&#x645;&#x645;&#x627;&#x631;&#x633; &#x627;&#x644;&#x635;&#x62D;&#x64A; &#x644;&#x647;&#x630;&#x627; &#x627;&#x644;&#x62F;&#x648;&#x627;&#x621; &#x62D;&#x62A;&#x649; &#x627;&#x644;&#x622;&#x646;</div>
+            </div>
+    </div>
+    <div id="f-div" class="box-data">
+        
+<div class="row clearfix rtl">
+    <div class="container-fluid">
+        <!-- Basic Example -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>صورة المنتج على الرف</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            
+                                <img src="/images/nodrugimags.png">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Example -->
+        <!-- With Captions -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="header">
+                <h2>الصورة الاساسية</h2>
+            </div>
+            <div class="body">
+                <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic_2" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="1" class="active"></li>
+                        <li data-target="#carousel-example-generic_2" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                                <img src="/images/nodrugimags.png">
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Captions -->
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- #END# Tabs With Custom Animations -->
+</div>
+        <a style="background-image: url('../images/banner.png');"
+           class="scroll-top">
+            <img style="margin: 15px;" src="/images/icons/up-arrow2.png" width="35">
+        </a>
+
+        <div class="footer navbar-fixed-bottom">
+            <small style="color: white; margin-left: 30px;">All Rights Reserved - SFDA &copy; 2020</small>
+            <br class="visible-xs visible-sm"><br class="visible-xs visible-sm">
+
+        </div>
+    </section>
+
+
+    <script src="/lib/json2/json2.js?v=w3DjWhUtDqy3bSJKv285C-2kagUtW9F64T9z3xRah8g"></script>
+    <script src="/lib/jquery/dist/jquery.js?v=w4hyv6-vmv08RC2hK00wXgxDziKII9paMAbU_M-5dgY"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?v=T574NvJTWc-Pan8hAmnXXc0eZFiqKRp7xQ3sz5QiFOk"></script>
+    <script src="/lib/moment/min/moment-with-locales.js?v=5f0RFtuChrGi6osDzegxXWf5yOkmx45i7J9fM1p6P5w"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js?v=KKcUNqwNyTLaXzvuMyFk6JisiQq6Hk7ZtrciXnEf3Z0"></script>
+    <script src="/lib/toastr/toastr.js?v=s1ewxfN8Vn23TAVRLUk8XiQUAw6uWhhuPO9dmtYzUiA"></script>
+    <script src="/lib/sweetalert/dist/sweetalert.min.js?v=aPktydUv1rN3mouQeXoKi3ioFTIQlULuqYeoTAA2ihY"></script>
+    <script src="/lib/spin.js/spin.js?v=b1plKpQIB-XuGyjWec42MhmhpPzEPzFI3OC8Ia0XIoc"></script>
+    <script src="/lib/spin.js/jquery.spin.js?v=i7H7HL08ldqUANgfQInE7LlU2uWUdQMCJ-Q7-_zLutY"></script>
+    <script src="/lib/bootstrap-select/dist/js/bootstrap-select.js?v=tXulJKckrq2j2wo8a9hvmXLDEQwhGviPTIYmEzy1dNI"></script>
+    <script src="/lib/jquery-slimscroll/jquery.slimscroll.js?v=ESVSX4dkOxamaRoYfcqPM2FfErhgfxS60fp1Fa8ou1w"></script>
+    <script src="/lib/Waves/dist/waves.js?v=ZOMv1vwqpT_ezNZGhvr9jJTr_jqu3lYHB7vmpxD7HmA"></script>
+    <script src="/lib/push.js/push.js?v=w347yqiscLjM_TxUKpqeUA1LDR3w5vshQpxpTsgkLhE"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js?v=h3viOCmHM1K7HnYUuJPDvLchk2Ge8CoKvl6ZJfICgII"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js?v=vMuHbqHh635SKL2RG2qsGGCDyHg1yFeGqhPKpS34g4k"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js?v=djoKib6ssm5DDzbXLe5pD7ayfFg3siaoEk-BFYzQlvI"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js?v=fPp3O_ILaqD0UHiR721w1i4iBtxo3NH7yfldI5dg0_I"></script>
+    <script src="/js/admin.js?v=nakObLuf3yPs2VlWrIris5w-48c36X3YIRrxIis7IKQ"></script>
+    <script src="/js/main.js?v=x_HDlXByl0okIi4i04d4Q_fNr85GPQi1W8gjs82s-n8"></script>
+    <script src="/view-resources/Views/Shared/_Layout.js?v=36YkLzPJaGejZMB10f2T6f1rMVIzDKq96kjfcnxcLVg"></script>
+
+
+        <script src="/lib/jquery-validation/src/localization/messages_ar.js?v=6kzy-p-PtvkHPWdHWyjMOIfwhBFlUYYv9jnF7zJnpUI"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="/AbpServiceProxies/GetAll?v=638865394571695575" type="text/javascript"></script>
+    <script src="/AbpScripts/GetScripts?v=638865394571695575" type="text/javascript"></script>
+    <script src="/lib/signalr-client/signalr.min.js?v=1yGr-J4NjYMQVt6LP6vocjHIWhO-BFQLfdCs8x1Mv-U"></script>
+    <script src="/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js?v=jTdZBAadu6DXq0iDTFX6vsn4q6bFhKm3XfN8Jz6dSmg"></script>
+    
+    <!-- View specific scripts -->
+    
+    <script src="/view-resources/Views/Home/Index.js?v=mAIakROmG_IlahImCtfrMSdaLPTG5Uoh6Z0hM1g3cxw"></script>
+    <script src="/view-resources/Views/Home/Result.js?v=0pEgOuTQc8ZyJaaOpJCG7ytkKSCkzEMYCHEJfKDWu4k"></script>
+    <script src="/view-resources/Views/Home/DrugsSearch.js?v=04aRniTG_ClH5tABzf7EDwQgWVpkDNpjeJUDSGvOK_Y"></script>
+
+</body>
+</html>
